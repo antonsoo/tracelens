@@ -1,0 +1,703 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.44.0"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "b4529ce4-d365-46d2-87a9-f0c2e8f99e0b"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tracelens-example-agent"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "0.3.1"
+            }
+          },
+          {
+            "key": "deployment.environment.name",
+            "value": {
+              "stringValue": "demo"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.examples.genai_semconv",
+            "version": "1.0.0"
+          },
+          "spans": [
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "7905a7322ce81602",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "chat gpt-4o-mini",
+              "kind": 3,
+              "startTimeUnixNano": "1790248393108077047",
+              "endTimeUnixNano": "1790248393138224136",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-4o-mini"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-4o-mini-2024-07-18"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.temperature",
+                  "value": {
+                    "doubleValue": 0.2
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "1024"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "chatcmpl-b309251171d943d8a9596dc0"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_calls"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "187"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "24"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "36c5a095dcfb9621",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "execute_tool get_weather",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393138281327",
+              "endTimeUnixNano": "1790248393158400629",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "get_weather"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call_weather_1"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Look up current weather conditions for a named location."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "d6d8ddfc1a7d9ad1",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "chat gpt-4o-mini",
+              "kind": 3,
+              "startTimeUnixNano": "1790248393158448081",
+              "endTimeUnixNano": "1790248393188593031",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-4o-mini"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-4o-mini-2024-07-18"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.temperature",
+                  "value": {
+                    "doubleValue": 0.2
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "1024"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "chatcmpl-7261d4764e794853bb7b3f68"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_calls"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "246"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "51"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_weather_1\", \"response\": {\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_calc_1\", \"name\": \"calculator\", \"arguments\": {\"expression\": \"24.5 * 9/5 + 32\"}}, {\"type\": \"tool_call\", \"id\": \"call_currency_1\", \"name\": \"lookup_currency\", \"arguments\": {\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "8f5ff93df22ebb1b",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "execute_tool calculator",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393188647687",
+              "endTimeUnixNano": "1790248393209263149",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "calculator"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call_calc_1"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Evaluate a basic arithmetic expression and return the numeric result."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                  }
+                },
+                {
+                  "key": "retry.attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "error.type",
+                  "value": {
+                    "stringValue": "timeout"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1790248393189159599",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "TimeoutError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "calculator backend did not respond within 2000ms (upstream timeout)"
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 237, in <module>\n    raise TimeoutError(\"calculator backend did not respond within 2000ms (upstream timeout)\")\nTimeoutError: calculator backend did not respond within 2000ms (upstream timeout)\n"
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "calculator backend did not respond within 2000ms (upstream timeout)",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "cea928359daa5489",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "execute_tool calculator",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393209304660",
+              "endTimeUnixNano": "1790248393224415264",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "calculator"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call_calc_1"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Evaluate a basic arithmetic expression and return the numeric result."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\", \"result\": 76.1}"
+                  }
+                },
+                {
+                  "key": "retry.attempt",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "83e9de194728c317",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "execute_tool lookup_currency",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393224452647",
+              "endTimeUnixNano": "1790248393240125700",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "lookup_currency"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call_currency_1"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Look up a live conversion rate and convert an amount between two ISO 4217 currency codes."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}"
+                  }
+                },
+                {
+                  "key": "error.type",
+                  "value": {
+                    "stringValue": "invalid_argument"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1790248393225016359",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "ValueError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)"
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 278, in <module>\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\n"
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "0ef95d89d8e88b6a",
+              "parentSpanId": "0f0244c2bf23d33d",
+              "name": "chat gpt-4o-mini",
+              "kind": 3,
+              "startTimeUnixNano": "1790248393240174023",
+              "endTimeUnixNano": "1790248393270347450",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-4o-mini"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-4o-mini-2024-07-18"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.temperature",
+                  "value": {
+                    "doubleValue": 0.2
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "1024"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "chatcmpl-e567763f2f9244e4b02fac26"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "stop"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "412"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "88"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "256"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_weather_1\", \"response\": {\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_calc_1\", \"name\": \"calculator\", \"arguments\": {\"expression\": \"24.5 * 9/5 + 32\"}}, {\"type\": \"tool_call\", \"id\": \"call_currency_1\", \"name\": \"lookup_currency\", \"arguments\": {\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_calc_1\", \"response\": {\"expression\": \"24.5 * 9/5 + 32\", \"result\": 76.1}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_currency_1\", \"response\": {\"error\": \"invalid_argument\", \"message\": \"currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\"}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"Lisbon is currently 24.5°C (76.1°F) and partly cloudy, with 58% humidity. I wasn't able to get you a live EUR→JPY rate, though -- the currency lookup failed because JPY isn't enabled on this API key's current pricing tier. If you can enable JPY on the account (or give me a rate to use), I can redo the 100 EUR conversion right away.\"}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "7b492209afa649a21d4072c6ccaefb77",
+              "spanId": "0f0244c2bf23d33d",
+              "name": "invoke_agent research-agent",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393102900771",
+              "endTimeUnixNano": "1790248393270369463",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "research-agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\": \"text\", \"content\": \"You are a helpful research assistant with access to a get_weather tool, a calculator tool, and a currency lookup tool. Use tools whenever you need real-time or computed data, and always ground your final answer in the tool results you actually received -- never guess a number a tool call failed to produce.\"}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,715 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.44.0"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "bbab6b9e-2fbb-4bb3-a752-1a639e7563d0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tracelens-example-agent"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "0.3.1"
+            }
+          },
+          {
+            "key": "deployment.environment.name",
+            "value": {
+              "stringValue": "demo"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.examples.openinference",
+            "version": "1.0.0"
+          },
+          "spans": [
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "80b3f0cba76267a3",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "chat gpt-4o-mini",
+              "kind": 3,
+              "startTimeUnixNano": "1790248393353467346",
+              "endTimeUnixNano": "1790248393383593160",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "gpt-4o-mini"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "187"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "24"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "211"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "{\"tool_call\": {\"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "11b53cbd577b1a89",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "execute_tool get_weather",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393383659278",
+              "endTimeUnixNano": "1790248393403789891",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "TOOL"
+                  }
+                },
+                {
+                  "key": "tool.name",
+                  "value": {
+                    "stringValue": "get_weather"
+                  }
+                },
+                {
+                  "key": "tool.description",
+                  "value": {
+                    "stringValue": "Look up current weather conditions for a named location."
+                  }
+                },
+                {
+                  "key": "tool.parameters",
+                  "value": {
+                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}"
+                  }
+                },
+                {
+                  "key": "input.value",
+                  "value": {
+                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}"
+                  }
+                },
+                {
+                  "key": "input.mime_type",
+                  "value": {
+                    "stringValue": "application/json"
+                  }
+                },
+                {
+                  "key": "output.value",
+                  "value": {
+                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}"
+                  }
+                },
+                {
+                  "key": "output.mime_type",
+                  "value": {
+                    "stringValue": "application/json"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "4b9f963a32d05c4b",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "chat gpt-4o-mini",
+              "kind": 3,
+              "startTimeUnixNano": "1790248393403849626",
+              "endTimeUnixNano": "1790248393434006754",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "gpt-4o-mini"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "246"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "51"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "297"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "{\"tool_call\": {\"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}}"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.2.message.role",
+                  "value": {
+                    "stringValue": "tool"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.2.message.content",
+                  "value": {
+                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "{\"tool_calls\": [{\"id\": \"call_calc_1\", \"name\": \"calculator\", \"arguments\": {\"expression\": \"24.5 * 9/5 + 32\"}}, {\"id\": \"call_currency_1\", \"name\": \"lookup_currency\", \"arguments\": {\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}}]}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "3e851dfdbf82a5e8",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "execute_tool calculator",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393434083353",
+              "endTimeUnixNano": "1790248393454784999",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "TOOL"
+                  }
+                },
+                {
+                  "key": "tool.name",
+                  "value": {
+                    "stringValue": "calculator"
+                  }
+                },
+                {
+                  "key": "tool.description",
+                  "value": {
+                    "stringValue": "Evaluate a basic arithmetic expression and return the numeric result."
+                  }
+                },
+                {
+                  "key": "tool.parameters",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                  }
+                },
+                {
+                  "key": "input.value",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                  }
+                },
+                {
+                  "key": "input.mime_type",
+                  "value": {
+                    "stringValue": "application/json"
+                  }
+                },
+                {
+                  "key": "retry.attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "error.type",
+                  "value": {
+                    "stringValue": "timeout"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1790248393434666022",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "TimeoutError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "calculator backend did not respond within 2000ms (upstream timeout)"
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/openinference_example.py\", line 221, in <module>\n    raise TimeoutError(\"calculator backend did not respond within 2000ms (upstream timeout)\")\nTimeoutError: calculator backend did not respond within 2000ms (upstream timeout)\n"
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "calculator backend did not respond within 2000ms (upstream timeout)",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "6c2d27df99ad6e53",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "execute_tool calculator",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393454853041",
+              "endTimeUnixNano": "1790248393469982171",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "TOOL"
+                  }
+                },
+                {
+                  "key": "tool.name",
+                  "value": {
+                    "stringValue": "calculator"
+                  }
+                },
+                {
+                  "key": "tool.description",
+                  "value": {
+                    "stringValue": "Evaluate a basic arithmetic expression and return the numeric result."
+                  }
+                },
+                {
+                  "key": "tool.parameters",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                  }
+                },
+                {
+                  "key": "input.value",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                  }
+                },
+                {
+                  "key": "input.mime_type",
+                  "value": {
+                    "stringValue": "application/json"
+                  }
+                },
+                {
+                  "key": "output.value",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\", \"result\": 76.1}"
+                  }
+                },
+                {
+                  "key": "output.mime_type",
+                  "value": {
+                    "stringValue": "application/json"
+                  }
+                },
+                {
+                  "key": "retry.attempt",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "4c5ae374de39a2ff",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "execute_tool lookup_currency",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393470058779",
+              "endTimeUnixNano": "1790248393485560817",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "TOOL"
+                  }
+                },
+                {
+                  "key": "tool.name",
+                  "value": {
+                    "stringValue": "lookup_currency"
+                  }
+                },
+                {
+                  "key": "tool.description",
+                  "value": {
+                    "stringValue": "Look up a live conversion rate and convert an amount between two ISO 4217 currency codes."
+                  }
+                },
+                {
+                  "key": "tool.parameters",
+                  "value": {
+                    "stringValue": "{\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}"
+                  }
+                },
+                {
+                  "key": "input.value",
+                  "value": {
+                    "stringValue": "{\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}"
+                  }
+                },
+                {
+                  "key": "input.mime_type",
+                  "value": {
+                    "stringValue": "application/json"
+                  }
+                },
+                {
+                  "key": "error.type",
+                  "value": {
+                    "stringValue": "invalid_argument"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1790248393470450067",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "ValueError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)"
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/openinference_example.py\", line 261, in <module>\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\n"
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "78f37e9a8db0911f",
+              "parentSpanId": "391c83b7c92f0571",
+              "name": "chat gpt-4o-mini",
+              "kind": 3,
+              "startTimeUnixNano": "1790248393485670960",
+              "endTimeUnixNano": "1790248393515824191",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "gpt-4o-mini"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "412"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "88"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "500"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "256"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "{\"tool_calls\": [{\"id\": \"call_calc_1\", \"name\": \"calculator\", \"arguments\": {\"expression\": \"24.5 * 9/5 + 32\"}}, {\"id\": \"call_currency_1\", \"name\": \"lookup_currency\", \"arguments\": {\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}}]}"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.2.message.role",
+                  "value": {
+                    "stringValue": "tool"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.2.message.content",
+                  "value": {
+                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\", \"result\": 76.1}"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.3.message.role",
+                  "value": {
+                    "stringValue": "tool"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.3.message.content",
+                  "value": {
+                    "stringValue": "{\"error\": \"invalid_argument\", \"message\": \"currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\"}"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "Lisbon is currently 24.5°C (76.1°F) and partly cloudy, with 58% humidity. I wasn't able to get you a live EUR→JPY rate, though -- the currency lookup failed because JPY isn't enabled on this API key's current pricing tier. If you can enable JPY on the account (or give me a rate to use), I can redo the 100 EUR conversion right away."
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "391c83b7c92f0571",
+              "name": "invoke_agent research-agent",
+              "kind": 1,
+              "startTimeUnixNano": "1790248393348320893",
+              "endTimeUnixNano": "1790248393515855672",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "AGENT"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "session-e8ec293c14124a4c"
+                  }
+                },
+                {
+                  "key": "input.value",
+                  "value": {
+                    "stringValue": "What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?"
+                  }
+                },
+                {
+                  "key": "output.value",
+                  "value": {
+                    "stringValue": "Lisbon is currently 24.5°C (76.1°F) and partly cloudy, with 58% humidity. I wasn't able to get you a live EUR→JPY rate, though -- the currency lookup failed because JPY isn't enabled on this API key's current pricing tier. If you can enable JPY on the account (or give me a rate to use), I can redo the 100 EUR conversion right away."
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
