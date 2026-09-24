@@ -131,8 +131,8 @@ in the code and in `docs/formats.md` rather than oversold in this README.
 
 ### Web UI (`src/web/`)
 
-Vite + TypeScript, deliberately with **no framework** — the whole app is a
-few hundred lines of DOM manipulation behind a ~15-line observable store
+Vite + TypeScript, deliberately with **no framework** — the whole app is
+under 1,000 lines of DOM manipulation behind a 27-line observable store
 (`src/web/store.ts`); a framework would have been more ceremony than the
 problem needs. Trace content (prompts, tool arguments, anything that came
 from the dropped file) is rendered through `textContent`/DOM properties
