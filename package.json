@@ -1,0 +1,63 @@
+{
+  "name": "tracelens",
+  "version": "0.1.0",
+  "description": "A zero-install viewer for LLM agent traces: drop an OpenTelemetry export, see every model call, tool call, token and dollar on a timeline.",
+  "type": "module",
+  "author": "Anton Soloviev",
+  "license": "MIT",
+  "homepage": "https://antonsoo.github.io/tracelens/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonsoo/tracelens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antonsoo/tracelens/issues"
+  },
+  "keywords": [
+    "opentelemetry",
+    "otlp",
+    "llm-observability",
+    "genai-semconv",
+    "openinference",
+    "agent-tracing",
+    "trace-viewer",
+    "llm-agents"
+  ],
+  "bin": {
+    "tracelens": "./dist-cli/cli/index.js"
+  },
+  "allowScripts": {
+    "tracelens": true
+  },
+  "files": [
+    "dist-cli",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "predev": "node scripts/sync-examples.mjs",
+    "dev": "vite",
+    "build": "npm run build:web && npm run build:cli",
+    "prebuild:web": "node scripts/sync-examples.mjs",
+    "build:web": "vite build",
+    "build:cli": "tsc -p tsconfig.cli.json && node scripts/fix-shebang.mjs",
+    "prepare": "npm run build:cli",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.cli.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.15.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-cli/
+public/examples/
+*.tgz
+.DS_Store
+npm-debug.log*
+*.local
+.vscode/*
+!.vscode/extensions.json
