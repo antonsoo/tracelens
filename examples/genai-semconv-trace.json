@@ -1,0 +1,1233 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.44.0"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "55418d8e-4195-4f09-a885-1ff78a399d85"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "incident-analyst"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "2.4.0"
+            }
+          },
+          {
+            "key": "deployment.environment.name",
+            "value": {
+              "stringValue": "demo"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.examples.genai_semconv",
+            "version": "2.0.0"
+          },
+          "spans": [
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "5897089a8555eefa",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "chat claude-sonnet-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269392050000000",
+              "endTimeUnixNano": "1790269395100000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "8192"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0000050"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "6850"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "310"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_write.input_tokens",
+                  "value": {
+                    "intValue": "6200"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "bbdfd7bd032b90ec",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool search_incidents",
+              "kind": 1,
+              "startTimeUnixNano": "1790269395150000000",
+              "endTimeUnixNano": "1790269395620000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search_incidents"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_01"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Full-text search over the incident tracker."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "0848e82e056c4c77",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool query_metrics",
+              "kind": 1,
+              "startTimeUnixNano": "1790269395150000000",
+              "endTimeUnixNano": "1790269396410000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "query_metrics"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_02"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Query a time series from the metrics store."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "07d0e204e9a58985",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool list_deploys",
+              "kind": 1,
+              "startTimeUnixNano": "1790269395160000000",
+              "endTimeUnixNano": "1790269395470000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "list_deploys"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_03"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "List deploys for a service in a time range."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "d8c6fb7dd4967fca",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "chat claude-sonnet-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269396500000000",
+              "endTimeUnixNano": "1790269401800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "8192"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0004500"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "14900"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "540"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "6850"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_01\", \"response\": {\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_02\", \"response\": {\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_03\", \"response\": {\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_04\", \"name\": \"get_diff\", \"arguments\": {\"deploy_id\": 4127}}, {\"type\": \"tool_call\", \"id\": \"toolu_05\", \"name\": \"query_traces\", \"arguments\": {\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "a51e6840f9183dd7",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool get_diff",
+              "kind": 1,
+              "startTimeUnixNano": "1790269401850000000",
+              "endTimeUnixNano": "1790269402310000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "get_diff"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_04"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Summarise the code diff for a deploy."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"deploy_id\": 4127}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"deploy_id\": 4127, \"files\": [\"cart/tax.py\"], \"summary\": \"Tax is now recalculated per line item via tax-service (one HTTP call per item) instead of once per cart.\"}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "df46f1c99ae53f2f",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool query_traces",
+              "kind": 1,
+              "startTimeUnixNano": "1790269401850000000",
+              "endTimeUnixNano": "1790269406860000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "query_traces"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_05"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Search distributed traces."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}"
+                  }
+                },
+                {
+                  "key": "retry.attempt",
+                  "value": {
+                    "intValue": "1"
+                  }
+                },
+                {
+                  "key": "error.type",
+                  "value": {
+                    "stringValue": "timeout"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1790269406860000000",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "TimeoutError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "trace store did not answer within 5000 ms"
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 157, in tool\n    raise exc\nTimeoutError: trace store did not answer within 5000 ms\n"
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "trace store did not answer within 5000 ms",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "e2cdb759abbbe2e8",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool query_traces",
+              "kind": 1,
+              "startTimeUnixNano": "1790269406910000000",
+              "endTimeUnixNano": "1790269408220000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "query_traces"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_05"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Search distributed traces."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}"
+                  }
+                },
+                {
+                  "key": "retry.attempt",
+                  "value": {
+                    "intValue": "2"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"matched\": 50, \"median_duration_ms\": 1790, \"top_span\": \"tax-service POST /calculate\", \"calls_per_checkout_p50\": 14}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "2fc5bb30ca40b11a",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "chat claude-haiku-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269408350000000",
+              "endTimeUnixNano": "1790269409600000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "2048"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0016350"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2300"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "190"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "cbd933157cdafede",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "execute_tool run_sql",
+              "kind": 1,
+              "startTimeUnixNano": "1790269409650000000",
+              "endTimeUnixNano": "1790269411920000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "run_sql"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_11"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Run a read-only SQL query against the analytics warehouse."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "403e41ff05bb2fe9",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "chat claude-haiku-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269411970000000",
+              "endTimeUnixNano": "1790269412910000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "2048"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0019970"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "3100"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "150"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_11\", \"response\": {\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_12\", \"name\": \"lookup_fx\", \"arguments\": {\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "17f45fe9bf94fd22",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "execute_tool lookup_fx",
+              "kind": 1,
+              "startTimeUnixNano": "1790269412950000000",
+              "endTimeUnixNano": "1790269413200000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "lookup_fx"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_12"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Historical FX rate for a currency pair."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}"
+                  }
+                },
+                {
+                  "key": "error.type",
+                  "value": {
+                    "stringValue": "invalid_argument"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1790269413200000000",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "ValueError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "fx provider: historical rates are not enabled on this plan"
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 157, in tool\n    raise exc\nValueError: fx provider: historical rates are not enabled on this plan\n"
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "fx provider: historical rates are not enabled on this plan",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "1610b9359de4652e",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "chat claude-haiku-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269413250000000",
+              "endTimeUnixNano": "1790269416550000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "2048"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0021250"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "end_turn"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "3600"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "420"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_11\", \"response\": {\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_12\", \"name\": \"lookup_fx\", \"arguments\": {\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_12\", \"response\": {\"error\": \"invalid_argument\", \"message\": \"historical rates are not enabled on this plan\"}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"281 excess abandoned checkouts; excess cart value EUR 23,180. The EUR to USD conversion failed (historical FX not enabled), so the figure is reported in EUR.\"}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "3c85d714e43639fa",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "invoke_agent cost-estimator",
+              "kind": 1,
+              "startTimeUnixNano": "1790269408300000000",
+              "endTimeUnixNano": "1790269416600000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "cost-estimator"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "e8192f36ab00d238",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "chat claude-sonnet-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269416700000000",
+              "endTimeUnixNano": "1790269423700000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "8192"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0024700"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "end_turn"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "21400"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "1180"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "14900"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_01\", \"response\": {\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_02\", \"response\": {\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_03\", \"response\": {\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_04\", \"name\": \"get_diff\", \"arguments\": {\"deploy_id\": 4127}}, {\"type\": \"tool_call\", \"id\": \"toolu_05\", \"name\": \"query_traces\", \"arguments\": {\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_04\", \"response\": {\"deploy_id\": 4127, \"files\": [\"cart/tax.py\"], \"summary\": \"Tax is now recalculated per line item via tax-service (one HTTP call per item) instead of once per cart.\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_05\", \"response\": {\"matched\": 50, \"median_duration_ms\": 1790, \"top_span\": \"tax-service POST /calculate\", \"calls_per_checkout_p50\": 14}}]}, {\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"[cost-estimator] 281 excess abandoned checkouts; excess cart value EUR 23,180. The EUR to USD conversion failed (historical FX not enabled), so the figure is reported in EUR.\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"Cause: deploy #4127 (14:02 UTC) moved tax calculation to one tax-service call per line item; slow traces show about 14 calls per checkout, and p95 rose from 410 ms to 1,860 ms. Fixed: #4131 reverted it at 16:35 UTC and latency returned to baseline by 16:40. Cost: 281 more abandoned checkouts than a normal Tuesday, about EUR 23,180 in cart value. I couldn't convert that to USD because the FX lookup is not enabled for historical rates.\"}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "2ba46df3ec7a2d76",
+              "name": "invoke_agent incident-analyst",
+              "kind": 1,
+              "startTimeUnixNano": "1790269392000000000",
+              "endTimeUnixNano": "1790269423800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "incident-analyst"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv_7f3c1e"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\": \"text\", \"content\": \"You are incident-analyst, an on-call assistant for the Meridian Shop platform team. Ground every claim in tool output; say plainly when a tool failed and what that means for the answer.\"}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
