@@ -3,13 +3,13 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { parseOtlpJson } from '../src/core/otlp-parser.js';
 
-const EXAMPLES = fileURLToPath(new URL('../examples/', import.meta.url));
+const FIXTURES = fileURLToPath(new URL('./fixtures/', import.meta.url));
 function loadTrace(name: string) {
-  return parseOtlpJson(JSON.parse(readFileSync(EXAMPLES + name, 'utf8')));
+  return parseOtlpJson(JSON.parse(readFileSync(FIXTURES + name, 'utf8')));
 }
 
 describe('OTel GenAI semconv mapping (gen_ai.*)', () => {
-  const trace = loadTrace('genai-semconv-trace.json');
+  const trace = loadTrace('small-genai-semconv-trace.json');
   const chat = trace.spans.find((s) => s.name.startsWith('chat'))!;
   const tool = trace.spans.find((s) => s.genai?.toolName === 'get_weather')!;
   const failedTool = trace.spans.find((s) => s.status.code === 'ERROR' && s.genai?.toolName === 'lookup_currency')!;
@@ -46,7 +46,7 @@ describe('OTel GenAI semconv mapping (gen_ai.*)', () => {
 });
 
 describe('OpenInference convention mapping (openinference.*, llm.*)', () => {
-  const trace = loadTrace('openinference-trace.json');
+  const trace = loadTrace('small-openinference-trace.json');
   const llm = trace.spans.find((s) => s.attributes['openinference.span.kind'] === 'LLM')!;
   const tool = trace.spans.find((s) => s.genai?.toolName === 'get_weather')!;
   const agent = trace.spans.find((s) => s.attributes['openinference.span.kind'] === 'AGENT')!;

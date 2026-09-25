@@ -6,13 +6,13 @@ import { buildSummary } from '../src/core/summary.js';
 import { DEFAULT_PRICE_TABLE } from '../src/core/pricing.js';
 import { computeCriticalPath } from '../src/core/critical-path.js';
 
-const EXAMPLES = fileURLToPath(new URL('../examples/', import.meta.url));
+const FIXTURES = fileURLToPath(new URL('./fixtures/', import.meta.url));
 function loadTrace(name: string) {
-  return parseOtlpJson(JSON.parse(readFileSync(EXAMPLES + name, 'utf8')));
+  return parseOtlpJson(JSON.parse(readFileSync(FIXTURES + name, 'utf8')));
 }
 
 describe('buildSummary on the genai-semconv example trace', () => {
-  const trace = loadTrace('genai-semconv-trace.json');
+  const trace = loadTrace('small-genai-semconv-trace.json');
   const summary = buildSummary(trace, DEFAULT_PRICE_TABLE);
 
   it('counts the two failed execute_tool spans as errors', () => {
@@ -45,7 +45,7 @@ describe('buildSummary on the genai-semconv example trace', () => {
 
 describe('computeCriticalPath', () => {
   it('starts at the longest root and always descends into the longest child', () => {
-    const trace = loadTrace('genai-semconv-trace.json');
+    const trace = loadTrace('small-genai-semconv-trace.json');
     const path = computeCriticalPath(trace);
     expect(path[0]).toBe(trace.roots[0]);
     for (let i = 1; i < path.length; i++) {

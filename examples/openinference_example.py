@@ -55,6 +55,18 @@ def jmsg(obj) -> str:
     return json.dumps(obj, ensure_ascii=False)
 
 
+def relativize_paths(node, root: str):
+    """Recorded stack traces carry absolute file paths from the build machine;
+    make them repo-relative so the committed trace is machine-independent."""
+    if isinstance(node, dict):
+        return {k: relativize_paths(v, root) for k, v in node.items()}
+    if isinstance(node, list):
+        return [relativize_paths(v, root) for v in node]
+    if isinstance(node, str):
+        return node.replace(root, "")
+    return node
+
+
 def fix_ids(node):
     if isinstance(node, dict):
         for key, value in list(node.items()):
@@ -328,7 +340,7 @@ json_text = MessageToJson(
     use_integers_for_enums=True,
     indent=2,
 )
-payload = fix_ids(json.loads(json_text))
+payload = relativize_paths(fix_ids(json.loads(json_text)), str(HERE.parent) + "/")
 
 OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 with open(OUTPUT_PATH, "w") as f:

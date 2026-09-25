@@ -24,7 +24,7 @@
           {
             "key": "service.instance.id",
             "value": {
-              "stringValue": "b356ca15-6d6b-4db2-a3cb-3e5db000e37c"
+              "stringValue": "bbab6b9e-2fbb-4bb3-a752-1a639e7563d0"
             }
           },
           {
@@ -55,13 +55,13 @@
           },
           "spans": [
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "6d183805c0b30425",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "80b3f0cba76267a3",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "chat gpt-4o-mini",
               "kind": 3,
-              "startTimeUnixNano": "1790321016058060122",
-              "endTimeUnixNano": "1790321016088182210",
+              "startTimeUnixNano": "1790248393353467346",
+              "endTimeUnixNano": "1790248393383593160",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -134,13 +134,13 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "79b8e83c3b100722",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "11b53cbd577b1a89",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "execute_tool get_weather",
               "kind": 1,
-              "startTimeUnixNano": "1790321016088232288",
-              "endTimeUnixNano": "1790321016108384928",
+              "startTimeUnixNano": "1790248393383659278",
+              "endTimeUnixNano": "1790248393403789891",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -195,13 +195,13 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "33941ce9cd291828",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "4b9f963a32d05c4b",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "chat gpt-4o-mini",
               "kind": 3,
-              "startTimeUnixNano": "1790321016108426409",
-              "endTimeUnixNano": "1790321016138562519",
+              "startTimeUnixNano": "1790248393403849626",
+              "endTimeUnixNano": "1790248393434006754",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -298,13 +298,13 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "20f9ca6b5ba44fb8",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "3e851dfdbf82a5e8",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "execute_tool calculator",
               "kind": 1,
-              "startTimeUnixNano": "1790321016138610252",
-              "endTimeUnixNano": "1790321016159139244",
+              "startTimeUnixNano": "1790248393434083353",
+              "endTimeUnixNano": "1790248393454784999",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -357,7 +357,7 @@
               ],
               "events": [
                 {
-                  "timeUnixNano": "1790321016139035410",
+                  "timeUnixNano": "1790248393434666022",
                   "name": "exception",
                   "attributes": [
                     {
@@ -375,7 +375,7 @@
                     {
                       "key": "exception.stacktrace",
                       "value": {
-                        "stringValue": "Traceback (most recent call last):\n  File \"examples/openinference_example.py\", line 233, in <module>\n    raise TimeoutError(\"calculator backend did not respond within 2000ms (upstream timeout)\")\nTimeoutError: calculator backend did not respond within 2000ms (upstream timeout)\n"
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/openinference_example.py\", line 221, in <module>\n    raise TimeoutError(\"calculator backend did not respond within 2000ms (upstream timeout)\")\nTimeoutError: calculator backend did not respond within 2000ms (upstream timeout)\n"
                       }
                     },
                     {
@@ -394,13 +394,13 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "a12f5278f901b8d3",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "6c2d27df99ad6e53",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "execute_tool calculator",
               "kind": 1,
-              "startTimeUnixNano": "1790321016159175705",
-              "endTimeUnixNano": "1790321016174279553",
+              "startTimeUnixNano": "1790248393454853041",
+              "endTimeUnixNano": "1790248393469982171",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -461,13 +461,13 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "745e63f8691f067c",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "4c5ae374de39a2ff",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "execute_tool lookup_currency",
               "kind": 1,
-              "startTimeUnixNano": "1790321016174313719",
-              "endTimeUnixNano": "1790321016189669863",
+              "startTimeUnixNano": "1790248393470058779",
+              "endTimeUnixNano": "1790248393485560817",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -514,7 +514,7 @@
               ],
               "events": [
                 {
-                  "timeUnixNano": "1790321016174572974",
+                  "timeUnixNano": "1790248393470450067",
                   "name": "exception",
                   "attributes": [
                     {
@@ -532,7 +532,7 @@
                     {
                       "key": "exception.stacktrace",
                       "value": {
-                        "stringValue": "Traceback (most recent call last):\n  File \"examples/openinference_example.py\", line 273, in <module>\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\n"
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/openinference_example.py\", line 261, in <module>\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\n"
                       }
                     },
                     {
@@ -551,13 +551,13 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "43fb71f13f1d4c09",
-              "parentSpanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "78f37e9a8db0911f",
+              "parentSpanId": "391c83b7c92f0571",
               "name": "chat gpt-4o-mini",
               "kind": 3,
-              "startTimeUnixNano": "1790321016189707155",
-              "endTimeUnixNano": "1790321016219838696",
+              "startTimeUnixNano": "1790248393485670960",
+              "endTimeUnixNano": "1790248393515824191",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -672,12 +672,12 @@
               "flags": 256
             },
             {
-              "traceId": "d81b5b6d3674a7282a25c3b255149fb7",
-              "spanId": "2a57beaeff933629",
+              "traceId": "c0e4521825eefbcd6a9f7fd3603b4a41",
+              "spanId": "391c83b7c92f0571",
               "name": "invoke_agent research-agent",
               "kind": 1,
-              "startTimeUnixNano": "1790321016052854158",
-              "endTimeUnixNano": "1790321016219858585",
+              "startTimeUnixNano": "1790248393348320893",
+              "endTimeUnixNano": "1790248393515855672",
               "attributes": [
                 {
                   "key": "openinference.span.kind",
@@ -688,7 +688,7 @@
                 {
                   "key": "session.id",
                   "value": {
-                    "stringValue": "session-93716938aa874c75"
+                    "stringValue": "session-e8ec293c14124a4c"
                   }
                 },
                 {

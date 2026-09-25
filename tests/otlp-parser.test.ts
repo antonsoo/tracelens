@@ -4,14 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { parseOtlpJson, TraceParseError } from '../src/core/otlp-parser.js';
 import { attr, fakeSpan, iv, otlpDoc, sv } from './fixtures.js';
 
-const EXAMPLES = fileURLToPath(new URL('../examples/', import.meta.url));
+const FIXTURES = fileURLToPath(new URL('./fixtures/', import.meta.url));
 
 function loadFixture(name: string): unknown {
-  return JSON.parse(readFileSync(EXAMPLES + name, 'utf8'));
+  return JSON.parse(readFileSync(FIXTURES + name, 'utf8'));
 }
 
 describe('parseOtlpJson on real SDK-generated fixtures', () => {
-  for (const file of ['genai-semconv-trace.json', 'openinference-trace.json']) {
+  for (const file of ['small-genai-semconv-trace.json', 'small-openinference-trace.json']) {
     it(`parses ${file} into a well-formed tree`, () => {
       const trace = parseOtlpJson(loadFixture(file));
       expect(trace.spans.length).toBe(8);

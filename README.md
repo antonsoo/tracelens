@@ -185,11 +185,14 @@ list. Summary:
 
 `examples/genai-semconv-trace.json` and `examples/openinference-trace.json`
 are **real [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/)
-output** — real trace/span IDs, real nanosecond timestamps, a real captured
-Python stack trace on the two failing spans. The model and tool calls
-themselves are **mocked** (this machine has no LLM API keys); the telemetry
-format is not. See `examples/README.md` for the full scenario and how to
-regenerate them.
+output**: real trace/span IDs, parent/child links and captured Python stack
+traces on the failing spans. The model and tool calls are **mocked** (this
+machine has no LLM API keys), and the GenAI trace's timings are set
+explicitly to realistic values; the telemetry format itself is not mocked.
+The default example is a 16-span, 31.8-second incident-analysis agent run
+with parallel tool calls, a retried timeout, a sub-agent on a cheaper model
+and one permanent tool failure. See `examples/README.md` for the full
+scenario and how to regenerate them.
 
 ## Accuracy and limitations
 

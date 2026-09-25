@@ -1,31 +1,45 @@
 # Example traces
 
 Both trace files in this directory are **real [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/)
-output** — real trace/span IDs, real nanosecond timestamps, a real captured
-Python stack trace on the two failing spans, and a real OTLP/JSON encoding
-(via `opentelemetry-exporter-otlp-proto-common`'s `encode_spans` + protobuf's
-`MessageToJson`). The model calls and tool calls themselves are **mocked**:
-this machine has no LLM API keys, so `otel_genai_example.py` and
-`openinference_example.py` fabricate plausible completions and tool results
-in Python rather than calling a real provider. The telemetry format is not
-mocked — only the content inside it is.
+output**: real trace/span IDs, real parent/child links, real captured Python
+stack traces on the failing spans, and a real OTLP/JSON encoding (via
+`opentelemetry-exporter-otlp-proto-common`'s `encode_spans` + protobuf's
+`MessageToJson`). What is **mocked** is the content: this machine has no LLM
+API keys, so the scripts fabricate plausible completions and tool results
+instead of calling a real provider. `otel_genai_example.py` also sets span
+start/end times explicitly, so its timeline has realistic durations
+(multi-second model calls) without the script sleeping for half a minute.
+The telemetry format is not mocked, only what's inside it.
 
-## Scenario
+## Scenario: `genai-semconv-trace.json` (the viewer's default)
 
-A small "research agent" answers a question using a weather tool and a
-calculator, illustrating the shapes a trace viewer actually needs to handle:
+A fictional on-call assistant, `incident-analyst`, is asked why p95 checkout
+latency regressed and what it cost. 16 spans over 31.8 s:
 
-1. `invoke_agent research-agent` — the root span.
-2. `chat` — the model decides to call `get_weather`.
-3. `execute_tool get_weather` — succeeds.
-4. `chat` — the model decides to call `calculator` and `lookup_currency`.
-5. `execute_tool calculator` (attempt 1) — **fails** with a simulated
-   upstream timeout (`error.type=timeout`, a real Python `TimeoutError`
-   captured via `span.record_exception()`).
-6. `execute_tool calculator` (attempt 2, retry) — succeeds.
-7. `execute_tool lookup_currency` — **fails permanently** with an invalid
-   currency code (`error.type=invalid_argument`) and is not retried.
-8. `chat` — the model produces a final answer referencing the tool results.
+1. `invoke_agent incident-analyst`: the root span.
+2. `chat claude-sonnet-5`: plans, and asks for three lookups at once.
+3. `execute_tool search_incidents`, `query_metrics`, `list_deploys`: run in
+   parallel.
+4. `chat claude-sonnet-5`: asks for the suspect deploy's diff and the slow
+   traces.
+5. `execute_tool get_diff`: succeeds.
+6. `execute_tool query_traces` (attempt 1): **fails** after 5 s
+   (`error.type=timeout`, a real `TimeoutError` recorded with
+   `span.record_exception()`).
+7. `execute_tool query_traces` (attempt 2, retry): succeeds.
+8. `invoke_agent cost-estimator`: a sub-agent on `claude-haiku-4-5` that runs
+   a SQL query, then **fails permanently** on an FX lookup
+   (`error.type=invalid_argument`, not retried) and reports in EUR instead.
+9. `chat claude-sonnet-5`: writes the final answer from the tool results.
+
+Token counts include prompt-cache reads and writes, so the cost column shows
+what caching saved.
+
+## Scenario: `openinference-trace.json`
+
+A smaller 8-span run (a weather/calculator/currency "research agent" with one
+retried and one permanent tool failure) in the OpenInference conventions, to
+show the same viewer on the other attribute schema.
 
 ## Files
 
@@ -48,5 +62,7 @@ python examples/otel_genai_example.py
 python examples/openinference_example.py
 ```
 
-Each run overwrites its trace file in place with fresh IDs and timestamps —
-the diff will be small and cosmetic.
+Each run overwrites its trace file with fresh IDs (the GenAI trace keeps its
+fixed timestamps; the OpenInference one takes the wall clock). The small
+copies in `tests/fixtures/` are what the tests assert on, so regenerating
+these files never breaks the test suite.

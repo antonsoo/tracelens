@@ -24,19 +24,19 @@
           {
             "key": "service.instance.id",
             "value": {
-              "stringValue": "b4529ce4-d365-46d2-87a9-f0c2e8f99e0b"
+              "stringValue": "55418d8e-4195-4f09-a885-1ff78a399d85"
             }
           },
           {
             "key": "service.name",
             "value": {
-              "stringValue": "tracelens-example-agent"
+              "stringValue": "incident-analyst"
             }
           },
           {
             "key": "service.version",
             "value": {
-              "stringValue": "0.3.1"
+              "stringValue": "2.4.0"
             }
           },
           {
@@ -51,17 +51,17 @@
         {
           "scope": {
             "name": "tracelens.examples.genai_semconv",
-            "version": "1.0.0"
+            "version": "2.0.0"
           },
           "spans": [
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "7905a7322ce81602",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "chat gpt-4o-mini",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "5897089a8555eefa",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "chat claude-sonnet-5",
               "kind": 3,
-              "startTimeUnixNano": "1790248393108077047",
-              "endTimeUnixNano": "1790248393138224136",
+              "startTimeUnixNano": "1790269392050000000",
+              "endTimeUnixNano": "1790269395100000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -72,37 +72,31 @@
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
                   }
                 },
                 {
                   "key": "gen_ai.request.model",
                   "value": {
-                    "stringValue": "gpt-4o-mini"
+                    "stringValue": "claude-sonnet-5"
                   }
                 },
                 {
                   "key": "gen_ai.response.model",
                   "value": {
-                    "stringValue": "gpt-4o-mini-2024-07-18"
-                  }
-                },
-                {
-                  "key": "gen_ai.request.temperature",
-                  "value": {
-                    "doubleValue": 0.2
+                    "stringValue": "claude-sonnet-5"
                   }
                 },
                 {
                   "key": "gen_ai.request.max_tokens",
                   "value": {
-                    "intValue": "1024"
+                    "intValue": "8192"
                   }
                 },
                 {
                   "key": "gen_ai.response.id",
                   "value": {
-                    "stringValue": "chatcmpl-b309251171d943d8a9596dc0"
+                    "stringValue": "msg_demo_0000050"
                   }
                 },
                 {
@@ -111,7 +105,7 @@
                     "arrayValue": {
                       "values": [
                         {
-                          "stringValue": "tool_calls"
+                          "stringValue": "tool_use"
                         }
                       ]
                     }
@@ -120,25 +114,31 @@
                 {
                   "key": "gen_ai.usage.input_tokens",
                   "value": {
-                    "intValue": "187"
+                    "intValue": "6850"
                   }
                 },
                 {
                   "key": "gen_ai.usage.output_tokens",
                   "value": {
-                    "intValue": "24"
+                    "intValue": "310"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_write.input_tokens",
+                  "value": {
+                    "intValue": "6200"
                   }
                 },
                 {
                   "key": "gen_ai.input.messages",
                   "value": {
-                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?\"}]}]"
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}]"
                   }
                 },
                 {
                   "key": "gen_ai.output.messages",
                   "value": {
-                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}]}]"
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}]"
                   }
                 }
               ],
@@ -146,13 +146,13 @@
               "flags": 256
             },
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "36c5a095dcfb9621",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "execute_tool get_weather",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "bbdfd7bd032b90ec",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool search_incidents",
               "kind": 1,
-              "startTimeUnixNano": "1790248393138281327",
-              "endTimeUnixNano": "1790248393158400629",
+              "startTimeUnixNano": "1790269395150000000",
+              "endTimeUnixNano": "1790269395620000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -163,25 +163,25 @@
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
                   }
                 },
                 {
                   "key": "gen_ai.tool.name",
                   "value": {
-                    "stringValue": "get_weather"
+                    "stringValue": "search_incidents"
                   }
                 },
                 {
                   "key": "gen_ai.tool.call.id",
                   "value": {
-                    "stringValue": "call_weather_1"
+                    "stringValue": "toolu_01"
                   }
                 },
                 {
                   "key": "gen_ai.tool.description",
                   "value": {
-                    "stringValue": "Look up current weather conditions for a named location."
+                    "stringValue": "Full-text search over the incident tracker."
                   }
                 },
                 {
@@ -193,13 +193,13 @@
                 {
                   "key": "gen_ai.tool.call.arguments",
                   "value": {
-                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}"
+                    "stringValue": "{\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}"
                   }
                 },
                 {
                   "key": "gen_ai.tool.call.result",
                   "value": {
-                    "stringValue": "{\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}"
+                    "stringValue": "{\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}"
                   }
                 }
               ],
@@ -207,104 +207,13 @@
               "flags": 256
             },
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "d6d8ddfc1a7d9ad1",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "chat gpt-4o-mini",
-              "kind": 3,
-              "startTimeUnixNano": "1790248393158448081",
-              "endTimeUnixNano": "1790248393188593031",
-              "attributes": [
-                {
-                  "key": "gen_ai.operation.name",
-                  "value": {
-                    "stringValue": "chat"
-                  }
-                },
-                {
-                  "key": "gen_ai.provider.name",
-                  "value": {
-                    "stringValue": "openai"
-                  }
-                },
-                {
-                  "key": "gen_ai.request.model",
-                  "value": {
-                    "stringValue": "gpt-4o-mini"
-                  }
-                },
-                {
-                  "key": "gen_ai.response.model",
-                  "value": {
-                    "stringValue": "gpt-4o-mini-2024-07-18"
-                  }
-                },
-                {
-                  "key": "gen_ai.request.temperature",
-                  "value": {
-                    "doubleValue": 0.2
-                  }
-                },
-                {
-                  "key": "gen_ai.request.max_tokens",
-                  "value": {
-                    "intValue": "1024"
-                  }
-                },
-                {
-                  "key": "gen_ai.response.id",
-                  "value": {
-                    "stringValue": "chatcmpl-7261d4764e794853bb7b3f68"
-                  }
-                },
-                {
-                  "key": "gen_ai.response.finish_reasons",
-                  "value": {
-                    "arrayValue": {
-                      "values": [
-                        {
-                          "stringValue": "tool_calls"
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "key": "gen_ai.usage.input_tokens",
-                  "value": {
-                    "intValue": "246"
-                  }
-                },
-                {
-                  "key": "gen_ai.usage.output_tokens",
-                  "value": {
-                    "intValue": "51"
-                  }
-                },
-                {
-                  "key": "gen_ai.input.messages",
-                  "value": {
-                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_weather_1\", \"response\": {\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}}]}]"
-                  }
-                },
-                {
-                  "key": "gen_ai.output.messages",
-                  "value": {
-                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_calc_1\", \"name\": \"calculator\", \"arguments\": {\"expression\": \"24.5 * 9/5 + 32\"}}, {\"type\": \"tool_call\", \"id\": \"call_currency_1\", \"name\": \"lookup_currency\", \"arguments\": {\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}}]}]"
-                  }
-                }
-              ],
-              "status": {},
-              "flags": 256
-            },
-            {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "8f5ff93df22ebb1b",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "execute_tool calculator",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "0848e82e056c4c77",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool query_metrics",
               "kind": 1,
-              "startTimeUnixNano": "1790248393188647687",
-              "endTimeUnixNano": "1790248393209263149",
+              "startTimeUnixNano": "1790269395150000000",
+              "endTimeUnixNano": "1790269396410000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -315,25 +224,25 @@
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
                   }
                 },
                 {
                   "key": "gen_ai.tool.name",
                   "value": {
-                    "stringValue": "calculator"
+                    "stringValue": "query_metrics"
                   }
                 },
                 {
                   "key": "gen_ai.tool.call.id",
                   "value": {
-                    "stringValue": "call_calc_1"
+                    "stringValue": "toolu_02"
                   }
                 },
                 {
                   "key": "gen_ai.tool.description",
                   "value": {
-                    "stringValue": "Evaluate a basic arithmetic expression and return the numeric result."
+                    "stringValue": "Query a time series from the metrics store."
                   }
                 },
                 {
@@ -345,7 +254,281 @@
                 {
                   "key": "gen_ai.tool.call.arguments",
                   "value": {
-                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
+                    "stringValue": "{\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "07d0e204e9a58985",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool list_deploys",
+              "kind": 1,
+              "startTimeUnixNano": "1790269395160000000",
+              "endTimeUnixNano": "1790269395470000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "list_deploys"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_03"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "List deploys for a service in a time range."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "d8c6fb7dd4967fca",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "chat claude-sonnet-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269396500000000",
+              "endTimeUnixNano": "1790269401800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "8192"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0004500"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "14900"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "540"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "6850"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_01\", \"response\": {\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_02\", \"response\": {\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_03\", \"response\": {\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_04\", \"name\": \"get_diff\", \"arguments\": {\"deploy_id\": 4127}}, {\"type\": \"tool_call\", \"id\": \"toolu_05\", \"name\": \"query_traces\", \"arguments\": {\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "a51e6840f9183dd7",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool get_diff",
+              "kind": 1,
+              "startTimeUnixNano": "1790269401850000000",
+              "endTimeUnixNano": "1790269402310000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "get_diff"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_04"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Summarise the code diff for a deploy."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"deploy_id\": 4127}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"deploy_id\": 4127, \"files\": [\"cart/tax.py\"], \"summary\": \"Tax is now recalculated per line item via tax-service (one HTTP call per item) instead of once per cart.\"}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "df46f1c99ae53f2f",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool query_traces",
+              "kind": 1,
+              "startTimeUnixNano": "1790269401850000000",
+              "endTimeUnixNano": "1790269406860000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "query_traces"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_05"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Search distributed traces."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}"
                   }
                 },
                 {
@@ -363,7 +546,7 @@
               ],
               "events": [
                 {
-                  "timeUnixNano": "1790248393189159599",
+                  "timeUnixNano": "1790269406860000000",
                   "name": "exception",
                   "attributes": [
                     {
@@ -375,13 +558,13 @@
                     {
                       "key": "exception.message",
                       "value": {
-                        "stringValue": "calculator backend did not respond within 2000ms (upstream timeout)"
+                        "stringValue": "trace store did not answer within 5000 ms"
                       }
                     },
                     {
                       "key": "exception.stacktrace",
                       "value": {
-                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 237, in <module>\n    raise TimeoutError(\"calculator backend did not respond within 2000ms (upstream timeout)\")\nTimeoutError: calculator backend did not respond within 2000ms (upstream timeout)\n"
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 157, in tool\n    raise exc\nTimeoutError: trace store did not answer within 5000 ms\n"
                       }
                     },
                     {
@@ -394,19 +577,19 @@
                 }
               ],
               "status": {
-                "message": "calculator backend did not respond within 2000ms (upstream timeout)",
+                "message": "trace store did not answer within 5000 ms",
                 "code": 2
               },
               "flags": 256
             },
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "cea928359daa5489",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "execute_tool calculator",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "e2cdb759abbbe2e8",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "execute_tool query_traces",
               "kind": 1,
-              "startTimeUnixNano": "1790248393209304660",
-              "endTimeUnixNano": "1790248393224415264",
+              "startTimeUnixNano": "1790269406910000000",
+              "endTimeUnixNano": "1790269408220000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -417,25 +600,25 @@
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
                   }
                 },
                 {
                   "key": "gen_ai.tool.name",
                   "value": {
-                    "stringValue": "calculator"
+                    "stringValue": "query_traces"
                   }
                 },
                 {
                   "key": "gen_ai.tool.call.id",
                   "value": {
-                    "stringValue": "call_calc_1"
+                    "stringValue": "toolu_05"
                   }
                 },
                 {
                   "key": "gen_ai.tool.description",
                   "value": {
-                    "stringValue": "Evaluate a basic arithmetic expression and return the numeric result."
+                    "stringValue": "Search distributed traces."
                   }
                 },
                 {
@@ -447,13 +630,7 @@
                 {
                   "key": "gen_ai.tool.call.arguments",
                   "value": {
-                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\"}"
-                  }
-                },
-                {
-                  "key": "gen_ai.tool.call.result",
-                  "value": {
-                    "stringValue": "{\"expression\": \"24.5 * 9/5 + 32\", \"result\": 76.1}"
+                    "stringValue": "{\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}"
                   }
                 },
                 {
@@ -461,19 +638,110 @@
                   "value": {
                     "intValue": "2"
                   }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"matched\": 50, \"median_duration_ms\": 1790, \"top_span\": \"tax-service POST /calculate\", \"calls_per_checkout_p50\": 14}"
+                  }
                 }
               ],
               "status": {},
               "flags": 256
             },
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "83e9de194728c317",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "execute_tool lookup_currency",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "2fc5bb30ca40b11a",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "chat claude-haiku-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269408350000000",
+              "endTimeUnixNano": "1790269409600000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "2048"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0016350"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2300"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "190"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "cbd933157cdafede",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "execute_tool run_sql",
               "kind": 1,
-              "startTimeUnixNano": "1790248393224452647",
-              "endTimeUnixNano": "1790248393240125700",
+              "startTimeUnixNano": "1790269409650000000",
+              "endTimeUnixNano": "1790269411920000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -484,25 +752,25 @@
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
                   }
                 },
                 {
                   "key": "gen_ai.tool.name",
                   "value": {
-                    "stringValue": "lookup_currency"
+                    "stringValue": "run_sql"
                   }
                 },
                 {
                   "key": "gen_ai.tool.call.id",
                   "value": {
-                    "stringValue": "call_currency_1"
+                    "stringValue": "toolu_11"
                   }
                 },
                 {
                   "key": "gen_ai.tool.description",
                   "value": {
-                    "stringValue": "Look up a live conversion rate and convert an amount between two ISO 4217 currency codes."
+                    "stringValue": "Run a read-only SQL query against the analytics warehouse."
                   }
                 },
                 {
@@ -514,7 +782,153 @@
                 {
                   "key": "gen_ai.tool.call.arguments",
                   "value": {
-                    "stringValue": "{\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}"
+                    "stringValue": "{\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "{\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "403e41ff05bb2fe9",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "chat claude-haiku-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269411970000000",
+              "endTimeUnixNano": "1790269412910000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-haiku-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "2048"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0019970"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_use"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "3100"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "150"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_11\", \"response\": {\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_12\", \"name\": \"lookup_fx\", \"arguments\": {\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "17f45fe9bf94fd22",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "execute_tool lookup_fx",
+              "kind": 1,
+              "startTimeUnixNano": "1790269412950000000",
+              "endTimeUnixNano": "1790269413200000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "lookup_fx"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "toolu_12"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.description",
+                  "value": {
+                    "stringValue": "Historical FX rate for a currency pair."
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.type",
+                  "value": {
+                    "stringValue": "function"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}"
                   }
                 },
                 {
@@ -526,7 +940,7 @@
               ],
               "events": [
                 {
-                  "timeUnixNano": "1790248393225016359",
+                  "timeUnixNano": "1790269413200000000",
                   "name": "exception",
                   "attributes": [
                     {
@@ -538,13 +952,13 @@
                     {
                       "key": "exception.message",
                       "value": {
-                        "stringValue": "invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)"
+                        "stringValue": "fx provider: historical rates are not enabled on this plan"
                       }
                     },
                     {
                       "key": "exception.stacktrace",
                       "value": {
-                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 278, in <module>\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\n"
+                        "stringValue": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 157, in tool\n    raise exc\nValueError: fx provider: historical rates are not enabled on this plan\n"
                       }
                     },
                     {
@@ -557,19 +971,19 @@
                 }
               ],
               "status": {
-                "message": "invalid_argument: currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)",
+                "message": "fx provider: historical rates are not enabled on this plan",
                 "code": 2
               },
               "flags": 256
             },
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "0ef95d89d8e88b6a",
-              "parentSpanId": "0f0244c2bf23d33d",
-              "name": "chat gpt-4o-mini",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "1610b9359de4652e",
+              "parentSpanId": "3c85d714e43639fa",
+              "name": "chat claude-haiku-4-5",
               "kind": 3,
-              "startTimeUnixNano": "1790248393240174023",
-              "endTimeUnixNano": "1790248393270347450",
+              "startTimeUnixNano": "1790269413250000000",
+              "endTimeUnixNano": "1790269416550000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -580,37 +994,31 @@
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
                   }
                 },
                 {
                   "key": "gen_ai.request.model",
                   "value": {
-                    "stringValue": "gpt-4o-mini"
+                    "stringValue": "claude-haiku-4-5"
                   }
                 },
                 {
                   "key": "gen_ai.response.model",
                   "value": {
-                    "stringValue": "gpt-4o-mini-2024-07-18"
-                  }
-                },
-                {
-                  "key": "gen_ai.request.temperature",
-                  "value": {
-                    "doubleValue": 0.2
+                    "stringValue": "claude-haiku-4-5"
                   }
                 },
                 {
                   "key": "gen_ai.request.max_tokens",
                   "value": {
-                    "intValue": "1024"
+                    "intValue": "2048"
                   }
                 },
                 {
                   "key": "gen_ai.response.id",
                   "value": {
-                    "stringValue": "chatcmpl-e567763f2f9244e4b02fac26"
+                    "stringValue": "msg_demo_0021250"
                   }
                 },
                 {
@@ -619,7 +1027,7 @@
                     "arrayValue": {
                       "values": [
                         {
-                          "stringValue": "stop"
+                          "stringValue": "end_turn"
                         }
                       ]
                     }
@@ -628,31 +1036,25 @@
                 {
                   "key": "gen_ai.usage.input_tokens",
                   "value": {
-                    "intValue": "412"
+                    "intValue": "3600"
                   }
                 },
                 {
                   "key": "gen_ai.usage.output_tokens",
                   "value": {
-                    "intValue": "88"
-                  }
-                },
-                {
-                  "key": "gen_ai.usage.cache_read.input_tokens",
-                  "value": {
-                    "intValue": "256"
+                    "intValue": "420"
                   }
                 },
                 {
                   "key": "gen_ai.input.messages",
                   "value": {
-                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the current temperature in Lisbon, and what would that be in Fahrenheit? Also, roughly how many Japanese yen is 100 EUR worth right now?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_weather_1\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Lisbon, Portugal\", \"unit\": \"celsius\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_weather_1\", \"response\": {\"location\": \"Lisbon, Portugal\", \"temperature_c\": 24.5, \"condition\": \"Partly cloudy\", \"humidity_pct\": 58}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_calc_1\", \"name\": \"calculator\", \"arguments\": {\"expression\": \"24.5 * 9/5 + 32\"}}, {\"type\": \"tool_call\", \"id\": \"call_currency_1\", \"name\": \"lookup_currency\", \"arguments\": {\"from_currency\": \"EUR\", \"to_currency\": \"JPY\", \"amount\": 100}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_calc_1\", \"response\": {\"expression\": \"24.5 * 9/5 + 32\", \"result\": 76.1}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_currency_1\", \"response\": {\"error\": \"invalid_argument\", \"message\": \"currency code 'JPY' is not enabled for this API key's pricing tier (enabled: USD, EUR, GBP)\"}}]}]"
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_11\", \"response\": {\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_12\", \"name\": \"lookup_fx\", \"arguments\": {\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_12\", \"response\": {\"error\": \"invalid_argument\", \"message\": \"historical rates are not enabled on this plan\"}}]}]"
                   }
                 },
                 {
                   "key": "gen_ai.output.messages",
                   "value": {
-                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"Lisbon is currently 24.5°C (76.1°F) and partly cloudy, with 58% humidity. I wasn't able to get you a live EUR→JPY rate, though -- the currency lookup failed because JPY isn't enabled on this API key's current pricing tier. If you can enable JPY on the account (or give me a rate to use), I can redo the 100 EUR conversion right away.\"}]}]"
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"281 excess abandoned checkouts; excess cart value EUR 23,180. The EUR to USD conversion failed (historical FX not enabled), so the figure is reported in EUR.\"}]}]"
                   }
                 }
               ],
@@ -660,12 +1062,13 @@
               "flags": 256
             },
             {
-              "traceId": "7b492209afa649a21d4072c6ccaefb77",
-              "spanId": "0f0244c2bf23d33d",
-              "name": "invoke_agent research-agent",
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "3c85d714e43639fa",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "invoke_agent cost-estimator",
               "kind": 1,
-              "startTimeUnixNano": "1790248393102900771",
-              "endTimeUnixNano": "1790248393270369463",
+              "startTimeUnixNano": "1790269408300000000",
+              "endTimeUnixNano": "1790269416600000000",
               "attributes": [
                 {
                   "key": "gen_ai.operation.name",
@@ -676,19 +1079,146 @@
                 {
                   "key": "gen_ai.agent.name",
                   "value": {
-                    "stringValue": "research-agent"
+                    "stringValue": "cost-estimator"
                   }
                 },
                 {
                   "key": "gen_ai.provider.name",
                   "value": {
-                    "stringValue": "openai"
+                    "stringValue": "anthropic"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "e8192f36ab00d238",
+              "parentSpanId": "2ba46df3ec7a2d76",
+              "name": "chat claude-sonnet-5",
+              "kind": 3,
+              "startTimeUnixNano": "1790269416700000000",
+              "endTimeUnixNano": "1790269423700000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.max_tokens",
+                  "value": {
+                    "intValue": "8192"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "msg_demo_0024700"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "end_turn"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "21400"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "1180"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "14900"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_01\", \"response\": {\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_02\", \"response\": {\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_03\", \"response\": {\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_04\", \"name\": \"get_diff\", \"arguments\": {\"deploy_id\": 4127}}, {\"type\": \"tool_call\", \"id\": \"toolu_05\", \"name\": \"query_traces\", \"arguments\": {\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_04\", \"response\": {\"deploy_id\": 4127, \"files\": [\"cart/tax.py\"], \"summary\": \"Tax is now recalculated per line item via tax-service (one HTTP call per item) instead of once per cart.\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_05\", \"response\": {\"matched\": 50, \"median_duration_ms\": 1790, \"top_span\": \"tax-service POST /calculate\", \"calls_per_checkout_p50\": 14}}]}, {\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"[cost-estimator] 281 excess abandoned checkouts; excess cart value EUR 23,180. The EUR to USD conversion failed (historical FX not enabled), so the figure is reported in EUR.\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"Cause: deploy #4127 (14:02 UTC) moved tax calculation to one tax-service call per line item; slow traces show about 14 calls per checkout, and p95 rose from 410 ms to 1,860 ms. Fixed: #4131 reverted it at 16:35 UTC and latency returned to baseline by 16:40. Cost: 281 more abandoned checkouts than a normal Tuesday, about EUR 23,180 in cart value. I couldn't convert that to USD because the FX lookup is not enabled for historical rates.\"}]}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanId": "2ba46df3ec7a2d76",
+              "name": "invoke_agent incident-analyst",
+              "kind": 1,
+              "startTimeUnixNano": "1790269392000000000",
+              "endTimeUnixNano": "1790269423800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "incident-analyst"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv_7f3c1e"
                   }
                 },
                 {
                   "key": "gen_ai.system_instructions",
                   "value": {
-                    "stringValue": "[{\"type\": \"text\", \"content\": \"You are a helpful research assistant with access to a get_weather tool, a calculator tool, and a currency lookup tool. Use tools whenever you need real-time or computed data, and always ground your final answer in the tool results you actually received -- never guess a number a tool call failed to produce.\"}]"
+                    "stringValue": "[{\"type\": \"text\", \"content\": \"You are incident-analyst, an on-call assistant for the Meridian Shop platform team. Ground every claim in tool output; say plainly when a tool failed and what that means for the answer.\"}]"
                   }
                 }
               ],
