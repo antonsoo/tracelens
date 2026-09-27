@@ -9,7 +9,7 @@ import { renderWaterfall } from './waterfall.js';
 import { renderDetailPanel } from './detail-panel.js';
 import type { DetailTab } from './detail-panel.js';
 import { loadPriceTable, openPriceDialog } from './price-settings.js';
-import { renderComparison } from './comparison.js';
+import { createComparisonViewState, renderComparison } from './comparison.js';
 import type { ComparisonSide } from './comparison.js';
 
 interface AppState {
@@ -31,8 +31,10 @@ interface AppState {
 
 const THEME_KEY = 'tracelens.theme';
 function initialTheme(): 'light' | 'dark' {
-  const saved = localStorage.getItem(THEME_KEY);
-  if (saved === 'light' || saved === 'dark') return saved;
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch { /* Use the system theme when browser storage is blocked. */ }
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
@@ -184,7 +186,7 @@ function buildHeader(state: AppState): HTMLElement {
           'aria-label': 'Toggle dark mode',
           onClick: () => {
             const next = state.theme === 'dark' ? 'light' : 'dark';
-            localStorage.setItem(THEME_KEY, next);
+            try { localStorage.setItem(THEME_KEY, next); } catch { /* Theme still works for this session. */ }
             store.set({ theme: next });
           },
         },
@@ -201,10 +203,21 @@ function logoSvg(): HTMLElement {
   return wrap.firstElementChild as HTMLElement;
 }
 
+let comparisonView = createComparisonViewState();
+let comparedBaseline: ParsedTrace | null = null;
+let comparedCandidate: ParsedTrace | null = null;
+
 function render(): void {
   const state = store.get();
   applyTheme(state.theme);
   const app = document.getElementById('app')!;
+  const previousComparison = app.querySelector('.tl-comparison-shell');
+  if (previousComparison) comparisonView.scrollTop = previousComparison.scrollTop;
+  if (!state.baseline) {
+    comparisonView = createComparisonViewState();
+    comparedBaseline = null;
+    comparedCandidate = null;
+  }
 
   if (!state.trace) {
     mount(
@@ -223,6 +236,13 @@ function render(): void {
   }
 
   if (state.baseline && state.view === 'compare') {
+    if (comparedBaseline !== state.baseline || comparedCandidate !== state.trace) {
+      comparisonView = createComparisonViewState();
+      comparedBaseline = state.baseline;
+      comparedCandidate = state.trace;
+    }
+    const focusedFilter = document.activeElement?.matches('.tl-compare-toolbar input') ? document.activeElement as HTMLInputElement : null;
+    const selection = focusedFilter ? [focusedFilter.selectionStart, focusedFilter.selectionEnd] as const : null;
     const comparisonEl = h('div', { className: 'tl-comparison-shell' });
     renderComparison(comparisonEl, compareTraces(state.baseline, state.trace, state.priceTable),
       { baseline: state.baselineName ?? 'Baseline', candidate: state.fileName ?? 'Candidate' }, {
@@ -233,8 +253,14 @@ function render(): void {
           loadVersion++;
           store.set({ baseline: null, baselineName: null, view: 'trace', inspectedSide: 'candidate', selectedSpanId: null, loadError: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
         },
-      });
+      }, comparisonView);
     mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, comparisonEl);
+    comparisonEl.scrollTop = comparisonView.scrollTop;
+    if (selection) {
+      const filter = comparisonEl.querySelector<HTMLInputElement>('input[type="search"]')!;
+      filter.focus({ preventScroll: true });
+      filter.setSelectionRange(...selection);
+    }
     return;
   }
 
@@ -265,7 +291,10 @@ function render(): void {
   const detailEl = h('div', { className: 'tl-detail-pane' });
   renderDetailPanel(detailEl, selectedSpan, state.detailTab, (tab) => store.set({ detailTab: tab }));
 
-  mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl));
+  const warnings = activeTrace.warnings.length ? h('details', { className: 'tl-compare-warnings' },
+    h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
+    h('ul', {}, ...activeTrace.warnings.map((warning) => h('li', {}, warning.message)))) : null;
+  mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, warnings, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl));
 }
 
 store.subscribe(render);

@@ -249,7 +249,7 @@ scenario and how to regenerate them.
 
 ## Accuracy and limitations
 
-- Comparison takes **one trace per file**. It groups by service namespace,
+- The viewer and comparison take **one trace per file**. Comparison groups by service namespace,
   service name, kind and full operation ancestry; renaming or reparenting
   an operation produces an added/removed group. Repeated calls in a group
   are not individually paired, and a pair of runs does not establish
@@ -257,6 +257,11 @@ scenario and how to regenerate them.
 
 - The cost estimator is only as good as the price table; unmatched models
   show `—`, never a silently-wrong `$0`.
+- Incomplete or invalid token counts leave costs unknown. Single-run
+  totals label partial costs as subtotals. Cache counts must be included
+  in total input; billing details beyond the token price table are not modeled.
+- Possible retries are inferred from a new tool call after a failed,
+  completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of
   optimality under concurrency.
 - No virtualization on the waterfall — every visible span is a real DOM

@@ -51,9 +51,11 @@ Each JSON measurement has a `value` (the known subtotal) and `missing`
 (the count of calls missing that measurement). If either side has missing
 data, both its delta and percent are `null`. Complete counts can still be
 compared independently: missing output tokens do not hide known input
-tokens. Cost needs both counts, even if an older single-run summary can
-show a partial estimate. Cached-token accounting follows the existing
-cost estimator and its conventions; these figures are not invoices.
+tokens. Cost needs both counts in the comparison and single-run views.
+Invalid counts, cache counts exceeding total input, or missing prices
+leave cost unknown. Single-run totals label priced subsets as subtotals.
+Cached-token accounting follows the conventions in [formats](formats.md);
+these figures are not invoices.
 
 The exported `schemaVersion: 1` report includes a copy of the price table
 used, so a later settings change does not erase the calculation inputs.
@@ -64,6 +66,9 @@ Prices can become stale. Source URLs and dates accompany each entry.
 The browser accepts files up to 25 MB each. Comparison accepts up to 256
 nesting levels. Duplicate IDs within a trace and cyclic parents are rejected
 by the parser; missing parents remain visible as roots with a warning.
+Missing or invalid span timestamps cause that span to be skipped, with a
+warning. Decimal-string timestamps preserve nanosecond precision; numeric
+timestamps are accepted only when they are safe, nonnegative integers.
 Malformed/skipped spans and clock-skew corrections appear in the report's
 warnings, and can make the two files less comparable.
 
@@ -86,4 +91,6 @@ The latter needs Playwright's Chromium installed (`npx playwright install
 chromium`). It starts a local preview server and exercises real uploads,
 swapping, filtering, JSON download, per-side inspection, malformed-file
 recovery, offline interaction, light/dark themes and a 375-pixel viewport.
+It also checks blocked/corrupt storage, price validation, and preservation
+of filters, sorting, expansion, focus and scroll across view changes.
 These checks are included in CI; local results do not imply CI ran.

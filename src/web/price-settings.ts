@@ -1,5 +1,5 @@
 import type { PriceEntry } from '../core/index.js';
-import { DEFAULT_PRICE_TABLE } from '../core/index.js';
+import { DEFAULT_PRICE_TABLE, isPriceEntry } from '../core/index.js';
 import { h, mount } from './dom.js';
 
 const STORAGE_KEY = 'tracelens.priceTable.v1';
@@ -8,8 +8,8 @@ export function loadPriceTable(): PriceEntry[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULT_PRICE_TABLE;
-    const parsed = JSON.parse(raw) as PriceEntry[];
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_PRICE_TABLE;
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.every(isPriceEntry) ? parsed : DEFAULT_PRICE_TABLE;
   } catch {
     return DEFAULT_PRICE_TABLE;
   }
@@ -24,8 +24,9 @@ function savePriceTable(table: PriceEntry[]): void {
   }
 }
 
-function numberInput(value: number | undefined, onInput: (n: number | undefined) => void): HTMLElement {
+function numberInput(label: string, value: number | undefined, onInput: (n: number | undefined) => void): HTMLElement {
   return h('input', {
+    'aria-label': label,
     type: 'text',
     inputmode: 'decimal',
     value: value === undefined ? '' : String(value),
@@ -41,25 +42,39 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
 
   const dialog = h('dialog', { className: 'tl-dialog' }) as HTMLDialogElement;
   const body = h('div', { className: 'tl-dialog-body' });
+  const error = h('p', { role: 'alert', className: 'tl-load-error', hidden: true });
+  body.addEventListener('input', (event) => {
+    const row = (event.target as HTMLElement).closest<HTMLTableRowElement>('tr[data-price-index]');
+    if (!row) return;
+    const entry = working[Number(row.dataset.priceIndex)]!;
+    // An edited rate no longer has the vendor citation's provenance.
+    entry.sourceUrl = '';
+    entry.sourceDate = new Date().toISOString().slice(0, 10);
+    row.querySelector('.tl-price-source')!.textContent = `${entry.sourceDate} (edited)`;
+  });
 
   function renderRows(): void {
     const rows = working.map((entry, i) =>
       h(
         'tr',
-        {},
-        h('td', {}, h('input', { value: entry.matchModel, onInput: (e: Event) => (entry.matchModel = (e.target as HTMLInputElement).value) })),
-        h('td', {}, h('input', { value: entry.provider, onInput: (e: Event) => (entry.provider = (e.target as HTMLInputElement).value) })),
-        h('td', {}, numberInput(entry.inputPerMTok, (n) => (entry.inputPerMTok = n ?? 0))),
-        h('td', {}, numberInput(entry.outputPerMTok, (n) => (entry.outputPerMTok = n ?? 0))),
+        { 'data-price-index': i },
+        h('td', {}, h('input', { 'aria-label': `Row ${i + 1} model match`, value: entry.matchModel, onInput: (e: Event) => (entry.matchModel = (e.target as HTMLInputElement).value) })),
+        h('td', {}, h('input', { 'aria-label': `Row ${i + 1} provider`, value: entry.provider, onInput: (e: Event) => (entry.provider = (e.target as HTMLInputElement).value) })),
+        h('td', {}, numberInput(`Row ${i + 1} input rate`, entry.inputPerMTok, (n) => (entry.inputPerMTok = n ?? NaN))),
+        h('td', {}, numberInput(`Row ${i + 1} output rate`, entry.outputPerMTok, (n) => (entry.outputPerMTok = n ?? NaN))),
         h(
           'td',
           {},
-          numberInput(entry.cacheReadPerMTok, (n) => {
+          numberInput(`Row ${i + 1} cache read rate`, entry.cacheReadPerMTok, (n) => {
             if (n === undefined) delete entry.cacheReadPerMTok;
             else entry.cacheReadPerMTok = n;
           }),
         ),
-        h('td', { className: 'tl-price-source' }, `${entry.sourceDate}`),
+        h('td', {}, numberInput(`Row ${i + 1} cache write rate`, entry.cacheWritePerMTok, (n) => {
+          if (n === undefined) delete entry.cacheWritePerMTok;
+          else entry.cacheWritePerMTok = n;
+        })),
+        h('td', { className: 'tl-price-source' }, `${entry.sourceDate}${entry.sourceUrl ? '' : ' (edited)'}`),
         h(
           'td',
           {},
@@ -84,7 +99,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
       h(
         'p',
         { className: 'faint', style: 'margin-top:0' },
-        'Matched against the response model (or request model) as a case-insensitive substring; the longest match wins. Edits persist to this browser only.',
+        'Matched against the response model (or request model) as a case-insensitive substring; the longest match wins. Rates must be nonnegative numbers. Blank cache rates use the input rate. Edits persist to this browser only when storage is available.',
       ),
       h(
         'table',
@@ -92,7 +107,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
         h(
           'thead',
           {},
-          h('tr', {}, h('th', {}, 'model match'), h('th', {}, 'provider'), h('th', {}, '$/MTok in'), h('th', {}, '$/MTok out'), h('th', {}, '$/MTok cache read'), h('th', {}, 'source date'), h('th', {})),
+          h('tr', {}, h('th', {}, 'model match'), h('th', {}, 'provider'), h('th', {}, '$/MTok in'), h('th', {}, '$/MTok out'), h('th', {}, '$/MTok cache read'), h('th', {}, '$/MTok cache write'), h('th', {}, 'source date'), h('th', {})),
         ),
         h('tbody', {}, ...rows),
       ),
@@ -142,6 +157,16 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
       {
         className: 'tl-btn primary',
         onClick: () => {
+          const invalidIndex = working.findIndex((entry) => !isPriceEntry(entry));
+          if (invalidIndex !== -1) {
+            error.textContent = working[invalidIndex]!.matchModel.trim() === ''
+              ? `Row ${invalidIndex + 1}: enter a model match. A blank name would match every model.`
+              : `Row ${invalidIndex + 1}: input/output rates must be finite, nonnegative numbers. Cache rates may be blank.`;
+            error.hidden = false;
+            body.querySelectorAll('tbody tr')[invalidIndex]?.scrollIntoView({ block: 'center' });
+            return;
+          }
+          working = working.map((entry) => ({ ...entry, matchModel: entry.matchModel.trim() }));
           savePriceTable(working);
           onSave(working);
           dialog.close();
@@ -151,7 +176,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
     ),
   );
 
-  mount(dialog, header, body, footer);
+  mount(dialog, header, body, error, footer);
   document.body.appendChild(dialog);
   dialog.addEventListener('close', () => dialog.remove());
   dialog.showModal();

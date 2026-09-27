@@ -680,6 +680,7 @@ pre.tl-pre {
 /* -------------------------------------------------------- price table */
 .tl-price-table {
   width: 100%;
+  min-width: 900px;
   border-collapse: collapse;
   font-size: 12px;
 }
@@ -699,21 +700,27 @@ pre.tl-pre {
   font-family: var(--font-mono);
   font-size: 11.5px;
 }
+.tl-price-table th:first-child { min-width: 180px; }
+.tl-price-table th:nth-child(2) { min-width: 100px; }
+.tl-price-table th { position: sticky; top: -12px; background: var(--surface); z-index: 1; }
 .tl-price-source {
   font-size: 10px;
   color: var(--text-faint);
+  white-space: nowrap;
 }
 
 dialog.tl-dialog {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 0;
-  width: min(640px, 92vw);
+  width: min(1040px, 92vw);
   max-height: 84vh;
   background: var(--surface);
   color: var(--text);
   box-shadow: var(--shadow-panel);
 }
+dialog.tl-dialog[open] { display: flex; flex-direction: column; }
+dialog.tl-dialog > :not(.tl-dialog-body) { flex-shrink: 0; }
 dialog.tl-dialog::backdrop {
   background: rgba(10, 12, 15, 0.5);
 }
@@ -730,8 +737,8 @@ dialog.tl-dialog::backdrop {
 }
 .tl-dialog-body {
   padding: 12px 16px;
-  overflow-y: auto;
-  max-height: calc(84vh - 100px);
+  min-height: 0;
+  overflow: auto;
 }
 
 .visually-hidden {

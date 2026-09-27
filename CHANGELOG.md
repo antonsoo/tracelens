@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Validate price rules and stored settings; keep the app usable with blocked
+  browser storage. Expose both cache-read and cache-write rates in the editor.
+- Keep incomplete/invalid usage unknown in costs and token totals; preserve
+  mixed-convention usage and recognize legacy model-only LLM spans.
+- Reject multi-trace batches, warn on invalid timestamps, and keep reserved
+  attribute names as data. Traverse deep trees without recursive rendering.
+- Count only possible retries after failed, completed tool calls.
+- Preserve comparison filter, sort, expanded rows, focus and scroll during
+  inspection, theme changes and resize; correct boolean ARIA attributes.
+
 - Compare two local runs in the browser or with `tracelens compare`.
   Group repeated calls by operation ancestry; inspect per-side spans and
   model changes, sort/filter operations, swap runs, and export JSON.

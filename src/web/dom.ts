@@ -9,11 +9,13 @@ type Child = Node | string | number | null | undefined | false;
 export function h(tag: string, attrs: Attrs = {}, ...children: Child[]): HTMLElement {
   const el = document.createElement(tag);
   for (const [key, value] of Object.entries(attrs)) {
-    if (value === undefined || value === false) continue;
+    if (value === undefined) continue;
     if (key.startsWith('on') && typeof value === 'function') {
       el.addEventListener(key.slice(2).toLowerCase(), value);
     } else if (key === 'className') {
       el.className = String(value);
+    } else if (key.startsWith('aria-') || key.startsWith('data-')) {
+      el.setAttribute(key, String(value));
     } else if (typeof value === 'boolean') {
       if (value) el.setAttribute(key, '');
     } else {

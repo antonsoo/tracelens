@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
+import { auditBrowser } from './browser-audit.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const target = process.env.TRACELENS_TEST_URL ?? 'http://127.0.0.1:4318/tracelens/';
 const server = process.env.TRACELENS_TEST_URL
@@ -135,6 +136,7 @@ try {
   assert.match(await page.locator('.tl-active-file').innerText(), /comparison-baseline.json/);
   assert.equal(await page.locator('.tl-comparison').count(), 0);
   assert.deepEqual(errors, []);
+  await auditBrowser(browser, target, root, capture);
   console.log(
     'PASS: sample, per-side drilldown, swap, filter, JSON export, bad-input recovery, replacement, offline actions, light/dark, 375px, and real file comparison. No browser exceptions.',
   );

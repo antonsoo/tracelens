@@ -10,6 +10,16 @@ import { h, mount } from './dom.js';
 import { fmtInt, fmtMs, fmtUsd } from './format.js';
 
 export type ComparisonSide = 'baseline' | 'candidate';
+export interface ComparisonViewState {
+  filter: string;
+  limit: number;
+  sort: 'selfTimeMs' | 'inputTokens' | 'costUsd' | 'errors';
+  expanded: Set<string>;
+  scrollTop: number;
+}
+export function createComparisonViewState(): ComparisonViewState {
+  return { filter: '', limit: 100, sort: 'selfTimeMs', expanded: new Set(), scrollTop: 0 };
+}
 interface Callbacks {
   onSwap: () => void;
   onReplace: (file: File) => void;
@@ -118,7 +128,7 @@ function evidence(calls: CallEvidence[], side: ComparisonSide, cb: Callbacks): H
   );
 }
 
-function operationRow(op: OperationComparison, maxTime: number, cb: Callbacks): HTMLElement {
+function operationRow(op: OperationComparison, maxTime: number, cb: Callbacks, view: ComparisonViewState): HTMLElement {
   const bar = (side: ComparisonSide) =>
     h(
       'div',
@@ -136,7 +146,12 @@ function operationRow(op: OperationComparison, maxTime: number, cb: Callbacks): 
     );
   return h(
     'details',
-    { className: 'tl-operation' },
+    { className: 'tl-operation', open: view.expanded.has(op.key), onToggle: (event: Event) => {
+      const row = event.currentTarget as HTMLDetailsElement;
+      if (!row.isConnected) return;
+      if (row.open) view.expanded.add(op.key);
+      else view.expanded.delete(op.key);
+    } },
     h(
       'summary',
       {},
@@ -188,6 +203,7 @@ export function renderComparison(
   report: TraceComparison,
   names: { baseline: string; candidate: string },
   cb: Callbacks,
+  view: ComparisonViewState,
 ): void {
   const input = h('input', {
     type: 'file',
@@ -202,29 +218,26 @@ export function renderComparison(
   }) as HTMLInputElement;
   const rows = h('div', {});
   const count = h('p', { className: 'dim', 'aria-live': 'polite' });
-  let filter = '';
-  let limit = 100;
-  let sort: 'selfTimeMs' | 'inputTokens' | 'costUsd' | 'errors' = 'selfTimeMs';
   const maxTime = report.operations.reduce(
     (max, op) => Math.max(max, op.metrics.selfTimeMs.baseline.value, op.metrics.selfTimeMs.candidate.value),
     1,
   );
   function renderRows(): void {
     const selected = report.operations
-      .filter((op) => op.path.join(' ').toLowerCase().includes(filter))
-      .sort((a, b) => Math.abs(b.metrics[sort].delta ?? 0) - Math.abs(a.metrics[sort].delta ?? 0));
+      .filter((op) => op.path.join(' ').toLowerCase().includes(view.filter.toLowerCase()))
+      .sort((a, b) => Math.abs(b.metrics[view.sort].delta ?? 0) - Math.abs(a.metrics[view.sort].delta ?? 0));
     count.textContent = `${selected.length} of ${report.operations.length} operation paths. Expand a row to inspect calls.`;
     mount(
       rows,
-      ...selected.slice(0, limit).map((op) => operationRow(op, maxTime, cb)),
+      ...selected.slice(0, view.limit).map((op) => operationRow(op, maxTime, cb, view)),
       selected.length ? null : h('p', { className: 'dim' }, 'No operations match this filter.'),
-      selected.length > limit
+      selected.length > view.limit
         ? h(
             'button',
             {
               className: 'tl-btn',
               onClick: () => {
-                limit += 100;
+                view.limit += 100;
                 renderRows();
               },
             },
@@ -288,10 +301,11 @@ export function renderComparison(
           'Filter ',
           h('input', {
             type: 'search',
+            value: view.filter,
             placeholder: 'Operation or service',
             onInput: (e: Event) => {
-              filter = (e.target as HTMLInputElement).value.toLowerCase();
-              limit = 100;
+              view.filter = (e.target as HTMLInputElement).value;
+              view.limit = 100;
               renderRows();
             },
           }),
@@ -304,7 +318,7 @@ export function renderComparison(
             'select',
             {
               onChange: (e: Event) => {
-                sort = (e.target as HTMLSelectElement).value as typeof sort;
+                view.sort = (e.target as HTMLSelectElement).value as ComparisonViewState['sort'];
                 renderRows();
               },
             },
@@ -313,7 +327,7 @@ export function renderComparison(
               ['inputTokens', 'Input-token change'],
               ['costUsd', 'Cost change'],
               ['errors', 'Error change'],
-            ].map(([value, label]) => h('option', { value }, label)),
+            ].map(([value, label]) => h('option', { value, selected: value === view.sort }, label)),
           ),
         ),
       ),

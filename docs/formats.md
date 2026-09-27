@@ -41,6 +41,15 @@ both accepted. Malformed individual spans (missing IDs, an end time before
 the start time) are skipped or clamped with a warning rather than aborting
 the parse — see `tests/otlp-parser.test.ts` for the exact edge cases.
 
+Each file must contain one trace ID. Multiple trace IDs, duplicate span
+IDs and cyclic parents are rejected. Missing or invalid span timestamps
+are skipped with a warning; they are never silently converted to zero.
+Timestamps must fit unsigned 64-bit integers. Numeric JSON timestamps
+must also be safe JS integers; use decimal strings for epoch nanoseconds
+to preserve precision. This restriction is stricter than a generic OTLP
+decoder's numeric acceptance; see the [OTLP JSON encoding specification](https://github.com/open-telemetry/opentelemetry-proto/blob/main/docs/specification.md#json-protobuf-encoding)
+(rechecked 2026-09-27).
+
 **Not yet supported:** Jaeger's native JSON export (a different schema:
 `data[].spans[]` with `tags`/`logs` instead of OTLP's `attributes`/`events`,
 and millisecond `startTime` rather than nanosecond `startTimeUnixNano`).
@@ -101,6 +110,13 @@ held on that date).
 
 ## 4. Cost estimation
 
+When both conventions occur on a span, usage is merged field by field;
+an explicitly supplied OTel field takes precedence. Invalid supplied
+counts remain invalid rather than falling back to another convention.
+Without an explicit kind/operation, GenAI model or usage attributes are
+treated as evidence of an LLM call; a tool name takes precedence. This is
+a legacy-export heuristic, so producers should still supply operation names.
+
 `src/core/pricing.ts` ships a **default price table**: every entry is either
 a price this project's author verified against the vendor's own pricing
 page via WebFetch (cited with URL + check date in the table itself), or it
@@ -111,6 +127,26 @@ longest-substring, case-insensitive match against the response model
 (falling back to the request model), so e.g. an entry for `gpt-4o-mini`
 correctly outranks a broader `gpt-4o` entry — see `findPriceEntry()` in
 `src/core/cost.ts` and its tests.
+
+Both input and output counts must be safe, nonnegative integers to price
+a call. Cached reads and writes are included in total input under the
+[GenAI span conventions](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md#inference)
+(rechecked 2026-09-27). Fresh input is total input minus both cache counts;
+each component uses its own rate, with absent cache rates falling back to
+the input rate. Contradictory cache totals, invalid counts and incomplete
+usage leave cost unknown. This is a token-based estimate, not an invoice;
+multimodal tariffs, discounts and provider-specific billing rules are not
+modeled. Providers that report fresh input separately must normalize it
+to total input before export.
+
+Price rules require a nonempty model match and finite, nonnegative rates.
+Zero rates are allowed explicitly. Invalid saved tables fall back to the
+defaults; an intentionally empty table stays empty. Storage failures do
+not prevent inspection or editing for the current session.
+Editing a row clears its original source URL and records the edit date,
+so the exported table does not attribute custom prices to a vendor.
+
+![Price editor rejecting an incomplete rate](assets/price-validation.png)
 
 ## 5. Installing the CLI from git (no registry yet)
 
@@ -138,3 +174,10 @@ from the trace's longest root span, repeatedly descend into whichever
 **direct child** has the largest duration. See the doc comment on
 `computeCriticalPath()` in `src/core/critical-path.ts` for exactly what this
 does and doesn't account for (it ignores concurrent/overlapping siblings).
+
+## 7. Possible retries
+
+The retry count is a heuristic: a tool call follows a failed, completed
+call with the same tool name and parent. Successful repeated calls and
+overlapping attempts do not count. The trace does not establish that
+two calls had identical intent, so the UI labels these **possible retries**.
