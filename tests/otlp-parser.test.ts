@@ -118,3 +118,30 @@ describe('parseOtlpJson performance on a large generated trace', () => {
     expect(elapsedMs).toBeLessThan(1000);
   });
 });
+
+describe('structural integrity', () => {
+  it('rejects duplicate spans before attempting tree traversal', () => {
+    const root = fakeSpan({ spanId: 'a', startNs: 0, endNs: 10 });
+    expect(() => parseOtlpJson(otlpDoc([root, { ...root, parentSpanId: 'a' }]))).toThrow('Duplicate span IDs');
+  });
+  it('rejects self-parenting and disconnected parent cycles', () => {
+    const a = fakeSpan({ spanId: 'a', parentSpanId: 'b', startNs: 0, endNs: 10 });
+    const b = fakeSpan({ spanId: 'b', parentSpanId: 'a', startNs: 0, endNs: 10 });
+    const root = fakeSpan({ spanId: 'root', startNs: 0, endNs: 10 });
+    expect(() => parseOtlpJson(otlpDoc([a, b, root]))).toThrow('Cyclic span parents');
+    expect(() => parseOtlpJson(otlpDoc([{ ...a, parentSpanId: 'a' }]))).toThrow('Cyclic span parents');
+  });
+  it('never resolves a parent from another trace, even when IDs collide', () => {
+    const a = fakeSpan({ traceId: 'aa', spanId: 'parent', startNs: 0, endNs: 10 });
+    const b = fakeSpan({ traceId: 'bb', spanId: 'child', parentSpanId: 'parent', startNs: 0, endNs: 10 });
+    const trace = parseOtlpJson(otlpDoc([a, b]));
+    expect(trace.roots).toHaveLength(2);
+    expect(trace.roots[0]!.children).toHaveLength(0);
+    expect(trace.warnings).toHaveLength(1);
+  });
+  it('parses a 10,000-level chain without recursive stack overflow', () => {
+    const spans = Array.from({ length: 10_000 }, (_, i) => fakeSpan({ spanId: String(i), ...(i ? { parentSpanId: String(i - 1) } : {}), startNs: 0, endNs: 10 }));
+    const trace = parseOtlpJson(otlpDoc(spans));
+    expect(trace.spans.at(-1)!.depth).toBe(9999);
+  });
+});

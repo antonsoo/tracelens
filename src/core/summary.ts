@@ -30,19 +30,26 @@ export interface TraceSummary {
 /** Self time = a span's duration minus the union of its children's
  * durations — the time this span spent NOT inside a child, i.e. the time
  * actually attributable to it rather than to whatever it called. */
-function selfTimeNs(span: ParsedSpan): bigint {
+export function selfTimeNs(span: ParsedSpan): bigint {
   if (span.children.length === 0) return span.durationNs;
-  const sorted = [...span.children].sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : 1));
+  // Clock skew and detached work can put children outside their parent.
+  // Only the intersection can consume the parent's time.
+  const sorted = span.children.map((child) => ({
+    start: child.startTimeUnixNano > span.startTimeUnixNano ? child.startTimeUnixNano : span.startTimeUnixNano,
+    end: child.endTimeUnixNano < span.endTimeUnixNano ? child.endTimeUnixNano : span.endTimeUnixNano,
+  })).filter((child) => child.end > child.start)
+    .sort((a, b) => a.start < b.start ? -1 : a.start > b.start ? 1 : 0);
+  if (sorted.length === 0) return span.durationNs;
   let covered = 0n;
-  let curStart = sorted[0]!.startTimeUnixNano;
-  let curEnd = sorted[0]!.endTimeUnixNano;
+  let curStart = sorted[0]!.start;
+  let curEnd = sorted[0]!.end;
   for (const child of sorted.slice(1)) {
-    if (child.startTimeUnixNano <= curEnd) {
-      if (child.endTimeUnixNano > curEnd) curEnd = child.endTimeUnixNano;
+    if (child.start <= curEnd) {
+      if (child.end > curEnd) curEnd = child.end;
     } else {
       covered += curEnd - curStart;
-      curStart = child.startTimeUnixNano;
-      curEnd = child.endTimeUnixNano;
+      curStart = child.start;
+      curEnd = child.end;
     }
   }
   covered += curEnd - curStart;

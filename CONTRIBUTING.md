@@ -38,3 +38,7 @@ npm run build         # web (dist/) + CLI (dist-cli/)
 - If you change what an attribute maps to, update `docs/formats.md` in the
   same PR — it's the single source of truth for "what does tracelens
   actually read."
+
+Run comparison integration checks after building: `npm run test:cli` and
+`npm run test:browser`. The browser check needs Playwright Chromium installed
+(`npx playwright install chromium`) and starts its own local preview server.

@@ -3,6 +3,7 @@ import { h, mount } from './dom.js';
 export interface DropzoneCallbacks {
   onFile: (file: File) => void;
   onLoadExample: (path: string) => void;
+  onCompareExample: () => void;
 }
 
 const SIGNAL_SVG = `
@@ -41,6 +42,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
       h('span', { className: 'faint', style: 'align-self:center' }, 'or load a sample:'),
       h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/genai-semconv-trace.json') }, 'GenAI semconv example'),
       h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/openinference-trace.json') }, 'OpenInference example'),
+      h('button', { className: 'tl-btn', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
     ),
   );
 

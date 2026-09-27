@@ -218,13 +218,18 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
     throw new TraceParseError('No valid spans were found in this file.');
   }
 
-  const byId = new Map(flat.map((s) => [s.spanId, s] as const));
+  const spanKey = (traceId: string, spanId: string): string => JSON.stringify([traceId, spanId]);
+  const byId = new Map(flat.map((s) => [spanKey(s.traceId, s.spanId), s] as const));
+  if (byId.size !== flat.length) {
+    throw new TraceParseError('Duplicate span IDs within a trace. Export each span once.');
+  }
   const roots: ParsedSpan[] = [];
   for (const span of flat) {
-    if (span.parentSpanId && byId.has(span.parentSpanId)) {
-      byId.get(span.parentSpanId)!.children.push(span);
+    const parent = span.parentSpanId ? byId.get(spanKey(span.traceId, span.parentSpanId)) : undefined;
+    if (parent) {
+      parent.children.push(span);
     } else {
-      if (span.parentSpanId && !byId.has(span.parentSpanId)) {
+      if (span.parentSpanId) {
         warnings.push({
           message: `Span "${span.name}" references a parent (${span.parentSpanId}) not present in this file — shown as a root.`,
           spanId: span.spanId,
@@ -234,13 +239,20 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
     }
   }
 
-  const assignDepth = (span: ParsedSpan, depth: number): void => {
+  // Iterative traversal handles deeply nested exports without exhausting
+  // the JS call stack. With unique IDs and one parent, unvisited nodes
+  // necessarily belong to a parent cycle (possibly a disconnected one).
+  let visited = 0;
+  const pending = roots.map((span) => ({ span, depth: 0 }));
+  while (pending.length) {
+    const { span, depth } = pending.pop()!;
+    visited++;
     span.depth = depth;
-    span.children.sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : 1));
-    for (const child of span.children) assignDepth(child, depth + 1);
-  };
+    span.children.sort((a, b) => a.startTimeUnixNano < b.startTimeUnixNano ? -1 : a.startTimeUnixNano > b.startTimeUnixNano ? 1 : 0);
+    for (const child of span.children) pending.push({ span: child, depth: depth + 1 });
+  }
+  if (visited !== flat.length) throw new TraceParseError('Cyclic span parents: every span must lead to a root.');
   roots.sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : 1));
-  for (const r of roots) assignDepth(r, 0);
 
   let minStart = flat[0]!.startTimeUnixNano;
   let maxEnd = flat[0]!.endTimeUnixNano;

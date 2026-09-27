@@ -6,15 +6,18 @@
 // npm resolves the bin through a symlink, which is exactly how `npm i -g`
 // installs it).
 import { readFile } from 'node:fs/promises';
-import { parseOtlpJson, buildSummary, DEFAULT_PRICE_TABLE, spanDurationMs } from '../core/index.js';
+import { parseOtlpJson, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs } from '../core/index.js';
 import type { ParsedSpan } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, table, yellow } from './format.js';
+import { formatComparison } from './compare-report.js';
 
 const HELP = `${bold('tracelens')} — a terminal summary for OTLP/JSON agent traces
 
 ${bold('Usage:')}
   tracelens summary <trace.json>   Print duration, token, cost and error summary
   tracelens tree <trace.json>      Print the span tree
+  tracelens compare <baseline.json> <candidate.json> [--json]
+                                  Compare runs by operation path
   tracelens --help                 Show this help
 
 ${bold('Install from GitHub (nothing is published to npm yet):')}
@@ -129,7 +132,7 @@ async function main(): Promise<void> {
     console.log(HELP);
     return;
   }
-  if (cmd !== 'summary' && cmd !== 'tree') {
+  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare') {
     console.error(red(`Unknown command "${cmd}".`));
     console.log(HELP);
     process.exitCode = 1;
@@ -143,6 +146,18 @@ async function main(): Promise<void> {
   }
 
   try {
+    if (cmd === 'compare') {
+      const args = process.argv.slice(3);
+      const json = args.includes('--json');
+      const files = args.filter((arg) => arg !== '--json');
+      if (files.length !== 2 || files.some((arg) => arg.startsWith('--')) || args.filter((arg) => arg === '--json').length > 1) {
+        throw new Error('Usage: tracelens compare <baseline.json> <candidate.json> [--json]');
+      }
+      const [baseline, candidate] = await Promise.all(files.map(loadTrace));
+      const report = compareTraces(baseline!, candidate!, DEFAULT_PRICE_TABLE);
+      console.log(json ? JSON.stringify(report, null, 2) : formatComparison(report));
+      return;
+    }
     const trace = await loadTrace(file);
     if (cmd === 'summary') printSummary(file, trace);
     else printTree(trace);

@@ -26,6 +26,7 @@
   --accent-error: #c9382c;
   --accent-error-bg: #fbe6e3;
   --focus-ring: #2f6fb0;
+  --compare-decrease: #087568;
 
   --font-ui: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -54,6 +55,7 @@
   --accent-error: #ff6e61;
   --accent-error-bg: #3a1a17;
   --focus-ring: #6fa8e0;
+  --compare-decrease: #5fd6c4;
   --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
@@ -77,6 +79,7 @@
     --accent-error: #ff6e61;
     --accent-error-bg: #3a1a17;
     --focus-ring: #6fa8e0;
+    --compare-decrease: #5fd6c4;
     --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
   }
 }
@@ -738,4 +741,83 @@ dialog.tl-dialog::backdrop {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* Run comparison: paired measurements share one scale across all operations. */
+.tl-comparison-shell { flex: 1; min-height: 0; overflow: auto; }
+.tl-comparison { max-width: 1320px; margin: 0 auto; padding: 28px 32px; }
+.tl-compare-title, .tl-compare-actions, .tl-compare-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.tl-compare-title { justify-content: space-between; margin-bottom: 24px; }
+.tl-compare-title h1 { font-size: 27px; font-weight: 500; margin: 0; }
+.tl-compare-title p { margin: 4px 0 0; }
+.tl-run-names { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 18px; }
+.tl-run-names > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; min-width: 0; }
+.tl-run-names strong { font-weight: 500; overflow-wrap: anywhere; }
+.tl-baseline-key, .tl-candidate-key { border-left: 4px solid var(--accent-other); padding-left: 8px; }
+.tl-candidate-key { border-color: var(--accent-llm); }
+.tl-compare-table-scroll { overflow-x: auto; }
+.tl-compare-metrics { border-collapse: collapse; width: 100%; background: var(--surface); }
+.tl-compare-metrics th, .tl-compare-metrics td { text-align: right; padding: 10px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.tl-compare-metrics th:first-child { text-align: left; font-weight: 400; }
+.tl-compare-metrics thead th { color: var(--text-dim); font-size: 12px; font-weight: 500; }
+.tl-increase { color: var(--accent-error); }
+.tl-decrease { color: var(--compare-decrease); }
+.tl-unknown { color: var(--text-dim); font-size: 12px; }
+.tl-compare-note { max-width: 88ch; color: var(--text-dim); font-size: 12px; margin: 16px 0 30px; }
+.tl-compare-toolbar { margin-top: 24px; }
+.tl-compare-toolbar h2 { font-size: 18px; font-weight: 500; margin: 0 auto 0 0; }
+.tl-compare-toolbar label { display: flex; align-items: center; gap: 6px; color: var(--text-dim); }
+.tl-compare-toolbar input, .tl-compare-toolbar select { background: var(--surface); border: 1px solid var(--border-strong); border-radius: 3px; padding: 7px; min-width: 0; }
+.tl-compare-method { max-width: 90ch; font-size: 12px; }
+.tl-operation-head, .tl-operation > summary { display: grid; grid-template-columns: minmax(190px, 1.2fr) 85px minmax(240px, 1fr) 160px; gap: 20px; align-items: center; padding: 14px 16px; }
+.tl-operation-head { font-size: 12px; color: var(--text-dim); border-bottom: 1px solid var(--border-strong); }
+.tl-operation { border-bottom: 1px solid var(--border); }
+.tl-operation > summary { cursor: pointer; list-style: none; }
+.tl-operation > summary::-webkit-details-marker { display: none; }
+.tl-operation > summary:hover { background: var(--surface-2); }
+.tl-operation-label { min-width: 0; overflow-wrap: anywhere; }
+.tl-operation-label strong { font-weight: 500; }
+.tl-operation-label strong::before { content: '+ '; color: var(--text-dim); }
+.tl-operation[open] .tl-operation-label strong::before { content: '- '; }
+.tl-operation-path { display: block; font-size: 11px; margin-top: 5px; }
+.tl-operation-status { display: inline-block; border: 1px solid var(--border-strong); padding: 0 5px; font-size: 11px; margin-top: 5px; }
+.tl-operation-change { text-align: right; }
+.tl-operation-change small { display: block; }
+.tl-pair-line { display: grid; grid-template-columns: 12px 1fr 76px; align-items: center; gap: 8px; margin: 3px 0; }
+.tl-pair-line > .mono { text-align: right; font-size: 11px; }
+.tl-pair-label { color: var(--text-dim); font-size: 11px; }
+.tl-pair-track { background: var(--surface-2); height: 7px; }
+.tl-pair-fill { display: block; height: 7px; background: var(--accent-other); }
+.tl-pair-fill.candidate { background: var(--accent-llm); }
+.tl-operation-details { padding: 8px 16px 20px; background: var(--surface); }
+.tl-evidence-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.tl-compare-evidence { min-width: 0; }
+.tl-compare-evidence h4 { font-size: 13px; font-weight: 500; }
+.tl-compare-evidence ul { list-style: none; margin: 0; padding: 0; }
+.tl-compare-evidence li { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; margin-bottom: 14px; font-size: 11px; overflow-wrap: anywhere; }
+.tl-call-link { background: transparent; border: 0; padding: 0; color: var(--accent-retriever); text-decoration: underline; text-align: left; font-size: 12px; cursor: pointer; overflow-wrap: anywhere; }
+.tl-compare-footer { border-top: 1px solid var(--border); padding: 20px 0 0; margin-top: 32px; color: var(--text-dim); font-size: 12px; }
+.tl-load-error { padding: 10px 16px; color: var(--accent-error); background: var(--surface); overflow-wrap: anywhere; }
+.tl-active-file { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 950px) {
+  .tl-header-actions { flex-wrap: wrap; }
+  .tl-operation-head { display: none; }
+  .tl-operation > summary { grid-template-columns: 1fr 85px; gap: 10px; }
+  .tl-operation-count { text-align: right; }
+  .tl-comparison { padding: 20px 16px; }
+  .tl-evidence-columns { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 520px) {
+  .tl-run-names { grid-template-columns: 1fr; gap: 10px; }
+  .tl-compare-toolbar { align-items: stretch; flex-direction: column; }
+  .tl-compare-toolbar label input, .tl-compare-toolbar label select { flex: 1; }
+  .tl-compare-metrics { table-layout: fixed; font-size: 11px; }
+  .tl-compare-metrics th, .tl-compare-metrics td { padding: 9px 5px; white-space: normal; overflow-wrap: anywhere; }
+  .tl-compare-metrics th:first-child { width: 28%; }
+  .tl-compare-metrics thead th { font-size: 10px; }
+  .tl-compare-metrics small { display: block; }
+  .tl-operation > summary { padding: 14px 0; }
+  .tl-operation-details { padding: 8px 0 16px; }
+  .tl-operation-change { font-size: 11px; }
+  .tl-pair-line { grid-template-columns: 10px 1fr 65px; gap: 5px; }
 }

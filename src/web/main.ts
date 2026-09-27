@@ -1,5 +1,5 @@
 import './style.css';
-import { buildSummary, parseOtlpJson, TraceParseError } from '../core/index.js';
+import { buildSummary, compareTraces, parseOtlpJson, TraceParseError } from '../core/index.js';
 import type { ParsedSpan, ParsedTrace, PriceEntry } from '../core/index.js';
 import { Store } from './store.js';
 import { h, mount } from './dom.js';
@@ -9,9 +9,15 @@ import { renderWaterfall } from './waterfall.js';
 import { renderDetailPanel } from './detail-panel.js';
 import type { DetailTab } from './detail-panel.js';
 import { loadPriceTable, openPriceDialog } from './price-settings.js';
+import { renderComparison } from './comparison.js';
+import type { ComparisonSide } from './comparison.js';
 
 interface AppState {
   trace: ParsedTrace | null;
+  baseline: ParsedTrace | null;
+  baselineName: string | null;
+  view: 'trace' | 'compare';
+  inspectedSide: ComparisonSide;
   fileName: string | null;
   loadError: string | null;
   selectedSpanId: string | null;
@@ -32,6 +38,10 @@ function initialTheme(): 'light' | 'dark' {
 
 const store = new Store<AppState>({
   trace: null,
+  baseline: null,
+  baselineName: null,
+  view: 'trace',
+  inspectedSide: 'candidate',
   fileName: null,
   loadError: null,
   selectedSpanId: null,
@@ -48,13 +58,20 @@ function findSpan(trace: ParsedTrace, spanId: string | null): ParsedSpan | null 
   return trace.spans.find((s) => s.spanId === spanId) ?? null;
 }
 
+// A newer file choice or navigation supersedes any outstanding read/fetch.
+let loadVersion = 0;
+
 async function loadFile(file: File): Promise<void> {
+  const version = ++loadVersion;
   try {
+    if (file.size > 25 * 1024 * 1024) throw new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
     const text = await file.text();
     const json = JSON.parse(text);
     const trace = parseOtlpJson(json);
-    store.set({ trace, fileName: file.name, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    if (version !== loadVersion) return;
+    store.set({ trace, baseline: null, baselineName: null, view: 'trace', inspectedSide: 'candidate', fileName: file.name, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
   } catch (err) {
+    if (version !== loadVersion) return;
     const message =
       err instanceof TraceParseError || err instanceof SyntaxError
         ? err.message
@@ -63,15 +80,52 @@ async function loadFile(file: File): Promise<void> {
   }
 }
 
+async function loadCandidate(file: File): Promise<void> {
+  const state = store.get();
+  const baseline = state.baseline ?? state.trace;
+  if (!baseline) return;
+  const version = ++loadVersion;
+  try {
+    if (file.size > 25 * 1024 * 1024) throw new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
+    const trace = parseOtlpJson(JSON.parse(await file.text()));
+    if (version !== loadVersion) return;
+    compareTraces(baseline, trace, state.priceTable);
+    store.set({ baseline, baselineName: state.baselineName ?? state.fileName, trace, fileName: file.name, view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
+  } catch (err) {
+    if (version !== loadVersion) return;
+    store.set({ loadError: `Couldn't compare "${file.name}": ${err instanceof Error ? err.message : String(err)}` });
+  }
+}
+
+async function loadComparisonExample(): Promise<void> {
+  const version = ++loadVersion;
+  try {
+    const traces = await Promise.all(['baseline', 'candidate'].map(async (side) => {
+      const response = await fetch(`${import.meta.env.BASE_URL}examples/comparison-${side}.json`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return parseOtlpJson(await response.json());
+    }));
+    if (version !== loadVersion) return;
+    compareTraces(traces[0]!, traces[1]!, store.get().priceTable);
+    store.set({ baseline: traces[0]!, baselineName: 'baseline (synthetic)', trace: traces[1]!, fileName: 'candidate (synthetic)', view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
+  } catch (err) {
+    if (version !== loadVersion) return;
+    store.set({ loadError: `Couldn't load comparison: ${err instanceof Error ? err.message : String(err)}` });
+  }
+}
+
 async function loadExample(path: string): Promise<void> {
+  const version = ++loadVersion;
   try {
     const base = import.meta.env.BASE_URL;
     const res = await fetch(`${base}${path}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
     const trace = parseOtlpJson(json);
-    store.set({ trace, fileName: path.split('/').pop() ?? path, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    if (version !== loadVersion) return;
+    store.set({ trace, baseline: null, baselineName: null, view: 'trace', inspectedSide: 'candidate', fileName: path.split('/').pop() ?? path, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
   } catch (err) {
+    if (version !== loadVersion) return;
     store.set({ loadError: `Couldn't load the sample trace: ${err instanceof Error ? err.message : String(err)}` });
   }
 }
@@ -81,6 +135,10 @@ function applyTheme(theme: 'light' | 'dark'): void {
 }
 
 function buildHeader(state: AppState): HTMLElement {
+  const compareInput = h('input', { type: 'file', accept: '.json,application/json', className: 'visually-hidden', tabindex: '-1', 'aria-label': 'Candidate trace file', onChange: (e: Event) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (file) void loadCandidate(file);
+  } }) as HTMLInputElement;
   return h(
     'header',
     { className: 'tl-header' },
@@ -94,16 +152,19 @@ function buildHeader(state: AppState): HTMLElement {
     h(
       'div',
       { className: 'tl-header-actions' },
-      state.trace
-        ? h('span', { className: 'faint mono', style: 'margin-right:4px' }, state.fileName ?? '')
+      state.trace && state.view === 'trace'
+        ? h('span', { className: 'dim mono tl-active-file' }, `${state.baseline ? `${state.inspectedSide}: ` : ''}${state.baseline && state.inspectedSide === 'baseline' ? state.baselineName ?? '' : state.fileName ?? ''}`)
         : null,
+      compareInput,
+      state.trace && state.view !== 'compare' ? h('button', { className: 'tl-btn', onClick: () => state.baseline ? store.set({ view: 'compare' }) : compareInput.click() }, state.baseline ? 'Back to comparison' : 'Compare with another run') : null,
       state.trace
         ? h(
             'button',
             {
               className: 'tl-btn',
               onClick: () => {
-                store.set({ trace: null, fileName: null, selectedSpanId: null });
+                loadVersion++;
+                store.set({ trace: null, baseline: null, baselineName: null, view: 'trace', fileName: null, loadError: null, selectedSpanId: null });
               },
             },
             'Load another trace',
@@ -149,19 +210,37 @@ function render(): void {
     mount(
       app,
       buildHeader(state),
-      state.loadError ? h('div', { style: 'padding:8px 16px;color:var(--accent-error);font-size:12.5px' }, state.loadError) : null,
+      state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null,
     );
     const rest = h('div', { style: 'flex:1;display:flex;min-height:0' });
     app.appendChild(rest);
     renderDropzone(rest, {
       onFile: (f) => void loadFile(f),
       onLoadExample: (p) => void loadExample(p),
+      onCompareExample: () => void loadComparisonExample(),
     });
     return;
   }
 
-  const summary = buildSummary(state.trace, state.priceTable);
-  const selectedSpan = findSpan(state.trace, state.selectedSpanId);
+  if (state.baseline && state.view === 'compare') {
+    const comparisonEl = h('div', { className: 'tl-comparison-shell' });
+    renderComparison(comparisonEl, compareTraces(state.baseline, state.trace, state.priceTable),
+      { baseline: state.baselineName ?? 'Baseline', candidate: state.fileName ?? 'Candidate' }, {
+        onSwap: () => { loadVersion++; store.set({ trace: state.baseline, fileName: state.baselineName, baseline: state.trace, baselineName: state.fileName, selectedSpanId: null, loadError: null }); },
+        onReplace: (file) => void loadCandidate(file),
+        onInspect: (side, spanId) => store.set({ view: 'trace', inspectedSide: side, selectedSpanId: spanId, detailTab: 'overview', collapsedIds: new Set(), zoom: 1, panNs: 0n }),
+        onClose: () => {
+          loadVersion++;
+          store.set({ baseline: null, baselineName: null, view: 'trace', inspectedSide: 'candidate', selectedSpanId: null, loadError: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+        },
+      });
+    mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, comparisonEl);
+    return;
+  }
+
+  const activeTrace = state.baseline && state.inspectedSide === 'baseline' ? state.baseline : state.trace;
+  const summary = buildSummary(activeTrace, state.priceTable);
+  const selectedSpan = findSpan(activeTrace, state.selectedSpanId);
 
   const summaryEl = h('div', {});
   renderSummaryHeader(summaryEl, summary);
@@ -169,7 +248,7 @@ function render(): void {
   const centerEl = h('div', { className: 'tl-center' });
   renderWaterfall(
     centerEl,
-    state.trace,
+    activeTrace,
     { collapsedIds: state.collapsedIds, selectedSpanId: state.selectedSpanId, zoom: state.zoom, panNs: state.panNs },
     {
       onToggle: (spanId) => {
@@ -186,11 +265,14 @@ function render(): void {
   const detailEl = h('div', { className: 'tl-detail-pane' });
   renderDetailPanel(detailEl, selectedSpan, state.detailTab, (tab) => store.set({ detailTab: tab }));
 
-  mount(app, buildHeader(state), summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl));
+  mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl));
 }
 
 store.subscribe(render);
 render();
+if (new URLSearchParams(window.location.search).get('example') === 'compare') {
+  void loadComparisonExample();
+}
 
 let resizeTimer: ReturnType<typeof setTimeout> | undefined;
 window.addEventListener('resize', () => {

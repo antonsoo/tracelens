@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+- Compare two local runs in the browser or with `tracelens compare`.
+  Group repeated calls by operation ancestry; inspect per-side spans and
+  model changes, sort/filter operations, swap runs, and export JSON.
+- Compare elapsed time, self time, tokens, estimated costs and errors with
+  explicit missing-measurement coverage and a captured price table.
+- Add a labeled synthetic comparison pair and executable browser/CLI checks.
+- Clip child intervals to the parent for self-time accounting.
+- Reject cyclic parents and duplicate span IDs; resolve parents within
+  their trace and assign depths without recursive stack overflow.
+
 ## [0.1.0] - 2026-09-24
 
 Initial release.

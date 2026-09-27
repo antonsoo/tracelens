@@ -1,6 +1,6 @@
 # Example traces
 
-Both trace files in this directory are **real [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/)
+The original two trace files in this directory are **real [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/)
 output**: real trace/span IDs, real parent/child links, real captured Python
 stack traces on the failing spans, and a real OTLP/JSON encoding (via
 `opentelemetry-exporter-otlp-proto-common`'s `encode_spans` + protobuf's
@@ -66,3 +66,16 @@ Each run overwrites its trace file with fresh IDs (the GenAI trace keeps its
 fixed timestamps; the OpenInference one takes the wall clock). The small
 copies in `tests/fixtures/` are what the tests assert on, so regenerating
 these files never breaks the test suite.
+
+## Synthetic comparison pair
+
+`comparison-baseline.json` and `comparison-candidate.json` are hand-authored
+OTLP/JSON fixtures, not captured SDK runs. Their timings, usage, models,
+service name and outcomes are invented. Every span carries
+`example.synthetic=true`.
+
+The baseline takes 6.20 seconds and includes overlapping document searches.
+The candidate takes 9.60 seconds, uses a different model, runs two searches
+sequentially (the first ends in error), adds `fetch_policy` and removes
+`validate_answer`. The tests independently check the totals. Use the pair
+to learn the interface and reproduce a comparison, not to benchmark models.

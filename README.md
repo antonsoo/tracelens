@@ -17,6 +17,13 @@ tree, per-span prompts and completions, tool calls, token usage and
 estimated cost, errors and retries, and a "where did the time and money go"
 summary — nothing leaves the browser tab.
 
+**[Compare two runs](https://antonsoo.github.io/tracelens/?example=compare)** to see which operations changed: elapsed time, calls,
+tokens, estimated cost and errors, with every aggregate linked back to its
+original spans. Repeated calls are grouped by operation path, so inserting
+a new model turn does not shift a guessed one-to-one alignment.
+
+![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
+
 ![tracelens waterfall, dark mode, with a message thread expanded](docs/assets/hero-dark.png)
 
 ## Live demo
@@ -82,6 +89,11 @@ built itself; it's cosmetic, not an error (verified end-to-end via a local
   readout.
 - **CLI** (`tracelens summary` / `tracelens tree`) for the same numbers in
   a terminal, e.g. in a CI log.
+- **Run comparison**, in the browser and `tracelens compare`: operation
+  groups ranked by absolute self-time change, model changes, added/removed
+  operations, per-side span inspection, and JSON export with pricing inputs.
+  Missing measurements remain unknown; an unpriced call cannot become a
+  claim of cost savings.
 - Light and dark themes, keyboard-navigable rows, works fully offline once
   loaded, zero telemetry.
 
@@ -131,15 +143,56 @@ in the code and in `docs/formats.md` rather than oversold in this README.
 
 ### Web UI (`src/web/`)
 
-Vite + TypeScript, deliberately with **no framework** — the whole app is
-under 1,000 lines of DOM manipulation behind a 27-line observable store
-(`src/web/store.ts`); a framework would have been more ceremony than the
-problem needs. Trace content (prompts, tool arguments, anything that came
+Vite + TypeScript with **no framework**, using DOM components and a small
+observable store (`src/web/store.ts`). Trace content (prompts, tool arguments, anything that came
 from the dropped file) is rendered through `textContent`/DOM properties
 only, never `innerHTML` with interpolated data — see the comment in
 `src/web/dom.ts`.
 
 ## Usage
+
+### Compare a baseline with a candidate
+
+In the browser, load your baseline and choose **Compare with another run**.
+Select the candidate file. Expand an operation to inspect either run's
+original calls; use **Back to comparison** to return. **Swap runs** reverses
+the comparison, and **Prices** applies the same table to both runs.
+
+To try a reproducible example from the checkout:
+
+```bash
+npm ci
+npm run build
+node dist-cli/cli/index.js compare examples/comparison-baseline.json examples/comparison-candidate.json
+```
+
+The example is **hand-authored synthetic telemetry**, with a model change,
+a failing search followed by another search, and an added/removed tool:
+
+| Measurement | Baseline | Candidate | Change |
+|---|---:|---:|---:|
+| Elapsed time | 6.20 s | 9.60 s | +3.40 s |
+| Summed self time | 7.00 s | 9.60 s | +2.60 s |
+| Input tokens | 3,800 | 5,800 | +2,000 |
+| Output tokens | 600 | 830 | +230 |
+| Errors | 0 | 1 | +1 |
+
+Search contributes +1.50 s of summed work, and model calls +1.10 s.
+The elapsed-time change differs because the baseline's searches overlap
+for 0.80 s, while the candidate's searches run sequentially. These are
+observations about the example, not a model benchmark or a causal claim.
+
+```bash
+node dist-cli/cli/index.js compare examples/comparison-baseline.json examples/comparison-candidate.json --json > comparison.json
+```
+
+The versioned JSON includes per-operation measurements, missing-call
+counts, original span IDs, model names, parser warnings and the price table
+used. It omits prompts, completions, attributes and tool payloads, but
+operation names and IDs may still contain information you do not want to
+share. [Matching rules and limitations](docs/comparison.md).
+
+### Inspect one trace
 
 **Export a trace from your own app.** With the OpenTelemetry Collector's
 file exporter:
@@ -196,6 +249,12 @@ scenario and how to regenerate them.
 
 ## Accuracy and limitations
 
+- Comparison takes **one trace per file**. It groups by service namespace,
+  service name, kind and full operation ancestry; renaming or reparenting
+  an operation produces an added/removed group. Repeated calls in a group
+  are not individually paired, and a pair of runs does not establish
+  statistical significance. See [comparison details](docs/comparison.md).
+
 - The cost estimator is only as good as the price table; unmatched models
   show `—`, never a silently-wrong `$0`.
 - "Critical path" is the heuristic described above, not a guarantee of
@@ -216,7 +275,7 @@ scenario and how to regenerate them.
 npm test
 ```
 
-48 tests across 5 files: OTLP parsing against the two real example fixtures
+The core test suite covers OTLP parsing against the two real example fixtures
 (tree structure, parent/child linking, error-span counts) plus hand-built
 edge cases (missing parents, clock skew, malformed spans); semconv mapping
 for both conventions against the real fixtures; the waterfall's time→pixel
@@ -226,7 +285,10 @@ on a miss); and self-time/retry-count/critical-path correctness on the
 example trace. Where a check has an independent oracle — the layout math
 against hand-computed pixel positions, the cost math against hand-computed
 totals — the test does that, rather than asserting against the code's own
-output.
+output. Comparison adds operation matching, missing-measurement coverage,
+structural validation and interval-union checks against an independent
+occupancy oracle. `npm run test:cli` checks the built executable;
+`npm run test:browser` exercises the real interface after a build.
 
 **Performance.** A generated 20,001-span trace parses in **~54 ms** on this
 box (14 vCPU WSL2 Linux, 48 GB RAM) — see `tests/otlp-parser.test.ts`, which
@@ -242,12 +304,14 @@ npm run test          # vitest
 npm run lint           # eslint
 npm run typecheck      # tsc --noEmit, both tsconfigs
 npm run build           # dist/ (web) + dist-cli/ (CLI)
+npm run test:cli        # compiled CLI integration
+npm run test:browser    # interaction checks; needs Playwright Chromium
 ```
 
 CI runs are disabled for now, so there's no status badge above.
-`.github/workflows/ci.yml` runs install, lint, typecheck, test and build on
-push/PR; `.github/workflows/pages.yml` deploys `dist/` to the `gh-pages`
-branch. Both mirror the commands above exactly.
+`.github/workflows/ci.yml` defines install, lint, typecheck, core tests, build,
+CLI integration and browser interaction checks on push/PR; `.github/workflows/pages.yml` deploys `dist/` to the `gh-pages`
+branch. The workflows use the same commands shown above.
 
 ## Contributing
 

@@ -6,3 +6,4 @@ export * from './pricing.js';
 export * from './critical-path.js';
 export * from './summary.js';
 export * from './layout.js';
+export * from './compare.js';
