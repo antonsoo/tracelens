@@ -49,7 +49,7 @@ export function decodeAnyValue(v: unknown): unknown {
   if ('kvlistValue' in v) {
     const kv = v.kvlistValue;
     const values = isRecord(kv) && Array.isArray(kv.values) ? kv.values : [];
-    const out: AttrMap = {};
+    const out: AttrMap = Object.create(null) as AttrMap;
     for (const entry of values) {
       if (isRecord(entry) && typeof entry.key === 'string') {
         out[entry.key] = decodeAnyValue(entry.value);
@@ -61,7 +61,7 @@ export function decodeAnyValue(v: unknown): unknown {
 }
 
 function decodeAttributes(list: unknown): AttrMap {
-  const out: AttrMap = {};
+  const out: AttrMap = Object.create(null) as AttrMap;
   if (!Array.isArray(list)) return out;
   for (const entry of list) {
     if (isRecord(entry) && typeof entry.key === 'string') {
@@ -71,17 +71,13 @@ function decodeAttributes(list: unknown): AttrMap {
   return out;
 }
 
-function toBigNanos(raw: unknown): bigint {
-  if (raw === undefined || raw === null) return 0n;
-  if (typeof raw === 'string') {
-    try {
-      return BigInt(raw);
-    } catch {
-      return 0n;
-    }
-  }
-  if (typeof raw === 'number' && Number.isFinite(raw)) return BigInt(Math.round(raw));
-  return 0n;
+function toBigNanos(raw: unknown): bigint | undefined {
+  // fixed64 timestamps: decimal strings preserve precision at epoch scale.
+  if (typeof raw === 'number' && (!Number.isSafeInteger(raw) || raw < 0)) return undefined;
+  if (typeof raw === 'string' && (!/^\d{1,20}$/.test(raw))) return undefined;
+  if (typeof raw !== 'number' && typeof raw !== 'string') return undefined;
+  const value = BigInt(raw);
+  return value <= 18_446_744_073_709_551_615n ? value : undefined;
 }
 
 const VALID_SPAN_KIND_NAMES = new Set<string>(Object.values(SPAN_KIND_BY_NUMBER));
@@ -108,15 +104,20 @@ function decodeStatus(raw: unknown): { code: StatusCode; message?: string } {
   return message !== undefined ? { code, message } : { code };
 }
 
-function decodeEvents(raw: unknown): SpanEvent[] {
+function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string): SpanEvent[] {
   if (!Array.isArray(raw)) return [];
-  return raw.map((e) => {
+  return raw.flatMap((e) => {
     const rec = isRecord(e) ? e : {};
-    return {
+    const time = toBigNanos(rec.timeUnixNano ?? rec.time_unix_nano ?? 0);
+    if (time === undefined) {
+      warnings.push({ message: 'Skipped an event with an invalid timestamp.', spanId });
+      return [];
+    }
+    return [{
       name: typeof rec.name === 'string' ? rec.name : '',
-      timeUnixNano: toBigNanos(rec.timeUnixNano ?? rec.time_unix_nano),
+      timeUnixNano: time,
       attributes: decodeAttributes(rec.attributes),
-    };
+    }];
   });
 }
 
@@ -172,10 +173,16 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
           warnings.push({ message: `Skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).` });
           continue;
         }
-        if (!traceId) traceId = spanTraceId;
-
         const start = toBigNanos(raw.startTimeUnixNano ?? raw.start_time_unix_nano);
         let end = toBigNanos(raw.endTimeUnixNano ?? raw.end_time_unix_nano);
+        if (start === undefined || end === undefined) {
+          warnings.push({ message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. Use unsigned decimal nanosecond strings (or safe integer numbers).`, spanId });
+          continue;
+        }
+        if (!traceId) traceId = spanTraceId;
+        if (traceId !== spanTraceId) {
+          throw new TraceParseError('Multiple trace IDs in one file. Export one trace per file, then compare the two runs.');
+        }
         if (end < start) {
           warnings.push({
             message: `Span "${String(raw.name)}" has an end time before its start time (clock skew?) — clamped to start.`,
@@ -200,7 +207,7 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
           durationNs: end - start,
           status: decodeStatus(raw.status),
           attributes,
-          events: decodeEvents(raw.events),
+          events: decodeEvents(raw.events, warnings, spanId),
           resourceAttributes,
           ...(scopeName ? { scopeName } : {}),
           ...(scopeVersion ? { scopeVersion } : {}),

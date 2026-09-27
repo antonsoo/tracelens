@@ -4,6 +4,7 @@
 // coarse `AgentSpanKind` buckets the UI colors by. See docs/formats.md for
 // the exact attribute keys and spec versions this was verified against.
 import type { AgentSpanKind, AttrMap, Convention, GenAiInfo, NormalizedMessage, ParsedSpan, TokenUsage } from './types.js';
+import { isTokenCount } from './cost.js';
 
 function str(v: unknown): string | undefined {
   return typeof v === 'string' && v.length > 0 ? v : undefined;
@@ -15,6 +16,28 @@ function strArray(v: unknown): string[] | undefined {
   if (!Array.isArray(v)) return undefined;
   const out = v.filter((x): x is string => typeof x === 'string');
   return out.length > 0 ? out : undefined;
+}
+
+type UsageField = Exclude<keyof TokenUsage, 'invalidFields'>;
+function extractUsage(attrs: AttrMap, fields: Partial<Record<UsageField, string[]>>): TokenUsage | undefined {
+  const usage: TokenUsage = {};
+  for (const field of Object.keys(fields) as UsageField[]) {
+    const key = fields[field]!.find((key) => Object.hasOwn(attrs, key));
+    if (!key) continue;
+    const value = attrs[key];
+    usage[field] = isTokenCount(value) ? value : undefined;
+    if (!isTokenCount(value)) (usage.invalidFields ??= []).push(field);
+  }
+  return Object.keys(usage).length ? usage : undefined;
+}
+
+function mergeUsage(oi: TokenUsage | undefined, otel: TokenUsage | undefined): TokenUsage | undefined {
+  if (!oi || !otel) return otel ?? oi;
+  const merged = { ...oi, ...otel };
+  const invalid = [...(oi.invalidFields ?? []).filter((field) => !Object.hasOwn(otel, field)), ...(otel.invalidFields ?? [])];
+  delete merged.invalidFields;
+  if (invalid.length) merged.invalidFields = invalid;
+  return merged;
 }
 
 /** `gen_ai.input.messages` / `.output.messages` / `.system_instructions` may arrive as a
@@ -97,18 +120,17 @@ const OPENINFERENCE_KIND_MAP: Record<string, AgentSpanKind> = {
 function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
   const operationName = str(attrs['gen_ai.operation.name']);
   const provider = str(attrs['gen_ai.provider.name']) ?? str(attrs['gen_ai.system']); // gen_ai.system is the pre-provider.name (legacy) attribute
-  if (!operationName && !provider && !('gen_ai.request.model' in attrs) && !('gen_ai.tool.name' in attrs)) {
+  if (!Object.keys(attrs).some((key) => key.startsWith('gen_ai.'))) {
     return undefined;
   }
 
-  const usage: TokenUsage = {
-    inputTokens: num(attrs['gen_ai.usage.input_tokens']) ?? num(attrs['gen_ai.usage.prompt_tokens']),
-    outputTokens: num(attrs['gen_ai.usage.output_tokens']) ?? num(attrs['gen_ai.usage.completion_tokens']),
-    cacheReadTokens: num(attrs['gen_ai.usage.cache_read.input_tokens']),
-    cacheWriteTokens: num(attrs['gen_ai.usage.cache_write.input_tokens']),
-    reasoningOutputTokens: num(attrs['gen_ai.usage.reasoning.output_tokens']),
-  };
-  const hasUsage = Object.values(usage).some((x) => x !== undefined);
+  const usage = extractUsage(attrs, {
+    inputTokens: ['gen_ai.usage.input_tokens', 'gen_ai.usage.prompt_tokens'],
+    outputTokens: ['gen_ai.usage.output_tokens', 'gen_ai.usage.completion_tokens'],
+    cacheReadTokens: ['gen_ai.usage.cache_read.input_tokens'],
+    cacheWriteTokens: ['gen_ai.usage.cache_write.input_tokens'],
+    reasoningOutputTokens: ['gen_ai.usage.reasoning.output_tokens'],
+  });
 
   const info: GenAiInfo = {
     ...(operationName ? { operationName } : {}),
@@ -126,7 +148,7 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
     ...(strArray(attrs['gen_ai.response.finish_reasons'])
       ? { finishReasons: strArray(attrs['gen_ai.response.finish_reasons']) }
       : {}),
-    ...(hasUsage ? { usage } : {}),
+    ...(usage ? { usage } : {}),
     ...(parseMessageList(attrs['gen_ai.input.messages']) ? { inputMessages: parseMessageList(attrs['gen_ai.input.messages']) } : {}),
     ...(parseMessageList(attrs['gen_ai.output.messages']) ? { outputMessages: parseMessageList(attrs['gen_ai.output.messages']) } : {}),
     ...(parseMessageList(attrs['gen_ai.system_instructions'])
@@ -169,15 +191,14 @@ function extractOpenInference(attrs: AttrMap): GenAiInfo | undefined {
   const kind = str(attrs['openinference.span.kind']);
   if (!kind) return undefined;
 
-  const usage: TokenUsage = {
-    inputTokens: num(attrs['llm.token_count.prompt']),
-    outputTokens: num(attrs['llm.token_count.completion']),
-    totalTokens: num(attrs['llm.token_count.total']),
-    cacheReadTokens: num(attrs['llm.token_count.prompt_details.cache_read']),
-    cacheWriteTokens: num(attrs['llm.token_count.prompt_details.cache_write']),
-    reasoningOutputTokens: num(attrs['llm.token_count.completion_details.reasoning']),
-  };
-  const hasUsage = Object.values(usage).some((x) => x !== undefined);
+  const usage = extractUsage(attrs, {
+    inputTokens: ['llm.token_count.prompt'],
+    outputTokens: ['llm.token_count.completion'],
+    totalTokens: ['llm.token_count.total'],
+    cacheReadTokens: ['llm.token_count.prompt_details.cache_read'],
+    cacheWriteTokens: ['llm.token_count.prompt_details.cache_write'],
+    reasoningOutputTokens: ['llm.token_count.completion_details.reasoning'],
+  });
 
   const inputMessages = extractOpenInferenceMessages(attrs, 'input');
   const outputMessages = extractOpenInferenceMessages(attrs, 'output');
@@ -190,7 +211,7 @@ function extractOpenInference(attrs: AttrMap): GenAiInfo | undefined {
     ...(str(attrs['llm.model_name']) ? { requestModel: str(attrs['llm.model_name']) } : {}),
     ...(str(attrs['llm.response.model_name']) ? { responseModel: str(attrs['llm.response.model_name']) } : {}),
     ...(str(attrs['session.id']) ? { conversationId: str(attrs['session.id']) } : {}),
-    ...(hasUsage ? { usage } : {}),
+    ...(usage ? { usage } : {}),
     ...(inputMessages
       ? { inputMessages }
       : fallbackInput
@@ -242,6 +263,8 @@ export function normalizeSpan(span: ParsedSpan): ParsedSpan {
   if (otel && oi) {
     convention = 'otel-genai'; // both present is unusual; prefer the richer, more current convention
     genai = { ...oi, ...otel };
+    const usage = mergeUsage(oi.usage, otel.usage);
+    if (usage) genai.usage = usage;
   } else if (otel) {
     convention = 'otel-genai';
     genai = otel;
@@ -258,11 +281,15 @@ export function normalizeSpan(span: ParsedSpan): ParsedSpan {
   }
 
   let agentKind: AgentSpanKind = 'other';
-  if (convention === 'otel-genai' && genai?.operationName) {
-    agentKind = GENAI_OP_TO_KIND[genai.operationName] ?? 'other';
-  } else if (convention === 'openinference') {
-    const kind = str(span.attributes['openinference.span.kind']);
-    agentKind = (kind && OPENINFERENCE_KIND_MAP[kind]) || 'other';
+  const oiKind = str(span.attributes['openinference.span.kind']);
+  if (otel?.operationName && Object.hasOwn(GENAI_OP_TO_KIND, otel.operationName)) {
+    agentKind = GENAI_OP_TO_KIND[otel.operationName]!;
+  } else if (oiKind && Object.hasOwn(OPENINFERENCE_KIND_MAP, oiKind)) {
+    agentKind = OPENINFERENCE_KIND_MAP[oiKind]!;
+  } else if (!otel?.operationName && !oiKind && genai) {
+    // Older exporters have model/usage attributes but no operation name.
+    if (genai.toolName) agentKind = 'tool';
+    else if (genai.requestModel || genai.responseModel || genai.usage) agentKind = 'llm';
   }
 
   return {

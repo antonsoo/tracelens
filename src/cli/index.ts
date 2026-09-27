@@ -7,7 +7,6 @@
 // installs it).
 import { readFile } from 'node:fs/promises';
 import { parseOtlpJson, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs } from '../core/index.js';
-import type { ParsedSpan } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, table, yellow } from './format.js';
 import { formatComparison } from './compare-report.js';
 
@@ -82,24 +81,24 @@ function printSummary(path: string, trace: ReturnType<typeof parseOtlpJson>): vo
         summary.modelUsage.map((r) => [
           r.model,
           fmtInt(r.calls),
-          fmtInt(r.inputTokens),
-          fmtInt(r.outputTokens),
+          r.missingInputCalls ? `unknown (${r.missingInputCalls} missing)` : fmtInt(r.inputTokens),
+          r.missingOutputCalls ? `unknown (${r.missingOutputCalls} missing)` : fmtInt(r.outputTokens),
           fmtUsd(r.costUsd),
         ]),
       ),
     );
     const totalLine = `total: ${fmtUsd(summary.totalCostUsd)}`;
-    console.log(`\n${bold(totalLine)}${summary.uncostedCalls > 0 ? dim(`  (${summary.uncostedCalls} call(s) had no price match)`) : ''}`);
+    console.log(`\n${bold(totalLine)}${summary.uncostedCalls > 0 ? dim(`  (known subtotal; ${summary.uncostedCalls} call(s) lack valid usage or pricing)`) : ''}`);
   } else {
     console.log(heading('Tokens & cost by model'));
     console.log(dim('No LLM spans with gen_ai/OpenInference usage attributes were found.'));
   }
 
-  console.log(heading('Errors & retries'));
+  console.log(heading('Errors & possible retries'));
   console.log(
     `${summary.errorCount > 0 ? red(`${summary.errorCount} span(s) ended in error`) : green('no errors')}` +
       dim('  ·  ') +
-      `${summary.retryCount} retried call(s)`,
+      `${summary.retryCount} possible retried call(s)`,
   );
 
   console.log(heading('Critical path'));
@@ -116,13 +115,14 @@ function printSummary(path: string, trace: ReturnType<typeof parseOtlpJson>): vo
 }
 
 function printTree(trace: ReturnType<typeof parseOtlpJson>): void {
-  const walk = (span: ParsedSpan): void => {
+  const pending = [...trace.roots].reverse();
+  while (pending.length) {
+    const span = pending.pop()!;
     const statusMark = span.status.code === 'ERROR' ? red(' ✗') : '';
     const label = span.genai?.toolName ? `${span.name} (${span.genai.toolName})` : span.name;
     console.log(`${'  '.repeat(span.depth)}${kindColor(span.agentKind, label)} ${dim(fmtMs(spanDurationMs(span)))}${statusMark}`);
-    for (const c of span.children) walk(c);
-  };
-  for (const r of trace.roots) walk(r);
+    for (let i = span.children.length - 1; i >= 0; i--) pending.push(span.children[i]!);
+  }
 }
 
 async function main(): Promise<void> {

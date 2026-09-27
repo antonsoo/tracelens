@@ -1,4 +1,4 @@
-import { estimateSpanCost } from './cost.js';
+import { estimateSpanCost, isTokenCount } from './cost.js';
 import type { PriceEntry } from './pricing.js';
 import { spanDurationMs } from './types.js';
 import type { ParsedSpan, ParsedTrace } from './types.js';
@@ -10,6 +10,8 @@ export interface ModelUsageRow {
   calls: number;
   inputTokens: number;
   outputTokens: number;
+  missingInputCalls: number;
+  missingOutputCalls: number;
   costUsd?: number; // undefined if no call for this model had a price match
 }
 
@@ -57,29 +59,27 @@ export function selfTimeNs(span: ParsedSpan): bigint {
   return self > 0n ? self : 0n;
 }
 
-/** A tool-call span is treated as a retry when a same-parent, same-tool-name
- * sibling *tool* span precedes it — the shape produced by "attempt, fail,
- * attempt again" in the example traces, and a common real pattern. Only
- * `tool` spans are considered: repeated `llm` calls in a conversation are
- * normal turns, not retries, even though they often share a span name. */
+/** A possible retry follows a failed, completed same-parent tool call.
+ * The trace cannot prove identical intent; successful repetitions and
+ * overlapping calls alone are not evidence of a retry. */
 function countRetries(spans: ParsedSpan[]): number {
   let retries = 0;
   const byParent = new Map<string, ParsedSpan[]>();
   for (const s of spans) {
     if (s.agentKind !== 'tool') continue;
-    const key = s.parentSpanId ?? '';
+    const key = JSON.stringify([s.traceId, s.parentSpanId ?? '']);
     const list = byParent.get(key) ?? [];
     list.push(s);
     byParent.set(key, list);
   }
   for (const siblings of byParent.values()) {
-    const seen = new Map<string, number>();
+    const seen = new Map<string, ParsedSpan>();
     const sorted = [...siblings].sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : 1));
     for (const s of sorted) {
       const label = s.genai?.toolName ?? s.name;
-      const count = seen.get(label) ?? 0;
-      if (count > 0) retries += 1;
-      seen.set(label, count + 1);
+      const previous = seen.get(label);
+      if (previous?.status.code === 'ERROR' && previous.endTimeUnixNano <= s.startTimeUnixNano) retries += 1;
+      seen.set(label, s);
     }
   }
   return retries;
@@ -101,19 +101,24 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
 
     if (span.status.code === 'ERROR') errorCount += 1;
 
-    if (span.agentKind === 'llm' && span.genai) {
-      const model = span.genai.responseModel ?? span.genai.requestModel ?? '(unknown model)';
+    if (span.agentKind === 'llm') {
+      const genai = span.genai ?? {};
+      const model = genai.responseModel ?? genai.requestModel ?? '(unknown model)';
       const row = usageByModel.get(model) ?? {
         model,
-        ...(span.genai.provider ? { provider: span.genai.provider } : {}),
+        ...(genai.provider ? { provider: genai.provider } : {}),
         calls: 0,
         inputTokens: 0,
         outputTokens: 0,
+        missingInputCalls: 0,
+        missingOutputCalls: 0,
       };
       row.calls += 1;
-      row.inputTokens += span.genai.usage?.inputTokens ?? 0;
-      row.outputTokens += span.genai.usage?.outputTokens ?? 0;
-      const cost = estimateSpanCost(span.genai, priceTable);
+      if (isTokenCount(genai.usage?.inputTokens)) row.inputTokens += genai.usage.inputTokens;
+      else row.missingInputCalls++;
+      if (isTokenCount(genai.usage?.outputTokens)) row.outputTokens += genai.usage.outputTokens;
+      else row.missingOutputCalls++;
+      const cost = estimateSpanCost(genai, priceTable);
       if (cost) {
         row.costUsd = (row.costUsd ?? 0) + cost.costUsd;
       } else {

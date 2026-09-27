@@ -4,12 +4,13 @@ import type { ParsedSpan, ParsedTrace } from '../core/index.js';
  * root, plus every descendant of a span *not* in `collapsedIds`. */
 export function flattenVisible(trace: ParsedTrace, collapsedIds: ReadonlySet<string>): ParsedSpan[] {
   const out: ParsedSpan[] = [];
-  const walk = (span: ParsedSpan): void => {
+  const pending = [...trace.roots].reverse();
+  while (pending.length) {
+    const span = pending.pop()!;
     out.push(span);
     if (!collapsedIds.has(span.spanId)) {
-      for (const child of span.children) walk(child);
+      for (let i = span.children.length - 1; i >= 0; i--) pending.push(span.children[i]!);
     }
-  };
-  for (const root of trace.roots) walk(root);
+  }
   return out;
 }

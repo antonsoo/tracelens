@@ -54,11 +54,11 @@ describe('estimateSpanCost', () => {
     ).toBeUndefined();
   });
 
-  it('never returns a negative cost when cache tokens exceed reported input tokens', () => {
+  it('leaves cost unknown when cache counts contradict total input tokens', () => {
     const cost = estimateSpanCost(
       { responseModel: 'gpt-4o', usage: { inputTokens: 100, outputTokens: 0, cacheReadTokens: 500 } },
       table,
     );
-    expect(cost!.costUsd).toBeGreaterThanOrEqual(0);
+    expect(cost).toBeUndefined();
   });
 });

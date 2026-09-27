@@ -56,6 +56,8 @@ export interface NormalizedMessage {
 
 /** Token usage, normalized across gen_ai.usage.* and llm.token_count.* naming. */
 export interface TokenUsage {
+  /** Present but invalid fields must not be mistaken for absent optional counts. */
+  invalidFields?: string[];
   inputTokens?: number;
   outputTokens?: number;
   cacheReadTokens?: number;

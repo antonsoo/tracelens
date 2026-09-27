@@ -1,4 +1,4 @@
-import { estimateSpanCost } from './cost.js';
+import { estimateSpanCost, isTokenCount } from './cost.js';
 import type { PriceEntry } from './pricing.js';
 import { selfTimeNs } from './summary.js';
 import type { AgentSpanKind, ParsedSpan, ParsedTrace } from './types.js';
@@ -169,15 +169,9 @@ function collect(trace: ParsedTrace, prices: PriceEntry[]): { groups: Map<string
       target.errors.value += span.status.code === 'ERROR' ? 1 : 0;
       if (span.agentKind !== 'llm') continue;
       const usage = span.genai?.usage;
-      addMeasurement(target.inputTokens, usage?.inputTokens);
-      addMeasurement(target.outputTokens, usage?.outputTokens);
-      // Partial input/output usage cannot support a full-call cost estimate.
-      const complete =
-        usage &&
-        [usage.inputTokens, usage.outputTokens, usage.cacheReadTokens ?? 0, usage.cacheWriteTokens ?? 0].every(
-          (n) => n !== undefined && Number.isFinite(n) && n >= 0,
-        );
-      const cost = complete && span.genai ? estimateSpanCost(span.genai, prices)?.costUsd : undefined;
+      addMeasurement(target.inputTokens, isTokenCount(usage?.inputTokens) ? usage.inputTokens : undefined);
+      addMeasurement(target.outputTokens, isTokenCount(usage?.outputTokens) ? usage.outputTokens : undefined);
+      const cost = span.genai ? estimateSpanCost(span.genai, prices)?.costUsd : undefined;
       addMeasurement(target.costUsd, cost);
     }
     for (const child of [...span.children].reverse()) stack.push({ span: child, ancestry: path });

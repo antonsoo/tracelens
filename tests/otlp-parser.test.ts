@@ -131,13 +131,10 @@ describe('structural integrity', () => {
     expect(() => parseOtlpJson(otlpDoc([a, b, root]))).toThrow('Cyclic span parents');
     expect(() => parseOtlpJson(otlpDoc([{ ...a, parentSpanId: 'a' }]))).toThrow('Cyclic span parents');
   });
-  it('never resolves a parent from another trace, even when IDs collide', () => {
+  it('rejects multi-trace batches before IDs can collide in selection or totals', () => {
     const a = fakeSpan({ traceId: 'aa', spanId: 'parent', startNs: 0, endNs: 10 });
     const b = fakeSpan({ traceId: 'bb', spanId: 'child', parentSpanId: 'parent', startNs: 0, endNs: 10 });
-    const trace = parseOtlpJson(otlpDoc([a, b]));
-    expect(trace.roots).toHaveLength(2);
-    expect(trace.roots[0]!.children).toHaveLength(0);
-    expect(trace.warnings).toHaveLength(1);
+    expect(() => parseOtlpJson(otlpDoc([a, b]))).toThrow('one trace per file');
   });
   it('parses a 10,000-level chain without recursive stack overflow', () => {
     const spans = Array.from({ length: 10_000 }, (_, i) => fakeSpan({ spanId: String(i), ...(i ? { parentSpanId: String(i - 1) } : {}), startNs: 0, endNs: 10 }));

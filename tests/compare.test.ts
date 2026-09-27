@@ -62,7 +62,7 @@ describe('self time interval accounting', () => {
           b = next();
         return [Math.min(a, b), Math.max(a, b)] as const;
       });
-      const trace = parse(span('root', 0, 20), ...intervals.map(([a, b], i) => span(`c${i}`, a, b, 'root')));
+      const trace = parse(span('root', 100, 120), ...intervals.map(([a, b], i) => span(`c${i}`, a + 100, b + 100, 'root')));
       const uncovered = Array.from({ length: 20 }, (_, t) => t).filter(
         (t) => !intervals.some(([a, b]) => a <= t && t < b),
       ).length;
@@ -156,7 +156,8 @@ describe('trace comparison', () => {
     });
   });
   it('rejects multi-run files and duplicate or disconnected trees', () => {
-    const multi = parse(span('a', 0, 10), { ...span('b', 0, 10), traceId: 'other' });
+    const multi = parse(span('a', 0, 10), span('b', 0, 10));
+    multi.spans[1]!.traceId = 'other'; // Also defend the core against caller-built trees.
     expect(() => compareTraces(multi, multi, prices)).toThrow('one trace per file');
     const duplicate = parse(span('a', 0, 10));
     duplicate.spans.push(duplicate.spans[0]!);
