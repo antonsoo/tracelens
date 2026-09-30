@@ -128,7 +128,8 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
     inputTokens: ['gen_ai.usage.input_tokens', 'gen_ai.usage.prompt_tokens'],
     outputTokens: ['gen_ai.usage.output_tokens', 'gen_ai.usage.completion_tokens'],
     cacheReadTokens: ['gen_ai.usage.cache_read.input_tokens'],
-    cacheWriteTokens: ['gen_ai.usage.cache_write.input_tokens'],
+    // The spec's name is cache_creation; cache_write is accepted from emitters that used it.
+    cacheWriteTokens: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_write.input_tokens'],
     reasoningOutputTokens: ['gen_ai.usage.reasoning.output_tokens'],
   });
 

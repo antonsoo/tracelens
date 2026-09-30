@@ -48,6 +48,15 @@ describe('untrusted pricing and token accounting', () => {
     expect(compareTraces(trace, trace, [price]).metrics.costUsd.delta).toBeNull();
     expect(compareTraces(trace, trace, [price]).metrics.inputTokens.delta).toBe(0);
   });
+  it('reads cache writes under the spec name gen_ai.usage.cache_creation.input_tokens, and the older cache_write name', () => {
+    for (const key of ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_write.input_tokens']) {
+      const trace = parse([attr('gen_ai.request.model', sv('known')), attr('gen_ai.usage.input_tokens', iv(1_000_000)), attr('gen_ai.usage.output_tokens', iv(0)), attr(key, iv(400_000))]);
+      expect(trace.spans[0]!.genai?.usage).toMatchObject({ inputTokens: 1_000_000, cacheWriteTokens: 400_000 });
+      // 600k at the input rate plus 400k at the cache-write rate, not 1M at the input rate.
+      const cost = buildSummary(trace, [{ ...price, cacheWritePerMTok: price.inputPerMTok * 1.25 }]).totalCostUsd!;
+      expect(cost).toBeCloseTo(0.6 * price.inputPerMTok + 0.4 * price.inputPerMTok * 1.25, 10);
+    }
+  });
   it('reports invalid required token counts as missing independently', () => {
     const trace = parse([attr('gen_ai.request.model', sv('known')), attr('gen_ai.usage.input_tokens', dv(-5)), attr('gen_ai.usage.output_tokens', iv(20))]);
     const report = compareTraces(trace, trace, [price]);

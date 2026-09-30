@@ -124,7 +124,7 @@
                   }
                 },
                 {
-                  "key": "gen_ai.usage.cache_write.input_tokens",
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
                   "value": {
                     "intValue": "6200"
                   }

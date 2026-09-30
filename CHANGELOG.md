@@ -8,6 +8,12 @@ All notable changes to this project are documented in this file.
   own entries; an id that extends a shorter one no longer borrows its label.
 - The drop zone's waveform is drawn across its full width (the draw animation's
   dash was shorter than the path).
+- Cache writes are read from `gen_ai.usage.cache_creation.input_tokens`, the
+  name the GenAI semantic conventions use; tracelens only knew
+  `cache_write.input_tokens`, so a spec-compliant trace's cache writes were
+  priced at the plain input rate instead of the cache-write rate (1.25x or 2x
+  on Anthropic models). The old name is still accepted, and the bundled
+  example now uses the spec's.
 - Validate price rules and stored settings; keep the app usable with blocked
   browser storage. Expose both cache-read and cache-write rates in the editor.
 - Keep incomplete/invalid usage unknown in costs and token totals; preserve

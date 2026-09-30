@@ -134,7 +134,7 @@ def chat(parent, t0, t1, model, messages_in, messages_out, usage, finish, max_to
     if usage.get("cache_read"):
         span.set_attribute("gen_ai.usage.cache_read.input_tokens", usage["cache_read"])
     if usage.get("cache_write"):
-        span.set_attribute("gen_ai.usage.cache_write.input_tokens", usage["cache_write"])
+        span.set_attribute("gen_ai.usage.cache_creation.input_tokens", usage["cache_write"])
     span.set_attribute("gen_ai.input.messages", jmsg(messages_in))
     span.set_attribute("gen_ai.output.messages", jmsg(messages_out))
     span.end(end_time=at(t1))
