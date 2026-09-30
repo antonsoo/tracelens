@@ -52,9 +52,8 @@ npx --yes --allow-git=root github:antonsoo/tracelens summary trace.json
 by default (`npm config set allow-git true` to opt in permanently instead).
 The first run also prints one line — `1 package had install scripts
 blocked...` — from a harmless duplicate check after the package has already
-built itself; it's cosmetic, not an error (verified end-to-end via a local
-`git+file://` remote, since this environment can't push to GitHub — see
-`docs/formats.md` if you want the mechanics).
+built itself; it's cosmetic, not an error (checked against the published
+repository on 2026-09-30; `docs/formats.md` has the mechanics).
 
 ## Screenshots
 

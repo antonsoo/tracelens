@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Price table: Claude Sonnet 5.5 and the GPT-6 tier (Astra, Sol, Luna) get their
+  own entries; an id that extends a shorter one no longer borrows its label.
+- The drop zone's waveform is drawn across its full width (the draw animation's
+  dash was shorter than the path).
 - Validate price rules and stored settings; keep the app usable with blocked
   browser storage. Expose both cache-read and cache-write rates in the editor.
 - Keep incomplete/invalid usage unknown in costs and token totals; preserve

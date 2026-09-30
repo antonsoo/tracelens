@@ -9,7 +9,7 @@ export interface DropzoneCallbacks {
 const SIGNAL_SVG = `
   <svg class="tl-signal" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 30 L70 30 L90 8 L110 52 L130 30 L200 30 L215 30 L230 15 L245 45 L260 30 L340 30 L360 30 L375 20 L390 40 L405 22 L420 30 L600 30"
-      fill="none" stroke="var(--accent-llm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      pathLength="1" fill="none" stroke="var(--accent-llm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>`;
 
 export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): void {

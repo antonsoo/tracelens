@@ -257,9 +257,10 @@ a {
   margin-bottom: 18px;
   opacity: 0.9;
 }
+/* pathLength="1" on the path: the dash covers the whole line whatever its real length. */
 .tl-signal path {
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
   animation: tl-draw 1100ms ease-out forwards;
 }
 

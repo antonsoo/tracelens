@@ -62,3 +62,16 @@ describe('estimateSpanCost', () => {
     expect(cost).toBeUndefined();
   });
 });
+
+describe('default price table', () => {
+  it('gives each current model its own entry, including ids that extend a shorter one', async () => {
+    const { DEFAULT_PRICE_TABLE } = await import('../src/core/pricing.js');
+    const idFor = (model: string) => findPriceEntry({ responseModel: model }, DEFAULT_PRICE_TABLE)?.id;
+    expect(idFor('claude-sonnet-5-5')).toBe('claude-sonnet-5-5');
+    expect(idFor('claude-sonnet-5')).toBe('claude-sonnet-5');
+    expect(idFor('us.anthropic.claude-opus-5-5-v1:0')).toBe('claude-opus-5-5');
+    expect(idFor('gpt-6-sol-2026-08-01')).toBe('gpt-6-sol');
+    const ids = DEFAULT_PRICE_TABLE.map((e) => e.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+});
