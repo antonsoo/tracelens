@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-## Unreleased
+## [0.1.1] - 2026-09-30
 
 - Price table: Claude Sonnet 5.5 and the GPT-6 tier (Astra, Sol, Luna) get their
   own entries; an id that extends a shorter one no longer borrows its label.
