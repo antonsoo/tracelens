@@ -175,7 +175,11 @@ so the exported table does not attribute custom prices to a vendor.
 
 ![Price editor rejecting an incomplete rate](assets/price-validation.png)
 
-## 5. Installing the CLI from git (no registry yet)
+## 5. Installing the CLI from git
+
+The CLI is on npm as `@antonsoloviev/tracelens`, which is the simple route
+(`npx @antonsoloviev/tracelens summary trace.json`). Installing straight from
+the repository still works, and this is how:
 
 `npm install`/`npx` on a `github:`/`git+...` spec runs the package's
 `prepare` script (here, `tsc` building `dist-cli/`) inside a **project-scoped
@@ -185,7 +189,7 @@ scripts by default; passing `--allow-scripts` on the command line is
 explicitly rejected in that nested, project-scoped context
 (`EALLOWSCRIPTS`) — the error message says so and points at
 `package.json#allowScripts` instead. `package.json` here declares
-`"allowScripts": {"tracelens": true}`, which is read during exactly that
+`"allowScripts": {"@antonsoloviev/tracelens": true}`, which is read during exactly that
 step, so `npx --allow-git=root github:antonsoo/tracelens ...` builds and
 runs without the caller needing `--allow-scripts` at all. Verified locally
 end-to-end against a `git+file://` remote (this sandbox can't push to

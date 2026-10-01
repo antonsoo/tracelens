@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // tracelens CLI. This file is only ever invoked as the package's `bin`
-// entry (via `npx github:antonsoo/tracelens` or a local install), never
+// entry (via `npx @antonsoloviev/tracelens` or a local install), never
 // imported as a library, so it runs `main()` unconditionally rather than
 // guarding on `import.meta.url === argv[1]` (that comparison breaks once
 // npm resolves the bin through a symlink, which is exactly how `npm i -g`
@@ -9,6 +9,7 @@ import { readFile } from 'node:fs/promises';
 import { parseOtlpJson, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, table, yellow } from './format.js';
 import { formatComparison } from './compare-report.js';
+import { VERSION } from './version.js';
 
 const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON or Jaeger JSON)
 
@@ -18,12 +19,10 @@ ${bold('Usage:')}
   tracelens compare <baseline.json> <candidate.json> [--json]
                                   Compare runs by operation path
   tracelens --help                 Show this help
+  tracelens --version              Show the version
 
-${bold('Install from GitHub (nothing is published to npm yet):')}
-  npx --yes --allow-git=root github:antonsoo/tracelens summary trace.json
-
-  npm 12+ disables installing from git by default; --allow-git=root opts back in
-  (or set the npm config permanently: npm config set allow-git true).
+${bold('Run it without installing:')}
+  npx @antonsoloviev/tracelens summary trace.json
 `;
 
 function kindColor(kind: string, s: string): string {
@@ -128,6 +127,10 @@ function printTree(trace: ReturnType<typeof parseOtlpJson>): void {
 async function main(): Promise<void> {
   const [, , cmd, file] = process.argv;
 
+  if (cmd === '--version' || cmd === '-v') {
+    console.log(`tracelens ${VERSION}`);
+    return;
+  }
   if (!cmd || cmd === '--help' || cmd === '-h') {
     console.log(HELP);
     return;

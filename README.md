@@ -41,19 +41,16 @@ npm install && npm run build:web   # builds the static site to dist/
 npx vite preview                   # serve it locally
 ```
 
-Or run the CLI straight from GitHub, without cloning (point it at any
-OTLP/JSON trace file of your own — `trace.json` below is a placeholder):
+Or run the CLI without cloning (point it at any OTLP/JSON or Jaeger JSON
+trace of your own; `trace.json` below is a placeholder):
 
 ```bash
-npx --yes --allow-git=root github:antonsoo/tracelens summary trace.json
+npx @antonsoloviev/tracelens summary trace.json
 ```
 
-`--allow-git=root` is required because npm 12+ disables installing from git
-by default (`npm config set allow-git true` to opt in permanently instead).
-The first run also prints one line — `1 package had install scripts
-blocked...` — from a harmless duplicate check after the package has already
-built itself; it's cosmetic, not an error (checked against the published
-repository on 2026-09-30; `docs/formats.md` has the mechanics).
+That runs the published package
+([`@antonsoloviev/tracelens`](https://www.npmjs.com/package/@antonsoloviev/tracelens)
+on npm; the command it installs is `tracelens`).
 
 ## Screenshots
 
@@ -221,8 +218,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 ```
 
 **Open it.** Drag the file onto the [live demo](https://antonsoo.github.io/tracelens/),
-or `npx --allow-git=root github:antonsoo/tracelens summary trace.json` for a
-terminal summary.
+or `npx @antonsoloviev/tracelens summary trace.json` for a terminal summary.
 
 ## Supported conventions
 

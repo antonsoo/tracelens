@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.1] - 2026-10-01
+
+- Published to npm as `@antonsoloviev/tracelens`:
+  `npx @antonsoloviev/tracelens summary trace.json`.
+- `tracelens --version`.
+
 ## [0.2.0] - 2026-09-30
 
 - Jaeger's native JSON (the Jaeger UI's "Download JSON", or the query API's
