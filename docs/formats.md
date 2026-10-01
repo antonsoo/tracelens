@@ -177,9 +177,8 @@ so the exported table does not attribute custom prices to a vendor.
 
 ## 5. Installing the CLI from git
 
-The CLI is on npm as `@antonsoloviev/tracelens`, which is the simple route
-(`npx @antonsoloviev/tracelens summary trace.json`). Installing straight from
-the repository still works, and this is how:
+The CLI's npm package, `@antonsoloviev/tracelens`, isn't published yet, so it
+installs straight from the repository. This is how that works:
 
 `npm install`/`npx` on a `github:`/`git+...` spec runs the package's
 `prepare` script (here, `tsc` building `dist-cli/`) inside a **project-scoped

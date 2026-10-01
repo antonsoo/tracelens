@@ -4,8 +4,8 @@ All notable changes to this project are documented in this file.
 
 ## [0.2.1] - 2026-10-01
 
-- Published to npm as `@antonsoloviev/tracelens`:
-  `npx @antonsoloviev/tracelens summary trace.json`.
+- The package is named `@antonsoloviev/tracelens`, ready for npm. It isn't
+  published yet; until it is, install from GitHub as before.
 - `tracelens --version`.
 
 ## [0.2.0] - 2026-09-30

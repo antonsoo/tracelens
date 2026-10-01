@@ -21,8 +21,8 @@ ${bold('Usage:')}
   tracelens --help                 Show this help
   tracelens --version              Show the version
 
-${bold('Run it without installing:')}
-  npx @antonsoloviev/tracelens summary trace.json
+${bold('Run it without installing (from GitHub; npm 12 needs --allow-git=root):')}
+  npx --yes --allow-git=root github:antonsoo/tracelens summary trace.json
 `;
 
 function kindColor(kind: string, s: string): string {
