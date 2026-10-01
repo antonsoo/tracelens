@@ -7,6 +7,7 @@
 // (verified against the `main` branch, 2026-09-24).
 import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, StatusCode } from './types.js';
 import { normalizeSpan } from './normalize.js';
+import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 
 const SPAN_KIND_BY_NUMBER: Record<number, SpanKind> = {
   0: 'UNSPECIFIED',
@@ -133,11 +134,14 @@ function hexId(raw: unknown): string {
  * spans are skipped with a warning rather than aborting the whole parse.
  */
 export function parseOtlpJson(json: unknown): ParsedTrace {
+  // Jaeger's native JSON is converted up front, so it gets the same validation.
+  const sourceFormat = isJaegerJson(json) ? 'jaeger-json' : 'otlp-json';
+  if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json);
   const root = isRecord(json) ? json : { resourceSpans: json };
   const resourceSpans = root.resourceSpans ?? root.resource_spans;
   if (!Array.isArray(resourceSpans)) {
     throw new TraceParseError(
-      'Not a recognizable OTLP/JSON trace export: expected a top-level "resourceSpans" array.',
+      'Not a recognizable trace export: expected OTLP/JSON (a top-level "resourceSpans" array) or Jaeger JSON (a "data" array of traces with "spans").',
     );
   }
   if (resourceSpans.length === 0) {
@@ -275,6 +279,6 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
     minStartNs: minStart,
     maxEndNs: maxEnd,
     warnings,
-    sourceFormat: 'otlp-json',
+    sourceFormat,
   };
 }

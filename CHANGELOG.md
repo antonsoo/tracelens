@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.0] - 2026-09-30
+
+- Jaeger's native JSON (the Jaeger UI's "Download JSON", or the query API's
+  trace response) is read in the web app, the CLI and the library. It is
+  converted to OTLP/JSON first, with microsecond times, typed tags, span kind,
+  status and scope lifted from their tags, and logs as events, so it gets
+  every OTLP check. A Jaeger copy of the GenAI example is bundled, made by an
+  independent `scripts/otlp-to-jaeger.mjs`, and a test checks that both files
+  give the same tree, times, status, events and cost.
+- `docs/formats.md` described Jaeger's `startTime` as milliseconds; it is
+  microseconds, as is `duration`.
+
 ## [0.1.1] - 2026-09-30
 
 - Price table: Claude Sonnet 5.5 and the GPT-6 tier (Astra, Sol, Luna) get their

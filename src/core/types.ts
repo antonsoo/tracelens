@@ -128,7 +128,8 @@ export interface ParsedTrace {
   minStartNs: bigint;
   maxEndNs: bigint;
   warnings: ParseWarning[];
-  sourceFormat: 'otlp-json';
+  /** The file's format: Jaeger JSON is converted to OTLP/JSON before parsing. */
+  sourceFormat: 'otlp-json' | 'jaeger-json';
 }
 
 export function spanDurationMs(span: ParsedSpan): number {

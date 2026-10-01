@@ -47,6 +47,7 @@ show the same viewer on the other attribute schema.
 |---|---|
 | `genai-semconv-trace.json` | [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) (`gen_ai.*`) |
 | `openinference-trace.json` | [OpenInference semantic conventions](https://github.com/Arize-ai/openinference) (`openinference.*`, `llm.*`) |
+| `jaeger-genai-trace.json` | `genai-semconv-trace.json` in Jaeger's native JSON (the Jaeger UI's "Download JSON" shape) |
 | `otel_genai_example.py` | Generates `genai-semconv-trace.json` |
 | `openinference_example.py` | Generates `openinference-trace.json` |
 
@@ -60,12 +61,15 @@ uv venv && source .venv/bin/activate
 uv pip install opentelemetry-sdk opentelemetry-exporter-otlp-proto-http opentelemetry-exporter-otlp-proto-common
 python examples/otel_genai_example.py
 python examples/openinference_example.py
+node scripts/otlp-to-jaeger.mjs examples/genai-semconv-trace.json > examples/jaeger-genai-trace.json
 ```
 
 Each run overwrites its trace file with fresh IDs (the GenAI trace keeps its
 fixed timestamps; the OpenInference one takes the wall clock). The small
-copies in `tests/fixtures/` are what the tests assert on, so regenerating
-these files never breaks the test suite.
+copies in `tests/fixtures/` are what most tests assert on. The exception is
+`tests/jaeger.test.ts`, which checks that the Jaeger file reads the same as
+the GenAI trace, so rerun the `otlp-to-jaeger.mjs` line whenever the GenAI
+trace changes.
 
 ## Synthetic comparison pair
 

@@ -1,7 +1,8 @@
 # Supported trace formats
 
-tracelens parses **OTLP/JSON** trace exports and understands attributes from
-two independent semantic conventions layered on top of it. This document
+tracelens parses **OTLP/JSON** trace exports (and Jaeger's JSON, converted to
+OTLP first) and understands attributes from two independent semantic
+conventions layered on top of it. This document
 lists the exact attribute keys it reads, the spec versions they were
 verified against, and what tracelens does when it sees neither.
 
@@ -50,11 +51,37 @@ to preserve precision. This restriction is stricter than a generic OTLP
 decoder's numeric acceptance; see the [OTLP JSON encoding specification](https://github.com/open-telemetry/opentelemetry-proto/blob/main/docs/specification.md#json-protobuf-encoding)
 (rechecked 2026-09-27).
 
-**Not yet supported:** Jaeger's native JSON export (a different schema:
-`data[].spans[]` with `tags`/`logs` instead of OTLP's `attributes`/`events`,
-and millisecond `startTime` rather than nanosecond `startTimeUnixNano`).
-Convert with the OpenTelemetry Collector's `jaeger` receiver +
-`file`/`otlphttp` exporter as a workaround.
+### Jaeger JSON
+
+A trace downloaded from the Jaeger UI ("Download JSON"), or the query API's
+`/api/traces/{id}` response, is read too (`src/core/jaeger.ts`): a
+`{"data": [trace]}` document or a bare trace object. Its shape comes from
+Jaeger's `model/json` package. A trace is `{traceID, spans, processes}`, and a
+span is `{traceID, spanID, operationName, references, startTime, duration, tags,
+logs, processID}`. Note the units: `startTime` and `duration` are
+**microseconds**, against OTLP's nanoseconds. Each tag is `{key, type, value}`
+with `type` one of `string`, `bool`, `int64`, `float64` or `binary`.
+
+tracelens converts the document to OTLP/JSON and then parses it like any other
+export, so every check above applies. The mapping:
+
+| Jaeger | OTLP |
+|---|---|
+| `startTime`, `startTime + duration` (µs) | `startTimeUnixNano`, `endTimeUnixNano` (× 1000) |
+| `references`: the `CHILD_OF` span, else the `FOLLOWS_FROM` one | `parentSpanId` |
+| tag `span.kind` (`client`, `server`, `producer`, `consumer`, `internal`) | `kind` |
+| tag `otel.status_code`, or `error: true`; `otel.status_description` | `status` |
+| tags `otel.scope.name` / `otel.scope.version` (older: `otel.library.*`) | the instrumentation scope |
+| other tags | `attributes`, typed by `type` |
+| `logs[]`: the `event` field (else `message`) names it, the other fields are its attributes | `events[]` |
+| `processes[processID]` (or an inline `process`): `serviceName` and its tags | the resource: `service.name` plus those tags |
+
+Jaeger has no array or map tags; its OTLP receiver stores them as JSON strings,
+and they stay strings here. `examples/jaeger-genai-trace.json` is
+`examples/genai-semconv-trace.json` written out by
+`scripts/otlp-to-jaeger.mjs`, which shares no code with the reader.
+`tests/jaeger.test.ts` checks that both files give the same span tree, times,
+status, events and cost.
 
 ## 2. OpenTelemetry GenAI semantic conventions (`gen_ai.*`)
 

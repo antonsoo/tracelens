@@ -12,7 +12,7 @@ semantic conventions](https://github.com/open-telemetry/semantic-conventions-gen
 conventions. Viewing one of these traces today usually means standing up a
 server — Jaeger, Langfuse, Phoenix — for a file you could have opened
 locally. tracelens is a static, local-first web app plus a small CLI: point
-it at an OTLP/JSON trace file and get an agent-shaped waterfall, a span
+it at an OTLP/JSON trace file (or one downloaded from Jaeger) and get an agent-shaped waterfall, a span
 tree, per-span prompts and completions, tool calls, token usage and
 estimated cost, errors and retries, and a "where did the time and money go"
 summary — nothing leaves the browser tab.
@@ -69,6 +69,9 @@ repository on 2026-09-30; `docs/formats.md` has the mechanics).
 - **OTLP/JSON parser** — resourceSpans → scopeSpans → spans, typed
   `AnyValue` attribute decoding, tree building with graceful handling of
   malformed spans, missing parents and clock skew (see `docs/formats.md`).
+- **Jaeger JSON too** — a trace downloaded from the Jaeger UI is converted to
+  OTLP (microsecond times, typed tags, span kind and status from their tags,
+  logs as events) and gets the same checks.
 - **Two semantic conventions**, read side by side: OpenTelemetry's GenAI
   semconv (`gen_ai.*`, including the legacy per-message-event fallback
   older instrumentation still emits) and OpenInference (`openinference.*`,
@@ -231,7 +234,7 @@ list. Summary:
 | OTLP/JSON wire format | Supported |
 | OpenTelemetry GenAI semconv (`gen_ai.*`) | Supported, including the legacy `gen_ai.system` attribute and per-message-event fallback |
 | OpenInference (`openinference.*`, `llm.*`) | Supported |
-| Jaeger native JSON export | Not supported — convert via the Collector's `jaeger` receiver + `file` exporter |
+| Jaeger native JSON export | Supported: converted to OTLP/JSON, then parsed the same way |
 
 ## Example traces
 
@@ -244,7 +247,8 @@ explicitly to realistic values; the telemetry format itself is not mocked.
 The default example is a 16-span, 31.8-second incident-analysis agent run
 with parallel tool calls, a retried timeout, a sub-agent on a cheaper model
 and one permanent tool failure. See `examples/README.md` for the full
-scenario and how to regenerate them.
+scenario and how to regenerate them. `examples/jaeger-genai-trace.json` is
+the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
 
 ## Accuracy and limitations
 

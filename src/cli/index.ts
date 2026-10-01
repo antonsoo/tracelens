@@ -10,7 +10,7 @@ import { parseOtlpJson, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, spanDu
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, table, yellow } from './format.js';
 import { formatComparison } from './compare-report.js';
 
-const HELP = `${bold('tracelens')} — a terminal summary for OTLP/JSON agent traces
+const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON or Jaeger JSON)
 
 ${bold('Usage:')}
   tracelens summary <trace.json>   Print duration, token, cost and error summary

@@ -4,7 +4,7 @@
 // and copying it here avoids two files drifting out of sync.
 import { copyFileSync, mkdirSync } from 'node:fs';
 
-const files = ['genai-semconv-trace.json', 'openinference-trace.json', 'comparison-baseline.json', 'comparison-candidate.json'];
+const files = ['genai-semconv-trace.json', 'openinference-trace.json', 'jaeger-genai-trace.json', 'comparison-baseline.json', 'comparison-candidate.json'];
 mkdirSync(new URL('../public/examples/', import.meta.url), { recursive: true });
 for (const f of files) {
   copyFileSync(new URL(`../examples/${f}`, import.meta.url), new URL(`../public/examples/${f}`, import.meta.url));

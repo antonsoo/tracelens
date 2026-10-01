@@ -29,7 +29,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     { className: 'tl-dropzone-card' },
     buildSignalSvg(),
     h('h1', {}, 'Drop a trace to inspect it'),
-    h('p', {}, 'OTLP/JSON export from a collector, or a file written by the OpenTelemetry SDK. Nothing leaves this browser tab.'),
+    h('p', {}, 'OTLP/JSON from a collector or the OpenTelemetry SDK, or a trace downloaded from Jaeger as JSON. Nothing leaves this browser tab.'),
     h(
       'label',
       { className: 'tl-btn primary', for: 'tl-file-input', style: 'cursor:pointer' },
@@ -42,6 +42,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
       h('span', { className: 'faint', style: 'align-self:center' }, 'or load a sample:'),
       h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/genai-semconv-trace.json') }, 'GenAI semconv example'),
       h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/openinference-trace.json') }, 'OpenInference example'),
+      h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/jaeger-genai-trace.json') }, 'Jaeger JSON example'),
       h('button', { className: 'tl-btn', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
     ),
   );
