@@ -102,7 +102,9 @@ isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package).
   operations, per-side span inspection, and JSON export with pricing inputs.
   Missing measurements remain unknown; an unpriced call cannot become a
   claim of cost savings.
-- Light and dark themes, works fully offline once loaded, zero telemetry.
+- Light and dark themes, works fully offline once loaded, zero telemetry. The page's
+  Content-Security-Policy (`connect-src 'self'`) has the browser refuse to send a trace
+  anywhere, and nothing but the page's own scripts can run.
 
 ## How it works
 
