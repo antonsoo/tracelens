@@ -29,6 +29,14 @@ jobs:
       - name: Test
         run: npm test
 
+      # Node formats numbers and dates for the locale it starts in. Output that must not
+      # change with the reader's locale is tested in one that writes 1.234,5.
+      - name: Test again in a comma-decimal locale
+        run: npm test
+        env:
+          LC_ALL: de_DE.UTF-8
+          LANG: de_DE.UTF-8
+
       - name: Build
         run: npm run build
 
