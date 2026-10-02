@@ -29,8 +29,8 @@ ${bold('Usage:')}
 A file that holds several traces is read one trace at a time: the one with
 the most spans, or the one whose ID (or the start of it) follows --trace.
 
-${bold('Run it without installing (from GitHub; npm 12 needs --allow-git=root):')}
-  npx --yes --allow-git=root github:antonsoo/tracelens summary trace.json
+${bold('Run it without installing:')}
+  npx @antonsoloviev/tracelens summary trace.json
 `;
 
 function kindColor(kind: string, s: string): string {

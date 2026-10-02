@@ -203,8 +203,9 @@ so the exported table does not attribute custom prices to a vendor.
 
 ## 5. Installing the CLI from git
 
-The CLI's npm package, `@antonsoloviev/tracelens`, isn't published yet, so it
-installs straight from the repository. This is how that works:
+The CLI is on npm as `@antonsoloviev/tracelens`, which is the simple route
+(`npx @antonsoloviev/tracelens summary trace.json`). Installing straight from
+the repository still works, and this is how:
 
 `npm install`/`npx` on a `github:`/`git+...` spec runs the package's
 `prepare` script (here, `tsc` building `dist-cli/`) inside a **project-scoped
@@ -216,9 +217,8 @@ explicitly rejected in that nested, project-scoped context
 `package.json#allowScripts` instead. `package.json` here declares
 `"allowScripts": {"@antonsoloviev/tracelens": true}`, which is read during exactly that
 step, so `npx --allow-git=root github:antonsoo/tracelens ...` builds and
-runs without the caller needing `--allow-scripts` at all. Verified locally
-end-to-end against a `git+file://` remote (this sandbox can't push to
-GitHub): `npm install -g --allow-git=root --prefix <dir> git+file:///path/to/repo.git`
+runs without the caller needing `--allow-scripts` at all. Verified
+end-to-end against a `git+file://` remote: `npm install -g --allow-git=root --prefix <dir> git+file:///path/to/repo.git`
 and plain `npx --yes --allow-git=root git+file:///path/to/repo.git summary trace.json`
 both produced a working, executable `dist-cli/cli/index.js`.
 

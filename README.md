@@ -3,6 +3,7 @@
 **A zero-install viewer for LLM agent traces.** Drop an OpenTelemetry export,
 see every model call, tool call, token and dollar on a timeline.
 
+[![npm](https://img.shields.io/npm/v/@antonsoloviev/tracelens)](https://www.npmjs.com/package/@antonsoloviev/tracelens)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Ftracelens-6fd6c4)](https://antonsoo.github.io/tracelens/)
 
@@ -45,11 +46,12 @@ Or run the CLI without cloning (point it at any OTLP/JSON or Jaeger JSON
 trace of your own; `trace.json` below is a placeholder):
 
 ```bash
-npx --yes --allow-git=root github:antonsoo/tracelens summary trace.json
+npx @antonsoloviev/tracelens summary trace.json
 ```
 
-That installs straight from GitHub: the npm package, `@antonsoloviev/tracelens`,
-isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package).
+That runs the published package
+([`@antonsoloviev/tracelens`](https://www.npmjs.com/package/@antonsoloviev/tracelens)
+on npm; the command it installs is `tracelens`).
 
 ## Screenshots
 
@@ -250,8 +252,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 ```
 
 **Open it.** Drag the file onto the [live demo](https://antonsoo.github.io/tracelens/),
-or `npx --allow-git=root github:antonsoo/tracelens summary trace.json` for a
-terminal summary.
+or `npx @antonsoloviev/tracelens summary trace.json` for a terminal summary.
 
 ## Supported conventions
 

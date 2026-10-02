@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## [0.3.2] - 2026-10-02
 
+### Added
+
+- Published to npm as `@antonsoloviev/tracelens`:
+  `npx @antonsoloviev/tracelens summary trace.json`. The README, the format
+  notes and `tracelens --help` use the registry package instead of the GitHub
+  install, which npm 12 blocks by default.
+
 ### Fixed
 
 - A trace saved by a Windows shell or editor. `... > trace.json` in Windows
@@ -118,8 +125,8 @@ OpenLLMetry 0.62.4 active. Both traces are committed under
 
 ## [0.2.1] - 2026-10-01
 
-- The package is named `@antonsoloviev/tracelens`, ready for npm. It isn't
-  published yet; until it is, install from GitHub as before.
+- The package is named `@antonsoloviev/tracelens`, ready for npm (published
+  there from 0.3.2).
 - `tracelens --version`.
 
 ## [0.2.0] - 2026-09-30
