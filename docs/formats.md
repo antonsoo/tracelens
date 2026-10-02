@@ -145,9 +145,21 @@ held on that date).
 | Span kind | `openinference.span.kind` — `AGENT`, `LLM`, `TOOL`, `CHAIN`, `RETRIEVER`, `EMBEDDING`, `RERANKER`, `GUARDRAIL`, `EVALUATOR`, `PROMPT` |
 | Model/provider | `llm.model_name`, `llm.response.model_name`, `llm.provider`, `llm.system` |
 | Token usage | `llm.token_count.prompt`, `.completion`, `.total`, `.prompt_details.cache_read`, `.prompt_details.cache_write`, `.completion_details.reasoning` |
-| Messages | `llm.input_messages.<i>.message.role` / `.content`, `llm.output_messages.<i>.message.role` / `.content` — a flattened, indexed encoding (not nested JSON); tracelens regroups these by index in `extractOpenInferenceMessages()`. Falls back to the unstructured `input.value`/`output.value` pair when no indexed messages are present. |
+| Messages | `llm.input_messages.<i>.message.*` and `llm.output_messages.<i>.message.*`: a flattened, indexed encoding (not nested JSON), regrouped by index in `extractOpenInferenceMessages()`. Read per message: `role`; `content` (a plain string); `contents.<j>.message_content.type` / `.text` / `.image.image.url` (multi-part content); `tool_calls.<k>.tool_call.id` / `.function.name` / `.function.arguments` (a JSON string); `contents.<j>.tool_call.*` (the same call listed among the parts: shown once); `tool_call_id` (the message is a tool's result); `function_call_name` / `function_call_arguments_json` (legacy). Falls back to the unstructured `input.value`/`output.value` pair when no indexed messages are present. |
+| Request options | `llm.invocation_parameters` (a JSON string: `temperature`, `max_tokens` / `max_completion_tokens` / `max_output_tokens`), `llm.finish_reason` |
 | Tool calls | `tool.name`, `tool.description`, `tool.parameters` |
 | Session | `session.id` |
+
+The message layout above is what the instrumentation libraries write, not
+only what the spec lists: `tests/fixtures/instrumented/openinference.json`
+holds spans from `openinference-instrumentation-anthropic` 3.0.1 and
+`openinference-instrumentation-openai` 0.1.63, and
+`tests/fixtures/instrumented/openllmetry.json` the same two agent turns
+from OpenLLMetry 0.62.4 (`gen_ai.*`). `scripts/instrumented-traces/` writes
+both by running the real SDKs, instrumented, over a mocked HTTP transport.
+The Anthropic instrumentation writes every assistant turn as `contents`
+(never `content`) and lists each tool call twice, among the contents and
+under `tool_calls`.
 
 ## 4. Cost estimation
 

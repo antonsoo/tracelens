@@ -1,0 +1,859 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.0"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "dfcf72de-4be3-45e1-9d73-eef29bf18f33"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "agent-demo"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "openinference.instrumentation.anthropic",
+      "version": "3.0.1"
+     },
+     "spans": [
+      {
+       "traceId": "5400b5b641ef4f7627f52296ff894f7f",
+       "spanId": "324df5b8c888a1a3",
+       "parentSpanId": "23f51dd82866c604",
+       "name": "messages.create",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925825138521371",
+       "endTimeUnixNano": "1790925825149654526",
+       "attributes": [
+        {
+         "key": "llm.provider",
+         "value": {
+          "stringValue": "anthropic"
+         }
+        },
+        {
+         "key": "llm.system",
+         "value": {
+          "stringValue": "anthropic"
+         }
+        },
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"model\": \"claude-opus-5-5\", \"max_tokens\": 256, \"system\": \"You are a weather assistant.\", \"tools\": [{\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"input_schema\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}], \"messages\": [{\"role\": \"user\", \"content\": \"What's the weather in Paris?\"}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.request.model_name",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.content",
+         "value": {
+          "stringValue": "What's the weather in Paris?"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "system"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "You are a weather assistant."
+         }
+        },
+        {
+         "key": "llm.tools.0.tool.json_schema",
+         "value": {
+          "stringValue": "{\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"input_schema\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}"
+         }
+        },
+        {
+         "key": "llm.invocation_parameters",
+         "value": {
+          "stringValue": "{\"max_tokens\": 256}"
+         }
+        },
+        {
+         "key": "llm.model_name",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "llm.response.model_name",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.finish_reason",
+         "value": {
+          "stringValue": "tool_use"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.0.message_content.type",
+         "value": {
+          "stringValue": "text"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.0.message_content.text",
+         "value": {
+          "stringValue": "I'll check the weather."
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.id",
+         "value": {
+          "stringValue": "toolu_1"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.function.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"city\": \"Paris\"}"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.1.message_content.type",
+         "value": {
+          "stringValue": "tool_use"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.1.tool_call.id",
+         "value": {
+          "stringValue": "toolu_1"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.1.tool_call.function.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.1.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"city\": \"Paris\"}"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt",
+         "value": {
+          "intValue": "720"
+         }
+        },
+        {
+         "key": "llm.token_count.completion",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt_details.cache_read",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "llm.token_count.total",
+         "value": {
+          "intValue": "757"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"id\":\"msg_1\",\"container\":null,\"content\":[{\"citations\":null,\"text\":\"I'll check the weather.\",\"type\":\"text\"},{\"id\":\"toolu_1\",\"caller\":null,\"input\":{\"city\":\"Paris\"},\"name\":\"get_weather\",\"type\":\"tool_use\",\"toolset_name\":null}],\"diagnostics\":null,\"model\":\"claude-opus-5-5\",\"role\":\"assistant\",\"stop_details\":null,\"stop_reason\":\"tool_use\",\"stop_sequence\":null,\"type\":\"message\",\"usage\":{\"cache_creation\":null,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":300,\"inference_geo\":null,\"input_tokens\":420,\"output_tokens\":37,\"output_tokens_details\":null,\"server_tool_use\":null,\"service_tier\":null}}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "LLM"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      },
+      {
+       "traceId": "5400b5b641ef4f7627f52296ff894f7f",
+       "spanId": "7a8ac4eeaa282f72",
+       "parentSpanId": "23f51dd82866c604",
+       "name": "messages.create",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925825149814475",
+       "endTimeUnixNano": "1790925825151631078",
+       "attributes": [
+        {
+         "key": "llm.provider",
+         "value": {
+          "stringValue": "anthropic"
+         }
+        },
+        {
+         "key": "llm.system",
+         "value": {
+          "stringValue": "anthropic"
+         }
+        },
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"model\": \"claude-opus-5-5\", \"max_tokens\": 256, \"system\": \"You are a weather assistant.\", \"tools\": [{\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"input_schema\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}], \"messages\": [{\"role\": \"user\", \"content\": \"What's the weather in Paris?\"}, {\"role\": \"assistant\", \"content\": [\"TextBlock(citations=None, text=\\\"I'll check the weather.\\\", type='text')\", \"ToolUseBlock(id='toolu_1', caller=None, input={'city': 'Paris'}, name='get_weather', type='tool_use', toolset_name=None)\"]}, {\"role\": \"user\", \"content\": [{\"type\": \"tool_result\", \"tool_use_id\": \"toolu_1\", \"content\": \"18\u00b0C, sunny\"}]}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.request.model_name",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.content",
+         "value": {
+          "stringValue": "What's the weather in Paris?"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.contents.0.message_content.type",
+         "value": {
+          "stringValue": "text"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.contents.0.message_content.text",
+         "value": {
+          "stringValue": "I'll check the weather."
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_calls.0.tool_call.id",
+         "value": {
+          "stringValue": "toolu_1"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_calls.0.tool_call.function.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_calls.0.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"city\": \"Paris\"}"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.contents.1.message_content.type",
+         "value": {
+          "stringValue": "tool_use"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.contents.1.tool_call.id",
+         "value": {
+          "stringValue": "toolu_1"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.contents.1.tool_call.function.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.contents.1.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"city\": \"Paris\"}"
+         }
+        },
+        {
+         "key": "llm.input_messages.3.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.3.message.tool_call_id",
+         "value": {
+          "stringValue": "toolu_1"
+         }
+        },
+        {
+         "key": "llm.input_messages.3.message.content",
+         "value": {
+          "stringValue": "18\u00b0C, sunny"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "system"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "You are a weather assistant."
+         }
+        },
+        {
+         "key": "llm.tools.0.tool.json_schema",
+         "value": {
+          "stringValue": "{\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"input_schema\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}"
+         }
+        },
+        {
+         "key": "llm.invocation_parameters",
+         "value": {
+          "stringValue": "{\"max_tokens\": 256}"
+         }
+        },
+        {
+         "key": "llm.model_name",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "llm.response.model_name",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.finish_reason",
+         "value": {
+          "stringValue": "end_turn"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.0.message_content.type",
+         "value": {
+          "stringValue": "text"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.contents.0.message_content.text",
+         "value": {
+          "stringValue": "It is 18\u00b0C and sunny in Paris."
+         }
+        },
+        {
+         "key": "llm.token_count.prompt",
+         "value": {
+          "intValue": "720"
+         }
+        },
+        {
+         "key": "llm.token_count.completion",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt_details.cache_read",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "llm.token_count.total",
+         "value": {
+          "intValue": "757"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"id\":\"msg_2\",\"container\":null,\"content\":[{\"citations\":null,\"text\":\"It is 18\u00b0C and sunny in Paris.\",\"type\":\"text\"}],\"diagnostics\":null,\"model\":\"claude-opus-5-5\",\"role\":\"assistant\",\"stop_details\":null,\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"type\":\"message\",\"usage\":{\"cache_creation\":null,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":300,\"inference_geo\":null,\"input_tokens\":420,\"output_tokens\":37,\"output_tokens_details\":null,\"server_tool_use\":null,\"service_tier\":null}}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "LLM"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "demo"
+     },
+     "spans": [
+      {
+       "traceId": "5400b5b641ef4f7627f52296ff894f7f",
+       "spanId": "23f51dd82866c604",
+       "name": "agent run",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925825138250540",
+       "endTimeUnixNano": "1790925825151646699",
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "7185ac6b72ede4459a248b42bd844374",
+       "spanId": "cbef49f46262fff7",
+       "name": "agent run",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925825151806118",
+       "endTimeUnixNano": "1790925825194016701",
+       "status": {},
+       "flags": 256
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "openinference.instrumentation.openai",
+      "version": "0.1.63"
+     },
+     "spans": [
+      {
+       "traceId": "7185ac6b72ede4459a248b42bd844374",
+       "spanId": "c4ac2ed2c30992dd",
+       "parentSpanId": "cbef49f46262fff7",
+       "name": "ChatCompletion",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925825186157684",
+       "endTimeUnixNano": "1790925825192346375",
+       "attributes": [
+        {
+         "key": "llm.provider",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "llm.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"role\": \"system\", \"content\": \"You are a weather assistant.\"}, {\"role\": \"user\", \"content\": \"What's the weather in Paris?\"}], \"model\": \"gpt-6-sol\", \"tools\": [{\"type\": \"function\", \"function\": {\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"id\":\"chatcmpl-1\",\"choices\":[{\"finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"content\":null,\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"call_1\",\"function\":{\"arguments\":\"{\\\"city\\\": \\\"Paris\\\"}\",\"name\":\"get_weather\"},\"type\":\"function\"}]}}],\"created\":1,\"model\":\"gpt-6-sol\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":37,\"prompt_tokens\":420,\"total_tokens\":457,\"prompt_tokens_details\":{\"cached_tokens\":300}}}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.tools.0.tool.json_schema",
+         "value": {
+          "stringValue": "{\"type\": \"function\", \"function\": {\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}}"
+         }
+        },
+        {
+         "key": "llm.invocation_parameters",
+         "value": {
+          "stringValue": "{\"model\": \"gpt-6-sol\"}"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "system"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "You are a weather assistant."
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.content",
+         "value": {
+          "stringValue": "What's the weather in Paris?"
+         }
+        },
+        {
+         "key": "llm.model_name",
+         "value": {
+          "stringValue": "gpt-6-sol"
+         }
+        },
+        {
+         "key": "llm.token_count.total",
+         "value": {
+          "intValue": "457"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt",
+         "value": {
+          "intValue": "420"
+         }
+        },
+        {
+         "key": "llm.token_count.completion",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt_details.cache_read",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.id",
+         "value": {
+          "stringValue": "call_1"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.function.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"city\": \"Paris\"}"
+         }
+        },
+        {
+         "key": "llm.finish_reason",
+         "value": {
+          "stringValue": "tool_calls"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "LLM"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      },
+      {
+       "traceId": "7185ac6b72ede4459a248b42bd844374",
+       "spanId": "8803a60aaa54adbe",
+       "parentSpanId": "cbef49f46262fff7",
+       "name": "ChatCompletion",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925825193397753",
+       "endTimeUnixNano": "1790925825193998855",
+       "attributes": [
+        {
+         "key": "llm.provider",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "llm.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"role\": \"system\", \"content\": \"You are a weather assistant.\"}, {\"role\": \"user\", \"content\": \"What's the weather in Paris?\"}, {\"content\": null, \"role\": \"assistant\", \"tool_calls\": [{\"id\": \"call_1\", \"function\": {\"arguments\": \"{\\\"city\\\": \\\"Paris\\\"}\", \"name\": \"get_weather\"}, \"type\": \"function\"}]}, {\"role\": \"tool\", \"tool_call_id\": \"call_1\", \"content\": \"18\u00b0C, sunny\"}], \"model\": \"gpt-6-sol\", \"tools\": [{\"type\": \"function\", \"function\": {\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"id\":\"chatcmpl-2\",\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"It is 18\u00b0C and sunny in Paris.\",\"role\":\"assistant\"}}],\"created\":1,\"model\":\"gpt-6-sol\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":37,\"prompt_tokens\":420,\"total_tokens\":457,\"prompt_tokens_details\":{\"cached_tokens\":300}}}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.tools.0.tool.json_schema",
+         "value": {
+          "stringValue": "{\"type\": \"function\", \"function\": {\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}}"
+         }
+        },
+        {
+         "key": "llm.invocation_parameters",
+         "value": {
+          "stringValue": "{\"model\": \"gpt-6-sol\"}"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "system"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "You are a weather assistant."
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.content",
+         "value": {
+          "stringValue": "What's the weather in Paris?"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_calls.0.tool_call.id",
+         "value": {
+          "stringValue": "call_1"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_calls.0.tool_call.function.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_calls.0.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"city\": \"Paris\"}"
+         }
+        },
+        {
+         "key": "llm.input_messages.3.message.role",
+         "value": {
+          "stringValue": "tool"
+         }
+        },
+        {
+         "key": "llm.input_messages.3.message.tool_call_id",
+         "value": {
+          "stringValue": "call_1"
+         }
+        },
+        {
+         "key": "llm.input_messages.3.message.content",
+         "value": {
+          "stringValue": "18\u00b0C, sunny"
+         }
+        },
+        {
+         "key": "llm.model_name",
+         "value": {
+          "stringValue": "gpt-6-sol"
+         }
+        },
+        {
+         "key": "llm.token_count.total",
+         "value": {
+          "intValue": "457"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt",
+         "value": {
+          "intValue": "420"
+         }
+        },
+        {
+         "key": "llm.token_count.completion",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt_details.cache_read",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.content",
+         "value": {
+          "stringValue": "It is 18\u00b0C and sunny in Paris."
+         }
+        },
+        {
+         "key": "llm.finish_reason",
+         "value": {
+          "stringValue": "stop"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "LLM"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

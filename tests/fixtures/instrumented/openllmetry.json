@@ -1,0 +1,537 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.0"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "56d70d44-c7ce-4162-8b3f-c7b46d6a1e02"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "agent-demo"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "opentelemetry.instrumentation.anthropic",
+      "version": "0.62.4"
+     },
+     "spans": [
+      {
+       "traceId": "5cf984b5740ea19fc7fd8727bf87a3d9",
+       "spanId": "fdfd8777c0be4db2",
+       "parentSpanId": "32b1c49a252b48c2",
+       "name": "anthropic.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1790925838162295698",
+       "endTimeUnixNano": "1790925838170729983",
+       "attributes": [
+        {
+         "key": "gen_ai.provider.name",
+         "value": {
+          "stringValue": "anthropic"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "gen_ai.request.max_tokens",
+         "value": {
+          "intValue": "256"
+         }
+        },
+        {
+         "key": "gen_ai.system_instructions",
+         "value": {
+          "stringValue": "[{\"type\": \"text\", \"content\": \"You are a weather assistant.\"}]"
+         }
+        },
+        {
+         "key": "gen_ai.input.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the weather in Paris?\"}]}]"
+         }
+        },
+        {
+         "key": "gen_ai.tool.definitions",
+         "value": {
+          "stringValue": "[{\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"input_schema\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]"
+         }
+        },
+        {
+         "key": "gen_ai.response.model",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "msg_1"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "tool_call"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.output.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"I'll check the weather.\"}, {\"type\": \"tool_call\", \"id\": \"toolu_1\", \"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}], \"finish_reason\": \"tool_call\"}]"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "720"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "757"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_read.input_tokens",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_creation.input_tokens",
+         "value": {
+          "intValue": "0"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      },
+      {
+       "traceId": "5cf984b5740ea19fc7fd8727bf87a3d9",
+       "spanId": "9e13d560f82d33c1",
+       "parentSpanId": "32b1c49a252b48c2",
+       "name": "anthropic.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1790925838170837468",
+       "endTimeUnixNano": "1790925838172716530",
+       "attributes": [
+        {
+         "key": "gen_ai.provider.name",
+         "value": {
+          "stringValue": "anthropic"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "gen_ai.request.max_tokens",
+         "value": {
+          "intValue": "256"
+         }
+        },
+        {
+         "key": "gen_ai.system_instructions",
+         "value": {
+          "stringValue": "[{\"type\": \"text\", \"content\": \"You are a weather assistant.\"}]"
+         }
+        },
+        {
+         "key": "gen_ai.input.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"What's the weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"I'll check the weather.\"}, {\"type\": \"tool_call\", \"id\": \"toolu_1\", \"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}]}, {\"role\": \"user\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_1\", \"response\": \"18\\u00b0C, sunny\"}]}]"
+         }
+        },
+        {
+         "key": "gen_ai.tool.definitions",
+         "value": {
+          "stringValue": "[{\"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"input_schema\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]"
+         }
+        },
+        {
+         "key": "gen_ai.response.model",
+         "value": {
+          "stringValue": "claude-opus-5-5"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "msg_2"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "stop"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.output.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"It is 18\\u00b0C and sunny in Paris.\"}], \"finish_reason\": \"stop\"}]"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "720"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "757"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_read.input_tokens",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_creation.input_tokens",
+         "value": {
+          "intValue": "0"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "demo"
+     },
+     "spans": [
+      {
+       "traceId": "5cf984b5740ea19fc7fd8727bf87a3d9",
+       "spanId": "32b1c49a252b48c2",
+       "name": "agent run",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925838162195297",
+       "endTimeUnixNano": "1790925838172737622",
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "84b43aacac386154ed5f356dc606669e",
+       "spanId": "04aa65f8fc6a6633",
+       "name": "agent run",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1790925838172992513",
+       "endTimeUnixNano": "1790925838181648436",
+       "status": {},
+       "flags": 256
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "opentelemetry.instrumentation.openai.v1",
+      "version": "0.62.4"
+     },
+     "spans": [
+      {
+       "traceId": "84b43aacac386154ed5f356dc606669e",
+       "spanId": "7ed548ee4aeb84f4",
+       "parentSpanId": "04aa65f8fc6a6633",
+       "name": "openai.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1790925838173815941",
+       "endTimeUnixNano": "1790925838180276680",
+       "attributes": [
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.provider.name",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "gpt-6-sol"
+         }
+        },
+        {
+         "key": "gen_ai.is_streaming",
+         "value": {
+          "boolValue": false
+         }
+        },
+        {
+         "key": "gen_ai.openai.api_base",
+         "value": {
+          "stringValue": "https://api.openai.com/v1/"
+         }
+        },
+        {
+         "key": "gen_ai.input.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"system\", \"parts\": [{\"content\": \"You are a weather assistant.\", \"type\": \"text\"}]}, {\"role\": \"user\", \"parts\": [{\"content\": \"What's the weather in Paris?\", \"type\": \"text\"}]}]"
+         }
+        },
+        {
+         "key": "gen_ai.tool.definitions",
+         "value": {
+          "stringValue": "[{\"type\": \"function\", \"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]"
+         }
+        },
+        {
+         "key": "gen_ai.response.model",
+         "value": {
+          "stringValue": "gpt-6-sol"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "chatcmpl-1"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "tool_call"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "457"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "420"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_read.input_tokens",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "gen_ai.output.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"name\": \"get_weather\", \"id\": \"call_1\", \"arguments\": {\"city\": \"Paris\"}}], \"finish_reason\": \"tool_call\"}]"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "84b43aacac386154ed5f356dc606669e",
+       "spanId": "fadbb24e3952922e",
+       "parentSpanId": "04aa65f8fc6a6633",
+       "name": "openai.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1790925838180318584",
+       "endTimeUnixNano": "1790925838181635701",
+       "attributes": [
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.provider.name",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "gpt-6-sol"
+         }
+        },
+        {
+         "key": "gen_ai.is_streaming",
+         "value": {
+          "boolValue": false
+         }
+        },
+        {
+         "key": "gen_ai.openai.api_base",
+         "value": {
+          "stringValue": "https://api.openai.com/v1/"
+         }
+        },
+        {
+         "key": "gen_ai.input.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"system\", \"parts\": [{\"content\": \"You are a weather assistant.\", \"type\": \"text\"}]}, {\"role\": \"user\", \"parts\": [{\"content\": \"What's the weather in Paris?\", \"type\": \"text\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"name\": \"get_weather\", \"id\": \"call_1\", \"arguments\": {\"city\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_1\", \"response\": \"18\\u00b0C, sunny\"}]}]"
+         }
+        },
+        {
+         "key": "gen_ai.tool.definitions",
+         "value": {
+          "stringValue": "[{\"type\": \"function\", \"name\": \"get_weather\", \"description\": \"Current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]"
+         }
+        },
+        {
+         "key": "gen_ai.response.model",
+         "value": {
+          "stringValue": "gpt-6-sol"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "chatcmpl-2"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "stop"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "457"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "37"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "420"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_read.input_tokens",
+         "value": {
+          "intValue": "300"
+         }
+        },
+        {
+         "key": "gen_ai.output.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"content\": \"It is 18\\u00b0C and sunny in Paris.\", \"type\": \"text\"}], \"finish_reason\": \"stop\"}]"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

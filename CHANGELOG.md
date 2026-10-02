@@ -2,6 +2,30 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.1] - 2026-10-02
+
+Checked against spans written by real instrumentation libraries: the
+Anthropic and OpenAI SDKs run over a mocked HTTP transport with OpenInference
+(`openinference-instrumentation-anthropic` 3.0.1, `-openai` 0.1.63) and with
+OpenLLMetry 0.62.4 active. Both traces are committed under
+`tests/fixtures/instrumented/`, with the scripts that write them.
+
+### Fixed
+
+- **OpenInference assistant turns were empty.** Only `message.role` and
+  `message.content` were read. The Anthropic instrumentation writes every
+  assistant turn as `message.contents.<j>.message_content.*`, and both write
+  tool calls as `message.tool_calls.<k>.tool_call.*`, so in a real trace an
+  answer and a tool call each showed as an empty bubble. The thread now shows
+  the text, the tool call with its arguments (once, although the span lists
+  it twice), a tool's result as a result (`message.tool_call_id`), image
+  parts and legacy function calls. The same two agent turns read the same
+  under OpenInference and under `gen_ai.*`.
+- OpenInference spans show the request's `max_tokens` and temperature
+  (`llm.invocation_parameters`) and the finish reason (`llm.finish_reason`).
+- `gen_ai.system_instructions` is a list of parts, not of messages; it was
+  shown under the role "unknown". It is the system's.
+
 ## [0.3.0] - 2026-10-01
 
 ### Added
