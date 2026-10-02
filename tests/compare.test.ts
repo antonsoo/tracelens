@@ -158,7 +158,7 @@ describe('trace comparison', () => {
   it('rejects multi-run files and duplicate or disconnected trees', () => {
     const multi = parse(span('a', 0, 10), span('b', 0, 10));
     multi.spans[1]!.traceId = 'other'; // Also defend the core against caller-built trees.
-    expect(() => compareTraces(multi, multi, prices)).toThrow('one trace per file');
+    expect(() => compareTraces(multi, multi, prices)).toThrow('more than one trace');
     const duplicate = parse(span('a', 0, 10));
     duplicate.spans.push(duplicate.spans[0]!);
     expect(() => compareTraces(duplicate, duplicate, prices)).toThrow('duplicate span IDs');

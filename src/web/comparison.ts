@@ -207,7 +207,7 @@ export function renderComparison(
 ): void {
   const input = h('input', {
     type: 'file',
-    accept: '.json,application/json',
+    accept: '.json,.jsonl,.ndjson,application/json',
     className: 'visually-hidden',
     tabindex: '-1',
     'aria-label': 'Replace candidate trace',

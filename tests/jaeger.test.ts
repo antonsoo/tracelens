@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { buildSummary, DEFAULT_PRICE_TABLE, isJaegerJson, parseOtlpJson, TraceParseError } from '../src/core/index.js';
+import { buildSummary, DEFAULT_PRICE_TABLE, isJaegerJson, parseOtlpJson } from '../src/core/index.js';
 import type { ParsedSpan } from '../src/core/index.js';
 
 const load = (name: string): unknown => JSON.parse(readFileSync(new URL(`../examples/${name}`, import.meta.url), 'utf8'));
@@ -95,8 +95,14 @@ describe('Jaeger JSON', () => {
     expect(parsed.warnings.some((w) => w.message.includes('invalid timestamps'))).toBe(true);
   });
 
-  it('rejects more than one trace, as for OTLP', () => {
-    const other = { traceID: 'def456', spans: [span('z', { traceID: 'def456' })], processes: { p1: { serviceName: 'svc' } } };
-    expect(() => parseOtlpJson({ data: [trace([span('a')]), other] })).toThrow(TraceParseError);
+  it('reads one trace of a search result that holds several, and lists them all', () => {
+    const other = { traceID: 'def456', spans: [span('z', { traceID: 'def456' }), span('y', { traceID: 'def456' })], processes: { p1: { serviceName: 'svc' } } };
+    const doc = { data: [trace([span('a')]), other] };
+    const parsed = parseOtlpJson(doc);
+    expect(parsed.traceId).toBe('def456');
+    expect(parsed.spans).toHaveLength(2);
+    expect(parsed.traces.map((t) => t.spanCount).sort()).toEqual([1, 2]);
+    const first = parsed.traces.find((t) => t.traceId !== 'def456')!;
+    expect(parseOtlpJson(doc, { traceId: first.traceId }).spans.map((s) => s.spanId)).toEqual(['a']);
   });
 });

@@ -1,8 +1,7 @@
 import type { Change, Measurement, TraceComparison } from '../core/compare.js';
-import { fmtInt, fmtMs, fmtUsd, heading, table } from './format.js';
+import { fmtInt, fmtMs, fmtUsd, heading, safe, table } from './format.js';
 
 type Format = (value: number) => string;
-const safe = (text: string): string => text.replace(/[\u0000-\u001f\u007f-\u009f]/g, '');
 function measured(value: Measurement, format: Format): string {
   return value.missing ? `unknown (${value.missing} missing)` : format(value.value);
 }

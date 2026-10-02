@@ -131,10 +131,26 @@ describe('structural integrity', () => {
     expect(() => parseOtlpJson(otlpDoc([a, b, root]))).toThrow('Cyclic span parents');
     expect(() => parseOtlpJson(otlpDoc([{ ...a, parentSpanId: 'a' }]))).toThrow('Cyclic span parents');
   });
-  it('rejects multi-trace batches before IDs can collide in selection or totals', () => {
-    const a = fakeSpan({ traceId: 'aa', spanId: 'parent', startNs: 0, endNs: 10 });
-    const b = fakeSpan({ traceId: 'bb', spanId: 'child', parentSpanId: 'parent', startNs: 0, endNs: 10 });
-    expect(() => parseOtlpJson(otlpDoc([a, b]))).toThrow('one trace per file');
+  it('keeps the traces of a multi-trace file apart, so span IDs cannot collide across them', () => {
+    // The same two span IDs in both traces, parented the other way round in each.
+    const spans = [
+      fakeSpan({ traceId: 'aa', spanId: 'x', startNs: 0, endNs: 10 }),
+      fakeSpan({ traceId: 'aa', spanId: 'y', parentSpanId: 'x', startNs: 2, endNs: 8 }),
+      fakeSpan({ traceId: 'bb', spanId: 'y', startNs: 100, endNs: 110 }),
+      fakeSpan({ traceId: 'bb', spanId: 'x', parentSpanId: 'y', startNs: 102, endNs: 108 }),
+      fakeSpan({ traceId: 'bb', spanId: 'z', parentSpanId: 'x', startNs: 103, endNs: 104 }),
+    ];
+    const trace = parseOtlpJson(otlpDoc(spans));
+    expect(trace.traceId).toBe('bb'); // the larger one
+    expect(trace.roots.map((s) => s.spanId)).toEqual(['y']);
+    expect(trace.roots[0]!.children.map((s) => s.spanId)).toEqual(['x']);
+    expect(trace.spans.map((s) => s.depth)).toEqual([0, 1, 2]);
+    expect(trace.minStartNs).toBe(100n);
+    const other = parseOtlpJson(otlpDoc(spans), { traceId: 'aa' });
+    expect(other.roots.map((s) => s.spanId)).toEqual(['x']);
+    expect(other.roots[0]!.children.map((s) => s.spanId)).toEqual(['y']);
+    expect(other.maxEndNs).toBe(10n);
+    expect(trace.traces).toEqual(other.traces);
   });
   it('parses a 10,000-level chain without recursive stack overflow', () => {
     const spans = Array.from({ length: 10_000 }, (_, i) => fakeSpan({ spanId: String(i), ...(i ? { parentSpanId: String(i - 1) } : {}), startNs: 0, endNs: 10 }));

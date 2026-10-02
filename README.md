@@ -65,6 +65,11 @@ isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package).
 - **OTLP/JSON parser** — resourceSpans → scopeSpans → spans, typed
   `AnyValue` attribute decoding, tree building with graceful handling of
   malformed spans, missing parents and clock skew (see `docs/formats.md`).
+- **A collector's file as it is written** — the OpenTelemetry Collector's
+  file exporter writes JSON Lines, one export per batch, and every trace
+  that passed through it. The lines are read as one export, and a file with
+  several traces gets a picker (`--trace <id>` in the CLI), opening on the
+  trace with the most spans.
 - **Jaeger JSON too** — a trace downloaded from the Jaeger UI is converted to
   OTLP (microsecond times, typed tags, span kind and status from their tags,
   logs as events) and gets the same checks.
@@ -74,9 +79,12 @@ isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package).
   `llm.*`, including its flattened `llm.input_messages.<i>.*` encoding).
 - **Waterfall timeline** — spans colored by kind (agent / LLM / tool /
   chain / retriever / …), zoom via the toolbar or ctrl+scroll, pan by
-  dragging once zoomed in.
+  dragging once zoomed in. Only the rows in view are rendered, so a trace
+  of tens of thousands of spans scrolls and selects like a small one.
 - **Collapsible span tree**, merged into the same rows as the waterfall so
-  selection and scrolling never fall out of sync between two panes.
+  selection and scrolling never fall out of sync between two panes. The
+  arrow keys walk it: up and down move, left and right fold and open,
+  Home and End jump, Enter selects.
 - **Detail panel** — attributes, a pretty-printed message thread (system /
   user / assistant / tool, with tool calls and their results inline), tool
   arguments and results, and span events (exceptions rendered with their
@@ -86,14 +94,15 @@ isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package).
   editable-price cost estimate, error and retry counts, and a critical-path
   readout.
 - **CLI** (`tracelens summary` / `tracelens tree`) for the same numbers in
-  a terminal, e.g. in a CI log.
+  a terminal, e.g. in a CI log. Names taken from the trace are printed
+  without their control characters, so a trace cannot send escape sequences
+  to the terminal.
 - **Run comparison**, in the browser and `tracelens compare`: operation
   groups ranked by absolute self-time change, model changes, added/removed
   operations, per-side span inspection, and JSON export with pricing inputs.
   Missing measurements remain unknown; an unpriced call cannot become a
   claim of cost savings.
-- Light and dark themes, keyboard-navigable rows, works fully offline once
-  loaded, zero telemetry.
+- Light and dark themes, works fully offline once loaded, zero telemetry.
 
 ## How it works
 
@@ -205,6 +214,28 @@ service:
       exporters: [file]
 ```
 
+That file is JSON Lines: the exporter appends one export per batch, so a
+run of any length is several lines, and every trace the collector saw is
+in it. tracelens reads it as it is. When it holds more than one trace, the
+web app shows a picker above the summary, and the CLI lists the traces with
+the flag that reads each:
+
+```
+$ tracelens summary trace.json
+trace.json
+trace 6d6737bdab150eac9afbfaff04b326b3  ·  16 spans  ·  1 root span(s)
+3 traces in this file; showing 6d6737bdab150eac9afbfaff04b326b3 (invoke_agent incident-analyst, 16 spans, 31.80 s)
+  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (support-agent, 6 spans, 6.20 s)   --trace aaaaaaaa
+  also: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb (support-agent, 6 spans, 9.60 s)   --trace bbbbbbbb
+...
+```
+
+(The file here is the bundled GenAI example in two batches, with the two
+synthetic comparison runs between them.)
+
+`tracelens compare runs.json runs.json --baseline-trace aaaaaaaa --candidate-trace bbbbbbbb`
+compares two runs out of the same file.
+
 Or straight from the Python SDK, converting `ExportTraceServiceRequest` to
 its OTLP/JSON wire form (see `examples/otel_genai_example.py` for a full
 working example, including how to encode typed `AnyValue`s by hand when you
@@ -227,10 +258,10 @@ list. Summary:
 
 | Convention | Status |
 |---|---|
-| OTLP/JSON wire format | Supported |
+| OTLP/JSON wire format | Supported: one document, or JSON Lines with an export per line (the Collector's file exporter) |
 | OpenTelemetry GenAI semconv (`gen_ai.*`) | Supported, including the legacy `gen_ai.system` attribute and per-message-event fallback |
 | OpenInference (`openinference.*`, `llm.*`) | Supported |
-| Jaeger native JSON export | Supported: converted to OTLP/JSON, then parsed the same way |
+| Jaeger native JSON export | Supported: converted to OTLP/JSON, then parsed the same way; a search result with several traces is read one trace at a time |
 
 ## Example traces
 
@@ -248,7 +279,8 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
 
 ## Accuracy and limitations
 
-- The viewer and comparison take **one trace per file**. Comparison groups by service namespace,
+- The viewer and comparison read **one trace at a time**; a file with
+  several is read for the one you pick. Comparison groups by service namespace,
   service name, kind and full operation ancestry; renaming or reparenting
   an operation produces an added/removed group. Repeated calls in a group
   are not individually paired, and a pair of runs does not establish
@@ -263,15 +295,12 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of
   optimality under concurrency.
-- No virtualization on the waterfall — every visible span is a real DOM
-  node. Fine well past the traces this tool was built for (tested to
-  20,000 spans, see Performance below); a trace with hundreds of thousands
-  of spans will get sluggish before the parser does.
+- The browser takes files up to 25 MB, and reads a file whole: a
+  collector file larger than that needs splitting first.
+- JSON Lines is read for OTLP only. Jaeger's JSON is one document.
 - The waterfall's fixed-width label column doesn't reflow below ~375px; the
   timeline track scrolls horizontally on a phone rather than compressing
   illegibly.
-- Jaeger's native JSON export isn't parsed yet (different schema — see
-  above).
 
 ## Tests
 
@@ -294,10 +323,14 @@ structural validation and interval-union checks against an independent
 occupancy oracle. `npm run test:cli` checks the built executable;
 `npm run test:browser` exercises the real interface after a build.
 
-**Performance.** A generated 20,001-span trace parses in **~54 ms** on this
-box (14 vCPU WSL2 Linux, 48 GB RAM) — see `tests/otlp-parser.test.ts`, which
-asserts a generous 1000 ms ceiling to leave headroom for slower CI hardware
-without being a meaningless bound.
+**Performance.** A generated 20,001-span trace parses in **~65 ms** once
+warm on this box (14 vCPU WSL2 Linux, 48 GB RAM; about 100 ms on a first
+run) — see `tests/otlp-parser.test.ts`, which asserts a generous 1000 ms
+ceiling to leave headroom for slower CI hardware without being a
+meaningless bound. In headless Chromium on the same box, a 40,000-span
+trace (17 MB) is on screen 0.4 s after it is chosen, and selecting a span
+in it takes about 40 ms; `tests/browser-waterfall.mjs` checks a 6,000-span
+one on every run.
 
 ## Development
 

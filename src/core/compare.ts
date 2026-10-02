@@ -121,9 +121,7 @@ interface Group {
 
 function collect(trace: ParsedTrace, prices: PriceEntry[]): { groups: Map<string, Group>; metrics: RunMetrics } {
   if (new Set(trace.spans.map((span) => span.traceId)).size !== 1) {
-    throw new Error(
-      'Compare one trace per file. This export contains multiple trace IDs; split it into individual runs first.',
-    );
+    throw new Error('Cannot compare spans from more than one trace as a single run.');
   }
   if (new Set(trace.spans.map((span) => span.spanId)).size !== trace.spans.length) {
     throw new Error('Cannot compare duplicate span IDs. Export each span once.');

@@ -2,6 +2,60 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-10-01
+
+### Added
+
+- JSON Lines. The OpenTelemetry Collector's file exporter, which the README
+  recommends, writes one export per batch on a line of its own, so any run
+  longer than a batch was refused as "not valid JSON". The lines are now
+  read as one export, in the web app, the CLI and the library
+  (`parseTraceText`). A last line cut short is skipped with a warning, and
+  lines of metrics or logs in the same file are skipped and counted.
+- Files with several traces, which is what a collector's file and a Jaeger
+  search result are. They used to be refused ("Multiple trace IDs in one
+  file"). One trace is read, the one with the most spans unless another is
+  asked for, and the rest are listed: a picker in the web app, `--trace
+  <id>` for `summary` and `tree`, `--baseline-trace` and `--candidate-trace`
+  for `compare`. An ID can be shortened to any start of it that is unique
+  in the file.
+- Arrow-key navigation in the waterfall: up and down move, left and right
+  fold and open a span, Home and End jump. Rows carry `aria-level`,
+  `aria-expanded` and `aria-selected`.
+
+### Fixed
+
+- The timeline was always laid out 600 pixels wide. The track's width was
+  measured before the waterfall was in the page, so it read as zero and fell
+  back to the minimum: on a 1,900-pixel window the bars used half the track.
+- Selecting a span, zooming or panning put the waterfall back at its top
+  and dropped keyboard focus, because each of them rebuilt the view. In a
+  trace longer than the screen, the span just clicked scrolled out of
+  sight. The scroll position and the focused row are now kept.
+- Long traces. Every span was a row in the page, rebuilt on every click:
+  in headless Chromium a selection took 0.3 s in a 2,000-span trace, 4.7 s
+  at 10,000 and 17 s at 40,000, and the 40,000-span trace took 10 s to
+  appear. Only the rows in view are rendered now: about 40 ms per
+  selection at any of those sizes, and 0.4 s to appear. The summary and the
+  comparison are no longer recomputed on every render either.
+- `tracelens tree`, and the critical path and warnings of `tracelens
+  summary`, printed span and tool names as they came, escape sequences
+  included. Text from a trace is now printed without control characters.
+- A bar's duration label was cut mid-digit when the bar was a little too
+  narrow for it; it is left out there. The bars' grow-in animation ran
+  again on every click; it runs once per trace.
+- The README still said Jaeger JSON was not parsed (it has been since
+  0.2.0) and that the waterfall had no virtualization. Its three waterfall
+  screenshots are re-shot.
+
+### Changed
+
+- `parseOtlpJson` no longer throws on a document with several traces; it
+  reads one (see above) and returns the list as `traces`. Code that relied
+  on the error can check `traces.length`.
+- An unknown flag to `summary` or `tree` is an error. They used to ignore
+  everything after the file name.
+
 ## [0.2.1] - 2026-10-01
 
 - The package is named `@antonsoloviev/tracelens`, ready for npm. It isn't

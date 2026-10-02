@@ -119,6 +119,18 @@ export interface ParsedSpan {
 export interface ParseWarning {
   message: string;
   spanId?: string;
+  /** The trace the warning is about, when it is about one: a file can hold several. */
+  traceId?: string;
+}
+
+/** One trace found in a file: enough to tell the runs apart and pick one. */
+export interface TraceListing {
+  traceId: string;
+  spanCount: number;
+  /** The name of its earliest root span (a span whose parent is not in the file). */
+  rootName: string;
+  startNs: bigint;
+  durationNs: bigint;
 }
 
 export interface ParsedTrace {
@@ -130,6 +142,12 @@ export interface ParsedTrace {
   warnings: ParseWarning[];
   /** The file's format: Jaeger JSON is converted to OTLP/JSON before parsing. */
   sourceFormat: 'otlp-json' | 'jaeger-json';
+  /**
+   * Every trace in the file, in order of start time. A collector's export
+   * holds whatever passed through it; `spans` and `roots` are one of them
+   * (see `ParseOptions.traceId`), and this is the list to choose from.
+   */
+  traces: TraceListing[];
 }
 
 export function spanDurationMs(span: ParsedSpan): number {

@@ -15,7 +15,7 @@ const SIGNAL_SVG = `
 export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): void {
   const fileInput = h('input', {
     type: 'file',
-    accept: '.json,application/json',
+    accept: '.json,.jsonl,.ndjson,application/json',
     className: 'visually-hidden',
     id: 'tl-file-input',
     onChange: (e: Event) => {
@@ -29,7 +29,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     { className: 'tl-dropzone-card' },
     buildSignalSvg(),
     h('h1', {}, 'Drop a trace to inspect it'),
-    h('p', {}, 'OTLP/JSON from a collector or the OpenTelemetry SDK, or a trace downloaded from Jaeger as JSON. Nothing leaves this browser tab.'),
+    h('p', {}, 'OTLP/JSON from the OpenTelemetry SDK or a collector\'s file exporter (one batch per line), or traces downloaded from Jaeger as JSON. Nothing leaves this browser tab.'),
     h(
       'label',
       { className: 'tl-btn primary', for: 'tl-file-input', style: 'cursor:pointer' },

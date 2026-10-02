@@ -42,8 +42,22 @@ both accepted. Malformed individual spans (missing IDs, an end time before
 the start time) are skipped or clamped with a warning rather than aborting
 the parse — see `tests/otlp-parser.test.ts` for the exact edge cases.
 
-Each file must contain one trace ID. Multiple trace IDs, duplicate span
-IDs and cyclic parents are rejected. Missing or invalid span timestamps
+A file may be JSON Lines, with an export on each line: that is what the
+Collector's `file` exporter writes, a line per batch (see its README, "File
+Format"). `parseTraceText()` reads the lines as one export. A last line
+that is not complete JSON is skipped with a warning, since a file still
+being written ends that way; a broken line anywhere else is an error that
+names the line. Lines of metrics, logs or profiles written to the same file
+are skipped and counted in a warning.
+
+A file may hold several traces, as a collector's file does. Spans are
+grouped by trace ID first, because span IDs are only unique within a trace,
+and one trace is read: the one named by `ParseOptions.traceId` (a trace ID,
+or the start of one that no other trace in the file shares), otherwise the
+one with the most spans, the earliest on a tie. `ParsedTrace.traces` lists
+them all in order of start time, each with its span count, the name of its
+earliest root span, its start and its duration. Within a trace, duplicate
+span IDs and cyclic parents are rejected. Missing or invalid span timestamps
 are skipped with a warning; they are never silently converted to zero.
 Timestamps must fit unsigned 64-bit integers. Numeric JSON timestamps
 must also be safe JS integers; use decimal strings for epoch nanoseconds

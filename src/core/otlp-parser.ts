@@ -5,7 +5,7 @@
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto
 // (verified against the `main` branch, 2026-09-24).
-import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, StatusCode } from './types.js';
+import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, StatusCode, TraceListing } from './types.js';
 import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 
@@ -105,13 +105,13 @@ function decodeStatus(raw: unknown): { code: StatusCode; message?: string } {
   return message !== undefined ? { code, message } : { code };
 }
 
-function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string): SpanEvent[] {
+function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, traceId: string): SpanEvent[] {
   if (!Array.isArray(raw)) return [];
   return raw.flatMap((e) => {
     const rec = isRecord(e) ? e : {};
     const time = toBigNanos(rec.timeUnixNano ?? rec.time_unix_nano ?? 0);
     if (time === undefined) {
-      warnings.push({ message: 'Skipped an event with an invalid timestamp.', spanId });
+      warnings.push({ message: 'Skipped an event with an invalid timestamp.', spanId, traceId });
       return [];
     }
     return [{
@@ -127,13 +127,49 @@ function hexId(raw: unknown): string {
   return '';
 }
 
+export interface ParseOptions {
+  /**
+   * Which trace to read from a file that holds several: a trace ID, or the
+   * start of one if no other trace in the file starts the same way. Without
+   * it, the trace with the most spans is read (the earliest, on a tie).
+   */
+  traceId?: string;
+}
+
+function describeListing(t: TraceListing): string {
+  return `${t.traceId} (${t.rootName}, ${t.spanCount} ${t.spanCount === 1 ? 'span' : 'spans'})`;
+}
+
+function listTraces(listings: TraceListing[]): string {
+  const shown = listings.slice(0, 10).map(describeListing).join('; ');
+  return listings.length > 10 ? `${shown}; and ${listings.length - 10} more` : shown;
+}
+
+/** The trace the options ask for, or the default: the one with the most spans, the earliest on a tie. */
+function chooseTrace(listings: TraceListing[], wanted: string | undefined): TraceListing {
+  if (wanted === undefined) {
+    return listings.reduce((best, t) => (t.spanCount > best.spanCount ? t : best));
+  }
+  const prefix = wanted.trim().toLowerCase();
+  const exact = listings.find((t) => t.traceId === prefix);
+  if (exact) return exact;
+  const matches = prefix.length > 0 ? listings.filter((t) => t.traceId.startsWith(prefix)) : [];
+  if (matches.length === 1) return matches[0]!;
+  if (matches.length > 1) {
+    throw new TraceParseError(`"${wanted}" is the start of ${matches.length} trace IDs in this file: ${listTraces(matches)}.`);
+  }
+  throw new TraceParseError(`No trace in this file has the ID "${wanted}". It holds: ${listTraces(listings)}.`);
+}
+
 /**
  * Parses a raw OTLP/JSON `ExportTraceServiceRequest` document (or a bare
  * `resourceSpans` array) into a flat span list plus a computed tree. Throws
  * `TraceParseError` on structurally invalid input; individual malformed
  * spans are skipped with a warning rather than aborting the whole parse.
+ * A file with several traces yields one of them (see `ParseOptions`) and
+ * lists them all in `traces`.
  */
-export function parseOtlpJson(json: unknown): ParsedTrace {
+export function parseOtlpJson(json: unknown, options: ParseOptions = {}): ParsedTrace {
   // Jaeger's native JSON is converted up front, so it gets the same validation.
   const sourceFormat = isJaegerJson(json) ? 'jaeger-json' : 'otlp-json';
   if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json);
@@ -148,9 +184,9 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
     throw new TraceParseError('This trace file has no resourceSpans — nothing to show.');
   }
 
-  const flat: ParsedSpan[] = [];
+  const all: ParsedSpan[] = [];
+  // Warnings are collected for every trace in the file and narrowed to the chosen one below.
   const warnings: ParseWarning[] = [];
-  let traceId = '';
 
   for (const rs of resourceSpans) {
     if (!isRecord(rs)) continue;
@@ -180,17 +216,14 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
         const start = toBigNanos(raw.startTimeUnixNano ?? raw.start_time_unix_nano);
         let end = toBigNanos(raw.endTimeUnixNano ?? raw.end_time_unix_nano);
         if (start === undefined || end === undefined) {
-          warnings.push({ message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. Use unsigned decimal nanosecond strings (or safe integer numbers).`, spanId });
+          warnings.push({ message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. Use unsigned decimal nanosecond strings (or safe integer numbers).`, spanId, traceId: spanTraceId });
           continue;
-        }
-        if (!traceId) traceId = spanTraceId;
-        if (traceId !== spanTraceId) {
-          throw new TraceParseError('Multiple trace IDs in one file. Export one trace per file, then compare the two runs.');
         }
         if (end < start) {
           warnings.push({
             message: `Span "${String(raw.name)}" has an end time before its start time (clock skew?) — clamped to start.`,
             spanId,
+            traceId: spanTraceId,
           });
           end = start;
         }
@@ -211,7 +244,7 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
           durationNs: end - start,
           status: decodeStatus(raw.status),
           attributes,
-          events: decodeEvents(raw.events, warnings, spanId),
+          events: decodeEvents(raw.events, warnings, spanId, spanTraceId),
           resourceAttributes,
           ...(scopeName ? { scopeName } : {}),
           ...(scopeVersion ? { scopeVersion } : {}),
@@ -220,30 +253,63 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
           depth: 0,
           children: [],
         };
-        flat.push(normalizeSpan(base));
+        all.push(base);
       }
     }
   }
 
-  if (flat.length === 0) {
+  if (all.length === 0) {
     throw new TraceParseError('No valid spans were found in this file.');
   }
 
-  const spanKey = (traceId: string, spanId: string): string => JSON.stringify([traceId, spanId]);
-  const byId = new Map(flat.map((s) => [spanKey(s.traceId, s.spanId), s] as const));
+  // A collector's export holds every trace that passed through it, and their span IDs are only
+  // unique within a trace. So the spans are grouped by trace first, and one trace is read.
+  const byTrace = new Map<string, ParsedSpan[]>();
+  for (const span of all) {
+    const group = byTrace.get(span.traceId);
+    if (group) group.push(span);
+    else byTrace.set(span.traceId, [span]);
+  }
+  const traces: TraceListing[] = [];
+  for (const [id, spans] of byTrace) {
+    const ids = new Set(spans.map((s) => s.spanId));
+    let first = spans[0]!;
+    let firstRoot: ParsedSpan | undefined;
+    let end = first.endTimeUnixNano;
+    for (const s of spans) {
+      if (s.startTimeUnixNano < first.startTimeUnixNano) first = s;
+      if (s.endTimeUnixNano > end) end = s.endTimeUnixNano;
+      const isRoot = s.parentSpanId === undefined || !ids.has(s.parentSpanId);
+      if (isRoot && (!firstRoot || s.startTimeUnixNano < firstRoot.startTimeUnixNano)) firstRoot = s;
+    }
+    traces.push({
+      traceId: id,
+      spanCount: spans.length,
+      rootName: (firstRoot ?? first).name,
+      startNs: first.startTimeUnixNano,
+      durationNs: end - first.startTimeUnixNano,
+    });
+  }
+  traces.sort((a, b) => (a.startNs < b.startNs ? -1 : a.startNs > b.startNs ? 1 : a.traceId < b.traceId ? -1 : 1));
+  const traceId = chooseTrace(traces, options.traceId).traceId;
+  const flat = byTrace.get(traceId)!.map((span) => normalizeSpan(span));
+  const chosenWarnings = warnings.filter((w) => w.traceId === undefined || w.traceId === traceId);
+
+  const byId = new Map(flat.map((s) => [s.spanId, s] as const));
   if (byId.size !== flat.length) {
     throw new TraceParseError('Duplicate span IDs within a trace. Export each span once.');
   }
   const roots: ParsedSpan[] = [];
   for (const span of flat) {
-    const parent = span.parentSpanId ? byId.get(spanKey(span.traceId, span.parentSpanId)) : undefined;
+    const parent = span.parentSpanId ? byId.get(span.parentSpanId) : undefined;
     if (parent) {
       parent.children.push(span);
     } else {
       if (span.parentSpanId) {
-        warnings.push({
+        chosenWarnings.push({
           message: `Span "${span.name}" references a parent (${span.parentSpanId}) not present in this file — shown as a root.`,
           spanId: span.spanId,
+          traceId,
         });
       }
       roots.push(span);
@@ -278,7 +344,66 @@ export function parseOtlpJson(json: unknown): ParsedTrace {
     roots,
     minStartNs: minStart,
     maxEndNs: maxEnd,
-    warnings,
+    warnings: chosenWarnings,
     sourceFormat,
+    traces,
   };
+}
+
+/** What a line of a collector's file can hold besides traces. */
+const OTHER_SIGNALS = ['resourceMetrics', 'resource_metrics', 'resourceLogs', 'resource_logs', 'resourceProfiles', 'resource_profiles'];
+
+function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warnings: ParseWarning[] } {
+  const lines = text.split(/\r\n|\n|\r/).filter((line) => line.trim().length > 0);
+  if (lines.length < 2) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
+
+  const resourceSpans: unknown[] = [];
+  const warnings: ParseWarning[] = [];
+  let otherSignals = 0;
+  for (let i = 0; i < lines.length; i++) {
+    let value: unknown;
+    try {
+      value = JSON.parse(lines[i]!);
+    } catch (err) {
+      const reason = err instanceof Error ? err.message : String(err);
+      if (i === 0) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
+      // A file the collector is still writing, or a copy cut short, ends mid-line.
+      if (i === lines.length - 1) {
+        warnings.push({ message: `The last line (${i + 1}) is not complete JSON and was skipped: the export may still have been in progress.` });
+        break;
+      }
+      throw new TraceParseError(`Not valid JSON, and not JSON Lines either: line ${i + 1}: ${reason}`);
+    }
+    const batch = isRecord(value) ? (value.resourceSpans ?? value.resource_spans) : value;
+    if (Array.isArray(batch)) {
+      for (const entry of batch) resourceSpans.push(entry);
+    } else if (isRecord(value) && OTHER_SIGNALS.some((key) => key in value)) {
+      otherSignals++;
+    } else {
+      throw new TraceParseError(`Line ${i + 1} is not an OTLP/JSON trace export: expected an object with a "resourceSpans" array on every line.`);
+    }
+  }
+  if (otherSignals > 0) {
+    warnings.push({ message: `Skipped ${otherSignals} ${otherSignals === 1 ? 'line' : 'lines'} of metrics, logs or profiles: only traces are read.` });
+  }
+  return { json: { resourceSpans }, warnings };
+}
+
+/**
+ * Parses the text of a trace file: one JSON document (OTLP/JSON or Jaeger
+ * JSON), or JSON Lines with an OTLP/JSON export on each line, which is what
+ * the OpenTelemetry Collector's file exporter writes (a line per batch).
+ * The lines are read as one export.
+ */
+export function parseTraceText(text: string, options: ParseOptions = {}): ParsedTrace {
+  let json: unknown;
+  let lineWarnings: ParseWarning[] = [];
+  try {
+    json = JSON.parse(text);
+  } catch (err) {
+    if (!(err instanceof SyntaxError)) throw err;
+    ({ json, warnings: lineWarnings } = parseJsonLines(text, err));
+  }
+  const trace = parseOtlpJson(json, options);
+  return lineWarnings.length > 0 ? { ...trace, warnings: [...lineWarnings, ...trace.warnings] } : trace;
 }

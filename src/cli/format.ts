@@ -11,6 +11,15 @@ export const yellow = (s: string): string => wrap('33', s);
 export const cyan = (s: string): string => wrap('36', s);
 export const magenta = (s: string): string => wrap('35', s);
 
+/**
+ * Text from a trace file, made safe to print: span, tool and model names are
+ * whatever the traced program (or whoever wrote the file) put there, and a
+ * terminal acts on escape sequences in what it is shown.
+ */
+export function safe(text: string): string {
+  return text.replace(/[\u0000-\u001f\u007f-\u009f]/g, '');
+}
+
 export function fmtMs(ms: number): string {
   if (ms < 1000) return `${ms.toFixed(1)} ms`;
   return `${(ms / 1000).toFixed(2)} s`;

@@ -1,8 +1,10 @@
 # Comparing runs
 
 The shared core in `src/core/compare.ts` powers the browser and CLI.
-Neither trace is uploaded. The two files must each contain exactly one
-trace ID; a collector batch needs to be split into individual runs first.
+Neither trace is uploaded. Each side is one trace. From a file that holds
+several (a collector's export), the one with the most spans is read unless
+another is chosen: the trace picker in the browser, `--baseline-trace` and
+`--candidate-trace` in the CLI. Both sides can come from the same file.
 
 ## What gets matched
 

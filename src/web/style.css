@@ -445,6 +445,9 @@ a {
   display: flex;
   align-items: center;
   min-width: 2px;
+}
+/* The bars grow in when a trace is first shown, not each time a row is rebuilt by a scroll or a click. */
+.tl-first-paint .tl-wf-bar {
   animation: tl-bar-grow 420ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
 .tl-wf-bar.status-error {
@@ -470,7 +473,7 @@ a {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .tl-wf-bar {
+  .tl-first-paint .tl-wf-bar {
     animation: none;
   }
 }
@@ -481,7 +484,17 @@ a {
   width: 1px;
   background: color-mix(in srgb, var(--border) 70%, transparent);
 }
+.tl-wf-rows {
+  box-sizing: border-box;
+}
+/* A row brought into view by the keyboard stops below the ruler that sticks to the top. */
+.tl-wf-row {
+  scroll-margin-top: 20px;
+}
 .tl-wf-ruler {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   height: 20px;
   display: flex;
   align-items: stretch;
@@ -807,6 +820,8 @@ dialog.tl-dialog::backdrop {
 .tl-compare-footer { border-top: 1px solid var(--border); padding: 20px 0 0; margin-top: 32px; color: var(--text-dim); font-size: 12px; }
 .tl-load-error { padding: 10px 16px; color: var(--accent-error); background: var(--surface); overflow-wrap: anywhere; }
 .tl-active-file { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tl-trace-picker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 8px 16px; font-size: 12.5px; color: var(--text-dim); background: var(--surface); border-bottom: 1px solid var(--border); }
+.tl-trace-select { flex: 1 1 280px; min-width: 0; max-width: 720px; background: var(--bg); color: var(--text); border: 1px solid var(--border-strong); border-radius: 3px; padding: 5px 7px; font-size: 12px; }
 @media (max-width: 950px) {
   .tl-header-actions { flex-wrap: wrap; }
   .tl-operation-head { display: none; }
