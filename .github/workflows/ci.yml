@@ -40,3 +40,26 @@ jobs:
 
       - name: Browser interaction tests
         run: npm run test:browser
+
+  minimum-node:
+    name: the built CLI on the oldest supported Node
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      # `npm ci` builds the CLI (the package's `prepare` script).
+      - run: npm ci
+      # `engines.node` in package.json says >=20. The tests run on the Node that builds;
+      # this runs what was built on the oldest Node that range allows.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "20.0.0"
+      - name: Run the CLI on Node 20.0.0
+        run: |
+          node --version
+          node dist-cli/cli/index.js --version
+          node dist-cli/cli/index.js summary examples/genai-semconv-trace.json
+          node dist-cli/cli/index.js tree examples/jaeger-genai-trace.json
