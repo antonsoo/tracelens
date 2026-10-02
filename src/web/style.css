@@ -15,7 +15,7 @@
   --border-strong: #aab3bf;
   --text: #1b222c;
   --text-dim: #5b6572;
-  --text-faint: #8993a1;
+  --text-faint: #6c7787;
 
   --accent-agent: #6a5fd8;
   --accent-llm: #0f8f80;
@@ -44,7 +44,7 @@
   --border-strong: #37414d;
   --text: #e6e9ed;
   --text-dim: #97a2b0;
-  --text-faint: #626d7a;
+  --text-faint: #748190;
 
   --accent-agent: #a49bff;
   --accent-llm: #5fd6c4;
@@ -68,7 +68,7 @@
     --border-strong: #37414d;
     --text: #e6e9ed;
     --text-dim: #97a2b0;
-    --text-faint: #626d7a;
+    --text-faint: #748190;
 
     --accent-agent: #a49bff;
     --accent-llm: #5fd6c4;
@@ -323,6 +323,10 @@ a {
 }
 
 /* ------------------------------------------------------------- layout */
+/* The page's main landmark. It adds no box: what is in it lays out as a child of #app. */
+.tl-page-main {
+  display: contents;
+}
 .tl-main {
   flex: 1;
   display: flex;

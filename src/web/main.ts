@@ -292,7 +292,7 @@ function render(): void {
       state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null,
     );
     const rest = h('div', { style: 'flex:1;display:flex;min-height:0' });
-    app.appendChild(rest);
+    app.appendChild(h('main', { className: 'tl-page-main' }, rest));
     renderDropzone(rest, {
       onFile: (f) => void loadFile(f),
       onLoadExample: (p) => void loadExample(p),
@@ -346,7 +346,7 @@ function render(): void {
   const warnings = activeTrace.warnings.length ? h('details', { className: 'tl-compare-warnings' },
     h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
     h('ul', {}, ...activeTrace.warnings.map((warning) => h('li', {}, warning.message)))) : null;
-  mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, picker, warnings, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl));
+  mount(app, buildHeader(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
   // After the mount: the waterfall measures its track and restores its scroll position, which a
   // detached element has neither of.
   renderWaterfall(

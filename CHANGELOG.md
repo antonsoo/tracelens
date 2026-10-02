@@ -31,6 +31,13 @@ All notable changes to this project are documented in this file.
   event handlers and `eval` are not allowed. Every control was exercised
   in Chromium and Firefox with a listener for policy violations: none.
 
+### Accessibility
+
+- Checked with axe-core (WCAG 2.1 A and AA, and its best-practice rules) in light and dark,
+  at desktop and phone widths, with a trace loaded and in the
+  comparison view: no findings now. The faint text was 3.1:1 (light) and 3.4:1
+  (dark); every view has one `main` landmark.
+
 ## [0.3.1] - 2026-10-02
 
 Checked against spans written by real instrumentation libraries: the
