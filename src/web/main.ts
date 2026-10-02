@@ -1,4 +1,5 @@
 import './style.css';
+import { decodeText } from '../core/decode.js';
 import { buildSummary, compareTraces, parseOtlpJson, parseTraceText, TraceParseError } from '../core/index.js';
 import type { ParsedSpan, ParsedTrace, PriceEntry, TraceComparison, TraceListing, TraceSummary } from '../core/index.js';
 import { Store } from './store.js';
@@ -73,7 +74,7 @@ async function loadFile(file: File): Promise<void> {
   const version = ++loadVersion;
   try {
     if (file.size > 25 * 1024 * 1024) throw new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
-    const text = await file.text();
+    const text = decodeText(new Uint8Array(await file.arrayBuffer()));
     const trace = parseTraceText(text);
     if (version !== loadVersion) return;
     store.set({ trace, source: text, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: file.name, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
@@ -109,7 +110,7 @@ async function loadCandidate(file: File): Promise<void> {
   const version = ++loadVersion;
   try {
     if (file.size > 25 * 1024 * 1024) throw new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
-    const text = await file.text();
+    const text = decodeText(new Uint8Array(await file.arrayBuffer()));
     const trace = parseTraceText(text);
     if (version !== loadVersion) return;
     compareTraces(baseline, trace, state.priceTable);

@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.2] - 2026-10-02
+
+### Fixed
+
+- A trace saved by a Windows shell or editor. `... > trace.json` in Windows
+  PowerShell writes UTF-16 with a byte-order mark, and its `-Encoding utf8`
+  (like Notepad's "UTF-8 with BOM") puts a mark in front of UTF-8. The CLI
+  refused both ("Not valid JSON: Unexpected token"), and the web app refused
+  the UTF-16 one. The mark now decides the encoding and is dropped; the three
+  copies of a trace give the same summary.
+
 ## [0.3.1] - 2026-10-02
 
 Checked against spans written by real instrumentation libraries: the

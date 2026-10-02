@@ -6,6 +6,7 @@
 // npm resolves the bin through a symlink, which is exactly how `npm i -g`
 // installs it).
 import { readFile } from 'node:fs/promises';
+import { decodeText } from '../core/decode.js';
 import { parseTraceText, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs, TraceParseError } from '../core/index.js';
 import type { ParsedTrace, TraceListing } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, safe, table, yellow } from './format.js';
@@ -48,7 +49,7 @@ function kindColor(kind: string, s: string): string {
 async function loadTrace(path: string, traceId?: string): Promise<ParsedTrace> {
   let raw: string;
   try {
-    raw = await readFile(path, 'utf8');
+    raw = decodeText(await readFile(path));
   } catch (err) {
     throw new Error(`Can't read "${path}": ${err instanceof Error ? err.message : String(err)}`);
   }
