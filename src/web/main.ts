@@ -1,3 +1,4 @@
+import './fonts/fonts.css';
 import './style.css';
 import { decodeText } from '../core/decode.js';
 import { buildSummary, compareTraces, parseOtlpJson, parseTraceText, TraceParseError } from '../core/index.js';

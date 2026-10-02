@@ -13,6 +13,15 @@ All notable changes to this project are documented in this file.
   the UTF-16 one. The mark now decides the encoding and is dropped; the three
   copies of a trace give the same summary.
 
+### Changed
+
+- The page's fonts are served by the page itself. They came from Google Fonts,
+  the one request the page made to another origin; the same font files (every
+  subset, as Google serves them to a current browser) are now in
+  `src/web/fonts/`, with their SIL Open Font License texts. Nothing looks
+  different: screenshots before and after match. The page now loads with
+  every other host blocked.
+
 ## [0.3.1] - 2026-10-02
 
 Checked against spans written by real instrumentation libraries: the
