@@ -44,7 +44,7 @@ jobs:
         run: npm run test:cli
 
       - name: Install browser for interaction tests
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox
 
       - name: Browser interaction tests
         run: npm run test:browser

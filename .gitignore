@@ -5,6 +5,8 @@ public/examples/
 *.tgz
 .DS_Store
 npm-debug.log*
+test-results/
+playwright-report/
 *.local
 .vscode/*
 !.vscode/extensions.json

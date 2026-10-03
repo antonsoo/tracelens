@@ -48,12 +48,14 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.cli.json",
     "test:cli": "node --test tests/cli.test.mjs",
-    "test:browser": "node tests/browser.mjs"
+    "test:browser": "node tests/browser.mjs && playwright test"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^24.0.0",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",

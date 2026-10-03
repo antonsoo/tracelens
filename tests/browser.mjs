@@ -128,11 +128,11 @@ try {
     await route.continue();
   });
   await page.getByRole('button', { name: 'Compare two runs (synthetic)' }).click();
+  const canceled = page.waitForEvent('requestfailed', (request) => request.url().endsWith('/comparison-candidate.json'));
   await page.locator('#tl-file-input').setInputFiles(root + '/examples/comparison-baseline.json');
   await page.locator('.tl-active-file').waitFor();
-  const delayed = page.waitForResponse('**/examples/comparison-candidate.json');
   release();
-  await (await delayed).finished();
+  await canceled;
   await page.waitForTimeout(100);
   assert.match(await page.locator('.tl-active-file').innerText(), /comparison-baseline.json/);
   assert.equal(await page.locator('.tl-comparison').count(), 0);
