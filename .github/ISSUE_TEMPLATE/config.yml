@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private security or conduct report
+    url: https://github.com/antonsoo/tracelens/blob/main/CONTRIBUTING.md#community-and-private-reports
+    about: Contact the maintainer privately; do not post sensitive reports in a public issue.

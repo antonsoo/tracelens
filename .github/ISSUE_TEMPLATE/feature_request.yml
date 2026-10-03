@@ -1,0 +1,22 @@
+name: Feature or usability improvement
+description: Describe a concrete problem and the improvement that would help.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first. Small examples help us understand the need.
+        Keep private data out of public issues. See our [contribution guidance](https://github.com/antonsoo/tracelens/blob/main/CONTRIBUTING.md).
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the task and where the current behavior gets in your way.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: What would help?
+      description: Describe the desired behavior and a concrete example of success. Include alternatives or a workaround if you have one.
+    validations:
+      required: true

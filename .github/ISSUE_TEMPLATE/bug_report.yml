@@ -1,0 +1,35 @@
+name: Bug report
+description: Report incorrect results, broken behavior, or an accessibility problem.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first. Use a small synthetic example where possible.
+        Do not post credentials, personal data, private traces, or confidential documents.
+        For security or conduct reports, follow the [private reporting guidance](https://github.com/antonsoo/tracelens/blob/main/CONTRIBUTING.md#community-and-private-reports).
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened, and what did you expect?
+      description: For incorrect results, include the expected value and how you checked it.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the command or page URL, relevant settings, and a minimal input that is safe to share.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Version and environment
+      description: Package version or commit, operating system, and browser or runtime version. For the hosted demo, include its URL and when you tried it.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Additional evidence
+      description: Optional screenshots, error messages, or sanitized output. Remove private data before posting.
