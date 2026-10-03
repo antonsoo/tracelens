@@ -41,7 +41,11 @@ npm run build         # web (dist/) + CLI (dist-cli/)
 
 Run comparison integration checks after building: `npm run test:cli` and
 `npm run test:browser`. The browser check needs Playwright Chromium installed
-(`npx playwright install chromium`) and starts its own local preview server.
+and Firefox (`npx playwright install chromium firefox`) and starts its own
+local preview servers on ports 4318 and 4319. The second suite lives in
+`tests/browser/` and uses Playwright Test. Run it alone with
+`npx playwright test` after building. To refresh the span-search screenshots,
+run `CAPTURE_SCREENSHOTS=1 npx playwright test -g 'accessible layouts'`.
 
 ## Community and private reports
 

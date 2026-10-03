@@ -68,6 +68,10 @@ Prices can become stale. Source URLs and dates accompany each entry.
 The browser accepts files up to 25 MB each. Comparison accepts up to 256
 nesting levels. Duplicate IDs within a trace and cyclic parents are rejected
 by the parser; missing parents remain visible as roots with a warning.
+Choosing another trace while inspecting either side checks these limits
+before replacing it. If that trace cannot be compared, the previous pair
+and selection stay available, with the error shown above them. Canceling
+a candidate load also leaves the pair intact.
 Missing or invalid span timestamps cause that span to be skipped, with a
 warning. Decimal-string timestamps preserve nanosecond precision; numeric
 timestamps are accepted only when they are safe, nonnegative integers.
@@ -89,10 +93,14 @@ over generated interval sets. The synthetic example's totals are calculated
 by hand in the test, rather than copied from the comparison output.
 
 After `npm run build`, run `npm run test:cli` and `npm run test:browser`.
-The latter needs Playwright's Chromium installed (`npx playwright install
-chromium`). It starts a local preview server and exercises real uploads,
+The latter needs Playwright's Chromium and Firefox installed (`npx playwright install
+chromium firefox`). It starts local preview servers and exercises real uploads,
 swapping, filtering, JSON download, per-side inspection, malformed-file
 recovery, offline interaction, light/dark themes and a 375-pixel viewport.
 It also checks blocked/corrupt storage, price validation, and preservation
 of filters, sorting, expansion, focus and scroll across view changes.
+The workspace suite also checks rejected trace switches on both sides,
+continuous timeline dragging, disposal of global view handlers, canceled
+reads/downloads, span search, keyboard navigation, and axe accessibility
+checks in both themes at desktop and phone widths.
 These checks are included in CI; local results do not imply CI ran.

@@ -60,6 +60,8 @@ on npm; the command it installs is `tracelens`).
 | ![Waterfall, light mode](docs/assets/waterfall-light.png) | ![Tool call detail panel](docs/assets/tool-io-light.png) |
 | Waterfall + span tree, light mode | Tool I/O detail panel |
 
+![The bundled trace filtered to errors, retaining each failed span's agent ancestry](docs/assets/span-search-dark-1440.png)
+
 ![CLI summary output](docs/assets/cli-summary.png)
 
 ## Features
@@ -87,10 +89,23 @@ on npm; the command it installs is `tracelens`).
   selection and scrolling never fall out of sync between two panes. The
   arrow keys walk it: up and down move, left and right fold and open,
   Home and End jump, Enter selects.
+- **Find spans** by name, operation, model, service, kind, provider or span
+  ID, with an **Errors only** switch. Words are matched together,
+  case-insensitively. Matching spans keep their ancestors visible; the
+  count distinguishes matches from context. Clearing filters restores
+  folded branches. Filters affect only the waterfall: summary totals and
+  comparison exports still cover the whole run. Search stays in memory,
+  makes no requests, and does not inspect prompt or tool payloads.
 - **Detail panel** — attributes, a pretty-printed message thread (system /
   user / assistant / tool, with tool calls and their results inline), tool
   arguments and results, and span events (exceptions rendered with their
   real captured stack trace).
+  Its tabs support Left/Right, Home and End; Tab enters the active panel.
+- **Recoverable loading** — cancel a pending file read or sample download,
+  replace it with another choice, or retry after failure. An invalid
+  candidate or trace switch preserves the current comparison. Parsing
+  still runs on the main thread; cancellation takes effect during the
+  asynchronous read/download, before parsing begins.
 - **Summary header** — total duration, LLM time vs. tool time (by *self*
   time, not double-counting nested spans), tokens in/out by model, an
   editable-price cost estimate, error and retry counts, and a critical-path

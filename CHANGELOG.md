@@ -2,6 +2,37 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+### Added
+
+- Local span search and an errors-only filter, with ancestor context,
+  separate match counts, empty results, and preserved branch folds.
+  Summary totals and comparison exports remain unfiltered.
+- Loading status and cancellation for pending file reads and sample
+  downloads. A newer choice aborts obsolete fetches and skips decoding
+  obsolete file reads.
+- Chromium/Firefox workspace regressions and desktop/mobile accessibility
+  checks, including contrast on selected error rows.
+
+### Fixed
+
+- Choosing an uncomparable trace from a multi-trace file could replace one
+  side of a valid comparison and break the return to the comparison view.
+  Both sides are now checked before state changes.
+- Timeline dragging stopped after its first movement because a redraw
+  discarded the gesture's mouse handlers. A drag now survives redraws;
+  leaving inspection disposes its global listeners and cached views.
+- Detail tabs now expose their selected state, support arrow/Home/End
+  navigation and retain focus. The waterfall uses one Tab entry point.
+  The price dialog is named and returns focus after save or cancel;
+  validation focuses the invalid field and row edits keep a useful focus.
+- Keyboard access to file selection and focus after loading, trace
+  selection, comparison navigation, zooming, resizing and theme changes.
+- Cache-write token counts are visible in the span overview. Deep traces
+  retain their actual accessibility level while visual indentation is
+  capped so their names remain readable.
+
 ## [0.3.3] - 2026-10-03
 
 ### Fixed
