@@ -40,10 +40,12 @@ function numberInput(label: string, value: number | undefined, onInput: (n: numb
 export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[]) => void): void {
   let working = table.map((e) => ({ ...e }));
 
-  const dialog = h('dialog', { className: 'tl-dialog' }) as HTMLDialogElement;
+  const opener = document.activeElement as HTMLElement | null;
+  const dialog = h('dialog', { className: 'tl-dialog', 'aria-labelledby': 'tl-price-title' }) as HTMLDialogElement;
   const body = h('div', { className: 'tl-dialog-body' });
   const error = h('p', { role: 'alert', className: 'tl-load-error', hidden: true });
   body.addEventListener('input', (event) => {
+    error.hidden = true;
     const row = (event.target as HTMLElement).closest<HTMLTableRowElement>('tr[data-price-index]');
     if (!row) return;
     const entry = working[Number(row.dataset.priceIndex)]!;
@@ -54,6 +56,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
   });
 
   function renderRows(): void {
+    error.hidden = true;
     const rows = working.map((entry, i) =>
       h(
         'tr',
@@ -86,6 +89,8 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
               onClick: () => {
                 working = working.filter((_, j) => j !== i);
                 renderRows();
+                const next = body.querySelectorAll<HTMLButtonElement>('tbody button');
+                (next[Math.min(i, next.length - 1)] ?? body.querySelector<HTMLButtonElement>('[data-add-price]'))?.focus();
               },
             },
             '✕',
@@ -107,7 +112,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
         h(
           'thead',
           {},
-          h('tr', {}, h('th', {}, 'model match'), h('th', {}, 'provider'), h('th', {}, '$/MTok in'), h('th', {}, '$/MTok out'), h('th', {}, '$/MTok cache read'), h('th', {}, '$/MTok cache write'), h('th', {}, 'source date'), h('th', {})),
+          h('tr', {}, h('th', {}, 'model match'), h('th', {}, 'provider'), h('th', {}, '$/MTok in'), h('th', {}, '$/MTok out'), h('th', {}, '$/MTok cache read'), h('th', {}, '$/MTok cache write'), h('th', {}, 'source date'), h('th', {}, 'Remove')),
         ),
         h('tbody', {}, ...rows),
       ),
@@ -118,9 +123,11 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
           'button',
           {
             className: 'tl-btn',
+            'data-add-price': true,
             onClick: () => {
               working.push({ id: `custom-${Date.now()}`, matchModel: '', provider: '', inputPerMTok: 0, outputPerMTok: 0, sourceUrl: '', sourceDate: new Date().toISOString().slice(0, 10) });
               renderRows();
+              body.querySelector<HTMLInputElement>('tbody tr:last-child input')?.focus();
             },
           },
           '+ Add row',
@@ -132,6 +139,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
             onClick: () => {
               working = DEFAULT_PRICE_TABLE.map((e) => ({ ...e }));
               renderRows();
+              body.querySelector<HTMLInputElement>('tbody input')?.focus();
             },
           },
           'Reset to defaults',
@@ -145,7 +153,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
   const header = h(
     'div',
     { className: 'tl-dialog-header' },
-    h('h2', {}, 'Price table'),
+    h('h2', { id: 'tl-price-title' }, 'Price table'),
     h('button', { className: 'tl-btn', 'aria-label': 'Close', onClick: () => dialog.close() }, '✕'),
   );
   const footer = h(
@@ -163,7 +171,15 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
               ? `Row ${invalidIndex + 1}: enter a model match. A blank name would match every model.`
               : `Row ${invalidIndex + 1}: input/output rates must be finite, nonnegative numbers. Cache rates may be blank.`;
             error.hidden = false;
-            body.querySelectorAll('tbody tr')[invalidIndex]?.scrollIntoView({ block: 'center' });
+            const row = body.querySelectorAll('tbody tr')[invalidIndex];
+            row?.scrollIntoView({ block: 'center' });
+            const inputs = [...row?.querySelectorAll<HTMLInputElement>('input') ?? []];
+            const invalid = working[invalidIndex]!.matchModel.trim() === '' ? inputs[0]
+              : inputs.slice(2).find((input, index) => {
+                const raw = input.value.trim();
+                return (raw === '' && index < 2) || (raw !== '' && (!Number.isFinite(Number(raw)) || Number(raw) < 0));
+              });
+            invalid?.focus();
             return;
           }
           working = working.map((entry) => ({ ...entry, matchModel: entry.matchModel.trim() }));
@@ -178,6 +194,9 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
 
   mount(dialog, header, body, error, footer);
   document.body.appendChild(dialog);
-  dialog.addEventListener('close', () => dialog.remove());
+  dialog.addEventListener('close', () => {
+    dialog.remove();
+    (opener?.isConnected ? opener : document.querySelector<HTMLElement>('[data-focus-key="prices"]'))?.focus({ preventScroll: true });
+  });
   dialog.showModal();
 }

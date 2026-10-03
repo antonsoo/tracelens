@@ -258,15 +258,15 @@ export function renderComparison(
         h(
           'div',
           {},
-          h('h1', {}, 'Compare runs'),
+          h('h1', { tabindex: '-1' }, 'Compare runs'),
           h('p', { className: 'dim' }, 'What changed between these two executions?'),
         ),
         h(
           'div',
           { className: 'tl-compare-actions' },
-          h('button', { className: 'tl-btn', onClick: cb.onSwap }, 'Swap runs'),
-          h('button', { className: 'tl-btn', onClick: () => input.click() }, 'Replace candidate'),
-          h('button', { className: 'tl-btn', onClick: () => exportReport(report) }, 'Export JSON'),
+          h('button', { className: 'tl-btn', 'data-focus-key': 'swap-runs', onClick: cb.onSwap }, 'Swap runs'),
+          h('button', { className: 'tl-btn', 'data-focus-key': 'replace-candidate', onClick: () => input.click() }, 'Replace candidate'),
+          h('button', { className: 'tl-btn', 'data-focus-key': 'export-comparison', onClick: () => exportReport(report) }, 'Export JSON'),
           h('button', { className: 'tl-btn', onClick: cb.onClose }, 'Close comparison'),
           input,
         ),
@@ -301,6 +301,7 @@ export function renderComparison(
           'Filter ',
           h('input', {
             type: 'search',
+            'data-focus-key': 'comparison-search',
             value: view.filter,
             placeholder: 'Operation or service',
             onInput: (e: Event) => {
@@ -317,6 +318,7 @@ export function renderComparison(
           h(
             'select',
             {
+              'data-focus-key': 'comparison-sort',
               onChange: (e: Event) => {
                 view.sort = (e.target as HTMLSelectElement).value as ComparisonViewState['sort'];
                 renderRows();

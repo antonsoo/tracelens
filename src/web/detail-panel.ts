@@ -93,11 +93,26 @@ export function renderDetailPanel(
 
   const tabBar = h(
     'div',
-    { className: 'tl-tabs' },
-    ...tabs.map((t) => h('button', { className: `tl-tab${t === tab ? ' active' : ''}`, onClick: () => onTabChange(t) }, TAB_LABEL[t])),
+    { className: 'tl-tabs', role: 'tablist', 'aria-label': 'Span details' },
+    ...tabs.map((t, index) => h('button', {
+      className: `tl-tab${t === tab ? ' active' : ''}`, id: `tl-detail-tab-${t}`,
+      role: 'tab', 'aria-selected': t === tab, 'aria-controls': 'tl-detail-content',
+      tabindex: t === tab ? '0' : '-1', 'data-focus-key': `detail-${t}`,
+      onClick: () => onTabChange(t),
+      onKeydown: (event: Event) => {
+        const e = event as KeyboardEvent;
+        const next = e.key === 'ArrowRight' ? (index + 1) % tabs.length
+          : e.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length
+            : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : -1;
+        if (next < 0) return;
+        e.preventDefault();
+        onTabChange(tabs[next]!);
+        document.getElementById(`tl-detail-tab-${tabs[next]!}`)?.focus({ preventScroll: true });
+      },
+    }, TAB_LABEL[t])),
   );
 
-  const panel = h('div', { className: 'tl-tab-panel' });
+  const panel = h('div', { className: 'tl-tab-panel', id: 'tl-detail-content', role: 'tabpanel', 'aria-labelledby': `tl-detail-tab-${tab}`, tabindex: '0', 'data-focus-key': 'detail-panel' });
 
   if (tab === 'overview') {
     const rows: [string, string][] = [
@@ -108,6 +123,7 @@ export function renderDetailPanel(
       ['input tokens', fmtInt(span.genai?.usage?.inputTokens)],
       ['output tokens', fmtInt(span.genai?.usage?.outputTokens)],
       ['cache read tokens', fmtInt(span.genai?.usage?.cacheReadTokens)],
+      ['cache write tokens', fmtInt(span.genai?.usage?.cacheWriteTokens)],
       ['finish reasons', span.genai?.finishReasons?.join(', ') ?? '—'],
       ['convention', span.convention],
       ['span kind (OTel)', span.kind],

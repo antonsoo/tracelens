@@ -18,6 +18,8 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     accept: '.json,.jsonl,.ndjson,application/json',
     className: 'visually-hidden',
     id: 'tl-file-input',
+    tabindex: '-1',
+    'aria-label': 'Trace file',
     onChange: (e: Event) => {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (file) cb.onFile(file);
@@ -31,8 +33,8 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     h('h1', {}, 'Drop a trace to inspect it'),
     h('p', {}, 'OTLP/JSON from the OpenTelemetry SDK or a collector\'s file exporter (one batch per line), or traces downloaded from Jaeger as JSON. Nothing leaves this browser tab.'),
     h(
-      'label',
-      { className: 'tl-btn primary', for: 'tl-file-input', style: 'cursor:pointer' },
+      'button',
+      { className: 'tl-btn primary', 'data-focus-key': 'choose-file', onClick: () => fileInput.click() },
       'Choose a trace.json file',
     ),
     fileInput,
@@ -40,10 +42,10 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
       'div',
       { className: 'tl-dropzone-examples' },
       h('span', { className: 'faint', style: 'align-self:center' }, 'or load a sample:'),
-      h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/genai-semconv-trace.json') }, 'GenAI semconv example'),
-      h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/openinference-trace.json') }, 'OpenInference example'),
-      h('button', { className: 'tl-btn', onClick: () => cb.onLoadExample('examples/jaeger-genai-trace.json') }, 'Jaeger JSON example'),
-      h('button', { className: 'tl-btn', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
+      h('button', { className: 'tl-btn', 'data-focus-key': 'example-genai', onClick: () => cb.onLoadExample('examples/genai-semconv-trace.json') }, 'GenAI semconv example'),
+      h('button', { className: 'tl-btn', 'data-focus-key': 'example-openinference', onClick: () => cb.onLoadExample('examples/openinference-trace.json') }, 'OpenInference example'),
+      h('button', { className: 'tl-btn', 'data-focus-key': 'example-jaeger', onClick: () => cb.onLoadExample('examples/jaeger-genai-trace.json') }, 'Jaeger JSON example'),
+      h('button', { className: 'tl-btn', 'data-focus-key': 'example-compare', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
     ),
   );
 

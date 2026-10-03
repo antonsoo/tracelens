@@ -23,10 +23,11 @@
   --accent-chain: #8a7a1f;
   --accent-retriever: #2f6fb0;
   --accent-other: #6b7684;
-  --accent-error: #c9382c;
+  --accent-error: #bb3327;
   --accent-error-bg: #fbe6e3;
   --focus-ring: #2f6fb0;
   --compare-decrease: #087568;
+  --bar-text-on-cool: #ffffff;
 
   --font-ui: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -56,6 +57,7 @@
   --accent-error-bg: #3a1a17;
   --focus-ring: #6fa8e0;
   --compare-decrease: #5fd6c4;
+  --bar-text-on-cool: #08110f;
   --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
@@ -80,6 +82,7 @@
     --accent-error-bg: #3a1a17;
     --focus-ring: #6fa8e0;
     --compare-decrease: #5fd6c4;
+    --bar-text-on-cool: #08110f;
     --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
   }
 }
@@ -348,6 +351,31 @@ a {
   background: var(--surface);
   font-size: 12px;
 }
+.tl-span-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+.tl-span-filters input[type='search'] {
+  flex: 1;
+  min-width: 150px;
+  padding: 7px 9px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+.tl-errors-filter { display: flex; align-items: center; gap: 6px; min-height: 32px; }
+#tl-span-filter-count { flex-basis: 100%; }
+.tl-context-label { font-size: 10px; margin-left: auto; }
+.tl-span-empty { padding: 0 12px; }
+.tl-load-notice { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 16px; background: var(--surface-2); }
+.tl-load-notice [role='status'] { overflow-wrap: anywhere; min-width: 0; }
+.tl-load-notice button { flex-shrink: 0; }
 .tl-waterfall-scroll {
   flex: 1;
   overflow: auto;
@@ -428,6 +456,8 @@ a {
 .tl-wf-row.selected .tl-wf-label {
   background: var(--surface-2);
 }
+.tl-wf-row.selected .faint { color: var(--text-dim); }
+.tl-active-file { margin: 0; font-size: inherit; font-weight: 400; }
 .tl-wf-name {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -463,8 +493,11 @@ a {
   padding: 0 6px;
   white-space: nowrap;
   overflow: hidden;
-  color: #08110f;
+  color: #000000;
   mix-blend-mode: normal;
+}
+.tl-wf-bar:is(.kind-agent, .kind-evaluator, .kind-retriever, .kind-embedding, .kind-other, .kind-guardrail) .tl-wf-bar-label {
+  color: var(--bar-text-on-cool);
 }
 @keyframes tl-bar-grow {
   from {
@@ -835,6 +868,10 @@ dialog.tl-dialog::backdrop {
   .tl-evidence-columns { grid-template-columns: 1fr; gap: 0; }
 }
 @media (max-width: 520px) {
+  .tl-summary-cell:last-child { grid-column: 1 / -1; }
+  .tl-span-filters input[type='search'] { flex-basis: calc(100% - 90px); min-width: 0; }
+  .tl-waterfall-toolbar { flex-wrap: wrap; }
+  .tl-waterfall-toolbar .tl-legend { flex-basis: 100%; }
   .tl-run-names { grid-template-columns: 1fr; gap: 10px; }
   .tl-compare-toolbar { align-items: stretch; flex-direction: column; }
   .tl-compare-toolbar label input, .tl-compare-toolbar label select { flex: 1; }

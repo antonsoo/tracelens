@@ -3,19 +3,23 @@ import { clampPan, clampZoom, spanDurationMs, spanRect } from '../core/index.js'
 import { h, mount } from './dom.js';
 import { flattenVisible } from './tree-flatten.js';
 import { kindClass, LEGEND_KINDS, KIND_LABEL } from './kind-colors.js';
-import { fmtMs } from './format.js';
+import { fmtInt, fmtMs } from './format.js';
+import { searchSpans } from './span-search.js';
+import type { SpanFilter } from './span-search.js';
 
 export interface WaterfallState {
   collapsedIds: Set<string>;
   selectedSpanId: string | null;
   zoom: number;
   panNs: bigint;
+  filter: SpanFilter;
 }
 
 export interface WaterfallCallbacks {
   onToggle: (spanId: string) => void;
   onSelect: (spanId: string) => void;
   onViewportChange: (patch: { zoom?: number; panNs?: bigint }) => void;
+  onFilterChange: (filter: SpanFilter) => void;
 }
 
 // renderWaterfall re-runs on every state change and rebuilds the DOM from
@@ -24,6 +28,17 @@ export interface WaterfallCallbacks {
 // move the mouse outside the pane) so they're removed before new ones are
 // added, instead of piling up one set per render.
 let activeController: AbortController | undefined;
+let dragController: AbortController | undefined;
+let activeTrace: ParsedTrace | undefined;
+
+/** Release global handlers when leaving inspection, not just on the next waterfall render. */
+export function disposeWaterfall(): void {
+  activeController?.abort();
+  dragController?.abort();
+  activeController = undefined;
+  dragController = undefined;
+  activeTrace = undefined;
+}
 
 const MIN_TRACK_WIDTH = 600;
 /** A character of `.tl-wf-bar-label` (10.5px) is at most this wide, and the label has 6px of padding each side. */
@@ -49,6 +64,7 @@ interface WaterfallMemory {
   focusedSpanId: string | null;
   /** The selection as of the last render: a change made elsewhere is scrolled into view. */
   selectedSpanId: string | null;
+  filterKey: string;
 }
 const memories = new WeakMap<ParsedTrace, WaterfallMemory>();
 /** Traces whose bars have already grown in once; the animation is for the first paint only. */
@@ -80,11 +96,14 @@ export function renderWaterfall(
   // The previous render's listeners go first: one of them watches where focus moves, and this
   // render is about to move it.
   activeController?.abort();
+  if (activeTrace !== trace) dragController?.abort();
+  activeTrace = trace;
   const controller = new AbortController();
   activeController = controller;
   const { signal } = controller;
 
-  const visible = flattenVisible(trace, state.collapsedIds);
+  const found = searchSpans(trace, state.filter);
+  const visible = flattenVisible(trace, state.collapsedIds, found?.included);
   const domainStartNs = trace.minStartNs;
   const domainEndNs = trace.maxEndNs;
   const zoom = clampZoom(state.zoom);
@@ -93,10 +112,10 @@ export function renderWaterfall(
   const toolbar = h(
     'div',
     { className: 'tl-waterfall-toolbar' },
-    h('button', { className: 'tl-btn', title: 'Zoom out', onClick: () => cb.onViewportChange({ zoom: clampZoom(zoom / 1.6) }) }, '−'),
+    h('button', { className: 'tl-btn', title: 'Zoom out', 'data-focus-key': 'zoom-out', onClick: () => cb.onViewportChange({ zoom: clampZoom(zoom / 1.6) }) }, '−'),
     h('span', { className: 'mono dim', style: 'min-width:42px;text-align:center;display:inline-block' }, `${zoom.toFixed(1)}×`),
-    h('button', { className: 'tl-btn', title: 'Zoom in', onClick: () => cb.onViewportChange({ zoom: clampZoom(zoom * 1.6) }) }, '+'),
-    h('button', { className: 'tl-btn', title: 'Reset zoom', onClick: () => cb.onViewportChange({ zoom: 1, panNs: 0n }) }, 'Reset'),
+    h('button', { className: 'tl-btn', title: 'Zoom in', 'data-focus-key': 'zoom-in', onClick: () => cb.onViewportChange({ zoom: clampZoom(zoom * 1.6) }) }, '+'),
+    h('button', { className: 'tl-btn', title: 'Reset zoom', 'data-focus-key': 'zoom-reset', onClick: () => cb.onViewportChange({ zoom: 1, panNs: 0n }) }, 'Reset'),
     h(
       'span',
       { className: 'faint', style: 'margin-left:4px' },
@@ -111,15 +130,36 @@ export function renderWaterfall(
     ),
   );
 
+  const filters = h('div', { className: 'tl-span-filters' },
+    h('label', { for: 'tl-span-search' }, 'Find spans'),
+    h('input', { id: 'tl-span-search', type: 'search', value: state.filter.query,
+      'data-focus-key': 'span-search', placeholder: 'Name, model, service or span ID',
+      'aria-describedby': 'tl-span-filter-count',
+      onInput: (event: Event) => cb.onFilterChange({ ...state.filter, query: (event.target as HTMLInputElement).value }),
+    }),
+    h('label', { className: 'tl-errors-filter' },
+      h('input', { type: 'checkbox', checked: state.filter.errorsOnly, 'data-focus-key': 'errors-only',
+        onChange: (event: Event) => cb.onFilterChange({ ...state.filter, errorsOnly: (event.target as HTMLInputElement).checked }),
+      }), 'Errors only'),
+    h('button', { className: 'tl-btn', disabled: !found, onClick: () => {
+      cb.onFilterChange({ query: '', errorsOnly: false });
+      document.getElementById('tl-span-search')?.focus();
+    } }, 'Clear filters'),
+    h('span', { id: 'tl-span-filter-count', className: 'dim', role: 'status' }, found
+      ? `${fmtInt(found.matches.size)} of ${fmtInt(trace.spans.length)} spans match; ${fmtInt(found.included.size - found.matches.size)} ancestors shown. Totals include the full trace.${state.selectedSpanId && !found.included.has(state.selectedSpanId) ? ' Selected span is outside this filter.' : ''}`
+      : `${fmtInt(visible.length)} of ${fmtInt(trace.spans.length)} spans shown`),
+  );
+
   const rulerTrack = h('div', { className: 'tl-wf-track' });
   const ruler = h('div', { className: 'tl-wf-ruler' }, h('div', { className: 'tl-wf-label' }, 'span'), rulerTrack);
 
   // As tall as every row together; the rows in view are placed inside it by its top padding.
-  const rowsEl = h('div', { className: 'tl-wf-rows', role: 'tree', 'aria-label': 'Span waterfall', style: `height:${visible.length * ROW_HEIGHT}px` });
+  const rowsEl = h('div', { className: 'tl-wf-rows', role: 'tree', 'aria-label': 'Span waterfall', hidden: visible.length === 0, style: `height:${visible.length * ROW_HEIGHT}px` });
   const firstPaint = !introduced.has(trace);
   introduced.add(trace);
   const scrollWrap = h('div', { className: `tl-waterfall-scroll${firstPaint ? ' tl-first-paint' : ''}` }, ruler, rowsEl);
-  mount(container, toolbar, scrollWrap);
+  mount(container, filters, toolbar, found?.matches.size === 0
+    ? h('p', { className: 'tl-span-empty' }, 'No matching spans. Try fewer words or clear the filters.') : null, scrollWrap);
 
   const widthPx = Math.max(rulerTrack.clientWidth, MIN_TRACK_WIDTH);
   const viewport: Viewport = { domainStartNs, domainEndNs, widthPx, zoom, panNs };
@@ -127,18 +167,25 @@ export function renderWaterfall(
 
   let memory = memories.get(trace);
   if (!memory) {
-    memory = { scrollTop: 0, scrollLeft: 0, focusedSpanId: null, selectedSpanId: null };
+    memory = { scrollTop: 0, scrollLeft: 0, focusedSpanId: null, selectedSpanId: null, filterKey: '' };
     memories.set(trace, memory);
   }
   const view = memory;
+  const filterKey = JSON.stringify(state.filter);
+  if (view.filterKey !== filterKey) {
+    view.scrollTop = 0;
+    view.focusedSpanId = null;
+    view.filterKey = filterKey;
+  }
   const indexOf = (spanId: string | null): number => (spanId === null ? -1 : visible.findIndex((s) => s.spanId === spanId));
 
   scrollWrap.scrollTop = view.scrollTop;
   scrollWrap.scrollLeft = view.scrollLeft;
+  const tabStop = Math.max(0, indexOf(view.focusedSpanId ?? state.selectedSpanId));
 
   const buildRow = (span: ParsedSpan, index: number): HTMLElement => {
-    const hasChildren = span.children.length > 0;
-    const isCollapsed = state.collapsedIds.has(span.spanId);
+    const hasChildren = span.children.some((child) => !found || found.included.has(child.spanId));
+    const isCollapsed = !found && state.collapsedIds.has(span.spanId);
     const toggle = hasChildren
       ? h(
           'button',
@@ -146,6 +193,8 @@ export function renderWaterfall(
             className: 'tl-tree-toggle',
             tabindex: '-1',
             'aria-label': isCollapsed ? 'Expand' : 'Collapse',
+            disabled: found !== null,
+            title: found ? 'Search keeps matching ancestors expanded' : undefined,
             onClick: (e: Event) => {
               e.stopPropagation();
               cb.onToggle(span.spanId);
@@ -159,10 +208,11 @@ export function renderWaterfall(
     const toolSuffix = toolName && !span.name.includes(toolName) ? ` (${toolName})` : '';
     const label = h(
       'div',
-      { className: 'tl-wf-label', style: `padding-left:${8 + span.depth * 14}px` },
+      { className: 'tl-wf-label', style: `padding-left:${8 + Math.min(span.depth, 12) * 14}px` },
       toggle,
       h('span', { className: `tl-kind-dot ${kindClass(span.agentKind)}` }),
       h('span', { className: 'tl-wf-name', title: span.name + toolSuffix }, span.name + toolSuffix),
+      found && !found.matches.has(span.spanId) ? h('span', { className: 'tl-context-label dim' }, 'ancestor') : null,
       h('span', { className: 'mono faint', style: 'margin-left:auto;padding-left:6px' }, fmtMs(spanDurationMs(span))),
     );
 
@@ -186,7 +236,7 @@ export function renderWaterfall(
       {
         className: `tl-wf-row${isSelected ? ' selected' : ''}${span.status.code === 'ERROR' ? ' status-error' : ''}`,
         role: 'treeitem',
-        tabindex: '0',
+        tabindex: index === tabStop ? '0' : '-1',
         'aria-level': span.depth + 1,
         'aria-selected': isSelected,
         ...(hasChildren ? { 'aria-expanded': !isCollapsed } : {}),
@@ -194,6 +244,7 @@ export function renderWaterfall(
         onClick: () => cb.onSelect(span.spanId),
         onFocus: () => {
           view.focusedSpanId = span.spanId;
+          for (const row of rowsEl.querySelectorAll<HTMLElement>('.tl-wf-row')) row.tabIndex = row.dataset.index === String(index) ? 0 : -1;
         },
         onKeydown: (e: Event) => onRowKey(e as KeyboardEvent, span, index),
       },
@@ -213,6 +264,9 @@ export function renderWaterfall(
     for (let i = first; i < last; i++) rendered.push(buildRow(visible[i]!, i));
     rowsEl.style.paddingTop = `${first * ROW_HEIGHT}px`;
     mount(rowsEl, ...rendered);
+    // Virtualization may remove the previous entry point; keep the visible
+    // tree reachable by Tab without adding every span to the tab order.
+    if (rendered.length && !rendered.some((row) => row.tabIndex === 0)) rendered[0]!.tabIndex = 0;
     // The focused row was rebuilt with the rest; hand it the focus back.
     const focused = indexOf(view.focusedSpanId);
     if (focused >= first && focused < last) rendered[focused - first]!.focus({ preventScroll: true });
@@ -252,8 +306,8 @@ export function renderWaterfall(
   const focusRow = (index: number): void => showRow(Math.min(visible.length - 1, Math.max(0, index)), true);
 
   function onRowKey(e: KeyboardEvent, span: ParsedSpan, index: number): void {
-    const hasChildren = span.children.length > 0;
-    const isCollapsed = state.collapsedIds.has(span.spanId);
+    const hasChildren = span.children.some((child) => !found || found.included.has(child.spanId));
+    const isCollapsed = !found && state.collapsedIds.has(span.spanId);
     switch (e.key) {
       case 'Enter':
       case ' ':
@@ -276,7 +330,7 @@ export function renderWaterfall(
         else if (hasChildren) focusRow(index + 1);
         break;
       case 'ArrowLeft':
-        if (hasChildren && !isCollapsed) cb.onToggle(span.spanId);
+        if (hasChildren && !isCollapsed && !found) cb.onToggle(span.spanId);
         else if (span.parentSpanId) {
           const parent = indexOf(span.parentSpanId);
           if (parent >= 0) focusRow(parent);
@@ -294,7 +348,10 @@ export function renderWaterfall(
     view.selectedSpanId = state.selectedSpanId;
     showRow(indexOf(state.selectedSpanId), false);
   }
-  if (firstPaint) setTimeout(() => scrollWrap.classList.remove('tl-first-paint'), 500);
+  if (firstPaint) {
+    const timer = setTimeout(() => scrollWrap.classList.remove('tl-first-paint'), 500);
+    signal.addEventListener('abort', () => clearTimeout(timer), { once: true });
+  }
 
   wireInteractions(scrollWrap, viewport, cb, signal);
   // Captured at the document: a scroll event does not bubble, and the element that scrolls is
@@ -350,27 +407,24 @@ function wireInteractions(scrollWrap: HTMLElement, vp: Viewport, cb: WaterfallCa
     { passive: false, signal },
   );
 
-  let dragging = false;
-  let lastX = 0;
   scrollWrap.addEventListener(
     'mousedown',
     (e: MouseEvent) => {
-      if (vp.zoom <= 1) return;
-      dragging = true;
-      lastX = e.clientX;
-    },
-    { signal },
-  );
-  window.addEventListener(
-    'mousemove',
-    (e: MouseEvent) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX;
-      lastX = e.clientX;
+      if (vp.zoom <= 1 || e.button !== 0 || !(e.target as HTMLElement).closest('.tl-wf-track')) return;
+      e.preventDefault();
+      dragController?.abort();
+      const drag = new AbortController();
+      dragController = drag;
+      const startX = e.clientX;
       const nsPerPx = Number(vp.domainEndNs - vp.domainStartNs) / vp.zoom / vp.widthPx;
-      cb.onViewportChange({ panNs: vp.panNs - BigInt(Math.round(dx * nsPerPx)) });
+      // A drag belongs to the gesture, not one render. Rebuilding the rows
+      // must not remove its handlers or reset its original time anchor.
+      window.addEventListener('mousemove', (move: MouseEvent) => {
+        cb.onViewportChange({ panNs: vp.panNs - BigInt(Math.round((move.clientX - startX) * nsPerPx)) });
+      }, { signal: drag.signal });
+      window.addEventListener('mouseup', () => drag.abort(), { signal: drag.signal, once: true });
+      window.addEventListener('blur', () => drag.abort(), { signal: drag.signal, once: true });
     },
     { signal },
   );
-  window.addEventListener('mouseup', () => (dragging = false), { signal });
 }
