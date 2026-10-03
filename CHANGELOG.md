@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.3] - 2026-10-03
+
+### Fixed
+
+- A file that is not text (an image, an archive) given by mistake was parsed as JSON, and the
+  error quoted its raw bytes: `Not valid JSON: Unexpected token '?', "?PNG..."`, control
+  characters included. It now says `not a text file (a trace is JSON: OTLP/JSON, a
+  collector's JSON Lines, or Jaeger JSON)`, in the CLI and in the web app.
+
 ## [0.3.2] - 2026-10-02
 
 ### Added
