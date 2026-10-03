@@ -1,0 +1,1316 @@
+{
+  "data": [
+    {
+      "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+      "spans": [
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "5897089a8555eefa",
+          "operationName": "chat claude-sonnet-5",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269392050000,
+          "duration": 3050000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "chat"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.request.model",
+              "type": "string",
+              "value": "claude-sonnet-5"
+            },
+            {
+              "key": "gen_ai.response.model",
+              "type": "string",
+              "value": "claude-sonnet-5"
+            },
+            {
+              "key": "gen_ai.request.max_tokens",
+              "type": "int64",
+              "value": 8192
+            },
+            {
+              "key": "gen_ai.response.id",
+              "type": "string",
+              "value": "msg_demo_0000050"
+            },
+            {
+              "key": "gen_ai.response.finish_reasons",
+              "type": "string",
+              "value": "[\"tool_use\"]"
+            },
+            {
+              "key": "gen_ai.usage.input_tokens",
+              "type": "int64",
+              "value": 6850
+            },
+            {
+              "key": "gen_ai.usage.output_tokens",
+              "type": "int64",
+              "value": 310
+            },
+            {
+              "key": "gen_ai.usage.cache_creation.input_tokens",
+              "type": "int64",
+              "value": 6200
+            },
+            {
+              "key": "gen_ai.input.messages",
+              "type": "string",
+              "value": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}]"
+            },
+            {
+              "key": "gen_ai.output.messages",
+              "type": "string",
+              "value": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "bbdfd7bd032b90ec",
+          "operationName": "execute_tool search_incidents",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269395150000,
+          "duration": 470000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "search_incidents"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_01"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Full-text search over the incident tracker."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}"
+            },
+            {
+              "key": "gen_ai.tool.call.result",
+              "type": "string",
+              "value": "{\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "0848e82e056c4c77",
+          "operationName": "execute_tool query_metrics",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269395150000,
+          "duration": 1260000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "query_metrics"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_02"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Query a time series from the metrics store."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}"
+            },
+            {
+              "key": "gen_ai.tool.call.result",
+              "type": "string",
+              "value": "{\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "07d0e204e9a58985",
+          "operationName": "execute_tool list_deploys",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269395160000,
+          "duration": 310000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "list_deploys"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_03"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "List deploys for a service in a time range."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}"
+            },
+            {
+              "key": "gen_ai.tool.call.result",
+              "type": "string",
+              "value": "{\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "d8c6fb7dd4967fca",
+          "operationName": "chat claude-sonnet-5",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269396500000,
+          "duration": 5300000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "chat"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.request.model",
+              "type": "string",
+              "value": "claude-sonnet-5"
+            },
+            {
+              "key": "gen_ai.response.model",
+              "type": "string",
+              "value": "claude-sonnet-5"
+            },
+            {
+              "key": "gen_ai.request.max_tokens",
+              "type": "int64",
+              "value": 8192
+            },
+            {
+              "key": "gen_ai.response.id",
+              "type": "string",
+              "value": "msg_demo_0004500"
+            },
+            {
+              "key": "gen_ai.response.finish_reasons",
+              "type": "string",
+              "value": "[\"tool_use\"]"
+            },
+            {
+              "key": "gen_ai.usage.input_tokens",
+              "type": "int64",
+              "value": 14900
+            },
+            {
+              "key": "gen_ai.usage.output_tokens",
+              "type": "int64",
+              "value": 540
+            },
+            {
+              "key": "gen_ai.usage.cache_read.input_tokens",
+              "type": "int64",
+              "value": 6850
+            },
+            {
+              "key": "gen_ai.input.messages",
+              "type": "string",
+              "value": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_01\", \"response\": {\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_02\", \"response\": {\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_03\", \"response\": {\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}}]}]"
+            },
+            {
+              "key": "gen_ai.output.messages",
+              "type": "string",
+              "value": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_04\", \"name\": \"get_diff\", \"arguments\": {\"deploy_id\": 4127}}, {\"type\": \"tool_call\", \"id\": \"toolu_05\", \"name\": \"query_traces\", \"arguments\": {\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}}]}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "a51e6840f9183dd7",
+          "operationName": "execute_tool get_diff",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269401850000,
+          "duration": 460000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "get_diff"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_04"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Summarise the code diff for a deploy."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"deploy_id\": 4127}"
+            },
+            {
+              "key": "gen_ai.tool.call.result",
+              "type": "string",
+              "value": "{\"deploy_id\": 4127, \"files\": [\"cart/tax.py\"], \"summary\": \"Tax is now recalculated per line item via tax-service (one HTTP call per item) instead of once per cart.\"}"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "df46f1c99ae53f2f",
+          "operationName": "execute_tool query_traces",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269401850000,
+          "duration": 5010000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "query_traces"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_05"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Search distributed traces."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}"
+            },
+            {
+              "key": "retry.attempt",
+              "type": "int64",
+              "value": 1
+            },
+            {
+              "key": "error.type",
+              "type": "string",
+              "value": "timeout"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "ERROR"
+            },
+            {
+              "key": "error",
+              "type": "bool",
+              "value": true
+            },
+            {
+              "key": "otel.status_description",
+              "type": "string",
+              "value": "trace store did not answer within 5000 ms"
+            }
+          ],
+          "logs": [
+            {
+              "timestamp": 1790269406860000,
+              "fields": [
+                {
+                  "key": "event",
+                  "type": "string",
+                  "value": "exception"
+                },
+                {
+                  "key": "exception.type",
+                  "type": "string",
+                  "value": "TimeoutError"
+                },
+                {
+                  "key": "exception.message",
+                  "type": "string",
+                  "value": "trace store did not answer within 5000 ms"
+                },
+                {
+                  "key": "exception.stacktrace",
+                  "type": "string",
+                  "value": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 157, in tool\n    raise exc\nTimeoutError: trace store did not answer within 5000 ms\n"
+                },
+                {
+                  "key": "exception.escaped",
+                  "type": "string",
+                  "value": "False"
+                }
+              ]
+            }
+          ],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "e2cdb759abbbe2e8",
+          "operationName": "execute_tool query_traces",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269406910000,
+          "duration": 1310000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "query_traces"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_05"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Search distributed traces."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}"
+            },
+            {
+              "key": "retry.attempt",
+              "type": "int64",
+              "value": 2
+            },
+            {
+              "key": "gen_ai.tool.call.result",
+              "type": "string",
+              "value": "{\"matched\": 50, \"median_duration_ms\": 1790, \"top_span\": \"tax-service POST /calculate\", \"calls_per_checkout_p50\": 14}"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "2fc5bb30ca40b11a",
+          "operationName": "chat claude-haiku-4-5",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "3c85d714e43639fa"
+            }
+          ],
+          "startTime": 1790269408350000,
+          "duration": 1250000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "chat"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.request.model",
+              "type": "string",
+              "value": "claude-haiku-4-5"
+            },
+            {
+              "key": "gen_ai.response.model",
+              "type": "string",
+              "value": "claude-haiku-4-5"
+            },
+            {
+              "key": "gen_ai.request.max_tokens",
+              "type": "int64",
+              "value": 2048
+            },
+            {
+              "key": "gen_ai.response.id",
+              "type": "string",
+              "value": "msg_demo_0016350"
+            },
+            {
+              "key": "gen_ai.response.finish_reasons",
+              "type": "string",
+              "value": "[\"tool_use\"]"
+            },
+            {
+              "key": "gen_ai.usage.input_tokens",
+              "type": "int64",
+              "value": 2300
+            },
+            {
+              "key": "gen_ai.usage.output_tokens",
+              "type": "int64",
+              "value": 190
+            },
+            {
+              "key": "gen_ai.input.messages",
+              "type": "string",
+              "value": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}]"
+            },
+            {
+              "key": "gen_ai.output.messages",
+              "type": "string",
+              "value": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "cbd933157cdafede",
+          "operationName": "execute_tool run_sql",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "3c85d714e43639fa"
+            }
+          ],
+          "startTime": 1790269409650000,
+          "duration": 2270000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "run_sql"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_11"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Run a read-only SQL query against the analytics warehouse."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}"
+            },
+            {
+              "key": "gen_ai.tool.call.result",
+              "type": "string",
+              "value": "{\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "403e41ff05bb2fe9",
+          "operationName": "chat claude-haiku-4-5",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "3c85d714e43639fa"
+            }
+          ],
+          "startTime": 1790269411970000,
+          "duration": 940000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "chat"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.request.model",
+              "type": "string",
+              "value": "claude-haiku-4-5"
+            },
+            {
+              "key": "gen_ai.response.model",
+              "type": "string",
+              "value": "claude-haiku-4-5"
+            },
+            {
+              "key": "gen_ai.request.max_tokens",
+              "type": "int64",
+              "value": 2048
+            },
+            {
+              "key": "gen_ai.response.id",
+              "type": "string",
+              "value": "msg_demo_0019970"
+            },
+            {
+              "key": "gen_ai.response.finish_reasons",
+              "type": "string",
+              "value": "[\"tool_use\"]"
+            },
+            {
+              "key": "gen_ai.usage.input_tokens",
+              "type": "int64",
+              "value": 3100
+            },
+            {
+              "key": "gen_ai.usage.output_tokens",
+              "type": "int64",
+              "value": 150
+            },
+            {
+              "key": "gen_ai.input.messages",
+              "type": "string",
+              "value": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_11\", \"response\": {\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}}]}]"
+            },
+            {
+              "key": "gen_ai.output.messages",
+              "type": "string",
+              "value": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_12\", \"name\": \"lookup_fx\", \"arguments\": {\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}}]}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "17f45fe9bf94fd22",
+          "operationName": "execute_tool lookup_fx",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "3c85d714e43639fa"
+            }
+          ],
+          "startTime": 1790269412950000,
+          "duration": 250000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "lookup_fx"
+            },
+            {
+              "key": "gen_ai.tool.call.id",
+              "type": "string",
+              "value": "toolu_12"
+            },
+            {
+              "key": "gen_ai.tool.description",
+              "type": "string",
+              "value": "Historical FX rate for a currency pair."
+            },
+            {
+              "key": "gen_ai.tool.type",
+              "type": "string",
+              "value": "function"
+            },
+            {
+              "key": "gen_ai.tool.call.arguments",
+              "type": "string",
+              "value": "{\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}"
+            },
+            {
+              "key": "error.type",
+              "type": "string",
+              "value": "invalid_argument"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "ERROR"
+            },
+            {
+              "key": "error",
+              "type": "bool",
+              "value": true
+            },
+            {
+              "key": "otel.status_description",
+              "type": "string",
+              "value": "fx provider: historical rates are not enabled on this plan"
+            }
+          ],
+          "logs": [
+            {
+              "timestamp": 1790269413200000,
+              "fields": [
+                {
+                  "key": "event",
+                  "type": "string",
+                  "value": "exception"
+                },
+                {
+                  "key": "exception.type",
+                  "type": "string",
+                  "value": "ValueError"
+                },
+                {
+                  "key": "exception.message",
+                  "type": "string",
+                  "value": "fx provider: historical rates are not enabled on this plan"
+                },
+                {
+                  "key": "exception.stacktrace",
+                  "type": "string",
+                  "value": "Traceback (most recent call last):\n  File \"examples/otel_genai_example.py\", line 157, in tool\n    raise exc\nValueError: fx provider: historical rates are not enabled on this plan\n"
+                },
+                {
+                  "key": "exception.escaped",
+                  "type": "string",
+                  "value": "False"
+                }
+              ]
+            }
+          ],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "1610b9359de4652e",
+          "operationName": "chat claude-haiku-4-5",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "3c85d714e43639fa"
+            }
+          ],
+          "startTime": 1790269413250000,
+          "duration": 3300000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "chat"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.request.model",
+              "type": "string",
+              "value": "claude-haiku-4-5"
+            },
+            {
+              "key": "gen_ai.response.model",
+              "type": "string",
+              "value": "claude-haiku-4-5"
+            },
+            {
+              "key": "gen_ai.request.max_tokens",
+              "type": "int64",
+              "value": 2048
+            },
+            {
+              "key": "gen_ai.response.id",
+              "type": "string",
+              "value": "msg_demo_0021250"
+            },
+            {
+              "key": "gen_ai.response.finish_reasons",
+              "type": "string",
+              "value": "[\"end_turn\"]"
+            },
+            {
+              "key": "gen_ai.usage.input_tokens",
+              "type": "int64",
+              "value": 3600
+            },
+            {
+              "key": "gen_ai.usage.output_tokens",
+              "type": "int64",
+              "value": 420
+            },
+            {
+              "key": "gen_ai.input.messages",
+              "type": "string",
+              "value": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Estimate revenue lost to abandoned checkouts between 14:05 and 16:40 UTC on 2026-09-22, in USD.\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_11\", \"name\": \"run_sql\", \"arguments\": {\"query\": \"select count(*) as abandoned, sum(cart_total_eur) from checkouts where state = 'abandoned' and started_at between :a and :b\", \"params\": {\"a\": \"2026-09-22T14:05Z\", \"b\": \"2026-09-22T16:40Z\"}}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_11\", \"response\": {\"abandoned\": 412, \"baseline_abandoned_same_window\": 131, \"excess_cart_value_eur\": 23180.0}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_12\", \"name\": \"lookup_fx\", \"arguments\": {\"from\": \"EUR\", \"to\": \"USD\", \"date\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_12\", \"response\": {\"error\": \"invalid_argument\", \"message\": \"historical rates are not enabled on this plan\"}}]}]"
+            },
+            {
+              "key": "gen_ai.output.messages",
+              "type": "string",
+              "value": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"281 excess abandoned checkouts; excess cart value EUR 23,180. The EUR to USD conversion failed (historical FX not enabled), so the figure is reported in EUR.\"}]}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "3c85d714e43639fa",
+          "operationName": "invoke_agent cost-estimator",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269408300000,
+          "duration": 8300000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "invoke_agent"
+            },
+            {
+              "key": "gen_ai.agent.name",
+              "type": "string",
+              "value": "cost-estimator"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "e8192f36ab00d238",
+          "operationName": "chat claude-sonnet-5",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+              "spanID": "2ba46df3ec7a2d76"
+            }
+          ],
+          "startTime": 1790269416700000,
+          "duration": 7000000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "chat"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.request.model",
+              "type": "string",
+              "value": "claude-sonnet-5"
+            },
+            {
+              "key": "gen_ai.response.model",
+              "type": "string",
+              "value": "claude-sonnet-5"
+            },
+            {
+              "key": "gen_ai.request.max_tokens",
+              "type": "int64",
+              "value": 8192
+            },
+            {
+              "key": "gen_ai.response.id",
+              "type": "string",
+              "value": "msg_demo_0024700"
+            },
+            {
+              "key": "gen_ai.response.finish_reasons",
+              "type": "string",
+              "value": "[\"end_turn\"]"
+            },
+            {
+              "key": "gen_ai.usage.input_tokens",
+              "type": "int64",
+              "value": 21400
+            },
+            {
+              "key": "gen_ai.usage.output_tokens",
+              "type": "int64",
+              "value": 1180
+            },
+            {
+              "key": "gen_ai.usage.cache_read.input_tokens",
+              "type": "int64",
+              "value": 14900
+            },
+            {
+              "key": "gen_ai.input.messages",
+              "type": "string",
+              "value": "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"p95 checkout latency jumped on Tuesday afternoon. What caused it, is it fixed, and roughly what did it cost us in abandoned checkouts?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_01\", \"name\": \"search_incidents\", \"arguments\": {\"query\": \"checkout latency\", \"since\": \"2026-09-22\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_02\", \"name\": \"query_metrics\", \"arguments\": {\"metric\": \"checkout.p95_ms\", \"from\": \"2026-09-22T12:00Z\", \"to\": \"2026-09-23T00:00Z\", \"step\": \"5m\"}}, {\"type\": \"tool_call\", \"id\": \"toolu_03\", \"name\": \"list_deploys\", \"arguments\": {\"service\": \"checkout-api\", \"since\": \"2026-09-22\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_01\", \"response\": {\"results\": [{\"id\": \"INC-2291\", \"title\": \"Checkout slow for EU users\", \"opened\": \"2026-09-22T14:21Z\", \"status\": \"resolved\"}]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_02\", \"response\": {\"metric\": \"checkout.p95_ms\", \"baseline_p95\": 410, \"peak_p95\": 1860, \"degraded_window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"]}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_03\", \"response\": {\"deploys\": [{\"id\": 4127, \"service\": \"checkout-api\", \"at\": \"2026-09-22T14:02Z\", \"title\": \"Add per-item tax recalculation\"}, {\"id\": 4131, \"service\": \"checkout-api\", \"at\": \"2026-09-22T16:35Z\", \"title\": \"Revert #4127\"}]}}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"toolu_04\", \"name\": \"get_diff\", \"arguments\": {\"deploy_id\": 4127}}, {\"type\": \"tool_call\", \"id\": \"toolu_05\", \"name\": \"query_traces\", \"arguments\": {\"service\": \"checkout-api\", \"min_duration_ms\": 1500, \"window\": [\"2026-09-22T14:05Z\", \"2026-09-22T16:40Z\"], \"limit\": 50}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_04\", \"response\": {\"deploy_id\": 4127, \"files\": [\"cart/tax.py\"], \"summary\": \"Tax is now recalculated per line item via tax-service (one HTTP call per item) instead of once per cart.\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"toolu_05\", \"response\": {\"matched\": 50, \"median_duration_ms\": 1790, \"top_span\": \"tax-service POST /calculate\", \"calls_per_checkout_p50\": 14}}]}, {\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"[cost-estimator] 281 excess abandoned checkouts; excess cart value EUR 23,180. The EUR to USD conversion failed (historical FX not enabled), so the figure is reported in EUR.\"}]}]"
+            },
+            {
+              "key": "gen_ai.output.messages",
+              "type": "string",
+              "value": "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"Cause: deploy #4127 (14:02 UTC) moved tax calculation to one tax-service call per line item; slow traces show about 14 calls per checkout, and p95 rose from 410 ms to 1,860 ms. Fixed: #4131 reverted it at 16:35 UTC and latency returned to baseline by 16:40. Cost: 281 more abandoned checkouts than a normal Tuesday, about EUR 23,180 in cart value. I couldn't convert that to USD because the FX lookup is not enabled for historical rates.\"}]}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "6d6737bdab150eac9afbfaff04b326b3",
+          "spanID": "2ba46df3ec7a2d76",
+          "operationName": "invoke_agent incident-analyst",
+          "references": [],
+          "startTime": 1790269392000000,
+          "duration": 31800000,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "invoke_agent"
+            },
+            {
+              "key": "gen_ai.agent.name",
+              "type": "string",
+              "value": "incident-analyst"
+            },
+            {
+              "key": "gen_ai.provider.name",
+              "type": "string",
+              "value": "anthropic"
+            },
+            {
+              "key": "gen_ai.conversation.id",
+              "type": "string",
+              "value": "conv_7f3c1e"
+            },
+            {
+              "key": "gen_ai.system_instructions",
+              "type": "string",
+              "value": "[{\"type\": \"text\", \"content\": \"You are incident-analyst, an on-call assistant for the Meridian Shop platform team. Ground every claim in tool output; say plainly when a tool failed and what that means for the answer.\"}]"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.examples.genai_semconv"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        }
+      ],
+      "processes": {
+        "p1": {
+          "serviceName": "incident-analyst",
+          "tags": [
+            {
+              "key": "telemetry.sdk.language",
+              "type": "string",
+              "value": "python"
+            },
+            {
+              "key": "telemetry.sdk.name",
+              "type": "string",
+              "value": "opentelemetry"
+            },
+            {
+              "key": "telemetry.sdk.version",
+              "type": "string",
+              "value": "1.44.0"
+            },
+            {
+              "key": "service.instance.id",
+              "type": "string",
+              "value": "55418d8e-4195-4f09-a885-1ff78a399d85"
+            },
+            {
+              "key": "service.version",
+              "type": "string",
+              "value": "2.4.0"
+            },
+            {
+              "key": "deployment.environment.name",
+              "type": "string",
+              "value": "demo"
+            }
+          ]
+        }
+      },
+      "warnings": null
+    }
+  ],
+  "total": 0,
+  "limit": 0,
+  "offset": 0,
+  "errors": null
+}
