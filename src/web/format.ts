@@ -20,11 +20,42 @@ export function fmtPct(n: number): string {
   return `${(n * 100).toFixed(0)}%`;
 }
 
-export function jsonPreview(v: unknown, maxLen = 4000): string {
-  try {
-    const s = JSON.stringify(v, null, 2);
-    return s.length > maxLen ? s.slice(0, maxLen) + '\n… (truncated)' : s;
-  } catch {
-    return String(v);
-  }
+export function textPreview(value: string, maxLen = 4000): string {
+  return value.length > maxLen ? value.slice(0, maxLen) + '\n… (preview; download for full value)' : value;
+}
+
+/** Stop serializing at the display budget, instead of stringifying an entire payload first. */
+export function jsonPreview(value: unknown, maxLen = 4000): string {
+  let output = '';
+  let truncated = false;
+  const ancestors = new Set<object>();
+  const write = (text: string): void => {
+    const remaining = Math.max(0, maxLen - output.length);
+    output += text.slice(0, remaining);
+    if (text.length > remaining) truncated = true;
+  };
+  const visit = (v: unknown, depth: number): void => {
+    if (truncated) return;
+    if (typeof v === 'string') { write(JSON.stringify(v.slice(0, maxLen + 1))); return; }
+    if (typeof v !== 'object' || v === null) { write(String(v)); return; }
+    if (ancestors.has(v)) { write('"[circular]"'); return; }
+    if (depth >= 128) { truncated = true; return; }
+    ancestors.add(v);
+    const array = Array.isArray(v);
+    write(array ? '[' : '{');
+    let first = true;
+    for (const key in v) {
+      if (!Object.hasOwn(v, key)) continue;
+      if (truncated) break;
+      write(`${first ? '' : ','}\n${'  '.repeat(depth + 1)}`);
+      first = false;
+      if (!array) { visit(key, depth + 1); write(': '); }
+      visit((v as Record<string, unknown>)[key], depth + 1);
+    }
+    if (!first) write(`\n${'  '.repeat(depth)}`);
+    write(array ? ']' : '}');
+    ancestors.delete(v);
+  };
+  visit(value, 0);
+  return output + (truncated ? '\n… (preview; download for full value)' : '');
 }

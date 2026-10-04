@@ -75,6 +75,7 @@ try {
   assert.equal(await page.locator('.tl-operation').count(), 5);
   await page.getByLabel('Replace candidate trace').setInputFiles(root + '/examples/comparison-baseline.json');
   await page.getByRole('alert').waitFor({ state: 'detached' });
+  await page.locator('.tl-load-notice').waitFor({ state: 'detached' });
   assert.match(await page.locator('.tl-compare-metrics').first().innerText(), /0 µs/);
   await page.getByLabel('Replace candidate trace').setInputFiles(root + '/examples/comparison-candidate.json');
   await page.waitForFunction(() => document.querySelector('.tl-compare-metrics')?.textContent.includes('+3.40 s'));
@@ -120,15 +121,19 @@ try {
   // A late demo fetch must not replace a real file chosen in the meantime.
   await page.goto(target);
   let release;
+  let requested;
+  const requestStarted = new Promise((resolve) => { requested = resolve; });
   const gate = new Promise((resolve) => {
     release = resolve;
   });
   await page.route('**/examples/comparison-candidate.json', async (route) => {
+    requested();
     await gate;
     await route.continue();
   });
   await page.getByRole('button', { name: 'Compare two runs (synthetic)' }).click();
-  const canceled = page.waitForEvent('requestfailed', (request) => request.url().endsWith('/comparison-candidate.json'));
+  await requestStarted;
+  const canceled = Promise.all(page.workers().map((worker) => worker.waitForEvent('close')));
   await page.locator('#tl-file-input').setInputFiles(root + '/examples/comparison-baseline.json');
   await page.locator('.tl-active-file').waitFor();
   release();

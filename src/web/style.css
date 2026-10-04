@@ -608,6 +608,38 @@ a {
   color: var(--text-faint);
   font-size: 12.5px;
 }
+.tl-evidence-download, .tl-evidence-pages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  font-size: 12px;
+}
+.tl-evidence-download { margin-top: 10px; }
+.tl-evidence-download > span { flex: 1 1 180px; }
+.tl-evidence-section { min-width: 0; margin-bottom: 14px; }
+.tl-evidence-pages { margin-bottom: 8px; }
+.tl-evidence-pages > [role='status'] { flex: 1 1 100%; color: var(--text-dim); }
+.tl-evidence-pages input {
+  width: 5em;
+  padding: 4px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  background: var(--surface);
+  font: inherit;
+}
+.tl-evidence-pages label { white-space: nowrap; }
+.tl-compare-warnings {
+  flex-shrink: 0;
+  max-height: 25vh;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.tl-compare-warnings > summary { cursor: pointer; margin-bottom: 6px; }
+
 .tl-detail-header {
   padding: 14px 16px 10px;
   border-bottom: 1px solid var(--border);

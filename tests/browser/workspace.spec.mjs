@@ -38,6 +38,7 @@ for (const side of [0, 1]) {
 test(`a rejected trace switch preserves the ${side === 0 ? 'baseline' : 'candidate'} comparison`, async ({ page }) => {
   await page.goto('./');
   await page.locator('#tl-file-input').setInputFiles(file('collector.json', [...run(good, 260), ...run(deep, 257, true)]));
+  await expect(page.locator('.tl-active-file')).toHaveText('collector.json');
   await page.getByLabel('Candidate trace file').setInputFiles(file('candidate.json', [...run(good, 260), ...run(deep, 257, true)]));
   await page.locator('.tl-operation summary').first().click();
   await page.locator('.tl-compare-evidence').nth(side).getByRole('button').first().click();
@@ -171,15 +172,19 @@ test('search locates a distant span and keeps only a bounded number of rows', as
   expect(await page.locator('.tl-wf-row').count()).toBeLessThan(200);
 });
 
-test('canceled or superseded file reads never parse or replace current state', async ({ page }) => {
+test('canceled or superseded import workers never replace current state', async ({ page }) => {
   await page.addInitScript(() => {
-    const read = File.prototype.arrayBuffer;
     window.pendingReads = {};
-    File.prototype.arrayBuffer = function () {
-      if (!this.name.startsWith('slow')) return read.call(this);
-      return new Promise((resolve, reject) => {
-        window.pendingReads[this.name] = async (fail = false) => fail ? reject(new Error('late read error')) : resolve(await read.call(this));
-      });
+    const NativeWorker = Worker;
+    window.Worker = class extends NativeWorker {
+      postMessage(request) {
+        const name = request.source.file?.name ?? '';
+        if (!name.startsWith('slow')) { super.postMessage(request); return; }
+        window.pendingReads[name] = (fail = false) => {
+          if (fail) this.onerror?.(new ErrorEvent('error', { message: 'late parser error' }));
+          else super.postMessage(request);
+        };
+      }
     };
     const parse = JSON.parse;
     window.obsoleteParsed = 0;
@@ -225,11 +230,12 @@ test('sample failures recover and cancellation aborts both requests', async ({ p
   await page.route('**/examples/comparison-*.json', (route) => { pending.push(route); });
   await page.getByRole('button', { name: 'Compare two runs (synthetic)' }).click();
   await expect.poll(() => pending.length).toBe(2);
-  const canceled = [];
-  page.on('requestfailed', (request) => canceled.push(request.url()));
+  const workers = page.workers();
+  const stopped = Promise.all(workers.map((worker) => worker.waitForEvent('close')));
   await page.getByRole('button', { name: 'Cancel loading' }).click();
+  await stopped;
   for (const route of pending) await route.continue();
-  await expect.poll(() => canceled.length).toBe(2);
+  expect(page.workers()).toHaveLength(0);
   await expect(page.getByRole('alert')).toHaveCount(0);
   await expect(page.locator('.tl-comparison')).toHaveCount(0);
 });

@@ -1,8 +1,10 @@
-import type { NormalizedMessage, ParsedSpan } from '../core/index.js';
+import type { NormalizedMessage, NormalizedMessagePart, ParsedSpan } from '../core/index.js';
 import { spanDurationMs } from '../core/index.js';
 import { h, mount } from './dom.js';
-import { fmtInt, fmtMs, jsonPreview } from './format.js';
+import { fmtInt, fmtMs, jsonPreview, textPreview } from './format.js';
 import { kindClass, KIND_LABEL } from './kind-colors.js';
+import { pagedEvidence } from './paged-evidence.js';
+import { downloadEvidence, spanEvidence } from './evidence.js';
 
 export type DetailTab = 'overview' | 'messages' | 'tool' | 'attributes' | 'events';
 
@@ -23,27 +25,23 @@ const TAB_LABEL: Record<DetailTab, string> = {
   events: 'Events',
 };
 
-function messageBlock(messages: NormalizedMessage[]): HTMLElement {
-  return h(
-    'div',
-    {},
-    ...messages.map((m) =>
-      h(
-        'div',
-        { className: 'tl-msg' },
-        h('div', { className: 'tl-msg-role' }, m.role),
-        ...m.parts.map((p) => {
-          if (p.type === 'tool_call') {
-            return h('div', { className: 'tl-msg-body mono' }, `→ ${p.name ?? 'tool'}(${p.id ? `#${p.id}` : ''})\n${jsonPreview(p.arguments)}`);
-          }
-          if (p.type === 'tool_call_response') {
-            return h('div', { className: 'tl-msg-body mono' }, `← ${p.id ? `#${p.id}` : ''}\n${jsonPreview(p.response)}`);
-          }
-          return h('div', { className: 'tl-msg-body' }, p.content ?? '(empty)');
-        }),
-      ),
-    ),
-  );
+function messagePart(p: NormalizedMessagePart): HTMLElement {
+  if (p.type === 'tool_call') {
+    return h('div', { className: 'tl-msg-body mono' }, `→ ${textPreview(p.name ?? 'tool', 200)}(${p.id ? `#${textPreview(p.id, 200)}` : ''})\n${jsonPreview(p.arguments)}`);
+  }
+  if (p.type === 'tool_call_response') {
+    return h('div', { className: 'tl-msg-body mono' }, `← ${p.id ? `#${textPreview(p.id, 200)}` : ''}\n${jsonPreview(p.response)}`);
+  }
+  return h('div', { className: 'tl-msg-body' }, textPreview(p.content ?? '(empty)'));
+}
+
+function messageBlock(owner: ParsedSpan, label: string, messages: NormalizedMessage[]): HTMLElement {
+  return pagedEvidence(owner, label, messages, (page, start) => h('div', {}, ...page.map((m, index) => {
+    const parts = (slice: readonly NormalizedMessagePart[]): HTMLElement => h('div', {}, ...slice.map(messagePart));
+    return h('div', { className: 'tl-msg' },
+      h('div', { className: 'tl-msg-role' }, textPreview(m.role, 100)),
+      m.parts.length > 20 ? pagedEvidence(m, `${label} message ${start + index + 1} parts`, m.parts, parts, 20) : parts(m.parts));
+  })), 20);
 }
 
 function kvTable(rows: [string, string][]): HTMLElement {
@@ -53,7 +51,7 @@ function kvTable(rows: [string, string][]): HTMLElement {
     h(
       'tbody',
       {},
-      ...rows.map(([k, v]) => h('tr', {}, h('td', {}, k), h('td', {}, v))),
+      ...rows.map(([k, v]) => h('tr', {}, h('td', {}, textPreview(k, 200)), h('td', {}, textPreview(v)))),
     ),
   );
 }
@@ -79,7 +77,7 @@ export function renderDetailPanel(
       'div',
       { className: 'tl-detail-title' },
       h('span', { className: `tl-kind-dot ${kindClass(span.agentKind)}`, style: 'margin-right:6px' }),
-      span.name,
+      textPreview(span.name, 400),
     ),
     h(
       'div',
@@ -89,6 +87,9 @@ export function renderDetailPanel(
       h('span', {}, span.status.code === 'ERROR' ? h('span', { style: 'color:var(--accent-error)' }, 'error') : span.status.code.toLowerCase()),
       h('span', { className: 'mono faint' }, span.spanId.slice(0, 12)),
     ),
+    h('div', { className: 'tl-evidence-download' },
+      h('button', { className: 'tl-btn', 'data-focus-key': 'download-span', onClick: () => downloadEvidence(spanEvidence(span), 'tracelens-span.json') }, 'Download span JSON'),
+      h('span', { className: 'dim' }, 'Complete attributes, messages and events. Long values below are previews.')),
   );
 
   const tabBar = h(
@@ -136,15 +137,15 @@ export function renderDetailPanel(
   } else if (tab === 'messages') {
     if (span.genai?.systemInstructions) {
       panel.appendChild(h('div', { className: 'faint', style: 'margin-bottom:6px' }, 'System'));
-      panel.appendChild(messageBlock(span.genai.systemInstructions));
+      panel.appendChild(messageBlock(span, 'System messages', span.genai.systemInstructions));
     }
     if (span.genai?.inputMessages) {
       panel.appendChild(h('div', { className: 'faint', style: 'margin:10px 0 6px' }, 'Input'));
-      panel.appendChild(messageBlock(span.genai.inputMessages));
+      panel.appendChild(messageBlock(span, 'Input messages', span.genai.inputMessages));
     }
     if (span.genai?.outputMessages) {
       panel.appendChild(h('div', { className: 'faint', style: 'margin:10px 0 6px' }, 'Output'));
-      panel.appendChild(messageBlock(span.genai.outputMessages));
+      panel.appendChild(messageBlock(span, 'Output messages', span.genai.outputMessages));
     }
   } else if (tab === 'tool') {
     panel.appendChild(
@@ -165,25 +166,22 @@ export function renderDetailPanel(
     }
     if (span.genai?.errorType) {
       panel.appendChild(h('div', { className: 'faint', style: 'margin:10px 0 4px' }, 'error.type'));
-      panel.appendChild(h('pre', { className: 'tl-pre mono' }, span.genai.errorType));
+      panel.appendChild(h('pre', { className: 'tl-pre mono' }, textPreview(span.genai.errorType)));
     }
   } else if (tab === 'attributes') {
-    const entries = Object.entries(span.attributes).map(([k, v]): [string, string] => [k, jsonPreview(v, 800)]);
-    panel.appendChild(entries.length > 0 ? kvTable(entries) : h('div', { className: 'faint' }, 'No attributes on this span.'));
-    panel.appendChild(h('div', { className: 'faint', style: 'margin:14px 0 4px' }, 'Resource'));
-    panel.appendChild(kvTable(Object.entries(span.resourceAttributes).map(([k, v]): [string, string] => [k, jsonPreview(v, 400)])));
+    const entries = Object.entries(span.attributes);
+    panel.appendChild(entries.length > 0 ? pagedEvidence(span, 'Attributes', entries, (page) => kvTable(page.map(([k, v]) => [k, jsonPreview(v, 800)]))) : h('div', { className: 'faint' }, 'No attributes on this span.'));
+    panel.appendChild(pagedEvidence(span, 'Resource attributes', Object.entries(span.resourceAttributes), (page) => kvTable(page.map(([k, v]) => [k, jsonPreview(v, 400)]))));
   } else if (tab === 'events') {
-    for (const ev of span.events) {
+    panel.appendChild(pagedEvidence(span, 'Events', span.events, (page) => h('div', {}, ...page.map((ev) => {
       const isException = ev.name === 'exception';
-      panel.appendChild(
-        h(
+      return h(
           'div',
           { className: isException ? 'tl-event' : 'tl-msg' },
-          h('div', { className: isException ? 'tl-event-name' : 'tl-msg-role' }, ev.name),
+          h('div', { className: isException ? 'tl-event-name' : 'tl-msg-role' }, textPreview(ev.name, 200)),
           h('pre', {}, jsonPreview(ev.attributes)),
-        ),
-      );
-    }
+        );
+    })), 20));
   }
 
   mount(container, header, tabBar, panel);

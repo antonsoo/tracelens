@@ -1,11 +1,13 @@
 import './fonts/fonts.css';
 import './style.css';
-import { decodeText } from '../core/decode.js';
-import { buildSummary, compareTraces, parseOtlpJson, parseTraceText, TraceParseError } from '../core/index.js';
+import { buildSummary, compareTraces } from '../core/index.js';
 import type { ParsedSpan, ParsedTrace, PriceEntry, TraceComparison, TraceListing, TraceSummary } from '../core/index.js';
 import { Store } from './store.js';
+import { loadTrace } from './trace-loader.js';
 import { h, mount } from './dom.js';
-import { fmtInt, fmtMs } from './format.js';
+import { fmtInt, fmtMs, textPreview } from './format.js';
+import { pagedEvidence } from './paged-evidence.js';
+import { downloadEvidence } from './evidence.js';
 import { renderDropzone } from './dropzone.js';
 import { renderSummaryHeader } from './summary-header.js';
 import { disposeWaterfall, renderWaterfall } from './waterfall.js';
@@ -89,13 +91,13 @@ function beginLoad(label: string): { version: number; signal: AbortSignal } {
   return task;
 }
 
-function finishLoad(version: number, patch: Partial<AppState>): void {
+function finishLoad(version: number, patch: Partial<AppState>, focus = true): void {
   if (version !== loadVersion) return;
   // Also stops a sibling sample request if one half of a comparison failed.
   loadController?.abort();
   loadController = null;
   store.set({ ...patch, loading: null });
-  if (patch.trace) {
+  if (patch.trace && focus) {
     const destination = document.querySelector<HTMLElement>('.tl-comparison h1, #tl-span-search');
     destination?.focus({ preventScroll: true });
   }
@@ -112,40 +114,34 @@ function loadNotice(state: AppState): HTMLElement | null {
 }
 
 async function loadFile(file: File): Promise<void> {
-  const { version } = beginLoad(file.name);
+  const { version, signal } = beginLoad(file.name);
   try {
-    if (file.size > 25 * 1024 * 1024) throw new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
-    const bytes = await file.arrayBuffer();
+    const { trace, source } = await loadTrace({ kind: 'file', file }, signal);
     if (version !== loadVersion) return;
-    const text = decodeText(new Uint8Array(bytes));
-    const trace = parseTraceText(text);
-    if (version !== loadVersion) return;
-    finishLoad(version, { trace, source: text, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: file.name, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    finishLoad(version, { trace, source, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: file.name, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
   } catch (err) {
     if (version !== loadVersion) return;
-    const message =
-      err instanceof TraceParseError
-        ? err.message
-        : `Couldn't load "${file.name}": ${err instanceof Error ? err.message : String(err)}`;
+    const message = `Couldn't load "${file.name}": ${err instanceof Error ? err.message : String(err)}`;
     finishLoad(version, { loadError: message });
   }
 }
 
 /** Reads another trace from the file behind the side being inspected. */
-function pickTrace(traceId: string): void {
+async function pickTrace(traceId: string): Promise<void> {
   const state = store.get();
   const onBaseline = state.baseline !== null && state.inspectedSide === 'baseline';
   const source = onBaseline ? state.baselineSource : state.source;
   if (source === null) return;
-  supersedeLoads();
+  const { version, signal } = beginLoad('selected trace');
   try {
-    const trace = parseTraceText(source, { traceId });
+    const { trace } = await loadTrace({ kind: 'text', text: source }, signal, traceId);
+    if (version !== loadVersion) return;
     // Validate before replacing either side. A trace can be inspectable yet
     // exceed the comparison's bounded ancestry limit.
-    if (state.baseline && state.trace) comparisonOf(onBaseline ? trace : state.baseline, onBaseline ? state.trace : trace, state.priceTable);
-    store.set({ ...(onBaseline ? { baseline: trace } : { trace }), loading: null, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    if (state.baseline && state.trace) comparisonOf(onBaseline ? trace : state.baseline, onBaseline ? state.trace : trace, store.get().priceTable);
+    finishLoad(version, { ...(onBaseline ? { baseline: trace } : { trace }), loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n }, false);
   } catch (err) {
-    store.set({ loading: null, loadError: err instanceof Error ? err.message : String(err) });
+    finishLoad(version, { loadError: err instanceof Error ? err.message : String(err) }, false);
   }
 }
 
@@ -153,16 +149,12 @@ async function loadCandidate(file: File): Promise<void> {
   const state = store.get();
   const baseline = state.baseline ?? state.trace;
   if (!baseline) return;
-  const { version } = beginLoad(file.name);
+  const { version, signal } = beginLoad(file.name);
   try {
-    if (file.size > 25 * 1024 * 1024) throw new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
-    const bytes = await file.arrayBuffer();
-    if (version !== loadVersion) return;
-    const text = decodeText(new Uint8Array(bytes));
-    const trace = parseTraceText(text);
+    const { trace, source } = await loadTrace({ kind: 'file', file }, signal);
     if (version !== loadVersion) return;
     comparisonOf(baseline, trace, store.get().priceTable);
-    finishLoad(version, { baseline, baselineName: state.baselineName ?? state.fileName, baselineSource: state.baseline ? state.baselineSource : state.source, trace, source: text, fileName: file.name, view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
+    finishLoad(version, { baseline, baselineName: state.baselineName ?? state.fileName, baselineSource: state.baseline ? state.baselineSource : state.source, trace, source, fileName: file.name, view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
   } catch (err) {
     if (version !== loadVersion) return;
     finishLoad(version, { loadError: `Couldn't compare "${file.name}": ${err instanceof Error ? err.message : String(err)}` });
@@ -173,9 +165,8 @@ async function loadComparisonExample(): Promise<void> {
   const { version, signal } = beginLoad('comparison example');
   try {
     const traces = await Promise.all(['baseline', 'candidate'].map(async (side) => {
-      const response = await fetch(`${import.meta.env.BASE_URL}examples/comparison-${side}.json`, { signal });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return parseOtlpJson(await response.json());
+      const { trace } = await loadTrace({ kind: 'url', url: new URL(`${import.meta.env.BASE_URL}examples/comparison-${side}.json`, location.href).href }, signal);
+      return trace;
     }));
     if (version !== loadVersion) return;
     comparisonOf(traces[0]!, traces[1]!, store.get().priceTable);
@@ -190,10 +181,7 @@ async function loadExample(path: string): Promise<void> {
   const { version, signal } = beginLoad(path.split('/').pop() ?? path);
   try {
     const base = import.meta.env.BASE_URL;
-    const res = await fetch(`${base}${path}`, { signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
-    const trace = parseOtlpJson(json);
+    const { trace } = await loadTrace({ kind: 'url', url: new URL(`${base}${path}`, location.href).href }, signal);
     if (version !== loadVersion) return;
     finishLoad(version, { trace, source: null, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: path.split('/').pop() ?? path, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
   } catch (err) {
@@ -294,7 +282,7 @@ function tracePicker(trace: ParsedTrace, source: string | null): HTMLElement | n
   if (trace.traces.length < 2 || source === null) return null;
   const select = h(
     'select',
-    { id: 'tl-trace-picker', 'data-focus-key': 'trace-picker', className: 'tl-trace-select mono', onChange: (e: Event) => pickTrace((e.target as HTMLSelectElement).value) },
+    { id: 'tl-trace-picker', 'data-focus-key': 'trace-picker', className: 'tl-trace-select mono', onChange: (e: Event) => void pickTrace((e.target as HTMLSelectElement).value) },
     ...trace.traces.map((t) => h('option', { value: t.traceId, ...(t.traceId === trace.traceId ? { selected: 'selected' } : {}) }, describeListing(t))),
   );
   return h(
@@ -411,7 +399,8 @@ function renderApp(): void {
   const picker = tracePicker(activeTrace, state.baseline !== null && state.inspectedSide === 'baseline' ? state.baselineSource : state.source);
   const warnings = activeTrace.warnings.length ? h('details', { className: 'tl-compare-warnings' },
     h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
-    h('ul', {}, ...activeTrace.warnings.map((warning) => h('li', {}, warning.message)))) : null;
+    h('button', { className: 'tl-btn', onClick: () => downloadEvidence(activeTrace.warnings, 'tracelens-warnings.json') }, 'Download warnings JSON'),
+    pagedEvidence(activeTrace, 'Parser warnings', activeTrace.warnings, (page) => h('ul', {}, ...page.map((warning) => h('li', {}, textPreview(warning.message)))))) : null;
   mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
   // After the mount: the waterfall measures its track and restores its scroll position, which a
   // detached element has neither of.

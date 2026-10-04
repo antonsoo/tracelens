@@ -148,7 +148,7 @@ export async function auditWaterfall(browser, target, root) {
     await page.getByRole('button', { name: 'Load another trace' }).click();
     await page.locator('#tl-file-input').setInputFiles(file('page.json', '<html>\n<body></body>\n</html>\n'));
     await page.getByRole('alert').waitFor();
-    assert.match(await page.getByRole('alert').innerText(), /^Not valid JSON: /);
+    assert.match(await page.getByRole('alert').innerText(), /Not valid JSON: /);
   } finally {
     await context.close();
   }

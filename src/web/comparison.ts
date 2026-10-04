@@ -7,7 +7,8 @@ import type {
   TraceComparison,
 } from '../core/compare.js';
 import { h, mount } from './dom.js';
-import { fmtInt, fmtMs, fmtUsd } from './format.js';
+import { fmtInt, fmtMs, fmtUsd, textPreview } from './format.js';
+import { pagedEvidence } from './paged-evidence.js';
 
 export type ComparisonSide = 'baseline' | 'candidate';
 export interface ComparisonViewState {
@@ -288,7 +289,7 @@ export function renderComparison(
             'details',
             { className: 'tl-compare-warnings' },
             h('summary', {}, `${report.warnings.length} parser warnings`),
-            h('ul', {}, ...report.warnings.map((w) => h('li', {}, w))),
+            pagedEvidence(report, 'Parser warnings', report.warnings, (page) => h('ul', {}, ...page.map((w) => h('li', {}, textPreview(w))))),
           )
         : null,
       h(
