@@ -49,6 +49,15 @@ that is not complete JSON is skipped with a warning, since a file still
 being written ends that way; a broken line anywhere else is an error that
 names the line. Lines of metrics, logs or profiles written to the same file
 are skipped and counted in a warning.
+Line numbers include blank lines in the original file, for LF, CRLF and
+CR separators.
+
+The parser accepts at most 128 nested JSON object/array containers,
+counting from the document root. JSON embedded in message and tool
+attributes is checked separately against the same bound. Exceeding it
+rejects the import with an actionable error, before recursive decoding
+or serialization can exhaust the stack. This is a payload bound: OTLP
+span ancestry is represented by flat IDs and does not consume this budget.
 
 A file may hold several traces, as a collector's file does. Spans are
 grouped by trace ID first, because span IDs are only unique within a trace,
@@ -237,3 +246,37 @@ The retry count is a heuristic: a tool call follows a failed, completed
 call with the same tool name and parent. Successful repeated calls and
 overlapping attempts do not count. The trace does not establish that
 two calls had identical intent, so the UI labels these **possible retries**.
+Calls sharing a start timestamp, including zero-duration calls, do not
+establish the temporal order needed for that retry inference.
+
+## 8. Browser inspection and evidence downloads
+
+Each import or trace switch owns a dedicated worker. Cancellation,
+replacement, timeout or navigation away from the run terminates it.
+File bytes and downloaded samples are limited to 25 MiB; streamed sample
+responses are counted after HTTP decompression. Parsing and normalization
+run off the UI thread. The worker returns span-child indices instead of a
+recursive tree, so deep ancestry survives structured cloning. The UI
+reconnects those indices without changing span order, identity or timestamps.
+Summaries, comparisons, graph reconnection and download serialization still
+run on the UI thread; this is not a streaming parser.
+
+Detail pages show 50 attributes/resource attributes or warnings at a time,
+and 20 messages, parts per message or events. Values have bounded previews;
+the explicit preview marker is not part of the evidence. Page positions
+survive tab, theme and viewport changes while the same span is retained.
+
+**Download span JSON** exports `schemaVersion: 1` and
+`format: "tracelens-span-evidence"`, followed by the complete decoded span
+fields. Nanosecond `bigint` fields are decimal strings; `children` contains
+child span IDs, without copying descendants. `attributes`,
+`resourceAttributes`, normalized `genai` fields and events are complete.
+This is decoded evidence, not a byte-for-byte copy of the original OTLP
+file, and it includes captured prompts and tool content. Comparison exports
+retain their existing content-omitting format. Parser warnings can also
+be downloaded without paging or preview limits.
+
+![Decoded span attributes and a complete JSON download](assets/evidence-light.png)
+
+[Dark view](assets/evidence-dark.png), [375px layout](assets/evidence-mobile.png),
+and [the last page of 20,000 synthetic attributes](assets/evidence-paging.png).

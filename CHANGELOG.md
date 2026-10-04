@@ -6,6 +6,12 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
+- Cancellable worker parsing for files, samples and trace switches, with
+  recovery from startup, transport, runtime and timeout failures. Deep
+  span trees cross the worker boundary as flat references.
+- Paged attributes, messages, message parts, events and warnings; bounded
+  text/JSON previews; complete selected-span and warning JSON downloads.
+  Expanded warnings keep the trace workspace usable.
 - Local span search and an errors-only filter, with ancestor context,
   separate match counts, empty results, and preserved branch folds.
   Summary totals and comparison exports remain unfiltered.
@@ -17,6 +23,15 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Equal-time roots appeared in reversed order in Firefox because their
+  comparator did not return zero for ties. Root and retry ordering now
+  preserve source order, and simultaneous zero-duration calls no longer
+  imply a retry solely from their position in the file.
+- Deeply nested trace payloads could exhaust the parser stack. Outer and
+  embedded JSON now have an explicit 128-container nesting limit,
+  independent of span ancestry.
+- JSON Lines diagnostics now count physical source lines, including blank
+  lines, for every supported line ending.
 - Choosing an uncomparable trace from a multi-trace file could replace one
   side of a valid comparison and break the return to the comparison view.
   Both sides are now checked before state changes.

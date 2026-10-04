@@ -101,11 +101,18 @@ on npm; the command it installs is `tracelens`).
   arguments and results, and span events (exceptions rendered with their
   real captured stack trace).
   Its tabs support Left/Right, Home and End; Tab enters the active panel.
+  Attributes and warnings have 50 entries per page; messages, message
+  parts and events have 20. Page controls include a direct page number.
+  Long values are marked as previews. **Download span JSON** saves the
+  selected span's complete decoded attributes, messages, resource and
+  events, with exact timestamps and child IDs. This download includes
+  captured content; comparison exports still omit it.
 - **Recoverable loading** — cancel a pending file read or sample download,
   replace it with another choice, or retry after failure. An invalid
   candidate or trace switch preserves the current comparison. Parsing
-  still runs on the main thread; cancellation takes effect during the
-  asynchronous read/download, before parsing begins.
+  runs in a dedicated worker, including decoding, normalization and trace
+  switching. Cancellation stops that worker and its pending reads. Failed
+  or timed-out imports preserve the current run or comparison.
 - **Summary header** — total duration, LLM time vs. tool time (by *self*
   time, not double-counting nested spans), tokens in/out by model, an
   editable-price cost estimate, error and retry counts, and a critical-path
@@ -119,9 +126,13 @@ on npm; the command it installs is `tracelens`).
   operations, per-side span inspection, and JSON export with pricing inputs.
   Missing measurements remain unknown; an unpriced call cannot become a
   claim of cost savings.
-- Light and dark themes, works fully offline once loaded, zero telemetry. The page's
-  Content-Security-Policy (`connect-src 'self'`) has the browser refuse to send a trace
-  anywhere, and nothing but the page's own scripts can run.
+- Light and dark themes, zero telemetry. Loaded traces remain inspectable
+  and exportable offline. Starting another import or switching traces
+  needs the parser script available from the host or browser cache;
+  offline reload is not guaranteed. The page's
+  Content-Security-Policy restricts page scripts and connections to this
+  origin. The parser only fetches bundled sample URLs; imported trace
+  content is decoded locally and never sent to a service.
 
 ## How it works
 
@@ -313,8 +324,15 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of
   optimality under concurrency.
-- The browser takes files up to 25 MB, and reads a file whole: a
-  collector file larger than that needs splitting first.
+- The browser takes files up to 25 MiB and reads each file whole in a
+  worker. Sample downloads have the same limit after HTTP decompression.
+  Imports time out after 30 seconds; split larger collector exports first.
+- The parser rejects payloads beyond 128 nested objects/arrays, including
+  JSON embedded in message and tool attributes. This counts JSON containers,
+  including OTLP wrappers, independently of span ancestry. Single-run
+  inspection supports deeply nested spans; comparison has a separate
+  256-level ancestry limit. Excessive payload depth rejects the import
+  instead of silently dropping evidence.
 - JSON Lines is read for OTLP only. Jaeger's JSON is one document.
 - The waterfall's fixed-width label column doesn't reflow below ~375px; the
   timeline track scrolls horizontally on a phone rather than compressing
@@ -341,14 +359,13 @@ structural validation and interval-union checks against an independent
 occupancy oracle. `npm run test:cli` checks the built executable;
 `npm run test:browser` exercises the real interface after a build.
 
-**Performance.** A generated 20,001-span trace parses in **~65 ms** once
-warm on this box (14 vCPU WSL2 Linux, 48 GB RAM; about 100 ms on a first
-run) — see `tests/otlp-parser.test.ts`, which asserts a generous 1000 ms
-ceiling to leave headroom for slower CI hardware without being a
-meaningless bound. In headless Chromium on the same box, a 40,000-span
-trace (17 MB) is on screen 0.4 s after it is chosen, and selecting a span
-in it takes about 40 ms; `tests/browser-waterfall.mjs` checks a 6,000-span
-one on every run.
+**Stress coverage.** `tests/otlp-parser.test.ts` checks a generated
+20,001-span trace against a 1000 ms parser ceiling. Browser tests exercise
+6,000-span timelines and 6,000 levels of ancestry, and verify that a
+20,000-attribute span renders only 50 attribute rows per page while its
+download retains every value. They also cancel a deliberately busy parser
+and exercise worker failures. These are regression guards, not general
+latency guarantees; payload shape and the browser still affect performance.
 
 ## Development
 
@@ -360,7 +377,7 @@ npm run lint           # eslint
 npm run typecheck      # tsc --noEmit, both tsconfigs
 npm run build           # dist/ (web) + dist-cli/ (CLI)
 npm run test:cli        # compiled CLI integration
-npm run test:browser    # interaction checks; needs Playwright Chromium
+npm run test:browser    # interaction checks; needs Playwright Chromium + Firefox
 ```
 
 CI runs are disabled for now, so there's no status badge above.
