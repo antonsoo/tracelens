@@ -74,11 +74,12 @@ function countRetries(spans: ParsedSpan[]): number {
   }
   for (const siblings of byParent.values()) {
     const seen = new Map<string, ParsedSpan>();
-    const sorted = [...siblings].sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : 1));
+    const sorted = [...siblings].sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : a.startTimeUnixNano > b.startTimeUnixNano ? 1 : 0));
     for (const s of sorted) {
       const label = s.genai?.toolName ?? s.name;
       const previous = seen.get(label);
-      if (previous?.status.code === 'ERROR' && previous.endTimeUnixNano <= s.startTimeUnixNano) retries += 1;
+      // Equal-start zero-duration calls do not establish temporal order.
+      if (previous?.status.code === 'ERROR' && previous.startTimeUnixNano < s.startTimeUnixNano && previous.endTimeUnixNano <= s.startTimeUnixNano) retries += 1;
       seen.set(label, s);
     }
   }

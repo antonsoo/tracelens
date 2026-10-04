@@ -5,6 +5,7 @@
 // the exact attribute keys and spec versions this was verified against.
 import type { AgentSpanKind, AttrMap, Convention, GenAiInfo, NormalizedMessage, NormalizedMessagePart, ParsedSpan, TokenUsage } from './types.js';
 import { isTokenCount } from './cost.js';
+import { parsePayloadJson } from './payload-depth.js';
 
 function str(v: unknown): string | undefined {
   return typeof v === 'string' && v.length > 0 ? v : undefined;
@@ -47,8 +48,9 @@ function parseMessageList(v: unknown): NormalizedMessage[] | undefined {
   let value = v;
   if (typeof value === 'string') {
     try {
-      value = JSON.parse(value);
-    } catch {
+      value = parsePayloadJson(value);
+    } catch (error) {
+      if (!(error instanceof SyntaxError)) throw error;
       return undefined;
     }
   }
@@ -81,7 +83,7 @@ function parseSystemInstructions(v: unknown): NormalizedMessage[] | undefined {
   const messages = parseMessageList(v);
   if (!messages) return undefined;
   let value = v;
-  if (typeof value === 'string') value = JSON.parse(value);
+  if (typeof value === 'string') value = parsePayloadJson(value);
   const entries = value as unknown[];
   const areParts = entries.every((e) => typeof e === 'object' && e !== null && !('role' in e) && !('parts' in e));
   if (!areParts) return messages;
@@ -91,8 +93,9 @@ function parseSystemInstructions(v: unknown): NormalizedMessage[] | undefined {
 function parseJsonish(v: unknown): unknown {
   if (typeof v !== 'string') return v;
   try {
-    return JSON.parse(v);
-  } catch {
+    return parsePayloadJson(v);
+  } catch (error) {
+    if (!(error instanceof SyntaxError)) throw error;
     return v;
   }
 }

@@ -8,6 +8,8 @@
 import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, StatusCode, TraceListing } from './types.js';
 import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
+import { assertPayloadDepth, MAX_PAYLOAD_DEPTH, TraceParseError } from './payload-depth.js';
+export { TraceParseError } from './payload-depth.js';
 
 const SPAN_KIND_BY_NUMBER: Record<number, SpanKind> = {
   0: 'UNSPECIFIED',
@@ -24,14 +26,17 @@ const STATUS_CODE_BY_NUMBER: Record<number, StatusCode> = {
   2: 'ERROR',
 };
 
-export class TraceParseError extends Error {}
-
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v);
 }
 
 /** Decodes a single OTLP `AnyValue` (typed union) into a plain JS value. */
 export function decodeAnyValue(v: unknown): unknown {
+  return decodeValue(v, 0);
+}
+
+function decodeValue(v: unknown, depth: number): unknown {
+  if (depth >= MAX_PAYLOAD_DEPTH) throw new TraceParseError(`Attribute exceeds ${MAX_PAYLOAD_DEPTH} nested values. Export a shallower payload and try again.`);
   if (!isRecord(v)) return v ?? null;
   if ('stringValue' in v) return v.stringValue;
   if ('boolValue' in v) return Boolean(v.boolValue);
@@ -45,7 +50,7 @@ export function decodeAnyValue(v: unknown): unknown {
   if ('arrayValue' in v) {
     const arr = v.arrayValue;
     const values = isRecord(arr) && Array.isArray(arr.values) ? arr.values : [];
-    return values.map(decodeAnyValue);
+    return values.map((value) => decodeValue(value, depth + 1));
   }
   if ('kvlistValue' in v) {
     const kv = v.kvlistValue;
@@ -53,7 +58,7 @@ export function decodeAnyValue(v: unknown): unknown {
     const out: AttrMap = Object.create(null) as AttrMap;
     for (const entry of values) {
       if (isRecord(entry) && typeof entry.key === 'string') {
-        out[entry.key] = decodeAnyValue(entry.value);
+        out[entry.key] = decodeValue(entry.value, depth + 1);
       }
     }
     return out;
@@ -170,6 +175,7 @@ function chooseTrace(listings: TraceListing[], wanted: string | undefined): Trac
  * lists them all in `traces`.
  */
 export function parseOtlpJson(json: unknown, options: ParseOptions = {}): ParsedTrace {
+  assertPayloadDepth(json);
   // Jaeger's native JSON is converted up front, so it gets the same validation.
   const sourceFormat = isJaegerJson(json) ? 'jaeger-json' : 'otlp-json';
   if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json);
@@ -290,7 +296,7 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
       durationNs: end - first.startTimeUnixNano,
     });
   }
-  traces.sort((a, b) => (a.startNs < b.startNs ? -1 : a.startNs > b.startNs ? 1 : a.traceId < b.traceId ? -1 : 1));
+  traces.sort((a, b) => (a.startNs < b.startNs ? -1 : a.startNs > b.startNs ? 1 : a.traceId < b.traceId ? -1 : a.traceId > b.traceId ? 1 : 0));
   const traceId = chooseTrace(traces, options.traceId).traceId;
   const flat = byTrace.get(traceId)!.map((span) => normalizeSpan(span));
   const chosenWarnings = warnings.filter((w) => w.traceId === undefined || w.traceId === traceId);
@@ -329,7 +335,7 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
     for (const child of span.children) pending.push({ span: child, depth: depth + 1 });
   }
   if (visited !== flat.length) throw new TraceParseError('Cyclic span parents: every span must lead to a root.');
-  roots.sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : 1));
+  roots.sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : a.startTimeUnixNano > b.startTimeUnixNano ? 1 : 0));
 
   let minStart = flat[0]!.startTimeUnixNano;
   let maxEnd = flat[0]!.endTimeUnixNano;
@@ -354,7 +360,7 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
 const OTHER_SIGNALS = ['resourceMetrics', 'resource_metrics', 'resourceLogs', 'resource_logs', 'resourceProfiles', 'resource_profiles'];
 
 function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warnings: ParseWarning[] } {
-  const lines = text.split(/\r\n|\n|\r/).filter((line) => line.trim().length > 0);
+  const lines = text.split(/\r\n|\n|\r/).map((text, index) => ({ text, number: index + 1 })).filter((line) => line.text.trim().length > 0);
   if (lines.length < 2) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
 
   const resourceSpans: unknown[] = [];
@@ -363,16 +369,16 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
   for (let i = 0; i < lines.length; i++) {
     let value: unknown;
     try {
-      value = JSON.parse(lines[i]!);
+      value = JSON.parse(lines[i]!.text);
     } catch (err) {
       const reason = err instanceof Error ? err.message : String(err);
       if (i === 0) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
       // A file the collector is still writing, or a copy cut short, ends mid-line.
       if (i === lines.length - 1) {
-        warnings.push({ message: `The last line (${i + 1}) is not complete JSON and was skipped: the export may still have been in progress.` });
+        warnings.push({ message: `The last line (${lines[i]!.number}) is not complete JSON and was skipped: the export may still have been in progress.` });
         break;
       }
-      throw new TraceParseError(`Not valid JSON, and not JSON Lines either: line ${i + 1}: ${reason}`);
+      throw new TraceParseError(`Not valid JSON, and not JSON Lines either: line ${lines[i]!.number}: ${reason}`);
     }
     const batch = isRecord(value) ? (value.resourceSpans ?? value.resource_spans) : value;
     if (Array.isArray(batch)) {
@@ -380,7 +386,7 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
     } else if (isRecord(value) && OTHER_SIGNALS.some((key) => key in value)) {
       otherSignals++;
     } else {
-      throw new TraceParseError(`Line ${i + 1} is not an OTLP/JSON trace export: expected an object with a "resourceSpans" array on every line.`);
+      throw new TraceParseError(`Line ${lines[i]!.number} is not an OTLP/JSON trace export: expected an object with a "resourceSpans" array on every line.`);
     }
   }
   if (otherSignals > 0) {
