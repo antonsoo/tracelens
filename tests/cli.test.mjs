@@ -48,6 +48,34 @@ test('CLI reports a missing file as an error without corrupting JSON stdout', ()
 test('existing summary and tree commands still work', () => {
   for (const command of ['summary', 'tree']) assert.equal(run(command, before).status, 0);
 });
+test('timing JSON keeps exact interval arithmetic and explains the elapsed-time difference', () => {
+  const result = run('timing', before, '--json');
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stderr, '');
+  const timing = JSON.parse(result.stdout);
+  assert.equal(timing.format, 'tracelens-timing');
+  assert.equal(timing.elapsedNs, '6200000000');
+  assert.equal(timing.summedSelfNs, '7000000000');
+  assert.equal(timing.overlapExcessNs, '800000000');
+  assert.equal(timing.bucketsNs.uncovered, '0');
+  const compared = JSON.parse(run('compare', before, after, '--json').stdout);
+  assert.deepEqual(compared.timing.baseline, timing);
+  const text = run('timing', before);
+  assert.equal(text.status, 0);
+  assert.match(text.stdout, /6\.20 s elapsed = 7\.00 s summed self time - 800\.0 ms overlap excess/);
+});
+test('SDK-captured requests distinguish parallel work from sequential work', () => {
+  const parallel = JSON.parse(run('timing', 'examples/timing-parallel.json', '--json').stdout);
+  const sequential = JSON.parse(run('timing', 'examples/timing-sequential.json', '--json').stdout);
+  assert.equal(parallel.peakConcurrency, 3);
+  assert.equal(sequential.peakConcurrency, 1);
+  assert.ok(BigInt(parallel.overlapExcessNs) > 0n);
+  assert.equal(sequential.overlapExcessNs, '0');
+  for (const timing of [parallel, sequential]) {
+    assert.equal(timing.bucketsNs.uncovered, '0');
+    assert.equal(BigInt(timing.summedSelfNs) - BigInt(timing.overlapExcessNs), BigInt(timing.elapsedNs));
+  }
+});
 
 // Files as the OpenTelemetry Collector's file exporter writes them: an export per line, and
 // every trace that passed through it.

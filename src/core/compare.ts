@@ -2,6 +2,8 @@ import { estimateSpanCost, isTokenCount } from './cost.js';
 import type { PriceEntry } from './pricing.js';
 import { selfTimeNs } from './summary.js';
 import type { AgentSpanKind, ParsedSpan, ParsedTrace } from './types.js';
+import { buildTiming } from './timing.js';
+import type { TraceTiming } from './timing.js';
 
 /** A subtotal plus the number of calls that did not report this measurement. */
 export interface Measurement {
@@ -53,6 +55,7 @@ export interface TraceComparison {
   candidateTraceId: string;
   priceTable: PriceEntry[];
   wallTimeMs: Change;
+  timing: { baseline: TraceTiming; candidate: TraceTiming };
   metrics: MetricChanges;
   operations: OperationComparison[];
   warnings: string[];
@@ -209,6 +212,7 @@ export function compareTraces(baseline: ParsedTrace, candidate: ParsedTrace, pri
     baselineTraceId: baseline.traceId,
     candidateTraceId: candidate.traceId,
     priceTable: prices.map((price) => ({ ...price })),
+    timing: { baseline: buildTiming(baseline), candidate: buildTiming(candidate) },
     wallTimeMs: measurementChange(
       known(Number(baseline.maxEndNs - baseline.minStartNs) / 1_000_000),
       known(Number(candidate.maxEndNs - candidate.minStartNs) / 1_000_000),

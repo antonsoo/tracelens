@@ -35,7 +35,7 @@ export function renderSummaryHeader(container: HTMLElement, summary: TraceSummar
     container,
     h('div', { className: 'tl-summary' },
       cell('Total duration', fmtMs(summary.totalDurationMs)),
-      cell('LLM vs tool time', `${fmtMs(summary.llmSelfTimeMs)} / ${fmtMs(summary.toolSelfTimeMs)}`, timebar),
+      cell('LLM / tool summed self time', `${fmtMs(summary.llmSelfTimeMs)} / ${fmtMs(summary.toolSelfTimeMs)}`, timebar),
       cell('Tokens in / out', h('span', { title: `Known subtotals: ${fmtInt(inputTokens)} input / ${fmtInt(outputTokens)} output` }, `${inputMissing ? 'Unknown' : fmtInt(inputTokens)} / ${outputMissing ? 'Unknown' : fmtInt(outputTokens)}`)),
       cell(summary.uncostedCalls > 0 ? 'Known cost subtotal' : 'Estimated cost', fmtUsd(summary.totalCostUsd), summary.uncostedCalls > 0 ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' }, `${summary.uncostedCalls} call(s) uncosted`) : undefined),
       cell('Spans / errors', `${fmtInt(summary.spanCount)} / ${summary.errorCount}`),

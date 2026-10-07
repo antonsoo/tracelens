@@ -7,11 +7,12 @@
 // installs it).
 import { readFile } from 'node:fs/promises';
 import { decodeText } from '../core/decode.js';
-import { parseTraceText, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs, TraceParseError } from '../core/index.js';
+import { parseTraceText, buildSummary, buildTiming, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs, TraceParseError } from '../core/index.js';
 import type { ParsedTrace, TraceListing } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, safe, table, yellow } from './format.js';
 import { formatComparison } from './compare-report.js';
 import { VERSION } from './version.js';
+import { formatTiming } from './timing-report.js';
 
 const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)
 
@@ -20,6 +21,8 @@ ${bold('Usage:')}
                                   Print duration, token, cost and error summary
   tracelens tree <trace.json> [--trace <id>]
                                   Print the span tree
+  tracelens timing <trace.json> [--trace <id>] [--json]
+                                  Explain elapsed time, overlaps and gaps
   tracelens compare <baseline.json> <candidate.json> [--json]
                     [--baseline-trace <id>] [--candidate-trace <id>]
                                   Compare runs by operation path
@@ -134,7 +137,9 @@ function printSummary(path: string, trace: ParsedTrace): void {
       `${summary.retryCount} possible retried call(s)`,
   );
 
-  console.log(heading('Critical path'));
+  console.log(formatTiming(summary.timing, false));
+
+  console.log(heading('Longest-child chain (heuristic)'));
   console.log(dim('longest-duration child chosen at each nesting level — see docs/formats.md'));
   for (const span of summary.criticalPath) {
     const label = safe(span.genai?.toolName ? `${span.name} (${span.genai.toolName})` : span.name);
@@ -195,7 +200,7 @@ async function main(): Promise<void> {
     console.log(HELP);
     return;
   }
-  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare') {
+  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing') {
     console.error(red(`Unknown command "${safe(cmd)}".`));
     console.log(HELP);
     process.exitCode = 1;
@@ -224,10 +229,18 @@ async function main(): Promise<void> {
       console.log(args.json ? JSON.stringify(report, null, 2) : formatComparison(report));
       return;
     }
-    const usage = `Usage: tracelens ${cmd} <trace.json> [--trace <id>]`;
-    const args = parseArgs(rest, ['--trace'], false, usage);
+    const usage = `Usage: tracelens ${cmd} <trace.json> [--trace <id>]${cmd === 'timing' ? ' [--json]' : ''}`;
+    const args = parseArgs(rest, ['--trace'], cmd === 'timing', usage);
     if (args.files.length !== 1) throw new UsageError(usage);
     const file = args.files[0]!;
+    if (cmd === 'timing') {
+      const trace = await loadTrace(file, args.traces.get('--trace'));
+      const timing = buildTiming(trace);
+      for (const line of otherTraces(trace, '--trace')) console.error(line);
+      console.log(args.json ? JSON.stringify(timing, null, 2) : formatTiming(timing));
+      if (!args.json) for (const warning of timing.warnings) console.log(yellow(`Warning: ${safe(warning.message)}`));
+      return;
+    }
     const trace = await loadTrace(file, args.traces.get('--trace'));
     if (cmd === 'summary') printSummary(file, trace);
     else printTree(trace);

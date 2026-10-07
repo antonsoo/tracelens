@@ -231,14 +231,17 @@ end-to-end against a `git+file://` remote: `npm install -g --allow-git=root --pr
 and plain `npx --yes --allow-git=root git+file:///path/to/repo.git summary trace.json`
 both produced a working, executable `dist-cli/cli/index.js`.
 
-## 6. "Critical path"
+## 6. Timing and the longest-child heuristic
 
-The critical path shown in the summary header and the CLI is a specific,
+The `criticalPath` library property is a compatibility-preserved,
 cheap heuristic, not a formal scheduling-theory critical path: starting
 from the trace's longest root span, repeatedly descend into whichever
 **direct child** has the largest duration. See the doc comment on
 `computeCriticalPath()` in `src/core/critical-path.ts` for exactly what this
 does and doesn't account for (it ignores concurrent/overlapping siblings).
+The CLI now labels it **Longest-child chain (heuristic)**. The browser and
+`tracelens timing` expose [exact interval accounting](timing.md), including
+overlap and gaps, to explain elapsed time.
 
 ## 7. Possible retries
 

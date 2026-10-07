@@ -3,6 +3,8 @@ import type { PriceEntry } from './pricing.js';
 import { spanDurationMs } from './types.js';
 import type { ParsedSpan, ParsedTrace } from './types.js';
 import { computeCriticalPath } from './critical-path.js';
+import { buildTiming, selfIntervals } from './timing.js';
+import type { TraceTiming } from './timing.js';
 
 export interface ModelUsageRow {
   model: string;
@@ -27,36 +29,14 @@ export interface TraceSummary {
   totalCostUsd?: number;
   uncostedCalls: number;
   criticalPath: ParsedSpan[];
+  timing: TraceTiming;
 }
 
 /** Self time = a span's duration minus the union of its children's
  * durations — the time this span spent NOT inside a child, i.e. the time
  * actually attributable to it rather than to whatever it called. */
 export function selfTimeNs(span: ParsedSpan): bigint {
-  if (span.children.length === 0) return span.durationNs;
-  // Clock skew and detached work can put children outside their parent.
-  // Only the intersection can consume the parent's time.
-  const sorted = span.children.map((child) => ({
-    start: child.startTimeUnixNano > span.startTimeUnixNano ? child.startTimeUnixNano : span.startTimeUnixNano,
-    end: child.endTimeUnixNano < span.endTimeUnixNano ? child.endTimeUnixNano : span.endTimeUnixNano,
-  })).filter((child) => child.end > child.start)
-    .sort((a, b) => a.start < b.start ? -1 : a.start > b.start ? 1 : 0);
-  if (sorted.length === 0) return span.durationNs;
-  let covered = 0n;
-  let curStart = sorted[0]!.start;
-  let curEnd = sorted[0]!.end;
-  for (const child of sorted.slice(1)) {
-    if (child.start <= curEnd) {
-      if (child.end > curEnd) curEnd = child.end;
-    } else {
-      covered += curEnd - curStart;
-      curStart = child.start;
-      curEnd = child.end;
-    }
-  }
-  covered += curEnd - curStart;
-  const self = span.durationNs - covered;
-  return self > 0n ? self : 0n;
+  return selfIntervals(span).reduce((sum, piece) => sum + piece.end - piece.start, 0n);
 }
 
 /** A possible retry follows a failed, completed same-parent tool call.
@@ -145,6 +125,7 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
     ...(totalCostUsd !== undefined ? { totalCostUsd } : {}),
     uncostedCalls,
     criticalPath: computeCriticalPath(trace),
+    timing: buildTiming(trace),
   };
 }
 

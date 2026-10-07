@@ -4,6 +4,7 @@ export interface DropzoneCallbacks {
   onFile: (file: File) => void;
   onLoadExample: (path: string) => void;
   onCompareExample: () => void;
+  onTimingExample: () => void;
 }
 
 const SIGNAL_SVG = `
@@ -46,6 +47,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
       h('button', { className: 'tl-btn', 'data-focus-key': 'example-openinference', onClick: () => cb.onLoadExample('examples/openinference-trace.json') }, 'OpenInference example'),
       h('button', { className: 'tl-btn', 'data-focus-key': 'example-jaeger', onClick: () => cb.onLoadExample('examples/jaeger-genai-trace.json') }, 'Jaeger JSON example'),
       h('button', { className: 'tl-btn', 'data-focus-key': 'example-compare', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
+      h('button', { className: 'tl-btn', 'data-focus-key': 'example-timing', onClick: cb.onTimingExample }, 'Parallel vs sequential (local capture)'),
     ),
   );
 

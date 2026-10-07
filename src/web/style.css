@@ -917,3 +917,40 @@ dialog.tl-dialog::backdrop {
   .tl-operation-change { font-size: 11px; }
   .tl-pair-line { grid-template-columns: 10px 1fr 65px; gap: 5px; }
 }
+
+/* Elapsed-time accounting uses the same kind colors as the waterfall. */
+.tl-timing { border: 1px solid var(--border); background: var(--surface); flex: 0 0 auto; min-width: 0; }
+.tl-timing > summary { cursor: pointer; padding: 9px 14px; overflow-wrap: anywhere; }
+.tl-timing > summary strong { margin-right: 16px; }
+.tl-timing > summary > span { display: inline-block; font-size: 11px; }
+.tl-timing-body { max-height: 46vh; overflow: auto; padding: 0 14px 12px; }
+.tl-timing-body:empty { display: none; }
+.tl-timing-title { font-size: 15px; margin: 10px 0; }
+.tl-timing-equation { font-size: 12px; overflow-wrap: anywhere; }
+.tl-timing-bar { height: 14px; display: flex; border: 1px solid var(--border-strong); }
+.timing-llm { background: var(--accent-llm); }
+.timing-tool { background: var(--accent-tool); }
+.timing-other { background: var(--accent-other); }
+.timing-overlap { background: repeating-linear-gradient(135deg, var(--accent-agent) 0 5px, var(--surface) 5px 7px); }
+.timing-uncovered { background: repeating-linear-gradient(90deg, var(--border-strong) 0 1px, var(--surface) 1px 5px); }
+.tl-timing-buckets { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 12px 0; }
+.tl-timing-buckets dt { color: var(--text-dim); font-size: 11px; }
+.tl-timing-buckets dt i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; border: 1px solid var(--border-strong); }
+.tl-timing-buckets dd { margin: 3px 0 0; }
+.tl-timing-note { max-width: 100ch; font-size: 12px; }
+.tl-timing-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.tl-timing-controls select { background: var(--surface-2); border: 1px solid var(--border-strong); padding: 5px; max-width: 100%; }
+.tl-timing-windows { display: grid; gap: 3px; }
+.tl-timing-window { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: space-between; text-align: left; padding: 8px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; }
+.tl-timing-window[aria-pressed='true'] { border-color: var(--accent-llm); }
+.tl-timing-source { border-top: 1px solid var(--border-strong); margin-top: 12px; overflow-wrap: anywhere; }
+.tl-timing-source h3 { font-size: 14px; }
+.tl-timing-source ul { list-style: none; padding: 0; }
+.tl-timing-source li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 6px 0; }
+.tl-timing-pair { display: grid; gap: 8px; margin-top: 14px; }
+.tl-timing-pair .tl-timing-body { max-height: none; overflow: visible; }
+@media (max-width: 540px) {
+  .tl-timing > summary { padding: 8px; }
+  .tl-timing-body { padding: 0 8px 10px; }
+  .tl-timing-buckets { gap: 8px 14px; }
+}

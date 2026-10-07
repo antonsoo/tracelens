@@ -1,5 +1,25 @@
 # Example traces
 
+## Measured local requests: `timing-parallel.json` and `timing-sequential.json`
+
+These two captures use OpenTelemetry Python SDK 1.45.1 and actual HTTP requests
+to a loopback server. The server deliberately delays inventory, shipping and tax
+responses by 120, 180 and 100 ms. One run starts the three tools together; the
+other awaits them sequentially. Preparation and assembly use short deliberate
+waits. No model or external provider is called, and timestamps come from the SDK
+without overrides. These are controlled observations, not a production benchmark.
+
+`uv run scripts/capture-timing.py` regenerates both files with new IDs and timings.
+The script verifies every response, the number of spans and the observed peak
+concurrency. `--output-directory /tmp/timing-capture` preserves committed captures.
+The exporter follows [OTLP JSON encoding](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding),
+including hexadecimal IDs and integer enums.
+
+Choose **Parallel vs sequential (local capture)** in the browser, or use the
+[timing walkthrough](../docs/timing.md) from the CLI.
+
+## Original agent examples
+
 The original two trace files in this directory are **real [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/)
 output**: real trace/span IDs, real parent/child links, real captured Python
 stack traces on the failing spans, and a real OTLP/JSON encoding (via

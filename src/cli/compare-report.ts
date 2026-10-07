@@ -1,5 +1,6 @@
 import type { Change, Measurement, TraceComparison } from '../core/compare.js';
 import { fmtInt, fmtMs, fmtUsd, heading, safe, table } from './format.js';
+import { timingMs } from '../core/timing.js';
 
 type Format = (value: number) => string;
 function measured(value: Measurement, format: Format): string {
@@ -34,6 +35,14 @@ export function formatComparison(report: TraceComparison): string {
         row('errors', report.metrics.errors, fmtInt),
       ],
     ),
+    heading('Elapsed-time accounting'),
+    'Elapsed = summed self time - overlap excess + uncovered time. Recorded timing, not causation.',
+    table(['term', 'baseline', 'candidate'], [
+      ['summed self time', fmtMs(timingMs(report.timing.baseline.summedSelfNs)), fmtMs(timingMs(report.timing.candidate.summedSelfNs))],
+      ['minus overlap excess', fmtMs(timingMs(report.timing.baseline.overlapExcessNs)), fmtMs(timingMs(report.timing.candidate.overlapExcessNs))],
+      ['plus uncovered time', fmtMs(timingMs(report.timing.baseline.bucketsNs.uncovered)), fmtMs(timingMs(report.timing.candidate.bucketsNs.uncovered))],
+      ['peak concurrency', String(report.timing.baseline.peakConcurrency), String(report.timing.candidate.peakConcurrency)],
+    ]),
     heading('Operations, largest absolute self-time change first'),
     'Grouped by service, kind and full operation ancestry. Repeated calls are aggregated.',
     'Self time excludes direct children; concurrent work can exceed wall time.',

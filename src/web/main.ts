@@ -17,6 +17,7 @@ import { loadPriceTable, openPriceDialog } from './price-settings.js';
 import { createComparisonViewState, renderComparison } from './comparison.js';
 import type { ComparisonSide } from './comparison.js';
 import type { SpanFilter } from './span-search.js';
+import { renderTimingPanel } from './timing-panel.js';
 
 interface AppState {
   trace: ParsedTrace | null;
@@ -161,16 +162,17 @@ async function loadCandidate(file: File): Promise<void> {
   }
 }
 
-async function loadComparisonExample(): Promise<void> {
+async function loadComparisonExample(timing = false): Promise<void> {
   const { version, signal } = beginLoad('comparison example');
   try {
-    const traces = await Promise.all(['baseline', 'candidate'].map(async (side) => {
-      const { trace } = await loadTrace({ kind: 'url', url: new URL(`${import.meta.env.BASE_URL}examples/comparison-${side}.json`, location.href).href }, signal);
+    const paths = timing ? ['timing-parallel', 'timing-sequential'] : ['comparison-baseline', 'comparison-candidate'];
+    const traces = await Promise.all(paths.map(async (path) => {
+      const { trace } = await loadTrace({ kind: 'url', url: new URL(`${import.meta.env.BASE_URL}examples/${path}.json`, location.href).href }, signal);
       return trace;
     }));
     if (version !== loadVersion) return;
     comparisonOf(traces[0]!, traces[1]!, store.get().priceTable);
-    finishLoad(version, { baseline: traces[0]!, baselineName: 'baseline (synthetic)', baselineSource: null, trace: traces[1]!, source: null, fileName: 'candidate (synthetic)', view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
+    finishLoad(version, { baseline: traces[0]!, baselineName: timing ? 'parallel requests (controlled local capture)' : 'baseline (synthetic)', baselineSource: null, trace: traces[1]!, source: null, fileName: timing ? 'sequential requests (controlled local capture)' : 'candidate (synthetic)', view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
   } catch (err) {
     if (version !== loadVersion) return;
     finishLoad(version, { loadError: `Couldn't load comparison: ${err instanceof Error ? err.message : String(err)}` });
@@ -343,6 +345,7 @@ function renderApp(): void {
       onFile: (f) => void loadFile(f),
       onLoadExample: (p) => void loadExample(p),
       onCompareExample: () => void loadComparisonExample(),
+      onTimingExample: () => void loadComparisonExample(true),
     });
     return;
   }
@@ -373,7 +376,7 @@ function renderApp(): void {
           store.set({ baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', selectedSpanId: null, loading: null, loadError: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
           document.getElementById('tl-span-search')?.focus({ preventScroll: true });
         },
-      }, comparisonView);
+      }, comparisonView, { baseline: state.baseline, candidate: state.trace });
     mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, comparisonEl);
     comparisonEl.scrollTop = comparisonView.scrollTop;
     if (selection) {
@@ -390,6 +393,11 @@ function renderApp(): void {
 
   const summaryEl = h('div', {});
   renderSummaryHeader(summaryEl, summary);
+  const timingEl = renderTimingPanel(activeTrace, summary.timing, (spanId) => {
+    spanFilters.delete(activeTrace);
+    store.set({ selectedSpanId: spanId, detailTab: 'overview', collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    document.querySelector<HTMLElement>('.tl-wf-row.selected')?.focus({ preventScroll: true });
+  });
 
   const centerEl = h('div', { className: 'tl-center' });
 
@@ -401,7 +409,7 @@ function renderApp(): void {
     h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
     h('button', { className: 'tl-btn', onClick: () => downloadEvidence(activeTrace.warnings, 'tracelens-warnings.json') }, 'Download warnings JSON'),
     pagedEvidence(activeTrace, 'Parser warnings', activeTrace.warnings, (page) => h('ul', {}, ...page.map((warning) => h('li', {}, textPreview(warning.message)))))) : null;
-  mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
+  mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, timingEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
   // After the mount: the waterfall measures its track and restores its scroll position, which a
   // detached element has neither of.
   renderWaterfall(
@@ -439,6 +447,9 @@ store.subscribe(render);
 render();
 if (new URLSearchParams(window.location.search).get('example') === 'compare') {
   void loadComparisonExample();
+}
+if (new URLSearchParams(window.location.search).get('example') === 'timing') {
+  void loadComparisonExample(true);
 }
 
 let resizeTimer: ReturnType<typeof setTimeout> | undefined;

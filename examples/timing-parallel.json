@@ -1,0 +1,200 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "6a54ff4f-90c5-4e94-831c-b666fa655b1c"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "checkout-timing-capture"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.controlled-timing",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "604aba3148f94398",
+              "parentSpanId": "ff73e0311ab5bdae",
+              "name": "prepare",
+              "kind": 1,
+              "startTimeUnixNano": "1791399285887708258",
+              "endTimeUnixNano": "1791399285912991985",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "f08add280d298380",
+              "parentSpanId": "d8aab2c10f9af86c",
+              "name": "tax",
+              "kind": 1,
+              "startTimeUnixNano": "1791399285914715912",
+              "endTimeUnixNano": "1791399286020073388",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "tax"
+                  }
+                },
+                {
+                  "key": "http.response.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "a3b75df0ccdd9e0b",
+              "parentSpanId": "d8aab2c10f9af86c",
+              "name": "inventory",
+              "kind": 1,
+              "startTimeUnixNano": "1791399285913333243",
+              "endTimeUnixNano": "1791399286040609835",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "inventory"
+                  }
+                },
+                {
+                  "key": "http.response.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "529c4483a24402c2",
+              "parentSpanId": "d8aab2c10f9af86c",
+              "name": "shipping",
+              "kind": 1,
+              "startTimeUnixNano": "1791399285913991756",
+              "endTimeUnixNano": "1791399286100314075",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "shipping"
+                  }
+                },
+                {
+                  "key": "http.response.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "d8aab2c10f9af86c",
+              "parentSpanId": "ff73e0311ab5bdae",
+              "name": "lookups",
+              "kind": 1,
+              "startTimeUnixNano": "1791399285913161357",
+              "endTimeUnixNano": "1791399286100372790",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "be7bd81b00055742",
+              "parentSpanId": "ff73e0311ab5bdae",
+              "name": "assemble",
+              "kind": 1,
+              "startTimeUnixNano": "1791399286100447396",
+              "endTimeUnixNano": "1791399286135644718",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+              "spanId": "ff73e0311ab5bdae",
+              "name": "checkout",
+              "kind": 1,
+              "startTimeUnixNano": "1791399285887655425",
+              "endTimeUnixNano": "1791399286135675468",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "capture.mode",
+                  "value": {
+                    "stringValue": "parallel"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

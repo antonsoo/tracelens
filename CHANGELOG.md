@@ -6,6 +6,14 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
+- Exact elapsed-time accounting in the CLI (`timing`, including JSON), browser
+  and comparison exports: single-span work, overlapping work, uncovered gaps,
+  peak concurrency, and the equation linking summed self time to elapsed time.
+  Interval inspection resolves every active span with bounded UI pages and
+  complete selected-interval ID downloads. Timing arithmetic uses nanoseconds.
+- A controlled parallel/sequential example captured with the OpenTelemetry
+  Python SDK and real loopback HTTP requests, plus its reproducible producer.
+
 - Cancellable worker parsing for files, samples and trace switches, with
   recovery from startup, transport, runtime and timeout failures. Deep
   span trees cross the worker boundary as flat references.

@@ -23,6 +23,12 @@ tokens, estimated cost and errors, with every aggregate linked back to its
 original spans. Repeated calls are grouped by operation path, so inserting
 a new model turn does not shift a guessed one-to-one alignment.
 
+The source checkout also explains **why summed work differs from elapsed time**:
+inspect overlaps, gaps and the original spans in each interval. The new
+**Parallel vs sequential (local capture)** example uses SDK timestamps from
+actual loopback HTTP requests. [Timing walkthrough](docs/timing.md).
+This feature is unreleased; the published 0.3.3 package does not include it.
+
 ![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
 
 ![tracelens waterfall, dark mode, with a message thread expanded](docs/assets/hero-dark.png)
@@ -115,8 +121,9 @@ on npm; the command it installs is `tracelens`).
   or timed-out imports preserve the current run or comparison.
 - **Summary header** — total duration, LLM time vs. tool time (by *self*
   time, not double-counting nested spans), tokens in/out by model, an
-  editable-price cost estimate, error and retry counts, and a critical-path
-  readout.
+  editable-price cost estimate, error and retry counts. The elapsed-time
+  breakdown separates single-span work, overlapping work and uncovered time,
+  with exact nanosecond evidence and source inspection.
 - **CLI** (`tracelens summary` / `tracelens tree`) for the same numbers in
   a terminal, e.g. in a CI log. Names taken from the trace are printed
   without their control characters, so a trace cannot send escape sequences
@@ -170,13 +177,12 @@ editable at runtime (**Prices** in the header) and persists to
 
 ### Critical path (`src/core/critical-path.ts`)
 
-This is a specific, cheap heuristic, not the formal scheduling-theory
-critical path: starting at the trace's longest root, repeatedly descend
-into whichever *direct child* has the largest duration. For the common case
-— one agent making sequential tool/LLM calls, no concurrency — that's a
-reasonable "where the time went" backbone, but it doesn't account for
-overlapping siblings and only reports one span per nesting level. Documented
-in the code and in `docs/formats.md` rather than oversold in this README.
+The CLI labels the existing longest-child chain as a heuristic. It reports one
+span per nesting level and cannot account for overlapping or sequential siblings.
+The new [`timing`](docs/timing.md) command and browser breakdown account for every
+recorded interval instead: elapsed time equals summed self time minus overlap
+excess plus uncovered time. This is timestamp accounting, not a claim about
+causality, CPU use, missing instrumentation or how much faster a change would be.
 
 ### Web UI (`src/web/`)
 
