@@ -1,0 +1,24 @@
+[
+  {
+    "browser": "chromium",
+    "span_count": 20000,
+    "input_bytes": 5248938,
+    "load_ms": 1117,
+    "open_peak_interval_ms": 119,
+    "rendered_intervals": 10,
+    "rendered_span_links": 20,
+    "exported_span_ids": 20000,
+    "frames_observed": 34
+  },
+  {
+    "browser": "firefox",
+    "span_count": 20000,
+    "input_bytes": 5248938,
+    "load_ms": 4429,
+    "open_peak_interval_ms": 147,
+    "rendered_intervals": 10,
+    "rendered_span_links": 20,
+    "exported_span_ids": 20000,
+    "frames_observed": 37
+  }
+]

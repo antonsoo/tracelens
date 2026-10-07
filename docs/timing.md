@@ -1,6 +1,8 @@
 # Where did the elapsed time go?
 
 This feature is in the source checkout and is not in the published 0.3.3 package.
+The [verification record](verification-timing-2026-10-07.md) includes captured
+results, screenshots and the larger-input check.
 
 An agent run can contain seven seconds of work and finish in six seconds.
 Adding call durations does not reveal how much of the work happened together.

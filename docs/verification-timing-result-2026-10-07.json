@@ -1,0 +1,1370 @@
+{
+  "schemaVersion": 1,
+  "baselineTraceId": "0a98e3887b00903a72fb87d3c857c3ce",
+  "candidateTraceId": "0160000f7541cb1f34534f348c42e039",
+  "priceTable": [
+    {
+      "id": "claude-fable-5-1",
+      "matchModel": "claude-fable-5-1",
+      "provider": "anthropic",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 0.25,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-fable-5",
+      "matchModel": "claude-fable-5",
+      "provider": "anthropic",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 1,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-opus-5-5",
+      "matchModel": "claude-opus-5-5",
+      "provider": "anthropic",
+      "inputPerMTok": 4,
+      "outputPerMTok": 20,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 5,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-opus-5",
+      "matchModel": "claude-opus-5",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "matchModel": "claude-opus-4-8",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-opus-4-7",
+      "matchModel": "claude-opus-4-7",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "matchModel": "claude-opus-4-6",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "matchModel": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-09-25"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "matchModel": "claude-sonnet-5",
+      "provider": "anthropic",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "matchModel": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "inputPerMTok": 3,
+      "outputPerMTok": 15,
+      "cacheReadPerMTok": 0.3,
+      "cacheWritePerMTok": 3.75,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "matchModel": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "inputPerMTok": 1,
+      "outputPerMTok": 5,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 1.25,
+      "sourceUrl": "https://www.anthropic.com/pricing",
+      "sourceDate": "2026-06-24"
+    },
+    {
+      "id": "gpt-6-astra",
+      "matchModel": "gpt-6-astra",
+      "provider": "openai",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 1,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-6-sol",
+      "matchModel": "gpt-6-sol",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-6-luna",
+      "matchModel": "gpt-6-luna",
+      "provider": "openai",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.5,
+      "cacheReadPerMTok": 0.01,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-5",
+      "matchModel": "gpt-5",
+      "provider": "openai",
+      "inputPerMTok": 1.25,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.125,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-5-mini",
+      "matchModel": "gpt-5-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.25,
+      "outputPerMTok": 2,
+      "cacheReadPerMTok": 0.025,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "matchModel": "gpt-4o-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.15,
+      "outputPerMTok": 0.6,
+      "cacheReadPerMTok": 0.075,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4o",
+      "matchModel": "gpt-4o",
+      "provider": "openai",
+      "inputPerMTok": 2.5,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 1.25,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1-nano",
+      "matchModel": "gpt-4.1-nano",
+      "provider": "openai",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.4,
+      "cacheReadPerMTok": 0.025,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1-mini",
+      "matchModel": "gpt-4.1-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.4,
+      "outputPerMTok": 1.6,
+      "cacheReadPerMTok": 0.1,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1",
+      "matchModel": "gpt-4.1",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 8,
+      "cacheReadPerMTok": 0.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "o4-mini",
+      "matchModel": "o4-mini",
+      "provider": "openai",
+      "inputPerMTok": 1.1,
+      "outputPerMTok": 4.4,
+      "cacheReadPerMTok": 0.275,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "o3",
+      "matchModel": "o3",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 8,
+      "cacheReadPerMTok": 0.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    }
+  ],
+  "timing": {
+    "baseline": {
+      "schemaVersion": 1,
+      "format": "tracelens-timing",
+      "traceId": "0a98e3887b00903a72fb87d3c857c3ce",
+      "startTimeUnixNano": "1791399285887655425",
+      "endTimeUnixNano": "1791399286135675468",
+      "elapsedNs": "248020043",
+      "bucketsNs": {
+        "llm": "0",
+        "tool": "60362753",
+        "other": "61039211",
+        "overlap": "126618079",
+        "uncovered": "0"
+      },
+      "summedSelfNs": "479995598",
+      "overlapExcessNs": "231975555",
+      "peakConcurrency": 3,
+      "spanRefsPerInterval": 8,
+      "intervals": [
+        {
+          "offsetNs": "0",
+          "durationNs": "52833",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "ff73e0311ab5bdae"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "52833",
+          "durationNs": "25283727",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "604aba3148f94398"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "25336560",
+          "durationNs": "169372",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "ff73e0311ab5bdae"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "25505932",
+          "durationNs": "171886",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "d8aab2c10f9af86c"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "25677818",
+          "durationNs": "658513",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "a3b75df0ccdd9e0b"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "26336331",
+          "durationNs": "724156",
+          "bucket": "overlap",
+          "activeCount": 2,
+          "spanIds": [
+            "a3b75df0ccdd9e0b",
+            "529c4483a24402c2"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "27060487",
+          "durationNs": "105357476",
+          "bucket": "overlap",
+          "activeCount": 3,
+          "spanIds": [
+            "a3b75df0ccdd9e0b",
+            "529c4483a24402c2",
+            "f08add280d298380"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "132417963",
+          "durationNs": "20536447",
+          "bucket": "overlap",
+          "activeCount": 2,
+          "spanIds": [
+            "a3b75df0ccdd9e0b",
+            "529c4483a24402c2"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "152954410",
+          "durationNs": "59704240",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "529c4483a24402c2"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "212658650",
+          "durationNs": "58715",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "d8aab2c10f9af86c"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "212717365",
+          "durationNs": "74606",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "ff73e0311ab5bdae"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "212791971",
+          "durationNs": "35197322",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "be7bd81b00055742"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "247989293",
+          "durationNs": "30750",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "ff73e0311ab5bdae"
+          ],
+          "omittedSpanCount": 0
+        }
+      ],
+      "warnings": []
+    },
+    "candidate": {
+      "schemaVersion": 1,
+      "format": "tracelens-timing",
+      "traceId": "0160000f7541cb1f34534f348c42e039",
+      "startTimeUnixNano": "1791399286137595904",
+      "endTimeUnixNano": "1791399286604549348",
+      "elapsedNs": "466953444",
+      "bucketsNs": {
+        "llm": "0",
+        "tool": "406126679",
+        "other": "60826765",
+        "overlap": "0",
+        "uncovered": "0"
+      },
+      "summedSelfNs": "466953444",
+      "overlapExcessNs": "0",
+      "peakConcurrency": 1,
+      "spanRefsPerInterval": 8,
+      "intervals": [
+        {
+          "offsetNs": "0",
+          "durationNs": "22594",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "1095b89fe9b40222"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "22594",
+          "durationNs": "25137140",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "917ddb4bc31b2388"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "25159734",
+          "durationNs": "69937",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "1095b89fe9b40222"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "25229671",
+          "durationNs": "34056",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "8c49d9af68bc198f"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "25263727",
+          "durationNs": "122339340",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "9ca8d8d59e1a9575"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "147603067",
+          "durationNs": "91308",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "8c49d9af68bc198f"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "147694375",
+          "durationNs": "181831447",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "5e145b2f28ae1f1b"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "329525822",
+          "durationNs": "111048",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "8c49d9af68bc198f"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "329636870",
+          "durationNs": "101955892",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "456fad132338badd"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "431592762",
+          "durationNs": "36882",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "8c49d9af68bc198f"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "431629644",
+          "durationNs": "59266",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "1095b89fe9b40222"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "431688910",
+          "durationNs": "35201030",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "c88c105ea1406216"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "466889940",
+          "durationNs": "63504",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "1095b89fe9b40222"
+          ],
+          "omittedSpanCount": 0
+        }
+      ],
+      "warnings": []
+    }
+  },
+  "wallTimeMs": {
+    "baseline": {
+      "value": 248.020043,
+      "missing": 0
+    },
+    "candidate": {
+      "value": 466.953444,
+      "missing": 0
+    },
+    "delta": 218.933401,
+    "percent": 88.27246312508704
+  },
+  "metrics": {
+    "calls": {
+      "baseline": {
+        "value": 7,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 7,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": 0
+    },
+    "selfTimeMs": {
+      "baseline": {
+        "value": 479.995598,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 466.953444,
+        "missing": 0
+      },
+      "delta": -13.042153999999982,
+      "percent": -2.71714033510782
+    },
+    "inputTokens": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    },
+    "outputTokens": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    },
+    "costUsd": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    },
+    "errors": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    }
+  },
+  "operations": [
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"],[\"\",\"checkout-timing-capture\",\"other\",\"lookups\"],[\"\",\"checkout-timing-capture\",\"tool\",\"inventory\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout",
+        "checkout-timing-capture: other lookups",
+        "checkout-timing-capture: tool inventory"
+      ],
+      "kind": "tool",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 127.276592,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 122.33934,
+            "missing": 0
+          },
+          "delta": -4.937251999999987,
+          "percent": -3.879151635361188
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "a3b75df0ccdd9e0b",
+          "name": "inventory",
+          "model": null,
+          "durationMs": 127.276592,
+          "selfTimeMs": 127.276592,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "9ca8d8d59e1a9575",
+          "name": "inventory",
+          "model": null,
+          "durationMs": 122.33934,
+          "selfTimeMs": 122.33934,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"],[\"\",\"checkout-timing-capture\",\"other\",\"lookups\"],[\"\",\"checkout-timing-capture\",\"tool\",\"shipping\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout",
+        "checkout-timing-capture: other lookups",
+        "checkout-timing-capture: tool shipping"
+      ],
+      "kind": "tool",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 186.322319,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 181.831447,
+            "missing": 0
+          },
+          "delta": -4.490871999999996,
+          "percent": -2.410270559159365
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "529c4483a24402c2",
+          "name": "shipping",
+          "model": null,
+          "durationMs": 186.322319,
+          "selfTimeMs": 186.322319,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "5e145b2f28ae1f1b",
+          "name": "shipping",
+          "model": null,
+          "durationMs": 181.831447,
+          "selfTimeMs": 181.831447,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"],[\"\",\"checkout-timing-capture\",\"other\",\"lookups\"],[\"\",\"checkout-timing-capture\",\"tool\",\"tax\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout",
+        "checkout-timing-capture: other lookups",
+        "checkout-timing-capture: tool tax"
+      ],
+      "kind": "tool",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 105.357476,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 101.955892,
+            "missing": 0
+          },
+          "delta": -3.4015839999999997,
+          "percent": -3.228611892714665
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "f08add280d298380",
+          "name": "tax",
+          "model": null,
+          "durationMs": 105.357476,
+          "selfTimeMs": 105.357476,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "456fad132338badd",
+          "name": "tax",
+          "model": null,
+          "durationMs": 101.955892,
+          "selfTimeMs": 101.955892,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"],[\"\",\"checkout-timing-capture\",\"other\",\"prepare\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout",
+        "checkout-timing-capture: other prepare"
+      ],
+      "kind": "other",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 25.283727,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 25.13714,
+            "missing": 0
+          },
+          "delta": -0.14658700000000024,
+          "percent": -0.5797681647171726
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "604aba3148f94398",
+          "name": "prepare",
+          "model": null,
+          "durationMs": 25.283727,
+          "selfTimeMs": 25.283727,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "917ddb4bc31b2388",
+          "name": "prepare",
+          "model": null,
+          "durationMs": 25.13714,
+          "selfTimeMs": 25.13714,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout"
+      ],
+      "kind": "agent",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 0.327561,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0.215301,
+            "missing": 0
+          },
+          "delta": -0.11226,
+          "percent": -34.27147920539991
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "ff73e0311ab5bdae",
+          "name": "checkout",
+          "model": null,
+          "durationMs": 248.020043,
+          "selfTimeMs": 0.327561,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "1095b89fe9b40222",
+          "name": "checkout",
+          "model": null,
+          "durationMs": 466.953444,
+          "selfTimeMs": 0.215301,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"],[\"\",\"checkout-timing-capture\",\"other\",\"lookups\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout",
+        "checkout-timing-capture: other lookups"
+      ],
+      "kind": "other",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 0.230601,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0.273294,
+            "missing": 0
+          },
+          "delta": 0.04269299999999998,
+          "percent": 18.513796557690547
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "d8aab2c10f9af86c",
+          "name": "lookups",
+          "model": null,
+          "durationMs": 187.211433,
+          "selfTimeMs": 0.230601,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "8c49d9af68bc198f",
+          "name": "lookups",
+          "model": null,
+          "durationMs": 406.399973,
+          "selfTimeMs": 0.273294,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"checkout-timing-capture\",\"agent\",\"checkout\"],[\"\",\"checkout-timing-capture\",\"other\",\"assemble\"]]",
+      "path": [
+        "checkout-timing-capture: agent checkout",
+        "checkout-timing-capture: other assemble"
+      ],
+      "kind": "other",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 35.197322,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 35.20103,
+            "missing": 0
+          },
+          "delta": 0.0037080000000031532,
+          "percent": 0.010534892398924989
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "be7bd81b00055742",
+          "name": "assemble",
+          "model": null,
+          "durationMs": 35.197322,
+          "selfTimeMs": 35.197322,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "c88c105ea1406216",
+          "name": "assemble",
+          "model": null,
+          "durationMs": 35.20103,
+          "selfTimeMs": 35.20103,
+          "error": false
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}
