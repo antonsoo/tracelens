@@ -1,0 +1,130 @@
+{
+ "otel-openai-v2": {
+  "package": "opentelemetry-python-contrib/instrumentation-genai/opentelemetry-instrumentation-openai-v2",
+  "name": "OpenTelemetry opentelemetry-instrumentation-openai-v2",
+  "version": "2.5b0.dev (contrib fba0b77)"
+ },
+ "otel-vertexai": {
+  "package": "opentelemetry-python-contrib/instrumentation-genai/opentelemetry-instrumentation-vertexai",
+  "name": "OpenTelemetry opentelemetry-instrumentation-vertexai",
+  "version": "dev (contrib fba0b77)"
+ },
+ "llm-openai": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-openai",
+  "name": "OpenLLMetry OpenAI",
+  "version": "0.62.4 (openllmetry df4921a)"
+ },
+ "llm-anthropic": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-anthropic",
+  "name": "OpenLLMetry Anthropic",
+  "version": "0.62.4 (openllmetry df4921a)"
+ },
+ "oi-openai": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-openai",
+  "name": "OpenInference OpenAI",
+  "version": "(openinference b625e5c)"
+ },
+ "oi-anthropic": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-anthropic",
+  "name": "OpenInference Anthropic",
+  "version": "(openinference b625e5c)"
+ },
+ "oi-litellm": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-litellm",
+  "name": "OpenInference LiteLLM",
+  "version": "(openinference b625e5c)"
+ },
+ "oi-genai": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-google-genai",
+  "name": "OpenInference google-genai",
+  "version": "(openinference b625e5c)"
+ },
+ "oi-pydanticai": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-pydantic-ai",
+  "name": "OpenInference Pydantic AI",
+  "version": "(openinference b625e5c)"
+ },
+ "oi-adk": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-google-adk",
+  "name": "OpenInference Google ADK",
+  "version": "(openinference b625e5c)"
+ },
+ "oi-strands": {
+  "package": "openinference/python/instrumentation/openinference-instrumentation-strands-agents",
+  "name": "OpenInference Strands",
+  "version": "(openinference b625e5c)"
+ },
+ "llm-bedrock": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-bedrock",
+  "name": "OpenLLMetry Bedrock",
+  "version": "0.62.x (openllmetry df4921a)"
+ },
+ "llm-cohere": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-cohere",
+  "name": "OpenLLMetry Cohere",
+  "version": "0.62.x (openllmetry df4921a)"
+ },
+ "llm-genai": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-google-generativeai",
+  "name": "OpenLLMetry Google Generative AI",
+  "version": "0.62.x (openllmetry df4921a)"
+ },
+ "llm-groq": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-groq",
+  "name": "OpenLLMetry Groq",
+  "version": "0.62.x (openllmetry df4921a)"
+ },
+ "llm-mistral": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-mistralai",
+  "name": "OpenLLMetry Mistral",
+  "version": "0.62.x (openllmetry df4921a)"
+ },
+ "llm-agents": {
+  "package": "openllmetry/packages/opentelemetry-instrumentation-openai-agents",
+  "name": "OpenLLMetry OpenAI Agents",
+  "version": "0.62.x (openllmetry df4921a)"
+ },
+ "pai-v2": {
+  "package": "pydantic-ai/tests",
+  "name": "Pydantic AI native, instrumentation version 2",
+  "version": "2.x (pydantic-ai f55bb8a)"
+ },
+ "pai-v3": {
+  "package": "pydantic-ai/tests",
+  "name": "Pydantic AI native, instrumentation version 3",
+  "version": "2.x (pydantic-ai f55bb8a)"
+ },
+ "pai-v5": {
+  "package": "pydantic-ai/tests",
+  "name": "Pydantic AI native, instrumentation version 5",
+  "version": "2.x (pydantic-ai f55bb8a)"
+ },
+ "pai-v6": {
+  "package": "pydantic-ai/tests",
+  "name": "Pydantic AI native, instrumentation version 6",
+  "version": "2.x (pydantic-ai f55bb8a)"
+ },
+ "pai-v4": {
+  "package": "pydantic-ai/tests",
+  "name": "Pydantic AI native, instrumentation version 4",
+  "version": "2.x (pydantic-ai f55bb8a)"
+ },
+ "aisdk-v7-otel": {
+  "package": "ai",
+  "fixtures": true,
+  "name": "Vercel AI SDK 7 + @ai-sdk/otel OpenTelemetry (GenAI conventions)",
+  "version": "ai 7.0.133 / @ai-sdk/otel 1.0.133"
+ },
+ "aisdk-v7-legacy": {
+  "package": "ai",
+  "fixtures": true,
+  "name": "Vercel AI SDK 7 + @ai-sdk/otel LegacyOpenTelemetry (ai.* attributes)",
+  "version": "ai 7.0.133 / @ai-sdk/otel 1.0.133"
+ },
+ "aisdk-v6": {
+  "package": "ai",
+  "fixtures": true,
+  "name": "Vercel AI SDK 6, experimental_telemetry (ai.* attributes)",
+  "version": "ai 6.0.302"
+ }
+}

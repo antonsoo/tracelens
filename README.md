@@ -33,6 +33,27 @@ This feature is unreleased; the published 0.3.3 package does not include it.
 
 ![tracelens waterfall, dark mode, with a message thread expanded](docs/assets/hero-dark.png)
 
+## On real instrumentation output
+
+The example traces here follow the GenAI conventions by hand. The libraries
+people install do not all follow them. [A census in this
+repository](studies/instrumentation-census/README.md) ran 21 of them (the
+OpenTelemetry, OpenLLMetry and OpenInference instrumentations, Pydantic AI,
+the Vercel AI SDK) over the recorded provider responses their own test suites
+replay, and checked every figure tracelens shows against the recorded response:
+1,442 model calls, no model called.
+
+- The released 0.3.3 already showed the provider's model and token counts
+  wherever the span held them, and never crashed or mis-nested a span.
+- It missed most of what is newer: cache-read tokens in 37 of 86 calls,
+  reasoning tokens in 259 of 280, tool calls in 120 of 291. From the Vercel AI
+  SDK's `ai.*` spans it showed none of the three.
+- This checkout (unreleased) reads those dialects: 85 of 86, 193 of 280, 250
+  of 291. The parser was changed to read these same spans, so that is coverage
+  of what it was shown, not a prediction for the next library.
+- 86 calls have no reasoning tokens in the span at all, and 60 token figures
+  differ from the provider's for reasons the census did not separate.
+
 ## Live demo
 
 **[antonsoo.github.io/tracelens](https://antonsoo.github.io/tracelens/)** —
@@ -87,6 +108,10 @@ on npm; the command it installs is `tracelens`).
   semconv (`gen_ai.*`, including the legacy per-message-event fallback
   older instrumentation still emits) and OpenInference (`openinference.*`,
   `llm.*`, including its flattened `llm.input_messages.<i>.*` encoding).
+  In the source checkout it also reads the dialects real libraries write
+  beyond them (the Vercel AI SDK's `ai.*` spans, OpenLLMetry's indexed
+  `gen_ai.prompt.N` messages and `llm.request.type`, Strands' event
+  content): [what, and how it was measured](studies/instrumentation-census/README.md).
 - **Waterfall timeline** — spans colored by kind (agent / LLM / tool /
   chain / retriever / …), zoom via the toolbar or ctrl+scroll, pan by
   dragging once zoomed in. Only the rows in view are rendered, so a trace

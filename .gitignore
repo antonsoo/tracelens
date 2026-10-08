@@ -10,3 +10,5 @@ playwright-report/
 *.local
 .vscode/*
 !.vscode/extensions.json
+/studies/*/cache/
+__pycache__/

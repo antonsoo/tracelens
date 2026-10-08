@@ -4,6 +4,20 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Measured on real instrumentation output
+
+- `studies/instrumentation-census/`: spans from 21 instrumentation libraries
+  and SDK modes, exported while they replayed their own recorded provider
+  responses, checked against those responses. 1,442 model calls. 0.3.3 showed
+  the model and token counts wherever the span held them; it showed cache-read
+  tokens in 49 of 86 calls, reasoning tokens in 21 of 280 and tool calls in
+  171 of 291. Now 85, 193 and 250.
+- The parser reads the dialects those libraries write beyond the convention:
+  the Vercel AI SDK's `ai.*` attributes, OpenLLMetry's `llm.request.type` and
+  indexed `gen_ai.prompt.N` / `gen_ai.completion.N` messages, OpenInference's
+  `embedding.model_name`, Strands' event-carried messages and content blocks,
+  and reasoning tokens under `reasoning_tokens` and `gen_ai.usage.details.*`.
+
 ### Added
 
 - Exact elapsed-time accounting in the CLI (`timing`, including JSON), browser
