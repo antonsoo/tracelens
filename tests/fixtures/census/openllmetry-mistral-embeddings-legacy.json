@@ -1,0 +1,106 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "d9048545-f6c7-46f2-924e-b7d6669902eb"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "opentelemetry.instrumentation.mistralai",
+      "version": "0.62.4"
+     },
+     "spans": [
+      {
+       "traceId": "3d7137d7336b3606b941841f4e035b16",
+       "spanId": "c4b5ab2734d5be6b",
+       "name": "mistralai.embeddings",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1791454469552718961",
+       "endTimeUnixNano": "1791454469557611505",
+       "attributes": [
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "MistralAI"
+         }
+        },
+        {
+         "key": "llm.request.type",
+         "value": {
+          "stringValue": "embedding"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "mistral-embed"
+         }
+        },
+        {
+         "key": "llm.is_streaming",
+         "value": {
+          "boolValue": false
+         }
+        },
+        {
+         "key": "gen_ai.prompt.0.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.0.content",
+         "value": {
+          "stringValue": "Tell me a joke about OpenTelemetry"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "cc93a06d10244e07a4b2604c20855c61"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

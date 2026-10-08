@@ -127,9 +127,9 @@ tracelens reads, per span:
 | Models | `gen_ai.request.model`, `gen_ai.response.model` | |
 | Agent / conversation | `gen_ai.agent.name`, `gen_ai.conversation.id` | |
 | Request params | `gen_ai.request.temperature`, `gen_ai.request.max_tokens` | |
-| Token usage | `gen_ai.usage.input_tokens` / `.output_tokens` (falling back to the pre-2024.11 `gen_ai.usage.prompt_tokens` / `.completion_tokens`), `gen_ai.usage.cache_read.input_tokens`, `gen_ai.usage.cache_creation.input_tokens` (also accepted as `.cache_write.input_tokens`), `gen_ai.usage.reasoning.output_tokens` | Feeds the cost calculator (§4) and the summary header's token/cost rollup. Per the spec, `input_tokens` includes both cache counts. |
-| Finish reasons | `gen_ai.response.finish_reasons` | string array |
-| Messages | `gen_ai.input.messages`, `gen_ai.output.messages`, `gen_ai.system_instructions` | Per spec, an array of `{"role", "parts": [{"type": "text"\|"tool_call"\|"tool_call_response", ...}]}`. Span attributes can't hold nested objects in every exporter, so tracelens accepts this either as a real structured `arrayValue`/`kvlistValue` **or** as a JSON-encoded string attribute (both are legal per spec — "MAY be recorded as a JSON string if structured format is not supported"). |
+| Token usage | `gen_ai.usage.input_tokens` / `.output_tokens` (falling back to the pre-2024.11 `gen_ai.usage.prompt_tokens` / `.completion_tokens`), `gen_ai.usage.cache_read.input_tokens`, `gen_ai.usage.cache_creation.input_tokens` (also accepted as `.cache_write.input_tokens`), `gen_ai.usage.reasoning.output_tokens`. Also accepted, because real emitters write them: `gen_ai.usage.cache_read_input_tokens` / `.cache_write_input_tokens` / `.cache_creation_input_tokens` (Strands), `gen_ai.usage.reasoning_tokens` (OpenLLMetry), `gen_ai.usage.details.reasoning_tokens` and `.details.thoughts_tokens` (Pydantic AI) | Feeds the cost calculator (§4) and the summary header's token/cost rollup. Per the spec, `input_tokens` includes both cache counts. |
+| Finish reasons | `gen_ai.response.finish_reasons`, else the `finish_reason` of each output message | string array |
+| Messages | `gen_ai.input.messages`, `gen_ai.output.messages`, `gen_ai.system_instructions` (as attributes, or as the attributes of a `gen_ai.client.inference.operation.details` span event, which is where Strands puts them) | Per spec, an array of `{"role", "parts": [{"type": "text"\|"tool_call"\|"tool_call_response", ...}]}`. Span attributes can't hold nested objects in every exporter, so tracelens accepts this either as a real structured `arrayValue`/`kvlistValue` **or** as a JSON-encoded string attribute (both are legal per spec — "MAY be recorded as a JSON string if structured format is not supported"). |
 | Tool calls | `gen_ai.tool.name`, `gen_ai.tool.call.id`, `gen_ai.tool.description`, `gen_ai.tool.type`, `gen_ai.tool.call.arguments`, `gen_ai.tool.call.result` | Arguments/result: same JSON-string-or-structured handling as messages. |
 | Errors | `error.type` | Combined with OTel `status.code == STATUS_CODE_ERROR` for the error count and red outline in the waterfall. |
 
@@ -141,6 +141,26 @@ and instead emits one **span event** per turn: `gen_ai.system.message`,
 `message`). tracelens falls back to reconstructing a message list from
 these events when no `gen_ai.input.messages`/`.output.messages` attribute is
 present — see `extractLegacyEventMessages()` in `src/core/normalize.ts`.
+
+**Converse-style content blocks.** Strands writes the content of those legacy
+events as a JSON list of blocks (`[{"text": ...}]`,
+`[{"toolUse": {"toolUseId", "name", "input"}}]`,
+`[{"toolResult": {...}}]`). When every element of the list is such a block,
+tracelens shows text parts, tool calls and tool results instead of the raw
+JSON; any other content is shown as text, as before. The `finish_reason` of a
+`gen_ai.choice` event is read as the finish reason.
+
+**Dialects that are not the convention.** Real instrumentation libraries write
+more than the convention names. What tracelens reads beyond it, and where each
+was seen (spans from the libraries' own recorded-response tests, see
+[`studies/instrumentation-census/`](../studies/instrumentation-census/README.md)):
+
+| Dialect | Seen in | Read |
+|---|---|---|
+| `llm.request.type` (`chat`, `completion`, `embedding`, `rerank`) | OpenLLMetry Cohere, Mistral | the kind of call, when there is no `gen_ai.operation.name` |
+| `gen_ai.prompt.N.role` / `.content`, `gen_ai.completion.N.role` / `.content` / `.finish_reason` / `.tool_calls.M.id` / `.name` / `.arguments` | OpenLLMetry Cohere, Mistral (0.62.4) | the input and output messages, including tool calls; `.content` that is a JSON list of `{"type": "text"}` blocks is shown as text |
+| `ai.operationId`, `ai.model.id`, `ai.model.provider`, `ai.response.model`, `ai.response.finishReason`, `ai.usage.inputTokens` / `.outputTokens` / `.cachedInputTokens` / `.reasoningTokens` (and `ai.usage.inputTokenDetails.*`, `ai.usage.outputTokenDetails.*`), `ai.prompt.messages`, `ai.response.text`, `ai.response.toolCalls`, `ai.toolCall.name` / `.id` / `.args` / `.result` | Vercel AI SDK 4-6 `experimental_telemetry`; AI SDK 7 `LegacyOpenTelemetry` | `ai.<fn>.doGenerate` and `.doStream` are model calls, `.doEmbed` embeddings, `ai.toolCall` tools; `ai.generateText`, `ai.streamText` and the other wrapper spans repeat their step totals and are shown as chains, so a call is not counted twice. The spans also carry a few `gen_ai.*` attributes, which take precedence field by field. Convention is shown as `vercel-ai`. |
+| `embedding.model_name` | OpenInference embedding spans (OpenAI, LiteLLM, google-genai) | the model of an embedding call, which `llm.model_name` does not name |
 
 ## 3. OpenInference conventions (`openinference.*`, `llm.*`)
 

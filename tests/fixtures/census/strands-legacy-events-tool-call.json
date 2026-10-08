@@ -1,0 +1,915 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "4c78b363-7a6a-4af5-81af-a9c07c03ab22"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "strands-test"
+     },
+     "spans": [
+      {
+       "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+       "spanId": "a28c61ccd1889071",
+       "parentSpanId": "4b9a3ca1ad3b8316",
+       "name": "chat",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454132434123430",
+       "endTimeUnixNano": "1791454133097641173",
+       "attributes": [
+        {
+         "key": "gen_ai.event.start_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:52.434124+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "strands-agents"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "gpt-4o-mini"
+         }
+        },
+        {
+         "key": "gen_ai.event.end_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.097595+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.usage.prompt_tokens",
+         "value": {
+          "intValue": "71"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "71"
+         }
+        },
+        {
+         "key": "gen_ai.usage.completion_tokens",
+         "value": {
+          "intValue": "14"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "14"
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "85"
+         }
+        },
+        {
+         "key": "gen_ai.server.time_to_first_token",
+         "value": {
+          "intValue": "655"
+         }
+        }
+       ],
+       "events": [
+        {
+         "timeUnixNano": "1791454132434149051",
+         "name": "gen_ai.user.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"text\": \"What is the weather in Paris?\"}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133097582034",
+         "name": "gen_ai.choice",
+         "attributes": [
+          {
+           "key": "finish_reason",
+           "value": {
+            "stringValue": "tool_use"
+           }
+          },
+          {
+           "key": "message",
+           "value": {
+            "stringValue": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+           }
+          }
+         ]
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "4c78b363-7a6a-4af5-81af-a9c07c03ab22"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "strands-test"
+     },
+     "spans": [
+      {
+       "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+       "spanId": "3bd73a743021b192",
+       "parentSpanId": "4b9a3ca1ad3b8316",
+       "name": "execute_tool get_weather",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454133105866161",
+       "endTimeUnixNano": "1791454133108420716",
+       "attributes": [
+        {
+         "key": "gen_ai.event.start_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.105874+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "execute_tool"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "strands-agents"
+         }
+        },
+        {
+         "key": "gen_ai.tool.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "gen_ai.tool.call.id",
+         "value": {
+          "stringValue": "call_VnxVKBi2f85Mxa9gATPB6myQ"
+         }
+        },
+        {
+         "key": "gen_ai.tool.description",
+         "value": {
+          "stringValue": "Get the current weather for a city."
+         }
+        },
+        {
+         "key": "gen_ai.tool.json_schema",
+         "value": {
+          "stringValue": "{\"properties\": {\"city\": {\"description\": \"The name of the city\", \"type\": \"string\"}}, \"required\": [\"city\"], \"type\": \"object\"}"
+         }
+        },
+        {
+         "key": "gen_ai.event.end_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.108395+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.tool.status",
+         "value": {
+          "stringValue": "success"
+         }
+        }
+       ],
+       "events": [
+        {
+         "timeUnixNano": "1791454133106661110",
+         "name": "gen_ai.tool.message",
+         "attributes": [
+          {
+           "key": "role",
+           "value": {
+            "stringValue": "tool"
+           }
+          },
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "{\"city\": \"Paris\"}"
+           }
+          },
+          {
+           "key": "id",
+           "value": {
+            "stringValue": "call_VnxVKBi2f85Mxa9gATPB6myQ"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133108389013",
+         "name": "gen_ai.choice",
+         "attributes": [
+          {
+           "key": "message",
+           "value": {
+            "stringValue": "[{\"text\": \"The weather in Paris is sunny and 72F.\"}]"
+           }
+          },
+          {
+           "key": "id",
+           "value": {
+            "stringValue": "call_VnxVKBi2f85Mxa9gATPB6myQ"
+           }
+          }
+         ]
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "4c78b363-7a6a-4af5-81af-a9c07c03ab22"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "strands-test"
+     },
+     "spans": [
+      {
+       "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+       "spanId": "4b9a3ca1ad3b8316",
+       "parentSpanId": "0dd3355bae33477b",
+       "name": "execute_event_loop_cycle",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454132434042889",
+       "endTimeUnixNano": "1791454133123996996",
+       "attributes": [
+        {
+         "key": "gen_ai.event.start_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:52.434045+00:00"
+         }
+        },
+        {
+         "key": "event_loop.cycle_id",
+         "value": {
+          "stringValue": "f30c9dbd-47f1-4924-8a80-9793dc596f05"
+         }
+        },
+        {
+         "key": "gen_ai.event.end_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.123972+00:00"
+         }
+        }
+       ],
+       "events": [
+        {
+         "timeUnixNano": "1791454132434077157",
+         "name": "gen_ai.user.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"text\": \"What is the weather in Paris?\"}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133123964090",
+         "name": "gen_ai.choice",
+         "attributes": [
+          {
+           "key": "message",
+           "value": {
+            "stringValue": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+           }
+          },
+          {
+           "key": "tool.result",
+           "value": {
+            "stringValue": "[{\"toolResult\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"status\": \"success\", \"content\": [{\"text\": \"The weather in Paris is sunny and 72F.\"}]}}]"
+           }
+          }
+         ]
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "4c78b363-7a6a-4af5-81af-a9c07c03ab22"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "strands-test"
+     },
+     "spans": [
+      {
+       "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+       "spanId": "a176cc2d3c2bb8d5",
+       "parentSpanId": "406d13a8d6d694d5",
+       "name": "chat",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454133124866604",
+       "endTimeUnixNano": "1791454133160994573",
+       "attributes": [
+        {
+         "key": "gen_ai.event.start_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.124867+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "strands-agents"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "gpt-4o-mini"
+         }
+        },
+        {
+         "key": "gen_ai.event.end_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.160957+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.usage.prompt_tokens",
+         "value": {
+          "intValue": "104"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "104"
+         }
+        },
+        {
+         "key": "gen_ai.usage.completion_tokens",
+         "value": {
+          "intValue": "12"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "12"
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "116"
+         }
+        },
+        {
+         "key": "gen_ai.server.time_to_first_token",
+         "value": {
+          "intValue": "33"
+         }
+        }
+       ],
+       "events": [
+        {
+         "timeUnixNano": "1791454133124884490",
+         "name": "gen_ai.user.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"text\": \"What is the weather in Paris?\"}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133124896263",
+         "name": "gen_ai.assistant.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133124908047",
+         "name": "gen_ai.tool.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"toolResult\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"status\": \"success\", \"content\": [{\"text\": \"The weather in Paris is sunny and 72F.\"}]}}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133160946908",
+         "name": "gen_ai.choice",
+         "attributes": [
+          {
+           "key": "finish_reason",
+           "value": {
+            "stringValue": "end_turn"
+           }
+          },
+          {
+           "key": "message",
+           "value": {
+            "stringValue": "[{\"text\": \"The weather in Paris is sunny and 72\u00b0F.\"}]"
+           }
+          }
+         ]
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "4c78b363-7a6a-4af5-81af-a9c07c03ab22"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "strands-test"
+     },
+     "spans": [
+      {
+       "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+       "spanId": "406d13a8d6d694d5",
+       "parentSpanId": "0dd3355bae33477b",
+       "name": "execute_event_loop_cycle",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454133124762516",
+       "endTimeUnixNano": "1791454133162938614",
+       "attributes": [
+        {
+         "key": "gen_ai.event.start_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.124766+00:00"
+         }
+        },
+        {
+         "key": "event_loop.cycle_id",
+         "value": {
+          "stringValue": "14e4ba7d-f741-4354-9deb-7911ed57a249"
+         }
+        },
+        {
+         "key": "event_loop.parent_cycle_id",
+         "value": {
+          "stringValue": "f30c9dbd-47f1-4924-8a80-9793dc596f05"
+         }
+        },
+        {
+         "key": "gen_ai.event.end_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.162916+00:00"
+         }
+        }
+       ],
+       "events": [
+        {
+         "timeUnixNano": "1791454133124796925",
+         "name": "gen_ai.user.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"text\": \"What is the weather in Paris?\"}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133124812426",
+         "name": "gen_ai.assistant.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133124826674",
+         "name": "gen_ai.tool.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"toolResult\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"status\": \"success\", \"content\": [{\"text\": \"The weather in Paris is sunny and 72F.\"}]}}]"
+           }
+          }
+         ]
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "4c78b363-7a6a-4af5-81af-a9c07c03ab22"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "strands-test"
+     },
+     "spans": [
+      {
+       "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+       "spanId": "0dd3355bae33477b",
+       "name": "invoke_agent Strands Agents",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454132433602989",
+       "endTimeUnixNano": "1791454133164628200",
+       "attributes": [
+        {
+         "key": "gen_ai.event.start_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:52.433613+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "invoke_agent"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "strands-agents"
+         }
+        },
+        {
+         "key": "gen_ai.agent.name",
+         "value": {
+          "stringValue": "Strands Agents"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "gpt-4o-mini"
+         }
+        },
+        {
+         "key": "gen_ai.agent.tools",
+         "value": {
+          "stringValue": "[\"get_weather\"]"
+         }
+        },
+        {
+         "key": "system_prompt",
+         "value": {
+          "stringValue": "You are a weather bot. Answer in one short sentence."
+         }
+        },
+        {
+         "key": "gen_ai.event.end_time",
+         "value": {
+          "stringValue": "2026-10-08T10:08:53.164609+00:00"
+         }
+        },
+        {
+         "key": "gen_ai.usage.prompt_tokens",
+         "value": {
+          "intValue": "175"
+         }
+        },
+        {
+         "key": "gen_ai.usage.completion_tokens",
+         "value": {
+          "intValue": "26"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "175"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "26"
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "201"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_read_input_tokens",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_write_input_tokens",
+         "value": {
+          "intValue": "0"
+         }
+        }
+       ],
+       "events": [
+        {
+         "timeUnixNano": "1791454132433755093",
+         "name": "gen_ai.user.message",
+         "attributes": [
+          {
+           "key": "content",
+           "value": {
+            "stringValue": "[{\"text\": \"What is the weather in Paris?\"}]"
+           }
+          }
+         ]
+        },
+        {
+         "timeUnixNano": "1791454133164600966",
+         "name": "gen_ai.choice",
+         "attributes": [
+          {
+           "key": "message",
+           "value": {
+            "stringValue": "The weather in Paris is sunny and 72\u00b0F.\n"
+           }
+          },
+          {
+           "key": "finish_reason",
+           "value": {
+            "stringValue": "end_turn"
+           }
+          }
+         ]
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

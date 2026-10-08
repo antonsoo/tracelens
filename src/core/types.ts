@@ -28,7 +28,7 @@ export type AgentSpanKind =
   | 'other';
 
 /** Which semantic convention(s) contributed attributes to a span. */
-export type Convention = 'otel-genai' | 'openinference' | 'none';
+export type Convention = 'otel-genai' | 'openinference' | 'vercel-ai' | 'none';
 
 export interface AttrMap {
   [key: string]: unknown;

@@ -1,0 +1,170 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "9fbbbbdf-7111-462f-9174-dcf29d584945"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "opentelemetry.instrumentation.openai.v1",
+      "version": "0.62.4"
+     },
+     "spans": [
+      {
+       "traceId": "46934a45d30c70eedbbc23a8dc07a660",
+       "spanId": "e510656701b707ff",
+       "name": "openai.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1791453087323720443",
+       "endTimeUnixNano": "1791453087334800651",
+       "attributes": [
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.provider.name",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "gpt-5-nano"
+         }
+        },
+        {
+         "key": "gen_ai.is_streaming",
+         "value": {
+          "boolValue": false
+         }
+        },
+        {
+         "key": "gen_ai.openai.api_base",
+         "value": {
+          "stringValue": "https://api.openai.com/v1/"
+         }
+        },
+        {
+         "key": "gen_ai.input.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"user\", \"parts\": [{\"content\": \"Count r's in strawberry\", \"type\": \"text\"}]}]"
+         }
+        },
+        {
+         "key": "gen_ai.request.reasoning_effort",
+         "value": {
+          "stringValue": "low"
+         }
+        },
+        {
+         "key": "gen_ai.response.model",
+         "value": {
+          "stringValue": "gpt-5-nano-2025-08-07"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "chatcmpl-C6DUm0Lah8z5kRsRhhtk97oh5ey0B"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "stop"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "openai.response.service_tier",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.usage.total_tokens",
+         "value": {
+          "intValue": "239"
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": "228"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": "11"
+         }
+        },
+        {
+         "key": "gen_ai.usage.cache_read.input_tokens",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "gen_ai.usage.reasoning_tokens",
+         "value": {
+          "intValue": "192"
+         }
+        },
+        {
+         "key": "gen_ai.output.messages",
+         "value": {
+          "stringValue": "[{\"role\": \"assistant\", \"parts\": [{\"content\": \"3\\n\\nThere are three 'r' letters in \\\"strawberry\\\" (positions 3, 8, and 9).\", \"type\": \"text\"}], \"finish_reason\": \"stop\"}]"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

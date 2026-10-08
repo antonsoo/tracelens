@@ -1,0 +1,418 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "c2953192-5c5b-4e58-a04c-fad6693c4489"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "opentelemetry.instrumentation.cohere",
+      "version": "0.62.4"
+     },
+     "spans": [
+      {
+       "traceId": "eb118f57ea2830825ff6695e625de1c3",
+       "spanId": "1a0c0bec794acb23",
+       "name": "cohere.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1791454412851674687",
+       "endTimeUnixNano": "1791454412885259805",
+       "attributes": [
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "Cohere"
+         }
+        },
+        {
+         "key": "llm.request.type",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "command-r"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.0.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.0.content",
+         "value": {
+          "stringValue": "What is the weather and current time in Tokyo?"
+         }
+        },
+        {
+         "key": "llm.request.functions.0.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.request.functions.0.description",
+         "value": {
+          "stringValue": "Get the current weather in a given location"
+         }
+        },
+        {
+         "key": "llm.request.functions.0.parameters",
+         "value": {
+          "stringValue": "{\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}}, \"required\": [\"location\"]}"
+         }
+        },
+        {
+         "key": "llm.request.functions.1.name",
+         "value": {
+          "stringValue": "get_time"
+         }
+        },
+        {
+         "key": "llm.request.functions.1.description",
+         "value": {
+          "stringValue": "Get the current time in a given location"
+         }
+        },
+        {
+         "key": "llm.request.functions.1.parameters",
+         "value": {
+          "stringValue": "{\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}}, \"required\": [\"location\"]}"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "965405bb-b9da-4dc5-b329-e708a795e188"
+         }
+        },
+        {
+         "key": "llm.usage.total_tokens",
+         "value": {
+          "doubleValue": 90.0
+         }
+        },
+        {
+         "key": "gen_ai.usage.completion_tokens",
+         "value": {
+          "doubleValue": 28.0
+         }
+        },
+        {
+         "key": "gen_ai.usage.prompt_tokens",
+         "value": {
+          "doubleValue": 62.0
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "TOOL_CALL"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.content",
+         "value": {
+          "stringValue": "[{\"type\": \"text\", \"text\": \"I will search for the current time and weather in Tokyo.\"}]"
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.tool_calls.0.id",
+         "value": {
+          "stringValue": "get_time_dp3men9jrvhf"
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.tool_calls.0.name",
+         "value": {
+          "stringValue": "get_time"
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.tool_calls.0.arguments",
+         "value": {
+          "stringValue": "{\"location\":\"Tokyo\"}"
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.tool_calls.1.id",
+         "value": {
+          "stringValue": "get_weather_d7arjgsc96yf"
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.tool_calls.1.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.tool_calls.1.arguments",
+         "value": {
+          "stringValue": "{\"location\":\"Tokyo\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "c2953192-5c5b-4e58-a04c-fad6693c4489"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "opentelemetry.instrumentation.cohere",
+      "version": "0.62.4"
+     },
+     "spans": [
+      {
+       "traceId": "48a5dab371f344046e42a6ecfce0b3a9",
+       "spanId": "15f7f064a1c86cd4",
+       "name": "cohere.chat",
+       "kind": "SPAN_KIND_CLIENT",
+       "startTimeUnixNano": "1791454412886415034",
+       "endTimeUnixNano": "1791454412958037573",
+       "attributes": [
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "Cohere"
+         }
+        },
+        {
+         "key": "llm.request.type",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "command-r"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.0.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.0.content",
+         "value": {
+          "stringValue": "What is the weather and current time in Tokyo?"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.1.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.2.role",
+         "value": {
+          "stringValue": "tool"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.2.content",
+         "value": {
+          "stringValue": "4:20 PM"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.3.role",
+         "value": {
+          "stringValue": "tool"
+         }
+        },
+        {
+         "key": "gen_ai.prompt.3.content",
+         "value": {
+          "stringValue": "Sunny 20 degrees Celsius"
+         }
+        },
+        {
+         "key": "llm.request.functions.0.name",
+         "value": {
+          "stringValue": "get_weather"
+         }
+        },
+        {
+         "key": "llm.request.functions.0.description",
+         "value": {
+          "stringValue": "Get the current weather in a given location"
+         }
+        },
+        {
+         "key": "llm.request.functions.0.parameters",
+         "value": {
+          "stringValue": "{\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}}, \"required\": [\"location\"]}"
+         }
+        },
+        {
+         "key": "llm.request.functions.1.name",
+         "value": {
+          "stringValue": "get_time"
+         }
+        },
+        {
+         "key": "llm.request.functions.1.description",
+         "value": {
+          "stringValue": "Get the current time in a given location"
+         }
+        },
+        {
+         "key": "llm.request.functions.1.parameters",
+         "value": {
+          "stringValue": "{\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}}, \"required\": [\"location\"]}"
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "00f7ec58-cd22-4b62-b068-0e7ece6bbf67"
+         }
+        },
+        {
+         "key": "llm.usage.total_tokens",
+         "value": {
+          "doubleValue": 121.0
+         }
+        },
+        {
+         "key": "gen_ai.usage.completion_tokens",
+         "value": {
+          "doubleValue": 27.0
+         }
+        },
+        {
+         "key": "gen_ai.usage.prompt_tokens",
+         "value": {
+          "doubleValue": 94.0
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "COMPLETE"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.completion.0.content",
+         "value": {
+          "stringValue": "[{\"type\": \"text\", \"text\": \"The current time in Tokyo is 4:20 PM and the weather is sunny with a temperature of 20\\u00b0C.\"}]"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "python"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "1.45.1"
+      }
+     },
+     {
+      "key": "service.instance.id",
+      "value": {
+       "stringValue": "d6d15aaf-1758-4810-a884-be1c3b6856b4"
+      }
+     },
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "openinference.instrumentation.litellm",
+      "version": "0.1.49"
+     },
+     "spans": [
+      {
+       "traceId": "0c3eb6a51694214b9df46a06d4c680db",
+       "spanId": "648c74d1222e0faf",
+       "name": "CreateEmbeddings",
+       "kind": "SPAN_KIND_INTERNAL",
+       "startTimeUnixNano": "1791454005189989361",
+       "endTimeUnixNano": "1791454005216228263",
+       "attributes": [
+        {
+         "key": "embedding.invocation_parameters",
+         "value": {
+          "stringValue": "{\"model\": \"openai/text-embedding-ada-002\"}"
+         }
+        },
+        {
+         "key": "embedding.embeddings.0.embedding.text",
+         "value": {
+          "stringValue": "hello world"
+         }
+        },
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "hello world"
+         }
+        },
+        {
+         "key": "embedding.model_name",
+         "value": {
+          "stringValue": "text-embedding-ada-002-v2"
+         }
+        },
+        {
+         "key": "llm.token_count.prompt",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "llm.token_count.total",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "llm.cost.total",
+         "value": {
+          "doubleValue": 2e-07
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "EMBEDDING"
+         }
+        }
+       ],
+       "status": {
+        "code": "STATUS_CODE_OK"
+       },
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

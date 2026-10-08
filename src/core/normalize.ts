@@ -76,6 +76,15 @@ function parseMessageList(v: unknown): NormalizedMessage[] | undefined {
   return messages.length > 0 ? messages : undefined;
 }
 
+/** Each output message carries its own `finish_reason` in the current spec; Strands and
+ * OpenLLMetry's newer instrumentations write nothing to `gen_ai.response.finish_reasons`. */
+function finishReasonsOfMessages(v: unknown): string[] | undefined {
+  const list = parseJsonish(v);
+  if (!Array.isArray(list)) return undefined;
+  const reasons = list.map((m) => (typeof m === 'object' && m !== null ? str((m as Record<string, unknown>).finish_reason) : undefined)).filter((r): r is string => r !== undefined);
+  return reasons.length > 0 ? reasons : undefined;
+}
+
 /** `gen_ai.system_instructions` is a list of parts (`[{"type": "text", "content": ...}]`), not of
  * messages: there is no role on its entries, and the role is the system's. Older exporters
  * wrote a list of messages instead, which is read as before. */
@@ -144,11 +153,28 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
   const usage = extractUsage(attrs, {
     inputTokens: ['gen_ai.usage.input_tokens', 'gen_ai.usage.prompt_tokens'],
     outputTokens: ['gen_ai.usage.output_tokens', 'gen_ai.usage.completion_tokens'],
-    cacheReadTokens: ['gen_ai.usage.cache_read.input_tokens'],
+    // The spec writes cache_read.input_tokens; Strands writes cache_read_input_tokens.
+    cacheReadTokens: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.cache_read_input_tokens'],
     // The spec's name is cache_creation; cache_write is accepted from emitters that used it.
-    cacheWriteTokens: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_write.input_tokens'],
-    reasoningOutputTokens: ['gen_ai.usage.reasoning.output_tokens'],
+    cacheWriteTokens: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_write.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.cache_write_input_tokens',
+    ],
+    // OpenLLMetry writes reasoning_tokens; Pydantic AI nests the provider's own figure under usage.details.
+    reasoningOutputTokens: [
+      'gen_ai.usage.reasoning.output_tokens',
+      'gen_ai.usage.reasoning_tokens',
+      'gen_ai.usage.details.reasoning_tokens',
+      'gen_ai.usage.details.thoughts_tokens',
+    ],
   });
+
+  // OpenLLMetry before it adopted gen_ai.input.messages wrote indexed gen_ai.prompt.N.* / gen_ai.completion.N.*.
+  const indexedInput = attrs['gen_ai.input.messages'] === undefined ? extractIndexedMessages(attrs, 'gen_ai.prompt') : undefined;
+  const indexedOutput = attrs['gen_ai.output.messages'] === undefined ? extractIndexedMessages(attrs, 'gen_ai.completion') : undefined;
+  const finishReasons = strArray(attrs['gen_ai.response.finish_reasons']) ?? finishReasonsOfMessages(attrs['gen_ai.output.messages']) ?? indexedOutput?.finishReasons;
 
   const info: GenAiInfo = {
     ...(operationName ? { operationName } : {}),
@@ -163,12 +189,12 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
     ...(num(attrs['gen_ai.request.max_tokens']) !== undefined
       ? { maxTokens: num(attrs['gen_ai.request.max_tokens']) }
       : {}),
-    ...(strArray(attrs['gen_ai.response.finish_reasons'])
-      ? { finishReasons: strArray(attrs['gen_ai.response.finish_reasons']) }
-      : {}),
+    ...(finishReasons ? { finishReasons } : {}),
     ...(usage ? { usage } : {}),
     ...(parseMessageList(attrs['gen_ai.input.messages']) ? { inputMessages: parseMessageList(attrs['gen_ai.input.messages']) } : {}),
     ...(parseMessageList(attrs['gen_ai.output.messages']) ? { outputMessages: parseMessageList(attrs['gen_ai.output.messages']) } : {}),
+    ...(indexedInput ? { inputMessages: indexedInput.messages } : {}),
+    ...(indexedOutput ? { outputMessages: indexedOutput.messages } : {}),
     ...(parseSystemInstructions(attrs['gen_ai.system_instructions'])
       ? { systemInstructions: parseSystemInstructions(attrs['gen_ai.system_instructions']) }
       : {}),
@@ -181,6 +207,66 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
     ...(str(attrs['error.type']) ? { errorType: str(attrs['error.type']) } : {}),
   };
   return info;
+}
+
+/** Text of a message `content` that is either a string or, as Cohere and Anthropic write it, a
+ * JSON string holding a list of `{"type": "text", "text": ...}` blocks. */
+function contentParts(content: string): NormalizedMessagePart[] {
+  if (content.startsWith('[')) {
+    const blocks = parseJsonish(content);
+    if (Array.isArray(blocks) && blocks.length > 0 && blocks.every((b) => typeof b === 'object' && b !== null && 'type' in b)) {
+      const texts = (blocks as Record<string, unknown>[]).filter((b) => b.type === 'text' && str(b.text) !== undefined);
+      if (texts.length === blocks.length) return texts.map((b) => ({ type: 'text', content: str(b.text) }));
+    }
+  }
+  return [{ type: 'text', content }];
+}
+
+interface IndexedMessage {
+  role?: string;
+  content?: string;
+  finish?: string;
+  calls: Map<number, OiToolCall>;
+}
+
+/** OpenLLMetry's pre-`gen_ai.input.messages` layout (still written by its Cohere and Mistral
+ * instrumentations at 0.62.4):
+ *
+ *   gen_ai.prompt.0.role / .content
+ *   gen_ai.completion.0.role / .content / .finish_reason
+ *   gen_ai.completion.0.tool_calls.0.id / .name / .arguments        (a JSON string)
+ */
+const INDEXED_MESSAGE_KEY = /^(?:gen_ai\.prompt|gen_ai\.completion)\.(\d+)\.(.+)$/;
+function extractIndexedMessages(attrs: AttrMap, prefix: 'gen_ai.prompt' | 'gen_ai.completion'): { messages: NormalizedMessage[]; finishReasons?: string[] } | undefined {
+  const byIndex = new Map<number, IndexedMessage>();
+  for (const [key, value] of Object.entries(attrs)) {
+    if (!key.startsWith(prefix + '.')) continue;
+    const m = INDEXED_MESSAGE_KEY.exec(key);
+    if (!m) continue;
+    const message: IndexedMessage = byIndex.get(Number(m[1])) ?? { calls: new Map() };
+    const field = m[2]!;
+    const call = /^tool_calls\.(\d+)\.(id|name|arguments)$/.exec(field);
+    if (field === 'role') message.role = str(value);
+    else if (field === 'content') message.content = str(value);
+    else if (field === 'finish_reason') message.finish = str(value);
+    else if (call) {
+      const entry = message.calls.get(Number(call[1])) ?? {};
+      if (call[2] === 'id') entry.id = str(value);
+      else if (call[2] === 'name') entry.name = str(value);
+      else entry.arguments = typeof value === 'string' ? value : value === undefined ? undefined : JSON.stringify(value);
+      message.calls.set(Number(call[1]), entry);
+    } else continue; // content_filter_results and the like: not part of the message
+    byIndex.set(Number(m[1]), message);
+  }
+  if (byIndex.size === 0) return undefined;
+  const ordered = [...byIndex.entries()].sort(([a], [b]) => a - b);
+  const messages = ordered.map(([, message]) => {
+    const parts: NormalizedMessagePart[] = message.content !== undefined ? contentParts(message.content) : [];
+    for (const [, call] of [...message.calls.entries()].sort(([a], [b]) => a - b)) parts.push(toolCallPart(call));
+    return { role: message.role ?? (prefix === 'gen_ai.prompt' ? 'unknown' : 'assistant'), parts: parts.length > 0 ? parts : [{ type: 'text' }] };
+  });
+  const finish = ordered.map(([, message]) => message.finish).filter((f): f is string => f !== undefined);
+  return { messages, ...(finish.length > 0 ? { finishReasons: finish } : {}) };
 }
 
 // OpenInference flattens each message into indexed attributes. What its instrumentation
@@ -351,7 +437,8 @@ function extractOpenInference(attrs: AttrMap): GenAiInfo | undefined {
   const info: GenAiInfo = {
     operationName: kind.toLowerCase(),
     ...(str(attrs['llm.provider']) ?? str(attrs['llm.system']) ? { provider: str(attrs['llm.provider']) ?? str(attrs['llm.system']) } : {}),
-    ...(str(attrs['llm.model_name']) ? { requestModel: str(attrs['llm.model_name']) } : {}),
+    // Embedding spans name their model under embedding.model_name, not llm.model_name.
+    ...((str(attrs['llm.model_name']) ?? str(attrs['embedding.model_name'])) ? { requestModel: str(attrs['llm.model_name']) ?? str(attrs['embedding.model_name']) } : {}),
     ...(str(attrs['llm.response.model_name']) ? { responseModel: str(attrs['llm.response.model_name']) } : {}),
     ...(str(attrs['session.id']) ? { conversationId: str(attrs['session.id']) } : {}),
     ...invocationParameters(attrs),
@@ -375,62 +462,195 @@ function extractOpenInference(attrs: AttrMap): GenAiInfo | undefined {
   return info;
 }
 
-/** Legacy per-message span events (pre gen_ai.input/output.messages): one
- * event per turn, named `gen_ai.{system,user,assistant,tool}.message` or
- * `gen_ai.choice`, each carrying its content as event attributes. Still
- * emitted by some instrumentation built against the 2023-2024 draft. */
-function extractLegacyEventMessages(span: ParsedSpan): { input?: NormalizedMessage[]; output?: NormalizedMessage[] } {
+// The Vercel AI SDK's own span format (`ai.*`), written by `experimental_telemetry` in AI SDK 4 to 6
+// and by `LegacyOpenTelemetry` in AI SDK 7. Checked against spans from ai 6.0.302 and
+// @ai-sdk/otel 1.0.133 (studies/instrumentation-census/):
+//
+//   ai.operationId                       ai.streamText | ai.streamText.doStream | ai.toolCall | ...
+//   ai.model.id / ai.model.provider      ai.response.model / ai.response.finishReason
+//   ai.usage.inputTokens / .outputTokens / .cachedInputTokens / .reasoningTokens
+//   ai.prompt.messages                   JSON: [{role, content: string | [{type: text | tool-call | tool-result}]}]
+//   ai.response.text / ai.response.toolCalls   (JSON: [{toolCallId, toolName, input | args}])
+//   ai.toolCall.name / .id / .args / .result   on the tool's own span
+//
+// The `doGenerate` and `doStream` spans are the model calls (and also carry a few gen_ai.*
+// attributes); the other spans of a call (`ai.generateText`, `ai.streamText`) repeat its totals
+// across steps and are not model calls.
+function aiSdkKind(operationId: string): AgentSpanKind {
+  if (operationId.endsWith('.doGenerate') || operationId.endsWith('.doStream')) return 'llm';
+  if (operationId.endsWith('.doEmbed')) return 'embedding';
+  if (operationId === 'ai.toolCall') return 'tool';
+  return 'chain';
+}
+
+function aiSdkParts(content: unknown): NormalizedMessagePart[] {
+  if (typeof content === 'string') return [{ type: 'text', content }];
+  if (!Array.isArray(content)) return [{ type: 'text' }];
+  return content
+    .filter((p): p is Record<string, unknown> => typeof p === 'object' && p !== null)
+    .map((p): NormalizedMessagePart => {
+      if (p.type === 'text') return { type: 'text', ...(str(p.text) !== undefined ? { content: str(p.text) } : {}) };
+      if (p.type === 'tool-call') {
+        const args = 'input' in p ? p.input : p.args;
+        return { type: 'tool_call', ...(str(p.toolCallId) ? { id: str(p.toolCallId) } : {}), ...(str(p.toolName) ? { name: str(p.toolName) } : {}), ...(args !== undefined ? { arguments: args } : {}) };
+      }
+      if (p.type === 'tool-result') {
+        const output = 'output' in p ? p.output : p.result;
+        return { type: 'tool_call_response', ...(str(p.toolCallId) ? { id: str(p.toolCallId) } : {}), ...(output !== undefined ? { response: output } : {}) };
+      }
+      return { type: str(p.type) ?? 'text' };
+    });
+}
+
+function aiSdkMessages(v: unknown): NormalizedMessage[] | undefined {
+  const list = parseJsonish(v);
+  if (!Array.isArray(list)) return undefined;
+  const messages = list
+    .filter((m): m is Record<string, unknown> => typeof m === 'object' && m !== null)
+    .map((m) => ({ role: str(m.role) ?? 'unknown', parts: aiSdkParts(m.content) }));
+  return messages.length > 0 ? messages : undefined;
+}
+
+function extractAiSdk(attrs: AttrMap): GenAiInfo | undefined {
+  const operationId = str(attrs['ai.operationId']);
+  if (!operationId) return undefined;
+  const usage = extractUsage(attrs, {
+    inputTokens: ['ai.usage.inputTokens', 'ai.usage.promptTokens'],
+    outputTokens: ['ai.usage.outputTokens', 'ai.usage.completionTokens'],
+    cacheReadTokens: ['ai.usage.cachedInputTokens', 'ai.usage.inputTokenDetails.cacheReadTokens'],
+    cacheWriteTokens: ['ai.usage.inputTokenDetails.cacheWriteTokens'],
+    reasoningOutputTokens: ['ai.usage.reasoningTokens', 'ai.usage.outputTokenDetails.reasoningTokens'],
+  });
+
+  const calls = parseJsonish(attrs['ai.response.toolCalls']);
+  const outputParts: NormalizedMessagePart[] = [];
+  if (str(attrs['ai.response.text']) !== undefined) outputParts.push({ type: 'text', content: str(attrs['ai.response.text']) });
+  if (Array.isArray(calls)) outputParts.push(...aiSdkParts(calls.map((c) => (typeof c === 'object' && c !== null ? { ...c, type: 'tool-call' } : c))));
+  const inputMessages = aiSdkMessages(attrs['ai.prompt.messages']);
+  const isToolSpan = operationId === 'ai.toolCall';
+
+  return {
+    operationName: operationId,
+    ...(str(attrs['ai.model.provider']) ? { provider: str(attrs['ai.model.provider']) } : {}),
+    ...(str(attrs['ai.model.id']) ? { requestModel: str(attrs['ai.model.id']) } : {}),
+    ...(str(attrs['ai.response.model']) ? { responseModel: str(attrs['ai.response.model']) } : {}),
+    ...(str(attrs['ai.response.finishReason']) ? { finishReasons: [str(attrs['ai.response.finishReason'])!] } : {}),
+    ...(usage ? { usage } : {}),
+    ...(inputMessages ? { inputMessages } : {}),
+    ...(outputParts.length > 0 ? { outputMessages: [{ role: 'assistant', parts: outputParts }] } : {}),
+    ...(isToolSpan && str(attrs['ai.toolCall.name']) ? { toolName: str(attrs['ai.toolCall.name']) } : {}),
+    ...(isToolSpan && str(attrs['ai.toolCall.id']) ? { toolCallId: str(attrs['ai.toolCall.id']) } : {}),
+    ...(isToolSpan && 'ai.toolCall.args' in attrs ? { toolArguments: parseJsonish(attrs['ai.toolCall.args']) } : {}),
+    ...(isToolSpan && 'ai.toolCall.result' in attrs ? { toolResult: parseJsonish(attrs['ai.toolCall.result']) } : {}),
+  };
+}
+
+/** A legacy event's content when it holds Bedrock-Converse-style blocks, as Strands writes it:
+ * `[{"text": ...}, {"toolUse": {"toolUseId", "name", "input"}}, {"toolResult": {"toolUseId", "content"}}]`.
+ * Anything else, including a plain string, is one text part. */
+function eventContentParts(content: unknown): NormalizedMessagePart[] {
+  const text = str(content);
+  if (text !== undefined && text.startsWith('[')) {
+    const blocks = parseJsonish(text);
+    const isBlock = (b: unknown): b is Record<string, unknown> => typeof b === 'object' && b !== null && ('text' in b || 'toolUse' in b || 'toolResult' in b);
+    if (Array.isArray(blocks) && blocks.length > 0 && blocks.every(isBlock)) {
+      return blocks.map((b): NormalizedMessagePart => {
+        const use = b.toolUse as Record<string, unknown> | undefined;
+        const result = b.toolResult as Record<string, unknown> | undefined;
+        if (use) return { type: 'tool_call', ...(str(use.toolUseId) ? { id: str(use.toolUseId) } : {}), ...(str(use.name) ? { name: str(use.name) } : {}), ...('input' in use ? { arguments: use.input } : {}) };
+        if (result) return { type: 'tool_call_response', ...(str(result.toolUseId) ? { id: str(result.toolUseId) } : {}), ...('content' in result ? { response: result.content } : {}) };
+        return { type: 'text', ...(str(b.text) !== undefined ? { content: str(b.text) } : {}) };
+      });
+    }
+  }
+  return [{ type: 'text', ...(text !== undefined ? { content: text } : {}) }];
+}
+
+/** Message content that arrives on span events rather than attributes.
+ *
+ * Legacy per-message events (pre gen_ai.input/output.messages): one event per turn, named
+ * `gen_ai.{system,user,assistant,tool}.message` or `gen_ai.choice`, each carrying its content as
+ * event attributes. Still emitted by instrumentation built against the 2023-2024 draft.
+ *
+ * Current-spec event: `gen_ai.client.inference.operation.details`, whose attributes are
+ * `gen_ai.input.messages`, `gen_ai.output.messages` and `gen_ai.system_instructions`, written
+ * by Strands in its default mode. */
+function extractEventMessages(span: ParsedSpan): { input?: NormalizedMessage[]; output?: NormalizedMessage[]; system?: NormalizedMessage[]; finishReasons?: string[] } {
   const input: NormalizedMessage[] = [];
   const output: NormalizedMessage[] = [];
+  const system: NormalizedMessage[] = [];
+  const finishReasons: string[] = [];
   for (const ev of span.events) {
     const content = ev.attributes['content'];
-    if (ev.name === 'gen_ai.system.message' || ev.name === 'gen_ai.user.message' || ev.name === 'gen_ai.assistant.message' || ev.name === 'gen_ai.tool.message') {
+    if (ev.name === 'gen_ai.client.inference.operation.details') {
+      input.push(...(parseMessageList(ev.attributes['gen_ai.input.messages']) ?? []));
+      output.push(...(parseMessageList(ev.attributes['gen_ai.output.messages']) ?? []));
+      finishReasons.push(...(finishReasonsOfMessages(ev.attributes['gen_ai.output.messages']) ?? []));
+      system.push(...(parseSystemInstructions(ev.attributes['gen_ai.system_instructions']) ?? []));
+    } else if (ev.name === 'gen_ai.system.message' || ev.name === 'gen_ai.user.message' || ev.name === 'gen_ai.assistant.message' || ev.name === 'gen_ai.tool.message') {
       const role = ev.name.split('.')[1] ?? 'unknown';
-      input.push({ role, parts: [{ type: 'text', ...(str(content) !== undefined ? { content: str(content) } : {}) }] });
+      input.push({ role, parts: eventContentParts(content) });
     } else if (ev.name === 'gen_ai.choice') {
       const message = ev.attributes['message'];
-      const text = typeof message === 'string' ? message : str(content);
-      output.push({ role: 'assistant', parts: [{ type: 'text', ...(text !== undefined ? { content: text } : {}) }] });
+      output.push({ role: 'assistant', parts: eventContentParts(typeof message === 'string' ? message : content) });
+      if (str(ev.attributes['finish_reason'])) finishReasons.push(str(ev.attributes['finish_reason'])!);
     }
   }
   return {
     ...(input.length > 0 ? { input } : {}),
     ...(output.length > 0 ? { output } : {}),
+    ...(system.length > 0 ? { system } : {}),
+    ...(finishReasons.length > 0 ? { finishReasons } : {}),
   };
 }
+
+const LLM_REQUEST_TYPE_TO_KIND: Record<string, AgentSpanKind> = {
+  chat: 'llm',
+  completion: 'llm',
+  embedding: 'embedding',
+  rerank: 'reranker',
+};
 
 export function normalizeSpan(span: ParsedSpan): ParsedSpan {
   const otel = extractOtelGenAi(span.attributes);
   const oi = extractOpenInference(span.attributes);
+  const aiSdk = extractAiSdk(span.attributes);
 
-  let convention: Convention = 'none';
+  // Read in order of how current each convention is; a later one overrides an earlier one field by
+  // field, and token counts are merged field by field.
   let genai: GenAiInfo | undefined;
-  if (otel && oi) {
-    convention = 'otel-genai'; // both present is unusual; prefer the richer, more current convention
-    genai = { ...oi, ...otel };
-    const usage = mergeUsage(oi.usage, otel.usage);
+  for (const info of [aiSdk, oi, otel]) {
+    if (!info) continue;
+    const usage = mergeUsage(genai?.usage, info.usage);
+    genai = { ...genai, ...info };
     if (usage) genai.usage = usage;
-  } else if (otel) {
-    convention = 'otel-genai';
-    genai = otel;
-  } else if (oi) {
-    convention = 'openinference';
-    genai = oi;
   }
 
-  if (genai && !genai.inputMessages && !genai.outputMessages) {
-    const legacy = extractLegacyEventMessages(span);
-    if (legacy.input || legacy.output) {
-      genai = { ...genai, ...(legacy.input ? { inputMessages: legacy.input } : {}), ...(legacy.output ? { outputMessages: legacy.output } : {}) };
-    }
+  const convention: Convention = aiSdk ? 'vercel-ai' : otel ? 'otel-genai' : oi ? 'openinference' : 'none';
+
+  if (genai) {
+    const events = extractEventMessages(span);
+    const messages = !genai.inputMessages && !genai.outputMessages;
+    genai = {
+      ...genai,
+      ...(messages && events.input ? { inputMessages: events.input } : {}),
+      ...(messages && events.output ? { outputMessages: events.output } : {}),
+      ...(!genai.systemInstructions && events.system ? { systemInstructions: events.system } : {}),
+      ...(!genai.finishReasons && events.finishReasons ? { finishReasons: events.finishReasons } : {}),
+    };
   }
 
   let agentKind: AgentSpanKind = 'other';
   const oiKind = str(span.attributes['openinference.span.kind']);
+  const requestType = str(span.attributes['llm.request.type']); // OpenLLMetry's own kind of call
   if (otel?.operationName && Object.hasOwn(GENAI_OP_TO_KIND, otel.operationName)) {
     agentKind = GENAI_OP_TO_KIND[otel.operationName]!;
   } else if (oiKind && Object.hasOwn(OPENINFERENCE_KIND_MAP, oiKind)) {
     agentKind = OPENINFERENCE_KIND_MAP[oiKind]!;
+  } else if (aiSdk?.operationName) {
+    agentKind = aiSdkKind(aiSdk.operationName);
+  } else if (genai && requestType && !otel?.operationName && Object.hasOwn(LLM_REQUEST_TYPE_TO_KIND, requestType)) {
+    agentKind = LLM_REQUEST_TYPE_TO_KIND[requestType]!;
   } else if (!otel?.operationName && !oiKind && genai) {
     // Older exporters have model/usage attributes but no operation name.
     if (genai.toolName) agentKind = 'tool';

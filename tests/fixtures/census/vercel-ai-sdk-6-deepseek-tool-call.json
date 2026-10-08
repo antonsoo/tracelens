@@ -1,0 +1,499 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:node"
+      }
+     },
+     {
+      "key": "telemetry.sdk.language",
+      "value": {
+       "stringValue": "nodejs"
+      }
+     },
+     {
+      "key": "telemetry.sdk.name",
+      "value": {
+       "stringValue": "opentelemetry"
+      }
+     },
+     {
+      "key": "telemetry.sdk.version",
+      "value": {
+       "stringValue": "2.12.0"
+      }
+     }
+    ],
+    "droppedAttributesCount": 0
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "ai"
+     },
+     "spans": [
+      {
+       "traceId": "0e537801c9893f41122a9eac5234fc35",
+       "spanId": "4cfe461d4100966b",
+       "parentSpanId": "946d7619a3a19e1e",
+       "name": "ai.generateText.doGenerate",
+       "kind": 1,
+       "startTimeUnixNano": "1791455992081000000",
+       "endTimeUnixNano": "1791455992082829837",
+       "attributes": [
+        {
+         "key": "operation.name",
+         "value": {
+          "stringValue": "ai.generateText.doGenerate census"
+         }
+        },
+        {
+         "key": "resource.name",
+         "value": {
+          "stringValue": "census"
+         }
+        },
+        {
+         "key": "ai.operationId",
+         "value": {
+          "stringValue": "ai.generateText.doGenerate"
+         }
+        },
+        {
+         "key": "ai.telemetry.functionId",
+         "value": {
+          "stringValue": "census"
+         }
+        },
+        {
+         "key": "ai.model.provider",
+         "value": {
+          "stringValue": "deepseek.chat"
+         }
+        },
+        {
+         "key": "ai.model.id",
+         "value": {
+          "stringValue": "deepseek-reasoner"
+         }
+        },
+        {
+         "key": "ai.settings.maxRetries",
+         "value": {
+          "intValue": 2
+         }
+        },
+        {
+         "key": "ai.request.headers.user-agent",
+         "value": {
+          "stringValue": "ai/6.0.302"
+         }
+        },
+        {
+         "key": "ai.prompt.messages",
+         "value": {
+          "stringValue": "[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Hello\"}]}]"
+         }
+        },
+        {
+         "key": "ai.prompt.tools",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "{\"type\":\"function\",\"name\":\"weather\",\"description\":\"weather\",\"inputSchema\":{\"type\":\"object\",\"additionalProperties\":true}}"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "ai.prompt.toolChoice",
+         "value": {
+          "stringValue": "{\"type\":\"auto\"}"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "deepseek.chat"
+         }
+        },
+        {
+         "key": "gen_ai.request.model",
+         "value": {
+          "stringValue": "deepseek-reasoner"
+         }
+        },
+        {
+         "key": "ai.response.finishReason",
+         "value": {
+          "stringValue": "tool-calls"
+         }
+        },
+        {
+         "key": "ai.response.reasoning",
+         "value": {
+          "stringValue": "The user is asking for the weather in San Francisco. I have a weather tool available that can get weather information for a location. I should use this tool with the location parameter set to \"San Francisco\". Let me call the weather function."
+         }
+        },
+        {
+         "key": "ai.response.toolCalls",
+         "value": {
+          "stringValue": "[{\"toolCallId\":\"call_00_9V0vrf86Pc9aelHCJMZqnJBo\",\"toolName\":\"weather\",\"input\":\"{\\\"location\\\": \\\"San Francisco\\\"}\"}]"
+         }
+        },
+        {
+         "key": "ai.response.id",
+         "value": {
+          "stringValue": "7a630f5b-b7e6-4878-82f8-d77db164d42b"
+         }
+        },
+        {
+         "key": "ai.response.model",
+         "value": {
+          "stringValue": "deepseek-reasoner"
+         }
+        },
+        {
+         "key": "ai.response.timestamp",
+         "value": {
+          "stringValue": "2025-12-02T08:57:25.000Z"
+         }
+        },
+        {
+         "key": "ai.response.providerMetadata",
+         "value": {
+          "stringValue": "{\"deepseek\":{\"promptCacheHitTokens\":320,\"promptCacheMissTokens\":19,\"responseObject\":\"chat.completion\",\"choiceIndex\":0,\"messageRole\":\"assistant\",\"toolCallTypes\":[\"function\"],\"systemFingerprint\":\"fp_eaab8d114b_prod0820_fp8_kvcache\"}}"
+         }
+        },
+        {
+         "key": "ai.usage.inputTokens",
+         "value": {
+          "intValue": 339
+         }
+        },
+        {
+         "key": "ai.usage.inputTokenDetails.noCacheTokens",
+         "value": {
+          "intValue": 19
+         }
+        },
+        {
+         "key": "ai.usage.inputTokenDetails.cacheReadTokens",
+         "value": {
+          "intValue": 320
+         }
+        },
+        {
+         "key": "ai.usage.outputTokens",
+         "value": {
+          "intValue": 92
+         }
+        },
+        {
+         "key": "ai.usage.outputTokenDetails.textTokens",
+         "value": {
+          "intValue": 44
+         }
+        },
+        {
+         "key": "ai.usage.outputTokenDetails.reasoningTokens",
+         "value": {
+          "intValue": 48
+         }
+        },
+        {
+         "key": "ai.usage.totalTokens",
+         "value": {
+          "intValue": 431
+         }
+        },
+        {
+         "key": "ai.usage.reasoningTokens",
+         "value": {
+          "intValue": 48
+         }
+        },
+        {
+         "key": "ai.usage.cachedInputTokens",
+         "value": {
+          "intValue": 320
+         }
+        },
+        {
+         "key": "gen_ai.response.finish_reasons",
+         "value": {
+          "arrayValue": {
+           "values": [
+            {
+             "stringValue": "tool-calls"
+            }
+           ]
+          }
+         }
+        },
+        {
+         "key": "gen_ai.response.id",
+         "value": {
+          "stringValue": "7a630f5b-b7e6-4878-82f8-d77db164d42b"
+         }
+        },
+        {
+         "key": "gen_ai.response.model",
+         "value": {
+          "stringValue": "deepseek-reasoner"
+         }
+        },
+        {
+         "key": "gen_ai.usage.input_tokens",
+         "value": {
+          "intValue": 339
+         }
+        },
+        {
+         "key": "gen_ai.usage.output_tokens",
+         "value": {
+          "intValue": 92
+         }
+        }
+       ],
+       "droppedAttributesCount": 0,
+       "events": [],
+       "droppedEventsCount": 0,
+       "status": {
+        "code": 0
+       },
+       "links": [],
+       "droppedLinksCount": 0,
+       "flags": 257
+      },
+      {
+       "traceId": "0e537801c9893f41122a9eac5234fc35",
+       "spanId": "272ed8a55cfc9ead",
+       "parentSpanId": "946d7619a3a19e1e",
+       "name": "ai.toolCall",
+       "kind": 1,
+       "startTimeUnixNano": "1791455992083000000",
+       "endTimeUnixNano": "1791455992083016772",
+       "attributes": [
+        {
+         "key": "operation.name",
+         "value": {
+          "stringValue": "ai.toolCall census"
+         }
+        },
+        {
+         "key": "resource.name",
+         "value": {
+          "stringValue": "census"
+         }
+        },
+        {
+         "key": "ai.operationId",
+         "value": {
+          "stringValue": "ai.toolCall"
+         }
+        },
+        {
+         "key": "ai.telemetry.functionId",
+         "value": {
+          "stringValue": "census"
+         }
+        },
+        {
+         "key": "ai.toolCall.name",
+         "value": {
+          "stringValue": "weather"
+         }
+        },
+        {
+         "key": "ai.toolCall.id",
+         "value": {
+          "stringValue": "call_00_9V0vrf86Pc9aelHCJMZqnJBo"
+         }
+        },
+        {
+         "key": "ai.toolCall.args",
+         "value": {
+          "stringValue": "{\"location\":\"San Francisco\"}"
+         }
+        },
+        {
+         "key": "ai.toolCall.result",
+         "value": {
+          "stringValue": "\"ok\""
+         }
+        }
+       ],
+       "droppedAttributesCount": 0,
+       "events": [],
+       "droppedEventsCount": 0,
+       "status": {
+        "code": 0
+       },
+       "links": [],
+       "droppedLinksCount": 0,
+       "flags": 257
+      },
+      {
+       "traceId": "0e537801c9893f41122a9eac5234fc35",
+       "spanId": "946d7619a3a19e1e",
+       "name": "ai.generateText",
+       "kind": 1,
+       "startTimeUnixNano": "1791455992081000000",
+       "endTimeUnixNano": "1791455992083106083",
+       "attributes": [
+        {
+         "key": "operation.name",
+         "value": {
+          "stringValue": "ai.generateText census"
+         }
+        },
+        {
+         "key": "resource.name",
+         "value": {
+          "stringValue": "census"
+         }
+        },
+        {
+         "key": "ai.operationId",
+         "value": {
+          "stringValue": "ai.generateText"
+         }
+        },
+        {
+         "key": "ai.telemetry.functionId",
+         "value": {
+          "stringValue": "census"
+         }
+        },
+        {
+         "key": "ai.model.provider",
+         "value": {
+          "stringValue": "deepseek.chat"
+         }
+        },
+        {
+         "key": "ai.model.id",
+         "value": {
+          "stringValue": "deepseek-reasoner"
+         }
+        },
+        {
+         "key": "ai.settings.maxRetries",
+         "value": {
+          "intValue": 2
+         }
+        },
+        {
+         "key": "ai.request.headers.user-agent",
+         "value": {
+          "stringValue": "ai/6.0.302"
+         }
+        },
+        {
+         "key": "ai.prompt",
+         "value": {
+          "stringValue": "{\"prompt\":\"Hello\"}"
+         }
+        },
+        {
+         "key": "ai.response.finishReason",
+         "value": {
+          "stringValue": "tool-calls"
+         }
+        },
+        {
+         "key": "ai.response.reasoning",
+         "value": {
+          "stringValue": "The user is asking for the weather in San Francisco. I have a weather tool available that can get weather information for a location. I should use this tool with the location parameter set to \"San Francisco\". Let me call the weather function."
+         }
+        },
+        {
+         "key": "ai.response.toolCalls",
+         "value": {
+          "stringValue": "[{\"toolCallId\":\"call_00_9V0vrf86Pc9aelHCJMZqnJBo\",\"toolName\":\"weather\",\"input\":\"{\\\"location\\\": \\\"San Francisco\\\"}\"}]"
+         }
+        },
+        {
+         "key": "ai.response.providerMetadata",
+         "value": {
+          "stringValue": "{\"deepseek\":{\"promptCacheHitTokens\":320,\"promptCacheMissTokens\":19,\"responseObject\":\"chat.completion\",\"choiceIndex\":0,\"messageRole\":\"assistant\",\"toolCallTypes\":[\"function\"],\"systemFingerprint\":\"fp_eaab8d114b_prod0820_fp8_kvcache\"}}"
+         }
+        },
+        {
+         "key": "ai.usage.inputTokens",
+         "value": {
+          "intValue": 339
+         }
+        },
+        {
+         "key": "ai.usage.inputTokenDetails.noCacheTokens",
+         "value": {
+          "intValue": 19
+         }
+        },
+        {
+         "key": "ai.usage.inputTokenDetails.cacheReadTokens",
+         "value": {
+          "intValue": 320
+         }
+        },
+        {
+         "key": "ai.usage.outputTokens",
+         "value": {
+          "intValue": 92
+         }
+        },
+        {
+         "key": "ai.usage.outputTokenDetails.textTokens",
+         "value": {
+          "intValue": 44
+         }
+        },
+        {
+         "key": "ai.usage.outputTokenDetails.reasoningTokens",
+         "value": {
+          "intValue": 48
+         }
+        },
+        {
+         "key": "ai.usage.totalTokens",
+         "value": {
+          "intValue": 431
+         }
+        },
+        {
+         "key": "ai.usage.reasoningTokens",
+         "value": {
+          "intValue": 48
+         }
+        },
+        {
+         "key": "ai.usage.cachedInputTokens",
+         "value": {
+          "intValue": 320
+         }
+        }
+       ],
+       "droppedAttributesCount": 0,
+       "events": [],
+       "droppedEventsCount": 0,
+       "status": {
+        "code": 0
+       },
+       "links": [],
+       "droppedLinksCount": 0,
+       "flags": 257
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
