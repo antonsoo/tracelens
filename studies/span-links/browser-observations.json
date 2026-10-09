@@ -1,0 +1,49 @@
+{
+  "browser": "153.0.8010.12",
+  "observations": [
+    {
+      "theme": "dark",
+      "width": 1440,
+      "height": 1080,
+      "spanLinks": 3,
+      "reportedDropped": 1,
+      "offlineTarget": "enqueue job 2",
+      "overflow": false,
+      "errors": [],
+      "external": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "height": 1080,
+      "spanLinks": 3,
+      "reportedDropped": 1,
+      "offlineTarget": "enqueue job 2",
+      "overflow": false,
+      "errors": [],
+      "external": []
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "height": 812,
+      "spanLinks": 3,
+      "reportedDropped": 1,
+      "offlineTarget": "enqueue job 2",
+      "overflow": false,
+      "errors": [],
+      "external": []
+    },
+    {
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "spanLinks": 3,
+      "reportedDropped": 1,
+      "offlineTarget": "enqueue job 2",
+      "overflow": false,
+      "errors": [],
+      "external": []
+    }
+  ]
+}

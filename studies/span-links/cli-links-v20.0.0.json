@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "format": "tracelens-span-links",
+  "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+  "sourceFormat": "otlp-json",
+  "linkCount": 8,
+  "reportedDroppedLinks": 1,
+  "skippedInvalidLinks": 0,
+  "notes": [
+    "Targets are resolved by trace ID and span ID in this imported file only.",
+    "Missing targets may be unsampled, unexported or omitted; the cause is not inferred.",
+    "Links do not establish elapsed time, waiting time, execution order or additional cost.",
+    "Dropped counts are exporter-reported; inspect warnings for malformed evidence."
+  ],
+  "spans": [
+    {
+      "spanId": "192014ff0743b7ec",
+      "name": "process job 1",
+      "parentSpanId": "f431981e8d2b79a7",
+      "links": [
+        {
+          "traceId": "c5f416d0d99e245f2a39edf60c497642",
+          "spanId": "3f46a1621cc0e1e5",
+          "attributes": {
+            "job.id": 1
+          },
+          "flags": 768,
+          "target": {
+            "status": "available",
+            "name": "enqueue job 1"
+          }
+        }
+      ],
+      "droppedLinksCount": 0,
+      "invalidLinkCount": 0
+    },
+    {
+      "spanId": "19691e9b6cdb2781",
+      "name": "process job 2",
+      "parentSpanId": "f431981e8d2b79a7",
+      "links": [
+        {
+          "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+          "spanId": "f46d91f3cc2f0cd7",
+          "attributes": {
+            "job.id": 2
+          },
+          "flags": 768,
+          "target": {
+            "status": "available",
+            "name": "enqueue job 2"
+          }
+        }
+      ],
+      "droppedLinksCount": 0,
+      "invalidLinkCount": 0
+    },
+    {
+      "spanId": "b98dde33e1e62c47",
+      "name": "process job 3",
+      "parentSpanId": "f431981e8d2b79a7",
+      "links": [
+        {
+          "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+          "spanId": "5c91ee42187877cb",
+          "attributes": {
+            "job.id": 3
+          },
+          "flags": 768,
+          "target": {
+            "status": "available",
+            "name": "enqueue job 3"
+          }
+        }
+      ],
+      "droppedLinksCount": 0,
+      "invalidLinkCount": 0
+    },
+    {
+      "spanId": "28fba810c825d973",
+      "name": "process job 4",
+      "parentSpanId": "f431981e8d2b79a7",
+      "links": [
+        {
+          "traceId": "a791b860430ef252349a0e8f3cb3772e",
+          "spanId": "22fee2e59ed45554",
+          "attributes": {
+            "job.id": 4
+          },
+          "flags": 768,
+          "target": {
+            "status": "missing-trace"
+          }
+        }
+      ],
+      "droppedLinksCount": 0,
+      "invalidLinkCount": 0
+    },
+    {
+      "spanId": "29022b897a941ab1",
+      "name": "commit batch",
+      "parentSpanId": "f431981e8d2b79a7",
+      "links": [
+        {
+          "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+          "spanId": "f431981e8d2b79a7",
+          "attributes": {
+            "relation": "commit"
+          },
+          "flags": 256,
+          "target": {
+            "status": "available",
+            "name": "process invoice batch"
+          }
+        }
+      ],
+      "droppedLinksCount": 0,
+      "invalidLinkCount": 0
+    },
+    {
+      "spanId": "f431981e8d2b79a7",
+      "name": "process invoice batch",
+      "links": [
+        {
+          "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+          "spanId": "f46d91f3cc2f0cd7",
+          "attributes": {
+            "queue.name": "invoices",
+            "delivery.attempt": 1
+          },
+          "flags": 768,
+          "droppedAttributesCount": 1,
+          "target": {
+            "status": "available",
+            "name": "enqueue job 2"
+          }
+        },
+        {
+          "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+          "spanId": "5c91ee42187877cb",
+          "attributes": {
+            "queue.name": "invoices",
+            "delivery.attempt": 1
+          },
+          "flags": 768,
+          "droppedAttributesCount": 1,
+          "target": {
+            "status": "available",
+            "name": "enqueue job 3"
+          }
+        },
+        {
+          "traceId": "a791b860430ef252349a0e8f3cb3772e",
+          "spanId": "22fee2e59ed45554",
+          "attributes": {
+            "queue.name": "invoices",
+            "delivery.attempt": 1
+          },
+          "flags": 768,
+          "droppedAttributesCount": 1,
+          "target": {
+            "status": "missing-trace"
+          }
+        }
+      ],
+      "droppedLinksCount": 1,
+      "invalidLinkCount": 0
+    }
+  ],
+  "warnings": []
+}

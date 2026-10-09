@@ -1,0 +1,37 @@
+
+Span links
+──────────
+Trace 121f07301cebc77af72fcbf7b28e3b3e
+8 recorded links; 1 reported dropped; 0 malformed records skipped.
+
+process job 1 (192014ff0743b7ec)
+  -> c5f416d0d99e245f2a39edf60c497642 / 3f46a1621cc0e1e5: enqueue job 1
+     attributes: {"job.id":1}
+process job 2 (19691e9b6cdb2781)
+  -> da8bd509328d016eb2c5655b4d4eba1e / f46d91f3cc2f0cd7: enqueue job 2
+     attributes: {"job.id":2}
+process job 3 (b98dde33e1e62c47)
+  -> 3e80ed9fd2922ca31205c0f7515173fe / 5c91ee42187877cb: enqueue job 3
+     attributes: {"job.id":3}
+process job 4 (28fba810c825d973)
+  -> a791b860430ef252349a0e8f3cb3772e / 22fee2e59ed45554: Target trace absent from this file
+     attributes: {"job.id":4}
+commit batch (29022b897a941ab1)
+  -> 121f07301cebc77af72fcbf7b28e3b3e / f431981e8d2b79a7: process invoice batch
+     attributes: {"relation":"commit"}
+process invoice batch (f431981e8d2b79a7)
+  1 reported dropped; 0 malformed records skipped
+  -> da8bd509328d016eb2c5655b4d4eba1e / f46d91f3cc2f0cd7: enqueue job 2
+     attributes: {"queue.name":"invoices","delivery.attempt":1}
+     1 link attributes reported dropped
+  -> 3e80ed9fd2922ca31205c0f7515173fe / 5c91ee42187877cb: enqueue job 3
+     attributes: {"queue.name":"invoices","delivery.attempt":1}
+     1 link attributes reported dropped
+  -> a791b860430ef252349a0e8f3cb3772e / 22fee2e59ed45554: Target trace absent from this file
+     attributes: {"queue.name":"invoices","delivery.attempt":1}
+     1 link attributes reported dropped
+
+Targets are resolved by trace ID and span ID in this imported file only.
+Missing targets may be unsampled, unexported or omitted; the cause is not inferred.
+Links do not establish elapsed time, waiting time, execution order or additional cost.
+Dropped counts are exporter-reported; inspect warnings for malformed evidence.

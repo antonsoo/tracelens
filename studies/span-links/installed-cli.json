@@ -1,0 +1,170 @@
+[
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "--help"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "--version"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "summary",
+      "examples/genai-semconv-trace.json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "tree",
+      "examples/jaeger-genai-trace.json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "links",
+      "examples/queue-links.json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "links",
+      "examples/queue-links.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "timing",
+      "examples/timing-parallel.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "cost",
+      "examples/cost-nano-stream.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v26.7.0",
+    "arguments": [
+      "compare",
+      "examples/comparison-baseline.json",
+      "examples/comparison-candidate.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "--help"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "--version"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "summary",
+      "examples/genai-semconv-trace.json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "tree",
+      "examples/jaeger-genai-trace.json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "links",
+      "examples/queue-links.json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": null
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "links",
+      "examples/queue-links.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "timing",
+      "examples/timing-parallel.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "cost",
+      "examples/cost-nano-stream.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  },
+  {
+    "runtime": "v20.0.0",
+    "arguments": [
+      "compare",
+      "examples/comparison-baseline.json",
+      "examples/comparison-candidate.json",
+      "--json"
+    ],
+    "exitCode": 0,
+    "jsonParsed": true
+  }
+]

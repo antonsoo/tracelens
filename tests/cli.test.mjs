@@ -7,6 +7,26 @@ const before = 'examples/comparison-baseline.json';
 const after = 'examples/comparison-candidate.json';
 const run = (...args) =>
   spawnSync(process.execPath, ['dist-cli/cli/index.js', ...args], { cwd: root, encoding: 'utf8' });
+test('links CLI retains SDK evidence and selects linked traces without prose on JSON stdout', () => {
+  const oracle = JSON.parse(readFileSync(new URL('../examples/queue-links.oracle.json', import.meta.url), 'utf8'));
+  const result = run('links', '--json', 'examples/queue-links.json');
+  assert.equal(result.status, 0, result.stderr);
+  const report = JSON.parse(result.stdout);
+  assert.equal(report.format, 'tracelens-span-links');
+  assert.equal(report.linkCount, 8);
+  assert.equal(report.reportedDroppedLinks, 1);
+  assert.equal(report.spans.flatMap((s) => s.links).filter((l) => l.target.status === 'missing-trace').length, 2);
+  assert.match(result.stderr, /4 traces/);
+  const target = oracle.spans.find((s) => s.name === 'enqueue job 2');
+  const selected = run('links', 'examples/queue-links.json', '--trace', target.traceId.slice(0, 8), '--json');
+  assert.equal(selected.status, 0, selected.stderr);
+  assert.equal(JSON.parse(selected.stdout).traceId, target.traceId);
+  assert.equal(JSON.parse(selected.stdout).linkCount, 0);
+  const text = run('links', 'examples/queue-links.json');
+  assert.match(text.stdout, /8 recorded links; 1 reported dropped/);
+  assert.match(text.stdout, /Target trace absent/);
+  assert.equal(run('links', 'examples/queue-links.json', '--prices', 'prices.json').status, 1);
+});
 test('CLI emits a versioned JSON report without prose on stdout', () => {
   const result = run('compare', before, after, '--json');
   assert.equal(result.status, 0, result.stderr);

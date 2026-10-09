@@ -1,0 +1,20 @@
+{
+  "runtime": "v26.7.0",
+  "logicalCpus": 14,
+  "totalMemoryGiB": 47,
+  "inputBytes": 6669248,
+  "spans": 20000,
+  "traces": 100,
+  "suppliedLinks": 40000,
+  "selectedTraceSpans": 200,
+  "selectedTraceLinks": 0,
+  "parseMilliseconds": [
+    38.495,
+    72.022,
+    55.304,
+    63.109,
+    62.681
+  ],
+  "medianMilliseconds": 62.681,
+  "note": "Controlled generated input, two warmups and five timed JSON-decode/import passes; excludes file I/O and browser rendering. Before importer discards links, so work is unequal."
+}

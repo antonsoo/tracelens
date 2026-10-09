@@ -1,0 +1,178 @@
+{
+  "scenario": "Controlled local Queue workload; actual SDK export, no model calls",
+  "sdkVersion": "1.45.1",
+  "sha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+  "completedJobs": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "batch": {
+    "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+    "spanId": "f431981e8d2b79a7"
+  },
+  "spans": [
+    {
+      "traceId": "c5f416d0d99e245f2a39edf60c497642",
+      "spanId": "3f46a1621cc0e1e5",
+      "name": "enqueue job 1",
+      "parentSpanId": null,
+      "droppedLinksCount": 0,
+      "links": []
+    },
+    {
+      "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+      "spanId": "f46d91f3cc2f0cd7",
+      "name": "enqueue job 2",
+      "parentSpanId": null,
+      "droppedLinksCount": 0,
+      "links": []
+    },
+    {
+      "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+      "spanId": "5c91ee42187877cb",
+      "name": "enqueue job 3",
+      "parentSpanId": null,
+      "droppedLinksCount": 0,
+      "links": []
+    },
+    {
+      "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+      "spanId": "192014ff0743b7ec",
+      "name": "process job 1",
+      "parentSpanId": "f431981e8d2b79a7",
+      "droppedLinksCount": 0,
+      "links": [
+        {
+          "traceId": "c5f416d0d99e245f2a39edf60c497642",
+          "spanId": "3f46a1621cc0e1e5",
+          "attributes": {
+            "job.id": 1
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 0,
+          "targetName": "enqueue job 1"
+        }
+      ]
+    },
+    {
+      "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+      "spanId": "19691e9b6cdb2781",
+      "name": "process job 2",
+      "parentSpanId": "f431981e8d2b79a7",
+      "droppedLinksCount": 0,
+      "links": [
+        {
+          "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+          "spanId": "f46d91f3cc2f0cd7",
+          "attributes": {
+            "job.id": 2
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 0,
+          "targetName": "enqueue job 2"
+        }
+      ]
+    },
+    {
+      "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+      "spanId": "b98dde33e1e62c47",
+      "name": "process job 3",
+      "parentSpanId": "f431981e8d2b79a7",
+      "droppedLinksCount": 0,
+      "links": [
+        {
+          "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+          "spanId": "5c91ee42187877cb",
+          "attributes": {
+            "job.id": 3
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 0,
+          "targetName": "enqueue job 3"
+        }
+      ]
+    },
+    {
+      "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+      "spanId": "28fba810c825d973",
+      "name": "process job 4",
+      "parentSpanId": "f431981e8d2b79a7",
+      "droppedLinksCount": 0,
+      "links": [
+        {
+          "traceId": "a791b860430ef252349a0e8f3cb3772e",
+          "spanId": "22fee2e59ed45554",
+          "attributes": {
+            "job.id": 4
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 0,
+          "targetName": null
+        }
+      ]
+    },
+    {
+      "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+      "spanId": "29022b897a941ab1",
+      "name": "commit batch",
+      "parentSpanId": "f431981e8d2b79a7",
+      "droppedLinksCount": 0,
+      "links": [
+        {
+          "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+          "spanId": "f431981e8d2b79a7",
+          "attributes": {
+            "relation": "commit"
+          },
+          "traceState": "",
+          "droppedAttributesCount": 0,
+          "targetName": "process invoice batch"
+        }
+      ]
+    },
+    {
+      "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+      "spanId": "f431981e8d2b79a7",
+      "name": "process invoice batch",
+      "parentSpanId": null,
+      "droppedLinksCount": 1,
+      "links": [
+        {
+          "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+          "spanId": "f46d91f3cc2f0cd7",
+          "attributes": {
+            "queue.name": "invoices",
+            "delivery.attempt": 1
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 1,
+          "targetName": "enqueue job 2"
+        },
+        {
+          "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+          "spanId": "5c91ee42187877cb",
+          "attributes": {
+            "queue.name": "invoices",
+            "delivery.attempt": 1
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 1,
+          "targetName": "enqueue job 3"
+        },
+        {
+          "traceId": "a791b860430ef252349a0e8f3cb3772e",
+          "spanId": "22fee2e59ed45554",
+          "attributes": {
+            "queue.name": "invoices",
+            "delivery.attempt": 1
+          },
+          "traceState": "capture=local",
+          "droppedAttributesCount": 1,
+          "targetName": null
+        }
+      ]
+    }
+  ]
+}

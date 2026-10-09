@@ -1,0 +1,283 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "34dd8295-854a-490c-813d-ad9c8d59e131"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "queue-link-capture"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.controlled-links",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "c5f416d0d99e245f2a39edf60c497642",
+              "spanId": "3f46a1621cc0e1e5",
+              "name": "enqueue job 1",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605411590059",
+              "endTimeUnixNano": "1791541605411625918",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+              "spanId": "f46d91f3cc2f0cd7",
+              "name": "enqueue job 2",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605411662138",
+              "endTimeUnixNano": "1791541605411677738",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+              "spanId": "5c91ee42187877cb",
+              "name": "enqueue job 3",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605411695001",
+              "endTimeUnixNano": "1791541605411703909",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+              "spanId": "192014ff0743b7ec",
+              "parentSpanId": "f431981e8d2b79a7",
+              "name": "process job 1",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605412002753",
+              "endTimeUnixNano": "1791541605412008745",
+              "links": [
+                {
+                  "traceId": "c5f416d0d99e245f2a39edf60c497642",
+                  "spanId": "3f46a1621cc0e1e5",
+                  "attributes": [
+                    {
+                      "key": "job.id",
+                      "value": {
+                        "intValue": "1"
+                      }
+                    }
+                  ],
+                  "flags": 768
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+              "spanId": "19691e9b6cdb2781",
+              "parentSpanId": "f431981e8d2b79a7",
+              "name": "process job 2",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605412034454",
+              "endTimeUnixNano": "1791541605412038272",
+              "links": [
+                {
+                  "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+                  "spanId": "f46d91f3cc2f0cd7",
+                  "attributes": [
+                    {
+                      "key": "job.id",
+                      "value": {
+                        "intValue": "2"
+                      }
+                    }
+                  ],
+                  "flags": 768
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+              "spanId": "b98dde33e1e62c47",
+              "parentSpanId": "f431981e8d2b79a7",
+              "name": "process job 3",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605412070804",
+              "endTimeUnixNano": "1791541605412076495",
+              "links": [
+                {
+                  "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+                  "spanId": "5c91ee42187877cb",
+                  "attributes": [
+                    {
+                      "key": "job.id",
+                      "value": {
+                        "intValue": "3"
+                      }
+                    }
+                  ],
+                  "flags": 768
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+              "spanId": "28fba810c825d973",
+              "parentSpanId": "f431981e8d2b79a7",
+              "name": "process job 4",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605412117985",
+              "endTimeUnixNano": "1791541605412126612",
+              "links": [
+                {
+                  "traceId": "a791b860430ef252349a0e8f3cb3772e",
+                  "spanId": "22fee2e59ed45554",
+                  "attributes": [
+                    {
+                      "key": "job.id",
+                      "value": {
+                        "intValue": "4"
+                      }
+                    }
+                  ],
+                  "flags": 768
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+              "spanId": "29022b897a941ab1",
+              "parentSpanId": "f431981e8d2b79a7",
+              "name": "commit batch",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605412148654",
+              "endTimeUnixNano": "1791541605412151950",
+              "links": [
+                {
+                  "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+                  "spanId": "f431981e8d2b79a7",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "stringValue": "commit"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+              "spanId": "f431981e8d2b79a7",
+              "name": "process invoice batch",
+              "kind": 1,
+              "startTimeUnixNano": "1791541605411972145",
+              "endTimeUnixNano": "1791541605412156429",
+              "links": [
+                {
+                  "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+                  "spanId": "f46d91f3cc2f0cd7",
+                  "attributes": [
+                    {
+                      "key": "queue.name",
+                      "value": {
+                        "stringValue": "invoices"
+                      }
+                    },
+                    {
+                      "key": "delivery.attempt",
+                      "value": {
+                        "intValue": "1"
+                      }
+                    }
+                  ],
+                  "droppedAttributesCount": 1,
+                  "flags": 768
+                },
+                {
+                  "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+                  "spanId": "5c91ee42187877cb",
+                  "attributes": [
+                    {
+                      "key": "queue.name",
+                      "value": {
+                        "stringValue": "invoices"
+                      }
+                    },
+                    {
+                      "key": "delivery.attempt",
+                      "value": {
+                        "intValue": "1"
+                      }
+                    }
+                  ],
+                  "droppedAttributesCount": 1,
+                  "flags": 768
+                },
+                {
+                  "traceId": "a791b860430ef252349a0e8f3cb3772e",
+                  "spanId": "22fee2e59ed45554",
+                  "attributes": [
+                    {
+                      "key": "queue.name",
+                      "value": {
+                        "stringValue": "invoices"
+                      }
+                    },
+                    {
+                      "key": "delivery.attempt",
+                      "value": {
+                        "intValue": "1"
+                      }
+                    }
+                  ],
+                  "droppedAttributesCount": 1,
+                  "flags": 768
+                }
+              ],
+              "droppedLinksCount": 1,
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

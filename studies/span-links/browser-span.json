@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "format": "tracelens-span-evidence",
+  "traceId": "121f07301cebc77af72fcbf7b28e3b3e",
+  "spanId": "f431981e8d2b79a7",
+  "name": "process invoice batch",
+  "kind": "INTERNAL",
+  "startTimeUnixNano": "1791541605411972145",
+  "endTimeUnixNano": "1791541605412156429",
+  "durationNs": "184284",
+  "status": {
+    "code": "UNSET"
+  },
+  "attributes": {},
+  "events": [],
+  "links": [
+    {
+      "traceId": "da8bd509328d016eb2c5655b4d4eba1e",
+      "spanId": "f46d91f3cc2f0cd7",
+      "attributes": {
+        "queue.name": "invoices",
+        "delivery.attempt": 1
+      },
+      "flags": 768,
+      "droppedAttributesCount": 1,
+      "target": {
+        "status": "available",
+        "name": "enqueue job 2"
+      }
+    },
+    {
+      "traceId": "3e80ed9fd2922ca31205c0f7515173fe",
+      "spanId": "5c91ee42187877cb",
+      "attributes": {
+        "queue.name": "invoices",
+        "delivery.attempt": 1
+      },
+      "flags": 768,
+      "droppedAttributesCount": 1,
+      "target": {
+        "status": "available",
+        "name": "enqueue job 3"
+      }
+    },
+    {
+      "traceId": "a791b860430ef252349a0e8f3cb3772e",
+      "spanId": "22fee2e59ed45554",
+      "attributes": {
+        "queue.name": "invoices",
+        "delivery.attempt": 1
+      },
+      "flags": 768,
+      "droppedAttributesCount": 1,
+      "target": {
+        "status": "missing-trace"
+      }
+    }
+  ],
+  "droppedLinksCount": 1,
+  "resourceAttributes": {
+    "telemetry.sdk.language": "python",
+    "telemetry.sdk.name": "opentelemetry",
+    "telemetry.sdk.version": "1.45.1",
+    "service.instance.id": "34dd8295-854a-490c-813d-ad9c8d59e131",
+    "service.name": "queue-link-capture"
+  },
+  "scopeName": "tracelens.controlled-links",
+  "scopeVersion": "1",
+  "agentKind": "other",
+  "convention": "none",
+  "depth": 0,
+  "children": [
+    "192014ff0743b7ec",
+    "19691e9b6cdb2781",
+    "b98dde33e1e62c47",
+    "28fba810c825d973",
+    "29022b897a941ab1"
+  ]
+}
