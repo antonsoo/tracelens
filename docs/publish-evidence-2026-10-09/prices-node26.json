@@ -1,0 +1,8 @@
+{
+  "runtime": "v26.7.0",
+  "cases": 20,
+  "mismatches": 0,
+  "rowsEqualRetainedAfterReport": true,
+  "rowsSha256": "e71b6e5d49ed5307134ebebbf6451a9f139b498ac64c4a510853226c5596a59f",
+  "rows": "../../studies/default-prices/after.json"
+}

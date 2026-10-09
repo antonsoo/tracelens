@@ -1,0 +1,19 @@
+{
+  "runtime": "v26.7.0",
+  "captureSha256": "35a71a1800ac6fa8c5dc69c2affcf5b1963e96fa3c88dfbc2f52f75ce8ccd756",
+  "sdk": {
+    "spans": 9,
+    "expectedLinks": 8,
+    "observedLinks": 8,
+    "mismatchedSpans": [],
+    "upstreamTraceStateOmissions": 7
+  },
+  "controls": {
+    "cases": 600,
+    "identityFailures": 0,
+    "metadataFailures": 0,
+    "timingChanges": 0,
+    "jaegerFalseParents": 0,
+    "jaegerReferenceLoss": 0
+  }
+}

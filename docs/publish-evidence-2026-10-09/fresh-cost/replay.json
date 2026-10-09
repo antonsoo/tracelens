@@ -1,0 +1,67 @@
+{
+  "source": "https://github.com/vercel/ai/blob/5028fa46b4b4e695bf0d80e968db43268e9ec5ef/packages/openai/src/responses/__fixtures__/openai-code-interpreter-tool.1.chunks.txt",
+  "fixtureSha256": "2907e69401c95a1c32bf495032c0bb4916a41b80d4a8cd49cbf97b2570633d84",
+  "traceSha256": "951b3e2a3711b1a62446abaa5ad26a1654efdd54c51c5621df69e55714ee26f4",
+  "dependencies": {
+    "@ai-sdk/openai": "3.0.124",
+    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/context-async-hooks": "2.12.0",
+    "@opentelemetry/otlp-transformer": "0.223.0",
+    "@opentelemetry/sdk-trace-base": "2.12.0",
+    "ai": "6.0.302"
+  },
+  "node": "v26.7.0",
+  "loopbackRequests": 1,
+  "providerRequests": 0,
+  "sourceResponse": {
+    "model": "gpt-5-nano-2025-08-07",
+    "usage": {
+      "input_tokens": 6047,
+      "input_tokens_details": {
+        "cached_tokens": 2944
+      },
+      "output_tokens": 1623,
+      "output_tokens_details": {
+        "reasoning_tokens": 1408
+      },
+      "total_tokens": 7670
+    }
+  },
+  "sdkUsage": {
+    "inputTokens": 6047,
+    "inputTokenDetails": {
+      "noCacheTokens": 3103,
+      "cacheReadTokens": 2944
+    },
+    "outputTokens": 1623,
+    "outputTokenDetails": {
+      "textTokens": 215,
+      "reasoningTokens": 1408
+    },
+    "totalTokens": 7670,
+    "reasoningTokens": 1408,
+    "cachedInputTokens": 2944,
+    "raw": {
+      "input_tokens": 6047,
+      "input_tokens_details": {
+        "cached_tokens": 2944
+      },
+      "output_tokens": 1623,
+      "output_tokens_details": {
+        "reasoning_tokens": 1408
+      },
+      "total_tokens": 7670
+    }
+  },
+  "spans": [
+    {
+      "name": "ai.streamText.doStream",
+      "spanId": "918e0ad349dd71ea"
+    },
+    {
+      "name": "ai.streamText",
+      "spanId": "a84502016add3eca"
+    }
+  ],
+  "scope": "Replayed provider response through the real SDK. Timestamps measure local replay, not model latency. Token charges exclude the recorded code-interpreter tool fees."
+}

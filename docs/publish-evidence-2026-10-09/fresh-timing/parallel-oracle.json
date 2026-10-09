@@ -1,0 +1,17 @@
+{
+  "captureSha256": "e4f0923096e08b4809620d66a1964afbbf3abef580637ca9ce27e0b0f0da6c71",
+  "spans": 7,
+  "rawIntervals": 13,
+  "elapsedNs": "251131577",
+  "summedSelfNs": "489863286",
+  "overlapExcessNs": "238731709",
+  "peakConcurrency": 3,
+  "bucketsNs": {
+    "llm": "0",
+    "tool": "61230655",
+    "other": "60638166",
+    "overlap": "129262756",
+    "uncovered": "0"
+  },
+  "result": "matched"
+}

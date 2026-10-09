@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "format": "tracelens-timing",
+  "traceId": "ee7e39b32e68649f9d67e44fa724e3af",
+  "startTimeUnixNano": "1791583577017258462",
+  "endTimeUnixNano": "1791583577483114900",
+  "elapsedNs": "465856438",
+  "bucketsNs": {
+    "llm": "0",
+    "tool": "405161054",
+    "other": "60695384",
+    "overlap": "0",
+    "uncovered": "0"
+  },
+  "summedSelfNs": "465856438",
+  "overlapExcessNs": "0",
+  "peakConcurrency": 1,
+  "spanRefsPerInterval": 8,
+  "intervals": [
+    {
+      "offsetNs": "0",
+      "durationNs": "20410",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "a519da18b122ce41"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "20410",
+      "durationNs": "25129337",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "93f7fb384bb5cd4a"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "25149747",
+      "durationNs": "60407",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "a519da18b122ce41"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "25210154",
+      "durationNs": "30298",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "6408b6d2b649fd92"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "25240452",
+      "durationNs": "121809597",
+      "bucket": "tool",
+      "activeCount": 1,
+      "spanIds": [
+        "3ef7124b4b8da4c3"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "147050049",
+      "durationNs": "88309",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "6408b6d2b649fd92"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "147138358",
+      "durationNs": "181651465",
+      "bucket": "tool",
+      "activeCount": 1,
+      "spanIds": [
+        "f12dbbf4b64758ec"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "328789823",
+      "durationNs": "90113",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "6408b6d2b649fd92"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "328879936",
+      "durationNs": "101699992",
+      "bucket": "tool",
+      "activeCount": 1,
+      "spanIds": [
+        "e2eded5fcd72b25a"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "430579928",
+      "durationNs": "29787",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "6408b6d2b649fd92"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "430609715",
+      "durationNs": "51579",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "a519da18b122ce41"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "430661294",
+      "durationNs": "35149536",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "aa32d61b48f6ead1"
+      ],
+      "omittedSpanCount": 0
+    },
+    {
+      "offsetNs": "465810830",
+      "durationNs": "45608",
+      "bucket": "other",
+      "activeCount": 1,
+      "spanIds": [
+        "a519da18b122ce41"
+      ],
+      "omittedSpanCount": 0
+    }
+  ],
+  "warnings": []
+}

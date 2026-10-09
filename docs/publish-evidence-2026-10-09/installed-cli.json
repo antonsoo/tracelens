@@ -1,0 +1,171 @@
+{
+  "packageSha256": "a6f7f99efcef3a4e6989a6ff5d89a18737b820cc29a7617c4432702481ab85d2",
+  "commands": [
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 1340,
+      "stdoutSha256": "67cc6481c0a1e271e179314b2bf4bbdfbd8c3a434fe71ceaa294e0681dac55df"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 16,
+      "stdoutSha256": "ac6b1757554b92eed012441d802ac5bf29a2dbe9284e67732c525ccd2e799d68"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "summary",
+        "$SCRATCH/fresh-links/queue-links.json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 2018,
+      "stdoutSha256": "a974d3e57e3fae997366e77c73feab76d861ef835c603b2a87df828b8c521222"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "tree",
+        "$SCRATCH/fresh-links/queue-links.json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 524,
+      "stdoutSha256": "c05f918684b0638496622b0937bb1afb26401b7f9788cd43a78f60ce32047c1c"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "links",
+        "$SCRATCH/fresh-links/queue-links.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 4506,
+      "stdoutSha256": "f7234b5da9ad52a1c7a0eab0c9e743ccfdeeb43c83cfe8fd8676191d196b1cb6"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "timing",
+        "$SCRATCH/fresh-timing/timing-parallel.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 3298,
+      "stdoutSha256": "62c38742fc6a6d44cf191e62b5a4f63fab7cc4c8561b9fc0cb9753187096b606"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "cost",
+        "$SCRATCH/fresh-cost/trace.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 12367,
+      "stdoutSha256": "054545d32ec139213f1bfff119db944af6a2a7915e312e412e5e168f1f1df9d4"
+    },
+    {
+      "runtime": "v26.7.0",
+      "arguments": [
+        "compare",
+        "$SCRATCH/fresh-timing/timing-parallel.json",
+        "$SCRATCH/fresh-timing/timing-sequential.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 53925,
+      "stdoutSha256": "3d90a7ee8d8f5ce619dc42fa75cc77ed0d3dd913f37044a9a0884f7ec1618582"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 1340,
+      "stdoutSha256": "67cc6481c0a1e271e179314b2bf4bbdfbd8c3a434fe71ceaa294e0681dac55df"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 16,
+      "stdoutSha256": "ac6b1757554b92eed012441d802ac5bf29a2dbe9284e67732c525ccd2e799d68"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "summary",
+        "$SCRATCH/fresh-links/queue-links.json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 2018,
+      "stdoutSha256": "a974d3e57e3fae997366e77c73feab76d861ef835c603b2a87df828b8c521222"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "tree",
+        "$SCRATCH/fresh-links/queue-links.json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 524,
+      "stdoutSha256": "c05f918684b0638496622b0937bb1afb26401b7f9788cd43a78f60ce32047c1c"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "links",
+        "$SCRATCH/fresh-links/queue-links.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 4506,
+      "stdoutSha256": "f7234b5da9ad52a1c7a0eab0c9e743ccfdeeb43c83cfe8fd8676191d196b1cb6"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "timing",
+        "$SCRATCH/fresh-timing/timing-parallel.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 3298,
+      "stdoutSha256": "62c38742fc6a6d44cf191e62b5a4f63fab7cc4c8561b9fc0cb9753187096b606"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "cost",
+        "$SCRATCH/fresh-cost/trace.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 12367,
+      "stdoutSha256": "054545d32ec139213f1bfff119db944af6a2a7915e312e412e5e168f1f1df9d4"
+    },
+    {
+      "runtime": "v20.0.0",
+      "arguments": [
+        "compare",
+        "$SCRATCH/fresh-timing/timing-parallel.json",
+        "$SCRATCH/fresh-timing/timing-sequential.json",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 53925,
+      "stdoutSha256": "3d90a7ee8d8f5ce619dc42fa75cc77ed0d3dd913f37044a9a0884f7ec1618582"
+    }
+  ]
+}

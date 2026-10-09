@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "format": "tracelens-cost-evidence",
+  "traceId": "ba0e31b01ca2c69cfd808535550c4fe7",
+  "priceTable": [
+    {
+      "id": "claude-fable-5-1",
+      "matchModel": "claude-fable-5-1",
+      "provider": "anthropic",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 0.25,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-fable-5",
+      "matchModel": "claude-fable-5",
+      "provider": "anthropic",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 1,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-5-5",
+      "matchModel": "claude-opus-5-5",
+      "provider": "anthropic",
+      "inputPerMTok": 4,
+      "outputPerMTok": 20,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-5",
+      "matchModel": "claude-opus-5",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "matchModel": "claude-opus-4-8",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-4-7",
+      "matchModel": "claude-opus-4-7",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "matchModel": "claude-opus-4-6",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "matchModel": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "matchModel": "claude-sonnet-5",
+      "provider": "anthropic",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "matchModel": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "inputPerMTok": 3,
+      "outputPerMTok": 15,
+      "cacheReadPerMTok": 0.3,
+      "cacheWritePerMTok": 3.75,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "matchModel": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "inputPerMTok": 1,
+      "outputPerMTok": 5,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 1.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6-astra",
+      "matchModel": "gpt-6-astra",
+      "provider": "openai",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 1,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "matchModel": "gpt-6.1-sol",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6-sol",
+      "matchModel": "gpt-6-sol",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6-luna",
+      "matchModel": "gpt-6-luna",
+      "provider": "openai",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.5,
+      "cacheReadPerMTok": 0.01,
+      "cacheWritePerMTok": 0.125,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-5",
+      "matchModel": "gpt-5",
+      "provider": "openai",
+      "inputPerMTok": 1.25,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.125,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-5-mini",
+      "matchModel": "gpt-5-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.25,
+      "outputPerMTok": 2,
+      "cacheReadPerMTok": 0.025,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-5-nano",
+      "matchModel": "gpt-5-nano",
+      "provider": "openai",
+      "inputPerMTok": 0.05,
+      "outputPerMTok": 0.4,
+      "cacheReadPerMTok": 0.005,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "matchModel": "gpt-4o-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.15,
+      "outputPerMTok": 0.6,
+      "cacheReadPerMTok": 0.075,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4o",
+      "matchModel": "gpt-4o",
+      "provider": "openai",
+      "inputPerMTok": 2.5,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 1.25,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1-nano",
+      "matchModel": "gpt-4.1-nano",
+      "provider": "openai",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.4,
+      "cacheReadPerMTok": 0.025,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1-mini",
+      "matchModel": "gpt-4.1-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.4,
+      "outputPerMTok": 1.6,
+      "cacheReadPerMTok": 0.1,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1",
+      "matchModel": "gpt-4.1",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 8,
+      "cacheReadPerMTok": 0.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "o4-mini",
+      "matchModel": "o4-mini",
+      "provider": "openai",
+      "inputPerMTok": 1.1,
+      "outputPerMTok": 4.4,
+      "cacheReadPerMTok": 0.275,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "o3",
+      "matchModel": "o3",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 8,
+      "cacheReadPerMTok": 0.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    }
+  ],
+  "pricedCalls": 1,
+  "unpricedCalls": 0,
+  "excludedSpans": 1,
+  "knownCostUsd": 0.0008190700000000001,
+  "estimatedCostUsd": 0.0008190700000000001,
+  "rows": [
+    {
+      "spanId": "918e0ad349dd71ea",
+      "name": "ai.streamText.doStream",
+      "kind": "llm",
+      "model": "gpt-5-nano-2025-08-07",
+      "provider": "openai.responses",
+      "requestModel": "gpt-5-nano-2025-08-07",
+      "responseModel": "gpt-5-nano-2025-08-07",
+      "usage": {
+        "inputTokens": 6047,
+        "outputTokens": 1623,
+        "cacheReadTokens": 2944,
+        "reasoningOutputTokens": 1408
+      },
+      "usageAttributes": {
+        "ai.usage.inputTokens": 6047,
+        "ai.usage.inputTokenDetails.noCacheTokens": 3103,
+        "ai.usage.inputTokenDetails.cacheReadTokens": 2944,
+        "ai.usage.outputTokens": 1623,
+        "ai.usage.outputTokenDetails.textTokens": 215,
+        "ai.usage.outputTokenDetails.reasoningTokens": 1408,
+        "ai.usage.totalTokens": 7670,
+        "ai.usage.reasoningTokens": 1408,
+        "ai.usage.cachedInputTokens": 2944,
+        "gen_ai.usage.input_tokens": 6047,
+        "gen_ai.usage.output_tokens": 1623
+      },
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0008190700000000001,
+        "matchedModel": "gpt-5-nano",
+        "entry": {
+          "id": "gpt-5-nano",
+          "matchModel": "gpt-5-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.05,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.005,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+          "sourceDate": "2026-10-09"
+        },
+        "match": "snapshot",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 3103,
+            "perMillionUsd": 0.05,
+            "costUsd": 0.00015515,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 2944,
+            "perMillionUsd": 0.005,
+            "costUsd": 0.00001472,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 0.05,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 1623,
+            "perMillionUsd": 0.4,
+            "costUsd": 0.0006492000000000001,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": [
+          "The dated snapshot uses its base model rate; historical prices may differ.",
+          "No cache-write count recorded; assuming zero cache writes."
+        ]
+      }
+    },
+    {
+      "spanId": "a84502016add3eca",
+      "name": "ai.streamText",
+      "kind": "chain",
+      "model": "gpt-5-nano-2025-08-07",
+      "provider": "openai.responses",
+      "requestModel": "gpt-5-nano-2025-08-07",
+      "responseModel": null,
+      "usage": {
+        "inputTokens": 6047,
+        "outputTokens": 1623,
+        "cacheReadTokens": 2944,
+        "reasoningOutputTokens": 1408
+      },
+      "usageAttributes": {
+        "ai.usage.inputTokens": 6047,
+        "ai.usage.inputTokenDetails.noCacheTokens": 3103,
+        "ai.usage.inputTokenDetails.cacheReadTokens": 2944,
+        "ai.usage.outputTokens": 1623,
+        "ai.usage.outputTokenDetails.textTokens": 215,
+        "ai.usage.outputTokenDetails.reasoningTokens": 1408,
+        "ai.usage.totalTokens": 7670,
+        "ai.usage.reasoningTokens": 1408,
+        "ai.usage.cachedInputTokens": 2944
+      },
+      "result": {
+        "status": "excluded",
+        "reason": "not-model-call",
+        "message": "Not classified as a model call. Wrapper usage can repeat child-call totals and is not added to the token estimate."
+      }
+    }
+  ],
+  "notes": [
+    "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+    "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+    "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+    "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+    "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+    "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+  ],
+  "warnings": []
+}

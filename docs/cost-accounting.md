@@ -114,7 +114,11 @@ does not recover historical pricing. Use an exact entry to override it.
 Open **Prices**, edit and **Save**, then reopen it and choose **Export saved
 prices**. The download reflects saved settings, not unsaved form edits.
 Editing an entry removes the original vendor citation and records the edit
-date. Resetting to defaults restores the bundled price snapshot.
+date. Saved tables keep their rates across application updates. Resetting to
+defaults and saving explicitly adopts the bundled price snapshot. The
+[2026-10-09 default-price review](../studies/default-prices/README.md) corrects
+Sonnet 5.5 cache reads, supplies GPT-6 cache-write rates and adds GPT-6.1 Sol
+as a separate model. Its controlled calculations and dated sources are retained.
 
 ```bash
 # prices.json is the saved browser export, moved to this directory.

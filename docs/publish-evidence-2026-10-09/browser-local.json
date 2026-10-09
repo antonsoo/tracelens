@@ -1,0 +1,269 @@
+{
+  "url": "http://127.0.0.1:4342/tracelens/",
+  "observations": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "dark",
+      "width": 1440,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "dark",
+      "width": 375,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "light",
+      "width": 1440,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "light",
+      "width": 375,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "theme": "dark",
+      "width": 1440,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "theme": "dark",
+      "width": 375,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "theme": "light",
+      "width": 1440,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "theme": "light",
+      "width": 375,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": []
+    }
+  ]
+}
