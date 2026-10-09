@@ -91,7 +91,8 @@ export, so every check above applies. The mapping:
 | Jaeger | OTLP |
 |---|---|
 | `startTime`, `startTime + duration` (µs) | `startTimeUnixNano`, `endTimeUnixNano` (× 1000) |
-| `references`: the `CHILD_OF` span, else the `FOLLOWS_FROM` one | `parentSpanId` |
+| `references`: the first `CHILD_OF`, else the first `FOLLOWS_FROM`, when its trace ID matches | `parentSpanId` |
+| All `references`, including the preferred parent | `links`, with `opentracing.ref_type` |
 | tag `span.kind` (`client`, `server`, `producer`, `consumer`, `internal`) | `kind` |
 | tag `otel.status_code`, or `error: true`; `otel.status_description` | `status` |
 | tags `otel.scope.name` / `otel.scope.version` (older: `otel.library.*`) | the instrumentation scope |
@@ -286,6 +287,8 @@ establish the temporal order needed for that retry inference.
 
 Each import or trace switch owns a dedicated worker. Cancellation,
 replacement, timeout or navigation away from the run terminates it.
+The production app embeds its parser and starts blob workers, so switching
+among already-loaded traces does not need another script download.
 File bytes and downloaded samples are limited to 25 MiB; streamed sample
 responses are counted after HTTP decompression. Parsing and normalization
 run off the UI thread. The worker returns span-child indices instead of a
@@ -293,6 +296,11 @@ recursive tree, so deep ancestry survives structured cloning. The UI
 reconnects those indices without changing span order, identity or timestamps.
 Summaries, comparisons, graph reconnection and download serialization still
 run on the UI thread; this is not a streaming parser.
+
+OTLP links and Jaeger references retain full target identities, attributes,
+recorded metadata and omission counts. Targets resolve within the imported
+file, including other traces. [Link semantics, resolution and export
+details](span-links.md) explain what missing or ambiguous targets mean.
 
 Detail pages show 50 attributes/resource attributes or warnings at a time,
 and 20 messages, parts per message or events. Values have bounded previews;

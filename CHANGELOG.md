@@ -4,6 +4,22 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Following recorded span links
+
+- Preserve OTLP link identities, attributes, trace state, flags and exporter
+  omission counts. Retain all Jaeger references and prevent a reference to
+  another trace from attaching to an unrelated local span with the same ID.
+- Add `tracelens links`, a browser Links tab, source-span list and complete
+  JSON reports. Resolve targets by both IDs across the imported file; show
+  absent and ambiguous targets explicitly. Linked inspection preserves both
+  comparison runs and offers a return to the source span.
+- Bundle the cancellable parser worker so local imports and cross-trace
+  navigation work offline after page load. Allow span details to scroll with
+  the page on narrow screens instead of confining them to a 320px pane.
+- Include a controlled SDK queue capture, SDK-object oracle, 600 identity
+  controls and before/after evidence. Document the encoder's missing
+  trace-state values rather than inventing them during import.
+
 ### Inspectable token charges
 
 - Fix model pricing that treated unlisted variants as their base model.

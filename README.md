@@ -36,6 +36,14 @@ cached input, output, rate sources and assumptions; export the same receipt
 from the browser or `tracelens cost`. [Try the recorded SDK replay](docs/cost-accounting.md).
 This change is also unreleased.
 
+**Follow queued work across traces** in the checkout's new SDK queue example.
+Inspect recorded span links, follow targets present in the file, and retain
+missing targets and exporter omission counts in JSON reports. This also fixes
+Jaeger references attaching to unrelated local spans that reuse a span ID.
+The browser and `tracelens links` share the same evidence; linked inspection
+keeps comparison runs intact. [Walkthrough and limits](docs/span-links.md).
+These additions are local and unreleased.
+
 ![Recorded SDK call with its token calculation and rate source](docs/assets/cost-receipt-desktop.png)
 
 ![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
@@ -176,10 +184,11 @@ on npm; the command it installs is `tracelens`).
   operations, per-side span inspection, and JSON export with pricing inputs.
   Missing measurements remain unknown; an unpriced call cannot become a
   claim of cost savings.
-- Light and dark themes, zero telemetry. Loaded traces remain inspectable
-  and exportable offline. Starting another import or switching traces
-  needs the parser script available from the host or browser cache;
-  offline reload is not guaranteed. The page's
+- Light and dark themes, zero telemetry. After the app loads, local file
+  imports, loaded trace switching and evidence downloads work offline.
+  The parser is bundled with the app and runs in cancellable blob workers.
+  New sample downloads and a whole-page reload need the host or browser cache.
+  The page's
   Content-Security-Policy restricts page scripts and connections to this
   origin. The parser only fetches bundled sample URLs; imported trace
   content is decoded locally and never sent to a service.
