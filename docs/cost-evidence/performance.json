@@ -1,0 +1,13 @@
+{
+  "scope": "One local synthetic scale observation, not a latency guarantee or a provider benchmark.",
+  "node": "v26.7.0",
+  "platform": "linux x64",
+  "cpu": "AMD Ryzen 7 7800X3D 8-Core Processor",
+  "spans": 10000,
+  "inputBytes": 15269285,
+  "exportBytes": 15805324,
+  "parseMs": 196.669,
+  "costReportMs": 75.085,
+  "jsonExportMs": 31.079,
+  "knownTokenCostUsd": 8.1907000000016
+}

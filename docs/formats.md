@@ -199,19 +199,26 @@ Without an explicit kind/operation, GenAI model or usage attributes are
 treated as evidence of an LLM call; a tool name takes precedence. This is
 a legacy-export heuristic, so producers should still supply operation names.
 
-`src/core/pricing.ts` ships a **default price table**: every entry is either
-a price this project's author verified against the vendor's own pricing
-page via WebFetch (cited with URL + check date in the table itself), or it
-is absent — tracelens never fabricates a number. The table is fully
-editable at runtime (web UI → **Prices**) and persists to that browser's
-`localStorage` only; nothing is sent anywhere. Matching is a
-longest-substring, case-insensitive match against the response model
-(falling back to the request model), so e.g. an entry for `gpt-4o-mini`
-correctly outranks a broader `gpt-4o` entry — see `findPriceEntry()` in
-`src/core/cost.ts` and its tests.
+`src/core/pricing.ts` ships a **default price snapshot**, with source URLs
+and check dates. The **Prices** dialog edits the browser's local table and
+exports it; CLI `--prices` replaces the default table for that invocation.
+Matching is case-insensitive against the whole response model (the request
+model is used only if the response model is absent). `matchMode: "snapshot"`
+is the default and also permits a valid `-YYYY-MM-DD` or `-YYYYMMDD` suffix;
+`"exact"` disables that alias. An explicit snapshot entry wins over a base
+entry. Variants, fine-tuning IDs and deployment names need their own entries.
 
-Both input and output counts must be safe, nonnegative integers to price
-a call. Cached reads and writes are included in total input under the
+Recorded providers must match, except for the documented endpoint aliases
+and an explicitly blank provider in a rate row. Missing providers produce
+a disclosed reference-rate assumption. Provider-specific entries beat
+blank-provider entries at the same model specificity; equally specific
+entries remain ambiguous. See the [matching table](cost-accounting.md#matching-rules)
+and `findPriceEntry()` in `src/core/cost.ts`.
+
+LLM input and output counts must be safe, nonnegative integers to price
+a call. Embeddings may omit output usage because they produce vectors,
+but require an explicit zero output rate. Invalid supplied output is not
+replaced by zero. Rerankers stay unpriced. Cached reads and writes are included in total input under the
 [GenAI span conventions](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md#inference)
 (rechecked 2026-09-27). Fresh input is total input minus both cache counts;
 each component uses its own rate, with absent cache rates falling back to
@@ -219,7 +226,10 @@ the input rate. Contradictory cache totals, invalid counts and incomplete
 usage leave cost unknown. This is a token-based estimate, not an invoice;
 multimodal tariffs, discounts and provider-specific billing rules are not
 modeled. Providers that report fresh input separately must normalize it
-to total input before export.
+to total input before export. Each receipt shows its rate, token components,
+source attributes and assumptions. Non-call wrappers with usage are listed
+as excluded; they do not add a second charge. Separate model-call spans
+from multiple instrumentation layers are not automatically deduplicated.
 
 Price rules require a nonempty model match and finite, nonnegative rates.
 Zero rates are allowed explicitly. Invalid saved tables fall back to the

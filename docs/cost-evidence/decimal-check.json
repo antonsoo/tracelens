@@ -1,0 +1,21 @@
+{
+  "arithmetic": "Python decimal.Decimal; source response counts, not normalized span counts",
+  "rates_source": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+  "rates_checked_utc": "2026-10-09",
+  "usd_per_million": {
+    "input": "0.05",
+    "cache_read": "0.005",
+    "output": "0.40"
+  },
+  "components_usd": {
+    "fresh_input": "0.00015515",
+    "cache_read": "0.00001472",
+    "output": "0.0006492"
+  },
+  "expected_token_cost_usd": "0.00081907",
+  "cli_token_cost_usd": "0.0008190700000000001",
+  "before_token_cost_usd": "0.020476750000000002",
+  "before_overestimate_factor_rounded": "25",
+  "result": "matched",
+  "scope": "Token charges only; code-interpreter fees are excluded."
+}

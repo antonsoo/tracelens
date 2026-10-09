@@ -1,13 +1,22 @@
 # What real instrumentation libraries write, and what tracelens made of it
 
+**Correction, 2026-10-09 UTC:** the cost columns below are historical
+arithmetic agreement, **not independent price validation**. The scorer used
+the same unsafe substring matching as TraceLens. Both could price a nano
+call as its base model and agree on a wrong charge. The stored results and
+legacy scorer are retained to explain the original study; their cost counts
+must not be cited as current accuracy. [A separately reproduced 25x error,
+its fix, and a raw-response decimal check](../../docs/cost-accounting.md)
+document the correction. The full census has not been rerun for that fix.
+
 tracelens reads OpenTelemetry traces of LLM calls and shows the model, the
 tokens, the tool calls and the cost. Its example traces were made with the
 OpenTelemetry SDK and attributes set by hand to follow the GenAI semantic
 conventions. The libraries people actually install do not all follow them, and
 tracelens had never been given their output.
 
-This study gives it that output and checks every figure it shows against what
-the provider's API returned. No model is called and no API key is used. Each
+This study gives it that output and checks extracted model, token and tool
+fields against what the provider's API returned. No model is called and no API key is used. Each
 library is run over the recorded HTTP responses its own test suite replays, and
 the spans it exports are captured; the recorded response is the yardstick.
 
@@ -25,8 +34,8 @@ the spans it exports are captured; the recorded response is the yardstick.
   without thinking tokens, Cohere's billed units).
 - **What it missed was everything newer than the basics.** Cache-read tokens:
   49 of 86 calls shown, now 85. Reasoning tokens: 21 of 280, now 193 (86 are
-  not in the span at all). Tool calls: 171 of 291, now 250. Cost: 516 of 554
-  right, now 544.
+  not in the span at all). Tool calls: 171 of 291, now 250. Legacy cost
+  arithmetic agreed in 516 of 554 calls, then 544; see the correction above.
 - **One dialect was nearly invisible.** The Vercel AI SDK writes `ai.*`
   attributes, in version 6 and in version 7's legacy mode. From those spans
   0.3.3 showed no cache-read tokens, no reasoning tokens and no tool calls, in
@@ -75,8 +84,12 @@ tracelens and records what it would show. `score.py` compares, per field:
 - **not in the span**: the library did not record it;
 - **missed**: the span holds it and tracelens does not show it.
 
-Cost is right when tracelens prices the call with the tokens and model the
-provider reported.
+The legacy `cost` verdict compares arithmetic using provider token counts
+and the application's price table. `score.py::expected_cost` duplicates the
+old substring matcher and ignores providers. Its `or` fallback also replaces
+an explicit zero cache rate with the input rate. This is a frozen historical
+metric with known defects, not a check of correct product identification or
+vendor prices. Do not use it to score the new matching rules.
 
 ## Results
 
@@ -92,12 +105,12 @@ reported the fact.
 | Cache-read tokens | 86 | 49 | 85 | 1 not in the span |
 | Reasoning tokens | 280 | 21 | 193 | 86 not in the span, 1 missed |
 | Tool calls | 291 | 171 | 250 | 37 not in the span, 2 differ, 2 missed |
-| Cost | 554 | 516 | 544 | 9 where the span lacks what pricing needs, 1 differs |
+| Legacy cost agreement (not price accuracy) | 554 | 516 | 544 | 9 where the span lacks what pricing needs, 1 differs |
 
 By emitter. A cell is right over reported; `a -> b` is 0.3.3 then this
 checkout; "none" means no recorded response reported that fact.
 
-| Emitter | Calls | Model | Input tokens | Output tokens | Cache-read | Reasoning | Tool calls | Cost |
+| Emitter | Calls | Model | Input tokens | Output tokens | Cache-read | Reasoning | Tool calls | Legacy cost agreement |
 |---|---:|---|---|---|---|---|---|---|
 | OpenTelemetry openai-v2 (contrib `fba0b77`) | 124 | 115/115 | 107/111 | 83/87 | none | 0/1 | 5/17 | 79/83 |
 | OpenTelemetry vertexai | 50 | 38/38 | 38/38 | 0/38 | none | 0/38 | 2/8 | none |
@@ -167,6 +180,8 @@ them.
   response, the span was not inspected call by call.
 - **Rendering.** What tracelens "shows" is what its normalised model holds, as
   the CLI reads it; the browser view was not exercised.
+- **Price accuracy.** The historical cost metric repeats the old matching
+  rule. Its agreement counts do not validate the model rate or an invoice.
 
 ## Reproduce
 

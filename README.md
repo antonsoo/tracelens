@@ -29,6 +29,15 @@ inspect overlaps, gaps and the original spans in each interval. The new
 actual loopback HTTP requests. [Timing walkthrough](docs/timing.md).
 This feature is unreleased; the published 0.3.3 package does not include it.
 
+The checkout also makes **token costs inspectable**. A recorded nano stream
+was priced as `gpt-5`, overstating its token charge by 25x. Whole model names
+and providers now determine the rate. Open a call to inspect fresh input,
+cached input, output, rate sources and assumptions; export the same receipt
+from the browser or `tracelens cost`. [Try the recorded SDK replay](docs/cost-accounting.md).
+This change is also unreleased.
+
+![Recorded SDK call with its token calculation and rate source](docs/assets/cost-receipt-desktop.png)
+
 ![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
 
 ![tracelens waterfall, dark mode, with a message thread expanded](docs/assets/hero-dark.png)
@@ -40,7 +49,7 @@ people install do not all follow them. [A census in this
 repository](studies/instrumentation-census/README.md) ran 21 of them (the
 OpenTelemetry, OpenLLMetry and OpenInference instrumentations, Pydantic AI,
 the Vercel AI SDK) over the recorded provider responses their own test suites
-replay, and checked every figure tracelens shows against the recorded response:
+replay, and compared extracted model, usage and tool fields with the recorded response:
 1,442 model calls, no model called.
 
 - The released 0.3.3 already showed the provider's model and token counts
@@ -53,6 +62,10 @@ replay, and checked every figure tracelens shows against the recorded response:
   of what it was shown, not a prediction for the next library.
 - 86 calls have no reasoning tokens in the span at all, and 60 token figures
   differ from the provider's for reasons the census did not separate.
+
+The census's historical cost column reused the old price-matching rule and
+did not independently validate rates. [The correction and a separate decimal
+cross-check](docs/cost-accounting.md#what-was-wrong) document that limitation.
 
 ## Live demo
 
@@ -153,6 +166,11 @@ on npm; the command it installs is `tracelens`).
   a terminal, e.g. in a CI log. Names taken from the trace are printed
   without their control characters, so a trace cannot send escape sequences
   to the terminal.
+- **Token cost receipts** in the checkout: `tracelens cost` and the browser
+  show per-call rates, recorded usage, assumptions, and reasons for unpriced
+  calls. Embeddings and rerankers remain in coverage; wrapper totals are
+  explicitly excluded. Export a price table from **Prices** and use
+  `--prices prices.json` with `cost`, `summary` or `compare`.
 - **Run comparison**, in the browser and `tracelens compare`: operation
   groups ranked by absolute self-time change, model changes, added/removed
   operations, per-side span inspection, and JSON export with pricing inputs.
@@ -192,13 +210,18 @@ indexing vs. GenAI's nested-array shape.
 
 ### Cost estimation (`src/core/cost.ts`, `src/core/pricing.ts`)
 
-The default price table is either a price checked against the vendor's own
-pricing page via WebFetch (cited with URL and check date, right in the
-table) or it's absent — no invented numbers. A span's cost is billed at the
-matched model's rate, with cache-read/cache-write tokens billed at their
-own (usually lower) rate rather than the full input rate. The table is
-editable at runtime (**Prices** in the header) and persists to
-`localStorage` only.
+Each default rate retains its source URL and check date. These are price
+snapshots, not a live pricing feed. Matching uses whole model names and
+recorded providers; a base entry can explicitly permit dated snapshots.
+Unlisted variants, ambiguous entries and provider mismatches stay unpriced.
+Fresh input, cache reads, cache writes and output each have a visible charge.
+Reasoning tokens already included in output are not charged twice.
+
+The **Prices** dialog edits the browser's local table and exports it for the
+CLI. `--prices prices.json` replaces the CLI table. Missing cache counts or
+rates produce disclosed assumptions; missing required usage stays unknown.
+These are token estimates, excluding service tiers, context premiums and
+tool fees. [Calculation rules, receipts and a recorded example](docs/cost-accounting.md).
 
 ### Critical path (`src/core/critical-path.ts`)
 
@@ -218,6 +241,21 @@ only, never `innerHTML` with interpolated data — see the comment in
 `src/web/dom.ts`.
 
 ## Usage
+
+### Inspect a token charge (source checkout)
+
+```bash
+npm ci
+npm run build
+node dist-cli/cli/index.js cost examples/cost-nano-stream.json
+node dist-cli/cli/index.js cost examples/cost-nano-stream.json --json > cost.json
+```
+
+For the browser, run `npm run preview` and choose **Inspect token cost
+(recorded SDK replay)**. Expand **Trace cost evidence**, then choose
+`ai.streamText.doStream`. Its calculation totals **$0.00081907** at the
+cited nano rates. The SDK wrapper repeats the same token counts and is
+listed as excluded. [Replay provenance and independent check](scripts/cost-replay/README.md).
 
 ### Compare a baseline with a candidate
 
@@ -256,7 +294,8 @@ node dist-cli/cli/index.js compare examples/comparison-baseline.json examples/co
 
 The versioned JSON includes per-operation measurements, missing-call
 counts, original span IDs, model names, parser warnings and the price table
-used. It omits prompts, completions, attributes and tool payloads, but
+used. `costEvidence` includes each side's token receipts and usage attributes.
+It omits prompts, completions, other attributes and tool payloads, but
 operation names and IDs may still contain information you do not want to
 share. [Matching rules and limitations](docs/comparison.md).
 
@@ -346,8 +385,8 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   are not individually paired, and a pair of runs does not establish
   statistical significance. See [comparison details](docs/comparison.md).
 
-- The cost estimator is only as good as the price table; unmatched models
-  show `—`, never a silently-wrong `$0`.
+- The cost estimator is only as good as the supplied price snapshot;
+  unlisted models and incompatible or ambiguous rates stay unpriced.
 - Incomplete or invalid token counts leave costs unknown. Single-run
   totals label partial costs as subtotals. Cache counts must be included
   in total input; billing details beyond the token price table are not modeled.
@@ -380,7 +419,7 @@ The core test suite covers OTLP parsing against the two real example fixtures
 edge cases (missing parents, clock skew, malformed spans); semconv mapping
 for both conventions against the real fixtures; the waterfall's time→pixel
 layout math (`nsPerPixel`/`timeToX`/`spanRect`/pan-clamping); the cost
-calculator (longest-match pricing, cache-token billing, undefined-not-zero
+calculator (whole-model/provider matching, cache-token charges, undefined-not-zero
 on a miss); and self-time/retry-count/critical-path correctness on the
 example trace. Where a check has an independent oracle — the layout math
 against hand-computed pixel positions, the cost math against hand-computed
@@ -389,6 +428,8 @@ output. Comparison adds operation matching, missing-measurement coverage,
 structural validation and interval-union checks against an independent
 occupancy oracle. `npm run test:cli` checks the built executable;
 `npm run test:browser` exercises the real interface after a build.
+The [cost replay](scripts/cost-replay/README.md) additionally checks a fresh
+SDK export against the upstream response using independent decimal arithmetic.
 
 **Stress coverage.** `tests/otlp-parser.test.ts` checks a generated
 20,001-span trace against a 1000 ms parser ceiling. Browser tests exercise

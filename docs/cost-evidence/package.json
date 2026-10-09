@@ -1,0 +1,14 @@
+{
+  "name": "@antonsoloviev/tracelens",
+  "versionLabel": "0.3.3",
+  "published": false,
+  "tarballBytes": 44504,
+  "files": 25,
+  "sha512": "sha512-WuAzc6avQD22e/ge3Sz0C2yUaMgoRBubX3Dr4M+Yj75kCPsI35blusXiD6TDg8rqvQbVqazJhlFP67F7P08urg==",
+  "runtimeDependencies": 0,
+  "currentNode": "v26.7.0",
+  "minimumNode": "v20.0.0",
+  "installedBinaryExecuted": true,
+  "fullReceiptMatchedOnBothNodes": true,
+  "scope": "Local npm pack tarball installed into a fresh consumer; not uploaded or published."
+}

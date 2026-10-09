@@ -1,0 +1,26 @@
+Token cost evidence for trace 640d084a7c219f22911a2d11501cb8b6
+1 priced / 0 unpriced model calls; 1 excluded spans
+Token estimate: $0.00081907
+At the supplied rates. Not an invoice; context premiums, service tiers and tool fees are outside this estimate.
+
+ai.streamText.doStream [b55a740c6372fdf9]
+─────────────────────────────────────────
+gpt-5-nano-2025-08-07 / openai.responses / llm
+Price: gpt-5-nano (snapshot); source date: 2026-10-09
+https://developers.openai.com/api/docs/models/gpt-5-nano
+component    tokens  USD / million  USD        
+───────────  ──────  ─────────────  ───────────
+fresh input  3,103   0.05           $0.00015515
+cache-read   2,944   0.005          $0.00001472
+cache-write  0       0.05           $0         
+output       1,623   0.4            $0.0006492 
+Call token estimate: $0.00081907
+Assumption: The dated snapshot uses its base model rate; historical prices may differ.
+Assumption: No cache-write count recorded; assuming zero cache writes.
+
+ai.streamText [1531289296a29a1b]
+────────────────────────────────
+gpt-5-nano-2025-08-07 / openai.responses / chain
+excluded: not-model-call
+Not classified as a model call. Wrapper usage can repeat child-call totals and is not added to the token estimate.
+Use --json for the full price table, captured usage attributes, assumptions and span IDs.

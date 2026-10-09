@@ -4,6 +4,25 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Inspectable token charges
+
+- Fix model pricing that treated unlisted variants as their base model.
+  A recorded `gpt-5-nano-2025-08-07` call was overstated 25x. Match whole
+  model names and compatible providers, permit explicit dated snapshots,
+  and leave equally specific rates unpriced. Add the cited nano rate.
+- Add `tracelens cost`, browser per-call receipts, and JSON exports with
+  component charges, rate sources/dates, assumptions and unpriced reasons.
+  Comparisons export the same evidence for both runs. Small charges remain
+  visibly nonzero. Expose wrapper usage without charging it twice.
+- Include embeddings and rerankers in cost coverage. Embeddings can use an
+  explicit input-only rate; unsupported charges stay unknown. Preserve
+  invalid embedding output counts in token comparisons.
+- Export saved browser prices and accept `--prices` for CLI cost, summary
+  and comparison. Add exact/snapshot controls to the price editor.
+- Bundle a fresh SDK replay with pinned dependencies, provenance and a
+  separate Decimal check against its raw response. Correct the historical
+  census's price-accuracy claim: its checker repeated the old matching rule.
+
 ### Measured on real instrumentation output
 
 - `studies/instrumentation-census/`: spans from 21 instrumentation libraries

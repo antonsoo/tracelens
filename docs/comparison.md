@@ -34,7 +34,7 @@ and added operations; there is no fuzzy matching.
 | Elapsed time | Last span end minus first span start |
 | Summed self time | Sum of span duration minus the union of direct-child intervals, clipped to the parent |
 | Calls | Number of spans, including agent and chain wrappers |
-| Input/output tokens | Usage reported on LLM spans; other kinds do not contribute |
+| Input/output tokens | Usage on LLM, embedding and reranker spans; wrappers do not contribute. Missing embedding completion usage means zero unless recorded as invalid. |
 | Estimated cost | Complete input/output usage priced with one shared table; missing usage or prices remain unknown |
 | Errors | Spans with status `ERROR` |
 
@@ -53,7 +53,9 @@ Each JSON measurement has a `value` (the known subtotal) and `missing`
 (the count of calls missing that measurement). If either side has missing
 data, both its delta and percent are `null`. Complete counts can still be
 compared independently: missing output tokens do not hide known input
-tokens. Cost needs both counts in the comparison and single-run views.
+tokens. LLM cost needs both counts in the comparison and single-run views.
+Embeddings require input usage and an explicit zero output rate; rerankers
+remain unpriced because this table does not model their charges.
 Invalid counts, cache counts exceeding total input, or missing prices
 leave cost unknown. Single-run totals label priced subsets as subtotals.
 Cached-token accounting follows the conventions in [formats](formats.md);
@@ -61,7 +63,13 @@ these figures are not invoices.
 
 The exported `schemaVersion: 1` report includes a copy of the price table
 used, so a later settings change does not erase the calculation inputs.
-Prices can become stale. Source URLs and dates accompany each entry.
+`costEvidence.baseline` and `.candidate` contain full per-call token receipts:
+matched rates, component charges, assumptions, usage attributes and unpriced
+reasons. The browser provides both ledgers with links to their original spans.
+Prices can become stale. Source URLs and dates accompany each entry. Matching
+uses whole model identities and compatible providers, with ambiguous entries
+left unpriced. `--prices prices.json` applies one supplied table to both runs.
+See [cost accounting](cost-accounting.md) for the complete rules and export scope.
 
 ## Input limits and evidence
 

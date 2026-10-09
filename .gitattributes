@@ -1,0 +1,2 @@
+# Preserve the padding in unedited terminal evidence.
+docs/cost-evidence/cli.txt whitespace=-blank-at-eol

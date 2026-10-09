@@ -59,7 +59,13 @@ def declared_model_call(attrs):
 
 
 def expected_cost(call, table):
-    """Price of the call from the provider's own numbers, with the same table tracelens ships."""
+    """Legacy arithmetic agreement, NOT independent price validation.
+
+    Frozen for the historical results: repeats the unsafe substring matcher,
+    ignores providers, and treats explicit zero cache rates as absent.
+    See README correction and ../../docs/cost-accounting.md before interpreting
+    this metric. Do not use it to validate the current price-matching rules.
+    """
     model = (call["model"] or call.get("request_model") or "").lower()
     best = None
     for e in table:
