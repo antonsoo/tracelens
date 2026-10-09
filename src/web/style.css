@@ -954,3 +954,37 @@ dialog.tl-dialog::backdrop {
   .tl-timing-body { padding: 0 8px 10px; }
   .tl-timing-buckets { gap: 8px 14px; }
 }
+
+/* Cost evidence follows the trace's existing instrumentation typography and kind colors. */
+.tl-cost-ledger { border: 1px solid var(--border); background: var(--surface); flex: 0 0 auto; min-width: 0; }
+.tl-cost-ledger > summary { cursor: pointer; padding: 9px 14px; overflow-wrap: anywhere; }
+.tl-cost-ledger > summary strong { margin-right: 16px; }
+.tl-cost-ledger > summary > span { display: inline-block; font-size: 12px; }
+.tl-cost-body { max-height: 36vh; overflow: auto; padding: 0 14px 12px; }
+.tl-cost-body:empty { display: none; }
+.tl-cost-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.tl-cost-controls select { max-width: 100%; padding: 5px; background: var(--surface-2); border: 1px solid var(--border-strong); }
+.tl-price-table select { color: var(--text); background: var(--surface-2); border: 1px solid var(--border-strong); padding: 6px; font-size: 12px; }
+.tl-cost-records { list-style: none; margin: 8px 0; padding: 0; }
+.tl-cost-records li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 20px; border-bottom: 1px solid var(--border); padding: 9px 0; overflow-wrap: anywhere; }
+.tl-cost-records li > div { min-width: 0; }
+.tl-cost-records .tl-call-link { text-align: left; overflow-wrap: anywhere; }
+.tl-cost-status { align-self: center; }
+.tl-cost-notes { max-width: 80ch; margin-top: 10px; }
+.tl-cost-receipt { border-bottom: 1px solid var(--border-strong); margin: 0 0 12px; padding-bottom: 14px; overflow-wrap: anywhere; }
+.tl-cost-receipt h2 { font-size: 15px; margin: 0; }
+.tl-cost-amount { font-size: 20px; margin: 8px 0; }
+.tl-cost-receipt .tl-btn { margin-top: 10px; }
+.tl-cost-scroll { overflow-x: auto; max-width: 100%; }
+.tl-cost-table { border-collapse: collapse; width: 100%; min-width: 320px; font-size: 12px; }
+.tl-cost-table caption { text-align: left; color: var(--text-dim); margin-bottom: 6px; }
+.tl-cost-table th, .tl-cost-table td { padding: 6px 8px; text-align: right; border-bottom: 1px solid var(--border); }
+.tl-cost-table th:first-child { text-align: left; }
+.tl-cost-assumptions { padding-left: 18px; font-size: 12px; }
+.tl-cost-assumptions li { margin: 5px 0; }
+.tl-cost-pair { display: grid; gap: 8px; margin-top: 14px; }
+.tl-cost-pair .tl-cost-body { max-height: none; }
+@media (max-width: 700px) {
+  .tl-cost-ledger > summary { padding: 8px; }
+  .tl-cost-body { padding: 0 8px 10px; }
+}

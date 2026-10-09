@@ -14,6 +14,7 @@ import { disposeWaterfall, renderWaterfall } from './waterfall.js';
 import { renderDetailPanel } from './detail-panel.js';
 import type { DetailTab } from './detail-panel.js';
 import { loadPriceTable, openPriceDialog } from './price-settings.js';
+import { renderCostPanel } from './cost-panel.js';
 import { createComparisonViewState, renderComparison } from './comparison.js';
 import type { ComparisonSide } from './comparison.js';
 import type { SpanFilter } from './span-search.js';
@@ -398,18 +399,23 @@ function renderApp(): void {
     store.set({ selectedSpanId: spanId, detailTab: 'overview', collapsedIds: new Set(), zoom: 1, panNs: 0n });
     document.querySelector<HTMLElement>('.tl-wf-row.selected')?.focus({ preventScroll: true });
   });
+  const costEl = renderCostPanel(activeTrace, summary.costReport, (spanId) => {
+    spanFilters.delete(activeTrace);
+    store.set({ selectedSpanId: spanId, detailTab: 'overview', collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    document.querySelector<HTMLElement>('.tl-cost-receipt h2')?.focus();
+  });
 
   const centerEl = h('div', { className: 'tl-center' });
 
   const detailEl = h('div', { className: 'tl-detail-pane' });
-  renderDetailPanel(detailEl, selectedSpan, state.detailTab, (tab) => store.set({ detailTab: tab }));
+  renderDetailPanel(detailEl, selectedSpan, state.detailTab, (tab) => store.set({ detailTab: tab }), state.priceTable);
 
   const picker = tracePicker(activeTrace, state.baseline !== null && state.inspectedSide === 'baseline' ? state.baselineSource : state.source);
   const warnings = activeTrace.warnings.length ? h('details', { className: 'tl-compare-warnings' },
     h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
     h('button', { className: 'tl-btn', onClick: () => downloadEvidence(activeTrace.warnings, 'tracelens-warnings.json') }, 'Download warnings JSON'),
     pagedEvidence(activeTrace, 'Parser warnings', activeTrace.warnings, (page) => h('ul', {}, ...page.map((warning) => h('li', {}, textPreview(warning.message)))))) : null;
-  mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, timingEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
+  mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, costEl, timingEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
   // After the mount: the waterfall measures its track and restores its scroll position, which a
   // detached element has neither of.
   renderWaterfall(
@@ -450,6 +456,9 @@ if (new URLSearchParams(window.location.search).get('example') === 'compare') {
 }
 if (new URLSearchParams(window.location.search).get('example') === 'timing') {
   void loadComparisonExample(true);
+}
+if (new URLSearchParams(window.location.search).get('example') === 'cost') {
+  void loadExample('examples/cost-nano-stream.json');
 }
 
 let resizeTimer: ReturnType<typeof setTimeout> | undefined;

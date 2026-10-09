@@ -1,5 +1,6 @@
-import type { NormalizedMessage, NormalizedMessagePart, ParsedSpan } from '../core/index.js';
-import { spanDurationMs } from '../core/index.js';
+import type { NormalizedMessage, NormalizedMessagePart, ParsedSpan, PriceEntry } from '../core/index.js';
+import { hasCostEvidence, spanCostEvidence, spanDurationMs } from '../core/index.js';
+import { renderCostReceipt } from './cost-panel.js';
 import { h, mount } from './dom.js';
 import { fmtInt, fmtMs, jsonPreview, textPreview } from './format.js';
 import { kindClass, KIND_LABEL } from './kind-colors.js';
@@ -61,6 +62,7 @@ export function renderDetailPanel(
   span: ParsedSpan | null,
   activeTab: DetailTab,
   onTabChange: (tab: DetailTab) => void,
+  prices: PriceEntry[] = [],
 ): void {
   if (!span) {
     mount(container, h('div', { className: 'tl-detail-empty' }, 'Select a span in the waterfall to inspect its attributes, messages and tool calls.'));
@@ -116,6 +118,7 @@ export function renderDetailPanel(
   const panel = h('div', { className: 'tl-tab-panel', id: 'tl-detail-content', role: 'tabpanel', 'aria-labelledby': `tl-detail-tab-${tab}`, tabindex: '0', 'data-focus-key': 'detail-panel' });
 
   if (tab === 'overview') {
+    if (hasCostEvidence(span)) panel.appendChild(renderCostReceipt(spanCostEvidence(span, prices), span.traceId, prices));
     const rows: [string, string][] = [
       ['operation', span.genai?.operationName ?? '—'],
       ['provider', span.genai?.provider ?? '—'],

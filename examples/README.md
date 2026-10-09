@@ -1,5 +1,22 @@
 # Example traces
 
+## Recorded response through a fresh SDK: `cost-nano-stream.json`
+
+AI SDK 6.0.302 replayed a pinned upstream Responses stream from
+`gpt-5-nano-2025-08-07`. The SDK produced both spans and timestamps; usage
+comes from the recorded provider response: 6,047 input tokens, including
+2,944 cache reads, and 1,623 output tokens, including 1,408 reasoning tokens.
+The parent wrapper repeats those counts and must not add another charge.
+
+This is a local replay, with a placeholder prompt and no provider request.
+It does not measure model latency. The source response includes a
+code-interpreter operation; the token estimate excludes tool fees.
+Choose **Inspect token cost (recorded SDK replay)** in the browser.
+[Reproduce the capture and check](../scripts/cost-replay/README.md),
+[inspect its receipt](../docs/cost-evidence/replay.json), or read the
+[accounting walkthrough](../docs/cost-accounting.md). The upstream fixture
+is credited in the receipt and licensed under [Apache-2.0](cost-replay-LICENSE.txt).
+
 ## Measured local requests: `timing-parallel.json` and `timing-sequential.json`
 
 These two captures use OpenTelemetry Python SDK 1.45.1 and actual HTTP requests

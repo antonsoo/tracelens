@@ -1,6 +1,7 @@
 import type { PriceEntry } from '../core/index.js';
 import { DEFAULT_PRICE_TABLE, isPriceEntry } from '../core/index.js';
 import { h, mount } from './dom.js';
+import { downloadEvidence } from './evidence.js';
 
 const STORAGE_KEY = 'tracelens.priceTable.v1';
 
@@ -62,6 +63,9 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
         'tr',
         { 'data-price-index': i },
         h('td', {}, h('input', { 'aria-label': `Row ${i + 1} model match`, value: entry.matchModel, onInput: (e: Event) => (entry.matchModel = (e.target as HTMLInputElement).value) })),
+        h('td', {}, h('select', { 'aria-label': `Row ${i + 1} match mode`, onChange: (e: Event) => (entry.matchMode = (e.target as HTMLSelectElement).value as 'exact' | 'snapshot') },
+          h('option', { value: 'snapshot', selected: entry.matchMode !== 'exact' }, 'Name + dated snapshots'),
+          h('option', { value: 'exact', selected: entry.matchMode === 'exact' }, 'Exact name only'))),
         h('td', {}, h('input', { 'aria-label': `Row ${i + 1} provider`, value: entry.provider, onInput: (e: Event) => (entry.provider = (e.target as HTMLInputElement).value) })),
         h('td', {}, numberInput(`Row ${i + 1} input rate`, entry.inputPerMTok, (n) => (entry.inputPerMTok = n ?? NaN))),
         h('td', {}, numberInput(`Row ${i + 1} output rate`, entry.outputPerMTok, (n) => (entry.outputPerMTok = n ?? NaN))),
@@ -104,7 +108,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
       h(
         'p',
         { className: 'faint', style: 'margin-top:0' },
-        'Matched against the response model (or request model) as a case-insensitive substring; the longest match wins. Rates must be nonnegative numbers. Blank cache rates use the input rate. Edits persist to this browser only when storage is available.',
+        'Whole model names, case-insensitive; optionally allow a YYYY-MM-DD or YYYYMMDD snapshot suffix. Variants and deployment names need their own entries. A recorded provider must match; blank provider explicitly allows any. Exact model names win over snapshot aliases, then a matching provider wins over blank. Ties stay unpriced. Blank cache rates use the input rate. Rates are USD per million tokens; embedding rows need a zero output rate. Edits persist to this browser when storage is available.',
       ),
       h(
         'table',
@@ -112,13 +116,14 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
         h(
           'thead',
           {},
-          h('tr', {}, h('th', {}, 'model match'), h('th', {}, 'provider'), h('th', {}, '$/MTok in'), h('th', {}, '$/MTok out'), h('th', {}, '$/MTok cache read'), h('th', {}, '$/MTok cache write'), h('th', {}, 'source date'), h('th', {}, 'Remove')),
+          h('tr', {}, h('th', {}, 'model match'), h('th', {}, 'matching'), h('th', {}, 'provider'), h('th', {}, '$/MTok in'), h('th', {}, '$/MTok out'), h('th', {}, '$/MTok cache read'), h('th', {}, '$/MTok cache write'), h('th', {}, 'source date'), h('th', {}, 'Remove')),
         ),
         h('tbody', {}, ...rows),
       ),
       h(
         'div',
-        { style: 'margin-top:10px;display:flex;gap:8px' },
+        { style: 'margin-top:10px;display:flex;gap:8px;flex-wrap:wrap' },
+        h('button', { className: 'tl-btn', onClick: () => downloadEvidence(table, 'tracelens-prices.json') }, 'Export saved prices'),
         h(
           'button',
           {

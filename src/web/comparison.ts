@@ -10,6 +10,7 @@ import { h, mount } from './dom.js';
 import { fmtInt, fmtMs, fmtUsd, textPreview } from './format.js';
 import { pagedEvidence } from './paged-evidence.js';
 import { renderTimingPanel } from './timing-panel.js';
+import { renderCostPanel } from './cost-panel.js';
 import type { ParsedTrace } from '../core/types.js';
 
 export type ComparisonSide = 'baseline' | 'candidate';
@@ -282,6 +283,9 @@ export function renderComparison(
         h('div', {}, h('span', { className: 'tl-candidate-key' }, 'Candidate'), h('strong', {}, names.candidate)),
       ),
       metricsTable(report.metrics, report.wallTimeMs),
+      h('div', { className: 'tl-cost-pair' },
+        renderCostPanel(traces.baseline, report.costEvidence.baseline, (id) => cb.onInspect('baseline', id), 'Baseline'),
+        renderCostPanel(traces.candidate, report.costEvidence.candidate, (id) => cb.onInspect('candidate', id), 'Candidate')),
       h('div', { className: 'tl-timing-pair' },
         renderTimingPanel(traces.baseline, report.timing.baseline, (id) => cb.onInspect('baseline', id), 'Baseline'),
         renderTimingPanel(traces.candidate, report.timing.candidate, (id) => cb.onInspect('candidate', id), 'Candidate')),

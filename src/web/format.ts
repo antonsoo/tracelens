@@ -1,3 +1,5 @@
+import { formatCostUsd } from '../core/cost-format.js';
+
 export function fmtMs(ms: number): string {
   if (ms < 1) return `${(ms * 1000).toFixed(0)} µs`;
   if (ms < 1000) return `${ms.toFixed(ms < 10 ? 2 : 1)} ms`;
@@ -6,9 +8,7 @@ export function fmtMs(ms: number): string {
 
 export function fmtUsd(v: number | undefined): string {
   if (v === undefined) return '—';
-  if (v === 0) return '$0';
-  if (v < 0.01) return `$${v.toFixed(5)}`;
-  return `$${v.toFixed(4)}`;
+  return formatCostUsd(v);
 }
 
 export function fmtInt(n: number | undefined): string {
