@@ -6,11 +6,12 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 
-const [corePath, output] = process.argv.slice(2);
-if (!corePath || !output) throw new Error('Usage: node studies/span-links/replay.mjs <compiled-core/index.js> <output.json>');
+const [corePath, output, captureDirectory] = process.argv.slice(2);
+if (!corePath || !output) throw new Error('Usage: node studies/span-links/replay.mjs <compiled-core/index.js> <output.json> [capture-directory]');
 const core = await import(pathToFileURL(resolve(corePath)).href);
-const bytes = await readFile(new URL('../../examples/queue-links.json', import.meta.url));
-const oracle = JSON.parse(await readFile(new URL('../../examples/queue-links.oracle.json', import.meta.url), 'utf8'));
+const capture = captureDirectory ? pathToFileURL(resolve(captureDirectory) + '/') : new URL('../../examples/', import.meta.url);
+const bytes = await readFile(new URL('queue-links.json', capture));
+const oracle = JSON.parse(await readFile(new URL('queue-links.oracle.json', capture), 'utf8'));
 const sha256 = createHash('sha256').update(bytes).digest('hex');
 if (sha256 !== oracle.sha256) throw new Error('SDK capture no longer matches its oracle');
 const sdk = { spans: oracle.spans.length, expectedLinks: 0, observedLinks: 0, mismatchedSpans: [], upstreamTraceStateOmissions: 0 };
@@ -75,3 +76,8 @@ for (let i = 1; i <= 200; i++) {
 const outputData = { runtime: process.version, captureSha256: sha256, sdk, controls };
 await writeFile(output, JSON.stringify(outputData, null, 2) + '\n');
 console.log(JSON.stringify(outputData));
+
+if (sdk.mismatchedSpans.length || sdk.expectedLinks !== sdk.observedLinks ||
+    Object.entries(controls).some(([key, value]) => key !== 'cases' && value !== 0)) {
+  throw new Error('Span-link replay disagrees with SDK evidence or identity controls; see output report');
+}

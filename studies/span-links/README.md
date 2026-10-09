@@ -34,7 +34,9 @@ node studies/span-links/replay.mjs dist-cli/core/index.js studies/span-links/cur
 
 Pass a different compiled core path to check the previous build or an installed
 package. `before.json` used commit `eed0aa2`; `current.json` used this change.
-The script verifies the capture hash before reading it.
+The script verifies the capture hash before reading it and exits unsuccessfully
+if any identity or SDK comparison fails. An optional third argument selects
+a fresh capture directory containing `queue-links.json` and its oracle.
 
 | Check | Before | Current |
 | --- | ---: | ---: |
