@@ -22,27 +22,26 @@ export interface PriceEntry {
 
 export const DEFAULT_PRICE_TABLE: PriceEntry[] = [
   // --- Anthropic — Claude API, self-reported list price ---
-  // Source: Anthropic's own "Current Models" pricing table, as surfaced by
-  // Claude Code's bundled claude-api skill (cached 2026-06-24, Claude Sonnet 5.5
-  // added from the 2026-09-25 table; re-verify before relying on this for a real bill). Cache reads are 0.1x input except
-  // Claude Fable 5.1 ($0.25) and Claude Opus 5.5 ($0.20); cache writes are the
-  // 5-minute-TTL rate, 1.25x input (1-hour-TTL writes cost 2x).
-  { id: 'claude-fable-5-1', matchModel: 'claude-fable-5-1', provider: 'anthropic', inputPerMTok: 10.0, outputPerMTok: 50.0, cacheReadPerMTok: 0.25, cacheWritePerMTok: 12.5, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-fable-5', matchModel: 'claude-fable-5', provider: 'anthropic', inputPerMTok: 10.0, outputPerMTok: 50.0, cacheReadPerMTok: 1.0, cacheWritePerMTok: 12.5, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-opus-5-5', matchModel: 'claude-opus-5-5', provider: 'anthropic', inputPerMTok: 4.0, outputPerMTok: 20.0, cacheReadPerMTok: 0.2, cacheWritePerMTok: 5.0, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-opus-5', matchModel: 'claude-opus-5', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-opus-4-8', matchModel: 'claude-opus-4-8', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-opus-4-7', matchModel: 'claude-opus-4-7', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-opus-4-6', matchModel: 'claude-opus-4-6', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-sonnet-5-5', matchModel: 'claude-sonnet-5-5', provider: 'anthropic', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.2, cacheWritePerMTok: 2.5, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-09-25' },
-  { id: 'claude-sonnet-5', matchModel: 'claude-sonnet-5', provider: 'anthropic', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.2, cacheWritePerMTok: 2.5, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-sonnet-4-6', matchModel: 'claude-sonnet-4-6', provider: 'anthropic', inputPerMTok: 3.0, outputPerMTok: 15.0, cacheReadPerMTok: 0.3, cacheWritePerMTok: 3.75, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
-  { id: 'claude-haiku-4-5', matchModel: 'claude-haiku-4-5', provider: 'anthropic', inputPerMTok: 1.0, outputPerMTok: 5.0, cacheReadPerMTok: 0.1, cacheWritePerMTok: 1.25, sourceUrl: 'https://www.anthropic.com/pricing', sourceDate: '2026-06-24' },
+  // Checked directly against claude.com/pricing on 2026-10-09.
+  // Standard API rates; cache writes use the 5-minute TTL.
+  // Extended TTL, service tiers, regional and long-context premiums are not inferred.
+  { id: 'claude-fable-5-1', matchModel: 'claude-fable-5-1', provider: 'anthropic', inputPerMTok: 10.0, outputPerMTok: 50.0, cacheReadPerMTok: 0.25, cacheWritePerMTok: 12.5, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-fable-5', matchModel: 'claude-fable-5', provider: 'anthropic', inputPerMTok: 10.0, outputPerMTok: 50.0, cacheReadPerMTok: 1.0, cacheWritePerMTok: 12.5, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-opus-5-5', matchModel: 'claude-opus-5-5', provider: 'anthropic', inputPerMTok: 4.0, outputPerMTok: 20.0, cacheReadPerMTok: 0.2, cacheWritePerMTok: 5.0, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-opus-5', matchModel: 'claude-opus-5', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-opus-4-8', matchModel: 'claude-opus-4-8', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-opus-4-7', matchModel: 'claude-opus-4-7', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-opus-4-6', matchModel: 'claude-opus-4-6', provider: 'anthropic', inputPerMTok: 5.0, outputPerMTok: 25.0, cacheReadPerMTok: 0.5, cacheWritePerMTok: 6.25, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-sonnet-5-5', matchModel: 'claude-sonnet-5-5', provider: 'anthropic', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.1, cacheWritePerMTok: 2.5, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-sonnet-5', matchModel: 'claude-sonnet-5', provider: 'anthropic', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.2, cacheWritePerMTok: 2.5, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-sonnet-4-6', matchModel: 'claude-sonnet-4-6', provider: 'anthropic', inputPerMTok: 3.0, outputPerMTok: 15.0, cacheReadPerMTok: 0.3, cacheWritePerMTok: 3.75, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
+  { id: 'claude-haiku-4-5', matchModel: 'claude-haiku-4-5', provider: 'anthropic', inputPerMTok: 1.0, outputPerMTok: 5.0, cacheReadPerMTok: 0.1, cacheWritePerMTok: 1.25, sourceUrl: 'https://claude.com/pricing', sourceDate: '2026-10-09' },
 
-  // --- OpenAI — verified via WebFetch against the live pricing page, 2026-09-24 ---
-  { id: 'gpt-6-astra', matchModel: 'gpt-6-astra', provider: 'openai', inputPerMTok: 10.0, outputPerMTok: 50.0, cacheReadPerMTok: 1.0, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
-  { id: 'gpt-6-sol', matchModel: 'gpt-6-sol', provider: 'openai', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.2, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
-  { id: 'gpt-6-luna', matchModel: 'gpt-6-luna', provider: 'openai', inputPerMTok: 0.1, outputPerMTok: 0.5, cacheReadPerMTok: 0.01, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
+  // --- OpenAI — standard, short-context token rates; checked dates are per row. ---
+  { id: 'gpt-6-astra', matchModel: 'gpt-6-astra', provider: 'openai', inputPerMTok: 10.0, outputPerMTok: 50.0, cacheReadPerMTok: 1.0, cacheWritePerMTok: 12.5, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-10-09' },
+  { id: 'gpt-6.1-sol', matchModel: 'gpt-6.1-sol', provider: 'openai', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.1, cacheWritePerMTok: 2.5, sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol', sourceDate: '2026-10-09' },
+  { id: 'gpt-6-sol', matchModel: 'gpt-6-sol', provider: 'openai', inputPerMTok: 2.0, outputPerMTok: 10.0, cacheReadPerMTok: 0.2, cacheWritePerMTok: 2.5, sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6-sol', sourceDate: '2026-10-09' },
+  { id: 'gpt-6-luna', matchModel: 'gpt-6-luna', provider: 'openai', inputPerMTok: 0.1, outputPerMTok: 0.5, cacheReadPerMTok: 0.01, cacheWritePerMTok: 0.125, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-10-09' },
   { id: 'gpt-5', matchModel: 'gpt-5', provider: 'openai', inputPerMTok: 1.25, outputPerMTok: 10.0, cacheReadPerMTok: 0.125, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
   { id: 'gpt-5-mini', matchModel: 'gpt-5-mini', provider: 'openai', inputPerMTok: 0.25, outputPerMTok: 2.0, cacheReadPerMTok: 0.025, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
   // This is a separate product, not a gpt-5 snapshot. Verified on its own model page.

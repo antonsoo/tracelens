@@ -1,0 +1,1071 @@
+{
+  "runtime": "v26.7.0",
+  "checked": "2026-10-09",
+  "scope": "Constructed 1000-token standard, short-context API calls; 5-minute Anthropic cache writes. No provider requests.",
+  "cases": 20,
+  "mismatches": 8,
+  "rows": [
+    {
+      "model": "claude-sonnet-5-5",
+      "component": "input",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.002,
+      "observedUsd": 0.002,
+      "sourceUrl": "https://claude.com/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.002,
+        "matchedModel": "claude-sonnet-5-5",
+        "entry": {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://www.anthropic.com/pricing",
+          "sourceDate": "2026-09-25"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 1000,
+            "perMillionUsd": 2,
+            "costUsd": 0.002,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.2,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 2.5,
+            "costUsd": 0,
+            "rateSource": "cache-write"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "component": "output",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 1000,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.01,
+      "observedUsd": 0.01,
+      "sourceUrl": "https://claude.com/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.01,
+        "matchedModel": "claude-sonnet-5-5",
+        "entry": {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://www.anthropic.com/pricing",
+          "sourceDate": "2026-09-25"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.2,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 2.5,
+            "costUsd": 0,
+            "rateSource": "cache-write"
+          },
+          {
+            "kind": "output",
+            "tokens": 1000,
+            "perMillionUsd": 10,
+            "costUsd": 0.01,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "component": "cache-read",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 1000,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.0001,
+      "observedUsd": 0.0002,
+      "sourceUrl": "https://claude.com/pricing",
+      "matches": false,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0002,
+        "matchedModel": "claude-sonnet-5-5",
+        "entry": {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://www.anthropic.com/pricing",
+          "sourceDate": "2026-09-25"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 1000,
+            "perMillionUsd": 0.2,
+            "costUsd": 0.0002,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 2.5,
+            "costUsd": 0,
+            "rateSource": "cache-write"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "component": "cache-write",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 1000
+      },
+      "expectedUsd": 0.0025,
+      "observedUsd": 0.0025,
+      "sourceUrl": "https://claude.com/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0025,
+        "matchedModel": "claude-sonnet-5-5",
+        "entry": {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://www.anthropic.com/pricing",
+          "sourceDate": "2026-09-25"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.2,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 1000,
+            "perMillionUsd": 2.5,
+            "costUsd": 0.0025,
+            "rateSource": "cache-write"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "component": "input",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.01,
+      "observedUsd": 0.01,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.01,
+        "matchedModel": "gpt-6-astra",
+        "entry": {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 1000,
+            "perMillionUsd": 10,
+            "costUsd": 0.01,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 1,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 50,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "component": "output",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 1000,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.05,
+      "observedUsd": 0.05,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.05,
+        "matchedModel": "gpt-6-astra",
+        "entry": {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 1,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 1000,
+            "perMillionUsd": 50,
+            "costUsd": 0.05,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "component": "cache-read",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 1000,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.001,
+      "observedUsd": 0.001,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.001,
+        "matchedModel": "gpt-6-astra",
+        "entry": {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 1000,
+            "perMillionUsd": 1,
+            "costUsd": 0.001,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 50,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "component": "cache-write",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 1000
+      },
+      "expectedUsd": 0.0125,
+      "observedUsd": 0.01,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": false,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.01,
+        "matchedModel": "gpt-6-astra",
+        "entry": {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 1,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 1000,
+            "perMillionUsd": 10,
+            "costUsd": 0.01,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 50,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": [
+          "No cache-write rate supplied; using the ordinary input rate."
+        ]
+      }
+    },
+    {
+      "model": "gpt-6-sol",
+      "component": "input",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.002,
+      "observedUsd": 0.002,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.002,
+        "matchedModel": "gpt-6-sol",
+        "entry": {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 1000,
+            "perMillionUsd": 2,
+            "costUsd": 0.002,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.2,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-sol",
+      "component": "output",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 1000,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.01,
+      "observedUsd": 0.01,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.01,
+        "matchedModel": "gpt-6-sol",
+        "entry": {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.2,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 1000,
+            "perMillionUsd": 10,
+            "costUsd": 0.01,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-sol",
+      "component": "cache-read",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 1000,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.0002,
+      "observedUsd": 0.0002,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0002,
+        "matchedModel": "gpt-6-sol",
+        "entry": {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 1000,
+            "perMillionUsd": 0.2,
+            "costUsd": 0.0002,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-sol",
+      "component": "cache-write",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 1000
+      },
+      "expectedUsd": 0.0025,
+      "observedUsd": 0.002,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "matches": false,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.002,
+        "matchedModel": "gpt-6-sol",
+        "entry": {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 2,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.2,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 1000,
+            "perMillionUsd": 2,
+            "costUsd": 0.002,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 10,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": [
+          "No cache-write rate supplied; using the ordinary input rate."
+        ]
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "component": "input",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.0001,
+      "observedUsd": 0.0001,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0001,
+        "matchedModel": "gpt-6-luna",
+        "entry": {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 1000,
+            "perMillionUsd": 0.1,
+            "costUsd": 0.0001,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.01,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 0.1,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 0.5,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "component": "output",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 1000,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.0005,
+      "observedUsd": 0.0005,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0005,
+        "matchedModel": "gpt-6-luna",
+        "entry": {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 0.1,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.01,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 0.1,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 1000,
+            "perMillionUsd": 0.5,
+            "costUsd": 0.0005,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "component": "cache-read",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 1000,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.00001,
+      "observedUsd": 0.00001,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": true,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.00001,
+        "matchedModel": "gpt-6-luna",
+        "entry": {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 0.1,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 1000,
+            "perMillionUsd": 0.01,
+            "costUsd": 0.00001,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 0,
+            "perMillionUsd": 0.1,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 0.5,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": []
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "component": "cache-write",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 1000
+      },
+      "expectedUsd": 0.000125,
+      "observedUsd": 0.0001,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "matches": false,
+      "result": {
+        "status": "priced",
+        "costUsd": 0.0001,
+        "matchedModel": "gpt-6-luna",
+        "entry": {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        "match": "exact",
+        "components": [
+          {
+            "kind": "input",
+            "tokens": 0,
+            "perMillionUsd": 0.1,
+            "costUsd": 0,
+            "rateSource": "input"
+          },
+          {
+            "kind": "cache-read",
+            "tokens": 0,
+            "perMillionUsd": 0.01,
+            "costUsd": 0,
+            "rateSource": "cache-read"
+          },
+          {
+            "kind": "cache-write",
+            "tokens": 1000,
+            "perMillionUsd": 0.1,
+            "costUsd": 0.0001,
+            "rateSource": "input"
+          },
+          {
+            "kind": "output",
+            "tokens": 0,
+            "perMillionUsd": 0.5,
+            "costUsd": 0,
+            "rateSource": "output"
+          }
+        ],
+        "assumptions": [
+          "No cache-write rate supplied; using the ordinary input rate."
+        ]
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "component": "input",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.002,
+      "observedUsd": null,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "matches": false,
+      "result": {
+        "status": "unpriced",
+        "reason": "no-price",
+        "message": "No whole model name or dated snapshot matches the price table. Add an explicit entry for this model."
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "component": "output",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 1000,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.01,
+      "observedUsd": null,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "matches": false,
+      "result": {
+        "status": "unpriced",
+        "reason": "no-price",
+        "message": "No whole model name or dated snapshot matches the price table. Add an explicit entry for this model."
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "component": "cache-read",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 1000,
+        "cacheWriteTokens": 0
+      },
+      "expectedUsd": 0.0001,
+      "observedUsd": null,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "matches": false,
+      "result": {
+        "status": "unpriced",
+        "reason": "no-price",
+        "message": "No whole model name or dated snapshot matches the price table. Add an explicit entry for this model."
+      }
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "component": "cache-write",
+      "usage": {
+        "inputTokens": 1000,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 1000
+      },
+      "expectedUsd": 0.0025,
+      "observedUsd": null,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "matches": false,
+      "result": {
+        "status": "unpriced",
+        "reason": "no-price",
+        "message": "No whole model name or dated snapshot matches the price table. Add an explicit entry for this model."
+      }
+    }
+  ]
+}

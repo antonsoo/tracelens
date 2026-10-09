@@ -110,6 +110,7 @@ export function openPriceDialog(table: PriceEntry[], onSave: (table: PriceEntry[
         { className: 'faint', style: 'margin-top:0' },
         'Whole model names, case-insensitive; optionally allow a YYYY-MM-DD or YYYYMMDD snapshot suffix. Variants and deployment names need their own entries. A recorded provider must match; blank provider explicitly allows any. Exact model names win over snapshot aliases, then a matching provider wins over blank. Ties stay unpriced. Blank cache rates use the input rate. Rates are USD per million tokens; embedding rows need a zero output rate. Edits persist to this browser when storage is available.',
       ),
+      h('p', { className: 'faint' }, 'Built-in prices assume standard service and short context; Anthropic cache writes use a 5-minute TTL. Other tiers, regions, cache durations and tool fees need explicit rates or separate accounting. Saved tables keep their own rates across app updates; Reset to defaults loads the current built-in table.'),
       h(
         'table',
         { className: 'tl-price-table' },
