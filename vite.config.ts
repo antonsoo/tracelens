@@ -3,7 +3,7 @@ import { contentSecurityPolicy } from './vite.csp';
 
 export default defineConfig({
   base: '/tracelens/',
-  plugins: [contentSecurityPolicy()],
+  plugins: [contentSecurityPolicy({ 'worker-src': ['blob:'] })],
   build: {
     target: 'es2022',
   },

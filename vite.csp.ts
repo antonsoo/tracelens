@@ -10,12 +10,14 @@ async function hashSource(script: string): Promise<string> {
  * Gives the built page a Content-Security-Policy.
  *
  * The page says nothing you give it leaves your browser. This makes the browser hold it to
- * that: scripts, styles, fonts and workers load from the page's own origin only, and
+ * that: scripts, styles and fonts load from the page's own origin only, and
  * `connect-src 'self'` means no script on the page, not even one injected through a bug in
  * how it renders your file, can send anything to another host. Inline scripts in index.html
  * are allowed by their hash; inline event handlers and `eval` are not allowed at all.
  *
  * `'unsafe-inline'` is for styles only: the page sets `style` attributes on what it renders.
+ * The app separately permits blob workers for its bundled parser. No trace text
+ * is executed as code; the worker inherits this page's connection restrictions.
  *
  * Built pages only. The dev server injects scripts and styles of its own.
  */

@@ -49,6 +49,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
       h('button', { className: 'tl-btn', 'data-focus-key': 'example-compare', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
       h('button', { className: 'tl-btn', 'data-focus-key': 'example-timing', onClick: cb.onTimingExample }, 'Parallel vs sequential (local capture)'),
       h('button', { className: 'tl-btn', 'data-focus-key': 'example-cost', onClick: () => cb.onLoadExample('examples/cost-nano-stream.json') }, 'Inspect token cost (recorded SDK replay)'),
+      h('button', { className: 'tl-btn', 'data-focus-key': 'example-links', onClick: () => cb.onLoadExample('examples/queue-links.json') }, 'Follow queued jobs (local SDK capture)'),
     ),
   );
 

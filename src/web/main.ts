@@ -19,10 +19,12 @@ import { createComparisonViewState, renderComparison } from './comparison.js';
 import type { ComparisonSide } from './comparison.js';
 import type { SpanFilter } from './span-search.js';
 import { renderTimingPanel } from './timing-panel.js';
+import { renderLinksPanel } from './links-panel.js';
+import type { SpanLink } from '../core/types.js';
 
 interface AppState {
   trace: ParsedTrace | null;
-  /** The text `trace` was read from, kept so that another of the file's traces can be read. Null for the bundled samples. */
+  /** Retained input text for files or samples that contain multiple traces. */
   source: string | null;
   baseline: ParsedTrace | null;
   baselineName: string | null;
@@ -33,6 +35,9 @@ interface AppState {
   loadError: string | null;
   loading: string | null;
   selectedSpanId: string | null;
+  /** A linked target can be inspected without replacing either comparison run. */
+  linkedTrace: ParsedTrace | null;
+  linkedSourceSpanId: string | null;
   detailTab: DetailTab;
   collapsedIds: Set<string>;
   priceTable: PriceEntry[];
@@ -62,6 +67,8 @@ const store = new Store<AppState>({
   loadError: null,
   loading: null,
   selectedSpanId: null,
+  linkedTrace: null,
+  linkedSourceSpanId: null,
   detailTab: 'overview',
   collapsedIds: new Set(),
   priceTable: loadPriceTable(),
@@ -98,7 +105,7 @@ function finishLoad(version: number, patch: Partial<AppState>, focus = true): vo
   // Also stops a sibling sample request if one half of a comparison failed.
   loadController?.abort();
   loadController = null;
-  store.set({ ...patch, loading: null });
+  store.set({ ...patch, ...(('trace' in patch || 'baseline' in patch) ? { linkedTrace: null, linkedSourceSpanId: null } : {}), loading: null });
   if (patch.trace && focus) {
     const destination = document.querySelector<HTMLElement>('.tl-comparison h1, #tl-span-search');
     destination?.focus({ preventScroll: true });
@@ -129,7 +136,7 @@ async function loadFile(file: File): Promise<void> {
 }
 
 /** Reads another trace from the file behind the side being inspected. */
-async function pickTrace(traceId: string): Promise<void> {
+async function pickTrace(traceId: string, spanId?: string): Promise<void> {
   const state = store.get();
   const onBaseline = state.baseline !== null && state.inspectedSide === 'baseline';
   const source = onBaseline ? state.baselineSource : state.source;
@@ -138,13 +145,30 @@ async function pickTrace(traceId: string): Promise<void> {
   try {
     const { trace } = await loadTrace({ kind: 'text', text: source }, signal, traceId);
     if (version !== loadVersion) return;
+    if (spanId && !trace.spans.some((span) => span.spanId === spanId)) throw new Error('The linked span is not present in the selected trace.');
     // Validate before replacing either side. A trace can be inspectable yet
     // exceed the comparison's bounded ancestry limit.
-    if (state.baseline && state.trace) comparisonOf(onBaseline ? trace : state.baseline, onBaseline ? state.trace : trace, store.get().priceTable);
-    finishLoad(version, { ...(onBaseline ? { baseline: trace } : { trace }), loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n }, false);
+    if (!spanId && state.baseline && state.trace) comparisonOf(onBaseline ? trace : state.baseline, onBaseline ? state.trace : trace, store.get().priceTable);
+    const selection = spanId
+      ? { linkedTrace: trace, linkedSourceSpanId: state.linkedTrace ? state.linkedSourceSpanId : state.selectedSpanId }
+      : (onBaseline ? { baseline: trace } : { trace });
+    finishLoad(version, { ...selection, loadError: null, selectedSpanId: spanId ?? null, detailTab: 'overview', collapsedIds: new Set(), zoom: 1, panNs: 0n }, false);
+    if (spanId) document.querySelector<HTMLElement>('.tl-detail-title')?.focus();
   } catch (err) {
     finishLoad(version, { loadError: err instanceof Error ? err.message : String(err) }, false);
   }
+}
+
+function navigateLink(link: SpanLink): void {
+  if (link.target?.status !== 'available') return;
+  const state = store.get();
+  const trace = state.linkedTrace ?? (state.baseline && state.inspectedSide === 'baseline' ? state.baseline : state.trace);
+  if (!trace) return;
+  if (trace.traceId !== link.traceId) { void pickTrace(link.traceId, link.spanId); return; }
+  supersedeLoads();
+  spanFilters.delete(trace);
+  store.set({ selectedSpanId: link.spanId, detailTab: 'overview', loading: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+  document.querySelector<HTMLElement>('.tl-detail-title')?.focus();
 }
 
 async function loadCandidate(file: File): Promise<void> {
@@ -184,9 +208,9 @@ async function loadExample(path: string): Promise<void> {
   const { version, signal } = beginLoad(path.split('/').pop() ?? path);
   try {
     const base = import.meta.env.BASE_URL;
-    const { trace } = await loadTrace({ kind: 'url', url: new URL(`${base}${path}`, location.href).href }, signal);
+    const { trace, source } = await loadTrace({ kind: 'url', url: new URL(`${base}${path}`, location.href).href }, signal);
     if (version !== loadVersion) return;
-    finishLoad(version, { trace, source: null, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: path.split('/').pop() ?? path, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    finishLoad(version, { trace, source, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: path.split('/').pop() ?? path, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
   } catch (err) {
     if (version !== loadVersion) return;
     finishLoad(version, { loadError: `Couldn't load the sample trace: ${err instanceof Error ? err.message : String(err)}` });
@@ -219,9 +243,15 @@ function buildHeader(state: AppState): HTMLElement {
         ? h('h1', { className: 'dim mono tl-active-file' }, `${state.baseline ? `${state.inspectedSide}: ` : ''}${state.baseline && state.inspectedSide === 'baseline' ? state.baselineName ?? '' : state.fileName ?? ''}`)
         : null,
       compareInput,
+      state.linkedTrace ? h('button', { className: 'tl-btn', onClick: () => {
+        supersedeLoads();
+        store.set({ linkedTrace: null, linkedSourceSpanId: null, selectedSpanId: state.linkedSourceSpanId, detailTab: 'links', loading: null, loadError: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+        document.querySelector<HTMLElement>('#tl-detail-tab-links')?.focus();
+      } }, 'Back to source span') : null,
       state.trace && state.view !== 'compare' ? h('button', { className: 'tl-btn', 'data-focus-key': 'compare-run', onClick: () => {
         if (!state.baseline) { compareInput.click(); return; }
-        store.set({ view: 'compare' });
+        supersedeLoads();
+        store.set({ view: 'compare', linkedTrace: null, linkedSourceSpanId: null, selectedSpanId: null, loading: null, loadError: null });
         document.querySelector<HTMLElement>('.tl-comparison h1')?.focus({ preventScroll: true });
       } }, state.baseline ? 'Back to comparison' : 'Compare with another run') : null,
       state.trace
@@ -231,7 +261,7 @@ function buildHeader(state: AppState): HTMLElement {
               className: 'tl-btn',
               onClick: () => {
                 supersedeLoads();
-                store.set({ trace: null, source: null, baseline: null, baselineName: null, baselineSource: null, view: 'trace', fileName: null, loading: null, loadError: null, selectedSpanId: null });
+                store.set({ trace: null, source: null, baseline: null, baselineName: null, baselineSource: null, view: 'trace', fileName: null, loading: null, loadError: null, selectedSpanId: null, linkedTrace: null, linkedSourceSpanId: null });
                 document.querySelector<HTMLElement>('[data-focus-key="choose-file"]')?.focus();
               },
             },
@@ -388,7 +418,7 @@ function renderApp(): void {
     return;
   }
 
-  const activeTrace = state.baseline && state.inspectedSide === 'baseline' ? state.baseline : state.trace;
+  const activeTrace = state.linkedTrace ?? (state.baseline && state.inspectedSide === 'baseline' ? state.baseline : state.trace);
   const summary = summaryOf(activeTrace, state.priceTable);
   const selectedSpan = findSpan(activeTrace, state.selectedSpanId);
 
@@ -408,14 +438,19 @@ function renderApp(): void {
   const centerEl = h('div', { className: 'tl-center' });
 
   const detailEl = h('div', { className: 'tl-detail-pane' });
-  renderDetailPanel(detailEl, selectedSpan, state.detailTab, (tab) => store.set({ detailTab: tab }), state.priceTable);
+  renderDetailPanel(detailEl, selectedSpan, state.detailTab, (tab) => store.set({ detailTab: tab }), state.priceTable, navigateLink);
+  const linksEl = renderLinksPanel(activeTrace, (spanId) => {
+    spanFilters.delete(activeTrace);
+    store.set({ selectedSpanId: spanId, detailTab: 'links', collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    document.querySelector<HTMLElement>('#tl-detail-tab-links')?.focus();
+  });
 
   const picker = tracePicker(activeTrace, state.baseline !== null && state.inspectedSide === 'baseline' ? state.baselineSource : state.source);
   const warnings = activeTrace.warnings.length ? h('details', { className: 'tl-compare-warnings' },
     h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
     h('button', { className: 'tl-btn', onClick: () => downloadEvidence(activeTrace.warnings, 'tracelens-warnings.json') }, 'Download warnings JSON'),
     pagedEvidence(activeTrace, 'Parser warnings', activeTrace.warnings, (page) => h('ul', {}, ...page.map((warning) => h('li', {}, textPreview(warning.message)))))) : null;
-  mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, costEl, timingEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
+  mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, costEl, timingEl, linksEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
   // After the mount: the waterfall measures its track and restores its scroll position, which a
   // detached element has neither of.
   renderWaterfall(

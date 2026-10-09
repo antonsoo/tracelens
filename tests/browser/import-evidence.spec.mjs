@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   page.externalRequests = [];
   page.on('pageerror', (error) => page.errors.push(String(error)));
   page.context().on('request', (request) => {
-    if (!request.url().startsWith('http://127.0.0.1:4319/')) page.externalRequests.push(request.url());
+    if (new URL(request.url()).origin !== 'http://127.0.0.1:4319') page.externalRequests.push(request.url());
   });
   await page.addInitScript(() => {
     window.violations = [];
@@ -75,7 +75,20 @@ for (const failure of ['constructor', 'postMessage', 'error', 'messageerror', 'm
 }
 
 test('a busy parsing worker can be canceled while the UI remains usable', async ({ page }) => {
-  await page.route('**/assets/trace-worker-*.js', (route) => route.fulfill({ contentType: 'application/javascript', body: 'self.onmessage = () => { while (true) {} };' }));
+  await page.addInitScript(() => {
+    const WorkerClass = window.Worker;
+    window.busyParser = true;
+    window.Worker = class extends WorkerClass {
+      constructor(url, options) {
+        if (window.busyParser) {
+          const busy = URL.createObjectURL(new Blob(['self.onmessage = () => { while (true) {} };'], { type: 'application/javascript' }));
+          super(busy, options);
+          this.busyUrl = busy;
+        } else super(url, options);
+      }
+      terminate() { super.terminate(); if (this.busyUrl) URL.revokeObjectURL(this.busyUrl); }
+    };
+  });
   await page.goto('./');
   await page.locator('#tl-file-input').setInputFiles(file('busy.json', doc([span(1)])));
   await expect(page.locator('.tl-load-notice')).toContainText('busy.json');
@@ -83,7 +96,7 @@ test('a busy parsing worker can be canceled while the UI remains usable', async 
   await page.getByRole('button', { name: 'Cancel loading' }).click({ timeout: 3000 });
   await expect(page.locator('.tl-load-notice')).toHaveCount(0);
   expect(await page.evaluate(() => window.liveWorkers.size)).toBe(0);
-  await page.unroute('**/assets/trace-worker-*.js');
+  await page.evaluate(() => { window.busyParser = false; });
   await page.locator('#tl-file-input').setInputFiles(file('recovered.json', doc([span(2)])));
   await expect(page.locator('.tl-active-file')).toHaveText('recovered.json');
 });

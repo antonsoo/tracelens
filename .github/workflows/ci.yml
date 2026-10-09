@@ -71,3 +71,4 @@ jobs:
           node dist-cli/cli/index.js --version
           node dist-cli/cli/index.js summary examples/genai-semconv-trace.json
           node dist-cli/cli/index.js tree examples/jaeger-genai-trace.json
+          node dist-cli/cli/index.js links examples/queue-links.json --json

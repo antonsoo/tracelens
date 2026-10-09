@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
   page.errors = [];
   page.external = [];
   page.on('pageerror', (error) => page.errors.push(String(error)));
-  page.on('request', (request) => { if (!request.url().startsWith('http://127.0.0.1:4319/')) page.external.push(request.url()); });
+  page.on('request', (request) => { if (new URL(request.url()).origin !== 'http://127.0.0.1:4319') page.external.push(request.url()); });
   await page.addInitScript(() => {
     window.csp = [];
     document.addEventListener('securitypolicyviolation', (event) => window.csp.push(event.violatedDirective));

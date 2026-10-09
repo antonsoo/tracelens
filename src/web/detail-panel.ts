@@ -6,8 +6,11 @@ import { fmtInt, fmtMs, jsonPreview, textPreview } from './format.js';
 import { kindClass, KIND_LABEL } from './kind-colors.js';
 import { pagedEvidence } from './paged-evidence.js';
 import { downloadEvidence, spanEvidence } from './evidence.js';
+import type { SpanLink } from '../core/types.js';
+import { hasLinks } from '../core/links.js';
+import { renderSpanLinks } from './links-panel.js';
 
-export type DetailTab = 'overview' | 'messages' | 'tool' | 'attributes' | 'events';
+export type DetailTab = 'overview' | 'messages' | 'tool' | 'attributes' | 'events' | 'links';
 
 export function availableTabs(span: ParsedSpan): DetailTab[] {
   const tabs: DetailTab[] = ['overview'];
@@ -15,6 +18,7 @@ export function availableTabs(span: ParsedSpan): DetailTab[] {
   if (span.genai?.toolArguments !== undefined || span.genai?.toolResult !== undefined) tabs.push('tool');
   tabs.push('attributes');
   if (span.events.length > 0) tabs.push('events');
+  if (hasLinks(span)) tabs.push('links');
   return tabs;
 }
 
@@ -24,6 +28,7 @@ const TAB_LABEL: Record<DetailTab, string> = {
   tool: 'Tool I/O',
   attributes: 'Attributes',
   events: 'Events',
+  links: 'Links',
 };
 
 function messagePart(p: NormalizedMessagePart): HTMLElement {
@@ -63,6 +68,7 @@ export function renderDetailPanel(
   activeTab: DetailTab,
   onTabChange: (tab: DetailTab) => void,
   prices: PriceEntry[] = [],
+  onNavigateLink?: (link: SpanLink) => void,
 ): void {
   if (!span) {
     mount(container, h('div', { className: 'tl-detail-empty' }, 'Select a span in the waterfall to inspect its attributes, messages and tool calls.'));
@@ -77,7 +83,7 @@ export function renderDetailPanel(
     { className: 'tl-detail-header' },
     h(
       'div',
-      { className: 'tl-detail-title' },
+      { className: 'tl-detail-title', tabindex: '-1' },
       h('span', { className: `tl-kind-dot ${kindClass(span.agentKind)}`, style: 'margin-right:6px' }),
       textPreview(span.name, 400),
     ),
@@ -91,7 +97,7 @@ export function renderDetailPanel(
     ),
     h('div', { className: 'tl-evidence-download' },
       h('button', { className: 'tl-btn', 'data-focus-key': 'download-span', onClick: () => downloadEvidence(spanEvidence(span), 'tracelens-span.json') }, 'Download span JSON'),
-      h('span', { className: 'dim' }, 'Complete attributes, messages and events. Long values below are previews.')),
+      h('span', { className: 'dim' }, 'Decoded attributes, messages, events and links. Long values below are previews.')),
   );
 
   const tabBar = h(
@@ -175,6 +181,8 @@ export function renderDetailPanel(
     const entries = Object.entries(span.attributes);
     panel.appendChild(entries.length > 0 ? pagedEvidence(span, 'Attributes', entries, (page) => kvTable(page.map(([k, v]) => [k, jsonPreview(v, 800)]))) : h('div', { className: 'faint' }, 'No attributes on this span.'));
     panel.appendChild(pagedEvidence(span, 'Resource attributes', Object.entries(span.resourceAttributes), (page) => kvTable(page.map(([k, v]) => [k, jsonPreview(v, 400)]))));
+  } else if (tab === 'links') {
+    panel.appendChild(renderSpanLinks(span, onNavigateLink));
   } else if (tab === 'events') {
     panel.appendChild(pagedEvidence(span, 'Events', span.events, (page) => h('div', {}, ...page.map((ev) => {
       const isException = ev.name === 'exception';

@@ -2,6 +2,7 @@ import type { ParsedTrace } from '../core/types.js';
 import { restoreTrace } from './trace-transfer.js';
 import { PARSE_TIMEOUT_MS } from './trace-protocol.js';
 import type { ParseRequest, ParseResponse, TraceSource } from './trace-protocol.js';
+import TraceWorker from './trace-worker?worker&inline';
 
 export interface LoadedTrace { trace: ParsedTrace; source: string | null }
 
@@ -27,7 +28,9 @@ export function loadTrace(source: TraceSource, signal: AbortSignal, traceId?: st
     if (signal.aborted) { abort(); return; }
     signal.addEventListener('abort', abort, { once: true });
     try {
-      worker = new Worker(new URL('./trace-worker.ts', import.meta.url), { type: 'module' });
+      // Bundle trusted parser code with the app: a trace switch should not
+      // depend on a second network request after a local file is loaded.
+      worker = new TraceWorker();
       worker.onerror = (event) => {
         event.preventDefault();
         finish(new Error('The trace parser stopped unexpectedly. Choose the file or sample again to retry.'));

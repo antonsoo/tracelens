@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   page.externalRequests = [];
   page.on('pageerror', (error) => page.errors.push(String(error)));
   page.on('request', (request) => {
-    if (!request.url().startsWith('http://127.0.0.1:4319/')) page.externalRequests.push(request.url());
+    if (new URL(request.url()).origin !== 'http://127.0.0.1:4319') page.externalRequests.push(request.url());
   });
   await page.addInitScript(() => {
     window.cspViolations = [];
