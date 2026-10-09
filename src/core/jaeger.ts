@@ -92,12 +92,17 @@ function status(tags: Json[]): Json | undefined {
   return { code: failed ? 'STATUS_CODE_ERROR' : 'STATUS_CODE_OK', ...(typeof message === 'string' ? { message } : {}) };
 }
 
-function parentOf(span: Json): string | undefined {
-  const refs = Array.isArray(span.references) ? span.references.filter(isRecord) : [];
-  // CHILD_OF is the parent; a span that only FOLLOWS_FROM another is drawn under that one.
+function referencesOf(span: Json, traceId: unknown): { parent?: string; links: unknown } {
+  const refs = Array.isArray(span.references) ? span.references.map((r) => isRecord(r) ? r : {}) : [];
+  // Preserve the historical OpenTracing parent preference, but never attach
+  // a cross-trace reference to an unrelated local span with the same span ID.
   const ref = refs.find((r) => r.refType === 'CHILD_OF') ?? refs.find((r) => r.refType === 'FOLLOWS_FROM');
-  if (ref && typeof ref.spanID === 'string') return ref.spanID;
-  return typeof span.parentSpanID === 'string' && span.parentSpanID !== '' ? span.parentSpanID : undefined;
+  const sameTrace = ref && typeof ref.traceID === 'string' && typeof traceId === 'string' && ref.traceID.toLowerCase() === traceId.toLowerCase();
+  const parent = ref ? (sameTrace && typeof ref.spanID === 'string' ? ref.spanID : undefined)
+    : typeof span.parentSpanID === 'string' && span.parentSpanID !== '' ? span.parentSpanID : undefined;
+  return { parent, links: span.references !== undefined && !Array.isArray(span.references) ? span.references : refs.map((r) => ({ traceId: r.traceID, spanId: r.spanID,
+    attributes: typeof r.refType === 'string' ? [{ key: 'opentracing.ref_type', value: { stringValue: r.refType.toLowerCase() } }] : [],
+  })) };
 }
 
 function events(logs: unknown): Json[] {
@@ -127,7 +132,7 @@ export function jaegerToOtlp(json: unknown): { resourceSpans: Json[] } {
       if (!isRecord(raw)) return;
       const tags = tagList(raw.tags);
       const kind = tags.find((t) => t.key === 'span.kind');
-      const parent = parentOf(raw);
+      const { parent, links } = referencesOf(raw, raw.traceID ?? trace.traceID);
       const spanStatus = status(tags);
       const start = microsToNanos(raw.startTime);
       const span: Json = {
@@ -141,6 +146,7 @@ export function jaegerToOtlp(json: unknown): { resourceSpans: Json[] } {
         endTimeUnixNano: addMicros(raw.startTime, raw.duration) ?? raw.startTime,
         attributes: attributes(tags),
         events: events(raw.logs),
+        links,
         ...(spanStatus ? { status: spanStatus } : {}),
       };
       // A span may carry its process inline instead of by processID.

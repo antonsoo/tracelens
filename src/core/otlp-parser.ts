@@ -5,7 +5,7 @@
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto
 // (verified against the `main` branch, 2026-09-24).
-import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, StatusCode, TraceListing } from './types.js';
+import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, SpanLink, StatusCode, TraceListing } from './types.js';
 import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 import { assertPayloadDepth, MAX_PAYLOAD_DEPTH, TraceParseError } from './payload-depth.js';
@@ -132,6 +132,39 @@ function hexId(raw: unknown): string {
   return '';
 }
 
+function optionalUint32(raw: unknown, field: string, warnings: ParseWarning[], spanId: string, traceId: string): number | undefined {
+  if (raw === undefined) return undefined;
+  if (typeof raw === 'number' && Number.isInteger(raw) && raw >= 0 && raw <= 0xffff_ffff) return raw;
+  warnings.push({ message: `Invalid ${field}; its value is unknown.`, spanId, traceId });
+  return undefined;
+}
+
+function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, traceId: string): { links: SpanLink[]; invalidLinkCount?: number } {
+  if (raw === undefined) return { links: [] };
+  if (!Array.isArray(raw)) {
+    warnings.push({ message: 'Invalid links collection; link evidence could not be read.', spanId, traceId });
+    return { links: [] };
+  }
+  let invalid = 0;
+  const links: SpanLink[] = [];
+  for (const entry of raw) {
+    if (!isRecord(entry)) { invalid++; continue; }
+    const targetTrace = hexId(entry.traceId ?? entry.trace_id);
+    const targetSpan = hexId(entry.spanId ?? entry.span_id);
+    if (!targetTrace || !targetSpan) { invalid++; continue; }
+    const traceState = entry.traceState ?? entry.trace_state;
+    const flags = optionalUint32(entry.flags, 'link flags', warnings, spanId, traceId);
+    const dropped = optionalUint32(entry.droppedAttributesCount ?? entry.dropped_attributes_count, 'link droppedAttributesCount', warnings, spanId, traceId);
+    links.push({ traceId: targetTrace, spanId: targetSpan, attributes: decodeAttributes(entry.attributes),
+      ...(typeof traceState === 'string' ? { traceState } : {}),
+      ...(flags !== undefined ? { flags } : {}),
+      ...(dropped !== undefined ? { droppedAttributesCount: dropped } : {}),
+    });
+  }
+  if (invalid) warnings.push({ message: `Skipped ${invalid} malformed link record(s) with missing traceId/spanId.`, spanId, traceId });
+  return { links, ...(invalid ? { invalidLinkCount: invalid } : {}) };
+}
+
 export interface ParseOptions {
   /**
    * Which trace to read from a file that holds several: a trace ID, or the
@@ -251,6 +284,8 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
           status: decodeStatus(raw.status),
           attributes,
           events: decodeEvents(raw.events, warnings, spanId, spanTraceId),
+          ...decodeLinks(raw.links, warnings, spanId, spanTraceId),
+          droppedLinksCount: optionalUint32(raw.droppedLinksCount ?? raw.dropped_links_count, 'droppedLinksCount', warnings, spanId, spanTraceId),
           resourceAttributes,
           ...(scopeName ? { scopeName } : {}),
           ...(scopeVersion ? { scopeVersion } : {}),
@@ -300,6 +335,25 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
   const traceId = chooseTrace(traces, options.traceId).traceId;
   const flat = byTrace.get(traceId)!.map((span) => normalizeSpan(span));
   const chosenWarnings = warnings.filter((w) => w.traceId === undefined || w.traceId === traceId);
+
+  // Resolve by the complete identity across all parsed traces. Span IDs alone
+  // are not unique across traces; duplicate targets must never pick a winner.
+  if (flat.some((s) => s.links?.length)) {
+    const targets = new Map<string, Map<string, ParsedSpan | null>>();
+    for (const [id, spans] of byTrace) {
+      const index = new Map<string, ParsedSpan | null>();
+      for (const span of spans) index.set(span.spanId, index.has(span.spanId) ? null : span);
+      targets.set(id, index);
+    }
+    for (const span of flat) for (const link of span.links ?? []) {
+      const traceTargets = targets.get(link.traceId);
+      const target = traceTargets?.get(link.spanId);
+      link.target = !traceTargets ? { status: 'missing-trace' }
+        : target === null ? { status: 'ambiguous' }
+          : target === undefined ? { status: 'missing-span' }
+            : { status: 'available', name: target.name };
+    }
+  }
 
   const byId = new Map(flat.map((s) => [s.spanId, s] as const));
   if (byId.size !== flat.length) {

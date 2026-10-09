@@ -14,6 +14,8 @@ import { formatComparison } from './compare-report.js';
 import { VERSION } from './version.js';
 import { formatTiming } from './timing-report.js';
 import { formatCostReport } from './cost-report.js';
+import { buildLinksReport } from '../core/links.js';
+import { formatLinks } from './links-report.js';
 
 const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)
 
@@ -22,6 +24,8 @@ ${bold('Usage:')}
                                   Print duration, token, cost and error summary
   tracelens tree <trace.json> [--trace <id>]
                                   Print the span tree
+  tracelens links <trace.json> [--trace <id>] [--json]
+                                  Inspect span links and targets in this file
   tracelens timing <trace.json> [--trace <id>] [--json]
                                   Explain elapsed time, overlaps and gaps
   tracelens cost <trace.json> [--trace <id>] [--json] [--prices <prices.json>]
@@ -212,7 +216,7 @@ async function main(): Promise<void> {
     console.log(HELP);
     return;
   }
-  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing' && cmd !== 'cost') {
+  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing' && cmd !== 'cost' && cmd !== 'links') {
     console.error(red(`Unknown command "${safe(cmd)}".`));
     console.log(HELP);
     process.exitCode = 1;
@@ -242,7 +246,7 @@ async function main(): Promise<void> {
       return;
     }
     const priced = cmd === 'summary' || cmd === 'cost';
-    const json = cmd === 'timing' || cmd === 'cost';
+    const json = cmd === 'timing' || cmd === 'cost' || cmd === 'links';
     const usage = `Usage: tracelens ${cmd} <trace.json> [--trace <id>]${json ? ' [--json]' : ''}${priced ? ' [--prices <prices.json>]' : ''}`;
     const args = parseArgs(rest, ['--trace', ...(priced ? ['--prices'] : [])], json, usage);
     if (args.files.length !== 1) throw new UsageError(usage);
@@ -256,7 +260,12 @@ async function main(): Promise<void> {
       return;
     }
     const trace = await loadTrace(file, args.traces.get('--trace'));
-    if (cmd === 'cost') {
+    if (cmd === 'links') {
+      const report = buildLinksReport(trace);
+      for (const line of otherTraces(trace, '--trace')) console.error(line);
+      console.log(args.json ? JSON.stringify(report, null, 2) : formatLinks(report));
+    }
+    else if (cmd === 'cost') {
       const report = buildCostReport(trace, await loadPrices(args.traces.get('--prices')));
       for (const line of otherTraces(trace, '--trace')) console.error(line);
       console.log(args.json ? JSON.stringify(report, null, 2) : formatCostReport(report));

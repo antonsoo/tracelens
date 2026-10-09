@@ -40,6 +40,17 @@ export interface SpanEvent {
   attributes: AttrMap;
 }
 
+export interface SpanLink {
+  traceId: string;
+  spanId: string;
+  attributes: AttrMap;
+  traceState?: string;
+  flags?: number;
+  droppedAttributesCount?: number;
+  /** Resolution in this imported file, never a request to an external service. */
+  target?: { status: 'available' | 'missing-trace' | 'missing-span' | 'ambiguous'; name?: string };
+}
+
 export interface NormalizedMessagePart {
   type: string; // "text" | "tool_call" | "tool_call_response" | ...
   content?: string;
@@ -102,6 +113,11 @@ export interface ParsedSpan {
   status: { code: StatusCode; message?: string };
   attributes: AttrMap;
   events: SpanEvent[];
+  links?: SpanLink[];
+  /** Exporter-reported omissions; absent has the OTLP default of zero. */
+  droppedLinksCount?: number;
+  /** Malformed records skipped during import, separate from exporter omissions. */
+  invalidLinkCount?: number;
   resourceAttributes: AttrMap;
   scopeName?: string;
   scopeVersion?: string;
