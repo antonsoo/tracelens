@@ -1,5 +1,9 @@
 # Token cost verification
 
+**Publication update:** the reviewed source and static site were pushed later
+on 2026-10-09. See [the new verification record](../verification-publish-2026-10-09.md).
+The original local verification record follows; no npm release was made.
+
 Verified locally on 2026-10-09 UTC (2026-10-08 in Los Angeles). Baseline:
 `6ada30f`. Implementation: `e957f8d`, `6a77a66`, `aa41319`, `0f89841`.
 These changes have not been pushed, deployed or published.

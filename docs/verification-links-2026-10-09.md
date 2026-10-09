@@ -1,5 +1,9 @@
 # Span-link verification, 2026-10-09
 
+**Publication update:** the reviewed source and static site were pushed later
+on 2026-10-09. See [the new verification record](verification-publish-2026-10-09.md).
+The original local verification record follows; no npm release was made.
+
 All work is local. No registry release, remote push, tag or site deployment
 was performed. The published package remains outside this verification.
 

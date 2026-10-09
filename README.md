@@ -23,26 +23,26 @@ tokens, estimated cost and errors, with every aggregate linked back to its
 original spans. Repeated calls are grouped by operation path, so inserting
 a new model turn does not shift a guessed one-to-one alignment.
 
-The source checkout also explains **why summed work differs from elapsed time**:
+The viewer also explains **why summed work differs from elapsed time**:
 inspect overlaps, gaps and the original spans in each interval. The new
 **Parallel vs sequential (local capture)** example uses SDK timestamps from
 actual loopback HTTP requests. [Timing walkthrough](docs/timing.md).
-This feature is unreleased; the published 0.3.3 package does not include it.
 
-The checkout also makes **token costs inspectable**. A recorded nano stream
+The viewer also makes **token costs inspectable**. A recorded nano stream
 was priced as `gpt-5`, overstating its token charge by 25x. Whole model names
 and providers now determine the rate. Open a call to inspect fresh input,
 cached input, output, rate sources and assumptions; export the same receipt
 from the browser or `tracelens cost`. [Try the recorded SDK replay](docs/cost-accounting.md).
-This change is also unreleased.
 
-**Follow queued work across traces** in the checkout's new SDK queue example.
+**Follow queued work across traces** in the SDK queue example.
 Inspect recorded span links, follow targets present in the file, and retain
 missing targets and exporter omission counts in JSON reports. This also fixes
 Jaeger references attaching to unrelated local spans that reuse a span ID.
 The browser and `tracelens links` share the same evidence; linked inspection
 keeps comparison runs intact. [Walkthrough and limits](docs/span-links.md).
-These additions are local and unreleased.
+These features are available in the live demo and source checkout. The npm
+0.3.3 release predates the new `timing`, `cost` and `links` commands; build the
+source to use those commands. [Publication verification](docs/verification-publish-2026-10-09.md).
 
 ![Recorded SDK call with its token calculation and rate source](docs/assets/cost-receipt-desktop.png)
 
@@ -65,7 +65,7 @@ replay, and compared extracted model, usage and tool fields with the recorded re
 - It missed most of what is newer: cache-read tokens in 37 of 86 calls,
   reasoning tokens in 259 of 280, tool calls in 120 of 291. From the Vercel AI
   SDK's `ai.*` spans it showed none of the three.
-- This checkout (unreleased) reads those dialects: 85 of 86, 193 of 280, 250
+- The current viewer and source checkout read those dialects: 85 of 86, 193 of 280, 250
   of 291. The parser was changed to read these same spans, so that is coverage
   of what it was shown, not a prediction for the next library.
 - 86 calls have no reasoning tokens in the span at all, and 60 token figures

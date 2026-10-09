@@ -1,5 +1,9 @@
 # Elapsed-time accounting: local verification, 2026-10-07
 
+**Publication update:** the reviewed source and static site were pushed later
+on 2026-10-09. See [the new verification record](verification-publish-2026-10-09.md).
+The original local verification record follows; no npm release was made.
+
 Implementation: `80832a1`. Build dependency patch: `d2f998c`.
 These changes are local and unreleased. No push, package publication or website
 deployment was performed.

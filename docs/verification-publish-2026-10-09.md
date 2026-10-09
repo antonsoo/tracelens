@@ -72,6 +72,41 @@ exported complete timing source IDs, and returned to an unchanged comparison.
 No page errors, CSP violations, external-origin requests or page-width overflow
 were observed. [Observed results](publish-evidence-2026-10-09/browser-local.json).
 
+## Published source and site
+
+The source and `gh-pages` were pushed as fast-forward updates. The public site
+is [antonsoo.github.io/tracelens](https://antonsoo.github.io/tracelens/).
+
+| Artifact | Reviewed/published revision |
+| --- | --- |
+| Clean application build | `94aab05` |
+| Source publication, including review evidence | `135d2b2` |
+| Static site branch | `bce6532` |
+| npm registry version, rechecked after publication | `0.3.3`, unchanged; the newer CLI commands require a source build |
+
+The source publication and later documentation commits contain the same
+application files as the clean build. All **33 served files** have matching
+SHA-256 values, including HTML, JavaScript, CSS, fonts and all nine examples.
+[File-by-file comparison](publish-evidence-2026-10-09/hosted-assets.json).
+
+The same eight browser/theme/width workflows passed against the public URL:
+actual links, cost and timing downloads match the compiled CLI; imported link
+navigation, receipts and comparison inspection work offline; refreshed prices
+are present. There were no page errors, external-origin requests, CSP violations
+or page-width overflows. [Hosted observations](publish-evidence-2026-10-09/browser-hosted.json).
+Twelve hosted screenshots were opened and visually reviewed; examples:
+
+- [Cross-trace inspection, desktop](assets/published-2026-10-09/links-chromium-dark-1440.png)
+- [Cost receipt, phone](assets/published-2026-10-09/cost-firefox-light-375.png)
+- [Timing accounting, phone](assets/published-2026-10-09/timing-chromium-light-375.png)
+
+From a checkout built with `npm ci && npm run build`, repeat the hosted checks:
+
+```sh
+python3 scripts/verify-assets.py https://antonsoo.github.io/tracelens/ dist /tmp/tracelens-assets.json
+node scripts/verify-site.mjs https://antonsoo.github.io/tracelens/ /tmp/tracelens-site-check
+```
+
 ## Scope
 
 The parser is not streaming and browser files remain capped at 25 MiB.

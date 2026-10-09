@@ -1,6 +1,8 @@
 # Inspect the token charge behind a trace
 
-Available in the source checkout; not yet published to npm or the live demo.
+Available in the [live demo](https://antonsoo.github.io/tracelens/?example=cost)
+and source checkout. The npm 0.3.3 release predates this CLI command.
+[Publication verification](verification-publish-2026-10-09.md).
 
 TraceLens shows which calls contributed to a token estimate, which could not
 be priced, and which wrapper spans were excluded. Each priced call retains
