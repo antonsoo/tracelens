@@ -6,9 +6,11 @@
 // hardcoded into the cost calculation itself (see cost.ts).
 export interface PriceEntry {
   id: string;
-  /** Case-insensitive substring matched against gen_ai.response.model, falling
-   * back to gen_ai.request.model / llm.model_name. Longest match wins. */
+  /** Whole model name, case-insensitive. No substring or deployment-prefix guessing. */
   matchModel: string;
+  /** Default: snapshot (whole name, or that name plus a calendar-date suffix). */
+  matchMode?: 'exact' | 'snapshot';
+  /** Empty explicitly permits any provider. A recorded provider otherwise must match. */
   provider: string;
   inputPerMTok: number;
   outputPerMTok: number;
@@ -43,6 +45,8 @@ export const DEFAULT_PRICE_TABLE: PriceEntry[] = [
   { id: 'gpt-6-luna', matchModel: 'gpt-6-luna', provider: 'openai', inputPerMTok: 0.1, outputPerMTok: 0.5, cacheReadPerMTok: 0.01, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
   { id: 'gpt-5', matchModel: 'gpt-5', provider: 'openai', inputPerMTok: 1.25, outputPerMTok: 10.0, cacheReadPerMTok: 0.125, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
   { id: 'gpt-5-mini', matchModel: 'gpt-5-mini', provider: 'openai', inputPerMTok: 0.25, outputPerMTok: 2.0, cacheReadPerMTok: 0.025, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
+  // This is a separate product, not a gpt-5 snapshot. Verified on its own model page.
+  { id: 'gpt-5-nano', matchModel: 'gpt-5-nano', provider: 'openai', inputPerMTok: 0.05, outputPerMTok: 0.4, cacheReadPerMTok: 0.005, sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-5-nano', sourceDate: '2026-10-09' },
   { id: 'gpt-4o-mini', matchModel: 'gpt-4o-mini', provider: 'openai', inputPerMTok: 0.15, outputPerMTok: 0.6, cacheReadPerMTok: 0.075, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
   { id: 'gpt-4o', matchModel: 'gpt-4o', provider: 'openai', inputPerMTok: 2.5, outputPerMTok: 10.0, cacheReadPerMTok: 1.25, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },
   { id: 'gpt-4.1-nano', matchModel: 'gpt-4.1-nano', provider: 'openai', inputPerMTok: 0.1, outputPerMTok: 0.4, cacheReadPerMTok: 0.025, sourceUrl: 'https://developers.openai.com/api/docs/pricing', sourceDate: '2026-09-24' },

@@ -1,4 +1,6 @@
-import { estimateSpanCost, isTokenCount } from './cost.js';
+import { isModelCall, isTokenCount, modelOutputTokens, reportedModel } from './cost.js';
+import { buildCostReport } from './cost-report.js';
+import type { TraceCostReport } from './cost-report.js';
 import type { PriceEntry } from './pricing.js';
 import { spanDurationMs } from './types.js';
 import type { ParsedSpan, ParsedTrace } from './types.js';
@@ -14,6 +16,7 @@ export interface ModelUsageRow {
   outputTokens: number;
   missingInputCalls: number;
   missingOutputCalls: number;
+  uncostedCalls: number;
   costUsd?: number; // undefined if no call for this model had a price match
 }
 
@@ -30,6 +33,7 @@ export interface TraceSummary {
   uncostedCalls: number;
   criticalPath: ParsedSpan[];
   timing: TraceTiming;
+  costReport: TraceCostReport;
 }
 
 /** Self time = a span's duration minus the union of its children's
@@ -72,7 +76,8 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
   let otherSelf = 0n;
   let errorCount = 0;
   const usageByModel = new Map<string, ModelUsageRow>();
-  let uncostedCalls = 0;
+  const costReport = buildCostReport(trace, priceTable);
+  const costBySpan = new Map(costReport.rows.map((row) => [row.spanId, row.result]));
 
   for (const span of trace.spans) {
     const self = selfTimeNs(span);
@@ -82,10 +87,11 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
 
     if (span.status.code === 'ERROR') errorCount += 1;
 
-    if (span.agentKind === 'llm') {
+    if (isModelCall(span.agentKind)) {
       const genai = span.genai ?? {};
-      const model = genai.responseModel ?? genai.requestModel ?? '(unknown model)';
-      const row = usageByModel.get(model) ?? {
+      const model = reportedModel(genai) ?? '(unknown model)';
+      const key = JSON.stringify([model, genai.provider ?? '']);
+      const row = usageByModel.get(key) ?? {
         model,
         ...(genai.provider ? { provider: genai.provider } : {}),
         calls: 0,
@@ -93,25 +99,25 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
         outputTokens: 0,
         missingInputCalls: 0,
         missingOutputCalls: 0,
+        uncostedCalls: 0,
       };
       row.calls += 1;
       if (isTokenCount(genai.usage?.inputTokens)) row.inputTokens += genai.usage.inputTokens;
       else row.missingInputCalls++;
-      if (isTokenCount(genai.usage?.outputTokens)) row.outputTokens += genai.usage.outputTokens;
+      const output = modelOutputTokens(genai, span.agentKind);
+      if (isTokenCount(output)) row.outputTokens += output;
       else row.missingOutputCalls++;
-      const cost = estimateSpanCost(genai, priceTable);
-      if (cost) {
+      const cost = costBySpan.get(span.spanId);
+      if (cost?.status === 'priced') {
         row.costUsd = (row.costUsd ?? 0) + cost.costUsd;
       } else {
-        uncostedCalls += 1;
+        row.uncostedCalls += 1;
       }
-      usageByModel.set(model, row);
+      usageByModel.set(key, row);
     }
   }
 
-  const totalCostUsd = [...usageByModel.values()].some((r) => r.costUsd !== undefined)
-    ? [...usageByModel.values()].reduce((sum, r) => sum + (r.costUsd ?? 0), 0)
-    : undefined;
+  const totalCostUsd = costReport.knownCostUsd ?? undefined;
 
   return {
     totalDurationMs: Number(trace.maxEndNs - trace.minStartNs) / 1_000_000,
@@ -123,9 +129,10 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
     retryCount: countRetries(trace.spans),
     modelUsage: [...usageByModel.values()].sort((a, b) => b.calls - a.calls),
     ...(totalCostUsd !== undefined ? { totalCostUsd } : {}),
-    uncostedCalls,
+    uncostedCalls: costReport.unpricedCalls,
     criticalPath: computeCriticalPath(trace),
     timing: buildTiming(trace),
+    costReport,
   };
 }
 

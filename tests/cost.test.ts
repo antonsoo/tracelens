@@ -8,7 +8,7 @@ const table: PriceEntry[] = [
 ];
 
 describe('findPriceEntry', () => {
-  it('matches the longest substring so gpt-4o-mini does not match the gpt-4o entry', () => {
+  it('matches a dated snapshot to its whole base model', () => {
     const entry = findPriceEntry({ responseModel: 'gpt-4o-mini-2024-07-18' }, table);
     expect(entry?.id).toBe('gpt-4o-mini');
   });
@@ -69,7 +69,8 @@ describe('default price table', () => {
     const idFor = (model: string) => findPriceEntry({ responseModel: model }, DEFAULT_PRICE_TABLE)?.id;
     expect(idFor('claude-sonnet-5-5')).toBe('claude-sonnet-5-5');
     expect(idFor('claude-sonnet-5')).toBe('claude-sonnet-5');
-    expect(idFor('us.anthropic.claude-opus-5-5-v1:0')).toBe('claude-opus-5-5');
+    expect(idFor('us.anthropic.claude-opus-5-5-v1:0')).toBeUndefined();
+    expect(idFor('gpt-5-nano-2025-08-07')).toBe('gpt-5-nano');
     expect(idFor('gpt-6-sol-2026-08-01')).toBe('gpt-6-sol');
     const ids = DEFAULT_PRICE_TABLE.map((e) => e.id);
     expect(new Set(ids).size).toBe(ids.length);

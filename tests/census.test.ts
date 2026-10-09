@@ -37,10 +37,12 @@ describe('Vercel AI SDK 6, ai.* attributes', () => {
   });
 
   it('prices the call with the cached tokens at the cache rate', () => {
-    // 3103 fresh input tokens at $1.25, 2944 cached at $0.125, 1623 output at $10 (per million): the
-    // table's gpt-5 entry. Without the cached count the call was priced $0.0238 instead of $0.0205.
+    // The response model is gpt-5-nano, not gpt-5. Its official model page (2026-10-09)
+    // gives $0.05 input, $0.005 cached input and $0.40 output per million tokens.
+    // The former substring match silently used the gpt-5 rates: 25 times too high.
     const cost = estimateSpanCost(stream.genai!, DEFAULT_PRICE_TABLE);
-    expect(cost?.costUsd).toBeCloseTo((3103 * 1.25 + 2944 * 0.125 + 1623 * 10) / 1e6, 9);
+    expect(cost?.matchedModel).toBe('gpt-5-nano');
+    expect(cost?.costUsd).toBeCloseTo(0.00081907, 12);
   });
 
   it('counts the model call once: the span that repeats its totals is a chain, not a second call', () => {

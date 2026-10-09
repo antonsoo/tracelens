@@ -1,4 +1,6 @@
-import { estimateSpanCost, isTokenCount } from './cost.js';
+import { isModelCall, isTokenCount, modelOutputTokens } from './cost.js';
+import { buildCostReport } from './cost-report.js';
+import type { TraceCostReport } from './cost-report.js';
 import type { PriceEntry } from './pricing.js';
 import { selfTimeNs } from './summary.js';
 import type { AgentSpanKind, ParsedSpan, ParsedTrace } from './types.js';
@@ -56,6 +58,7 @@ export interface TraceComparison {
   priceTable: PriceEntry[];
   wallTimeMs: Change;
   timing: { baseline: TraceTiming; candidate: TraceTiming };
+  costEvidence: { baseline: TraceCostReport; candidate: TraceCostReport };
   metrics: MetricChanges;
   operations: OperationComparison[];
   warnings: string[];
@@ -122,7 +125,7 @@ interface Group {
   calls: CallEvidence[];
 }
 
-function collect(trace: ParsedTrace, prices: PriceEntry[]): { groups: Map<string, Group>; metrics: RunMetrics } {
+function collect(trace: ParsedTrace, costs: TraceCostReport): { groups: Map<string, Group>; metrics: RunMetrics } {
   if (new Set(trace.spans.map((span) => span.traceId)).size !== 1) {
     throw new Error('Cannot compare spans from more than one trace as a single run.');
   }
@@ -130,6 +133,7 @@ function collect(trace: ParsedTrace, prices: PriceEntry[]): { groups: Map<string
     throw new Error('Cannot compare duplicate span IDs. Export each span once.');
   }
   const groups = new Map<string, Group>();
+  const costBySpan = new Map(costs.rows.map((row) => [row.spanId, row.result]));
   const metrics = emptyMetrics();
   const visited = new Set<ParsedSpan>();
   const stack = [...trace.roots].reverse().map((span) => ({ span, ancestry: [] as Segment[] }));
@@ -168,12 +172,13 @@ function collect(trace: ParsedTrace, prices: PriceEntry[]): { groups: Map<string
       target.calls.value++;
       target.selfTimeMs.value += self;
       target.errors.value += span.status.code === 'ERROR' ? 1 : 0;
-      if (span.agentKind !== 'llm') continue;
+      if (!isModelCall(span.agentKind)) continue;
       const usage = span.genai?.usage;
       addMeasurement(target.inputTokens, isTokenCount(usage?.inputTokens) ? usage.inputTokens : undefined);
-      addMeasurement(target.outputTokens, isTokenCount(usage?.outputTokens) ? usage.outputTokens : undefined);
-      const cost = span.genai ? estimateSpanCost(span.genai, prices)?.costUsd : undefined;
-      addMeasurement(target.costUsd, cost);
+      const output = modelOutputTokens(span.genai ?? {}, span.agentKind);
+      addMeasurement(target.outputTokens, isTokenCount(output) ? output : undefined);
+      const cost = costBySpan.get(span.spanId);
+      addMeasurement(target.costUsd, cost?.status === 'priced' ? cost.costUsd : undefined);
     }
     for (const child of [...span.children].reverse()) stack.push({ span: child, ancestry: path });
   }
@@ -186,8 +191,9 @@ function collect(trace: ParsedTrace, prices: PriceEntry[]): { groups: Map<string
 /** Compare observations, not statistical significance or causal latency.
  * Repeated paths are aggregated: there is no reliable cross-run call ID. */
 export function compareTraces(baseline: ParsedTrace, candidate: ParsedTrace, prices: PriceEntry[]): TraceComparison {
-  const before = collect(baseline, prices);
-  const after = collect(candidate, prices);
+  const costEvidence = { baseline: buildCostReport(baseline, prices), candidate: buildCostReport(candidate, prices) };
+  const before = collect(baseline, costEvidence.baseline);
+  const after = collect(candidate, costEvidence.candidate);
   const operations = [...new Set([...before.groups.keys(), ...after.groups.keys()])]
     .map((key): OperationComparison => {
       const a = before.groups.get(key);
@@ -212,6 +218,7 @@ export function compareTraces(baseline: ParsedTrace, candidate: ParsedTrace, pri
     baselineTraceId: baseline.traceId,
     candidateTraceId: candidate.traceId,
     priceTable: prices.map((price) => ({ ...price })),
+    costEvidence,
     timing: { baseline: buildTiming(baseline), candidate: buildTiming(candidate) },
     wallTimeMs: measurementChange(
       known(Number(baseline.maxEndNs - baseline.minStartNs) / 1_000_000),

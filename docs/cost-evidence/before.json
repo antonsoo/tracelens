@@ -1,0 +1,111 @@
+{
+  "commit": "6ada30f",
+  "command": "npm run build:cli; import dist-cli/core and inspect the census fixtures",
+  "records": [
+    {
+      "file": "openllmetry-openai-reasoning.json",
+      "traceId": "46934a45d30c70eedbbc23a8dc07a660",
+      "spans": [
+        {
+          "id": "e510656701b707ff",
+          "kind": "llm",
+          "model": "gpt-5-nano-2025-08-07",
+          "usage": {
+            "inputTokens": 11,
+            "outputTokens": 228,
+            "cacheReadTokens": 0,
+            "reasoningOutputTokens": 192
+          },
+          "price": "gpt-5",
+          "costUsd": 0.0022937499999999998
+        }
+      ],
+      "summary": {
+        "modelUsage": [
+          {
+            "model": "gpt-5-nano-2025-08-07",
+            "provider": "openai",
+            "calls": 1,
+            "inputTokens": 11,
+            "outputTokens": 228,
+            "missingInputCalls": 0,
+            "missingOutputCalls": 0,
+            "costUsd": 0.0022937499999999998
+          }
+        ],
+        "costUsd": 0.0022937499999999998,
+        "uncosted": 0
+      }
+    },
+    {
+      "file": "vercel-ai-sdk-6-openai-responses-stream.json",
+      "traceId": "c9265c95d78dfc7a6f08bec13c598239",
+      "spans": [
+        {
+          "id": "2aefbab25c2a8698",
+          "kind": "llm",
+          "model": "gpt-5-nano-2025-08-07",
+          "usage": {
+            "inputTokens": 6047,
+            "outputTokens": 1623,
+            "cacheReadTokens": 2944,
+            "reasoningOutputTokens": 1408
+          },
+          "price": "gpt-5",
+          "costUsd": 0.020476750000000002
+        },
+        {
+          "id": "fe72ef2fb2d43a14",
+          "kind": "chain",
+          "model": "gpt-5-nano-2025-08-07",
+          "usage": {
+            "inputTokens": 6047,
+            "outputTokens": 1623,
+            "cacheReadTokens": 2944,
+            "reasoningOutputTokens": 1408
+          },
+          "price": "gpt-5",
+          "costUsd": 0.020476750000000002
+        }
+      ],
+      "summary": {
+        "modelUsage": [
+          {
+            "model": "gpt-5-nano-2025-08-07",
+            "provider": "openai.responses",
+            "calls": 1,
+            "inputTokens": 6047,
+            "outputTokens": 1623,
+            "missingInputCalls": 0,
+            "missingOutputCalls": 0,
+            "costUsd": 0.020476750000000002
+          }
+        ],
+        "costUsd": 0.020476750000000002,
+        "uncosted": 0
+      }
+    },
+    {
+      "file": "openinference-litellm-embedding.json",
+      "traceId": "0c3eb6a51694214b9df46a06d4c680db",
+      "spans": [
+        {
+          "id": "648c74d1222e0faf",
+          "kind": "embedding",
+          "model": "text-embedding-ada-002-v2",
+          "usage": {
+            "inputTokens": 2,
+            "totalTokens": 2
+          },
+          "price": null,
+          "costUsd": null
+        }
+      ],
+      "summary": {
+        "modelUsage": [],
+        "costUsd": null,
+        "uncosted": 0
+      }
+    }
+  ]
+}
