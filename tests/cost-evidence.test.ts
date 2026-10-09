@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { buildCostReport, buildSummary, compareTraces, DEFAULT_PRICE_TABLE, explainSpanCost, findPriceEntry, parseTraceText } from '../src/core/index.js';
 import type { GenAiInfo, PriceEntry } from '../src/core/index.js';
+import { formatCostUsd } from '../src/core/cost-format.js';
 
 const rate: PriceEntry = { id: 'base', matchModel: 'gpt-5', provider: 'openai', inputPerMTok: 1.25, outputPerMTok: 10, cacheReadPerMTok: 0.125, sourceUrl: '', sourceDate: '2026-10-09' };
 const genai: GenAiInfo = { provider: 'openai', responseModel: 'gpt-5', usage: { inputTokens: 1000, outputTokens: 100 } };
@@ -88,9 +89,22 @@ describe('recorded instrumentation receipts', () => {
     expect(summary.costReport.estimatedCostUsd).toBeNull();
     expect(summary.costReport.knownCostUsd).toBeCloseTo(0.00081907, 12);
   });
+  it('does not replace an invalid embedding output count with the vector-only zero assumption', () => {
+    const trace = fixture('openinference-litellm-embedding');
+    trace.spans[0]!.genai!.usage!.invalidFields = ['outputTokens'];
+    const prices = [{ ...rate, matchModel: 'text-embedding-ada-002-v2', provider: '', outputPerMTok: 0 }];
+    expect(buildCostReport(trace, prices).rows[0]!.result).toMatchObject({ status: 'unpriced', reason: 'invalid-usage' });
+    expect(buildSummary(trace, prices).modelUsage[0]!.missingOutputCalls).toBe(1);
+    expect(compareTraces(trace, trace, prices).metrics.outputTokens.delta).toBeNull();
+  });
 });
 
 describe('explanations rather than invented zero charges', () => {
+  it('keeps a tiny calculated charge visibly different from a free call', () => {
+    expect(formatCostUsd(0.00081907)).toBe('$0.00081907');
+    expect(formatCostUsd(0.000000005)).toBe('$5.0000e-9');
+    expect(formatCostUsd(0)).toBe('$0');
+  });
   it.each([
     [{ ...genai, usage: undefined }, 'missing-input'],
     [{ ...genai, usage: { inputTokens: 10 } }, 'missing-output'],

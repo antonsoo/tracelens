@@ -94,7 +94,7 @@ function matchPrice(genai: GenAiInfo, table: PriceEntry[]): PriceMatch {
   // Exact model wins over a base model date alias. Provider-scoped then wins
   // over explicitly unscoped, but only if the provider was recorded.
   const rank = ({ entry, match }: typeof compatible[number]): number => (match === 'exact' ? 2 : 0) + (provider && entry.provider.trim() ? 1 : 0);
-  const bestRank = Math.max(...compatible.map(rank));
+  const bestRank = compatible.reduce((best, candidate) => Math.max(best, rank(candidate)), -1);
   const best = compatible.filter((candidate) => rank(candidate) === bestRank);
   if (best.length !== 1) return unknownCost('ambiguous-price', `${best.length} equally specific price entries match. Remove the ambiguity; row order does not choose a rate.`);
   return { status: 'matched', ...best[0]! };
@@ -112,6 +112,7 @@ export function isModelCall(kind: AgentSpanKind): boolean {
 
 /** Embeddings produce vectors, not completion tokens. Keep contradictory readings visible. */
 export function modelOutputTokens(genai: GenAiInfo, kind: AgentSpanKind): number | undefined {
+  if (genai.usage?.invalidFields?.includes('outputTokens')) return undefined;
   return genai.usage?.outputTokens ?? (kind === 'embedding' ? 0 : undefined);
 }
 
