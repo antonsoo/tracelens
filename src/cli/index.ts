@@ -7,24 +7,27 @@
 // installs it).
 import { readFile } from 'node:fs/promises';
 import { decodeText } from '../core/decode.js';
-import { parseTraceText, buildSummary, buildTiming, compareTraces, DEFAULT_PRICE_TABLE, spanDurationMs, TraceParseError } from '../core/index.js';
-import type { ParsedTrace, TraceListing } from '../core/index.js';
+import { parseTraceText, buildSummary, buildCostReport, buildTiming, compareTraces, DEFAULT_PRICE_TABLE, isPriceEntry, spanDurationMs, TraceParseError } from '../core/index.js';
+import type { ParsedTrace, PriceEntry, TraceListing } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, safe, table, yellow } from './format.js';
 import { formatComparison } from './compare-report.js';
 import { VERSION } from './version.js';
 import { formatTiming } from './timing-report.js';
+import { formatCostReport } from './cost-report.js';
 
 const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)
 
 ${bold('Usage:')}
-  tracelens summary <trace.json> [--trace <id>]
+  tracelens summary <trace.json> [--trace <id>] [--prices <prices.json>]
                                   Print duration, token, cost and error summary
   tracelens tree <trace.json> [--trace <id>]
                                   Print the span tree
   tracelens timing <trace.json> [--trace <id>] [--json]
                                   Explain elapsed time, overlaps and gaps
+  tracelens cost <trace.json> [--trace <id>] [--json] [--prices <prices.json>]
+                                  Explain token charges, rates and unpriced calls
   tracelens compare <baseline.json> <candidate.json> [--json]
-                    [--baseline-trace <id>] [--candidate-trace <id>]
+                    [--baseline-trace <id>] [--candidate-trace <id>] [--prices <prices.json>]
                                   Compare runs by operation path
   tracelens --help                 Show this help
   tracelens --version              Show the version
@@ -90,8 +93,15 @@ function otherTraces(trace: ParsedTrace, flag: string, intro = 'this file; showi
   return lines;
 }
 
-function printSummary(path: string, trace: ParsedTrace): void {
-  const summary = buildSummary(trace, DEFAULT_PRICE_TABLE);
+async function loadPrices(path: string | undefined): Promise<PriceEntry[]> {
+  if (path === undefined) return DEFAULT_PRICE_TABLE;
+  const parsed: unknown = JSON.parse(decodeText(await readFile(path)));
+  if (!Array.isArray(parsed) || !parsed.every(isPriceEntry)) throw new Error('Price file must be an array of valid price entries (whole model name, provider, finite nonnegative rates, source URL and date).');
+  return parsed;
+}
+
+function printSummary(path: string, trace: ParsedTrace, prices: PriceEntry[]): void {
+  const summary = buildSummary(trace, prices);
   console.log(bold(`${path}`));
   console.log(dim(`trace ${safe(trace.traceId)}  ·  ${summary.spanCount} spans  ·  ${trace.roots.length} root span(s)`));
   for (const line of otherTraces(trace, '--trace')) console.log(line);
@@ -113,22 +123,24 @@ function printSummary(path: string, trace: ParsedTrace): void {
     console.log(heading('Tokens & cost by model'));
     console.log(
       table(
-        ['model', 'calls', 'input', 'output', 'cost'],
+        ['model', 'provider', 'calls', 'input', 'output', 'token cost'],
         summary.modelUsage.map((r) => [
           safe(r.model),
+          safe(r.provider ?? '(not recorded)'),
           fmtInt(r.calls),
           r.missingInputCalls ? `unknown (${r.missingInputCalls} missing)` : fmtInt(r.inputTokens),
           r.missingOutputCalls ? `unknown (${r.missingOutputCalls} missing)` : fmtInt(r.outputTokens),
-          fmtUsd(r.costUsd),
+          r.uncostedCalls ? `${fmtUsd(r.costUsd)} subtotal (${r.uncostedCalls} unpriced)` : fmtUsd(r.costUsd),
         ]),
       ),
     );
-    const totalLine = `total: ${fmtUsd(summary.totalCostUsd)}`;
+    const totalLine = `token estimate: ${fmtUsd(summary.totalCostUsd)}`;
     console.log(`\n${bold(totalLine)}${summary.uncostedCalls > 0 ? dim(`  (known subtotal; ${summary.uncostedCalls} call(s) lack valid usage or pricing)`) : ''}`);
   } else {
     console.log(heading('Tokens & cost by model'));
-    console.log(dim('No LLM spans with gen_ai/OpenInference usage attributes were found.'));
+    console.log(dim('No model-call spans were found.'));
   }
+  console.log(dim(`Use tracelens cost for rates, assumptions and per-call evidence; ${summary.costReport.excludedSpans} non-call span(s) with model/usage data excluded.`));
 
   console.log(heading('Errors & possible retries'));
   console.log(
@@ -169,7 +181,7 @@ class UsageError extends Error {}
 interface Args {
   files: string[];
   json: boolean;
-  /** Values of --trace, --baseline-trace and --candidate-trace, by flag name. */
+  /** Values of accepted options, by flag name. */
   traces: Map<string, string>;
 }
 
@@ -181,7 +193,7 @@ function parseArgs(args: string[], valueFlags: string[], allowJson: boolean, usa
     if (arg === '--json' && allowJson && !parsed.json) parsed.json = true;
     else if (valueFlags.includes(arg) && !parsed.traces.has(arg)) {
       const value = args[++i];
-      if (value === undefined || value.startsWith('--')) throw new UsageError(`${arg} needs a trace ID.\n${usage}`);
+      if (value === undefined || value.startsWith('--')) throw new UsageError(`${arg} needs a value.\n${usage}`);
       parsed.traces.set(arg, value);
     } else if (arg.startsWith('--')) throw new UsageError(usage);
     else parsed.files.push(arg);
@@ -200,7 +212,7 @@ async function main(): Promise<void> {
     console.log(HELP);
     return;
   }
-  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing') {
+  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing' && cmd !== 'cost') {
     console.error(red(`Unknown command "${safe(cmd)}".`));
     console.log(HELP);
     process.exitCode = 1;
@@ -215,22 +227,24 @@ async function main(): Promise<void> {
 
   try {
     if (cmd === 'compare') {
-      const usage = 'Usage: tracelens compare <baseline.json> <candidate.json> [--json] [--baseline-trace <id>] [--candidate-trace <id>]';
-      const args = parseArgs(rest, ['--baseline-trace', '--candidate-trace'], true, usage);
+      const usage = 'Usage: tracelens compare <baseline.json> <candidate.json> [--json] [--baseline-trace <id>] [--candidate-trace <id>] [--prices <prices.json>]';
+      const args = parseArgs(rest, ['--baseline-trace', '--candidate-trace', '--prices'], true, usage);
       if (args.files.length !== 2) throw new UsageError(usage);
       const [baseline, candidate] = await Promise.all([
         loadTrace(args.files[0]!, args.traces.get('--baseline-trace')),
         loadTrace(args.files[1]!, args.traces.get('--candidate-trace')),
       ]);
-      const report = compareTraces(baseline, candidate, DEFAULT_PRICE_TABLE);
+      const report = compareTraces(baseline, candidate, await loadPrices(args.traces.get('--prices')));
       // Which trace was read from a file of several goes to stderr: stdout is the report, and with --json nothing else.
       for (const line of otherTraces(baseline, '--baseline-trace', `the baseline, ${args.files[0]}; comparing`)) console.error(line);
       for (const line of otherTraces(candidate, '--candidate-trace', `the candidate, ${args.files[1]}; comparing`)) console.error(line);
       console.log(args.json ? JSON.stringify(report, null, 2) : formatComparison(report));
       return;
     }
-    const usage = `Usage: tracelens ${cmd} <trace.json> [--trace <id>]${cmd === 'timing' ? ' [--json]' : ''}`;
-    const args = parseArgs(rest, ['--trace'], cmd === 'timing', usage);
+    const priced = cmd === 'summary' || cmd === 'cost';
+    const json = cmd === 'timing' || cmd === 'cost';
+    const usage = `Usage: tracelens ${cmd} <trace.json> [--trace <id>]${json ? ' [--json]' : ''}${priced ? ' [--prices <prices.json>]' : ''}`;
+    const args = parseArgs(rest, ['--trace', ...(priced ? ['--prices'] : [])], json, usage);
     if (args.files.length !== 1) throw new UsageError(usage);
     const file = args.files[0]!;
     if (cmd === 'timing') {
@@ -242,7 +256,12 @@ async function main(): Promise<void> {
       return;
     }
     const trace = await loadTrace(file, args.traces.get('--trace'));
-    if (cmd === 'summary') printSummary(file, trace);
+    if (cmd === 'cost') {
+      const report = buildCostReport(trace, await loadPrices(args.traces.get('--prices')));
+      for (const line of otherTraces(trace, '--trace')) console.error(line);
+      console.log(args.json ? JSON.stringify(report, null, 2) : formatCostReport(report));
+    }
+    else if (cmd === 'summary') printSummary(file, trace, await loadPrices(args.traces.get('--prices')));
     else printTree(trace);
   } catch (err) {
     console.error(red(err instanceof Error ? err.message : String(err)));

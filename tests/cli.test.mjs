@@ -86,6 +86,55 @@ import { after as afterAll } from 'node:test';
 
 const scratch = mkdtempSync(join(tmpdir(), 'tracelens-cli-'));
 afterAll(() => rmSync(scratch, { recursive: true, force: true }));
+const nanoTrace = 'tests/fixtures/census/vercel-ai-sdk-6-openai-responses-stream.json';
+test('cost CLI explains a real recorded call and agrees with the comparison export', () => {
+  const result = run('cost', nanoTrace, '--json');
+  assert.equal(result.status, 0, result.stderr);
+  const cost = JSON.parse(result.stdout);
+  assert.equal(cost.format, 'tracelens-cost-evidence');
+  assert.equal(cost.pricedCalls, 1);
+  assert.equal(cost.excludedSpans, 1);
+  assert.ok(Math.abs(cost.estimatedCostUsd - 0.00081907) < 1e-12);
+  const comparison = JSON.parse(run('compare', nanoTrace, nanoTrace, '--json').stdout);
+  assert.deepEqual(comparison.costEvidence.baseline, cost);
+  const text = run('cost', nanoTrace);
+  assert.equal(text.status, 0, text.stderr);
+  assert.match(text.stdout, /Price: gpt-5-nano \(snapshot\)/);
+  assert.match(text.stdout, /\$0\.00081907/);
+  assert.match(text.stdout, /excluded: not-model-call/);
+  assert.doesNotMatch(text.stdout, /ai\.prompt/);
+});
+test('a custom price file controls cost, summary and comparison without changing browser settings', () => {
+  const prices = join(scratch, 'prices with spaces.json');
+  writeFileSync(prices, JSON.stringify([{
+    id: 'illustrative', matchModel: 'gpt-5-nano', provider: 'openai', inputPerMTok: 2,
+    outputPerMTok: 4, cacheReadPerMTok: 1, sourceUrl: '', sourceDate: '2026-10-09',
+  }]));
+  const cost = JSON.parse(run('cost', '--prices', prices, nanoTrace, '--json').stdout);
+  assert.ok(Math.abs(cost.estimatedCostUsd - 0.015642) < 1e-12);
+  assert.equal(cost.rows[0].result.entry.id, 'illustrative');
+  assert.match(run('summary', nanoTrace, '--prices', prices).stdout, /\$0\.015642/);
+  const comparison = JSON.parse(run('compare', nanoTrace, nanoTrace, '--prices', prices, '--json').stdout);
+  assert.equal(comparison.metrics.costUsd.baseline.value, cost.estimatedCostUsd);
+  for (const bad of ['{}', '[{}]', '{']) {
+    writeFileSync(prices, bad);
+    const result = run('cost', nanoTrace, '--prices', prices, '--json');
+    assert.equal(result.status, 1);
+    assert.equal(result.stdout, '');
+    assert.notEqual(result.stderr, '');
+  }
+});
+test('cost CLI keeps unpriced embeddings and exact zero rates distinct', () => {
+  const file = 'tests/fixtures/census/openinference-litellm-embedding.json';
+  const unknown = JSON.parse(run('cost', file, '--json').stdout);
+  assert.equal(unknown.unpricedCalls, 1);
+  assert.equal(unknown.knownCostUsd, null);
+  const prices = join(scratch, 'zero-price.json');
+  writeFileSync(prices, JSON.stringify([{ id: 'zero', matchModel: 'text-embedding-ada-002-v2', provider: '', inputPerMTok: 0, outputPerMTok: 0, sourceUrl: '', sourceDate: '' }]));
+  const zero = JSON.parse(run('cost', file, '--prices', prices, '--json').stdout);
+  assert.equal(zero.estimatedCostUsd, 0);
+  assert.equal(zero.unpricedCalls, 0);
+});
 const oneLine = (path) => JSON.stringify(JSON.parse(readFileSync(join(root, path), 'utf8')));
 const genai = JSON.parse(readFileSync(join(root, 'examples/genai-semconv-trace.json'), 'utf8'));
 const genaiSpans = genai.resourceSpans[0].scopeSpans[0].spans;

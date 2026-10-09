@@ -1,3 +1,5 @@
+import { formatCostUsd } from '../core/cost-format.js';
+
 const useColor = process.stdout.isTTY && process.env['NO_COLOR'] === undefined;
 
 function wrap(code: string, s: string): string {
@@ -27,8 +29,7 @@ export function fmtMs(ms: number): string {
 
 export function fmtUsd(v: number | undefined): string {
   if (v === undefined) return dim('—');
-  if (v < 0.01) return `$${v.toFixed(5)}`;
-  return `$${v.toFixed(4)}`;
+  return formatCostUsd(v);
 }
 
 export function fmtInt(n: number): string {
