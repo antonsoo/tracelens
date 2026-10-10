@@ -6,7 +6,7 @@ conventions layered on top of it. This document
 lists the exact attribute keys it reads, the spec versions they were
 verified against, and what tracelens does when it sees neither.
 
-All specs below were checked by fetching the cited files directly on
+The original convention audit below checked the cited files directly on
 **2026-09-24**. Both GenAI conventions in particular are marked
 "development" upstream and change between checks — re-verify before relying
 on this for a new integration.
@@ -20,6 +20,22 @@ Source: [`opentelemetry-proto`](https://github.com/open-telemetry/opentelemetry-
 `file`/`otlphttp` JSON exporters, or by `google.protobuf.json_format.MessageToJson`
 on an `ExportTraceServiceRequest`.
 
+**Protobuf JSON IDs (source checkout, checked 2026-10-10).** The structures
+are shared, but the encodings differ: [OTLP JSON](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding)
+uses hexadecimal trace/span IDs, while ordinary [Protobuf JSON](https://protobuf.dev/programming-guides/json/)
+serializes bytes as base64. Tracelens converts canonical 16-byte trace IDs and
+8-byte span/parent/link IDs to lowercase hex before resolving identities.
+Standard and URL-safe base64, with or without padding, are supported; padding
+bits must be canonical. Unknown identifier forms retain their spelling and
+case. This is a viewer's input decoder, not complete OTLP schema validation.
+
+`MessageToJson(..., preserving_proto_field_name=True)` also writes fields such
+as `resource_spans`, `trace_id` and `string_value`. The source parser accepts
+those spellings, including nested typed attributes. Exact base64 trace IDs can
+be passed to `--trace`; abbreviated selectors use the displayed hexadecimal ID.
+The [SDK replay](../studies/protobuf-identities/README.md) checks complete parsed
+traces, CLI reports, browser selection and offline navigation across both forms.
+
 ```
 { "resourceSpans": [ { "resource": { "attributes": [ AnyValue... ] },
                         "scopeSpans": [ { "scope": {...}, "spans": [ Span... ] } ] } ] }
@@ -28,9 +44,10 @@ on an `ExportTraceServiceRequest`.
 Every attribute value is a **typed `AnyValue`** union, not a bare JSON
 value: `{"stringValue": "..."}`, `{"intValue": "123"}` (int64 as a decimal
 string), `{"doubleValue": 1.5}`, `{"boolValue": true}`,
-`{"arrayValue": {"values": [...]}}`, `{"kvlistValue": {"values": [...]}}`.
-`src/core/otlp-parser.ts` → `decodeAnyValue()` decodes all six. `traceId` /
-`spanId` / `parentSpanId` are lowercase hex strings; `startTimeUnixNano` /
+`{"arrayValue": {"values": [...]}}`, `{"kvlistValue": {"values": [...]}}`,
+or `{"bytesValue": "AQI="}` (retained as base64).
+`src/core/otlp-parser.ts` → `decodeAnyValue()` decodes all seven. Parsed `traceId` /
+`spanId` / `parentSpanId` byte identities are lowercase hex strings; `startTimeUnixNano` /
 `endTimeUnixNano` are decimal-string nanosecond timestamps (parsed as
 `bigint` throughout tracelens — see `spanDurationMs()` for the one place
 that narrows to a `number`, deliberately, for display). `span.kind` and

@@ -1,0 +1,389 @@
+{
+  "production_source_revision": "ea520253ca11c9fa1f19a25ca371139c45e9fd68",
+  "verification_source_revision": "1bf40900d5ab892dfd40c9484bd87521dc8144db",
+  "platform": "WSL2 Linux x86_64",
+  "node": "v26.7.0",
+  "npm": "12.0.1",
+  "browser_versions": {
+    "chromium": "153.0.8010.12",
+    "firefox": "155.0"
+  },
+  "lockfile_sha256": "7700912c5c891dd8e14b8816f6bbb621ac2086edd3e7d0f87439ad123843c5f2",
+  "dependencies": {
+    "@axe-core/playwright": {
+      "version": "4.13.0",
+      "resolved": "https://registry.npmjs.org/@axe-core/playwright/-/playwright-4.13.0.tgz",
+      "overridden": false
+    },
+    "@playwright/test": {
+      "version": "1.63.0",
+      "resolved": "https://registry.npmjs.org/@playwright/test/-/test-1.63.0.tgz",
+      "overridden": false
+    },
+    "@types/node": {
+      "version": "24.13.6",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.13.6.tgz",
+      "overridden": false
+    },
+    "@typescript-eslint/eslint-plugin": {
+      "version": "8.70.1",
+      "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.70.1.tgz",
+      "overridden": false
+    },
+    "@typescript-eslint/parser": {
+      "version": "8.70.1",
+      "resolved": "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.70.1.tgz",
+      "overridden": false
+    },
+    "eslint": {
+      "version": "9.39.5",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.39.5.tgz",
+      "overridden": false
+    },
+    "playwright": {
+      "version": "1.63.0",
+      "resolved": "https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz",
+      "overridden": false
+    },
+    "typescript": {
+      "version": "5.9.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+      "overridden": false
+    },
+    "vite": {
+      "version": "6.4.3",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-6.4.3.tgz",
+      "overridden": false
+    },
+    "vitest": {
+      "version": "5.0.2",
+      "resolved": "https://registry.npmjs.org/vitest/-/vitest-5.0.2.tgz",
+      "overridden": false
+    }
+  },
+  "clean_checks": [
+    {
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 3.856
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 5.372
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 3.276
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 3.67
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.341
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:cli"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 4.002
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exit": 1,
+      "elapsed_seconds": 124.559,
+      "passed": 107,
+      "failed": 1,
+      "failure": "Chromium keyboard file selection: waitForEvent(filechooser) timed out at 30 seconds. Three isolated repeats passed unchanged; cause not established."
+    }
+  ],
+  "browser_recheck": {
+    "command": [
+      "npm",
+      "run",
+      "test:browser",
+      "--",
+      "--trace",
+      "retain-on-failure"
+    ],
+    "exit": 1,
+    "elapsed_seconds": 93.135,
+    "reason": "One Chromium keyboard chooser timeout in the first whole run; unchanged targeted three-repeat run then passed. Recheck whole workflow with traces retained on failure.",
+    "passed": 107,
+    "failed": 1,
+    "failure": "Firefox parser timeout recovery: the page closed around page.clock.fastForward(30001). Captured trace inspected; alert assertion then failed within milliseconds and afterEach reported a closed page. The cause of the page closure was not established."
+  },
+  "browser_verification_change": "Use the real 30-second watchdog in both browsers, assert it does not fire early, then verify the prior comparison remains and a subsequent import succeeds. No product code, failure cases or recovery assertions were removed.",
+  "package": {
+    "source_revision": "ea520253ca11c9fa1f19a25ca371139c45e9fd68",
+    "tarball": "antonsoloviev-tracelens-0.3.3.tgz",
+    "tarball_sha256": "1c0aa1f02d9fb6c09daff2b50f11aa3c71f3927d64a2e80bbb9795978098a787",
+    "pack_command": [
+      "npm",
+      "pack",
+      "--ignore-scripts",
+      "--json"
+    ],
+    "note": "Package uses the already checked clean build; npm ci had run prepare and npm run build rebuilt both outputs. No publish command ran.",
+    "installed_code_files": 25,
+    "all_installed_code_matches_clean_build": true,
+    "runtimes": [
+      {
+        "runtime": "v20.0.0",
+        "exit": 0,
+        "elapsed_seconds": 7.703
+      },
+      {
+        "runtime": "v26.7.0",
+        "exit": 0,
+        "elapsed_seconds": 6.254
+      }
+    ],
+    "module_hashes": {
+      "core/cost-format.js": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f",
+      "core/jaeger.js": "bc8cffdc6f46fb0c68434b319d0073ff7c979f248507c39bc40a04509480b5aa",
+      "core/cost.js": "f0be36700b08475cfed1f5c1fe1eaab64498d61e601e7cc6e8ab75d900e5322d",
+      "core/cost-report.js": "a106bff43558b2d35c9352a03593ee66e657704261c53bd5a5d125cc6581e697",
+      "core/otlp-parser.js": "99e197b2fa04084bcac89b2f2d2d2da262e8690ce6f0c7029f257bf78ab0cfc1",
+      "core/pricing.js": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4",
+      "core/index.js": "868153c6b9370d73334c478a131d27ab011526bf5862e42daed21bc87567d6e5",
+      "core/compare.js": "3b63674438dfb97393e8e4ea8c0c4eed67f9c5ac7838604c6a7b44a64c663515",
+      "core/timing.js": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607",
+      "core/decode.js": "a6389c31f9d2c724b3fd2c263562dc9acdddccb7d276d03e4bbd68b399ea66d8",
+      "core/normalize.js": "0aeccaa34a0c7106baf0c4bffb2b8fb891ae62bee1eaee88ef25048fc55e1f29",
+      "core/critical-path.js": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96",
+      "core/identity.js": "8631d361e56336fd309e2541d92210a24a7df9730ec8c6c032a6a697237a6956",
+      "core/links.js": "47d787c4c0c33ae28c660a68e513035de37f0b53136f36d4d7a546631152c198",
+      "core/layout.js": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e",
+      "core/summary.js": "62631ff99449c7dbae96d0ddee79ccb5c3b874854f62952e504c93f6c33579ee",
+      "core/types.js": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974",
+      "core/payload-depth.js": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d",
+      "cli/cost-report.js": "d380fc9e48022541269a23f26f20d7520ab0b95ff860b1f3d969ad10e21a6d2c",
+      "cli/timing-report.js": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9",
+      "cli/index.js": "7475cb0405e9d7142d9784222494c6f57f35bd5942836b3a0ef0a9ba6ccf2222",
+      "cli/version.js": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9",
+      "cli/format.js": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea",
+      "cli/compare-report.js": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a",
+      "cli/links-report.js": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+    }
+  },
+  "web_assets": [
+    {
+      "file": "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2",
+      "bytes": 8356,
+      "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+    },
+    {
+      "file": "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2",
+      "bytes": 6912,
+      "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+    },
+    {
+      "file": "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "file": "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2",
+      "bytes": 13348,
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+    },
+    {
+      "file": "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2",
+      "bytes": 5868,
+      "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+    },
+    {
+      "file": "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2",
+      "bytes": 8460,
+      "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+    },
+    {
+      "file": "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2",
+      "bytes": 6972,
+      "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+    },
+    {
+      "file": "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "file": "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2",
+      "bytes": 13432,
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+    },
+    {
+      "file": "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2",
+      "bytes": 6040,
+      "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+    },
+    {
+      "file": "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2",
+      "bytes": 9352,
+      "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+    },
+    {
+      "file": "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2",
+      "bytes": 7692,
+      "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+    },
+    {
+      "file": "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    {
+      "file": "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2",
+      "bytes": 14328,
+      "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+    },
+    {
+      "file": "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2",
+      "bytes": 6932,
+      "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+    },
+    {
+      "file": "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2",
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+    },
+    {
+      "file": "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2",
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+    },
+    {
+      "file": "assets/ibm-plex-sans-greek-CmyJS8uq.woff2",
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+    },
+    {
+      "file": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "file": "assets/ibm-plex-sans-latin-ext-CIII54If.woff2",
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+    },
+    {
+      "file": "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2",
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+    },
+    {
+      "file": "assets/index-BF-7Cd7P.js",
+      "bytes": 116126,
+      "sha256": "e02cbdc7ac8735e0fbf6b22b7f0a9f848746623fd8e080a90b002062f05ae517"
+    },
+    {
+      "file": "assets/index-DUGRoTKM.css",
+      "bytes": 35812,
+      "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/assets/protobuf-identities/chromium-1440.png",
+      "bytes": 75632,
+      "sha256": "370576f99da585ecedcff1c2fa532886f86916a3490d000bdbcfca2d6ac4a849",
+      "opened_and_inspected": true
+    },
+    {
+      "file": "docs/assets/protobuf-identities/chromium-375.png",
+      "bytes": 68877,
+      "sha256": "0f296595725522a0738273a42dbda0f23961df4161fe52bb6b50e2ed502f6cfb",
+      "opened_and_inspected": true
+    },
+    {
+      "file": "docs/assets/protobuf-identities/firefox-1440.png",
+      "bytes": 105076,
+      "sha256": "cd01c825b230caee5bad8af308f00ba4037ae9a9cd3bbd3eac186789d576b3d9",
+      "opened_and_inspected": true
+    },
+    {
+      "file": "docs/assets/protobuf-identities/firefox-375.png",
+      "bytes": 96689,
+      "sha256": "8d97a22705cee7840de85c73198ed2eef00c289a058557f5a47654a0ed927b87",
+      "opened_and_inspected": true
+    }
+  ],
+  "notes": [
+    "SDK IDs and timestamps are controlled fixture values. These checks establish serialization compatibility, not production representativeness.",
+    "The source and installed CLI each pass 84 specified outcomes; the old source passes 23.",
+    "The corpus comparison retains all 22 prior file outcomes (27 traces, 127 spans).",
+    "All four browser screenshots show the checked production build, whose asset bytes agree between the working checkout and fresh clone.",
+    "No package release, tag or manual hosted deployment was performed."
+  ],
+  "browser_final": {
+    "command": [
+      "npm",
+      "run",
+      "test:browser",
+      "--",
+      "--trace",
+      "retain-on-failure",
+      "--reporter",
+      "list,json"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 108.662,
+    "source_revision": "1bf40900d5ab892dfd40c9484bd87521dc8144db",
+    "reason": "The timeout scenario now exercises the real 30-second watchdog and subsequent recovery; browser/page timing mocks removed.",
+    "stats": {
+      "startTime": "2026-10-10T11:05:26.783Z",
+      "duration": 101476.03600000001,
+      "expected": 108,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "real_watchdog_observations": [
+      {
+        "browser": "chromium",
+        "elapsedMs": 30281.98294,
+        "status": "passed"
+      },
+      {
+        "browser": "firefox",
+        "elapsedMs": 31032.411941000002,
+        "status": "passed"
+      }
+    ]
+  },
+  "verification_driver_sha256": "d77d75e5dd355c471b920868cb0deed4bfe1e906b691681e0dacbacc0dad1499",
+  "unit_tests_passed": 244,
+  "cli_tests_passed": 30
+}

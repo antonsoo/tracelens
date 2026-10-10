@@ -1,0 +1,448 @@
+{
+  "node": "v26.7.0",
+  "driver_sha256": "d77d75e5dd355c471b920868cb0deed4bfe1e906b691681e0dacbacc0dad1499",
+  "parser_sha256": "99e197b2fa04084bcac89b2f2d2d2da262e8690ce6f0c7029f257bf78ab0cfc1",
+  "oracle_sha256": "4ce186298e023adf26d1913ec23204930e6607253538027b918b0ad1d15dda01",
+  "passed": 84,
+  "total": 84,
+  "cases": [
+    {
+      "case": "all.proto.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 2,
+      "spans": 2
+    },
+    {
+      "case": "all.proto.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "7340607cafe97f6e2e5e12ec5c9f8891797c5efcf01afb03220ce128ead43259"
+    },
+    {
+      "case": "all.proto.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "7340607cafe97f6e2e5e12ec5c9f8891797c5efcf01afb03220ce128ead43259"
+    },
+    {
+      "case": "all.proto.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "all.proto.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "e5d864832718380110ab9bb3fc6e434fb3742253f7fbe57394dcce5dbe4fc388"
+    },
+    {
+      "case": "all.proto.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "all.proto.json/select-hex/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "5cf3925ee1e8af10a230ad4b9bcee4e5a3736fb67b2f076068a5bfa7990cbb6b"
+    },
+    {
+      "case": "all.proto.json/select-base64/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "5cf3925ee1e8af10a230ad4b9bcee4e5a3736fb67b2f076068a5bfa7990cbb6b"
+    },
+    {
+      "case": "all.proto.json/cli-links/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "88bc35180084b0bd78c3b4d1725bd840f8a5cae151a021abafe91857010eec77"
+    },
+    {
+      "case": "all.proto.json/cli-timing/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a5d0281a13d5c3c5e104e86b16f0c9df8ca602a5c56a444895f8a1acdfc1cbbf"
+    },
+    {
+      "case": "all.proto.json/cli-cost/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "752dd623d6e8507c493b6e5080df7c60174588b25f0ab60dcb336425c791f5d1"
+    },
+    {
+      "case": "all.proto-snake.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 2,
+      "spans": 2
+    },
+    {
+      "case": "all.proto-snake.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "7340607cafe97f6e2e5e12ec5c9f8891797c5efcf01afb03220ce128ead43259"
+    },
+    {
+      "case": "all.proto-snake.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "7340607cafe97f6e2e5e12ec5c9f8891797c5efcf01afb03220ce128ead43259"
+    },
+    {
+      "case": "all.proto-snake.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "all.proto-snake.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "e5d864832718380110ab9bb3fc6e434fb3742253f7fbe57394dcce5dbe4fc388"
+    },
+    {
+      "case": "all.proto-snake.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "all.proto-snake.json/select-hex/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "5cf3925ee1e8af10a230ad4b9bcee4e5a3736fb67b2f076068a5bfa7990cbb6b"
+    },
+    {
+      "case": "all.proto-snake.json/select-base64/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "5cf3925ee1e8af10a230ad4b9bcee4e5a3736fb67b2f076068a5bfa7990cbb6b"
+    },
+    {
+      "case": "all.proto-snake.json/cli-links/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "88bc35180084b0bd78c3b4d1725bd840f8a5cae151a021abafe91857010eec77"
+    },
+    {
+      "case": "all.proto-snake.json/cli-timing/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a5d0281a13d5c3c5e104e86b16f0c9df8ca602a5c56a444895f8a1acdfc1cbbf"
+    },
+    {
+      "case": "all.proto-snake.json/cli-cost/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "752dd623d6e8507c493b6e5080df7c60174588b25f0ab60dcb336425c791f5d1"
+    },
+    {
+      "case": "all.otlp.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 2,
+      "spans": 2
+    },
+    {
+      "case": "all.otlp.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "7340607cafe97f6e2e5e12ec5c9f8891797c5efcf01afb03220ce128ead43259"
+    },
+    {
+      "case": "all.otlp.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "7340607cafe97f6e2e5e12ec5c9f8891797c5efcf01afb03220ce128ead43259"
+    },
+    {
+      "case": "all.otlp.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "all.otlp.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "e5d864832718380110ab9bb3fc6e434fb3742253f7fbe57394dcce5dbe4fc388"
+    },
+    {
+      "case": "all.otlp.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "all.otlp.json/select-hex/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "5cf3925ee1e8af10a230ad4b9bcee4e5a3736fb67b2f076068a5bfa7990cbb6b"
+    },
+    {
+      "case": "all.otlp.json/select-base64/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "5cf3925ee1e8af10a230ad4b9bcee4e5a3736fb67b2f076068a5bfa7990cbb6b"
+    },
+    {
+      "case": "all.otlp.json/cli-links/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "88bc35180084b0bd78c3b4d1725bd840f8a5cae151a021abafe91857010eec77"
+    },
+    {
+      "case": "all.otlp.json/cli-timing/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a5d0281a13d5c3c5e104e86b16f0c9df8ca602a5c56a444895f8a1acdfc1cbbf"
+    },
+    {
+      "case": "all.otlp.json/cli-cost/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "752dd623d6e8507c493b6e5080df7c60174588b25f0ab60dcb336425c791f5d1"
+    },
+    {
+      "case": "span-collision.proto.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 1,
+      "spans": 2
+    },
+    {
+      "case": "span-collision.proto.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "33155c2a18264b049d4d843b3269838e3bc2ae6200ee99145b6910b902148c88"
+    },
+    {
+      "case": "span-collision.proto.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "33155c2a18264b049d4d843b3269838e3bc2ae6200ee99145b6910b902148c88"
+    },
+    {
+      "case": "span-collision.proto.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "span-collision.proto.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "e5d864832718380110ab9bb3fc6e434fb3742253f7fbe57394dcce5dbe4fc388"
+    },
+    {
+      "case": "span-collision.proto.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "span-collision.proto-snake.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 1,
+      "spans": 2
+    },
+    {
+      "case": "span-collision.proto-snake.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "33155c2a18264b049d4d843b3269838e3bc2ae6200ee99145b6910b902148c88"
+    },
+    {
+      "case": "span-collision.proto-snake.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "33155c2a18264b049d4d843b3269838e3bc2ae6200ee99145b6910b902148c88"
+    },
+    {
+      "case": "span-collision.proto-snake.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "span-collision.proto-snake.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "e5d864832718380110ab9bb3fc6e434fb3742253f7fbe57394dcce5dbe4fc388"
+    },
+    {
+      "case": "span-collision.proto-snake.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "span-collision.otlp.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 1,
+      "spans": 2
+    },
+    {
+      "case": "span-collision.otlp.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "33155c2a18264b049d4d843b3269838e3bc2ae6200ee99145b6910b902148c88"
+    },
+    {
+      "case": "span-collision.otlp.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "33155c2a18264b049d4d843b3269838e3bc2ae6200ee99145b6910b902148c88"
+    },
+    {
+      "case": "span-collision.otlp.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "span-collision.otlp.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "e5d864832718380110ab9bb3fc6e434fb3742253f7fbe57394dcce5dbe4fc388"
+    },
+    {
+      "case": "span-collision.otlp.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "trace-collision.proto.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 2,
+      "spans": 1
+    },
+    {
+      "case": "trace-collision.proto.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "9dda8ba40a702fc4944ec1c7476a54ebcb8e2a2315e0b972531f602407b04e19"
+    },
+    {
+      "case": "trace-collision.proto.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "9dda8ba40a702fc4944ec1c7476a54ebcb8e2a2315e0b972531f602407b04e19"
+    },
+    {
+      "case": "trace-collision.proto.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "trace-collision.proto.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "7be0e4e5854f32a7a9a4989072d34bf2b1c7d2e760e33f42b31f202c8bd7e05b"
+    },
+    {
+      "case": "trace-collision.proto.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "trace-collision.proto.json/select-hex/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "6e67cc58550d26545d8a140d43ce7fbf88f9e5ffb8f5ef1d36ee10117f6695fa"
+    },
+    {
+      "case": "trace-collision.proto.json/select-base64/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "6e67cc58550d26545d8a140d43ce7fbf88f9e5ffb8f5ef1d36ee10117f6695fa"
+    },
+    {
+      "case": "trace-collision.proto.json/cli-links/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "83f07aa79adae9d16ae6925d1b03695803578e0ad8b32864cecb6f8ee2c29de6"
+    },
+    {
+      "case": "trace-collision.proto.json/cli-timing/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "ea4011c75a7094e13681c2da1771bb990d06cd803f0928e42e60cd22ccb3db4b"
+    },
+    {
+      "case": "trace-collision.proto.json/cli-cost/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "752dd623d6e8507c493b6e5080df7c60174588b25f0ab60dcb336425c791f5d1"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 2,
+      "spans": 1
+    },
+    {
+      "case": "trace-collision.proto-snake.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "9dda8ba40a702fc4944ec1c7476a54ebcb8e2a2315e0b972531f602407b04e19"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "9dda8ba40a702fc4944ec1c7476a54ebcb8e2a2315e0b972531f602407b04e19"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "7be0e4e5854f32a7a9a4989072d34bf2b1c7d2e760e33f42b31f202c8bd7e05b"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/select-hex/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "6e67cc58550d26545d8a140d43ce7fbf88f9e5ffb8f5ef1d36ee10117f6695fa"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/select-base64/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "6e67cc58550d26545d8a140d43ce7fbf88f9e5ffb8f5ef1d36ee10117f6695fa"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/cli-links/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "83f07aa79adae9d16ae6925d1b03695803578e0ad8b32864cecb6f8ee2c29de6"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/cli-timing/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "ea4011c75a7094e13681c2da1771bb990d06cd803f0928e42e60cd22ccb3db4b"
+    },
+    {
+      "case": "trace-collision.proto-snake.json/cli-cost/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "752dd623d6e8507c493b6e5080df7c60174588b25f0ab60dcb336425c791f5d1"
+    },
+    {
+      "case": "trace-collision.otlp.json/default-identities",
+      "passed": true,
+      "traceId": "00000000000000000000000000000001",
+      "traces": 2,
+      "spans": 1
+    },
+    {
+      "case": "trace-collision.otlp.json/select-hex/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "9dda8ba40a702fc4944ec1c7476a54ebcb8e2a2315e0b972531f602407b04e19"
+    },
+    {
+      "case": "trace-collision.otlp.json/select-base64/00000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "9dda8ba40a702fc4944ec1c7476a54ebcb8e2a2315e0b972531f602407b04e19"
+    },
+    {
+      "case": "trace-collision.otlp.json/cli-links/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+    },
+    {
+      "case": "trace-collision.otlp.json/cli-timing/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "7be0e4e5854f32a7a9a4989072d34bf2b1c7d2e760e33f42b31f202c8bd7e05b"
+    },
+    {
+      "case": "trace-collision.otlp.json/cli-cost/00000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+    },
+    {
+      "case": "trace-collision.otlp.json/select-hex/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "6e67cc58550d26545d8a140d43ce7fbf88f9e5ffb8f5ef1d36ee10117f6695fa"
+    },
+    {
+      "case": "trace-collision.otlp.json/select-base64/68000000000000000000000000000001",
+      "passed": true,
+      "parsed_sha256": "6e67cc58550d26545d8a140d43ce7fbf88f9e5ffb8f5ef1d36ee10117f6695fa"
+    },
+    {
+      "case": "trace-collision.otlp.json/cli-links/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "83f07aa79adae9d16ae6925d1b03695803578e0ad8b32864cecb6f8ee2c29de6"
+    },
+    {
+      "case": "trace-collision.otlp.json/cli-timing/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "ea4011c75a7094e13681c2da1771bb990d06cd803f0928e42e60cd22ccb3db4b"
+    },
+    {
+      "case": "trace-collision.otlp.json/cli-cost/68000000000000000000000000000001",
+      "passed": true,
+      "output_sha256": "752dd623d6e8507c493b6e5080df7c60174588b25f0ab60dcb336425c791f5d1"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "links": {
+    "schemaVersion": 1,
+    "format": "tracelens-span-links",
+    "traceId": "68000000000000000000000000000001",
+    "sourceFormat": "otlp-json",
+    "linkCount": 2,
+    "reportedDroppedLinks": 0,
+    "skippedInvalidLinks": 0,
+    "notes": [
+      "Targets are resolved by trace ID and span ID in this imported file only.",
+      "Missing targets may be unsampled, unexported or omitted; the cause is not inferred.",
+      "Links do not establish elapsed time, waiting time, execution order or additional cost.",
+      "Dropped counts are exporter-reported; inspect warnings for malformed evidence."
+    ],
+    "spans": [
+      {
+        "spanId": "0000000000000003",
+        "name": "second tool",
+        "parentSpanId": "0000000000000002",
+        "links": [
+          {
+            "traceId": "00000000000000000000000000000001",
+            "spanId": "0000000000000001",
+            "attributes": {
+              "relation": "origin"
+            },
+            "flags": 256,
+            "target": {
+              "status": "available",
+              "name": "first workflow"
+            }
+          }
+        ],
+        "droppedLinksCount": 0,
+        "invalidLinkCount": 0
+      },
+      {
+        "spanId": "0000000000000002",
+        "name": "second workflow",
+        "links": [
+          {
+            "traceId": "00000000000000000000000000000001",
+            "spanId": "6800000000000001",
+            "attributes": {
+              "relation": "follows"
+            },
+            "flags": 256,
+            "target": {
+              "status": "available",
+              "name": "first tool"
+            }
+          }
+        ],
+        "droppedLinksCount": 0,
+        "invalidLinkCount": 0
+      }
+    ],
+    "warnings": []
+  },
+  "span": {
+    "schemaVersion": 1,
+    "format": "tracelens-span-evidence",
+    "traceId": "00000000000000000000000000000001",
+    "spanId": "6800000000000001",
+    "parentSpanId": "0000000000000001",
+    "name": "first tool",
+    "kind": "INTERNAL",
+    "startTimeUnixNano": "2000000",
+    "endTimeUnixNano": "3000000",
+    "durationNs": "1000000",
+    "status": {
+      "code": "UNSET"
+    },
+    "attributes": {
+      "gen_ai.operation.name": "execute_tool",
+      "gen_ai.tool.name": "inspect",
+      "fixture.enabled": true,
+      "fixture.attempt": 3,
+      "fixture.ratio": 0.25,
+      "fixture.ids": [
+        1,
+        2
+      ]
+    },
+    "events": [],
+    "links": [],
+    "resourceAttributes": {
+      "service.name": "protobuf-identity-control"
+    },
+    "scopeName": "tracelens.identity-control",
+    "scopeVersion": "1",
+    "agentKind": "tool",
+    "convention": "otel-genai",
+    "depth": 1,
+    "children": [],
+    "genai": {
+      "operationName": "execute_tool",
+      "toolName": "inspect"
+    }
+  },
+  "offline": true
+}

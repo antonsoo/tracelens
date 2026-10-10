@@ -4,6 +4,20 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Protobuf JSON identities
+
+- Decode canonical base64 trace/span IDs to their actual hexadecimal byte
+  identities before grouping traces, joining parents or resolving links.
+  Case-sensitive base64 IDs no longer collide after lowercasing. Standard
+  and URL-safe forms, with or without padding, are supported at the proper
+  16-byte trace and 8-byte span widths.
+- Accept complete base64 trace selectors while retaining hexadecimal prefix
+  selection. Unknown identifier spellings remain case-sensitive.
+- Decode original snake_case `AnyValue` fields recursively, preserving
+  attributes emitted by Protobuf's `preserving_proto_field_name` option.
+- Retain [real SDK serialization controls and full parser/CLI/browser evidence](studies/protobuf-identities/README.md),
+  including offline cross-trace navigation and downloaded byte identities.
+
 ### Following recorded span links
 
 - Preserve OTLP link identities, attributes, trace state, flags and exporter

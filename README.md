@@ -117,6 +117,10 @@ on npm; the command it installs is `tracelens`).
 - **OTLP/JSON parser** — resourceSpans → scopeSpans → spans, typed
   `AnyValue` attribute decoding, tree building with graceful handling of
   malformed spans, missing parents and clock skew (see `docs/formats.md`).
+  The source checkout also reads Protobuf `MessageToJson` exports directly,
+  preserving base64 byte identities and original snake_case attribute names.
+  [Actual SDK exports, before/after results and browser downloads](studies/protobuf-identities/README.md)
+  check that distinct traces stay distinct and linked spans remain reachable.
 - **A collector's file as it is written** — the OpenTelemetry Collector's
   file exporter writes JSON Lines, one export per batch, and every trace
   that passed through it. The lines are read as one export, and a file with
@@ -367,6 +371,7 @@ list. Summary:
 | Convention | Status |
 |---|---|
 | OTLP/JSON wire format | Supported: one document, or JSON Lines with an export per line (the Collector's file exporter) |
+| Protobuf JSON serialization | Source checkout: canonical base64 trace/span IDs and original field names, normalized to the same parsed trace as the hexadecimal OTLP form |
 | OpenTelemetry GenAI semconv (`gen_ai.*`) | Supported, including the legacy `gen_ai.system` attribute and per-message-event fallback. Checked on spans written by OpenLLMetry 0.62.4 |
 | OpenInference (`openinference.*`, `llm.*`) | Supported: multi-part contents, tool calls and tool results as the instrumentation libraries write them. Checked on spans written by `openinference-instrumentation-anthropic` 3.0.1 and `-openai` 0.1.63 |
 | Jaeger native JSON export | Supported: converted to OTLP/JSON, then parsed the same way; a search result with several traces is read one trace at a time |
