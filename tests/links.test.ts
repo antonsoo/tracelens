@@ -44,11 +44,13 @@ describe('recorded span links', () => {
   });
 
   it('uses full identities and separates absent traces, absent spans and ambiguous targets', () => {
+    // Case folding applies to hexadecimal IDs, not arbitrary case-sensitive strings.
+    const otherTrace = 'b'.repeat(32);
     const trace = parseOtlpJson(doc(row('a', { links: [
-      { trace_id: 'TRACE-B', span_id: 'same', trace_state: 'key=value', flags: 0x80000301, dropped_attributes_count: 2 },
-      { traceId: 'trace-c', spanId: 'same' }, { traceId: 'trace-b', spanId: 'absent' },
+      { trace_id: otherTrace.toUpperCase(), span_id: 'same', trace_state: 'key=value', flags: 0x80000301, dropped_attributes_count: 2 },
+      { traceId: 'trace-c', spanId: 'same' }, { traceId: otherTrace, spanId: 'absent' },
       { traceId: 'duplicate', spanId: 'same' },
-    ] }), row('same'), row('same', { traceId: 'trace-b', name: 'other trace target' }),
+    ] }), row('same'), row('same', { traceId: otherTrace, name: 'other trace target' }),
     row('same', { traceId: 'duplicate' }), row('same', { traceId: 'duplicate' })), { traceId: 'trace-a' });
     expect(trace.spans[0]!.links?.map((l) => l.target)).toEqual([
       { status: 'available', name: 'other trace target' }, { status: 'missing-trace' }, { status: 'missing-span' }, { status: 'ambiguous' },

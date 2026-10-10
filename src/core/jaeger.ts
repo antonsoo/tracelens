@@ -16,6 +16,8 @@
  * attribute list.
  */
 
+import { normalizeId } from './identity.js';
+
 type Json = Record<string, unknown>;
 
 function isRecord(v: unknown): v is Json {
@@ -97,7 +99,8 @@ function referencesOf(span: Json, traceId: unknown): { parent?: string; links: u
   // Preserve the historical OpenTracing parent preference, but never attach
   // a cross-trace reference to an unrelated local span with the same span ID.
   const ref = refs.find((r) => r.refType === 'CHILD_OF') ?? refs.find((r) => r.refType === 'FOLLOWS_FROM');
-  const sameTrace = ref && typeof ref.traceID === 'string' && typeof traceId === 'string' && ref.traceID.toLowerCase() === traceId.toLowerCase();
+  const sameTrace = ref && typeof ref.traceID === 'string' && typeof traceId === 'string'
+    && normalizeId(ref.traceID, 16) === normalizeId(traceId, 16);
   const parent = ref ? (sameTrace && typeof ref.spanID === 'string' ? ref.spanID : undefined)
     : typeof span.parentSpanID === 'string' && span.parentSpanID !== '' ? span.parentSpanID : undefined;
   return { parent, links: span.references !== undefined && !Array.isArray(span.references) ? span.references : refs.map((r) => ({ traceId: r.traceID, spanId: r.spanID,

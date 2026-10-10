@@ -1,0 +1,61 @@
+{
+  "resource_spans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "string_value": "protobuf-identity-control"
+            }
+          }
+        ]
+      },
+      "scope_spans": [
+        {
+          "scope": {
+            "name": "tracelens.identity-control",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "AAAAAAAAAAE=",
+              "name": "first workflow",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1000000",
+              "end_time_unix_nano": "4000000",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "aAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "AAAAAAAAAAI=",
+              "name": "second workflow",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "5000000",
+              "end_time_unix_nano": "8000000",
+              "links": [
+                {
+                  "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+                  "span_id": "aAAAAAAAAAE=",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "string_value": "follows"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

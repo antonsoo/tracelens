@@ -8,6 +8,7 @@
 import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, SpanLink, StatusCode, TraceListing } from './types.js';
 import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
+import { normalizeId } from './identity.js';
 import { assertPayloadDepth, MAX_PAYLOAD_DEPTH, TraceParseError } from './payload-depth.js';
 export { TraceParseError } from './payload-depth.js';
 
@@ -26,6 +27,8 @@ const STATUS_CODE_BY_NUMBER: Record<number, StatusCode> = {
   2: 'ERROR',
 };
 
+const ANY_VALUE_SNAKE_FIELDS = ['string_value', 'bool_value', 'int_value', 'double_value', 'bytes_value', 'array_value', 'kvlist_value'] as const;
+
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v);
 }
@@ -35,9 +38,21 @@ export function decodeAnyValue(v: unknown): unknown {
   return decodeValue(v, 0);
 }
 
-function decodeValue(v: unknown, depth: number): unknown {
+function decodeValue(raw: unknown, depth: number): unknown {
   if (depth >= MAX_PAYLOAD_DEPTH) throw new TraceParseError(`Attribute exceeds ${MAX_PAYLOAD_DEPTH} nested values. Export a shallower payload and try again.`);
-  if (!isRecord(v)) return v ?? null;
+  if (!isRecord(raw)) return raw ?? null;
+  let v = raw;
+  // Protobuf's preserving_proto_field_name option uses these original names
+  // throughout AnyValue, not just on the enclosing spans. Keep camelCase's
+  // existing precedence if a nonstandard document supplies both spellings.
+  if (ANY_VALUE_SNAKE_FIELDS.some((key) => key in v)) {
+    const aliases: Record<string, unknown> = { ...v };
+    for (const snake of ANY_VALUE_SNAKE_FIELDS) {
+      const camel = snake.replace('_v', 'V');
+      if (!(camel in aliases) && snake in v) aliases[camel] = v[snake];
+    }
+    v = aliases;
+  }
   if ('stringValue' in v) return v.stringValue;
   if ('boolValue' in v) return Boolean(v.boolValue);
   if ('intValue' in v) {
@@ -127,11 +142,6 @@ function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, tr
   });
 }
 
-function hexId(raw: unknown): string {
-  if (typeof raw === 'string') return raw.toLowerCase();
-  return '';
-}
-
 function optionalUint32(raw: unknown, field: string, warnings: ParseWarning[], spanId: string, traceId: string): number | undefined {
   if (raw === undefined) return undefined;
   if (typeof raw === 'number' && Number.isInteger(raw) && raw >= 0 && raw <= 0xffff_ffff) return raw;
@@ -149,8 +159,8 @@ function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, tra
   const links: SpanLink[] = [];
   for (const entry of raw) {
     if (!isRecord(entry)) { invalid++; continue; }
-    const targetTrace = hexId(entry.traceId ?? entry.trace_id);
-    const targetSpan = hexId(entry.spanId ?? entry.span_id);
+    const targetTrace = normalizeId(entry.traceId ?? entry.trace_id, 16);
+    const targetSpan = normalizeId(entry.spanId ?? entry.span_id, 8);
     if (!targetTrace || !targetSpan) { invalid++; continue; }
     const traceState = entry.traceState ?? entry.trace_state;
     const flags = optionalUint32(entry.flags, 'link flags', warnings, spanId, traceId);
@@ -188,8 +198,10 @@ function chooseTrace(listings: TraceListing[], wanted: string | undefined): Trac
   if (wanted === undefined) {
     return listings.reduce((best, t) => (t.spanCount > best.spanCount ? t : best));
   }
-  const prefix = wanted.trim().toLowerCase();
-  const exact = listings.find((t) => t.traceId === prefix);
+  const supplied = wanted.trim();
+  const prefix = /^[\da-f]+$/i.test(supplied) ? supplied.toLowerCase() : supplied;
+  const exact = listings.find((t) => t.traceId === prefix)
+    ?? listings.find((t) => t.traceId === normalizeId(supplied, 16));
   if (exact) return exact;
   const matches = prefix.length > 0 ? listings.filter((t) => t.traceId.startsWith(prefix)) : [];
   if (matches.length === 1) return matches[0]!;
@@ -246,8 +258,8 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
           warnings.push({ message: 'Skipped a non-object entry in "spans".' });
           continue;
         }
-        const spanId = hexId(raw.spanId ?? raw.span_id);
-        const spanTraceId = hexId(raw.traceId ?? raw.trace_id);
+        const spanId = normalizeId(raw.spanId ?? raw.span_id, 8);
+        const spanTraceId = normalizeId(raw.traceId ?? raw.trace_id, 16);
         if (!spanId || !spanTraceId) {
           warnings.push({ message: `Skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).` });
           continue;
@@ -268,7 +280,7 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
         }
 
         const parentRaw = raw.parentSpanId ?? raw.parent_span_id;
-        const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? hexId(parentRaw) : undefined;
+        const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
 
         const attributes = decodeAttributes(raw.attributes);
 

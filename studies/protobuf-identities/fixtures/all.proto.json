@@ -1,0 +1,145 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "protobuf-identity-control"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.identity-control",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "spanId": "aAAAAAAAAAE=",
+              "parentSpanId": "AAAAAAAAAAE=",
+              "name": "first tool",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "2000000",
+              "endTimeUnixNano": "3000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "inspect"
+                  }
+                },
+                {
+                  "key": "fixture.enabled",
+                  "value": {
+                    "boolValue": true
+                  }
+                },
+                {
+                  "key": "fixture.attempt",
+                  "value": {
+                    "intValue": "3"
+                  }
+                },
+                {
+                  "key": "fixture.ratio",
+                  "value": {
+                    "doubleValue": 0.25
+                  }
+                },
+                {
+                  "key": "fixture.ids",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "intValue": "1"
+                        },
+                        {
+                          "intValue": "2"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "spanId": "AAAAAAAAAAE=",
+              "name": "first workflow",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1000000",
+              "endTimeUnixNano": "4000000",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "aAAAAAAAAAAAAAAAAAAAAQ==",
+              "spanId": "AAAAAAAAAAM=",
+              "parentSpanId": "AAAAAAAAAAI=",
+              "name": "second tool",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "6000000",
+              "endTimeUnixNano": "7000000",
+              "links": [
+                {
+                  "traceId": "AAAAAAAAAAAAAAAAAAAAAQ==",
+                  "spanId": "AAAAAAAAAAE=",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "stringValue": "origin"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "aAAAAAAAAAAAAAAAAAAAAQ==",
+              "spanId": "AAAAAAAAAAI=",
+              "name": "second workflow",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "5000000",
+              "endTimeUnixNano": "8000000",
+              "links": [
+                {
+                  "traceId": "AAAAAAAAAAAAAAAAAAAAAQ==",
+                  "spanId": "aAAAAAAAAAE=",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "stringValue": "follows"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

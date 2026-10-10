@@ -1,0 +1,145 @@
+{
+  "resource_spans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "string_value": "protobuf-identity-control"
+            }
+          }
+        ]
+      },
+      "scope_spans": [
+        {
+          "scope": {
+            "name": "tracelens.identity-control",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "aAAAAAAAAAE=",
+              "parent_span_id": "AAAAAAAAAAE=",
+              "name": "first tool",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "2000000",
+              "end_time_unix_nano": "3000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "string_value": "inspect"
+                  }
+                },
+                {
+                  "key": "fixture.enabled",
+                  "value": {
+                    "bool_value": true
+                  }
+                },
+                {
+                  "key": "fixture.attempt",
+                  "value": {
+                    "int_value": "3"
+                  }
+                },
+                {
+                  "key": "fixture.ratio",
+                  "value": {
+                    "double_value": 0.25
+                  }
+                },
+                {
+                  "key": "fixture.ids",
+                  "value": {
+                    "array_value": {
+                      "values": [
+                        {
+                          "int_value": "1"
+                        },
+                        {
+                          "int_value": "2"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "AAAAAAAAAAE=",
+              "name": "first workflow",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1000000",
+              "end_time_unix_nano": "4000000",
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "aAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "AAAAAAAAAAM=",
+              "parent_span_id": "AAAAAAAAAAI=",
+              "name": "second tool",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "6000000",
+              "end_time_unix_nano": "7000000",
+              "links": [
+                {
+                  "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+                  "span_id": "AAAAAAAAAAE=",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "string_value": "origin"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "aAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "AAAAAAAAAAI=",
+              "name": "second workflow",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "5000000",
+              "end_time_unix_nano": "8000000",
+              "links": [
+                {
+                  "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+                  "span_id": "aAAAAAAAAAE=",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "string_value": "follows"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
