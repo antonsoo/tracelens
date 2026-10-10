@@ -20,7 +20,10 @@ const canonical = (value) => JSON.stringify(value, (_, item) => typeof item === 
 const rows = [];
 async function check(name, action) {
   try { rows.push({ case: name, passed: true, ...await action() }); }
-  catch (error) { rows.push({ case: name, passed: false, error: error.message }); }
+  catch (error) {
+    // CLI diagnostics include the input path; keep retained failures portable.
+    rows.push({ case: name, passed: false, error: error.message.replaceAll(fixtures, 'fixtures') });
+  }
 }
 
 for (const source of oracle.files) {

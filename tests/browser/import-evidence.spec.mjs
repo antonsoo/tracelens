@@ -36,7 +36,8 @@ test.afterEach(async ({ page }) => {
 });
 
 for (const failure of ['constructor', 'postMessage', 'error', 'messageerror', 'malformed', 'timeout']) {
-  test(`parser ${failure} failure preserves a comparison and can be retried`, async ({ page }) => {
+  test(`parser ${failure} failure preserves a comparison and can be retried`, async ({ page }, testInfo) => {
+    if (failure === 'timeout') test.setTimeout(45_000);
     await page.addInitScript((failure) => {
       const WorkingWorker = Worker;
       window.failParser = false;
@@ -61,10 +62,16 @@ for (const failure of ['constructor', 'postMessage', 'error', 'messageerror', 'm
     await expect(page.getByRole('heading', { name: 'Compare runs', exact: true })).toBeVisible();
     const original = await page.locator('.tl-compare-metrics').first().innerText();
     await page.evaluate(() => { window.failParser = true; });
-    if (failure === 'timeout') await page.clock.install();
+    // Exercise the real watchdog. A page-clock jump does not reproduce the
+    // worker/browser lifecycle; a retained Firefox run lost its page during it.
+    const started = performance.now();
     await page.getByLabel('Replace candidate trace').setInputFiles(file('failed.json', doc([span(1)])));
-    if (failure === 'timeout') await page.clock.fastForward(30_001);
-    await expect(page.getByRole('alert')).toBeVisible();
+    await expect(page.getByRole('alert')).toBeVisible({ timeout: failure === 'timeout' ? 35_000 : 5_000 });
+    if (failure === 'timeout') {
+      const elapsedMs = performance.now() - started;
+      expect(elapsedMs).toBeGreaterThanOrEqual(29_500);
+      await testInfo.attach('parser-deadline', { body: JSON.stringify({ elapsedMs }), contentType: 'application/json' });
+    }
     expect(await page.locator('.tl-compare-metrics').first().innerText()).toBe(original);
     expect(await page.evaluate(() => window.liveWorkers.size)).toBe(0);
     await page.evaluate(() => { window.failParser = false; });
