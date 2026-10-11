@@ -1,0 +1,544 @@
+{
+  "node": "v20.0.0",
+  "parserSha256": "36d85b53cf01221d7ebcbd4952cdc65b6e9b069330ce78a1ed870a47c12d56d7",
+  "fixtureSha256": {
+    "sdk-control.json": "323633b4cf2461f33ac0f270f580699f3635fa452c10def6df4bdde5881ed188",
+    "capture.json": "fe7bb5dd3fcdc1738b78ea38ebf4436078508019ebdd0e1085d50e9554380e24",
+    "prices.json": "e1d2feac0cadcd6157f1bc4c2a989392387303d232d64658a995bba9e03c3da0"
+  },
+  "passed": 76,
+  "total": 76,
+  "results": [
+    {
+      "name": "SDK integer control",
+      "traceId": "00000000000000000000000000000001",
+      "source": {
+        "intValue": "1200"
+      },
+      "expectedInputTokens": 1200,
+      "expectedCostUsd": 0.00252,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": 1200,
+        "costUsd": 0.0025199999999999997,
+        "warnings": [],
+        "attribute": 1200,
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "quoted double",
+      "traceId": "00000000000000000000000000000002",
+      "source": {
+        "doubleValue": "1200"
+      },
+      "expectedInputTokens": 1200,
+      "expectedCostUsd": 0.00252,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": 1200,
+        "costUsd": 0.0025199999999999997,
+        "warnings": [],
+        "attribute": 1200,
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "quoted double exponent",
+      "traceId": "00000000000000000000000000000003",
+      "source": {
+        "double_value": "1.2e3"
+      },
+      "expectedInputTokens": 1200,
+      "expectedCostUsd": 0.00252,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": 1200,
+        "costUsd": 0.0025199999999999997,
+        "warnings": [],
+        "attribute": 1200,
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "integer exponent",
+      "traceId": "00000000000000000000000000000004",
+      "source": {
+        "int_value": "1.200e3"
+      },
+      "expectedInputTokens": 1200,
+      "expectedCostUsd": 0.00252,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": 1200,
+        "costUsd": 0.0025199999999999997,
+        "warnings": [],
+        "attribute": 1200,
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "measured zero",
+      "traceId": "00000000000000000000000000000005",
+      "source": {
+        "intValue": "0"
+      },
+      "expectedInputTokens": 0,
+      "expectedCostUsd": 0.00012,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": 0,
+        "costUsd": 0.00012,
+        "warnings": [],
+        "attribute": 0,
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "empty integer",
+      "traceId": "00000000000000000000000000000006",
+      "source": {
+        "intValue": ""
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "00000000000000000000000000000006"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": ""
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "whitespace integer",
+      "traceId": "00000000000000000000000000000007",
+      "source": {
+        "intValue": " "
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "00000000000000000000000000000007"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": " "
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "hexadecimal integer",
+      "traceId": "00000000000000000000000000000008",
+      "source": {
+        "intValue": "0x10"
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "00000000000000000000000000000008"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": "0x10"
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "fraction hidden by rounding",
+      "traceId": "00000000000000000000000000000009",
+      "source": {
+        "intValue": "1.00000000000000001"
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "00000000000000000000000000000009"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": "1.00000000000000001"
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "outside int64",
+      "traceId": "0000000000000000000000000000000a",
+      "source": {
+        "intValue": "9223372036854775808"
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "0000000000000000000000000000000a"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": "9223372036854775808"
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "unsafe unquoted integer",
+      "traceId": "0000000000000000000000000000000b",
+      "source": {
+        "intValue": 9007199254740992
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "0000000000000000000000000000000b"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": 9007199254740992
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "conflicting oneof",
+      "traceId": "0000000000000000000000000000000c",
+      "source": {
+        "intValue": "1200",
+        "doubleValue": 0
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): multiple AnyValue fields or alternate spellings; retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "0000000000000000000000000000000c"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "intValue": "1200",
+            "doubleValue": 0
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "numeric string field",
+      "traceId": "0000000000000000000000000000000d",
+      "source": {
+        "stringValue": 1200
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): stringValue must be a string; retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "0000000000000000000000000000000d"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "stringValue": 1200
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "primitive numeric AnyValue",
+      "traceId": "0000000000000000000000000000000e",
+      "source": 1200,
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): expected a typed AnyValue object; retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "0000000000000000000000000000000e"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": 1200
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "empty double",
+      "traceId": "0000000000000000000000000000000f",
+      "source": {
+        "doubleValue": ""
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): doubleValue must be a decimal number or Protobuf nonfinite spelling; retained as invalidAnyValue, not a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "0000000000000000000000000000000f"
+          }
+        ],
+        "attribute": {
+          "invalidAnyValue": {
+            "doubleValue": ""
+          }
+        },
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "nonfinite double",
+      "traceId": "00000000000000000000000000000010",
+      "source": {
+        "doubleValue": "NaN"
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [],
+        "attribute": "NaN",
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "exact large int64",
+      "traceId": "00000000000000000000000000000011",
+      "source": {
+        "intValue": "9223372036854775807"
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [],
+        "attribute": "9223372036854775807",
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "null integer",
+      "traceId": "00000000000000000000000000000012",
+      "source": {
+        "intValue": null
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [],
+        "attribute": null,
+        "cliAgrees": true
+      }
+    },
+    {
+      "name": "duplicate input count",
+      "traceId": "00000000000000000000000000000013",
+      "source": {
+        "intValue": "1200"
+      },
+      "expectedInputTokens": null,
+      "expectedCostUsd": null,
+      "checks": {
+        "inputTokens": true,
+        "cost": true,
+        "warnings": true,
+        "cliAgrees": true
+      },
+      "actual": {
+        "inputTokens": null,
+        "costUsd": null,
+        "warnings": [
+          {
+            "message": "attributes[5] (\"gen_ai.usage.input_tokens\"): duplicate attribute key; retained all values without selecting a measurement.",
+            "spanId": "0000000000000001",
+            "traceId": "00000000000000000000000000000013"
+          }
+        ],
+        "attribute": {
+          "duplicateAttributeValues": [
+            {
+              "intValue": "1200"
+            },
+            {
+              "intValue": "0"
+            }
+          ]
+        },
+        "cliAgrees": true
+      }
+    }
+  ]
+}

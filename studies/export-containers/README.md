@@ -81,3 +81,36 @@ spans only; warnings do not quantify unrecorded work.
 
 The final combined clean-build and installed-package record is in
 [`checks.json`](checks.json).
+
+The [verification diagnostic record](verification-diagnostics.json) retains two
+failed checks from the first combined archive. The default unit run completed
+350 of 351 checks but exceeded the existing one-second parser threshold at
+1,070 ms. All 351 passed with two workers, without changing the bound.
+
+The initial browser run passed 119 of 120 checks; the keyboard file-picker test
+timed out before importing any trace. The unchanged test also failed once in ten
+focused repetitions. Instrumentation recorded Enter and a click on the connected
+file input in the failing attempt. Installing Playwright's picker interception
+before navigation passed 15/15 diagnostic trials, compared with 12/15 when
+installed immediately before Enter. Moving the test's existing event subscription
+before navigation then passed 30/30 repetitions across Chromium and Firefox.
+The application code and the test's import, focus, search and accessibility
+assertions did not change.
+
+The final fresh archive (`4a07232`) passed `npm ci`, lint, typecheck, all **351**
+unit checks with default worker settings, build, **30** CLI checks, the legacy
+browser script and all **120** Playwright checks. The locally packed tarball was
+installed into an empty directory; all 26 compiled files match the clean build
+byte for byte. Both studies pass through that installed package on Node **20.0.0**
+and **26.7.0**: 76/76 attribute checks and 15/15 container cases on each runtime.
+Regenerating the SDK capture and oracle reproduced all four fixture files byte
+for byte. Build with `npm run build`; the site is in `dist/` and the CLI/library
+in `dist-cli/`.
+
+The final [parser measurement](performance.json) processed 20,001 controlled
+spans with two attributes each in a median **339 ms**, versus **285 ms** for
+baseline, across six timed runs after two warmups. This was after the verification
+jobs finished on 14-vCPU WSL2 Linux, 48 GB RAM, Node 26.7.0; the host was not
+isolated. An [earlier overlapping measurement](performance-concurrent.json) is
+retained separately. These observations show added validation cost and timing
+variation; they are not a browser benchmark or a portable latency guarantee.

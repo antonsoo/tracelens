@@ -114,3 +114,8 @@ The unit checks also cover nested arrays/key-value lists, resource/event/link
 warning scope, invalid booleans, integer limits and Jaeger conversion. Full
 clean-checkout and installed-artifact verification is recorded separately in
 [`checks.json`](checks.json).
+
+The later [combined verification](../export-containers/checks.json) also covers
+the unreadable-container correction. Its [diagnostic record](../export-containers/verification-diagnostics.json)
+retains an intermittent performance-threshold failure and the browser test's
+file-picker interception race; these were not discarded from the evidence.

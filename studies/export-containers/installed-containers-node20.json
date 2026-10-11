@@ -1,0 +1,183 @@
+{
+  "node": "v20.0.0",
+  "parserSha256": "36d85b53cf01221d7ebcbd4952cdc65b6e9b069330ce78a1ed870a47c12d56d7",
+  "passed": 15,
+  "total": 15,
+  "results": [
+    {
+      "name": "non-object resource",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1]: skipped a non-object resource entry; contained span evidence is unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "non-object resource",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1]: skipped a non-object resource entry; contained span evidence is unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "scope collection as an object",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "scope collection as an object",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "non-object scope",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans[0]: skipped a non-object scope entry; contained span evidence is unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "non-object scope",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans[0]: skipped a non-object scope entry; contained span evidence is unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "span collection as an object",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans[0].spans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "span collection as an object",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans[0].spans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "legal unset repeated fields",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "legal unset repeated fields",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "span with known trace but missing span ID",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId (name: SDK integer control).",
+          "traceId": "00000000000000000000000000000001"
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "span with known trace but missing span ID",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "non-object Jaeger span",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "Jaeger spans[1]: skipped a non-object span entry.",
+          "traceId": "00000000000000000000000000000001"
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "non-object Jaeger span",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "JSON Lines damaged batches",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1]: skipped a non-object resource entry; contained span evidence is unknown."
+        },
+        {
+          "message": "resourceSpans[2].scopeSpans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        },
+        {
+          "message": "resourceSpans[3].scopeSpans[0]: skipped a non-object scope entry; contained span evidence is unknown."
+        },
+        {
+          "message": "resourceSpans[4].scopeSpans[0].spans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ],
+      "expectedWarningCount": 4,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "sourceRevision": "4a072329f658d64f11272017424fef00c8d1c832",
+  "commands": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "log": "verified-install.log",
+      "logSha256": "1cd5df6dbd4269df7c572b6b6975c4dbb48253d1b5112b230dea1f2e02b2beff"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "log": "verified-lint.log",
+      "logSha256": "d98a2e038b1d08227fbdfd1c34357c0f2d5e0521fab915e3fef08002c3b87533"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": "verified-typecheck.log",
+      "logSha256": "b3c31f818208fb8d494fa9be0a4b1de9097feff2e04ac13da975f50554ce1b2f"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "log": "verified-tests.log",
+      "logSha256": "7d662166664c02e0512aac43125948ec11084156259b3dde3a048ba1393357d5"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "log": "verified-build.log",
+      "logSha256": "da7ee984013dc26a61d010be1201abad46c1775fb17a4b49721e703b36b7ba67"
+    },
+    {
+      "command": "npm run test:cli",
+      "exitCode": 0,
+      "log": "verified-test-cli.log",
+      "logSha256": "ae9f3d6caacb9246553ecd03610bbf0af14e7e8824e734f448004cc819e33576"
+    },
+    {
+      "command": "npm run test:browser",
+      "exitCode": 0,
+      "log": "verified-test-browser.log",
+      "logSha256": "205c3d08b4e30144b9bc9777cab4b5aefe65d9f46e27923bb1e263fd1383acc8"
+    }
+  ],
+  "baselineRevision": "6d55a073678b27e483a59656610d33a9da3a1a49",
+  "method": "git archive followed by npm ci in a new directory. npm pack --ignore-scripts from that completed build, installed with --ignore-scripts into an empty prefix. Replay through the installed library and actual CLI on Node 20.0.0 and 26.7.0.",
+  "publication": "local only; no push, deployment or registry release; package version remains 0.3.3",
+  "environment": {
+    "node": "v26.7.0",
+    "npm": "12.0.1",
+    "platform": "WSL2 Linux; 14 vCPU, 48 GB RAM"
+  },
+  "unitTests": 351,
+  "unitTestFiles": 26,
+  "cliTests": 30,
+  "playwrightTests": 120,
+  "legacyBrowserCheck": "npm run test:browser also completed tests/browser.mjs",
+  "earlierFailures": "See verification-diagnostics.json. An earlier unrestricted unit run exceeded the 1000 ms performance threshold. An intermittent file-picker interception race was diagnosed and fixed in the test; no app UI code changed.",
+  "unchangedCorpus": {
+    "record": "corpus.json",
+    "files": 22,
+    "traces": 27,
+    "spans": 127,
+    "unchangedFiles": 22
+  },
+  "packageSha256": "8577ee1b47416d947b67944ab1481593047cb961d190bbae7cabaa3f5dc8bed9",
+  "packageBytes": 50424,
+  "installedCodeMatchesCleanBuild": true,
+  "installedFiles": [
+    {
+      "file": "dist-cli/cli/compare-report.js",
+      "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a"
+    },
+    {
+      "file": "dist-cli/cli/cost-report.js",
+      "sha256": "d380fc9e48022541269a23f26f20d7520ab0b95ff860b1f3d969ad10e21a6d2c"
+    },
+    {
+      "file": "dist-cli/cli/format.js",
+      "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea"
+    },
+    {
+      "file": "dist-cli/cli/index.js",
+      "sha256": "f97bcd8af93489d72bb85a2e5b0d48f2e8aa44759aa7aaddac665a5ec6a2f995"
+    },
+    {
+      "file": "dist-cli/cli/links-report.js",
+      "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+    },
+    {
+      "file": "dist-cli/cli/timing-report.js",
+      "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9"
+    },
+    {
+      "file": "dist-cli/cli/version.js",
+      "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+    },
+    {
+      "file": "dist-cli/core/attributes.js",
+      "sha256": "367921d52cb5d6c338120edf5a7142884af35aab1e02948af37fcc2f7d12397b"
+    },
+    {
+      "file": "dist-cli/core/compare.js",
+      "sha256": "3b63674438dfb97393e8e4ea8c0c4eed67f9c5ac7838604c6a7b44a64c663515"
+    },
+    {
+      "file": "dist-cli/core/cost-format.js",
+      "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f"
+    },
+    {
+      "file": "dist-cli/core/cost-report.js",
+      "sha256": "a106bff43558b2d35c9352a03593ee66e657704261c53bd5a5d125cc6581e697"
+    },
+    {
+      "file": "dist-cli/core/cost.js",
+      "sha256": "f0be36700b08475cfed1f5c1fe1eaab64498d61e601e7cc6e8ab75d900e5322d"
+    },
+    {
+      "file": "dist-cli/core/critical-path.js",
+      "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96"
+    },
+    {
+      "file": "dist-cli/core/decode.js",
+      "sha256": "a6389c31f9d2c724b3fd2c263562dc9acdddccb7d276d03e4bbd68b399ea66d8"
+    },
+    {
+      "file": "dist-cli/core/identity.js",
+      "sha256": "8631d361e56336fd309e2541d92210a24a7df9730ec8c6c032a6a697237a6956"
+    },
+    {
+      "file": "dist-cli/core/index.js",
+      "sha256": "868153c6b9370d73334c478a131d27ab011526bf5862e42daed21bc87567d6e5"
+    },
+    {
+      "file": "dist-cli/core/jaeger.js",
+      "sha256": "e99daf8868016651ea6182d1be8d2c5318c2bed235b6da777311115e1fb79cbe"
+    },
+    {
+      "file": "dist-cli/core/layout.js",
+      "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e"
+    },
+    {
+      "file": "dist-cli/core/links.js",
+      "sha256": "47d787c4c0c33ae28c660a68e513035de37f0b53136f36d4d7a546631152c198"
+    },
+    {
+      "file": "dist-cli/core/normalize.js",
+      "sha256": "0aeccaa34a0c7106baf0c4bffb2b8fb891ae62bee1eaee88ef25048fc55e1f29"
+    },
+    {
+      "file": "dist-cli/core/otlp-parser.js",
+      "sha256": "36d85b53cf01221d7ebcbd4952cdc65b6e9b069330ce78a1ed870a47c12d56d7"
+    },
+    {
+      "file": "dist-cli/core/payload-depth.js",
+      "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d"
+    },
+    {
+      "file": "dist-cli/core/pricing.js",
+      "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4"
+    },
+    {
+      "file": "dist-cli/core/summary.js",
+      "sha256": "62631ff99449c7dbae96d0ddee79ccb5c3b874854f62952e504c93f6c33579ee"
+    },
+    {
+      "file": "dist-cli/core/timing.js",
+      "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607"
+    },
+    {
+      "file": "dist-cli/core/types.js",
+      "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974"
+    }
+  ],
+  "installedReplays": [
+    {
+      "record": "installed-attributes-node26.json",
+      "node": "v26.7.0",
+      "passed": 76,
+      "total": 76
+    },
+    {
+      "record": "installed-containers-node26.json",
+      "node": "v26.7.0",
+      "passed": 15,
+      "total": 15
+    },
+    {
+      "record": "installed-attributes-node20.json",
+      "node": "v20.0.0",
+      "passed": 76,
+      "total": 76
+    },
+    {
+      "record": "installed-containers-node20.json",
+      "node": "v20.0.0",
+      "passed": 15,
+      "total": 15
+    }
+  ],
+  "fixtureRegeneration": {
+    "command": "uv run studies/attribute-values/capture.py --output REGENERATED_DIRECTORY",
+    "files": [
+      {
+        "file": "capture.json",
+        "sha256": "fe7bb5dd3fcdc1738b78ea38ebf4436078508019ebdd0e1085d50e9554380e24",
+        "byteIdentical": true
+      },
+      {
+        "file": "oracle.json",
+        "sha256": "b4520c6ea564cf5ad4f46f840d2cea791c33784c5f792c68a40042f5c68fe990",
+        "byteIdentical": true
+      },
+      {
+        "file": "prices.json",
+        "sha256": "e1d2feac0cadcd6157f1bc4c2a989392387303d232d64658a995bba9e03c3da0",
+        "byteIdentical": true
+      },
+      {
+        "file": "sdk-control.json",
+        "sha256": "323633b4cf2461f33ac0f270f580699f3635fa452c10def6df4bdde5881ed188",
+        "byteIdentical": true
+      }
+    ]
+  },
+  "performanceRecords": [
+    "performance.json",
+    "performance-concurrent.json"
+  ],
+  "scope": "Controlled SDK-derived mutations demonstrate import behavior, not a production failure rate. Original values remain evidence; malformed containers do not establish missing span counts. This is not complete Protobuf conformance."
+}

@@ -1,0 +1,34 @@
+{
+  "node": "v26.7.0",
+  "environment": "14 vCPU WSL2 Linux, 48 GB RAM",
+  "spans": 20001,
+  "attributesPerSpan": 2,
+  "shape": "one parent and 20000 children; controlled, no model calls",
+  "warmupRuns": 2,
+  "timedRuns": 6,
+  "runsMs": {
+    "before": [
+      190.28078600000003,
+      205.77901700000007,
+      211.22624500000006,
+      293.8017450000002,
+      385.626663,
+      281.7609269999998
+    ],
+    "after": [
+      178.895489,
+      227.91789299999982,
+      218.181871,
+      347.5571140000002,
+      381.32484099999965,
+      292.25335300000006
+    ]
+  },
+  "medianMs": {
+    "before": 246.49358599999994,
+    "after": 260.08562299999994
+  },
+  "context": "Captured while the first combined browser suite was running; not an isolated benchmark.",
+  "baselineRevision": "6d55a073678b27e483a59656610d33a9da3a1a49",
+  "runtimeSourceRevision": "cfe2a3497063446e3906854f5b12eb83d515a4cb"
+}

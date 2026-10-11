@@ -1,0 +1,34 @@
+{
+  "node": "v26.7.0",
+  "environment": "14 vCPU WSL2 Linux, 48 GB RAM",
+  "spans": 20001,
+  "attributesPerSpan": 2,
+  "shape": "one parent and 20000 children; controlled, no model calls",
+  "warmupRuns": 2,
+  "timedRuns": 6,
+  "runsMs": {
+    "before": [
+      296.948846,
+      279.7750409999999,
+      337.585822,
+      231.24570099999983,
+      289.4506799999999,
+      262.8061090000001
+    ],
+    "after": [
+      328.134728,
+      365.028644,
+      326.8364980000001,
+      312.1018320000003,
+      348.99320699999953,
+      382.2767469999999
+    ]
+  },
+  "medianMs": {
+    "before": 284.6128604999999,
+    "after": 338.56396749999976
+  },
+  "context": "After the verification jobs completed; host not isolated.",
+  "baselineRevision": "6d55a073678b27e483a59656610d33a9da3a1a49",
+  "runtimeSourceRevision": "cfe2a3497063446e3906854f5b12eb83d515a4cb"
+}
