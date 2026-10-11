@@ -14,8 +14,8 @@ event and link warnings stay with their trace/span. Resource warnings stay with
 the traces using that resource. Jaeger numeric tags follow the same validation
 without first coercing empty text to zero.
 
-This is local, unreleased source work. No hosted demo, repository push or registry
-publication is part of this study.
+The records below describe source and locally installed-artifact validation.
+They do not establish a hosted deployment or a registry release.
 
 ## Evidence and independent checks
 

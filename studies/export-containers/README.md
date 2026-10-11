@@ -12,7 +12,8 @@ record still supplies its trace ID, its warning stays with that trace. This
 also corrects an existing OTLP missing-span-ID warning that appeared on
 unrelated traces.
 
-This is local source work, without a push, hosted deployment or package release.
+The records below describe source and locally installed-artifact validation.
+They do not establish a hosted deployment or a registry release.
 
 ## Reproduction
 
