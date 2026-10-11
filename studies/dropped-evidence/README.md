@@ -91,3 +91,5 @@ attributes, events and event attributes; resource and instrumentation-scope
 attribute counts remain unsupported. Link omission accounting is separate.
 
 The counts and warnings are source changes; npm **0.3.3** predates them.
+
+[Clean build, installed-package and public-site verification](../../docs/verification-trace-integrity-2026-10-11.md) records the publication boundary and browser investigation.

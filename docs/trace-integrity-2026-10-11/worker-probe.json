@@ -1,0 +1,12 @@
+[
+  {
+    "sendAfterTermination": false,
+    "completed": 100,
+    "crash": false
+  },
+  {
+    "sendAfterTermination": true,
+    "completed": 100,
+    "crash": false
+  }
+]

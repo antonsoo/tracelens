@@ -1,0 +1,159 @@
+{
+  "codeFiles": [
+    {
+      "file": "cli/compare-report.js",
+      "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a"
+    },
+    {
+      "file": "cli/cost-report.js",
+      "sha256": "d380fc9e48022541269a23f26f20d7520ab0b95ff860b1f3d969ad10e21a6d2c"
+    },
+    {
+      "file": "cli/format.js",
+      "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea"
+    },
+    {
+      "file": "cli/index.js",
+      "sha256": "f97bcd8af93489d72bb85a2e5b0d48f2e8aa44759aa7aaddac665a5ec6a2f995"
+    },
+    {
+      "file": "cli/links-report.js",
+      "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+    },
+    {
+      "file": "cli/timing-report.js",
+      "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9"
+    },
+    {
+      "file": "cli/version.js",
+      "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+    },
+    {
+      "file": "core/compare.js",
+      "sha256": "3b63674438dfb97393e8e4ea8c0c4eed67f9c5ac7838604c6a7b44a64c663515"
+    },
+    {
+      "file": "core/cost-format.js",
+      "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f"
+    },
+    {
+      "file": "core/cost-report.js",
+      "sha256": "a106bff43558b2d35c9352a03593ee66e657704261c53bd5a5d125cc6581e697"
+    },
+    {
+      "file": "core/cost.js",
+      "sha256": "f0be36700b08475cfed1f5c1fe1eaab64498d61e601e7cc6e8ab75d900e5322d"
+    },
+    {
+      "file": "core/critical-path.js",
+      "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96"
+    },
+    {
+      "file": "core/decode.js",
+      "sha256": "a6389c31f9d2c724b3fd2c263562dc9acdddccb7d276d03e4bbd68b399ea66d8"
+    },
+    {
+      "file": "core/identity.js",
+      "sha256": "8631d361e56336fd309e2541d92210a24a7df9730ec8c6c032a6a697237a6956"
+    },
+    {
+      "file": "core/index.js",
+      "sha256": "868153c6b9370d73334c478a131d27ab011526bf5862e42daed21bc87567d6e5"
+    },
+    {
+      "file": "core/jaeger.js",
+      "sha256": "aa2d235bd2a217b9198703290b320d17c4fc0b453e336480595943f1f1621113"
+    },
+    {
+      "file": "core/layout.js",
+      "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e"
+    },
+    {
+      "file": "core/links.js",
+      "sha256": "47d787c4c0c33ae28c660a68e513035de37f0b53136f36d4d7a546631152c198"
+    },
+    {
+      "file": "core/normalize.js",
+      "sha256": "0aeccaa34a0c7106baf0c4bffb2b8fb891ae62bee1eaee88ef25048fc55e1f29"
+    },
+    {
+      "file": "core/otlp-parser.js",
+      "sha256": "853016d6320a253c1fc2e20a912d80dde7d568426b04f090d31ef219db769056"
+    },
+    {
+      "file": "core/payload-depth.js",
+      "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d"
+    },
+    {
+      "file": "core/pricing.js",
+      "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4"
+    },
+    {
+      "file": "core/summary.js",
+      "sha256": "62631ff99449c7dbae96d0ddee79ccb5c3b874854f62952e504c93f6c33579ee"
+    },
+    {
+      "file": "core/timing.js",
+      "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607"
+    },
+    {
+      "file": "core/types.js",
+      "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974"
+    }
+  ],
+  "cliReports": [
+    {
+      "args": [
+        "summary",
+        "studies/import-integrity/jaeger-partial.json"
+      ],
+      "exit": 0,
+      "sha256": "ce396fd029f5500fa9863f778a3d45600d9dfcd1b8403e1a7245b6833c2cdda5"
+    },
+    {
+      "args": [
+        "tree",
+        "studies/import-integrity/jaeger-partial.json"
+      ],
+      "exit": 0,
+      "sha256": "910acb329d0e95704fab0d639e5e28a33bbfc2c559bc1f0a396a2d91c1bccfe9"
+    },
+    {
+      "args": [
+        "timing",
+        "studies/import-integrity/jaeger-partial.json",
+        "--json"
+      ],
+      "exit": 0,
+      "sha256": "20a7c6db508cc1ef36da2fe2a41109b03a2b5c3aa956bd40ed63f72f33b8bb37"
+    },
+    {
+      "args": [
+        "cost",
+        "studies/import-integrity/jaeger-partial.json",
+        "--json"
+      ],
+      "exit": 0,
+      "sha256": "96021235bd3ea782245f804e7ec66dc3d8706c2f4605dbc61090f3fc088fa269"
+    },
+    {
+      "args": [
+        "links",
+        "studies/import-integrity/jaeger-partial.json",
+        "--json"
+      ],
+      "exit": 0,
+      "sha256": "1a074d2384ceb40472927c3fa26ee81577f6c8e22a4c709734eaf13ea4aeec92"
+    },
+    {
+      "args": [
+        "compare",
+        "studies/import-integrity/jaeger-partial.json",
+        "studies/import-integrity/jaeger-partial.json",
+        "--json"
+      ],
+      "exit": 0,
+      "sha256": "a0d3ba2cee2c8d5defa2ef5ab9a3f0df6bc87e65f16655eccb06227a0f4e4f2b"
+    }
+  ]
+}

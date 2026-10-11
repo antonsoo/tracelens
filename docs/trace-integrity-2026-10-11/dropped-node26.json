@@ -1,0 +1,546 @@
+{
+  "node": "v26.7.0",
+  "oracleSha256": "a4b8e5ea3f1054c251f6c4a018ee4fc665ba80547caf8ecd6cb58e144ea0e7c7",
+  "results": [
+    {
+      "file": "capture.otlp.json",
+      "traceId": "00000000000000000000000000000001",
+      "name": "partial event history",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "retainedEvents": 2,
+      "warnings": [
+        {
+          "message": "Span \"partial event history\" reports 2 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Span \"partial event history\" reports 3 dropped events; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 1 (\"checkpoint 4\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 2 (\"checkpoint 5\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        }
+      ],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 4,
+          "outputSha256": "e3bed863f6b44255a5c31ad837bae247ac43b4a21aeae170f824d4efc9d30696"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 4,
+          "outputSha256": "85ca957325d4dafcde1f28d860eedd1704d3a423ca62db84e272c9ae573e0e93"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 4,
+          "outputSha256": "a122be3cf1b493ecc9445f10057c526b211571c6d14c4590e67a0097fee597ae"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 4,
+          "outputSha256": "d82c2d8653070d9afbb175d4308cc44330673dc12e3a247c21e8257c28919cb8"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 4,
+          "outputSha256": "7cdf7bb936182c3da2c9cc7c49b48acd4187be1947677cecc40ce9c6f268ca72"
+        }
+      ]
+    },
+    {
+      "file": "capture.otlp.json",
+      "traceId": "00000000000000000000000000000002",
+      "name": "all events dropped",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "retainedEvents": 0,
+      "warnings": [
+        {
+          "message": "Span \"all events dropped\" reports 5 dropped events; this export does not contain them.",
+          "spanId": "0000000000000002",
+          "traceId": "00000000000000000000000000000002"
+        }
+      ],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 1,
+          "outputSha256": "19d6854a255e7ff4e1a763bf9cc1959576b3e3814c652cd4e7663c4a03b15777"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 1,
+          "outputSha256": "a4e462d42ab6f0db3e60ced5053697653954d424654ccd492a1082b395acce6b"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 1,
+          "outputSha256": "0e329f58d5b93e8952f1399a951cc774e7402f99fc4b952d1cc9cbba88ef8608"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 1,
+          "outputSha256": "f214823b8a30ee9e7845308247c623458fce46ee3e66ab1205dd243a61703c2d"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 1,
+          "outputSha256": "9199dc001ea1325817cf8e4dce5dbd550fda3ebeb7809a835abb757399e5aa0d"
+        }
+      ]
+    },
+    {
+      "file": "capture.otlp.json",
+      "traceId": "00000000000000000000000000000003",
+      "name": "complete control",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 5,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "6204ec038382b08cc1726795ec6301072d3cce86ef2687ec6b4ba133f8d82d3a"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "a1ef73f7e3aefbc8a746a7ec1f1bd56e3dd79d50e37301d6a269e585f0dcc8a2"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "0eb35f3d421d569397ce92604c0cc5bd5bbad6c252e8437d10290cf9d26213d6"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "dcd742bc56315e17457e2d009ada106617d3e9b4fa1b9adfeaa1f62b4334431b"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "2e1f03b85103f1cd58e771743332c3931a72c084886e0ed68a1a46b4bf19e4a0"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto.json",
+      "traceId": "00000000000000000000000000000001",
+      "name": "partial event history",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "retainedEvents": 2,
+      "warnings": [
+        {
+          "message": "Span \"partial event history\" reports 2 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Span \"partial event history\" reports 3 dropped events; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 1 (\"checkpoint 4\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 2 (\"checkpoint 5\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        }
+      ],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 4,
+          "outputSha256": "73420388d0e59d9e3e13e2553bda77ed94b2482a574747dbabcc3b1f058692ec"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 4,
+          "outputSha256": "85ca957325d4dafcde1f28d860eedd1704d3a423ca62db84e272c9ae573e0e93"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 4,
+          "outputSha256": "a122be3cf1b493ecc9445f10057c526b211571c6d14c4590e67a0097fee597ae"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 4,
+          "outputSha256": "d82c2d8653070d9afbb175d4308cc44330673dc12e3a247c21e8257c28919cb8"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 4,
+          "outputSha256": "7cdf7bb936182c3da2c9cc7c49b48acd4187be1947677cecc40ce9c6f268ca72"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto.json",
+      "traceId": "00000000000000000000000000000002",
+      "name": "all events dropped",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "retainedEvents": 0,
+      "warnings": [
+        {
+          "message": "Span \"all events dropped\" reports 5 dropped events; this export does not contain them.",
+          "spanId": "0000000000000002",
+          "traceId": "00000000000000000000000000000002"
+        }
+      ],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 1,
+          "outputSha256": "4c47834cde6db8a9cbee0cf627da70636bb1747b6018bf9792b9138a31dc7b82"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 1,
+          "outputSha256": "a4e462d42ab6f0db3e60ced5053697653954d424654ccd492a1082b395acce6b"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 1,
+          "outputSha256": "0e329f58d5b93e8952f1399a951cc774e7402f99fc4b952d1cc9cbba88ef8608"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 1,
+          "outputSha256": "f214823b8a30ee9e7845308247c623458fce46ee3e66ab1205dd243a61703c2d"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 1,
+          "outputSha256": "9199dc001ea1325817cf8e4dce5dbd550fda3ebeb7809a835abb757399e5aa0d"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto.json",
+      "traceId": "00000000000000000000000000000003",
+      "name": "complete control",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 5,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "aabc6483cac2180822b43fb89225f714a6c40c79ce7f64e19fd226de5eed6063"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "a1ef73f7e3aefbc8a746a7ec1f1bd56e3dd79d50e37301d6a269e585f0dcc8a2"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "0eb35f3d421d569397ce92604c0cc5bd5bbad6c252e8437d10290cf9d26213d6"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "dcd742bc56315e17457e2d009ada106617d3e9b4fa1b9adfeaa1f62b4334431b"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "2e1f03b85103f1cd58e771743332c3931a72c084886e0ed68a1a46b4bf19e4a0"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto-snake.json",
+      "traceId": "00000000000000000000000000000001",
+      "name": "partial event history",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "retainedEvents": 2,
+      "warnings": [
+        {
+          "message": "Span \"partial event history\" reports 2 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Span \"partial event history\" reports 3 dropped events; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 1 (\"checkpoint 4\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 2 (\"checkpoint 5\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        }
+      ],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 4,
+          "outputSha256": "ec50cb4cecfe03476ee2d08f9ba1da9d834bd1c6130c21b54af933ac470a8469"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 4,
+          "outputSha256": "85ca957325d4dafcde1f28d860eedd1704d3a423ca62db84e272c9ae573e0e93"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 4,
+          "outputSha256": "a122be3cf1b493ecc9445f10057c526b211571c6d14c4590e67a0097fee597ae"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 4,
+          "outputSha256": "d82c2d8653070d9afbb175d4308cc44330673dc12e3a247c21e8257c28919cb8"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 4,
+          "outputSha256": "7cdf7bb936182c3da2c9cc7c49b48acd4187be1947677cecc40ce9c6f268ca72"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto-snake.json",
+      "traceId": "00000000000000000000000000000002",
+      "name": "all events dropped",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "retainedEvents": 0,
+      "warnings": [
+        {
+          "message": "Span \"all events dropped\" reports 5 dropped events; this export does not contain them.",
+          "spanId": "0000000000000002",
+          "traceId": "00000000000000000000000000000002"
+        }
+      ],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 1,
+          "outputSha256": "023627f95cd23476b9444e6c3805a31bc2d5d3f3faed681a10907e328b82f74e"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 1,
+          "outputSha256": "a4e462d42ab6f0db3e60ced5053697653954d424654ccd492a1082b395acce6b"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 1,
+          "outputSha256": "0e329f58d5b93e8952f1399a951cc774e7402f99fc4b952d1cc9cbba88ef8608"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 1,
+          "outputSha256": "f214823b8a30ee9e7845308247c623458fce46ee3e66ab1205dd243a61703c2d"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 1,
+          "outputSha256": "9199dc001ea1325817cf8e4dce5dbd550fda3ebeb7809a835abb757399e5aa0d"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto-snake.json",
+      "traceId": "00000000000000000000000000000003",
+      "name": "complete control",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 5,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "b1d86004068a094b98b1b60f5c350200038e176acfa965bfa31836265221fa48"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "a1ef73f7e3aefbc8a746a7ec1f1bd56e3dd79d50e37301d6a269e585f0dcc8a2"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "0eb35f3d421d569397ce92604c0cc5bd5bbad6c252e8437d10290cf9d26213d6"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "dcd742bc56315e17457e2d009ada106617d3e9b4fa1b9adfeaa1f62b4334431b"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "2e1f03b85103f1cd58e771743332c3931a72c084886e0ed68a1a46b4bf19e4a0"
+        }
+      ]
+    }
+  ]
+}

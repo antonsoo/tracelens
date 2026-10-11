@@ -44,10 +44,12 @@ These features are available in the live demo and source checkout. The npm
 0.3.3 release predates the new `timing`, `cost` and `links` commands; build the
 source to use those commands. [Publication verification](docs/verification-publish-2026-10-09.md).
 
-**Exporter limits can hide evidence.** The source parser now retains reported
+**Exporter limits can hide evidence.** The viewer and source parser retain reported
 dropped span attributes, events and event attributes, and exposes the counts
 in warnings and span downloads. A controlled SDK capture dropped all five
 events; the earlier viewer reported no warning. [Reproduction and limits](studies/dropped-evidence/README.md).
+Malformed Jaeger timing is also reported instead of becoming measured zero.
+[Verified source, install and public-build evidence](docs/verification-trace-integrity-2026-10-11.md).
 
 ![Recorded SDK call with its token calculation and rate source](docs/assets/cost-receipt-desktop.png)
 

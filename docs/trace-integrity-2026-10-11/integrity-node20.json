@@ -1,0 +1,197 @@
+{
+  "source": "examples/jaeger-genai-trace.json",
+  "sourceSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+  "results": [
+    {
+      "name": "missing duration",
+      "matches": true,
+      "targetRetained": false,
+      "spanCount": 15,
+      "warnings": [
+        {
+          "message": "Skipped span \"chat claude-sonnet-5\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "null duration",
+      "matches": true,
+      "targetRetained": false,
+      "spanCount": 15,
+      "warnings": [
+        {
+          "message": "Skipped span \"chat claude-sonnet-5\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "negative duration",
+      "matches": true,
+      "targetRetained": false,
+      "spanCount": 15,
+      "warnings": [
+        {
+          "message": "Skipped span \"chat claude-sonnet-5\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "fractional duration",
+      "matches": true,
+      "targetRetained": false,
+      "spanCount": 15,
+      "warnings": [
+        {
+          "message": "Skipped span \"chat claude-sonnet-5\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "text duration",
+      "matches": true,
+      "targetRetained": false,
+      "spanCount": 15,
+      "warnings": [
+        {
+          "message": "Skipped span \"chat claude-sonnet-5\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "oversized start",
+      "matches": true,
+      "targetRetained": false,
+      "spanCount": 15,
+      "warnings": [
+        {
+          "message": "Skipped span \"chat claude-sonnet-5\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "zero duration",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "string duration",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "missing log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Skipped a Jaeger log with a missing or invalid microsecond timestamp.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "null log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Skipped a Jaeger log with a missing or invalid microsecond timestamp.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "oversized log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Skipped a Jaeger log with a missing or invalid microsecond timestamp.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "non-object log",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Skipped a non-object entry in Jaeger logs.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        },
+        {
+          "message": "Skipped a non-object entry in Jaeger logs.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "zero log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "0"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "string log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "1790269392050000000"
+      ],
+      "warnings": []
+    }
+  ]
+}

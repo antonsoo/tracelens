@@ -76,3 +76,5 @@ These changes do not repair damaged exports or recover skipped contents.
 Parser warnings must accompany timing conclusions from a partial file.
 An entirely untimed file is rejected. The source change is unreleased on npm;
 the registry package remains 0.3.3.
+
+[Clean build, installed-package and public-site verification](../../docs/verification-trace-integrity-2026-10-11.md) records the publication boundary and browser investigation.

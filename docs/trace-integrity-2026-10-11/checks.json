@@ -1,0 +1,134 @@
+{
+  "productionSource": "65d885c70c72b5e4d578b0e8852776a665423477",
+  "verificationSource": "b8468f0d9007c45472b7e62ef44369e2817c3f4d",
+  "platform": "WSL2 Linux x86_64",
+  "node": "v26.7.0",
+  "npm": "12.0.1",
+  "browsers": {
+    "chromium": "153.0.8010.12",
+    "firefox": "155.0"
+  },
+  "lockfileSha256": "7700912c5c891dd8e14b8816f6bbb621ac2086edd3e7d0f87439ad123843c5f2",
+  "cleanCommands": [
+    {
+      "command": "npm ci",
+      "exit": 0,
+      "logSha256": "f3299a1c1390cb74cddbaec80e4fd1db9ff83b239f74a9d1fb3dca99fa9a6448"
+    },
+    {
+      "command": "npm run lint",
+      "exit": 0,
+      "logSha256": "d98a2e038b1d08227fbdfd1c34357c0f2d5e0521fab915e3fef08002c3b87533"
+    },
+    {
+      "command": "npm run typecheck",
+      "exit": 0,
+      "logSha256": "b3c31f818208fb8d494fa9be0a4b1de9097feff2e04ac13da975f50554ce1b2f"
+    },
+    {
+      "command": "npm test",
+      "exit": 0,
+      "logSha256": "8176519e96e62eb2bd2493067b0be9927c58cc380a8baa19110ff8d2619d3af9"
+    },
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "logSha256": "f10921601e4faae78af8939217520ba1ddf7e03dad72e23ad87dfb456e41cdfa"
+    },
+    {
+      "command": "npm run test:cli",
+      "exit": 0,
+      "logSha256": "c64a2e72754bb95b0d0a2d2addbe3beba73fa84458d88f6462f0676140ed1603"
+    }
+  ],
+  "coreTests": 297,
+  "cliTests": 30,
+  "finalLocalBrowser": {
+    "command": "npm run test:browser",
+    "verificationSource": "b8468f0d9007c45472b7e62ef44369e2817c3f4d",
+    "legacyBrowserScriptExit": 0,
+    "passed": 116,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "33060a0f2ee75a2781efb1d63d4789d908baba26e4a0e62a473fdfa4906b3c66",
+    "treeNote": "Fresh production archive plus the exact committed workspace.spec.mjs from verificationSource; built code unchanged."
+  },
+  "priorBrowserRuns": [
+    {
+      "source": "785163c",
+      "passed": 113,
+      "failed": 1,
+      "failure": "Firefox target crashed in cancellation test",
+      "logSha256": "4e5953b005f92782c6cdecb9b4c5bfbb72d0cadd46a8670d22b7e9182d2fe359"
+    },
+    {
+      "source": "785163c",
+      "isolatedFirefoxRepeatsPassed": 5,
+      "fullPassed": 114,
+      "fullFailed": 0,
+      "logSha256": "d1f6e004703f84086f0dd70bb5e5b2579e44cc5533e05401859364b7c761b637"
+    },
+    {
+      "source": "65d885c",
+      "passed": 115,
+      "failed": 1,
+      "failure": "Firefox target crashed in the same cancellation test",
+      "logSha256": "962b211a46bd4913ae49730d365dca9afb1c65200c7e8eeee014447943617e7d"
+    }
+  ],
+  "cancellationRevision": {
+    "source": "b8468f0d9007c45472b7e62ef44369e2817c3f4d",
+    "repeatsPerBrowser": 5,
+    "passed": 10,
+    "failed": 0,
+    "logSha256": "54542b6793980e0e3fa69bdaa8febc396772a2ea42c63f3ac7bce11e5c0dfd80",
+    "change": "Hold actual worker responses and invoke captured callbacks after cancel/replacement; verify worker termination and active file. No production code changed.",
+    "crashCause": "Not established. Minimal native-worker probe did not reproduce it."
+  },
+  "installedPackage": {
+    "registryPublished": false,
+    "sourceVersion": "0.3.3",
+    "tarballSha256": "5eea8b3da025760a054e470196f12a4c6ed881e25b7b7fe64e0f0d433fcd5d39",
+    "install": "npm install --ignore-scripts ../antonsoloviev-tracelens-0.3.3.tgz",
+    "codeFilesMatch": 25,
+    "runtimes": [
+      "v20.0.0",
+      "v26.7.0"
+    ],
+    "sdkCasesPerRuntime": 9,
+    "sdkCliInvocationsPerRuntime": 45,
+    "jaegerCasesPerRuntime": 14,
+    "partialExportCliFormats": 6
+  },
+  "corpus": {
+    "fileOutcomesUnchanged": 22,
+    "traces": 27,
+    "spans": 127
+  },
+  "buildCommand": "npm run build",
+  "webOutput": "dist",
+  "actionsEnabled": false,
+  "hostedBrowser": {
+    "url": "https://antonsoo.github.io/tracelens/",
+    "passed": 116,
+    "failed": 0,
+    "skipped": 0,
+    "legacyBrowserScriptExit": 0,
+    "commands": [
+      "TRACELENS_TEST_URL=https://antonsoo.github.io/tracelens/ node tests/browser.mjs",
+      "npx playwright test --config playwright.hosted.config.mjs"
+    ],
+    "configuration": "Production tests copied to a temporary directory; baseURL and allowed first-party origin changed to the hosted URL; local webServer disabled. Assertions otherwise unchanged.",
+    "logSha256": "0a9bdd1472c5230c374ed70ddd905f1abc92a492b6d088e722f3e4b7a42a961a",
+    "legacyLogSha256": "c305d268f8c8c074176e2e08254166b72d526ba0f1914037bf5501923014f0ab"
+  },
+  "publication": {
+    "checkedAt": "2026-10-11T03:19:23.164442+00:00",
+    "pagesRevision": "8c725416992fab1eec778f2731e8bff3210ab3b8",
+    "servedFiles": 33,
+    "allServedBytesMatch": true,
+    "registryVersion": "0.3.3",
+    "registryPublished": false,
+    "tagPublished": false
+  }
+}
