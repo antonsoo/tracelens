@@ -15,6 +15,12 @@ unrelated traces.
 The records below describe source and locally installed-artifact validation.
 They do not establish a hosted deployment or a registry release.
 
+The correction is now also in the [live demo](https://antonsoo.github.io/tracelens/).
+A separate [publication receipt](publication.json) verifies served files against
+the tested build and repeats the attribute and container workflows in hosted
+Chromium and Firefox, offline after load. All downloaded reports match the
+retained local results. No npm package or tag was released.
+
 ## Reproduction
 
 [`cases.mjs`](cases.mjs) reuses the [actual SDK control](../attribute-values/fixtures/sdk-control.json)

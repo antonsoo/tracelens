@@ -17,6 +17,12 @@ without first coercing empty text to zero.
 The records below describe source and locally installed-artifact validation.
 They do not establish a hosted deployment or a registry release.
 
+The [live demo](https://antonsoo.github.io/tracelens/) now includes this correction.
+The [publication receipt](../export-containers/publication.json) verifies served
+code against the tested build and repeats all 19 cases in hosted Chromium and
+Firefox. Offline downloads match the local reports exactly. No npm package or
+tag was released.
+
 ## Evidence and independent checks
 
 [`capture.py`](capture.py) uses OpenTelemetry SDK **1.45.1** and its real exporter

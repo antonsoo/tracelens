@@ -1,0 +1,69 @@
+{
+  "repo": "tracelens",
+  "checkedAt": "2026-10-11T06:52:25.888465+00:00",
+  "pagesRevision": "0a09eefa2516409e9aff3367a8880cfbf114815d",
+  "servedFiles": [
+    {
+      "path": "assets/index-DUGRoTKM.css",
+      "url": "https://antonsoo.github.io/tracelens/assets/index-DUGRoTKM.css",
+      "bytes": 35812,
+      "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b",
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/index-NuISYe4D.js",
+      "url": "https://antonsoo.github.io/tracelens/assets/index-NuISYe4D.js",
+      "bytes": 120793,
+      "sha256": "d204fb587de8d50d39c8cce25735fd26c86b8b153a4a03b38d8a7461c15a0bba",
+      "matchesBuild": true
+    },
+    {
+      "path": "index.html",
+      "url": "https://antonsoo.github.io/tracelens/index.html",
+      "bytes": 2433,
+      "sha256": "74c7b2d3d0792735d4baaed143c04ef45807b25123df6692947dec04ee83bdc2",
+      "matchesBuild": true
+    }
+  ],
+  "sourceRevision": "313448df163c6c4ccbdd84cd87eab5107b3273cb",
+  "buildSourceRevision": "4a072329f658d64f11272017424fef00c8d1c832",
+  "remoteBranches": [
+    "0a09eefa2516409e9aff3367a8880cfbf114815d\trefs/heads/gh-pages",
+    "313448df163c6c4ccbdd84cd87eab5107b3273cb\trefs/heads/main"
+  ],
+  "browserChecks": {
+    "command": "Playwright attribute-values and export-containers workflows against https://antonsoo.github.io/tracelens/, using hosted origin in the request guard and temporary output paths",
+    "passed": 4,
+    "browsers": [
+      "Chromium",
+      "Firefox"
+    ],
+    "offlineAfterLoad": true,
+    "logSha256": "90fdfc896797c0a56a70fee6881cac8bfef3cec1e279f425770559e15f93bced",
+    "attributes": {
+      "chromium": {
+        "cases": 19,
+        "exactlyMatchesLocal": true,
+        "sha256": "7891e270196fd35dfc4661f164382ed18f793a148c8df63f73d04a864fba265d"
+      },
+      "firefox": {
+        "cases": 19,
+        "exactlyMatchesLocal": true,
+        "sha256": "7891e270196fd35dfc4661f164382ed18f793a148c8df63f73d04a864fba265d"
+      }
+    },
+    "containers": {
+      "chromium": {
+        "traces": 2,
+        "exactlyMatchesLocal": true,
+        "sha256": "2f9a92b199b496ff16bfe80034783c4c929c5e5f3be87a926555bb27974b1b90"
+      },
+      "firefox": {
+        "traces": 2,
+        "exactlyMatchesLocal": true,
+        "sha256": "2f9a92b199b496ff16bfe80034783c4c929c5e5f3be87a926555bb27974b1b90"
+      }
+    }
+  },
+  "scope": "Source and static demo published; no npm release or tag."
+}
