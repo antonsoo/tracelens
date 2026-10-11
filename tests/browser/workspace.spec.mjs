@@ -175,22 +175,28 @@ test('search locates a distant span and keeps only a bounded number of rows', as
 test('canceled or superseded import workers never replace current state', async ({ page }) => {
   await page.addInitScript(() => {
     window.pendingReads = {};
+    window.terminatedReads = [];
     const NativeWorker = Worker;
     window.Worker = class extends NativeWorker {
-      postMessage(request) {
-        const name = request.source.file?.name ?? '';
-        if (!name.startsWith('slow')) { super.postMessage(request); return; }
-        window.pendingReads[name] = (fail = false) => {
-          if (fail) this.onerror?.(new ErrorEvent('error', { message: 'late parser error' }));
-          else super.postMessage(request);
-        };
+      set onmessage(handler) {
+        // Hold an actual parser reply, then invoke the captured callback after
+        // cancellation. Posting new work to a terminated native worker tests
+        // a browser edge case, not delivery of an already queued response.
+        super.onmessage = handler ? event => {
+          if (!this.sourceName?.startsWith('slow')) { handler(event); return; }
+          const onerror = this.onerror;
+          window.pendingReads[this.sourceName] = (fail = false) => {
+            if (fail) onerror?.(new ErrorEvent('error', { message: 'late parser error', cancelable: true }));
+            else handler(event);
+          };
+        } : null;
       }
-    };
-    const parse = JSON.parse;
-    window.obsoleteParsed = 0;
-    JSON.parse = function (text, ...rest) {
-      if (typeof text === 'string' && text.includes('obsolete-probe')) window.obsoleteParsed++;
-      return parse(text, ...rest);
+      get onmessage() { return super.onmessage; }
+      postMessage(request) {
+        this.sourceName = request.source.file?.name ?? '';
+        super.postMessage(request);
+      }
+      terminate() { window.terminatedReads.push(this.sourceName); super.terminate(); }
     };
   });
   await page.goto('./');
@@ -198,20 +204,25 @@ test('canceled or superseded import workers never replace current state', async 
   obsolete[0].name = 'obsolete-probe';
   await page.locator('#tl-file-input').setInputFiles(file('slow-first.json', obsolete));
   await expect(page.getByRole('status')).toHaveText('Loading slow-first.json...');
+  await expect.poll(() => page.evaluate(() => typeof window.pendingReads['slow-first.json'])).toBe('function');
   await page.getByRole('button', { name: 'Cancel loading' }).click();
   await expect(page.getByRole('button', { name: 'Choose a trace.json file' })).toBeFocused();
   await page.evaluate(() => window.pendingReads['slow-first.json']());
-  expect(await page.evaluate(() => window.obsoleteParsed)).toBe(0);
+  expect(await page.evaluate(() => window.terminatedReads)).toContain('slow-first.json');
   await expect(page.locator('.tl-wf-row')).toHaveCount(0);
   await page.locator('#tl-file-input').setInputFiles(file('slow-next.json', obsolete));
+  await expect.poll(() => page.evaluate(() => typeof window.pendingReads['slow-next.json'])).toBe('function');
   await page.locator('#tl-file-input').setInputFiles(file('current.json', run(good, 6)));
   await expect(page.locator('.tl-active-file')).toHaveText('current.json');
   await page.evaluate(() => window.pendingReads['slow-next.json']());
-  expect(await page.evaluate(() => window.obsoleteParsed)).toBe(0);
+  expect(await page.evaluate(() => window.terminatedReads)).toContain('slow-next.json');
+  await expect(page.locator('.tl-wf-row').first()).toContainText('agent root');
   await expect(page.locator('.tl-active-file')).toHaveText('current.json');
   await page.getByLabel('Candidate trace file').setInputFiles(file('slow-candidate.json', obsolete));
+  await expect.poll(() => page.evaluate(() => typeof window.pendingReads['slow-candidate.json'])).toBe('function');
   await page.getByRole('button', { name: 'Load another trace' }).click();
   await page.evaluate(() => window.pendingReads['slow-candidate.json'](true));
+  expect(await page.evaluate(() => window.terminatedReads)).toContain('slow-candidate.json');
   await expect(page.getByRole('alert')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Choose a trace.json file' })).toBeVisible();
 });
