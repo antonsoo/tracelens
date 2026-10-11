@@ -17,6 +17,7 @@
  */
 
 import { normalizeId } from './identity.js';
+import type { ParseWarning } from './types.js';
 
 type Json = Record<string, unknown>;
 
@@ -41,14 +42,15 @@ const LIFTED_TAGS = new Set(['span.kind', 'otel.status_code', 'otel.status_descr
 
 /** Microseconds (number or decimal string) to a decimal nanosecond string; undefined if invalid. */
 function microsToNanos(raw: unknown): string | undefined {
-  if (typeof raw === 'number' && Number.isSafeInteger(raw) && raw >= 0) return (BigInt(raw) * 1000n).toString();
-  if (typeof raw === 'string' && /^\d{1,17}$/.test(raw)) return (BigInt(raw) * 1000n).toString();
-  return undefined;
+  if (!(typeof raw === 'number' && Number.isSafeInteger(raw) && raw >= 0)
+    && !(typeof raw === 'string' && /^\d{1,17}$/.test(raw))) return undefined;
+  const nanos = BigInt(raw) * 1000n;
+  return nanos <= 18_446_744_073_709_551_615n ? nanos.toString() : undefined;
 }
 
 function addMicros(start: unknown, duration: unknown): string | undefined {
   const s = microsToNanos(start);
-  const d = microsToNanos(duration ?? 0);
+  const d = microsToNanos(duration);
   return s === undefined || d === undefined ? undefined : (BigInt(s) + BigInt(d)).toString();
 }
 
@@ -108,22 +110,34 @@ function referencesOf(span: Json, traceId: unknown): { parent?: string; links: u
   })) };
 }
 
-function events(logs: unknown): Json[] {
-  if (!Array.isArray(logs)) return [];
-  return logs.filter(isRecord).map((log) => {
+function events(logs: unknown, warnings: ParseWarning[], spanId: string, traceId: string): Json[] {
+  if (logs === undefined || logs === null) return [];
+  if (!Array.isArray(logs)) {
+    warnings.push({ message: 'Invalid Jaeger logs collection; its events could not be imported.', spanId, traceId });
+    return [];
+  }
+  return logs.flatMap((log) => {
+    if (!isRecord(log)) {
+      warnings.push({ message: 'Skipped a non-object entry in Jaeger logs.', spanId, traceId });
+      return [];
+    }
+    const time = microsToNanos(log.timestamp);
+    if (time === undefined) {
+      warnings.push({ message: 'Skipped a Jaeger log with a missing or invalid microsecond timestamp.', spanId, traceId });
+      return [];
+    }
     const fields = tagList(log.fields);
     const named = fields.find((f) => f.key === 'event') ?? fields.find((f) => f.key === 'message');
-    return {
-      // An invalid timestamp is left for the OTLP parser to reject with its own warning.
-      timeUnixNano: microsToNanos(log.timestamp) ?? log.timestamp,
+    return [{
+      timeUnixNano: time,
       name: named ? asText(named.value) : 'log',
       attributes: attributes(fields.filter((f) => f !== named)),
-    };
+    }];
   });
 }
 
 /** Converts a Jaeger JSON document (see `isJaegerJson`) to an OTLP/JSON `ExportTraceServiceRequest`. */
-export function jaegerToOtlp(json: unknown): { resourceSpans: Json[] } {
+export function jaegerToOtlp(json: unknown, warnings: ParseWarning[] = []): { resourceSpans: Json[] } {
   const traces = isJaegerTrace(json) ? [json] : isRecord(json) && Array.isArray(json.data) ? json.data.filter(isJaegerTrace) : [];
   const resourceSpans: Json[] = [];
   for (const trace of traces) {
@@ -144,11 +158,12 @@ export function jaegerToOtlp(json: unknown): { resourceSpans: Json[] } {
         ...(parent ? { parentSpanId: parent } : {}),
         name: typeof raw.operationName === 'string' ? raw.operationName : '(unnamed span)',
         kind: kind ? (SPAN_KIND[asText(kind.value).toLowerCase()] ?? 0) : 0,
-        // Invalid times are passed through so the OTLP parser skips the span with its warning.
-        startTimeUnixNano: start ?? raw.startTime,
-        endTimeUnixNano: addMicros(raw.startTime, raw.duration) ?? raw.startTime,
+        // Failed conversions stay absent. Raw microseconds must never be
+        // reinterpreted as nanoseconds, or unknown duration as measured zero.
+        startTimeUnixNano: start,
+        endTimeUnixNano: addMicros(raw.startTime, raw.duration),
         attributes: attributes(tags),
-        events: events(raw.logs),
+        events: events(raw.logs, warnings, normalizeId(raw.spanID, 8), normalizeId(raw.traceID ?? trace.traceID, 16)),
         links,
         ...(spanStatus ? { status: spanStatus } : {}),
       };

@@ -1,0 +1,68 @@
+{
+  "offline": true,
+  "span": {
+    "schemaVersion": 1,
+    "format": "tracelens-span-evidence",
+    "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "spanId": "3333333333333333",
+    "parentSpanId": "1111111111111111",
+    "name": "retained event evidence",
+    "kind": "UNSPECIFIED",
+    "startTimeUnixNano": "1700000000020000000",
+    "endTimeUnixNano": "1700000000040000000",
+    "durationNs": "20000000",
+    "status": {
+      "code": "UNSET"
+    },
+    "attributes": {
+      "capture.note": "Synthetic malformed-input control; no service calls"
+    },
+    "events": [
+      {
+        "name": "retained checkpoint",
+        "timeUnixNano": "1700000000025000000",
+        "attributes": {}
+      }
+    ],
+    "links": [
+      {
+        "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "spanId": "1111111111111111",
+        "attributes": {
+          "opentracing.ref_type": "child_of"
+        },
+        "target": {
+          "status": "available",
+          "name": "controlled workflow"
+        }
+      }
+    ],
+    "resourceAttributes": {},
+    "agentKind": "other",
+    "convention": "none",
+    "depth": 1,
+    "children": []
+  },
+  "warnings": [
+    {
+      "message": "Skipped a Jaeger log with a missing or invalid microsecond timestamp.",
+      "spanId": "3333333333333333",
+      "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "message": "Skipped a non-object entry in Jaeger logs.",
+      "spanId": "3333333333333333",
+      "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "message": "Skipped a Jaeger log with a missing or invalid microsecond timestamp.",
+      "spanId": "3333333333333333",
+      "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "message": "Skipped span \"unknown duration\" with missing or invalid timestamps. Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.",
+      "spanId": "2222222222222222",
+      "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ]
+}

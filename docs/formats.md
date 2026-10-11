@@ -136,6 +136,14 @@ and they stay strings here. `examples/jaeger-genai-trace.json` is
 `tests/jaeger.test.ts` checks that both files give the same span tree, times,
 status, events and cost.
 
+Jaeger `startTime` and `duration` are both required by this importer. Missing,
+negative, fractional, unsafe numeric or out-of-range values skip the affected
+span with a warning; an explicit zero duration remains zero. Decimal strings
+preserve exact microseconds. Their sum must fit an unsigned 64-bit nanosecond
+timestamp. Invalid log times skip the log with a warning, preserving the
+remaining events. Failed conversions never fall back to treating raw
+microseconds as nanoseconds. [Partial-export reproduction](../studies/import-integrity/README.md).
+
 ## 2. OpenTelemetry GenAI semantic conventions (`gen_ai.*`)
 
 Source: [`open-telemetry/semantic-conventions-genai`](https://github.com/open-telemetry/semantic-conventions-genai),

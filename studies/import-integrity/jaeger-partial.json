@@ -1,0 +1,116 @@
+{
+  "data": [
+    {
+      "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "spans": [
+        {
+          "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "spanID": "1111111111111111",
+          "operationName": "controlled workflow",
+          "startTime": 1700000000000000,
+          "references": [],
+          "tags": [
+            {
+              "key": "capture.note",
+              "type": "string",
+              "value": "Synthetic malformed-input control; no service calls"
+            }
+          ],
+          "logs": [],
+          "duration": 100000
+        },
+        {
+          "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "spanID": "2222222222222222",
+          "operationName": "unknown duration",
+          "startTime": 1700000000010000,
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "spanID": "1111111111111111"
+            }
+          ],
+          "tags": [
+            {
+              "key": "capture.note",
+              "type": "string",
+              "value": "Synthetic malformed-input control; no service calls"
+            }
+          ],
+          "logs": []
+        },
+        {
+          "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "spanID": "3333333333333333",
+          "operationName": "retained event evidence",
+          "startTime": 1700000000020000,
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "spanID": "1111111111111111"
+            }
+          ],
+          "tags": [
+            {
+              "key": "capture.note",
+              "type": "string",
+              "value": "Synthetic malformed-input control; no service calls"
+            }
+          ],
+          "logs": [
+            {
+              "timestamp": 1700000000025000,
+              "fields": [
+                {
+                  "key": "event",
+                  "type": "string",
+                  "value": "retained checkpoint"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "key": "event",
+                  "type": "string",
+                  "value": "missing timestamp"
+                }
+              ]
+            },
+            null,
+            {
+              "timestamp": "100000000000000000",
+              "fields": []
+            }
+          ],
+          "duration": 20000
+        },
+        {
+          "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "spanID": "4444444444444444",
+          "operationName": "measured zero duration",
+          "startTime": 1700000000040000,
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "spanID": "1111111111111111"
+            }
+          ],
+          "tags": [
+            {
+              "key": "capture.note",
+              "type": "string",
+              "value": "Synthetic malformed-input control; no service calls"
+            }
+          ],
+          "logs": [],
+          "duration": 0
+        }
+      ],
+      "processes": {}
+    }
+  ]
+}

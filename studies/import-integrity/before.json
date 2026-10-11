@@ -1,0 +1,174 @@
+{
+  "source": "examples/jaeger-genai-trace.json",
+  "sourceSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+  "results": [
+    {
+      "name": "missing duration",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "null duration",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "negative duration",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Span \"chat claude-sonnet-5\" has an end time before its start time (clock skew?) — clamped to start.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "fractional duration",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Span \"chat claude-sonnet-5\" has an end time before its start time (clock skew?) — clamped to start.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "text duration",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": [
+        {
+          "message": "Span \"chat claude-sonnet-5\" has an end time before its start time (clock skew?) — clamped to start.",
+          "spanId": "5897089a8555eefa",
+          "traceId": "6d6737bdab150eac9afbfaff04b326b3"
+        }
+      ]
+    },
+    {
+      "name": "oversized start",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "100000000000000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "zero duration",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "0",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "string duration",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "missing log time",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "0"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "null log time",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "0"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "oversized log time",
+      "matches": false,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "100000000000000000"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "non-object log",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [],
+      "warnings": []
+    },
+    {
+      "name": "zero log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "0"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "string log time",
+      "matches": true,
+      "targetRetained": true,
+      "spanCount": 16,
+      "start": "1790269392050000000",
+      "duration": "3050000000",
+      "eventTimes": [
+        "1790269392050000000"
+      ],
+      "warnings": []
+    }
+  ]
+}

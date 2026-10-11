@@ -126,9 +126,17 @@ function decodeStatus(raw: unknown): { code: StatusCode; message?: string } {
 }
 
 function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, traceId: string): SpanEvent[] {
-  if (!Array.isArray(raw)) return [];
+  if (raw === undefined || raw === null) return [];
+  if (!Array.isArray(raw)) {
+    warnings.push({ message: 'Invalid events collection; its events could not be imported.', spanId, traceId });
+    return [];
+  }
   return raw.flatMap((e, index) => {
-    const rec = isRecord(e) ? e : {};
+    if (!isRecord(e)) {
+      warnings.push({ message: 'Skipped a non-object entry in "events".', spanId, traceId });
+      return [];
+    }
+    const rec = e;
     const name = typeof rec.name === 'string' ? rec.name : '';
     const droppedAttributesCount = droppedCount(rec.droppedAttributesCount ?? rec.dropped_attributes_count,
       'droppedAttributesCount', `Event ${index + 1} ("${name}")`, 'attributes', warnings, spanId, traceId);
@@ -236,9 +244,12 @@ function chooseTrace(listings: TraceListing[], wanted: string | undefined): Trac
  */
 export function parseOtlpJson(json: unknown, options: ParseOptions = {}): ParsedTrace {
   assertPayloadDepth(json);
+  // Collect warnings for the whole file, then narrow to the chosen trace below.
+  // Conversion warnings use the same trace/span scoping as OTLP warnings.
+  const warnings: ParseWarning[] = [];
   // Jaeger's native JSON is converted up front, so it gets the same validation.
   const sourceFormat = isJaegerJson(json) ? 'jaeger-json' : 'otlp-json';
-  if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json);
+  if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json, warnings);
   const root = isRecord(json) ? json : { resourceSpans: json };
   const resourceSpans = root.resourceSpans ?? root.resource_spans;
   if (!Array.isArray(resourceSpans)) {
@@ -251,8 +262,6 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
   }
 
   const all: ParsedSpan[] = [];
-  // Warnings are collected for every trace in the file and narrowed to the chosen one below.
-  const warnings: ParseWarning[] = [];
 
   for (const rs of resourceSpans) {
     if (!isRecord(rs)) continue;
@@ -282,7 +291,10 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
         const start = toBigNanos(raw.startTimeUnixNano ?? raw.start_time_unix_nano);
         let end = toBigNanos(raw.endTimeUnixNano ?? raw.end_time_unix_nano);
         if (start === undefined || end === undefined) {
-          warnings.push({ message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. Use unsigned decimal nanosecond strings (or safe integer numbers).`, spanId, traceId: spanTraceId });
+          const advice = sourceFormat === 'jaeger-json'
+            ? 'Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.'
+            : 'Use unsigned decimal nanosecond strings (or safe integer numbers).';
+          warnings.push({ message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. ${advice}`, spanId, traceId: spanTraceId });
           continue;
         }
         if (end < start) {

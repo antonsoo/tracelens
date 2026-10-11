@@ -4,6 +4,18 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Invalid imported timing
+
+- Skip Jaeger spans with missing or invalid durations instead of presenting
+  zero duration. Never reinterpret unconvertible microsecond timestamps as
+  nanoseconds, or mislabel failed conversions as clock skew. Keep measured
+  zero durations and exact decimal-string timestamps.
+- Warn when malformed Jaeger logs or OTLP event records are skipped. Preserve
+  valid logs and scope warnings to their trace/span. OTLP object events keep
+  Protobuf's default zero timestamp when the field is omitted.
+- Retain [controlled partial-export evidence](studies/import-integrity/README.md)
+  and offline browser downloads.
+
 ### Exporter-reported missing evidence
 
 - Preserve span `droppedAttributesCount` / `droppedEventsCount` and each
