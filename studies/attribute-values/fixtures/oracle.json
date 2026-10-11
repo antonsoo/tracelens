@@ -1,0 +1,326 @@
+{
+  "provenance": "One actual SDK span with fixed identity/time and synthetic usage. Other traces explicitly alter its typed input-token attribute; no model calls.",
+  "packages": {
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "driverSha256": "c63ed583f27700503f4099ca49d520018cce81e78497aae37f43040b65a179da",
+  "sha256": {
+    "sdk-control.json": "323633b4cf2461f33ac0f270f580699f3635fa452c10def6df4bdde5881ed188",
+    "capture.json": "fe7bb5dd3fcdc1738b78ea38ebf4436078508019ebdd0e1085d50e9554380e24",
+    "prices.json": "e1d2feac0cadcd6157f1bc4c2a989392387303d232d64658a995bba9e03c3da0"
+  },
+  "sdkInputTokens": 1200,
+  "sdkOutputTokens": 30,
+  "cases": [
+    {
+      "name": "SDK integer control",
+      "traceId": "00000000000000000000000000000001",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "1200"
+      },
+      "expectedInputTokens": 1200,
+      "expectedWarning": false,
+      "expectedCostUsd": 0.00252,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "1200"
+        }
+      }
+    },
+    {
+      "name": "quoted double",
+      "traceId": "00000000000000000000000000000002",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "doubleValue": "1200"
+      },
+      "expectedInputTokens": 1200,
+      "expectedWarning": false,
+      "expectedCostUsd": 0.00252,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "doubleValue": 1200.0
+        }
+      }
+    },
+    {
+      "name": "quoted double exponent",
+      "traceId": "00000000000000000000000000000003",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "double_value": "1.2e3"
+      },
+      "expectedInputTokens": 1200,
+      "expectedWarning": false,
+      "expectedCostUsd": 0.00252,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "doubleValue": 1200.0
+        }
+      }
+    },
+    {
+      "name": "integer exponent",
+      "traceId": "00000000000000000000000000000004",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "int_value": "1.200e3"
+      },
+      "expectedInputTokens": 1200,
+      "expectedWarning": false,
+      "expectedCostUsd": 0.00252,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "1200"
+        }
+      }
+    },
+    {
+      "name": "measured zero",
+      "traceId": "00000000000000000000000000000005",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "0"
+      },
+      "expectedInputTokens": 0,
+      "expectedWarning": false,
+      "expectedCostUsd": 0.00012,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "0"
+        }
+      }
+    },
+    {
+      "name": "empty integer",
+      "traceId": "00000000000000000000000000000006",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": ""
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Failed to parse intValue field: invalid literal for int() with base 10: ''."
+      }
+    },
+    {
+      "name": "whitespace integer",
+      "traceId": "00000000000000000000000000000007",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": " "
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Couldn't parse integer: \" \" at AnyValue.intValue"
+      }
+    },
+    {
+      "name": "hexadecimal integer",
+      "traceId": "00000000000000000000000000000008",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "0x10"
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Failed to parse intValue field: invalid literal for int() with base 10: '0x10'."
+      }
+    },
+    {
+      "name": "fraction hidden by rounding",
+      "traceId": "00000000000000000000000000000009",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "1.00000000000000001"
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "1"
+        }
+      },
+      "exactDecimal": {
+        "value": "1.00000000000000001",
+        "isInteger": false
+      }
+    },
+    {
+      "name": "outside int64",
+      "traceId": "0000000000000000000000000000000a",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "9223372036854775808"
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Failed to parse intValue field: Value out of range: 9223372036854775808."
+      }
+    },
+    {
+      "name": "unsafe unquoted integer",
+      "traceId": "0000000000000000000000000000000b",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": 9007199254740992
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "9007199254740992"
+        }
+      }
+    },
+    {
+      "name": "conflicting oneof",
+      "traceId": "0000000000000000000000000000000c",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "1200",
+        "doubleValue": 0
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Message type \"opentelemetry.proto.common.v1.AnyValue\" should not have multiple \"value\" oneof fields at \"AnyValue\"."
+      }
+    },
+    {
+      "name": "numeric string field",
+      "traceId": "0000000000000000000000000000000d",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "stringValue": 1200
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Failed to parse stringValue field: expected string or bytes-like object, got 'int'."
+      }
+    },
+    {
+      "name": "primitive numeric AnyValue",
+      "traceId": "0000000000000000000000000000000e",
+      "spanId": "0000000000000001",
+      "sourceValue": 1200,
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "'int' object is not iterable"
+      }
+    },
+    {
+      "name": "empty double",
+      "traceId": "0000000000000000000000000000000f",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "doubleValue": ""
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": false,
+        "error": "Couldn't parse float:  at AnyValue.doubleValue"
+      }
+    },
+    {
+      "name": "nonfinite double",
+      "traceId": "00000000000000000000000000000010",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "doubleValue": "NaN"
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": false,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "doubleValue": "NaN"
+        }
+      }
+    },
+    {
+      "name": "exact large int64",
+      "traceId": "00000000000000000000000000000011",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "9223372036854775807"
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": false,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "9223372036854775807"
+        }
+      }
+    },
+    {
+      "name": "null integer",
+      "traceId": "00000000000000000000000000000012",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": null
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": false,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {}
+      }
+    },
+    {
+      "name": "duplicate input count",
+      "traceId": "00000000000000000000000000000013",
+      "spanId": "0000000000000001",
+      "sourceValue": {
+        "intValue": "1200"
+      },
+      "expectedInputTokens": null,
+      "expectedWarning": true,
+      "expectedCostUsd": null,
+      "protobuf": {
+        "accepted": true,
+        "canonical": {
+          "intValue": "1200"
+        }
+      }
+    }
+  ]
+}

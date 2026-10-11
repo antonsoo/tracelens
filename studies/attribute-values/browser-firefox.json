@@ -1,0 +1,2353 @@
+{
+  "offline": true,
+  "pageErrors": [],
+  "externalRequests": [],
+  "results": [
+    {
+      "name": "SDK integer control",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000001",
+        "spanId": "0000000000000001",
+        "name": "SDK integer control",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": 1200,
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "inputTokens": 1200,
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000001",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 1,
+        "unpricedCalls": 0,
+        "excludedSpans": 0,
+        "knownCostUsd": 0.0025199999999999997,
+        "estimatedCostUsd": 0.0025199999999999997,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "SDK integer control",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "inputTokens": 1200,
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": 1200,
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "priced",
+              "costUsd": 0.0025199999999999997,
+              "matchedModel": "synthetic",
+              "entry": {
+                "id": "synthetic",
+                "matchModel": "fixture-model",
+                "provider": "fixture-provider",
+                "inputPerMTok": 2,
+                "outputPerMTok": 4,
+                "sourceUrl": "",
+                "sourceDate": "2026-10-10"
+              },
+              "match": "exact",
+              "components": [
+                {
+                  "kind": "input",
+                  "tokens": 1200,
+                  "perMillionUsd": 2,
+                  "costUsd": 0.0024,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-read",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-write",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "output",
+                  "tokens": 30,
+                  "perMillionUsd": 4,
+                  "costUsd": 0.00012,
+                  "rateSource": "output"
+                }
+              ],
+              "assumptions": [
+                "No response model recorded; using the request model.",
+                "No cache-read count recorded; assuming zero cache reads.",
+                "No cache-write count recorded; assuming zero cache writes."
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "quoted double",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000002",
+        "spanId": "0000000000000001",
+        "name": "quoted double",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": 1200,
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "inputTokens": 1200,
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000002",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 1,
+        "unpricedCalls": 0,
+        "excludedSpans": 0,
+        "knownCostUsd": 0.0025199999999999997,
+        "estimatedCostUsd": 0.0025199999999999997,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "quoted double",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "inputTokens": 1200,
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": 1200,
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "priced",
+              "costUsd": 0.0025199999999999997,
+              "matchedModel": "synthetic",
+              "entry": {
+                "id": "synthetic",
+                "matchModel": "fixture-model",
+                "provider": "fixture-provider",
+                "inputPerMTok": 2,
+                "outputPerMTok": 4,
+                "sourceUrl": "",
+                "sourceDate": "2026-10-10"
+              },
+              "match": "exact",
+              "components": [
+                {
+                  "kind": "input",
+                  "tokens": 1200,
+                  "perMillionUsd": 2,
+                  "costUsd": 0.0024,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-read",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-write",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "output",
+                  "tokens": 30,
+                  "perMillionUsd": 4,
+                  "costUsd": 0.00012,
+                  "rateSource": "output"
+                }
+              ],
+              "assumptions": [
+                "No response model recorded; using the request model.",
+                "No cache-read count recorded; assuming zero cache reads.",
+                "No cache-write count recorded; assuming zero cache writes."
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "quoted double exponent",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000003",
+        "spanId": "0000000000000001",
+        "name": "quoted double exponent",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": 1200,
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "inputTokens": 1200,
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000003",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 1,
+        "unpricedCalls": 0,
+        "excludedSpans": 0,
+        "knownCostUsd": 0.0025199999999999997,
+        "estimatedCostUsd": 0.0025199999999999997,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "quoted double exponent",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "inputTokens": 1200,
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": 1200,
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "priced",
+              "costUsd": 0.0025199999999999997,
+              "matchedModel": "synthetic",
+              "entry": {
+                "id": "synthetic",
+                "matchModel": "fixture-model",
+                "provider": "fixture-provider",
+                "inputPerMTok": 2,
+                "outputPerMTok": 4,
+                "sourceUrl": "",
+                "sourceDate": "2026-10-10"
+              },
+              "match": "exact",
+              "components": [
+                {
+                  "kind": "input",
+                  "tokens": 1200,
+                  "perMillionUsd": 2,
+                  "costUsd": 0.0024,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-read",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-write",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "output",
+                  "tokens": 30,
+                  "perMillionUsd": 4,
+                  "costUsd": 0.00012,
+                  "rateSource": "output"
+                }
+              ],
+              "assumptions": [
+                "No response model recorded; using the request model.",
+                "No cache-read count recorded; assuming zero cache reads.",
+                "No cache-write count recorded; assuming zero cache writes."
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "integer exponent",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000004",
+        "spanId": "0000000000000001",
+        "name": "integer exponent",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": 1200,
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "inputTokens": 1200,
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000004",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 1,
+        "unpricedCalls": 0,
+        "excludedSpans": 0,
+        "knownCostUsd": 0.0025199999999999997,
+        "estimatedCostUsd": 0.0025199999999999997,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "integer exponent",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "inputTokens": 1200,
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": 1200,
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "priced",
+              "costUsd": 0.0025199999999999997,
+              "matchedModel": "synthetic",
+              "entry": {
+                "id": "synthetic",
+                "matchModel": "fixture-model",
+                "provider": "fixture-provider",
+                "inputPerMTok": 2,
+                "outputPerMTok": 4,
+                "sourceUrl": "",
+                "sourceDate": "2026-10-10"
+              },
+              "match": "exact",
+              "components": [
+                {
+                  "kind": "input",
+                  "tokens": 1200,
+                  "perMillionUsd": 2,
+                  "costUsd": 0.0024,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-read",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-write",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "output",
+                  "tokens": 30,
+                  "perMillionUsd": 4,
+                  "costUsd": 0.00012,
+                  "rateSource": "output"
+                }
+              ],
+              "assumptions": [
+                "No response model recorded; using the request model.",
+                "No cache-read count recorded; assuming zero cache reads.",
+                "No cache-write count recorded; assuming zero cache writes."
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "measured zero",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000005",
+        "spanId": "0000000000000001",
+        "name": "measured zero",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": 0,
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000005",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 1,
+        "unpricedCalls": 0,
+        "excludedSpans": 0,
+        "knownCostUsd": 0.00012,
+        "estimatedCostUsd": 0.00012,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "measured zero",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "inputTokens": 0,
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": 0,
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "priced",
+              "costUsd": 0.00012,
+              "matchedModel": "synthetic",
+              "entry": {
+                "id": "synthetic",
+                "matchModel": "fixture-model",
+                "provider": "fixture-provider",
+                "inputPerMTok": 2,
+                "outputPerMTok": 4,
+                "sourceUrl": "",
+                "sourceDate": "2026-10-10"
+              },
+              "match": "exact",
+              "components": [
+                {
+                  "kind": "input",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-read",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "cache-write",
+                  "tokens": 0,
+                  "perMillionUsd": 2,
+                  "costUsd": 0,
+                  "rateSource": "input"
+                },
+                {
+                  "kind": "output",
+                  "tokens": 30,
+                  "perMillionUsd": 4,
+                  "costUsd": 0.00012,
+                  "rateSource": "output"
+                }
+              ],
+              "assumptions": [
+                "No response model recorded; using the request model.",
+                "No cache-read count recorded; assuming zero cache reads.",
+                "No cache-write count recorded; assuming zero cache writes."
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "empty integer",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000006",
+        "spanId": "0000000000000001",
+        "name": "empty integer",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": ""
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000006",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "empty integer",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": ""
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000006"
+        }
+      ]
+    },
+    {
+      "name": "whitespace integer",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000007",
+        "spanId": "0000000000000001",
+        "name": "whitespace integer",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": " "
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000007",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "whitespace integer",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": " "
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000007"
+        }
+      ]
+    },
+    {
+      "name": "hexadecimal integer",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000008",
+        "spanId": "0000000000000001",
+        "name": "hexadecimal integer",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": "0x10"
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000008",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "hexadecimal integer",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": "0x10"
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000008"
+        }
+      ]
+    },
+    {
+      "name": "fraction hidden by rounding",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000009",
+        "spanId": "0000000000000001",
+        "name": "fraction hidden by rounding",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": "1.00000000000000001"
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000009",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "fraction hidden by rounding",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": "1.00000000000000001"
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000009"
+        }
+      ]
+    },
+    {
+      "name": "outside int64",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "0000000000000000000000000000000a",
+        "spanId": "0000000000000001",
+        "name": "outside int64",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": "9223372036854775808"
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "0000000000000000000000000000000a",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "outside int64",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": "9223372036854775808"
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "0000000000000000000000000000000a"
+        }
+      ]
+    },
+    {
+      "name": "unsafe unquoted integer",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "0000000000000000000000000000000b",
+        "spanId": "0000000000000001",
+        "name": "unsafe unquoted integer",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": 9007199254740992
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "0000000000000000000000000000000b",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "unsafe unquoted integer",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": 9007199254740992
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): intValue must be an exact int64 decimal (quote integers beyond JS safe precision); retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "0000000000000000000000000000000b"
+        }
+      ]
+    },
+    {
+      "name": "conflicting oneof",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "0000000000000000000000000000000c",
+        "spanId": "0000000000000001",
+        "name": "conflicting oneof",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "intValue": "1200",
+              "doubleValue": 0
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "0000000000000000000000000000000c",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "conflicting oneof",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "intValue": "1200",
+                  "doubleValue": 0
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): multiple AnyValue fields or alternate spellings; retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): multiple AnyValue fields or alternate spellings; retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "0000000000000000000000000000000c"
+        }
+      ]
+    },
+    {
+      "name": "numeric string field",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "0000000000000000000000000000000d",
+        "spanId": "0000000000000001",
+        "name": "numeric string field",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "stringValue": 1200
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "0000000000000000000000000000000d",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "numeric string field",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "stringValue": 1200
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): stringValue must be a string; retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): stringValue must be a string; retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "0000000000000000000000000000000d"
+        }
+      ]
+    },
+    {
+      "name": "primitive numeric AnyValue",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "0000000000000000000000000000000e",
+        "spanId": "0000000000000001",
+        "name": "primitive numeric AnyValue",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": 1200
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "0000000000000000000000000000000e",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "primitive numeric AnyValue",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": 1200
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): expected a typed AnyValue object; retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): expected a typed AnyValue object; retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "0000000000000000000000000000000e"
+        }
+      ]
+    },
+    {
+      "name": "empty double",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "0000000000000000000000000000000f",
+        "spanId": "0000000000000001",
+        "name": "empty double",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "invalidAnyValue": {
+              "doubleValue": ""
+            }
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "0000000000000000000000000000000f",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "empty double",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "invalidAnyValue": {
+                  "doubleValue": ""
+                }
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[3] (\"gen_ai.usage.input_tokens\"): doubleValue must be a decimal number or Protobuf nonfinite spelling; retained as invalidAnyValue, not a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[3] (\"gen_ai.usage.input_tokens\"): doubleValue must be a decimal number or Protobuf nonfinite spelling; retained as invalidAnyValue, not a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "0000000000000000000000000000000f"
+        }
+      ]
+    },
+    {
+      "name": "nonfinite double",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000010",
+        "spanId": "0000000000000001",
+        "name": "nonfinite double",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": "NaN",
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000010",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "nonfinite double",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": "NaN",
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "exact large int64",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000011",
+        "spanId": "0000000000000001",
+        "name": "exact large int64",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": "9223372036854775807",
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000011",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "exact large int64",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": "9223372036854775807",
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "null integer",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000012",
+        "spanId": "0000000000000001",
+        "name": "null integer",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": null,
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000012",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "null integer",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": null,
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "duplicate input count",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000013",
+        "spanId": "0000000000000001",
+        "name": "duplicate input count",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "1000000",
+        "endTimeUnixNano": "2000000",
+        "durationNs": "1000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "fixture-model",
+          "gen_ai.provider.name": "fixture-provider",
+          "gen_ai.usage.input_tokens": {
+            "duplicateAttributeValues": [
+              {
+                "intValue": "1200"
+              },
+              {
+                "intValue": "0"
+              }
+            ]
+          },
+          "gen_ai.usage.output_tokens": 30
+        },
+        "events": [],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "attribute-value-control"
+        },
+        "scopeName": "tracelens.attribute-values",
+        "scopeVersion": "1",
+        "agentKind": "llm",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "chat",
+          "provider": "fixture-provider",
+          "requestModel": "fixture-model",
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 30
+          }
+        }
+      },
+      "cost": {
+        "schemaVersion": 1,
+        "format": "tracelens-cost-evidence",
+        "traceId": "00000000000000000000000000000013",
+        "priceTable": [
+          {
+            "id": "synthetic",
+            "matchModel": "fixture-model",
+            "provider": "fixture-provider",
+            "inputPerMTok": 2,
+            "outputPerMTok": 4,
+            "sourceUrl": "",
+            "sourceDate": "2026-10-10"
+          }
+        ],
+        "pricedCalls": 0,
+        "unpricedCalls": 1,
+        "excludedSpans": 0,
+        "knownCostUsd": null,
+        "estimatedCostUsd": null,
+        "rows": [
+          {
+            "spanId": "0000000000000001",
+            "name": "duplicate input count",
+            "kind": "llm",
+            "model": "fixture-model",
+            "provider": "fixture-provider",
+            "requestModel": "fixture-model",
+            "responseModel": null,
+            "usage": {
+              "invalidFields": [
+                "inputTokens"
+              ],
+              "outputTokens": 30
+            },
+            "usageAttributes": {
+              "gen_ai.usage.input_tokens": {
+                "duplicateAttributeValues": [
+                  {
+                    "intValue": "1200"
+                  },
+                  {
+                    "intValue": "0"
+                  }
+                ]
+              },
+              "gen_ai.usage.output_tokens": 30
+            },
+            "result": {
+              "status": "unpriced",
+              "reason": "invalid-usage",
+              "message": "Invalid recorded usage: inputTokens."
+            }
+          }
+        ],
+        "notes": [
+          "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+          "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+          "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+          "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+          "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+          "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+        ],
+        "warnings": [
+          "attributes[5] (\"gen_ai.usage.input_tokens\"): duplicate attribute key; retained all values without selecting a measurement."
+        ]
+      },
+      "warnings": [
+        {
+          "message": "attributes[5] (\"gen_ai.usage.input_tokens\"): duplicate attribute key; retained all values without selecting a measurement.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000013"
+        }
+      ]
+    }
+  ]
+}

@@ -411,6 +411,11 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
 - Incomplete or invalid token counts leave costs unknown. Single-run
   totals label partial costs as subtotals. Cache counts must be included
   in total input; billing details beyond the token price table are not modeled.
+  The source checkout also validates typed attribute values before normalization:
+  empty integers cannot become zero, duplicate attributes cannot select the last
+  count, and valid quoted doubles remain numeric. Rejected values stay inspectable.
+  [SDK control, altered exports and offline downloads](studies/attribute-values/README.md).
+  This decoder correction is local source work, not a deployed or npm release.
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "synthetic",
+    "matchModel": "fixture-model",
+    "provider": "fixture-provider",
+    "inputPerMTok": 2,
+    "outputPerMTok": 4,
+    "sourceUrl": "",
+    "sourceDate": "2026-10-10"
+  }
+]
