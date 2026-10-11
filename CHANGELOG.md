@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Typed attribute measurements
+
+- Validate integer decimals exactly before conversion, accept quoted doubles,
+  and retain malformed values as opaque `invalidAnyValue` evidence with scoped
+  warnings. Blank input-token attributes no longer become measured zero.
+- Preserve duplicate attribute values without selecting a winner. Conflicting
+  `AnyValue` alternatives, text booleans and numeric string fields cannot
+  masquerade as usable scalars. Jaeger conversion no longer coerces malformed
+  numeric tags before validation.
+- Retain a real SDK control, explicit mutations, Protobuf parser observations,
+  before/after CLI results and offline Chromium/Firefox downloads in the
+  [attribute-value study](studies/attribute-values/README.md). Local source only.
+
 ### Invalid imported timing
 
 - Skip Jaeger spans with missing or invalid durations instead of presenting

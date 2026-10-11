@@ -67,11 +67,11 @@ function anyValue(tag: Json): Json {
   const value = tag.value;
   switch (tag.type) {
     case 'bool':
-      return { boolValue: value === true || value === 'true' };
+      return { boolValue: value === 'true' ? true : value === 'false' ? false : value };
     case 'int64':
-      return { intValue: asText(value) };
+      return { intValue: value };
     case 'float64':
-      return { doubleValue: typeof value === 'number' ? value : Number(value) };
+      return { doubleValue: value };
     default:
       if (typeof value === 'boolean') return { boolValue: value };
       if (typeof value === 'number') return Number.isInteger(value) ? { intValue: String(value) } : { doubleValue: value };

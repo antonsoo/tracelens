@@ -72,5 +72,5 @@ it('reads nested original AnyValue field names without changing camelCase preced
     { int_value: '9007199254740993' }, { bytes_value: 'AQI=' }, { bool_value: false },
     { double_value: 0.25 }, { string_value: 'recorded' },
   ] } } }] } })).toEqual({ payload: ['9007199254740993', 'AQI=', false, 0.25, 'recorded'] });
-  expect(decodeAnyValue({ boolValue: false, bool_value: true })).toBe(false);
+  expect(decodeAnyValue({ boolValue: false, bool_value: true })).toEqual({ invalidAnyValue: { boolValue: false, bool_value: true } });
 });

@@ -5,12 +5,14 @@
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto
 // (verified against the `main` branch, 2026-09-24).
-import type { AttrMap, ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, SpanLink, StatusCode, TraceListing } from './types.js';
+import type { ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, SpanLink, StatusCode, TraceListing } from './types.js';
 import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 import { normalizeId } from './identity.js';
-import { assertPayloadDepth, MAX_PAYLOAD_DEPTH, TraceParseError } from './payload-depth.js';
+import { assertPayloadDepth, TraceParseError } from './payload-depth.js';
+import { decodeAttributes } from './attributes.js';
 export { TraceParseError } from './payload-depth.js';
+export { decodeAnyValue } from './attributes.js';
 
 const SPAN_KIND_BY_NUMBER: Record<number, SpanKind> = {
   0: 'UNSPECIFIED',
@@ -27,69 +29,8 @@ const STATUS_CODE_BY_NUMBER: Record<number, StatusCode> = {
   2: 'ERROR',
 };
 
-const ANY_VALUE_SNAKE_FIELDS = ['string_value', 'bool_value', 'int_value', 'double_value', 'bytes_value', 'array_value', 'kvlist_value'] as const;
-
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v);
-}
-
-/** Decodes a single OTLP `AnyValue` (typed union) into a plain JS value. */
-export function decodeAnyValue(v: unknown): unknown {
-  return decodeValue(v, 0);
-}
-
-function decodeValue(raw: unknown, depth: number): unknown {
-  if (depth >= MAX_PAYLOAD_DEPTH) throw new TraceParseError(`Attribute exceeds ${MAX_PAYLOAD_DEPTH} nested values. Export a shallower payload and try again.`);
-  if (!isRecord(raw)) return raw ?? null;
-  let v = raw;
-  // Protobuf's preserving_proto_field_name option uses these original names
-  // throughout AnyValue, not just on the enclosing spans. Keep camelCase's
-  // existing precedence if a nonstandard document supplies both spellings.
-  if (ANY_VALUE_SNAKE_FIELDS.some((key) => key in v)) {
-    const aliases: Record<string, unknown> = { ...v };
-    for (const snake of ANY_VALUE_SNAKE_FIELDS) {
-      const camel = snake.replace('_v', 'V');
-      if (!(camel in aliases) && snake in v) aliases[camel] = v[snake];
-    }
-    v = aliases;
-  }
-  if ('stringValue' in v) return v.stringValue;
-  if ('boolValue' in v) return Boolean(v.boolValue);
-  if ('intValue' in v) {
-    const raw = v.intValue;
-    const n = typeof raw === 'string' ? Number(raw) : (raw as number);
-    return Number.isSafeInteger(n) ? n : raw; // keep huge ints as their raw string
-  }
-  if ('doubleValue' in v) return v.doubleValue;
-  if ('bytesValue' in v) return v.bytesValue; // base64 string, left as-is
-  if ('arrayValue' in v) {
-    const arr = v.arrayValue;
-    const values = isRecord(arr) && Array.isArray(arr.values) ? arr.values : [];
-    return values.map((value) => decodeValue(value, depth + 1));
-  }
-  if ('kvlistValue' in v) {
-    const kv = v.kvlistValue;
-    const values = isRecord(kv) && Array.isArray(kv.values) ? kv.values : [];
-    const out: AttrMap = Object.create(null) as AttrMap;
-    for (const entry of values) {
-      if (isRecord(entry) && typeof entry.key === 'string') {
-        out[entry.key] = decodeValue(entry.value, depth + 1);
-      }
-    }
-    return out;
-  }
-  return null;
-}
-
-function decodeAttributes(list: unknown): AttrMap {
-  const out: AttrMap = Object.create(null) as AttrMap;
-  if (!Array.isArray(list)) return out;
-  for (const entry of list) {
-    if (isRecord(entry) && typeof entry.key === 'string') {
-      out[entry.key] = decodeAnyValue(entry.value);
-    }
-  }
-  return out;
 }
 
 function toBigNanos(raw: unknown): bigint | undefined {
@@ -148,7 +89,7 @@ function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, tr
     return [{
       name,
       timeUnixNano: time,
-      attributes: decodeAttributes(rec.attributes),
+      attributes: decodeAttributes(rec.attributes, message => warnings.push({ message, spanId, traceId }), `events[${index}].attributes`),
       ...(droppedAttributesCount !== undefined ? { droppedAttributesCount } : {}),
     }];
   });
@@ -180,7 +121,7 @@ function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, tra
   }
   let invalid = 0;
   const links: SpanLink[] = [];
-  for (const entry of raw) {
+  for (const [index, entry] of raw.entries()) {
     if (!isRecord(entry)) { invalid++; continue; }
     const targetTrace = normalizeId(entry.traceId ?? entry.trace_id, 16);
     const targetSpan = normalizeId(entry.spanId ?? entry.span_id, 8);
@@ -188,7 +129,7 @@ function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, tra
     const traceState = entry.traceState ?? entry.trace_state;
     const flags = optionalUint32(entry.flags, 'link flags', warnings, spanId, traceId);
     const dropped = optionalUint32(entry.droppedAttributesCount ?? entry.dropped_attributes_count, 'link droppedAttributesCount', warnings, spanId, traceId);
-    links.push({ traceId: targetTrace, spanId: targetSpan, attributes: decodeAttributes(entry.attributes),
+    links.push({ traceId: targetTrace, spanId: targetSpan, attributes: decodeAttributes(entry.attributes, message => warnings.push({ message, spanId, traceId }), `links[${index}].attributes`),
       ...(typeof traceState === 'string' ? { traceState } : {}),
       ...(flags !== undefined ? { flags } : {}),
       ...(dropped !== undefined ? { droppedAttributesCount: dropped } : {}),
@@ -265,7 +206,9 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
 
   for (const rs of resourceSpans) {
     if (!isRecord(rs)) continue;
-    const resourceAttributes = decodeAttributes(isRecord(rs.resource) ? rs.resource.attributes : undefined);
+    const resourceWarnings: string[] = [];
+    const resourceAttributes = decodeAttributes(isRecord(rs.resource) ? rs.resource.attributes : undefined, message => resourceWarnings.push(message), 'resource.attributes');
+    const resourceTraces = new Set<string>();
     const scopeSpans = rs.scopeSpans ?? rs.scope_spans;
     if (!Array.isArray(scopeSpans)) continue;
 
@@ -309,7 +252,8 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
         const parentRaw = raw.parentSpanId ?? raw.parent_span_id;
         const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
 
-        const attributes = decodeAttributes(raw.attributes);
+        resourceTraces.add(spanTraceId);
+        const attributes = decodeAttributes(raw.attributes, message => warnings.push({ message, spanId, traceId: spanTraceId }));
         const name = typeof raw.name === 'string' ? raw.name : '(unnamed span)';
         const droppedAttributesCount = droppedCount(raw.droppedAttributesCount ?? raw.dropped_attributes_count,
           'droppedAttributesCount', `Span "${name}"`, 'attributes', warnings, spanId, spanTraceId);
@@ -342,6 +286,10 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
         };
         all.push(base);
       }
+    }
+    for (const message of resourceWarnings) {
+      if (resourceTraces.size) for (const traceId of resourceTraces) warnings.push({ message, traceId });
+      else warnings.push({ message });
     }
   }
 

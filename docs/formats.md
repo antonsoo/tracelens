@@ -71,6 +71,27 @@ and instrumentation-scope attribute omission counts are not yet exposed.
 The [SDK limit capture](../studies/dropped-evidence/README.md) verifies the
 span/event fields against producer objects before serialization.
 
+Typed attributes are validated before they become model/usage measurements.
+Integer strings accept decimal exponents and zero fractional portions, checked
+exactly within int64 range. Safe results become JS numbers; valid large int64
+strings remain strings. Unquoted unsafe integers are retained as invalid
+evidence because their original precision cannot be established after JSON
+parsing. Double strings accept decimal numbers; `NaN`, `Infinity` and `-Infinity`
+retain their Protobuf string spellings so JSON exports do not turn them into null.
+Null fields remain unset. Snake_case and camelCase are accepted independently;
+multiple populated spellings or oneof alternatives are rejected as ambiguous.
+
+An invalid value is retained under `invalidAnyValue` and cannot supply a scalar
+measurement. Duplicate attribute keys retain the original values under
+`duplicateAttributeValues`, without choosing one. Diagnostics identify the
+attribute path and affected trace/span, including nested values, events and
+links. Resource diagnostics apply only to traces using that resource. This is
+not a complete Protobuf validator: unknown future fields are ignored, byte
+strings are not decoded/validated, and duplicate literal JSON object keys are
+already collapsed by JSON.parse. The
+[attribute-value study](../studies/attribute-values/README.md) records the
+supported forms and intentional differences from the Python parser.
+
 A file may be JSON Lines, with an export on each line: that is what the
 Collector's `file` exporter writes, a line per batch (see its README, "File
 Format"). `parseTraceText()` reads the lines as one export. A last line
