@@ -100,9 +100,11 @@ test('detail tabs support keyboard selection and retain focus', async ({ page })
 });
 
 test('keyboard file selection and an empty search stay accessible', async ({ page }) => {
+  // Playwright enables native picker interception asynchronously. Subscribe
+  // before navigation so a fast Enter press cannot race that setup.
+  const chooser = page.waitForEvent('filechooser');
   await page.goto('./');
   await page.getByRole('button', { name: 'Choose a trace.json file' }).focus();
-  const chooser = page.waitForEvent('filechooser');
   await page.keyboard.press('Enter');
   await (await chooser).setFiles(file('keyboard.json', run(good, 6)));
   const search = page.getByRole('searchbox', { name: 'Find spans' });

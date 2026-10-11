@@ -1,0 +1,107 @@
+{
+  "sourceRevision": "cfe2a3497063446e3906854f5b12eb83d515a4cb",
+  "initialFullBrowserRun": {
+    "passed": 119,
+    "failed": 1,
+    "failure": "Chromium keyboard file selection: timed out waiting for filechooser after Enter, before any trace import."
+  },
+  "unchangedKeyboardRepeat": {
+    "command": "npx playwright test tests/browser/workspace.spec.mjs --project=chromium --grep 'keyboard file selection' --repeat-each=10",
+    "passed": 9,
+    "failed": 1
+  },
+  "diagnostic": {
+    "method": "Same focused button and Enter; record DOM events and native input click. Compare listener first registered just before Enter with listener registered before navigation. Chromium, 15 attempts per group, two workers.",
+    "groups": [
+      {
+        "listenerBeforeNavigation": false,
+        "passed": 12,
+        "total": 15
+      },
+      {
+        "listenerBeforeNavigation": true,
+        "passed": 15,
+        "total": 15
+      }
+    ],
+    "failedAttempt": {
+      "early": false,
+      "opened": false,
+      "events": [
+        {
+          "type": "focusin",
+          "target": "choose-file",
+          "active": "choose-file",
+          "t": 570.7999999970198,
+          "activation": true
+        },
+        {
+          "type": "keydown",
+          "key": "Enter",
+          "target": "choose-file",
+          "active": "choose-file",
+          "t": 624.2999999970198,
+          "activation": true
+        },
+        {
+          "type": "click",
+          "target": "choose-file",
+          "active": "choose-file",
+          "t": 624.7999999970198,
+          "activation": true
+        },
+        {
+          "type": "input-click",
+          "connected": true,
+          "activation": true,
+          "t": 634.2999999970198
+        },
+        {
+          "type": "click",
+          "target": "tl-file-input",
+          "active": "choose-file",
+          "t": 634.8999999985099,
+          "activation": true
+        },
+        {
+          "type": "keyup",
+          "key": "Enter",
+          "target": "choose-file",
+          "active": "choose-file",
+          "t": 673,
+          "activation": true
+        }
+      ]
+    },
+    "interpretation": "Failure occurs despite focus, keyboard activation and a click on a connected file input. Enabling interception before navigation resolves the observed race; no app UI code change is indicated by this experiment.",
+    "localDependencyEvidence": "playwright-core/lib/coreBundle.js: ChannelOwner._updateSubscription does not await the subscription update; PageDispatcher.updateSubscription installs fileChooser interception asynchronously.",
+    "fix": "Move the existing page.waitForEvent(filechooser) promise before page.goto. Keep the same Enter gesture and all subsequent import, focus, search and accessibility assertions."
+  },
+  "logSha256": {
+    "final-browser.log": "ea780100f9e9f26e9d682d35c3a5993533bdd2c0e357d36eae59df312b809b82",
+    "final-keyboard-repeat.log": "e5a9f8e4221d900734dc16ae23c130d6c9c4a09919bc79d758b7ed0ebe10971f",
+    "picker-diagnostic.log": "6e9a6e7e1054cae51a684bdeb2d1533a161695a5021177e31fe9ac304232030f"
+  },
+  "correctedKeyboardRepeat": {
+    "command": "npx playwright test tests/browser/workspace.spec.mjs --grep 'keyboard file selection' --repeat-each=15",
+    "passed": 30,
+    "failed": 0,
+    "projects": [
+      "chromium",
+      "firefox"
+    ],
+    "logSha256": "ad9d69b4d63c8bdf957bb418556de2b4bb06449dd9968a85644c2bdfe5b39ab6"
+  },
+  "initialUnitRun": {
+    "command": "npm test",
+    "passed": 350,
+    "failed": 1,
+    "failedAssertion": "20,001-span parse took 1070.365349 ms; existing limit is 1000 ms.",
+    "twoWorkerRun": {
+      "command": "npm test -- --maxWorkers=2",
+      "passed": 351,
+      "failed": 0
+    },
+    "limits": "The original timing failure is retained. No performance bound was changed, and no test was skipped."
+  }
+}
