@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Partial export containers
+
+- Warn when malformed resource/scope entries or non-array span collections
+  are skipped. Keep readable spans, name the affected source path, and leave
+  missing span counts/identities unknown. Omitted, null and empty repeated
+  fields remain valid empty containers.
+- Scope skipped Jaeger span records and OTLP records with a known trace ID
+  to that trace. Unassignable container damage remains a file-wide warning.
+  [Before/after CLI and offline browser evidence](studies/export-containers/README.md).
+
 ### Typed attribute measurements
 
 - Validate integer decimals exactly before conversion, accept quoted doubles,

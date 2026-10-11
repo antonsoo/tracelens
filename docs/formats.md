@@ -109,6 +109,15 @@ rejects the import with an actionable error, before recursive decoding
 or serialization can exhaust the stack. This is a payload bound: OTLP
 span ancestry is represented by flat IDs and does not consume this budget.
 
+Malformed resource/scope entries and non-array `scopeSpans`/`spans`
+collections produce warnings with their source path. Readable spans remain
+available. The warnings apply to the whole file when the lost spans' trace
+identities cannot be established; a skipped record with a known trace ID is
+scoped to that trace. Omitted, null and empty Protobuf repeated fields are
+valid empty containers. For JSON Lines, the paths refer to the combined
+resource array. Missing span counts, costs and durations are not reconstructed.
+See the [partial-container reproduction](../studies/export-containers/README.md).
+
 A file may hold several traces, as a collector's file does. Spans are
 grouped by trace ID first, because span IDs are only unique within a trace,
 and one trace is read: the one named by `ParseOptions.traceId` (a trace ID,

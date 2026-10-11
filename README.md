@@ -416,6 +416,10 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   count, and valid quoted doubles remain numeric. Rejected values stay inspectable.
   [SDK control, altered exports and offline downloads](studies/attribute-values/README.md).
   This decoder correction is local source work, not a deployed or npm release.
+- Malformed resource/scope containers now produce [source-path warnings](studies/export-containers/README.md)
+  in the source checkout. Readable spans remain available, but the number and
+  identity of spans inside an unreadable container stay unknown. This is also
+  local source work; complete instrumentation cannot be inferred from the file.
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of

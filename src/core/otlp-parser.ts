@@ -33,6 +33,14 @@ function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v);
 }
 
+/** ProtoJSON permits omitted/null repeated fields, but not a non-array value. */
+function spanCollection(raw: unknown, path: string, warnings: ParseWarning[]): unknown[] {
+  if (raw === undefined || raw === null) return [];
+  if (Array.isArray(raw)) return raw;
+  warnings.push({ message: `${path}: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown.` });
+  return [];
+}
+
 function toBigNanos(raw: unknown): bigint | undefined {
   // fixed64 timestamps: decimal strings preserve precision at epoch scale.
   if (typeof raw === 'number' && (!Number.isSafeInteger(raw) || raw < 0)) return undefined;
@@ -204,33 +212,42 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
 
   const all: ParsedSpan[] = [];
 
-  for (const rs of resourceSpans) {
-    if (!isRecord(rs)) continue;
+  for (const [resourceIndex, rs] of resourceSpans.entries()) {
+    const resourcePath = `resourceSpans[${resourceIndex}]`;
+    if (!isRecord(rs)) {
+      warnings.push({ message: `${resourcePath}: skipped a non-object resource entry; contained span evidence is unknown.` });
+      continue;
+    }
     const resourceWarnings: string[] = [];
     const resourceAttributes = decodeAttributes(isRecord(rs.resource) ? rs.resource.attributes : undefined, message => resourceWarnings.push(message), 'resource.attributes');
     const resourceTraces = new Set<string>();
-    const scopeSpans = rs.scopeSpans ?? rs.scope_spans;
-    if (!Array.isArray(scopeSpans)) continue;
+    const scopeSpans = spanCollection(rs.scopeSpans ?? rs.scope_spans, `${resourcePath}.scopeSpans`, warnings);
 
-    for (const ss of scopeSpans) {
-      if (!isRecord(ss)) continue;
+    for (const [scopeIndex, ss] of scopeSpans.entries()) {
+      const scopePath = `${resourcePath}.scopeSpans[${scopeIndex}]`;
+      if (!isRecord(ss)) {
+        warnings.push({ message: `${scopePath}: skipped a non-object scope entry; contained span evidence is unknown.` });
+        continue;
+      }
       const scope = ss.scope;
       const scopeName = isRecord(scope) && typeof scope.name === 'string' ? scope.name : undefined;
       const scopeVersion = isRecord(scope) && typeof scope.version === 'string' ? scope.version : undefined;
-      const spans = ss.spans;
-      if (!Array.isArray(spans)) continue;
+      const spans = spanCollection(ss.spans, `${scopePath}.spans`, warnings);
 
-      for (const raw of spans) {
+      for (const [spanIndex, raw] of spans.entries()) {
+        const spanPath = `${scopePath}.spans[${spanIndex}]`;
         if (!isRecord(raw)) {
-          warnings.push({ message: 'Skipped a non-object entry in "spans".' });
+          warnings.push({ message: `${spanPath}: skipped a non-object span entry; its trace identity is unknown.` });
           continue;
         }
         const spanId = normalizeId(raw.spanId ?? raw.span_id, 8);
         const spanTraceId = normalizeId(raw.traceId ?? raw.trace_id, 16);
         if (!spanId || !spanTraceId) {
-          warnings.push({ message: `Skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).` });
+          warnings.push({ message: `${spanPath}: skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).`,
+            ...(spanTraceId ? { traceId: spanTraceId } : {}), ...(spanId ? { spanId } : {}) });
           continue;
         }
+        resourceTraces.add(spanTraceId);
         const start = toBigNanos(raw.startTimeUnixNano ?? raw.start_time_unix_nano);
         let end = toBigNanos(raw.endTimeUnixNano ?? raw.end_time_unix_nano);
         if (start === undefined || end === undefined) {
@@ -252,7 +269,6 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
         const parentRaw = raw.parentSpanId ?? raw.parent_span_id;
         const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
 
-        resourceTraces.add(spanTraceId);
         const attributes = decodeAttributes(raw.attributes, message => warnings.push({ message, spanId, traceId: spanTraceId }));
         const name = typeof raw.name === 'string' ? raw.name : '(unnamed span)';
         const droppedAttributesCount = droppedCount(raw.droppedAttributesCount ?? raw.dropped_attributes_count,

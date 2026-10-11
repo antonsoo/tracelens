@@ -1,0 +1,136 @@
+{
+  "node": "v26.7.0",
+  "parserSha256": "853016d6320a253c1fc2e20a912d80dde7d568426b04f090d31ef219db769056",
+  "passed": 4,
+  "total": 15,
+  "results": [
+    {
+      "name": "non-object resource",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "non-object resource",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "scope collection as an object",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "scope collection as an object",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "non-object scope",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "non-object scope",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "span collection as an object",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "span collection as an object",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "legal unset repeated fields",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "legal unset repeated fields",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "span with known trace but missing span ID",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "Skipped a span with a missing traceId/spanId (name: SDK integer control)."
+        }
+      ],
+      "expectedWarningCount": 1,
+      "passed": true
+    },
+    {
+      "name": "span with known trace but missing span ID",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [
+        {
+          "message": "Skipped a span with a missing traceId/spanId (name: SDK integer control)."
+        }
+      ],
+      "expectedWarningCount": 0,
+      "passed": false
+    },
+    {
+      "name": "non-object Jaeger span",
+      "traceId": "00000000000000000000000000000001",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 1,
+      "passed": false
+    },
+    {
+      "name": "non-object Jaeger span",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 0,
+      "passed": true
+    },
+    {
+      "name": "JSON Lines damaged batches",
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "retainedSpans": 1,
+      "warnings": [],
+      "expectedWarningCount": 4,
+      "passed": false
+    }
+  ]
+}

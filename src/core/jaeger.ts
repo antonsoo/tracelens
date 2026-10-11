@@ -146,7 +146,11 @@ export function jaegerToOtlp(json: unknown, warnings: ParseWarning[] = []): { re
     const byProcess = new Map<string, Map<string, { scope: Json; spans: Json[] }>>();
     const embedded = new Map<string, unknown>();
     (trace.spans as unknown[]).forEach((raw, i) => {
-      if (!isRecord(raw)) return;
+      if (!isRecord(raw)) {
+        const traceId = normalizeId(trace.traceID, 16);
+        warnings.push({ message: `Jaeger spans[${i}]: skipped a non-object span entry.`, ...(traceId ? { traceId } : {}) });
+        return;
+      }
       const tags = tagList(raw.tags);
       const kind = tags.find((t) => t.key === 'span.kind');
       const { parent, links } = referencesOf(raw, raw.traceID ?? trace.traceID);

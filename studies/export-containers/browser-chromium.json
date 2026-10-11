@@ -1,0 +1,42 @@
+{
+  "offline": true,
+  "pageErrors": [],
+  "results": [
+    {
+      "traceId": "00000000000000000000000000000001",
+      "visibleSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1]: skipped a non-object resource entry; contained span evidence is unknown."
+        },
+        {
+          "message": "resourceSpans[2].scopeSpans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        },
+        {
+          "message": "resourceSpans[3].scopeSpans[0]: skipped a non-object scope entry; contained span evidence is unknown."
+        },
+        {
+          "message": "resourceSpans[4].scopeSpans[0].spans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ]
+    },
+    {
+      "traceId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "visibleSpans": 1,
+      "warnings": [
+        {
+          "message": "resourceSpans[1]: skipped a non-object resource entry; contained span evidence is unknown."
+        },
+        {
+          "message": "resourceSpans[2].scopeSpans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        },
+        {
+          "message": "resourceSpans[3].scopeSpans[0]: skipped a non-object scope entry; contained span evidence is unknown."
+        },
+        {
+          "message": "resourceSpans[4].scopeSpans[0].spans: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown."
+        }
+      ]
+    }
+  ]
+}
