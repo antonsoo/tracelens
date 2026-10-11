@@ -1,0 +1,150 @@
+{
+  "scenario": "Actual SDK limits and Protobuf encoding; controlled events, IDs and times.\n\nNo service or model calls. Expected counts and retained fields come from SDK\nobjects before serialization, not from the viewer under examination.",
+  "packages": {
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "spans": [
+    {
+      "traceId": "00000000000000000000000000000001",
+      "spanId": "0000000000000001",
+      "name": "partial event history",
+      "attemptedAttributes": 5,
+      "attemptedEvents": 5,
+      "start": "10000000",
+      "end": "16000000",
+      "attributes": {
+        "gen_ai.operation.name": "invoke_workflow",
+        "gen_ai.agent.name": "limit capture",
+        "capture.kind": "partial event history"
+      },
+      "droppedAttributesCount": 2,
+      "droppedEventsCount": 3,
+      "events": [
+        {
+          "name": "checkpoint 4",
+          "timeUnixNano": "14000000",
+          "attributes": {
+            "step.id": 4,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 1
+        },
+        {
+          "name": "checkpoint 5",
+          "timeUnixNano": "15000000",
+          "attributes": {
+            "step.id": 5,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 1
+        }
+      ]
+    },
+    {
+      "traceId": "00000000000000000000000000000002",
+      "spanId": "0000000000000002",
+      "name": "all events dropped",
+      "attemptedAttributes": 5,
+      "attemptedEvents": 5,
+      "start": "20000000",
+      "end": "26000000",
+      "attributes": {
+        "capture.note": "Controlled local fixture",
+        "capture.requested_events": 5,
+        "gen_ai.operation.name": "invoke_workflow",
+        "gen_ai.agent.name": "limit capture",
+        "capture.kind": "all events dropped"
+      },
+      "droppedAttributesCount": 0,
+      "droppedEventsCount": 5,
+      "events": []
+    },
+    {
+      "traceId": "00000000000000000000000000000003",
+      "spanId": "0000000000000003",
+      "name": "complete control",
+      "attemptedAttributes": 5,
+      "attemptedEvents": 5,
+      "start": "30000000",
+      "end": "36000000",
+      "attributes": {
+        "capture.note": "Controlled local fixture",
+        "capture.requested_events": 5,
+        "gen_ai.operation.name": "invoke_workflow",
+        "gen_ai.agent.name": "limit capture",
+        "capture.kind": "complete control"
+      },
+      "droppedAttributesCount": 0,
+      "droppedEventsCount": 0,
+      "events": [
+        {
+          "name": "checkpoint 1",
+          "timeUnixNano": "31000000",
+          "attributes": {
+            "diagnostic.context": "additional detail",
+            "step.id": 1,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 0
+        },
+        {
+          "name": "checkpoint 2",
+          "timeUnixNano": "32000000",
+          "attributes": {
+            "diagnostic.context": "additional detail",
+            "step.id": 2,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 0
+        },
+        {
+          "name": "checkpoint 3",
+          "timeUnixNano": "33000000",
+          "attributes": {
+            "diagnostic.context": "additional detail",
+            "step.id": 3,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 0
+        },
+        {
+          "name": "checkpoint 4",
+          "timeUnixNano": "34000000",
+          "attributes": {
+            "diagnostic.context": "additional detail",
+            "step.id": 4,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 0
+        },
+        {
+          "name": "checkpoint 5",
+          "timeUnixNano": "35000000",
+          "attributes": {
+            "diagnostic.context": "additional detail",
+            "step.id": 5,
+            "result": "recorded"
+          },
+          "droppedAttributesCount": 0
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "capture.otlp.json",
+      "sha256": "05cff19bbb79270edc8f82511b823ba093d1d6fc510808bb828d1a6355e353e3"
+    },
+    {
+      "name": "capture.proto.json",
+      "sha256": "4fc42b9f230b424ff45e192ccf6d7ba61232d087673d86d80852722db09b5410"
+    },
+    {
+      "name": "capture.proto-snake.json",
+      "sha256": "ca29640e0b17fd4542327e6d14679db6c413ff7972281086414a1c8ebd93edb9"
+    }
+  ],
+  "driverSha256": "95991357d99d83a0a31e687c43767768690c08aec8750a1919acd9293dc21359"
+}

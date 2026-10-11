@@ -1,0 +1,220 @@
+{
+  "offline": true,
+  "pageErrors": [],
+  "externalRequests": [],
+  "results": [
+    {
+      "traceId": "00000000000000000000000000000001",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000001",
+        "spanId": "0000000000000001",
+        "name": "partial event history",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "10000000",
+        "endTimeUnixNano": "16000000",
+        "durationNs": "6000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "gen_ai.operation.name": "invoke_workflow",
+          "gen_ai.agent.name": "limit capture",
+          "capture.kind": "partial event history"
+        },
+        "events": [
+          {
+            "name": "checkpoint 4",
+            "timeUnixNano": "14000000",
+            "attributes": {
+              "step.id": 4,
+              "result": "recorded"
+            },
+            "droppedAttributesCount": 1
+          },
+          {
+            "name": "checkpoint 5",
+            "timeUnixNano": "15000000",
+            "attributes": {
+              "step.id": 5,
+              "result": "recorded"
+            },
+            "droppedAttributesCount": 1
+          }
+        ],
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "controlled-sdk-limits"
+        },
+        "scopeName": "tracelens.drop-capture",
+        "scopeVersion": "1",
+        "agentKind": "chain",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "invoke_workflow",
+          "agentName": "limit capture"
+        }
+      },
+      "warnings": [
+        {
+          "message": "Span \"partial event history\" reports 2 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Span \"partial event history\" reports 3 dropped events; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 1 (\"checkpoint 4\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        },
+        {
+          "message": "Event 2 (\"checkpoint 5\") reports 1 dropped attributes; this export does not contain them.",
+          "spanId": "0000000000000001",
+          "traceId": "00000000000000000000000000000001"
+        }
+      ]
+    },
+    {
+      "traceId": "00000000000000000000000000000002",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000002",
+        "spanId": "0000000000000002",
+        "name": "all events dropped",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "20000000",
+        "endTimeUnixNano": "26000000",
+        "durationNs": "6000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "capture.note": "Controlled local fixture",
+          "capture.requested_events": 5,
+          "gen_ai.operation.name": "invoke_workflow",
+          "gen_ai.agent.name": "limit capture",
+          "capture.kind": "all events dropped"
+        },
+        "events": [],
+        "droppedEventsCount": 5,
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "controlled-sdk-limits"
+        },
+        "scopeName": "tracelens.drop-capture",
+        "scopeVersion": "1",
+        "agentKind": "chain",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "invoke_workflow",
+          "agentName": "limit capture"
+        }
+      },
+      "warnings": [
+        {
+          "message": "Span \"all events dropped\" reports 5 dropped events; this export does not contain them.",
+          "spanId": "0000000000000002",
+          "traceId": "00000000000000000000000000000002"
+        }
+      ]
+    },
+    {
+      "traceId": "00000000000000000000000000000003",
+      "span": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-evidence",
+        "traceId": "00000000000000000000000000000003",
+        "spanId": "0000000000000003",
+        "name": "complete control",
+        "kind": "INTERNAL",
+        "startTimeUnixNano": "30000000",
+        "endTimeUnixNano": "36000000",
+        "durationNs": "6000000",
+        "status": {
+          "code": "UNSET"
+        },
+        "attributes": {
+          "capture.note": "Controlled local fixture",
+          "capture.requested_events": 5,
+          "gen_ai.operation.name": "invoke_workflow",
+          "gen_ai.agent.name": "limit capture",
+          "capture.kind": "complete control"
+        },
+        "events": [
+          {
+            "name": "checkpoint 1",
+            "timeUnixNano": "31000000",
+            "attributes": {
+              "diagnostic.context": "additional detail",
+              "step.id": 1,
+              "result": "recorded"
+            }
+          },
+          {
+            "name": "checkpoint 2",
+            "timeUnixNano": "32000000",
+            "attributes": {
+              "diagnostic.context": "additional detail",
+              "step.id": 2,
+              "result": "recorded"
+            }
+          },
+          {
+            "name": "checkpoint 3",
+            "timeUnixNano": "33000000",
+            "attributes": {
+              "diagnostic.context": "additional detail",
+              "step.id": 3,
+              "result": "recorded"
+            }
+          },
+          {
+            "name": "checkpoint 4",
+            "timeUnixNano": "34000000",
+            "attributes": {
+              "diagnostic.context": "additional detail",
+              "step.id": 4,
+              "result": "recorded"
+            }
+          },
+          {
+            "name": "checkpoint 5",
+            "timeUnixNano": "35000000",
+            "attributes": {
+              "diagnostic.context": "additional detail",
+              "step.id": 5,
+              "result": "recorded"
+            }
+          }
+        ],
+        "links": [],
+        "resourceAttributes": {
+          "service.name": "controlled-sdk-limits"
+        },
+        "scopeName": "tracelens.drop-capture",
+        "scopeVersion": "1",
+        "agentKind": "chain",
+        "convention": "otel-genai",
+        "depth": 0,
+        "children": [],
+        "genai": {
+          "operationName": "invoke_workflow",
+          "agentName": "limit capture"
+        }
+      },
+      "warnings": []
+    }
+  ]
+}

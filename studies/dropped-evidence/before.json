@@ -1,0 +1,465 @@
+{
+  "node": "v26.7.0",
+  "oracleSha256": "a4b8e5ea3f1054c251f6c4a018ee4fc665ba80547caf8ecd6cb58e144ea0e7c7",
+  "results": [
+    {
+      "file": "capture.otlp.json",
+      "traceId": "00000000000000000000000000000001",
+      "name": "partial event history",
+      "countsMatchSdk": false,
+      "expected": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 2,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "db0cc28eb864bae9458e8c9bc97d87b0e78b6ec00fede6cf6043e189c5a7ce40"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "e0944e530d2f5e145248a3b62c4cc53483812cdadae10d801c025fcc803224d3"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "f19726ab116a80862834d9bf30f7523c91f42e615b53631ed8286a5fdfe82f04"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+        }
+      ]
+    },
+    {
+      "file": "capture.otlp.json",
+      "traceId": "00000000000000000000000000000002",
+      "name": "all events dropped",
+      "countsMatchSdk": false,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": []
+      },
+      "retainedEvents": 0,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "7badfc294bf5016f8bbcda2ac1546e5203cab241b7857fe83cbdeff0a6cc5030"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "c5fd316921beff70b5bf346c9cd6a05b183ab8955cc5c2e30be7fdbe25798939"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "fc5043aa0e4bb8a36ef82e6cd645a73b903d30d9c5a1c7e473df9f8928aecaa4"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "da9050c1a24d28d778e0052a44919aa7343f616137d0958e9b3b72e012f805c5"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "0c865c19658f836f48e3f268ca533d4d462febcfb5655ba094f34c154ed5a59e"
+        }
+      ]
+    },
+    {
+      "file": "capture.otlp.json",
+      "traceId": "00000000000000000000000000000003",
+      "name": "complete control",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 5,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "c9c183b65ddb872d053ffb778a1b0d78f5f9d4215c8914e55e875762f982b5cc"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "a1ef73f7e3aefbc8a746a7ec1f1bd56e3dd79d50e37301d6a269e585f0dcc8a2"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "0eb35f3d421d569397ce92604c0cc5bd5bbad6c252e8437d10290cf9d26213d6"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "dcd742bc56315e17457e2d009ada106617d3e9b4fa1b9adfeaa1f62b4334431b"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "2e1f03b85103f1cd58e771743332c3931a72c084886e0ed68a1a46b4bf19e4a0"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto.json",
+      "traceId": "00000000000000000000000000000001",
+      "name": "partial event history",
+      "countsMatchSdk": false,
+      "expected": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 2,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "2af30fd46af860413cf723c067606f73c60098ff73a908c6d574efff9fb4ab09"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "e0944e530d2f5e145248a3b62c4cc53483812cdadae10d801c025fcc803224d3"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "f19726ab116a80862834d9bf30f7523c91f42e615b53631ed8286a5fdfe82f04"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto.json",
+      "traceId": "00000000000000000000000000000002",
+      "name": "all events dropped",
+      "countsMatchSdk": false,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": []
+      },
+      "retainedEvents": 0,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "d4424d94824bcb6ef24354ba7a7d9f38c02b495fe752161bc0f80d4d92b8dfcf"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "c5fd316921beff70b5bf346c9cd6a05b183ab8955cc5c2e30be7fdbe25798939"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "fc5043aa0e4bb8a36ef82e6cd645a73b903d30d9c5a1c7e473df9f8928aecaa4"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "da9050c1a24d28d778e0052a44919aa7343f616137d0958e9b3b72e012f805c5"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "0c865c19658f836f48e3f268ca533d4d462febcfb5655ba094f34c154ed5a59e"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto.json",
+      "traceId": "00000000000000000000000000000003",
+      "name": "complete control",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 5,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "7b421e18010b2ca3086cd9e64bb340088abcb8f322f5170948723629df3a9052"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "a1ef73f7e3aefbc8a746a7ec1f1bd56e3dd79d50e37301d6a269e585f0dcc8a2"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "0eb35f3d421d569397ce92604c0cc5bd5bbad6c252e8437d10290cf9d26213d6"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "dcd742bc56315e17457e2d009ada106617d3e9b4fa1b9adfeaa1f62b4334431b"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "2e1f03b85103f1cd58e771743332c3931a72c084886e0ed68a1a46b4bf19e4a0"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto-snake.json",
+      "traceId": "00000000000000000000000000000001",
+      "name": "partial event history",
+      "countsMatchSdk": false,
+      "expected": {
+        "droppedAttributesCount": 2,
+        "droppedEventsCount": 3,
+        "eventDroppedAttributes": [
+          1,
+          1
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 2,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "ec352d728cfd35240b3064d020ae23b70c1036607f2c5c663ab8dfccdf71d1d4"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "e0944e530d2f5e145248a3b62c4cc53483812cdadae10d801c025fcc803224d3"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "f19726ab116a80862834d9bf30f7523c91f42e615b53631ed8286a5fdfe82f04"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "2a0cb4a3a7355c42435031da5a840d38c9e7cf85da0510b2a1a02abf70d274d5"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "a81a5b11c962ec1985d99e62be110a9aabe3ec7ce7bfde6a791a7894d99d38ab"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto-snake.json",
+      "traceId": "00000000000000000000000000000002",
+      "name": "all events dropped",
+      "countsMatchSdk": false,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 5,
+        "eventDroppedAttributes": []
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": []
+      },
+      "retainedEvents": 0,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "d186f096cb63de862a956547e6dca3efd3963b5b76c42644a384d16e7ef054b9"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "c5fd316921beff70b5bf346c9cd6a05b183ab8955cc5c2e30be7fdbe25798939"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "fc5043aa0e4bb8a36ef82e6cd645a73b903d30d9c5a1c7e473df9f8928aecaa4"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "da9050c1a24d28d778e0052a44919aa7343f616137d0958e9b3b72e012f805c5"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "0c865c19658f836f48e3f268ca533d4d462febcfb5655ba094f34c154ed5a59e"
+        }
+      ]
+    },
+    {
+      "file": "capture.proto-snake.json",
+      "traceId": "00000000000000000000000000000003",
+      "name": "complete control",
+      "countsMatchSdk": true,
+      "expected": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "observed": {
+        "droppedAttributesCount": 0,
+        "droppedEventsCount": 0,
+        "eventDroppedAttributes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "retainedEvents": 5,
+      "warnings": [],
+      "cli": [
+        {
+          "command": "summary",
+          "omissionWarnings": 0,
+          "outputSha256": "1a56d661d035149532998dcdf3db2ebacdd8139ecdbae5148ba1c2bc5908f603"
+        },
+        {
+          "command": "tree",
+          "omissionWarnings": 0,
+          "outputSha256": "a1ef73f7e3aefbc8a746a7ec1f1bd56e3dd79d50e37301d6a269e585f0dcc8a2"
+        },
+        {
+          "command": "timing",
+          "omissionWarnings": 0,
+          "outputSha256": "0eb35f3d421d569397ce92604c0cc5bd5bbad6c252e8437d10290cf9d26213d6"
+        },
+        {
+          "command": "cost",
+          "omissionWarnings": 0,
+          "outputSha256": "dcd742bc56315e17457e2d009ada106617d3e9b4fa1b9adfeaa1f62b4334431b"
+        },
+        {
+          "command": "links",
+          "omissionWarnings": 0,
+          "outputSha256": "2e1f03b85103f1cd58e771743332c3931a72c084886e0ed68a1a46b4bf19e4a0"
+        }
+      ]
+    }
+  ]
+}

@@ -178,6 +178,7 @@ function printTree(trace: ParsedTrace): void {
     console.log(`${'  '.repeat(span.depth)}${kindColor(span.agentKind, label)} ${dim(fmtMs(spanDurationMs(span)))}${statusMark}`);
     for (let i = span.children.length - 1; i >= 0; i--) pending.push(span.children[i]!);
   }
+  for (const warning of trace.warnings) console.log(yellow(`Warning: ${safe(warning.message)}`));
 }
 
 class UsageError extends Error {}

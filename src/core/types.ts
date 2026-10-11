@@ -38,6 +38,8 @@ export interface SpanEvent {
   name: string;
   timeUnixNano: bigint;
   attributes: AttrMap;
+  /** Exporter-reported attributes missing from this retained event. */
+  droppedAttributesCount?: number;
 }
 
 export interface SpanLink {
@@ -113,6 +115,9 @@ export interface ParsedSpan {
   status: { code: StatusCode; message?: string };
   attributes: AttrMap;
   events: SpanEvent[];
+  /** Exporter-reported omissions; absent has the OTLP default of zero. */
+  droppedAttributesCount?: number;
+  droppedEventsCount?: number;
   links?: SpanLink[];
   /** Exporter-reported omissions; absent has the OTLP default of zero. */
   droppedLinksCount?: number;

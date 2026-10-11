@@ -1,0 +1,305 @@
+{
+  "resource_spans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "string_value": "controlled-sdk-limits"
+            }
+          }
+        ]
+      },
+      "scope_spans": [
+        {
+          "scope": {
+            "name": "tracelens.drop-capture",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "span_id": "AAAAAAAAAAE=",
+              "name": "partial event history",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "10000000",
+              "end_time_unix_nano": "16000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "string_value": "limit capture"
+                  }
+                },
+                {
+                  "key": "capture.kind",
+                  "value": {
+                    "string_value": "partial event history"
+                  }
+                }
+              ],
+              "dropped_attributes_count": 2,
+              "events": [
+                {
+                  "time_unix_nano": "14000000",
+                  "name": "checkpoint 4",
+                  "attributes": [
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "4"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ],
+                  "dropped_attributes_count": 1
+                },
+                {
+                  "time_unix_nano": "15000000",
+                  "name": "checkpoint 5",
+                  "attributes": [
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "5"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ],
+                  "dropped_attributes_count": 1
+                }
+              ],
+              "dropped_events_count": 3,
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAg==",
+              "span_id": "AAAAAAAAAAI=",
+              "name": "all events dropped",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "20000000",
+              "end_time_unix_nano": "26000000",
+              "attributes": [
+                {
+                  "key": "capture.note",
+                  "value": {
+                    "string_value": "Controlled local fixture"
+                  }
+                },
+                {
+                  "key": "capture.requested_events",
+                  "value": {
+                    "int_value": "5"
+                  }
+                },
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "string_value": "limit capture"
+                  }
+                },
+                {
+                  "key": "capture.kind",
+                  "value": {
+                    "string_value": "all events dropped"
+                  }
+                }
+              ],
+              "dropped_events_count": 5,
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAw==",
+              "span_id": "AAAAAAAAAAM=",
+              "name": "complete control",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "30000000",
+              "end_time_unix_nano": "36000000",
+              "attributes": [
+                {
+                  "key": "capture.note",
+                  "value": {
+                    "string_value": "Controlled local fixture"
+                  }
+                },
+                {
+                  "key": "capture.requested_events",
+                  "value": {
+                    "int_value": "5"
+                  }
+                },
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "string_value": "limit capture"
+                  }
+                },
+                {
+                  "key": "capture.kind",
+                  "value": {
+                    "string_value": "complete control"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "time_unix_nano": "31000000",
+                  "name": "checkpoint 1",
+                  "attributes": [
+                    {
+                      "key": "diagnostic.context",
+                      "value": {
+                        "string_value": "additional detail"
+                      }
+                    },
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "1"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "time_unix_nano": "32000000",
+                  "name": "checkpoint 2",
+                  "attributes": [
+                    {
+                      "key": "diagnostic.context",
+                      "value": {
+                        "string_value": "additional detail"
+                      }
+                    },
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "2"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "time_unix_nano": "33000000",
+                  "name": "checkpoint 3",
+                  "attributes": [
+                    {
+                      "key": "diagnostic.context",
+                      "value": {
+                        "string_value": "additional detail"
+                      }
+                    },
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "3"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "time_unix_nano": "34000000",
+                  "name": "checkpoint 4",
+                  "attributes": [
+                    {
+                      "key": "diagnostic.context",
+                      "value": {
+                        "string_value": "additional detail"
+                      }
+                    },
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "4"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "time_unix_nano": "35000000",
+                  "name": "checkpoint 5",
+                  "attributes": [
+                    {
+                      "key": "diagnostic.context",
+                      "value": {
+                        "string_value": "additional detail"
+                      }
+                    },
+                    {
+                      "key": "step.id",
+                      "value": {
+                        "int_value": "5"
+                      }
+                    },
+                    {
+                      "key": "result",
+                      "value": {
+                        "string_value": "recorded"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

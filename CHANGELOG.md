@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Exporter-reported missing evidence
+
+- Preserve span `droppedAttributesCount` / `droppedEventsCount` and each
+  retained event's `droppedAttributesCount`, including original Protobuf field
+  names. Report positive counts as scoped warnings in browser and CLI reports;
+  retain them in downloaded span evidence. `tree` now prints parser warnings.
+- Accept Protobuf JSON numeric strings for unsigned counts; invalid values
+  remain unknown with a warning. Missing, null and zero counts do not invent
+  omissions.
+- Retain [actual SDK limit captures](studies/dropped-evidence/README.md),
+  before/after observations and offline browser downloads. An SDK export with
+  all five events dropped previously appeared without any warning.
+
 ### Protobuf JSON identities
 
 - Decode canonical base64 trace/span IDs to their actual hexadecimal byte

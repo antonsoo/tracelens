@@ -127,26 +127,41 @@ function decodeStatus(raw: unknown): { code: StatusCode; message?: string } {
 
 function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, traceId: string): SpanEvent[] {
   if (!Array.isArray(raw)) return [];
-  return raw.flatMap((e) => {
+  return raw.flatMap((e, index) => {
     const rec = isRecord(e) ? e : {};
+    const name = typeof rec.name === 'string' ? rec.name : '';
+    const droppedAttributesCount = droppedCount(rec.droppedAttributesCount ?? rec.dropped_attributes_count,
+      'droppedAttributesCount', `Event ${index + 1} ("${name}")`, 'attributes', warnings, spanId, traceId);
     const time = toBigNanos(rec.timeUnixNano ?? rec.time_unix_nano ?? 0);
     if (time === undefined) {
       warnings.push({ message: 'Skipped an event with an invalid timestamp.', spanId, traceId });
       return [];
     }
     return [{
-      name: typeof rec.name === 'string' ? rec.name : '',
+      name,
       timeUnixNano: time,
       attributes: decodeAttributes(rec.attributes),
+      ...(droppedAttributesCount !== undefined ? { droppedAttributesCount } : {}),
     }];
   });
 }
 
 function optionalUint32(raw: unknown, field: string, warnings: ParseWarning[], spanId: string, traceId: string): number | undefined {
-  if (raw === undefined) return undefined;
+  if (raw === undefined || raw === null) return undefined; // ProtoJSON null leaves a field unset.
+  // ProtoJSON accepts both numeric and quoted numeric values, including exponents.
+  if (typeof raw === 'string' && /^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$/.test(raw)) raw = Number(raw);
   if (typeof raw === 'number' && Number.isInteger(raw) && raw >= 0 && raw <= 0xffff_ffff) return raw;
   warnings.push({ message: `Invalid ${field}; its value is unknown.`, spanId, traceId });
   return undefined;
+}
+
+/** Positive omission counts describe evidence absent before import, not parser loss. */
+function droppedCount(raw: unknown, field: string, subject: string, kind: 'attributes' | 'events', warnings: ParseWarning[], spanId: string, traceId: string): number | undefined {
+  const count = optionalUint32(raw, `${subject} ${field}`, warnings, spanId, traceId);
+  if (count !== undefined && count > 0) {
+    warnings.push({ message: `${subject} reports ${count} dropped ${kind}; this export does not contain them.`, spanId, traceId });
+  }
+  return count;
 }
 
 function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, traceId: string): { links: SpanLink[]; invalidLinkCount?: number } {
@@ -283,12 +298,17 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
         const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
 
         const attributes = decodeAttributes(raw.attributes);
+        const name = typeof raw.name === 'string' ? raw.name : '(unnamed span)';
+        const droppedAttributesCount = droppedCount(raw.droppedAttributesCount ?? raw.dropped_attributes_count,
+          'droppedAttributesCount', `Span "${name}"`, 'attributes', warnings, spanId, spanTraceId);
+        const droppedEventsCount = droppedCount(raw.droppedEventsCount ?? raw.dropped_events_count,
+          'droppedEventsCount', `Span "${name}"`, 'events', warnings, spanId, spanTraceId);
 
         const base: ParsedSpan = {
           traceId: spanTraceId,
           spanId,
           ...(parentSpanId ? { parentSpanId } : {}),
-          name: typeof raw.name === 'string' ? raw.name : '(unnamed span)',
+          name,
           kind: decodeSpanKind(raw.kind),
           startTimeUnixNano: start,
           endTimeUnixNano: end,
@@ -296,6 +316,8 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
           status: decodeStatus(raw.status),
           attributes,
           events: decodeEvents(raw.events, warnings, spanId, spanTraceId),
+          ...(droppedAttributesCount !== undefined ? { droppedAttributesCount } : {}),
+          ...(droppedEventsCount !== undefined ? { droppedEventsCount } : {}),
           ...decodeLinks(raw.links, warnings, spanId, spanTraceId),
           droppedLinksCount: optionalUint32(raw.droppedLinksCount ?? raw.dropped_links_count, 'droppedLinksCount', warnings, spanId, spanTraceId),
           resourceAttributes,

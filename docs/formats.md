@@ -59,6 +59,18 @@ both accepted. Malformed individual spans (missing IDs, an end time before
 the start time) are skipped or clamped with a warning rather than aborting
 the parse — see `tests/otlp-parser.test.ts` for the exact edge cases.
 
+Exporter-reported `droppedAttributesCount` and `droppedEventsCount` on spans,
+and `droppedAttributesCount` on retained events, survive parsing and span
+downloads. Positive counts produce warnings scoped to the trace and span;
+an empty event list with a positive dropped count is incomplete evidence.
+Original snake_case fields are accepted too. Counts accept unsigned 32-bit
+integers or Protobuf JSON numeric strings; invalid values remain unknown with
+a warning, and null leaves the field unset. Missing or zero counts mean no
+reported omissions, not proof that execution was fully instrumented. Resource
+and instrumentation-scope attribute omission counts are not yet exposed.
+The [SDK limit capture](../studies/dropped-evidence/README.md) verifies the
+span/event fields against producer objects before serialization.
+
 A file may be JSON Lines, with an export on each line: that is what the
 Collector's `file` exporter writes, a line per batch (see its README, "File
 Format"). `parseTraceText()` reads the lines as one export. A last line
@@ -328,7 +340,9 @@ survive tab, theme and viewport changes while the same span is retained.
 `format: "tracelens-span-evidence"`, followed by the complete decoded span
 fields. Nanosecond `bigint` fields are decimal strings; `children` contains
 child span IDs, without copying descendants. `attributes`,
-`resourceAttributes`, normalized `genai` fields and events are complete.
+`resourceAttributes`, normalized `genai` fields and events include all decoded
+entries retained by the import. Exporter omission counts describe missing
+span/event evidence; the download cannot recover what was never exported.
 This is decoded evidence, not a byte-for-byte copy of the original OTLP
 file, and it includes captured prompts and tool content. Comparison exports
 retain their existing content-omitting format. Parser warnings can also
