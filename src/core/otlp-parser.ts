@@ -343,7 +343,7 @@ export function parseOtlpJson(json: unknown, options: ParseOptions = {}): Parsed
   }
   traces.sort((a, b) => (a.startNs < b.startNs ? -1 : a.startNs > b.startNs ? 1 : a.traceId < b.traceId ? -1 : a.traceId > b.traceId ? 1 : 0));
   const traceId = chooseTrace(traces, options.traceId).traceId;
-  const flat = byTrace.get(traceId)!.map((span) => normalizeSpan(span));
+  const flat = byTrace.get(traceId)!.map((span) => normalizeSpan(span, (warning) => warnings.push(warning)));
   const chosenWarnings = warnings.filter((w) => w.traceId === undefined || w.traceId === traceId);
 
   // Resolve by the complete identity across all parsed traces. Span IDs alone

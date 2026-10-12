@@ -46,6 +46,10 @@ interface AppState {
   panNs: bigint;
 }
 
+// Imported traces may introduce any supported script or weight after the
+// connection is gone. Load the bundled faces while the page is online.
+void Promise.allSettled(Array.from(document.fonts, (face) => face.load()));
+
 const THEME_KEY = 'tracelens.theme';
 function initialTheme(): 'light' | 'dark' {
   try {

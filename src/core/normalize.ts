@@ -3,7 +3,7 @@
 // one normalized `GenAiInfo` shape, and classifies each span into the
 // coarse `AgentSpanKind` buckets the UI colors by. See docs/formats.md for
 // the exact attribute keys and spec versions this was verified against.
-import type { AgentSpanKind, AttrMap, Convention, GenAiInfo, NormalizedMessage, NormalizedMessagePart, ParsedSpan, TokenUsage } from './types.js';
+import type { AgentSpanKind, AttrMap, Convention, GenAiInfo, NormalizedMessage, NormalizedMessagePart, ParsedSpan, ParseWarning, TokenUsage } from './types.js';
 import { isTokenCount } from './cost.js';
 import { parsePayloadJson } from './payload-depth.js';
 
@@ -548,19 +548,33 @@ function extractAiSdk(attrs: AttrMap): GenAiInfo | undefined {
 /** A legacy event's content when it holds Bedrock-Converse-style blocks, as Strands writes it:
  * `[{"text": ...}, {"toolUse": {"toolUseId", "name", "input"}}, {"toolResult": {"toolUseId", "content"}}]`.
  * Anything else, including a plain string, is one text part. */
-function eventContentParts(content: unknown): NormalizedMessagePart[] {
+function eventContentParts(content: unknown, onMalformed: (blockIndex: number) => void): NormalizedMessagePart[] {
   const text = str(content);
-  if (text !== undefined && text.startsWith('[')) {
+  if (text !== undefined && text.trimStart().startsWith('[')) {
     const blocks = parseJsonish(text);
-    const isBlock = (b: unknown): b is Record<string, unknown> => typeof b === 'object' && b !== null && ('text' in b || 'toolUse' in b || 'toolResult' in b);
+    const isObject = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
+    const isBlock = (b: unknown): b is Record<string, unknown> => isObject(b) && ('text' in b || 'toolUse' in b || 'toolResult' in b);
     if (Array.isArray(blocks) && blocks.length > 0 && blocks.every(isBlock)) {
-      return blocks.map((b): NormalizedMessagePart => {
-        const use = b.toolUse as Record<string, unknown> | undefined;
-        const result = b.toolResult as Record<string, unknown> | undefined;
-        if (use) return { type: 'tool_call', ...(str(use.toolUseId) ? { id: str(use.toolUseId) } : {}), ...(str(use.name) ? { name: str(use.name) } : {}), ...('input' in use ? { arguments: use.input } : {}) };
-        if (result) return { type: 'tool_call_response', ...(str(result.toolUseId) ? { id: str(result.toolUseId) } : {}), ...('content' in result ? { response: result.content } : {}) };
-        return { type: 'text', ...(str(b.text) !== undefined ? { content: str(b.text) } : {}) };
-      });
+      const parts: NormalizedMessagePart[] = [];
+      for (const [index, b] of blocks.entries()) {
+        const use = b.toolUse;
+        const result = b.toolResult;
+        // ContentBlock is a union. Keep the entire original message when a
+        // recognized block is malformed, rather than inventing an empty call,
+        // picking one conflicting member, or discarding its valid neighbors.
+        const members = ['text', 'toolUse', 'toolResult'].filter((key) => Object.hasOwn(b, key));
+        if (members.length === 1 && typeof b.text === 'string') {
+          parts.push({ type: 'text', ...(str(b.text) !== undefined ? { content: b.text } : {}) });
+        } else if (members.length === 1 && isObject(use) && str(use.toolUseId) && str(use.name) && Object.hasOwn(use, 'input')) {
+          parts.push({ type: 'tool_call', id: str(use.toolUseId), name: str(use.name), arguments: use.input });
+        } else if (members.length === 1 && isObject(result) && str(result.toolUseId) && Array.isArray(result.content)) {
+          parts.push({ type: 'tool_call_response', id: str(result.toolUseId), response: result.content });
+        } else {
+          onMalformed(index);
+          return [{ type: 'text', content: text }];
+        }
+      }
+      return parts;
     }
   }
   return [{ type: 'text', ...(text !== undefined ? { content: text } : {}) }];
@@ -575,12 +589,16 @@ function eventContentParts(content: unknown): NormalizedMessagePart[] {
  * Current-spec event: `gen_ai.client.inference.operation.details`, whose attributes are
  * `gen_ai.input.messages`, `gen_ai.output.messages` and `gen_ai.system_instructions`, written
  * by Strands in its default mode. */
-function extractEventMessages(span: ParsedSpan): { input?: NormalizedMessage[]; output?: NormalizedMessage[]; system?: NormalizedMessage[]; finishReasons?: string[] } {
+function extractEventMessages(span: ParsedSpan, onWarning?: (warning: ParseWarning) => void): { input?: NormalizedMessage[]; output?: NormalizedMessage[]; system?: NormalizedMessage[]; finishReasons?: string[] } {
   const input: NormalizedMessage[] = [];
   const output: NormalizedMessage[] = [];
   const system: NormalizedMessage[] = [];
   const finishReasons: string[] = [];
-  for (const ev of span.events) {
+  for (const [eventIndex, ev] of span.events.entries()) {
+    const onMalformed = (blockIndex: number): void => onWarning?.({
+      traceId: span.traceId, spanId: span.spanId,
+      message: `events[${eventIndex}] (${ev.name}) content block [${blockIndex}] is malformed or ambiguous. Kept the original message as text; inspect the raw event for details.`,
+    });
     const content = ev.attributes['content'];
     if (ev.name === 'gen_ai.client.inference.operation.details') {
       input.push(...(parseMessageList(ev.attributes['gen_ai.input.messages']) ?? []));
@@ -589,10 +607,10 @@ function extractEventMessages(span: ParsedSpan): { input?: NormalizedMessage[]; 
       system.push(...(parseSystemInstructions(ev.attributes['gen_ai.system_instructions']) ?? []));
     } else if (ev.name === 'gen_ai.system.message' || ev.name === 'gen_ai.user.message' || ev.name === 'gen_ai.assistant.message' || ev.name === 'gen_ai.tool.message') {
       const role = ev.name.split('.')[1] ?? 'unknown';
-      input.push({ role, parts: eventContentParts(content) });
+      input.push({ role, parts: eventContentParts(content, onMalformed) });
     } else if (ev.name === 'gen_ai.choice') {
       const message = ev.attributes['message'];
-      output.push({ role: 'assistant', parts: eventContentParts(typeof message === 'string' ? message : content) });
+      output.push({ role: 'assistant', parts: eventContentParts(typeof message === 'string' ? message : content, onMalformed) });
       if (str(ev.attributes['finish_reason'])) finishReasons.push(str(ev.attributes['finish_reason'])!);
     }
   }
@@ -611,7 +629,7 @@ const LLM_REQUEST_TYPE_TO_KIND: Record<string, AgentSpanKind> = {
   rerank: 'reranker',
 };
 
-export function normalizeSpan(span: ParsedSpan): ParsedSpan {
+export function normalizeSpan(span: ParsedSpan, onWarning?: (warning: ParseWarning) => void): ParsedSpan {
   const otel = extractOtelGenAi(span.attributes);
   const oi = extractOpenInference(span.attributes);
   const aiSdk = extractAiSdk(span.attributes);
@@ -629,12 +647,11 @@ export function normalizeSpan(span: ParsedSpan): ParsedSpan {
   const convention: Convention = aiSdk ? 'vercel-ai' : otel ? 'otel-genai' : oi ? 'openinference' : 'none';
 
   if (genai) {
-    const events = extractEventMessages(span);
-    const messages = !genai.inputMessages && !genai.outputMessages;
+    const events = extractEventMessages(span, onWarning);
     genai = {
       ...genai,
-      ...(messages && events.input ? { inputMessages: events.input } : {}),
-      ...(messages && events.output ? { outputMessages: events.output } : {}),
+      ...(!genai.inputMessages && events.input ? { inputMessages: events.input } : {}),
+      ...(!genai.outputMessages && events.output ? { outputMessages: events.output } : {}),
       ...(!genai.systemInstructions && events.system ? { systemInstructions: events.system } : {}),
       ...(!genai.finishReasons && events.finishReasons ? { finishReasons: events.finishReasons } : {}),
     };
