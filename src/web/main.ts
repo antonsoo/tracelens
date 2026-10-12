@@ -21,14 +21,15 @@ import type { SpanFilter } from './span-search.js';
 import { renderTimingPanel } from './timing-panel.js';
 import { renderLinksPanel } from './links-panel.js';
 import type { SpanLink } from '../core/types.js';
+import type { RetainedTraceSource } from './trace-protocol.js';
 
 interface AppState {
   trace: ParsedTrace | null;
   /** Retained input text for files or samples that contain multiple traces. */
-  source: string | null;
+  source: RetainedTraceSource | null;
   baseline: ParsedTrace | null;
   baselineName: string | null;
-  baselineSource: string | null;
+  baselineSource: RetainedTraceSource | null;
   view: 'trace' | 'compare';
   inspectedSide: ComparisonSide;
   fileName: string | null;
@@ -126,15 +127,20 @@ function loadNotice(state: AppState): HTMLElement | null {
     } }, 'Cancel loading')) : null;
 }
 
-async function loadFile(file: File): Promise<void> {
-  const { version, signal } = beginLoad(file.name);
+function inputLabel(files: File[]): string {
+  return files.length === 1 ? files[0]!.name : `${files.length} files: ${files.map(file => file.name).join(', ')}`;
+}
+
+async function loadFiles(files: File[]): Promise<void> {
+  const label = inputLabel(files);
+  const { version, signal } = beginLoad(label);
   try {
-    const { trace, source } = await loadTrace({ kind: 'file', file }, signal);
+    const { trace, source } = await loadTrace({ kind: 'files', files }, signal);
     if (version !== loadVersion) return;
-    finishLoad(version, { trace, source, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: file.name, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
+    finishLoad(version, { trace, source, baseline: null, baselineName: null, baselineSource: null, view: 'trace', inspectedSide: 'candidate', fileName: label, loadError: null, selectedSpanId: null, collapsedIds: new Set(), zoom: 1, panNs: 0n });
   } catch (err) {
     if (version !== loadVersion) return;
-    const message = `Couldn't load "${file.name}": ${err instanceof Error ? err.message : String(err)}`;
+    const message = `Couldn't load "${label}": ${err instanceof Error ? err.message : String(err)}`;
     finishLoad(version, { loadError: message });
   }
 }
@@ -147,7 +153,7 @@ async function pickTrace(traceId: string, spanId?: string): Promise<void> {
   if (source === null) return;
   const { version, signal } = beginLoad('selected trace');
   try {
-    const { trace } = await loadTrace({ kind: 'text', text: source }, signal, traceId);
+    const { trace } = await loadTrace(typeof source === 'string' ? { kind: 'text', text: source } : { kind: 'inputs', inputs: source }, signal, traceId);
     if (version !== loadVersion) return;
     if (spanId && !trace.spans.some((span) => span.spanId === spanId)) throw new Error('The linked span is not present in the selected trace.');
     // Validate before replacing either side. A trace can be inspectable yet
@@ -175,19 +181,20 @@ function navigateLink(link: SpanLink): void {
   document.querySelector<HTMLElement>('.tl-detail-title')?.focus();
 }
 
-async function loadCandidate(file: File): Promise<void> {
+async function loadCandidate(files: File[]): Promise<void> {
   const state = store.get();
   const baseline = state.baseline ?? state.trace;
   if (!baseline) return;
-  const { version, signal } = beginLoad(file.name);
+  const label = inputLabel(files);
+  const { version, signal } = beginLoad(label);
   try {
-    const { trace, source } = await loadTrace({ kind: 'file', file }, signal);
+    const { trace, source } = await loadTrace({ kind: 'files', files }, signal);
     if (version !== loadVersion) return;
     comparisonOf(baseline, trace, store.get().priceTable);
-    finishLoad(version, { baseline, baselineName: state.baselineName ?? state.fileName, baselineSource: state.baseline ? state.baselineSource : state.source, trace, source, fileName: file.name, view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
+    finishLoad(version, { baseline, baselineName: state.baselineName ?? state.fileName, baselineSource: state.baseline ? state.baselineSource : state.source, trace, source, fileName: label, view: 'compare', inspectedSide: 'candidate', loadError: null, selectedSpanId: null });
   } catch (err) {
     if (version !== loadVersion) return;
-    finishLoad(version, { loadError: `Couldn't compare "${file.name}": ${err instanceof Error ? err.message : String(err)}` });
+    finishLoad(version, { loadError: `Couldn't compare "${label}": ${err instanceof Error ? err.message : String(err)}` });
   }
 }
 
@@ -226,9 +233,9 @@ function applyTheme(theme: 'light' | 'dark'): void {
 }
 
 function buildHeader(state: AppState): HTMLElement {
-  const compareInput = h('input', { type: 'file', accept: '.json,.jsonl,.ndjson,application/json', className: 'visually-hidden', tabindex: '-1', 'aria-label': 'Candidate trace file', onChange: (e: Event) => {
-    const file = (e.target as HTMLInputElement).files?.[0];
-    if (file) void loadCandidate(file);
+  const compareInput = h('input', { type: 'file', multiple: true, accept: '.json,.jsonl,.ndjson,application/json', className: 'visually-hidden', tabindex: '-1', 'aria-label': 'Candidate trace file', onChange: (e: Event) => {
+    const files = Array.from((e.target as HTMLInputElement).files ?? []);
+    if (files.length) void loadCandidate(files);
   } }) as HTMLInputElement;
   return h(
     'header',
@@ -315,7 +322,7 @@ function nameWithTrace(name: string, trace: ParsedTrace): string {
 }
 
 /** For a file that holds several traces: says so, and lets another one be read. */
-function tracePicker(trace: ParsedTrace, source: string | null): HTMLElement | null {
+function tracePicker(trace: ParsedTrace, source: RetainedTraceSource | null): HTMLElement | null {
   if (trace.traces.length < 2 || source === null) return null;
   const select = h(
     'select',
@@ -325,7 +332,7 @@ function tracePicker(trace: ParsedTrace, source: string | null): HTMLElement | n
   return h(
     'div',
     { className: 'tl-trace-picker' },
-    h('label', { for: 'tl-trace-picker' }, `This file holds ${fmtInt(trace.traces.length)} traces. Showing`),
+    h('label', { for: 'tl-trace-picker' }, `${trace.inputFiles ? `These ${trace.inputFiles.length} files hold` : 'This file holds'} ${fmtInt(trace.traces.length)} traces. Showing`),
     select,
   );
 }
@@ -377,7 +384,7 @@ function renderApp(): void {
     const rest = h('div', { style: 'flex:1;display:flex;min-height:0' });
     app.appendChild(h('main', { className: 'tl-page-main' }, rest));
     renderDropzone(rest, {
-      onFile: (f) => void loadFile(f),
+      onFiles: (files) => void loadFiles(files),
       onLoadExample: (p) => void loadExample(p),
       onCompareExample: () => void loadComparisonExample(),
       onTimingExample: () => void loadComparisonExample(true),

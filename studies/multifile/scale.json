@@ -1,0 +1,19 @@
+{
+  "workload": "Synthetic 500 repetitions of captured SDK spans with remapped trace IDs, spread over 32 files",
+  "node": "v26.7.0",
+  "platform": "linux",
+  "files": 32,
+  "bytes": 3697608,
+  "spans": 4500,
+  "traces": 1000,
+  "selectedSpans": 7,
+  "warmupRuns": 1,
+  "milliseconds": [
+    173.764884,
+    187.48715600000003,
+    143.80176800000004,
+    136.56238699999994,
+    121.0140990000001
+  ],
+  "medianMs": 143.80176800000004
+}

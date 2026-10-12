@@ -207,7 +207,7 @@ test('--trace with an ID the file does not hold is refused in one line that list
   assert.equal(result.status, 1);
   assert.equal(result.stdout, '');
   assert.equal(result.stderr.trim().split('\n').length, 1);
-  assert.match(result.stderr, /No trace in this file has the ID "ffff"\. It holds: /);
+  assert.match(result.stderr, /No trace in this file has the ID "ffff"\. Available: /);
   assert.ok(result.stderr.includes(genaiId) && result.stderr.includes(baselineId));
 });
 
@@ -228,7 +228,6 @@ for (const args of [
   ['summary', collector, '--trace'],
   ['summary', collector, '--trace', '--json'],
   ['summary', collector, '--json'],
-  ['summary', collector, 'second.json'],
   ['summary', collector, '--baseline-trace', baselineId],
   ['tree', collector, '--trace', baselineId, '--trace', candidateId],
   ['compare', collector, collector, '--trace', baselineId],
@@ -273,5 +272,36 @@ test('names from the trace cannot write escape sequences to the terminal', () =>
     const output = result.stdout + result.stderr;
     assert.ok(output.length > 0);
     assert.equal(/[\u0000-\u0009\u000b-\u001f\u007f-\u009f]/.test(output), false, `${args.join(' ')}: ${JSON.stringify(output.match(/[\u0000-\u0009\u000b-\u001f\u007f-\u009f].{0,20}/)?.[0])}`);
+  }
+});
+
+test('multi-file CLI restores SDK parents and compares complete groups', () => {
+  const paths = ['worker.json', 'gateway.jsonl', 'audit.jsonl'].map(name => `studies/multifile/fixtures/${name}`);
+  const oracle = JSON.parse(readFileSync('studies/multifile/fixtures/oracle.json', 'utf8'));
+  for (const command of ['summary', 'tree', 'timing', 'cost', 'links']) {
+    const result = run(command, ...paths);
+    assert.equal(result.status, 0, result.stderr);
+    assert.doesNotMatch(result.stdout, /not present/);
+  }
+  const links = run('links', ...paths, '--trace', oracle.audit.traceId, '--json');
+  assert.equal(links.status, 0, links.stderr);
+  const report = JSON.parse(links.stdout);
+  assert.equal(report.inputFiles.length, 3);
+  assert.equal(report.spans[0].sourceFile.name, paths[2]);
+  assert.ok(report.spans[0].links.every(link => link.target.status === 'available'));
+  const flags = paths.flatMap(path => ['--baseline-file', path, '--candidate-file', path]);
+  const comparison = run('compare', ...flags, '--json');
+  assert.equal(comparison.status, 0, comparison.stderr);
+  const compared = JSON.parse(comparison.stdout);
+  assert.equal(compared.wallTimeMs.delta, 0);
+  assert.equal(compared.metrics.calls.delta, 0);
+  assert.equal(compared.metrics.calls.baseline.value, 7);
+  assert.deepEqual(compared.inputFiles.baseline, compared.inputFiles.candidate);
+  assert.ok(compared.operations.flatMap(op => op.baselineCalls).every(call => call.sourceFile));
+  for (const args of [['compare', '--baseline-file', paths[0]], ['compare', ...flags, paths[0]],
+    ['links', ...paths, paths[0], '--json']]) {
+    const bad = run(...args);
+    assert.equal(bad.status, 1);
+    assert.equal(bad.stdout, '');
   }
 });

@@ -126,6 +126,7 @@ export function renderDetailPanel(
   if (tab === 'overview') {
     if (hasCostEvidence(span)) panel.appendChild(renderCostReceipt(spanCostEvidence(span, prices), span.traceId, prices));
     const rows: [string, string][] = [
+      ...(span.sourceFile ? [['source file', `${span.sourceFile.index}: ${span.sourceFile.name}`] as [string, string]] : []),
       ['operation', span.genai?.operationName ?? '—'],
       ['provider', span.genai?.provider ?? '—'],
       ['request model', span.genai?.requestModel ?? '—'],

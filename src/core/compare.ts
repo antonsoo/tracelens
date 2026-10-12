@@ -23,6 +23,7 @@ export interface Change {
 
 export interface CallEvidence {
   spanId: string;
+  sourceFile?: ParsedSpan['sourceFile'];
   name: string;
   model: string | null;
   durationMs: number;
@@ -55,6 +56,7 @@ export interface TraceComparison {
   schemaVersion: 1;
   baselineTraceId: string;
   candidateTraceId: string;
+  inputFiles?: { baseline: ParsedTrace['inputFiles']; candidate: ParsedTrace['inputFiles'] };
   priceTable: PriceEntry[];
   wallTimeMs: Change;
   timing: { baseline: TraceTiming; candidate: TraceTiming };
@@ -162,6 +164,7 @@ function collect(trace: ParsedTrace, costs: TraceCostReport): { groups: Map<stri
     const self = Number(selfTimeNs(span)) / 1_000_000;
     group.calls.push({
       spanId: span.spanId,
+      ...(span.sourceFile ? { sourceFile: span.sourceFile } : {}),
       name: span.name,
       model: span.genai?.responseModel ?? span.genai?.requestModel ?? null,
       durationMs: Number(span.durationNs) / 1_000_000,
@@ -217,6 +220,7 @@ export function compareTraces(baseline: ParsedTrace, candidate: ParsedTrace, pri
     schemaVersion: 1,
     baselineTraceId: baseline.traceId,
     candidateTraceId: candidate.traceId,
+    ...(baseline.inputFiles || candidate.inputFiles ? { inputFiles: { baseline: baseline.inputFiles, candidate: candidate.inputFiles } } : {}),
     priceTable: prices.map((price) => ({ ...price })),
     costEvidence,
     timing: { baseline: buildTiming(baseline), candidate: buildTiming(candidate) },

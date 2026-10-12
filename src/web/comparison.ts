@@ -26,7 +26,7 @@ export function createComparisonViewState(): ComparisonViewState {
 }
 interface Callbacks {
   onSwap: () => void;
-  onReplace: (file: File) => void;
+  onReplace: (files: File[]) => void;
   onInspect: (side: ComparisonSide, spanId: string) => void;
   onClose: () => void;
 }
@@ -212,13 +212,14 @@ export function renderComparison(
 ): void {
   const input = h('input', {
     type: 'file',
+    multiple: true,
     accept: '.json,.jsonl,.ndjson,application/json',
     className: 'visually-hidden',
     tabindex: '-1',
     'aria-label': 'Replace candidate trace',
     onChange: (e: Event) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (file) cb.onReplace(file);
+      const files = Array.from((e.target as HTMLInputElement).files ?? []);
+      if (files.length) cb.onReplace(files);
     },
   }) as HTMLInputElement;
   const rows = h('div', {});

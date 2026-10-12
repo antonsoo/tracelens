@@ -11,7 +11,7 @@ export function renderLinksPanel(trace: ParsedTrace, inspect: (spanId: string) =
   const count = spans.reduce((sum, span) => sum + (span.links?.length ?? 0), 0);
   return h('details', { className: 'tl-links tl-compare-warnings' },
     h('summary', {}, `${count} span links across ${spans.length} source spans`),
-    h('p', {}, 'Follow queued or batched work across traces in this file. Links retain recorded relationships; they do not add time or cost to this run.'),
+    h('p', {}, 'Follow queued or batched work across imported traces. Links retain recorded relationships; they do not add time or cost to this run.'),
     h('button', { className: 'tl-btn', onClick: () => downloadEvidence(buildLinksReport(trace), 'tracelens-links.json') }, 'Download links JSON'),
     pagedEvidence(trace, 'Spans with links', spans, (page) => h('ul', {}, ...page.map((span) => h('li', {},
       h('button', { className: 'tl-call-link', onClick: () => inspect(span.spanId) }, textPreview(span.name, 200)),
@@ -23,7 +23,7 @@ export function renderSpanLinks(span: ParsedSpan, navigate?: (link: SpanLink) =>
   const dropped = span.droppedLinksCount ?? 0;
   return h('div', {},
     h('p', {}, `${dropped} ${dropped === 1 ? 'link' : 'links'} reported dropped by the exporter; ${span.invalidLinkCount ?? 0} malformed records skipped. Other unreadable evidence appears in parser warnings.`),
-    h('p', {}, 'Missing targets can be unsampled, unexported or omitted. This file does not establish why. Link order is the recorded order, not an execution timeline.'),
+    h('p', {}, 'Missing targets can be unsampled, unexported or omitted. The imported data does not establish why. Link order is the recorded order, not an execution timeline.'),
     pagedEvidence(span, 'Links', span.links ?? [], (page, start) => h('div', {}, ...page.map((link, offset) => h('article', { className: 'tl-msg tl-link-record' },
       h('div', { className: 'tl-msg-role' }, `Link ${start + offset + 1}`),
       h('div', {}, link.target?.status === 'available' && navigate

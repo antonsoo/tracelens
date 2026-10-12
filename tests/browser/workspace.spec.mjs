@@ -104,7 +104,7 @@ test('keyboard file selection and an empty search stay accessible', async ({ pag
   // before navigation so a fast Enter press cannot race that setup.
   const chooser = page.waitForEvent('filechooser');
   await page.goto('./');
-  await page.getByRole('button', { name: 'Choose a trace.json file' }).focus();
+  await page.getByRole('button', { name: 'Choose trace files' }).focus();
   await page.keyboard.press('Enter');
   await (await chooser).setFiles(file('keyboard.json', run(good, 6)));
   const search = page.getByRole('searchbox', { name: 'Find spans' });
@@ -195,7 +195,7 @@ test('canceled or superseded import workers never replace current state', async 
       }
       get onmessage() { return super.onmessage; }
       postMessage(request) {
-        this.sourceName = request.source.file?.name ?? '';
+        this.sourceName = request.source.file?.name ?? request.source.files?.[0]?.name ?? '';
         super.postMessage(request);
       }
       terminate() { window.terminatedReads.push(this.sourceName); super.terminate(); }
@@ -208,7 +208,7 @@ test('canceled or superseded import workers never replace current state', async 
   await expect(page.getByRole('status')).toHaveText('Loading slow-first.json...');
   await expect.poll(() => page.evaluate(() => typeof window.pendingReads['slow-first.json'])).toBe('function');
   await page.getByRole('button', { name: 'Cancel loading' }).click();
-  await expect(page.getByRole('button', { name: 'Choose a trace.json file' })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Choose trace files' })).toBeFocused();
   await page.evaluate(() => window.pendingReads['slow-first.json']());
   expect(await page.evaluate(() => window.terminatedReads)).toContain('slow-first.json');
   await expect(page.locator('.tl-wf-row')).toHaveCount(0);
@@ -226,7 +226,7 @@ test('canceled or superseded import workers never replace current state', async 
   await page.evaluate(() => window.pendingReads['slow-candidate.json'](true));
   expect(await page.evaluate(() => window.terminatedReads)).toContain('slow-candidate.json');
   await expect(page.getByRole('alert')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Choose a trace.json file' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Choose trace files' })).toBeVisible();
 });
 
 test('sample failures recover and cancellation aborts both requests', async ({ page }) => {
@@ -286,7 +286,7 @@ test('leaving inspection disposes all global waterfall handlers', async ({ page 
   await page.mouse.move(900, 300);
   await page.mouse.up();
   await page.setViewportSize({ width: 375, height: 812 });
-  await expect(page.getByRole('button', { name: 'Choose a trace.json file' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Choose trace files' })).toBeVisible();
 });
 
 test('price dialog has a name and recovers focus after save, validation and cancel', async ({ page }) => {

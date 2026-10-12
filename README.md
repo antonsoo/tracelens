@@ -141,6 +141,11 @@ on npm; the command it installs is `tracelens`).
   that passed through it. The lines are read as one export, and a file with
   several traces gets a picker (`--trace <id>` in the CLI), opening on the
   trace with the most spans.
+- **Related exports together (source build)** — choose or drop up to 32 files
+  (25 MB combined in the browser). Resolve cross-service parents and links before
+  selecting a trace; retain source filenames and reject overlapping identities.
+  The CLI accepts file groups for inspection and comparison.
+  [Captured workflow, commands and limits](studies/multifile/README.md).
 - **Jaeger JSON too** — a trace downloaded from the Jaeger UI is converted to
   OTLP (microsecond times, typed tags, span kind and status from their tags,
   logs as events) and gets the same checks.
@@ -410,8 +415,8 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
 
 ## Accuracy and limitations
 
-- The viewer and comparison read **one trace at a time**; a file with
-  several is read for the one you pick. Comparison groups by service namespace,
+- The viewer and comparison read **one trace at a time**; an imported file
+  or group with several traces is read for the one you pick. Comparison groups by service namespace,
   service name, kind and full operation ancestry; renaming or reparenting
   an operation produces an added/removed group. Repeated calls in a group
   are not individually paired, and a pair of runs does not establish

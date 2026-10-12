@@ -1,0 +1,151 @@
+{
+  "workload": "Controlled local HTTP and Queue work; no model calls",
+  "sdk_version": "1.45.1",
+  "run": {
+    "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+    "spanId": "fec781aa51f3a52c"
+  },
+  "audit": {
+    "traceId": "925d4acf0134df000d9762d41b179a17",
+    "spanId": "4c1dfb2554563cc2"
+  },
+  "spans": [
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "5d5584804632815c",
+      "name": "POST worker/digest",
+      "service": "gateway",
+      "parentSpanId": "fec781aa51f3a52c",
+      "startTimeUnixNano": "1791847615293014050",
+      "endTimeUnixNano": "1791847615295807774",
+      "links": [],
+      "attributes": {}
+    },
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "65e600674ef6a333",
+      "name": "POST worker/digest",
+      "service": "gateway",
+      "parentSpanId": "fec781aa51f3a52c",
+      "startTimeUnixNano": "1791847615295984777",
+      "endTimeUnixNano": "1791847615297664265",
+      "links": [],
+      "attributes": {}
+    },
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "fec781aa51f3a52c",
+      "name": "run document checks",
+      "service": "gateway",
+      "parentSpanId": null,
+      "startTimeUnixNano": "1791847615292976868",
+      "endTimeUnixNano": "1791847615297891957",
+      "links": [],
+      "attributes": {
+        "openinference.span.kind": "AGENT"
+      }
+    },
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "ea19b0f65c9c3520",
+      "name": "sha256",
+      "service": "worker",
+      "parentSpanId": "f4b4020dc4461853",
+      "startTimeUnixNano": "1791847615294687901",
+      "endTimeUnixNano": "1791847615294717950",
+      "links": [],
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "sha256",
+        "gen_ai.tool.call.arguments": "{\"text\": \"A document with a known digest\"}",
+        "gen_ai.tool.call.result": "b5342402514fc8aec4a525c56abaeefb48735a3fb065d72045d1dcfd13fc8305"
+      }
+    },
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "f4b4020dc4461853",
+      "name": "POST /digest",
+      "service": "worker",
+      "parentSpanId": "5d5584804632815c",
+      "startTimeUnixNano": "1791847615294644918",
+      "endTimeUnixNano": "1791847615295295730",
+      "links": [],
+      "attributes": {}
+    },
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "95af8e1c120fe07b",
+      "name": "sha256",
+      "service": "worker",
+      "parentSpanId": "ddf07a56fa1fa7b4",
+      "startTimeUnixNano": "1791847615296775832",
+      "endTimeUnixNano": "1791847615296784789",
+      "links": [],
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "sha256",
+        "gen_ai.tool.call.arguments": "{\"text\": \"A second independent document\"}",
+        "gen_ai.tool.call.result": "d8e7f57d905d098dd47f69155e6cf2af912d4beeda28468acda046c371c050e4"
+      }
+    },
+    {
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spanId": "ddf07a56fa1fa7b4",
+      "name": "POST /digest",
+      "service": "worker",
+      "parentSpanId": "65e600674ef6a333",
+      "startTimeUnixNano": "1791847615296749330",
+      "endTimeUnixNano": "1791847615297135399",
+      "links": [],
+      "attributes": {}
+    },
+    {
+      "traceId": "925d4acf0134df000d9762d41b179a17",
+      "spanId": "e77e82d7b13e3a81",
+      "name": "write receipts",
+      "service": "audit",
+      "parentSpanId": "4c1dfb2554563cc2",
+      "startTimeUnixNano": "1791847615797865611",
+      "endTimeUnixNano": "1791847615798102230",
+      "links": [],
+      "attributes": {}
+    },
+    {
+      "traceId": "925d4acf0134df000d9762d41b179a17",
+      "spanId": "4c1dfb2554563cc2",
+      "name": "commit audit batch",
+      "service": "audit",
+      "parentSpanId": null,
+      "startTimeUnixNano": "1791847615797827236",
+      "endTimeUnixNano": "1791847615798356994",
+      "links": [
+        {
+          "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+          "spanId": "f4b4020dc4461853"
+        },
+        {
+          "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+          "spanId": "ddf07a56fa1fa7b4"
+        }
+      ],
+      "attributes": {}
+    }
+  ],
+  "files": [
+    {
+      "name": "gateway.jsonl",
+      "bytes": 2437,
+      "sha256": "2ff23c8de632e8b1926f923eb7268519438c7f7056d7dc6e9913cde9f2e22eb2"
+    },
+    {
+      "name": "worker.json",
+      "bytes": 4444,
+      "sha256": "bd20cbf9251be09bbcb01cd5da1e4f0385e1148b8cd242b8e13a2896dec27056"
+    },
+    {
+      "name": "audit.jsonl",
+      "bytes": 1723,
+      "sha256": "993e3f55ccd86d23a3554f830d9de45e216cb113670f53576dce2b7d72773358"
+    }
+  ]
+}

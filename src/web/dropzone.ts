@@ -1,7 +1,7 @@
 import { h, mount } from './dom.js';
 
 export interface DropzoneCallbacks {
-  onFile: (file: File) => void;
+  onFiles: (files: File[]) => void;
   onLoadExample: (path: string) => void;
   onCompareExample: () => void;
   onTimingExample: () => void;
@@ -16,14 +16,15 @@ const SIGNAL_SVG = `
 export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): void {
   const fileInput = h('input', {
     type: 'file',
+    multiple: true,
     accept: '.json,.jsonl,.ndjson,application/json',
     className: 'visually-hidden',
     id: 'tl-file-input',
     tabindex: '-1',
     'aria-label': 'Trace file',
     onChange: (e: Event) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (file) cb.onFile(file);
+      const files = Array.from((e.target as HTMLInputElement).files ?? []);
+      if (files.length) cb.onFiles(files);
     },
   }) as HTMLInputElement;
 
@@ -31,14 +32,15 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     'div',
     { className: 'tl-dropzone-card' },
     buildSignalSvg(),
-    h('h1', {}, 'Drop a trace to inspect it'),
+    h('h1', {}, 'Drop trace files to inspect them together'),
     h('p', {}, 'OTLP/JSON from the OpenTelemetry SDK or a collector\'s file exporter (one batch per line), or traces downloaded from Jaeger as JSON. Nothing leaves this browser tab.'),
     h(
       'button',
       { className: 'tl-btn primary', 'data-focus-key': 'choose-file', onClick: () => fileInput.click() },
-      'Choose a trace.json file',
+      'Choose trace files',
     ),
     fileInput,
+    h('p', { className: 'faint' }, 'Select up to 32 related exports, 25 MB total. Parents and links resolve across files; each span identity must occur once.'),
     h(
       'div',
       { className: 'tl-dropzone-examples' },
@@ -61,8 +63,8 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
   card.addEventListener('drop', (e) => {
     e.preventDefault();
     card.classList.remove('drag-over');
-    const file = e.dataTransfer?.files?.[0];
-    if (file) cb.onFile(file);
+    const files = Array.from(e.dataTransfer?.files ?? []);
+    if (files.length) cb.onFiles(files);
   });
 
   mount(container, h('div', { className: 'tl-dropzone' }, card));

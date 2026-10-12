@@ -3,9 +3,9 @@ import type { ParsedSpan, ParsedTrace, SpanLink } from './types.js';
 export function linkTargetLabel(link: SpanLink): string {
   switch (link.target?.status) {
     case 'available': return link.target.name ?? link.spanId;
-    case 'missing-trace': return 'Target trace absent from this file';
-    case 'missing-span': return 'Target span absent from this file';
-    case 'ambiguous': return 'Duplicate target span IDs in this file';
+    case 'missing-trace': return 'Target trace absent from imported data';
+    case 'missing-span': return 'Target span absent from imported data';
+    case 'ambiguous': return 'Duplicate target span IDs in imported data';
     default: return 'Target not resolved';
   }
 }
@@ -18,16 +18,18 @@ export function buildLinksReport(trace: ParsedTrace) {
     format: 'tracelens-span-links',
     traceId: trace.traceId,
     sourceFormat: trace.sourceFormat,
+    ...(trace.inputFiles ? { inputFiles: trace.inputFiles } : {}),
     linkCount: spans.reduce((sum, span) => sum + (span.links?.length ?? 0), 0),
     reportedDroppedLinks: spans.reduce((sum, span) => sum + (span.droppedLinksCount ?? 0), 0),
     skippedInvalidLinks: spans.reduce((sum, span) => sum + (span.invalidLinkCount ?? 0), 0),
     notes: [
-      'Targets are resolved by trace ID and span ID in this imported file only.',
+      trace.inputFiles ? 'Targets are resolved by trace ID and span ID across the selected files only.' : 'Targets are resolved by trace ID and span ID in this imported file only.',
       'Missing targets may be unsampled, unexported or omitted; the cause is not inferred.',
       'Links do not establish elapsed time, waiting time, execution order or additional cost.',
       'Dropped counts are exporter-reported; inspect warnings for malformed evidence.',
     ],
     spans: spans.map((span) => ({ spanId: span.spanId, name: span.name,
+      ...(span.sourceFile ? { sourceFile: span.sourceFile } : {}),
       ...(span.parentSpanId ? { parentSpanId: span.parentSpanId } : {}),
       links: span.links ?? [], droppedLinksCount: span.droppedLinksCount ?? 0,
       invalidLinkCount: span.invalidLinkCount ?? 0,

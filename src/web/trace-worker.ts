@@ -1,12 +1,13 @@
 import { decodeText } from '../core/decode.js';
-import { parseTraceText } from '../core/otlp-parser.js';
+import { MAX_TRACE_INPUTS, parseTraceInputs } from '../core/otlp-parser.js';
+import type { TraceInput } from '../core/types.js';
 import { flattenTrace } from './trace-transfer.js';
 import { MAX_TRACE_BYTES } from './trace-protocol.js';
 import type { ParseRequest, ParseResponse, TraceSource } from './trace-protocol.js';
 
 const tooLarge = (): Error => new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
 
-async function readSource(source: TraceSource): Promise<string> {
+async function readSource(source: Exclude<TraceSource, { kind: 'files' | 'inputs' }>): Promise<string> {
   if (source.kind === 'text') return source.text;
   if (source.kind === 'file') {
     if (source.file.size > MAX_TRACE_BYTES) throw tooLarge();
@@ -43,12 +44,29 @@ async function readSource(source: TraceSource): Promise<string> {
   return decodeText(bytes);
 }
 
+async function readInputs(source: TraceSource): Promise<TraceInput[]> {
+  if (source.kind === 'inputs') return source.inputs;
+  if (source.kind !== 'files') return [{ name: source.kind === 'file' ? source.file.name : 'Trace', text: await readSource(source) }];
+  if (!source.files.length || source.files.length > MAX_TRACE_INPUTS) throw new Error(`Choose between 1 and ${MAX_TRACE_INPUTS} trace files.`);
+  if (source.files.length === 1) return [{ name: source.files[0]!.name, text: await readSource({ kind: 'file', file: source.files[0]! }) }];
+  if (source.files.reduce((total, file) => total + file.size, 0) > MAX_TRACE_BYTES) {
+    throw new Error('Selected trace files exceed 25 MB in total. Choose a smaller group.');
+  }
+  const inputs: TraceInput[] = [];
+  for (const [index, file] of source.files.entries()) {
+    try { inputs.push({ name: file.name, text: await readSource({ kind: 'file', file }) }); }
+    catch (error) { throw new Error(`File ${index + 1} (${file.name}): ${error instanceof Error ? error.message : String(error)}`); }
+  }
+  return inputs;
+}
+
 self.onmessage = (event: MessageEvent<ParseRequest>): void => {
   void (async () => {
     try {
-      const text = await readSource(event.data.source);
-      const trace = parseTraceText(text, { traceId: event.data.traceId });
-      self.postMessage({ ok: true, trace: flattenTrace(trace), source: trace.traces.length > 1 ? text : null } satisfies ParseResponse);
+      const inputs = await readInputs(event.data.source);
+      const trace = parseTraceInputs(inputs, { traceId: event.data.traceId });
+      const source = trace.traces.length > 1 ? (inputs.length === 1 ? inputs[0]!.text : inputs) : null;
+      self.postMessage({ ok: true, trace: flattenTrace(trace), source } satisfies ParseResponse);
     } catch (error) {
       self.postMessage({ ok: false, error: error instanceof Error ? error.message : String(error) } satisfies ParseResponse);
     }

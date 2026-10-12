@@ -104,6 +104,8 @@ export interface GenAiInfo {
 }
 
 export interface ParsedSpan {
+  /** Original file in a combined import; index is one-based to distinguish equal names. */
+  sourceFile?: { index: number; name: string };
   traceId: string;
   spanId: string;
   parentSpanId?: string;
@@ -139,6 +141,7 @@ export interface ParsedSpan {
 
 export interface ParseWarning {
   message: string;
+  sourceFile?: { index: number; name: string };
   spanId?: string;
   /** The trace the warning is about, when it is about one: a file can hold several. */
   traceId?: string;
@@ -162,7 +165,8 @@ export interface ParsedTrace {
   maxEndNs: bigint;
   warnings: ParseWarning[];
   /** The file's format: Jaeger JSON is converted to OTLP/JSON before parsing. */
-  sourceFormat: 'otlp-json' | 'jaeger-json';
+  sourceFormat: 'otlp-json' | 'jaeger-json' | 'mixed-json';
+  inputFiles?: { name: string; spanCount: number; sourceFormat: 'otlp-json' | 'jaeger-json' }[];
   /**
    * Every trace in the file, in order of start time. A collector's export
    * holds whatever passed through it; `spans` and `roots` are one of them
@@ -170,6 +174,9 @@ export interface ParsedTrace {
    */
   traces: TraceListing[];
 }
+
+/** Decoded file text, retained locally when selecting another trace in a group. */
+export interface TraceInput { name: string; text: string }
 
 export function spanDurationMs(span: ParsedSpan): number {
   return Number(span.durationNs) / 1_000_000;

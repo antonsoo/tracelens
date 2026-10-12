@@ -7,7 +7,7 @@
 // installs it).
 import { readFile } from 'node:fs/promises';
 import { decodeText } from '../core/decode.js';
-import { parseTraceText, buildSummary, buildCostReport, buildTiming, compareTraces, DEFAULT_PRICE_TABLE, isPriceEntry, spanDurationMs, TraceParseError } from '../core/index.js';
+import { parseTraceInputs, MAX_TRACE_INPUTS, buildSummary, buildCostReport, buildTiming, compareTraces, DEFAULT_PRICE_TABLE, isPriceEntry, spanDurationMs, TraceParseError } from '../core/index.js';
 import type { ParsedTrace, PriceEntry, TraceListing } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, safe, table, yellow } from './format.js';
 import { formatComparison } from './compare-report.js';
@@ -20,24 +20,28 @@ import { formatLinks } from './links-report.js';
 const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)
 
 ${bold('Usage:')}
-  tracelens summary <trace.json> [--trace <id>] [--prices <prices.json>]
+  tracelens summary <trace.json> [more-files...] [--trace <id>] [--prices <prices.json>]
                                   Print duration, token, cost and error summary
-  tracelens tree <trace.json> [--trace <id>]
+  tracelens tree <trace.json> [more-files...] [--trace <id>]
                                   Print the span tree
-  tracelens links <trace.json> [--trace <id>] [--json]
-                                  Inspect span links and targets in this file
-  tracelens timing <trace.json> [--trace <id>] [--json]
+  tracelens links <trace.json> [more-files...] [--trace <id>] [--json]
+                                  Inspect span links across the imported files
+  tracelens timing <trace.json> [more-files...] [--trace <id>] [--json]
                                   Explain elapsed time, overlaps and gaps
-  tracelens cost <trace.json> [--trace <id>] [--json] [--prices <prices.json>]
+  tracelens cost <trace.json> [more-files...] [--trace <id>] [--json] [--prices <prices.json>]
                                   Explain token charges, rates and unpriced calls
   tracelens compare <baseline.json> <candidate.json> [--json]
                     [--baseline-trace <id>] [--candidate-trace <id>] [--prices <prices.json>]
                                   Compare runs by operation path
+  tracelens compare --baseline-file <part.json> --candidate-file <part.json> [--json]
+                                  Repeat each file flag to compare groups of exports
   tracelens --help                 Show this help
   tracelens --version              Show the version
 
 A file that holds several traces is read one trace at a time: the one with
 the most spans, or the one whose ID (or the start of it) follows --trace.
+Related files are combined before choosing a trace. Select at most 32 files
+per group, with no repeated span identities; every selected file must parse.
 
 ${bold('Run it without installing:')}
   npx @antonsoloviev/tracelens summary trace.json
@@ -56,17 +60,18 @@ function kindColor(kind: string, s: string): string {
   }
 }
 
-async function loadTrace(path: string, traceId?: string): Promise<ParsedTrace> {
-  let raw: string;
-  try {
-    raw = decodeText(await readFile(path));
-  } catch (err) {
-    throw new Error(`Can't read "${path}": ${err instanceof Error ? err.message : String(err)}`);
+async function loadTrace(path: string | string[], traceId?: string): Promise<ParsedTrace> {
+  const paths = typeof path === 'string' ? [path] : path;
+  if (!paths.length || paths.length > MAX_TRACE_INPUTS) throw new Error(`Choose between 1 and ${MAX_TRACE_INPUTS} trace files per group.`);
+  const inputs = [];
+  for (const filename of paths) {
+    try { inputs.push({ name: filename, text: decodeText(await readFile(filename)) }); }
+    catch (err) { throw new Error(`Can't read "${safe(filename)}": ${safe(err instanceof Error ? err.message : String(err))}`); }
   }
   try {
-    return parseTraceText(raw, traceId === undefined ? {} : { traceId });
+    return parseTraceInputs(inputs, traceId === undefined ? {} : { traceId });
   } catch (err) {
-    if (err instanceof TraceParseError) throw new Error(`"${path}": ${safe(err.message)}`);
+    if (err instanceof TraceParseError) throw new Error(`"${safe(paths.join(', '))}": ${safe(err.message)}`);
     throw err;
   }
 }
@@ -85,7 +90,7 @@ function describeTrace(t: TraceListing): string {
 }
 
 /** For a file with several traces: which one is being read, and the flag that reads each of the others. */
-function otherTraces(trace: ParsedTrace, flag: string, intro = 'this file; showing'): string[] {
+function otherTraces(trace: ParsedTrace, flag: string, intro = trace.inputFiles ? 'the selected files; showing' : 'this file; showing'): string[] {
   if (trace.traces.length < 2) return [];
   const chosen = trace.traces.find((t) => t.traceId === trace.traceId)!;
   const others = trace.traces.filter((t) => t !== chosen);
@@ -188,14 +193,22 @@ interface Args {
   json: boolean;
   /** Values of accepted options, by flag name. */
   traces: Map<string, string>;
+  groups: Map<string, string[]>;
 }
 
 /** Splits what follows the command into files and the flags that command accepts. */
-function parseArgs(args: string[], valueFlags: string[], allowJson: boolean, usage: string): Args {
-  const parsed: Args = { files: [], json: false, traces: new Map() };
+function parseArgs(args: string[], valueFlags: string[], allowJson: boolean, usage: string, repeatedFlags: string[] = []): Args {
+  const parsed: Args = { files: [], json: false, traces: new Map(), groups: new Map() };
   for (let i = 0; i < args.length; i++) {
     const arg = args[i]!;
     if (arg === '--json' && allowJson && !parsed.json) parsed.json = true;
+    else if (repeatedFlags.includes(arg)) {
+      const value = args[++i];
+      if (value === undefined || value.startsWith('--')) throw new UsageError(`${arg} needs a value.\n${usage}`);
+      const group = parsed.groups.get(arg) ?? [];
+      group.push(value);
+      parsed.groups.set(arg, group);
+    }
     else if (valueFlags.includes(arg) && !parsed.traces.has(arg)) {
       const value = args[++i];
       if (value === undefined || value.startsWith('--')) throw new UsageError(`${arg} needs a value.\n${usage}`);
@@ -232,35 +245,37 @@ async function main(): Promise<void> {
 
   try {
     if (cmd === 'compare') {
-      const usage = 'Usage: tracelens compare <baseline.json> <candidate.json> [--json] [--baseline-trace <id>] [--candidate-trace <id>] [--prices <prices.json>]';
-      const args = parseArgs(rest, ['--baseline-trace', '--candidate-trace', '--prices'], true, usage);
-      if (args.files.length !== 2) throw new UsageError(usage);
+      const usage = 'Usage: tracelens compare <baseline.json> <candidate.json> [--json] [--baseline-trace <id>] [--candidate-trace <id>] [--prices <prices.json>]\nOr replace both positional files with repeated --baseline-file <file> and --candidate-file <file> flags.';
+      const args = parseArgs(rest, ['--baseline-trace', '--candidate-trace', '--prices'], true, usage, ['--baseline-file', '--candidate-file']);
+      if (args.groups.size ? args.files.length !== 0 || !args.groups.get('--baseline-file')?.length || !args.groups.get('--candidate-file')?.length : args.files.length !== 2) throw new UsageError(usage);
+      const baselineFiles = args.groups.get('--baseline-file') ?? [args.files[0]!];
+      const candidateFiles = args.groups.get('--candidate-file') ?? [args.files[1]!];
       const [baseline, candidate] = await Promise.all([
-        loadTrace(args.files[0]!, args.traces.get('--baseline-trace')),
-        loadTrace(args.files[1]!, args.traces.get('--candidate-trace')),
+        loadTrace(baselineFiles, args.traces.get('--baseline-trace')),
+        loadTrace(candidateFiles, args.traces.get('--candidate-trace')),
       ]);
       const report = compareTraces(baseline, candidate, await loadPrices(args.traces.get('--prices')));
       // Which trace was read from a file of several goes to stderr: stdout is the report, and with --json nothing else.
-      for (const line of otherTraces(baseline, '--baseline-trace', `the baseline, ${args.files[0]}; comparing`)) console.error(line);
-      for (const line of otherTraces(candidate, '--candidate-trace', `the candidate, ${args.files[1]}; comparing`)) console.error(line);
+      for (const line of otherTraces(baseline, '--baseline-trace', `the baseline, ${baselineFiles.join(', ')}; comparing`)) console.error(line);
+      for (const line of otherTraces(candidate, '--candidate-trace', `the candidate, ${candidateFiles.join(', ')}; comparing`)) console.error(line);
       console.log(args.json ? JSON.stringify(report, null, 2) : formatComparison(report));
       return;
     }
     const priced = cmd === 'summary' || cmd === 'cost';
     const json = cmd === 'timing' || cmd === 'cost' || cmd === 'links';
-    const usage = `Usage: tracelens ${cmd} <trace.json> [--trace <id>]${json ? ' [--json]' : ''}${priced ? ' [--prices <prices.json>]' : ''}`;
+    const usage = `Usage: tracelens ${cmd} <trace.json> [more-files...] [--trace <id>]${json ? ' [--json]' : ''}${priced ? ' [--prices <prices.json>]' : ''}`;
     const args = parseArgs(rest, ['--trace', ...(priced ? ['--prices'] : [])], json, usage);
-    if (args.files.length !== 1) throw new UsageError(usage);
-    const file = args.files[0]!;
+    if (!args.files.length) throw new UsageError(usage);
+    const file = args.files.join(', ');
     if (cmd === 'timing') {
-      const trace = await loadTrace(file, args.traces.get('--trace'));
+      const trace = await loadTrace(args.files, args.traces.get('--trace'));
       const timing = buildTiming(trace);
       for (const line of otherTraces(trace, '--trace')) console.error(line);
       console.log(args.json ? JSON.stringify(timing, null, 2) : formatTiming(timing));
       if (!args.json) for (const warning of timing.warnings) console.log(yellow(`Warning: ${safe(warning.message)}`));
       return;
     }
-    const trace = await loadTrace(file, args.traces.get('--trace'));
+    const trace = await loadTrace(args.files, args.traces.get('--trace'));
     if (cmd === 'links') {
       const report = buildLinksReport(trace);
       for (const line of otherTraces(trace, '--trace')) console.error(line);
@@ -274,7 +289,7 @@ async function main(): Promise<void> {
     else if (cmd === 'summary') printSummary(file, trace, await loadPrices(args.traces.get('--prices')));
     else printTree(trace);
   } catch (err) {
-    console.error(red(err instanceof Error ? err.message : String(err)));
+    console.error(red(safe(err instanceof Error ? err.message : String(err))));
     process.exitCode = 1;
   }
 }

@@ -1,0 +1,134 @@
+{
+  "input": "Controlled real SDK capture over loopback HTTP and a local Queue; no model calls",
+  "sdkSpanCount": 9,
+  "individual": [
+    {
+      "name": "gateway.jsonl",
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spans": 3,
+      "roots": 1,
+      "warnings": [],
+      "links": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-links",
+        "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+        "sourceFormat": "otlp-json",
+        "linkCount": 0,
+        "reportedDroppedLinks": 0,
+        "skippedInvalidLinks": 0,
+        "notes": [
+          "Targets are resolved by trace ID and span ID in this imported file only.",
+          "Missing targets may be unsampled, unexported or omitted; the cause is not inferred.",
+          "Links do not establish elapsed time, waiting time, execution order or additional cost.",
+          "Dropped counts are exporter-reported; inspect warnings for malformed evidence."
+        ],
+        "spans": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "worker.json",
+      "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+      "spans": 4,
+      "roots": 2,
+      "warnings": [
+        {
+          "message": "Span \"POST /digest\" references a parent (5d5584804632815c) not present in this file — shown as a root.",
+          "spanId": "f4b4020dc4461853",
+          "traceId": "ac05ea3f3fe8070284ab405a66c20c3e"
+        },
+        {
+          "message": "Span \"POST /digest\" references a parent (65e600674ef6a333) not present in this file — shown as a root.",
+          "spanId": "ddf07a56fa1fa7b4",
+          "traceId": "ac05ea3f3fe8070284ab405a66c20c3e"
+        }
+      ],
+      "links": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-links",
+        "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+        "sourceFormat": "otlp-json",
+        "linkCount": 0,
+        "reportedDroppedLinks": 0,
+        "skippedInvalidLinks": 0,
+        "notes": [
+          "Targets are resolved by trace ID and span ID in this imported file only.",
+          "Missing targets may be unsampled, unexported or omitted; the cause is not inferred.",
+          "Links do not establish elapsed time, waiting time, execution order or additional cost.",
+          "Dropped counts are exporter-reported; inspect warnings for malformed evidence."
+        ],
+        "spans": [],
+        "warnings": [
+          {
+            "message": "Span \"POST /digest\" references a parent (5d5584804632815c) not present in this file — shown as a root.",
+            "spanId": "f4b4020dc4461853",
+            "traceId": "ac05ea3f3fe8070284ab405a66c20c3e"
+          },
+          {
+            "message": "Span \"POST /digest\" references a parent (65e600674ef6a333) not present in this file — shown as a root.",
+            "spanId": "ddf07a56fa1fa7b4",
+            "traceId": "ac05ea3f3fe8070284ab405a66c20c3e"
+          }
+        ]
+      }
+    },
+    {
+      "name": "audit.jsonl",
+      "traceId": "925d4acf0134df000d9762d41b179a17",
+      "spans": 2,
+      "roots": 1,
+      "warnings": [],
+      "links": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-links",
+        "traceId": "925d4acf0134df000d9762d41b179a17",
+        "sourceFormat": "otlp-json",
+        "linkCount": 2,
+        "reportedDroppedLinks": 0,
+        "skippedInvalidLinks": 0,
+        "notes": [
+          "Targets are resolved by trace ID and span ID in this imported file only.",
+          "Missing targets may be unsampled, unexported or omitted; the cause is not inferred.",
+          "Links do not establish elapsed time, waiting time, execution order or additional cost.",
+          "Dropped counts are exporter-reported; inspect warnings for malformed evidence."
+        ],
+        "spans": [
+          {
+            "spanId": "4c1dfb2554563cc2",
+            "name": "commit audit batch",
+            "links": [
+              {
+                "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+                "spanId": "f4b4020dc4461853",
+                "attributes": {},
+                "flags": 256,
+                "target": {
+                  "status": "missing-trace"
+                }
+              },
+              {
+                "traceId": "ac05ea3f3fe8070284ab405a66c20c3e",
+                "spanId": "ddf07a56fa1fa7b4",
+                "attributes": {},
+                "flags": 256,
+                "target": {
+                  "status": "missing-trace"
+                }
+              }
+            ],
+            "droppedLinksCount": 0,
+            "invalidLinkCount": 0
+          }
+        ],
+        "warnings": []
+      }
+    }
+  ],
+  "combinedImportAvailable": false,
+  "combined": [],
+  "cli": {
+    "status": 1,
+    "stdout": "",
+    "stderr": "Usage: tracelens links <trace.json> [--trace <id>] [--json]\n"
+  }
+}

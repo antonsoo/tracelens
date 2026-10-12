@@ -1,10 +1,10 @@
 import type { ParsedTrace } from '../core/types.js';
 import { restoreTrace } from './trace-transfer.js';
 import { PARSE_TIMEOUT_MS } from './trace-protocol.js';
-import type { ParseRequest, ParseResponse, TraceSource } from './trace-protocol.js';
+import type { ParseRequest, ParseResponse, RetainedTraceSource, TraceSource } from './trace-protocol.js';
 import TraceWorker from './trace-worker?worker&inline';
 
-export interface LoadedTrace { trace: ParsedTrace; source: string | null }
+export interface LoadedTrace { trace: ParsedTrace; source: RetainedTraceSource | null }
 
 /** Every request owns its worker, including its reads and downloads. */
 export function loadTrace(source: TraceSource, signal: AbortSignal, traceId?: string): Promise<LoadedTrace> {
@@ -40,7 +40,9 @@ export function loadTrace(source: TraceSource, signal: AbortSignal, traceId?: st
         try {
           const reply = event.data;
           if (reply?.ok === false && typeof reply.error === 'string') { finish(new Error(reply.error)); return; }
-          if (reply?.ok !== true || !reply.trace || (reply.source !== null && typeof reply.source !== 'string')) {
+          const validSource = reply?.ok && (reply.source === null || typeof reply.source === 'string'
+            || (Array.isArray(reply.source) && reply.source.every(input => typeof input?.name === 'string' && typeof input?.text === 'string')));
+          if (reply?.ok !== true || !reply.trace || !validSource) {
             throw new Error('Invalid trace parser response. Choose the file or sample again to retry.');
           }
           finish(undefined, { trace: restoreTrace(reply.trace), source: reply.source });

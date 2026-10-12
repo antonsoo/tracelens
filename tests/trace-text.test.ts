@@ -153,7 +153,7 @@ describe('a file with several traces', () => {
   });
 
   it('refuses an ID that names no trace, or more than one, and says what the file holds', () => {
-    expect(() => parseTraceText(text, { traceId: 'ffff0000' })).toThrow(`No trace in this file has the ID "ffff0000". It holds: `);
+    expect(() => parseTraceText(text, { traceId: 'ffff0000' })).toThrow(`No trace in this file has the ID "ffff0000". Available: `);
     expect(() => parseTraceText(text, { traceId: '' })).toThrow('No trace in this file has the ID ""');
     const twins = otlpDoc([
       fakeSpan({ traceId: 'abc1', spanId: 'a', startNs: 0, endNs: 1, name: 'first' }),

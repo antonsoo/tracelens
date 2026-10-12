@@ -1,0 +1,146 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "62fcad38-4d34-4fd3-a8c1-9576f98e005c"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "worker"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.multifile-capture",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "rAXqPz/oBwKEq0BaZsIMPg==",
+              "spanId": "6hmw9lycNSA=",
+              "parentSpanId": "9LQCDcRGGFM=",
+              "name": "sha256",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1791847615294687901",
+              "endTimeUnixNano": "1791847615294717950",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "sha256"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"text\": \"A document with a known digest\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "b5342402514fc8aec4a525c56abaeefb48735a3fb065d72045d1dcfd13fc8305"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "rAXqPz/oBwKEq0BaZsIMPg==",
+              "spanId": "9LQCDcRGGFM=",
+              "parentSpanId": "XVWEgEYygVw=",
+              "name": "POST /digest",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1791847615294644918",
+              "endTimeUnixNano": "1791847615295295730",
+              "status": {},
+              "flags": 768
+            },
+            {
+              "traceId": "rAXqPz/oBwKEq0BaZsIMPg==",
+              "spanId": "la+OHBIP4Hs=",
+              "parentSpanId": "3fB6Vvofp7Q=",
+              "name": "sha256",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1791847615296775832",
+              "endTimeUnixNano": "1791847615296784789",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "sha256"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"text\": \"A second independent document\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "d8e7f57d905d098dd47f69155e6cf2af912d4beeda28468acda046c371c050e4"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "rAXqPz/oBwKEq0BaZsIMPg==",
+              "spanId": "3fB6Vvofp7Q=",
+              "parentSpanId": "ZeYAZ072ozM=",
+              "name": "POST /digest",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1791847615296749330",
+              "endTimeUnixNano": "1791847615297135399",
+              "status": {},
+              "flags": 768
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

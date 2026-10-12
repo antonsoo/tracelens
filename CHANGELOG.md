@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Related trace exports
+
+- Choose or drop up to 32 OTLP/JSON, Collector JSONL or Jaeger files together
+  (25 MB combined in the browser). Previously a multi-file drop silently read
+  only the first file. Parent and link resolution now spans the whole group.
+- Preserve source filenames in span details, span/link downloads and comparison
+  evidence. Select other traces and follow linked spans offline.
+- Accept multiple CLI paths for inspection; repeated `--baseline-file` and
+  `--candidate-file` flags compare groups. Reject overlapping identities and
+  unreadable files without replacing a working browser comparison.
+- [Real local SDK capture and before/after evidence](studies/multifile/README.md).
+  Source update only; no npm release or hosted deployment.
+
 ### Damaged text imports
 
 - Reject malformed UTF-8 and BOM-marked UTF-16 before parsing traces or CLI
