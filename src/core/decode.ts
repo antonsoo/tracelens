@@ -13,5 +13,12 @@ export function decodeText(bytes: Uint8Array): string {
   if (!utf16 && bytes.subarray(0, 64 * 1024).includes(0)) {
     throw new Error("not a text file (a trace is JSON: OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)");
   }
-  return new TextDecoder(utf16 ?? 'utf-8').decode(bytes);
+  const encoding = utf16 ?? 'utf-8';
+  try {
+    // Replacement decoding can make different damaged operation names or
+    // attributes identical and turn them into apparently matching evidence.
+    return new TextDecoder(encoding, { fatal: true }).decode(bytes);
+  } catch {
+    throw new Error(`Invalid ${encoding.toUpperCase()} text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.`);
+  }
 }

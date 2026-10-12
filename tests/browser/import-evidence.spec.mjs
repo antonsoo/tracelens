@@ -130,6 +130,25 @@ test('worker imports retain BOM decoding for UTF-8 and both UTF-16 byte orders',
   }
 });
 
+test('damaged text cannot replace a comparison and a valid Unicode retry succeeds', async ({ page }) => {
+  await page.goto('./?example=compare');
+  await expect(page.getByRole('heading', { name: 'Compare runs', exact: true })).toBeVisible();
+  const original = await page.locator('.tl-compare-metrics').first().innerText();
+  const text = JSON.stringify(doc([span(1, { name: 'operation REPLACE' })]));
+  const brokenUtf8 = Buffer.concat(text.split('REPLACE').flatMap((part, index) =>
+    index ? [Buffer.from([0x80]), Buffer.from(part)] : [Buffer.from(part)]));
+  const brokenUtf16 = Buffer.from(text.replace('REPLACE', '\ud800'), 'utf16le');
+  for (const buffer of [brokenUtf8, Buffer.concat([Buffer.from([0xff, 0xfe]), brokenUtf16]),
+    Buffer.concat([Buffer.from([0xfe, 0xff]), Buffer.from(brokenUtf16).swap16()])]) {
+    await page.getByLabel('Replace candidate trace').setInputFiles({ name: 'damaged.json', mimeType: 'application/json', buffer });
+    await expect(page.getByRole('alert')).toContainText(/Invalid UTF-(8|16LE|16BE) text/);
+    expect(await page.locator('.tl-compare-metrics').first().innerText()).toBe(original);
+  }
+  await page.getByLabel('Replace candidate trace').setInputFiles(file('recovered.json', text.replace('REPLACE', 'café 東京 🔥 �')));
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  await expect(page.locator('.tl-comparison')).toContainText('café 東京 🔥 �');
+});
+
 test('newer trace switches terminate obsolete work and retain picker focus', async ({ page }) => {
   await page.addInitScript(() => {
     window.switches = {};
