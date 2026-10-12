@@ -135,3 +135,18 @@ with remapped trace IDs, over the maximum 32 files. It checks 4,500 spans across
 parser measurement, not a browser latency guarantee. Run
 `node studies/multifile/scale.mjs --output /tmp/tracelens-multifile-scale.json`
 to measure the current environment.
+
+## Clean build and installed CLI
+
+The [verification receipt](verification.json) covers implementation `b39b55c`.
+A fresh archive preserved all 478 tracked files. On Node 24.21.0, installation,
+lint, types, 379 unit checks in each of two locales, 30 CLI checks, 128 browser
+checks and the existing browser workflow passed. The unit runs used two workers;
+no timing threshold was changed. All 33 clean web-build files matched the tested
+checkout, including the 24 assets fetched by each offline workflow.
+
+The local 52,644-byte npm tarball was separately installed and executed on
+Node 20.0.0 and 24.21.0. All 26 compiled files matched the clean build; the SDK
+replay and grouped comparisons succeeded through the installed executable.
+The source/package version remains 0.3.3. This receipt describes a local packed
+artifact, not a new registry release or hosted deployment.
