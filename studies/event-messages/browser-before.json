@@ -1,0 +1,5161 @@
+{
+  "driverSha256": "c50c4627ea316069f133f6f872706a301c7021200e5984328942f10667a6d6b1",
+  "offline": true,
+  "serverStopped": true,
+  "contexts": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "cases": 39,
+      "fonts": [
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "loaded"
+        }
+      ],
+      "errors": [
+        "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+        "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+      ],
+      "failedRequests": [
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+          "reason": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+          "reason": "net::ERR_INTERNET_DISCONNECTED"
+        }
+      ],
+      "externalRequests": [],
+      "lateRequests": [
+        "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+        "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2"
+      ],
+      "csp": [],
+      "assets": [
+        {
+          "path": "index.html",
+          "bytes": 2433,
+          "sha256": "74c7b2d3d0792735d4baaed143c04ef45807b25123df6692947dec04ee83bdc2"
+        },
+        {
+          "path": "assets/index-NuISYe4D.js",
+          "bytes": 120793,
+          "sha256": "d204fb587de8d50d39c8cce25735fd26c86b8b153a4a03b38d8a7461c15a0bba"
+        },
+        {
+          "path": "assets/index-DUGRoTKM.css",
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        {
+          "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      ],
+      "rows": [
+        {
+          "id": "legacy-control",
+          "evidenceSha256": "b946182af2121d286d8632640d4422f628a43aeceef7c5d77a945814a6cf8ba9",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_VnxVKBi2f85Mxa9gATPB6myQ)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "What is the weather in Paris?"
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "tool_call",
+                      "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                      "name": "get_weather",
+                      "arguments": {
+                        "city": "Paris"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          }
+        },
+        {
+          "id": "toolUse-string",
+          "error": "Couldn't load \"toolUse-string.json\": Cannot use 'in' operator to search for 'input' in broken",
+          "axeViolations": 0,
+          "screenshot": "chromium-1440-toolUse-string.png"
+        },
+        {
+          "id": "legacy-input-attribute",
+          "evidenceSha256": "4151e54e942405d0008d8197839eb9da041c9b4a95e4ebb5fb565e39dd7fa139",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655,
+              "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"input attribute takes precedence\"}]}]"
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "input attribute takes precedence"
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          },
+          "axeViolations": 0,
+          "screenshot": "chromium-1440-legacy-input-attribute.png"
+        },
+        {
+          "id": "legacy-output-attribute",
+          "evidenceSha256": "a2b5c9037d6c3a4b358bfb8d8daf6f3e5a08a81c9c2ce699355332895d915bdf",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "legacy-both-attribute",
+          "evidenceSha256": "0761d413b1456c77f2599cdf2b75e2a01533e98d16cb1c189b7593aa01a83845",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-control",
+          "evidenceSha256": "872bdfb9ddcfda023f2155ca45d30cb40a2105051fbe99edb96983ee2e9021f0",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_3bE3z0GW3LsGNGXmDKqGuhdK)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-input-attribute",
+          "evidenceSha256": "2f2d5b4e4bebca284b02ea4e60d87b80ccea12f8a7b84f491914a8e34197026e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-output-attribute",
+          "evidenceSha256": "07baed79684a944303a8def528d00dd8e4bcaa8f04128cfe0d44729f8c776bd9",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-both-attribute",
+          "evidenceSha256": "65c37b124ee8dd2742abc260ec627efd5bf209b77919f2175425c0262266da26",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-number",
+          "error": "Couldn't load \"toolUse-number.json\": Cannot use 'in' operator to search for 'input' in 1"
+        },
+        {
+          "id": "toolUse-true",
+          "error": "Couldn't load \"toolUse-true.json\": Cannot use 'in' operator to search for 'input' in true"
+        },
+        {
+          "id": "toolUse-false",
+          "evidenceSha256": "2c241ad3418acf61c234c3adbe551fabd5979d53817de4b75d9298098a7be684",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-zero",
+          "evidenceSha256": "033e740ea69c075644a7fe573d6bba4f6ea6f8ba0649e4cb76c44bc84c66a0b8",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-null",
+          "evidenceSha256": "96c8df660e2a49269fb1caba6f8c81cbe916cf9dec27ae3ab69291d756727393",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-array",
+          "evidenceSha256": "ab79995905e9676eeecbd818e37a304a1f4df0cf2d108cffbc13e3899da3226b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-empty",
+          "evidenceSha256": "f634caf33d6660afb70458172515c52645490961f457b4d97ba8260acca29a99",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-partial",
+          "evidenceSha256": "ec8f3eea5742ac74b325c166b9a31db81b14a5afe7173119f3e3f31a94624423",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool(#id)\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-string",
+          "error": "Couldn't load \"toolResult-string.json\": Cannot use 'in' operator to search for 'content' in broken"
+        },
+        {
+          "id": "toolResult-number",
+          "error": "Couldn't load \"toolResult-number.json\": Cannot use 'in' operator to search for 'content' in 1"
+        },
+        {
+          "id": "toolResult-true",
+          "error": "Couldn't load \"toolResult-true.json\": Cannot use 'in' operator to search for 'content' in true"
+        },
+        {
+          "id": "toolResult-false",
+          "evidenceSha256": "138e5388bca4df1d11d07904a11b55a001ca8b55f5491d542df1954c25e41124",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-zero",
+          "evidenceSha256": "d5599fe324482888fc18057cfaee40ec7c16003114b947f0957ae8c84e803470",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-null",
+          "evidenceSha256": "fd8cc72d3aa2f5bbe070be69a897b103b0e09e5303b45156a4a8afddab706cf6",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-array",
+          "evidenceSha256": "040472ba70f5b2eb3f557b6afa248598c7d1f713ad28c381c8a907b008b2c94a",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-empty",
+          "evidenceSha256": "8bbede46591a7dab21e7c2354a31b07b37687f2c01b9f0c379110352b575dcec",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-partial",
+          "evidenceSha256": "9955ca38dbd3c5cba0a1ec012baeb08c0c51de7639410d328a8288ba3fcce5ff",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "text-null",
+          "evidenceSha256": "33e729033885f741b81ebee473a4d83f8bc6affa894a85ce866b82cb67b0344d",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-number",
+          "evidenceSha256": "dfaa367eb01e6e14840fe8daa105d38b99d78f96a745e0d61d135b9302f548f2",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-object",
+          "evidenceSha256": "9a40e827206b78207d722fda680462277f57a733f9bffeb19e360786becd4e24",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-array",
+          "evidenceSha256": "dde228ba66c51cc6a8c3da6a33c280fd4921e8a6873beb91404a2df1041d44ce",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "ambiguous-members",
+          "evidenceSha256": "02603ffeaf48abe29586a064ecff0236b202d7c8d18fbd1daa161544779504be",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": {}
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\n{}",
+          "warnings": []
+        },
+        {
+          "id": "mixed-neighbors",
+          "error": "Couldn't load \"mixed-neighbors.json\": Cannot use 'in' operator to search for 'input' in broken"
+        },
+        {
+          "id": "input-damage",
+          "error": "Couldn't load \"input-damage.json\": Cannot use 'in' operator to search for 'content' in true"
+        },
+        {
+          "id": "raw-text-33",
+          "evidenceSha256": "ad2b4c87c15c75910a476675e08448a2aba32a379f11823c5596d6214372b640",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "ordinary text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\nordinary text",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-34",
+          "evidenceSha256": "168a6662a22d089da9a01ac102a7efaa9748dbee4fc693a9cd90fa8976678f3f",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[{\"image\":{\"format\":\"png\"}}]"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[{\"image\":{\"format\":\"png\"}}]",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-35",
+          "evidenceSha256": "a9b3707f91055f114bf47e9c77a2de512092fea59e2f3cbf25908d3a8ddd9a2b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[not JSON"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[not JSON",
+          "warnings": []
+        },
+        {
+          "id": "json-whitespace",
+          "evidenceSha256": "8d8efa2e2f40dc3d7f1e1e70bf0b27e50e2a8c8776a10f6e9c22372e129cead3",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": " \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t",
+          "warnings": []
+        },
+        {
+          "id": "null-tool-input",
+          "evidenceSha256": "7359f0a946b86d316b3f8a25f315e9f051fefdd8464a3ade477e9b4c333fb16e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": null
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\nnull",
+          "warnings": []
+        },
+        {
+          "id": "valid-tool-result",
+          "evidenceSha256": "bbd72fda1ddaa6b4236846e391328617200d7c2027246428991aba1bc77806b7",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id",
+                  "response": [
+                    {
+                      "text": "72 F"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\n[\n  {\n    \"text\": \"72 F\"\n  }\n]",
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "cases": 39,
+      "fonts": [
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "loaded"
+        }
+      ],
+      "errors": [
+        "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+        "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+      ],
+      "failedRequests": [
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+          "reason": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+          "reason": "net::ERR_INTERNET_DISCONNECTED"
+        }
+      ],
+      "externalRequests": [],
+      "lateRequests": [
+        "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+        "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2"
+      ],
+      "csp": [],
+      "assets": [
+        {
+          "path": "index.html",
+          "bytes": 2433,
+          "sha256": "74c7b2d3d0792735d4baaed143c04ef45807b25123df6692947dec04ee83bdc2"
+        },
+        {
+          "path": "assets/index-NuISYe4D.js",
+          "bytes": 120793,
+          "sha256": "d204fb587de8d50d39c8cce25735fd26c86b8b153a4a03b38d8a7461c15a0bba"
+        },
+        {
+          "path": "assets/index-DUGRoTKM.css",
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        {
+          "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      ],
+      "rows": [
+        {
+          "id": "legacy-control",
+          "evidenceSha256": "b946182af2121d286d8632640d4422f628a43aeceef7c5d77a945814a6cf8ba9",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_VnxVKBi2f85Mxa9gATPB6myQ)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "What is the weather in Paris?"
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "tool_call",
+                      "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                      "name": "get_weather",
+                      "arguments": {
+                        "city": "Paris"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          }
+        },
+        {
+          "id": "toolUse-string",
+          "error": "Couldn't load \"toolUse-string.json\": Cannot use 'in' operator to search for 'input' in broken",
+          "axeViolations": 0,
+          "screenshot": "chromium-375-toolUse-string.png"
+        },
+        {
+          "id": "legacy-input-attribute",
+          "evidenceSha256": "4151e54e942405d0008d8197839eb9da041c9b4a95e4ebb5fb565e39dd7fa139",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655,
+              "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"input attribute takes precedence\"}]}]"
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "input attribute takes precedence"
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          },
+          "axeViolations": 0,
+          "screenshot": "chromium-375-legacy-input-attribute.png"
+        },
+        {
+          "id": "legacy-output-attribute",
+          "evidenceSha256": "a2b5c9037d6c3a4b358bfb8d8daf6f3e5a08a81c9c2ce699355332895d915bdf",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "legacy-both-attribute",
+          "evidenceSha256": "0761d413b1456c77f2599cdf2b75e2a01533e98d16cb1c189b7593aa01a83845",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-control",
+          "evidenceSha256": "872bdfb9ddcfda023f2155ca45d30cb40a2105051fbe99edb96983ee2e9021f0",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_3bE3z0GW3LsGNGXmDKqGuhdK)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-input-attribute",
+          "evidenceSha256": "2f2d5b4e4bebca284b02ea4e60d87b80ccea12f8a7b84f491914a8e34197026e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-output-attribute",
+          "evidenceSha256": "07baed79684a944303a8def528d00dd8e4bcaa8f04128cfe0d44729f8c776bd9",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-both-attribute",
+          "evidenceSha256": "65c37b124ee8dd2742abc260ec627efd5bf209b77919f2175425c0262266da26",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-number",
+          "error": "Couldn't load \"toolUse-number.json\": Cannot use 'in' operator to search for 'input' in 1"
+        },
+        {
+          "id": "toolUse-true",
+          "error": "Couldn't load \"toolUse-true.json\": Cannot use 'in' operator to search for 'input' in true"
+        },
+        {
+          "id": "toolUse-false",
+          "evidenceSha256": "2c241ad3418acf61c234c3adbe551fabd5979d53817de4b75d9298098a7be684",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-zero",
+          "evidenceSha256": "033e740ea69c075644a7fe573d6bba4f6ea6f8ba0649e4cb76c44bc84c66a0b8",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-null",
+          "evidenceSha256": "96c8df660e2a49269fb1caba6f8c81cbe916cf9dec27ae3ab69291d756727393",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-array",
+          "evidenceSha256": "ab79995905e9676eeecbd818e37a304a1f4df0cf2d108cffbc13e3899da3226b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-empty",
+          "evidenceSha256": "f634caf33d6660afb70458172515c52645490961f457b4d97ba8260acca29a99",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-partial",
+          "evidenceSha256": "ec8f3eea5742ac74b325c166b9a31db81b14a5afe7173119f3e3f31a94624423",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool(#id)\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-string",
+          "error": "Couldn't load \"toolResult-string.json\": Cannot use 'in' operator to search for 'content' in broken"
+        },
+        {
+          "id": "toolResult-number",
+          "error": "Couldn't load \"toolResult-number.json\": Cannot use 'in' operator to search for 'content' in 1"
+        },
+        {
+          "id": "toolResult-true",
+          "error": "Couldn't load \"toolResult-true.json\": Cannot use 'in' operator to search for 'content' in true"
+        },
+        {
+          "id": "toolResult-false",
+          "evidenceSha256": "138e5388bca4df1d11d07904a11b55a001ca8b55f5491d542df1954c25e41124",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-zero",
+          "evidenceSha256": "d5599fe324482888fc18057cfaee40ec7c16003114b947f0957ae8c84e803470",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-null",
+          "evidenceSha256": "fd8cc72d3aa2f5bbe070be69a897b103b0e09e5303b45156a4a8afddab706cf6",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-array",
+          "evidenceSha256": "040472ba70f5b2eb3f557b6afa248598c7d1f713ad28c381c8a907b008b2c94a",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-empty",
+          "evidenceSha256": "8bbede46591a7dab21e7c2354a31b07b37687f2c01b9f0c379110352b575dcec",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-partial",
+          "evidenceSha256": "9955ca38dbd3c5cba0a1ec012baeb08c0c51de7639410d328a8288ba3fcce5ff",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "text-null",
+          "evidenceSha256": "33e729033885f741b81ebee473a4d83f8bc6affa894a85ce866b82cb67b0344d",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-number",
+          "evidenceSha256": "dfaa367eb01e6e14840fe8daa105d38b99d78f96a745e0d61d135b9302f548f2",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-object",
+          "evidenceSha256": "9a40e827206b78207d722fda680462277f57a733f9bffeb19e360786becd4e24",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-array",
+          "evidenceSha256": "dde228ba66c51cc6a8c3da6a33c280fd4921e8a6873beb91404a2df1041d44ce",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "ambiguous-members",
+          "evidenceSha256": "02603ffeaf48abe29586a064ecff0236b202d7c8d18fbd1daa161544779504be",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": {}
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\n{}",
+          "warnings": []
+        },
+        {
+          "id": "mixed-neighbors",
+          "error": "Couldn't load \"mixed-neighbors.json\": Cannot use 'in' operator to search for 'input' in broken"
+        },
+        {
+          "id": "input-damage",
+          "error": "Couldn't load \"input-damage.json\": Cannot use 'in' operator to search for 'content' in true"
+        },
+        {
+          "id": "raw-text-33",
+          "evidenceSha256": "ad2b4c87c15c75910a476675e08448a2aba32a379f11823c5596d6214372b640",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "ordinary text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\nordinary text",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-34",
+          "evidenceSha256": "168a6662a22d089da9a01ac102a7efaa9748dbee4fc693a9cd90fa8976678f3f",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[{\"image\":{\"format\":\"png\"}}]"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[{\"image\":{\"format\":\"png\"}}]",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-35",
+          "evidenceSha256": "a9b3707f91055f114bf47e9c77a2de512092fea59e2f3cbf25908d3a8ddd9a2b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[not JSON"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[not JSON",
+          "warnings": []
+        },
+        {
+          "id": "json-whitespace",
+          "evidenceSha256": "8d8efa2e2f40dc3d7f1e1e70bf0b27e50e2a8c8776a10f6e9c22372e129cead3",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": " \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t",
+          "warnings": []
+        },
+        {
+          "id": "null-tool-input",
+          "evidenceSha256": "7359f0a946b86d316b3f8a25f315e9f051fefdd8464a3ade477e9b4c333fb16e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": null
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\nnull",
+          "warnings": []
+        },
+        {
+          "id": "valid-tool-result",
+          "evidenceSha256": "bbd72fda1ddaa6b4236846e391328617200d7c2027246428991aba1bc77806b7",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id",
+                  "response": [
+                    {
+                      "text": "72 F"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\n[\n  {\n    \"text\": \"72 F\"\n  }\n]",
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "cases": 39,
+      "fonts": [
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "loaded"
+        }
+      ],
+      "errors": [
+        "[JavaScript Error: \"downloadable font: download failed (font-family: \"IBM Plex Mono\" style:normal weight:400 width:100 src index:0): status=2152398864 source: http://127.0.0.1:57718/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2\"]",
+        "[JavaScript Error: \"downloadable font: download failed (font-family: \"IBM Plex Mono\" style:normal weight:500 width:100 src index:0): status=2152398864 source: http://127.0.0.1:57718/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2\"]"
+      ],
+      "failedRequests": [
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+          "reason": "NS_ERROR_OFFLINE"
+        },
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+          "reason": "NS_ERROR_OFFLINE"
+        }
+      ],
+      "externalRequests": [],
+      "lateRequests": [
+        "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+        "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+        "/tracelens/assets/ibm-plex-sans-latin-IvpUvPa2.woff2"
+      ],
+      "csp": [],
+      "assets": [
+        {
+          "path": "index.html",
+          "bytes": 2433,
+          "sha256": "74c7b2d3d0792735d4baaed143c04ef45807b25123df6692947dec04ee83bdc2"
+        },
+        {
+          "path": "assets/index-NuISYe4D.js",
+          "bytes": 120793,
+          "sha256": "d204fb587de8d50d39c8cce25735fd26c86b8b153a4a03b38d8a7461c15a0bba"
+        },
+        {
+          "path": "assets/index-DUGRoTKM.css",
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        {
+          "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      ],
+      "rows": [
+        {
+          "id": "legacy-control",
+          "evidenceSha256": "b946182af2121d286d8632640d4422f628a43aeceef7c5d77a945814a6cf8ba9",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_VnxVKBi2f85Mxa9gATPB6myQ)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "What is the weather in Paris?"
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "tool_call",
+                      "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                      "name": "get_weather",
+                      "arguments": {
+                        "city": "Paris"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          }
+        },
+        {
+          "id": "toolUse-string",
+          "error": "Couldn't load \"toolUse-string.json\": cannot use 'in' operator to search for \"input\" in \"broken\"",
+          "axeViolations": 0,
+          "screenshot": "firefox-1440-toolUse-string.png"
+        },
+        {
+          "id": "legacy-input-attribute",
+          "evidenceSha256": "4151e54e942405d0008d8197839eb9da041c9b4a95e4ebb5fb565e39dd7fa139",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655,
+              "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"input attribute takes precedence\"}]}]"
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "input attribute takes precedence"
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          },
+          "axeViolations": 0,
+          "screenshot": "firefox-1440-legacy-input-attribute.png"
+        },
+        {
+          "id": "legacy-output-attribute",
+          "evidenceSha256": "a2b5c9037d6c3a4b358bfb8d8daf6f3e5a08a81c9c2ce699355332895d915bdf",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "legacy-both-attribute",
+          "evidenceSha256": "0761d413b1456c77f2599cdf2b75e2a01533e98d16cb1c189b7593aa01a83845",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-control",
+          "evidenceSha256": "872bdfb9ddcfda023f2155ca45d30cb40a2105051fbe99edb96983ee2e9021f0",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_3bE3z0GW3LsGNGXmDKqGuhdK)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-input-attribute",
+          "evidenceSha256": "2f2d5b4e4bebca284b02ea4e60d87b80ccea12f8a7b84f491914a8e34197026e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-output-attribute",
+          "evidenceSha256": "07baed79684a944303a8def528d00dd8e4bcaa8f04128cfe0d44729f8c776bd9",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-both-attribute",
+          "evidenceSha256": "65c37b124ee8dd2742abc260ec627efd5bf209b77919f2175425c0262266da26",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-number",
+          "error": "Couldn't load \"toolUse-number.json\": right-hand side of 'in' should be an object, got number"
+        },
+        {
+          "id": "toolUse-true",
+          "error": "Couldn't load \"toolUse-true.json\": right-hand side of 'in' should be an object, got boolean"
+        },
+        {
+          "id": "toolUse-false",
+          "evidenceSha256": "2c241ad3418acf61c234c3adbe551fabd5979d53817de4b75d9298098a7be684",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-zero",
+          "evidenceSha256": "033e740ea69c075644a7fe573d6bba4f6ea6f8ba0649e4cb76c44bc84c66a0b8",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-null",
+          "evidenceSha256": "96c8df660e2a49269fb1caba6f8c81cbe916cf9dec27ae3ab69291d756727393",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-array",
+          "evidenceSha256": "ab79995905e9676eeecbd818e37a304a1f4df0cf2d108cffbc13e3899da3226b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-empty",
+          "evidenceSha256": "f634caf33d6660afb70458172515c52645490961f457b4d97ba8260acca29a99",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-partial",
+          "evidenceSha256": "ec8f3eea5742ac74b325c166b9a31db81b14a5afe7173119f3e3f31a94624423",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool(#id)\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-string",
+          "error": "Couldn't load \"toolResult-string.json\": cannot use 'in' operator to search for \"content\" in \"broken\""
+        },
+        {
+          "id": "toolResult-number",
+          "error": "Couldn't load \"toolResult-number.json\": right-hand side of 'in' should be an object, got number"
+        },
+        {
+          "id": "toolResult-true",
+          "error": "Couldn't load \"toolResult-true.json\": right-hand side of 'in' should be an object, got boolean"
+        },
+        {
+          "id": "toolResult-false",
+          "evidenceSha256": "138e5388bca4df1d11d07904a11b55a001ca8b55f5491d542df1954c25e41124",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-zero",
+          "evidenceSha256": "d5599fe324482888fc18057cfaee40ec7c16003114b947f0957ae8c84e803470",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-null",
+          "evidenceSha256": "fd8cc72d3aa2f5bbe070be69a897b103b0e09e5303b45156a4a8afddab706cf6",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-array",
+          "evidenceSha256": "040472ba70f5b2eb3f557b6afa248598c7d1f713ad28c381c8a907b008b2c94a",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-empty",
+          "evidenceSha256": "8bbede46591a7dab21e7c2354a31b07b37687f2c01b9f0c379110352b575dcec",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-partial",
+          "evidenceSha256": "9955ca38dbd3c5cba0a1ec012baeb08c0c51de7639410d328a8288ba3fcce5ff",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "text-null",
+          "evidenceSha256": "33e729033885f741b81ebee473a4d83f8bc6affa894a85ce866b82cb67b0344d",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-number",
+          "evidenceSha256": "dfaa367eb01e6e14840fe8daa105d38b99d78f96a745e0d61d135b9302f548f2",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-object",
+          "evidenceSha256": "9a40e827206b78207d722fda680462277f57a733f9bffeb19e360786becd4e24",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-array",
+          "evidenceSha256": "dde228ba66c51cc6a8c3da6a33c280fd4921e8a6873beb91404a2df1041d44ce",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "ambiguous-members",
+          "evidenceSha256": "02603ffeaf48abe29586a064ecff0236b202d7c8d18fbd1daa161544779504be",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": {}
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\n{}",
+          "warnings": []
+        },
+        {
+          "id": "mixed-neighbors",
+          "error": "Couldn't load \"mixed-neighbors.json\": cannot use 'in' operator to search for \"input\" in \"broken\""
+        },
+        {
+          "id": "input-damage",
+          "error": "Couldn't load \"input-damage.json\": right-hand side of 'in' should be an object, got boolean"
+        },
+        {
+          "id": "raw-text-33",
+          "evidenceSha256": "ad2b4c87c15c75910a476675e08448a2aba32a379f11823c5596d6214372b640",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "ordinary text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\nordinary text",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-34",
+          "evidenceSha256": "168a6662a22d089da9a01ac102a7efaa9748dbee4fc693a9cd90fa8976678f3f",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[{\"image\":{\"format\":\"png\"}}]"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[{\"image\":{\"format\":\"png\"}}]",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-35",
+          "evidenceSha256": "a9b3707f91055f114bf47e9c77a2de512092fea59e2f3cbf25908d3a8ddd9a2b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[not JSON"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[not JSON",
+          "warnings": []
+        },
+        {
+          "id": "json-whitespace",
+          "evidenceSha256": "8d8efa2e2f40dc3d7f1e1e70bf0b27e50e2a8c8776a10f6e9c22372e129cead3",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": " \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t",
+          "warnings": []
+        },
+        {
+          "id": "null-tool-input",
+          "evidenceSha256": "7359f0a946b86d316b3f8a25f315e9f051fefdd8464a3ade477e9b4c333fb16e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": null
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\nnull",
+          "warnings": []
+        },
+        {
+          "id": "valid-tool-result",
+          "evidenceSha256": "bbd72fda1ddaa6b4236846e391328617200d7c2027246428991aba1bc77806b7",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id",
+                  "response": [
+                    {
+                      "text": "72 F"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\n[\n  {\n    \"text\": \"72 F\"\n  }\n]",
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "cases": 39,
+      "fonts": [
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "400",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "500",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "600",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans",
+          "weight": "700",
+          "status": "loaded"
+        }
+      ],
+      "errors": [
+        "[JavaScript Error: \"downloadable font: download failed (font-family: \"IBM Plex Mono\" style:normal weight:400 width:100 src index:0): status=2152398864 source: http://127.0.0.1:58258/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2\"]",
+        "[JavaScript Error: \"downloadable font: download failed (font-family: \"IBM Plex Mono\" style:normal weight:500 width:100 src index:0): status=2152398864 source: http://127.0.0.1:58258/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2\"]"
+      ],
+      "failedRequests": [
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+          "reason": "NS_ERROR_OFFLINE"
+        },
+        {
+          "url": "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+          "reason": "NS_ERROR_OFFLINE"
+        }
+      ],
+      "externalRequests": [],
+      "lateRequests": [
+        "/tracelens/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+        "/tracelens/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+        "/tracelens/assets/ibm-plex-sans-latin-IvpUvPa2.woff2"
+      ],
+      "csp": [],
+      "assets": [
+        {
+          "path": "index.html",
+          "bytes": 2433,
+          "sha256": "74c7b2d3d0792735d4baaed143c04ef45807b25123df6692947dec04ee83bdc2"
+        },
+        {
+          "path": "assets/index-DUGRoTKM.css",
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        {
+          "path": "assets/index-NuISYe4D.js",
+          "bytes": 120793,
+          "sha256": "d204fb587de8d50d39c8cce25735fd26c86b8b153a4a03b38d8a7461c15a0bba"
+        },
+        {
+          "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      ],
+      "rows": [
+        {
+          "id": "legacy-control",
+          "evidenceSha256": "b946182af2121d286d8632640d4422f628a43aeceef7c5d77a945814a6cf8ba9",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_VnxVKBi2f85Mxa9gATPB6myQ)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "What is the weather in Paris?"
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "tool_call",
+                      "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                      "name": "get_weather",
+                      "arguments": {
+                        "city": "Paris"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          }
+        },
+        {
+          "id": "toolUse-string",
+          "error": "Couldn't load \"toolUse-string.json\": cannot use 'in' operator to search for \"input\" in \"broken\"",
+          "axeViolations": 0,
+          "screenshot": "firefox-375-toolUse-string.png"
+        },
+        {
+          "id": "legacy-input-attribute",
+          "evidenceSha256": "4151e54e942405d0008d8197839eb9da041c9b4a95e4ebb5fb565e39dd7fa139",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": [],
+          "downloadedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "e4f397606741f3b7a6e7a8c56a677c07",
+            "spanId": "a28c61ccd1889071",
+            "parentSpanId": "4b9a3ca1ad3b8316",
+            "name": "chat",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1791454132434123430",
+            "endTimeUnixNano": "1791454133097641173",
+            "durationNs": "663517743",
+            "status": {
+              "code": "OK"
+            },
+            "attributes": {
+              "gen_ai.event.start_time": "2026-10-08T10:08:52.434124+00:00",
+              "gen_ai.operation.name": "chat",
+              "gen_ai.system": "strands-agents",
+              "gen_ai.request.model": "gpt-4o-mini",
+              "gen_ai.event.end_time": "2026-10-08T10:08:53.097595+00:00",
+              "gen_ai.usage.prompt_tokens": 71,
+              "gen_ai.usage.input_tokens": 71,
+              "gen_ai.usage.completion_tokens": 14,
+              "gen_ai.usage.output_tokens": 14,
+              "gen_ai.usage.total_tokens": 85,
+              "gen_ai.server.time_to_first_token": 655,
+              "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"input attribute takes precedence\"}]}]"
+            },
+            "events": [
+              {
+                "name": "gen_ai.user.message",
+                "timeUnixNano": "1791454132434149051",
+                "attributes": {
+                  "content": "[{\"text\": \"What is the weather in Paris?\"}]"
+                }
+              },
+              {
+                "name": "gen_ai.choice",
+                "timeUnixNano": "1791454133097582034",
+                "attributes": {
+                  "finish_reason": "tool_use",
+                  "message": "[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]"
+                }
+              }
+            ],
+            "links": [],
+            "resourceAttributes": {
+              "telemetry.sdk.language": "python",
+              "telemetry.sdk.name": "opentelemetry",
+              "telemetry.sdk.version": "1.45.1",
+              "service.instance.id": "4c78b363-7a6a-4af5-81af-a9c07c03ab22",
+              "service.name": "unknown_service:python"
+            },
+            "scopeName": "strands-test",
+            "agentKind": "llm",
+            "convention": "otel-genai",
+            "depth": 2,
+            "children": [],
+            "genai": {
+              "operationName": "chat",
+              "provider": "strands-agents",
+              "requestModel": "gpt-4o-mini",
+              "usage": {
+                "inputTokens": 71,
+                "outputTokens": 14
+              },
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "input attribute takes precedence"
+                    }
+                  ]
+                }
+              ],
+              "finishReasons": [
+                "tool_use"
+              ]
+            }
+          },
+          "axeViolations": 0,
+          "screenshot": "firefox-375-legacy-input-attribute.png"
+        },
+        {
+          "id": "legacy-output-attribute",
+          "evidenceSha256": "a2b5c9037d6c3a4b358bfb8d8daf6f3e5a08a81c9c2ce699355332895d915bdf",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "legacy-both-attribute",
+          "evidenceSha256": "0761d413b1456c77f2599cdf2b75e2a01533e98d16cb1c189b7593aa01a83845",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-control",
+          "evidenceSha256": "872bdfb9ddcfda023f2155ca45d30cb40a2105051fbe99edb96983ee2e9021f0",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Paris"
+                  }
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ get_weather(#call_3bE3z0GW3LsGNGXmDKqGuhdK)\n{\n  \"city\": \"Paris\"\n}",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-input-attribute",
+          "evidenceSha256": "2f2d5b4e4bebca284b02ea4e60d87b80ccea12f8a7b84f491914a8e34197026e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-output-attribute",
+          "evidenceSha256": "07baed79684a944303a8def528d00dd8e4bcaa8f04128cfe0d44729f8c776bd9",
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Output\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "operation-details-both-attribute",
+          "evidenceSha256": "65c37b124ee8dd2742abc260ec627efd5bf209b77919f2175425c0262266da26",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "input attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "output attribute takes precedence"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\ninput attribute takes precedence\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\noutput attribute takes precedence",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-number",
+          "error": "Couldn't load \"toolUse-number.json\": right-hand side of 'in' should be an object, got number"
+        },
+        {
+          "id": "toolUse-true",
+          "error": "Couldn't load \"toolUse-true.json\": right-hand side of 'in' should be an object, got boolean"
+        },
+        {
+          "id": "toolUse-false",
+          "evidenceSha256": "2c241ad3418acf61c234c3adbe551fabd5979d53817de4b75d9298098a7be684",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-zero",
+          "evidenceSha256": "033e740ea69c075644a7fe573d6bba4f6ea6f8ba0649e4cb76c44bc84c66a0b8",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-null",
+          "evidenceSha256": "96c8df660e2a49269fb1caba6f8c81cbe916cf9dec27ae3ab69291d756727393",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-array",
+          "evidenceSha256": "ab79995905e9676eeecbd818e37a304a1f4df0cf2d108cffbc13e3899da3226b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-empty",
+          "evidenceSha256": "f634caf33d6660afb70458172515c52645490961f457b4d97ba8260acca29a99",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool()\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolUse-partial",
+          "evidenceSha256": "ec8f3eea5742ac74b325c166b9a31db81b14a5afe7173119f3e3f31a94624423",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ tool(#id)\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-string",
+          "error": "Couldn't load \"toolResult-string.json\": cannot use 'in' operator to search for \"content\" in \"broken\""
+        },
+        {
+          "id": "toolResult-number",
+          "error": "Couldn't load \"toolResult-number.json\": right-hand side of 'in' should be an object, got number"
+        },
+        {
+          "id": "toolResult-true",
+          "error": "Couldn't load \"toolResult-true.json\": right-hand side of 'in' should be an object, got boolean"
+        },
+        {
+          "id": "toolResult-false",
+          "evidenceSha256": "138e5388bca4df1d11d07904a11b55a001ca8b55f5491d542df1954c25e41124",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-zero",
+          "evidenceSha256": "d5599fe324482888fc18057cfaee40ec7c16003114b947f0957ae8c84e803470",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-null",
+          "evidenceSha256": "fd8cc72d3aa2f5bbe070be69a897b103b0e09e5303b45156a4a8afddab706cf6",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-array",
+          "evidenceSha256": "040472ba70f5b2eb3f557b6afa248598c7d1f713ad28c381c8a907b008b2c94a",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-empty",
+          "evidenceSha256": "8bbede46591a7dab21e7c2354a31b07b37687f2c01b9f0c379110352b575dcec",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← \nundefined",
+          "warnings": []
+        },
+        {
+          "id": "toolResult-partial",
+          "evidenceSha256": "9955ca38dbd3c5cba0a1ec012baeb08c0c51de7639410d328a8288ba3fcce5ff",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\nundefined",
+          "warnings": []
+        },
+        {
+          "id": "text-null",
+          "evidenceSha256": "33e729033885f741b81ebee473a4d83f8bc6affa894a85ce866b82cb67b0344d",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-number",
+          "evidenceSha256": "dfaa367eb01e6e14840fe8daa105d38b99d78f96a745e0d61d135b9302f548f2",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-object",
+          "evidenceSha256": "9a40e827206b78207d722fda680462277f57a733f9bffeb19e360786becd4e24",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "text-array",
+          "evidenceSha256": "dde228ba66c51cc6a8c3da6a33c280fd4921e8a6873beb91404a2df1041d44ce",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n(empty)",
+          "warnings": []
+        },
+        {
+          "id": "ambiguous-members",
+          "evidenceSha256": "02603ffeaf48abe29586a064ecff0236b202d7c8d18fbd1daa161544779504be",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": {}
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\n{}",
+          "warnings": []
+        },
+        {
+          "id": "mixed-neighbors",
+          "error": "Couldn't load \"mixed-neighbors.json\": cannot use 'in' operator to search for \"input\" in \"broken\""
+        },
+        {
+          "id": "input-damage",
+          "error": "Couldn't load \"input-damage.json\": right-hand side of 'in' should be an object, got boolean"
+        },
+        {
+          "id": "raw-text-33",
+          "evidenceSha256": "ad2b4c87c15c75910a476675e08448a2aba32a379f11823c5596d6214372b640",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "ordinary text"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\nordinary text",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-34",
+          "evidenceSha256": "168a6662a22d089da9a01ac102a7efaa9748dbee4fc693a9cd90fa8976678f3f",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[{\"image\":{\"format\":\"png\"}}]"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[{\"image\":{\"format\":\"png\"}}]",
+          "warnings": []
+        },
+        {
+          "id": "raw-text-35",
+          "evidenceSha256": "a9b3707f91055f114bf47e9c77a2de512092fea59e2f3cbf25908d3a8ddd9a2b",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "[not JSON"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n[not JSON",
+          "warnings": []
+        },
+        {
+          "id": "json-whitespace",
+          "evidenceSha256": "8d8efa2e2f40dc3d7f1e1e70bf0b27e50e2a8c8776a10f6e9c22372e129cead3",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": " \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t"
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t",
+          "warnings": []
+        },
+        {
+          "id": "null-tool-input",
+          "evidenceSha256": "7359f0a946b86d316b3f8a25f315e9f051fefdd8464a3ade477e9b4c333fb16e",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call",
+                  "id": "id",
+                  "name": "weather",
+                  "arguments": null
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n→ weather(#id)\nnull",
+          "warnings": []
+        },
+        {
+          "id": "valid-tool-result",
+          "evidenceSha256": "bbd72fda1ddaa6b4236846e391328617200d7c2027246428991aba1bc77806b7",
+          "input": [
+            {
+              "role": "user",
+              "parts": [
+                {
+                  "type": "text",
+                  "content": "What is the weather in Paris?"
+                }
+              ]
+            }
+          ],
+          "output": [
+            {
+              "role": "assistant",
+              "parts": [
+                {
+                  "type": "tool_call_response",
+                  "id": "id",
+                  "response": [
+                    {
+                      "text": "72 F"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "messagesText": "Input\nInput messages: 1–1 of 1\nUSER\nWhat is the weather in Paris?\nOutput\nOutput messages: 1–1 of 1\nASSISTANT\n← #id\n[\n  {\n    \"text\": \"72 F\"\n  }\n]",
+          "warnings": []
+        }
+      ]
+    }
+  ]
+}

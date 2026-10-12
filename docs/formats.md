@@ -207,16 +207,37 @@ and instead emits one **span event** per turn: `gen_ai.system.message`,
 `gen_ai.user.message`, `gen_ai.assistant.message`, `gen_ai.tool.message`
 (each carrying a `content` attribute), and `gen_ai.choice` (carrying
 `message`). tracelens falls back to reconstructing a message list from
-these events when no `gen_ai.input.messages`/`.output.messages` attribute is
-present — see `extractLegacyEventMessages()` in `src/core/normalize.ts`.
+these events independently for each missing input/output direction. A readable
+input attribute does not suppress an output event, or vice versa. Readable
+attribute messages take precedence over events in the same direction; they
+are not concatenated. See `extractEventMessages()` in `src/core/normalize.ts`.
 
 **Converse-style content blocks.** Strands writes the content of those legacy
 events as a JSON list of blocks (`[{"text": ...}]`,
 `[{"toolUse": {"toolUseId", "name", "input"}}]`,
-`[{"toolResult": {...}}]`). When every element of the list is such a block,
-tracelens shows text parts, tool calls and tool results instead of the raw
-JSON; any other content is shown as text, as before. The `finish_reason` of a
-`gen_ai.choice` event is read as the finish reason.
+`[{"toolResult": {...}}]`). When every element is a supported, readable block,
+tracelens shows text parts, tool calls and tool results instead of the raw JSON.
+Leading JSON whitespace is accepted. A text block needs string `text`; a tool
+call needs an object with nonempty string `toolUseId` and `name` plus an `input`
+value (including explicit null); a result needs an object with nonempty string
+`toolUseId` and array `content`. These structural checks follow the
+[Bedrock content block](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ContentBlock.html),
+[tool use](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ToolUseBlock.html)
+and [tool result](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ToolResultBlock.html)
+shapes; this is not complete API schema validation.
+
+If a recognized block fails these checks or has multiple supported content
+members, the **entire original message string** stays visible as text, with a
+warning identifying its trace, span, event index and first malformed block
+index. Event indices address the retained, decoded event list in span downloads;
+malformed event records skipped earlier can change their offsets from the input
+file. Adjacent readable blocks remain in that string. Unknown block formats
+and plain text stay as text without a structural warning. Raw event attributes
+remain in span downloads either way. A JSON string containing content-block
+shapes is interpreted heuristically; the trace does not prove whether it was
+intended as literal prose. The `finish_reason` of a `gen_ai.choice` event is
+read independently. The existing payload-depth limit still rejects excessive
+nesting. [Reproduction, offline imports and limits](../studies/event-messages/README.md).
 
 **Dialects that are not the convention.** Real instrumentation libraries write
 more than the convention names. What tracelens reads beyond it, and where each

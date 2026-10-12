@@ -1,0 +1,2874 @@
+{
+  "node": "v24.21.0",
+  "driverSha256": "95ca164b89ed694353279b19106026f04660368a1ae2d6f0fdf75d2a6f433ebc",
+  "casesSha256": "c75caa74374a631027bcbefdf17c466a620391e66e97d58d1e74c72f0a954125",
+  "cases": 39,
+  "matches": 9,
+  "rejected": 8,
+  "rows": [
+    {
+      "id": "legacy-control",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "e6f01b9ee3c1f02f5b994c3b8cfaf9c71c94fd27c16f536c658c912f2a9b329e",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "feb1258e0e585c6cbf985f26914fa89c573aac32d1dd3c7ad0f07fc31bcb4f85",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "ceca072bbd83c86f47ae2663f4eb5ea0eb2d9bc35940f79488091aa5d648c610",
+          "stdout": "legacy-control.json\ntrace e4f397606741f3b7a6e7a8c56a677c07  ·  6 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  731.0 ms \nllm               699.6 ms \ntool              2.6 ms   \nother             28.8 ms  \n\nTokens & cost by model\n──────────────────────\nmodel        provider        calls  input  output  token cost             \n───────────  ──────────────  ─────  ─────  ──────  ───────────────────────\ngpt-4o-mini  strands-agents  2      175    26      — subtotal (2 unpriced)\n\ntoken estimate: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nUse tracelens cost for rates, assumptions and per-call evidence; 1 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n731.0 ms elapsed = 731.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          699.6 ms    \nTool alone         2.6 ms      \nOther alone        28.8 ms     \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  invoke_agent Strands Agents 731.0 ms\n    execute_event_loop_cycle 690.0 ms\n      chat 663.5 ms\n"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a",
+          "stdout": "invoke_agent Strands Agents 731.0 ms\n  execute_event_loop_cycle 690.0 ms\n    chat 663.5 ms\n    execute_tool get_weather (get_weather) 2.6 ms\n  execute_event_loop_cycle 38.2 ms\n    chat 36.1 ms\n"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4",
+          "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-cost-evidence\",\n  \"traceId\": \"e4f397606741f3b7a6e7a8c56a677c07\",\n  \"priceTable\": [\n    {\n      \"id\": \"claude-fable-5-1\",\n      \"matchModel\": \"claude-fable-5-1\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 0.25,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-fable-5\",\n      \"matchModel\": \"claude-fable-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5-5\",\n      \"matchModel\": \"claude-opus-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 4,\n      \"outputPerMTok\": 20,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5\",\n      \"matchModel\": \"claude-opus-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-8\",\n      \"matchModel\": \"claude-opus-4-8\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-7\",\n      \"matchModel\": \"claude-opus-4-7\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-6\",\n      \"matchModel\": \"claude-opus-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5-5\",\n      \"matchModel\": \"claude-sonnet-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5\",\n      \"matchModel\": \"claude-sonnet-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-4-6\",\n      \"matchModel\": \"claude-sonnet-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 3,\n      \"outputPerMTok\": 15,\n      \"cacheReadPerMTok\": 0.3,\n      \"cacheWritePerMTok\": 3.75,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-haiku-4-5\",\n      \"matchModel\": \"claude-haiku-4-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 1,\n      \"outputPerMTok\": 5,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 1.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-astra\",\n      \"matchModel\": \"gpt-6-astra\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6.1-sol\",\n      \"matchModel\": \"gpt-6.1-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6.1-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-sol\",\n      \"matchModel\": \"gpt-6-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-luna\",\n      \"matchModel\": \"gpt-6-luna\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.5,\n      \"cacheReadPerMTok\": 0.01,\n      \"cacheWritePerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-5\",\n      \"matchModel\": \"gpt-5\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.25,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-mini\",\n      \"matchModel\": \"gpt-5-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.25,\n      \"outputPerMTok\": 2,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-nano\",\n      \"matchModel\": \"gpt-5-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.05,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.005,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-5-nano\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-4o-mini\",\n      \"matchModel\": \"gpt-4o-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.15,\n      \"outputPerMTok\": 0.6,\n      \"cacheReadPerMTok\": 0.075,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4o\",\n      \"matchModel\": \"gpt-4o\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2.5,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 1.25,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-nano\",\n      \"matchModel\": \"gpt-4.1-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-mini\",\n      \"matchModel\": \"gpt-4.1-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.4,\n      \"outputPerMTok\": 1.6,\n      \"cacheReadPerMTok\": 0.1,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1\",\n      \"matchModel\": \"gpt-4.1\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o4-mini\",\n      \"matchModel\": \"o4-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.1,\n      \"outputPerMTok\": 4.4,\n      \"cacheReadPerMTok\": 0.275,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o3\",\n      \"matchModel\": \"o3\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    }\n  ],\n  \"pricedCalls\": 0,\n  \"unpricedCalls\": 2,\n  \"excludedSpans\": 1,\n  \"knownCostUsd\": null,\n  \"estimatedCostUsd\": null,\n  \"rows\": [\n    {\n      \"spanId\": \"a28c61ccd1889071\",\n      \"name\": \"chat\",\n      \"kind\": \"llm\",\n      \"model\": \"gpt-4o-mini\",\n      \"provider\": \"strands-agents\",\n      \"requestModel\": \"gpt-4o-mini\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 71,\n        \"outputTokens\": 14\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.prompt_tokens\": 71,\n        \"gen_ai.usage.input_tokens\": 71,\n        \"gen_ai.usage.completion_tokens\": 14,\n        \"gen_ai.usage.output_tokens\": 14,\n        \"gen_ai.usage.total_tokens\": 85\n      },\n      \"result\": {\n        \"status\": \"unpriced\",\n        \"reason\": \"provider-mismatch\",\n        \"message\": \"The model matches, but its recorded provider does not. Add a price for this provider.\"\n      }\n    },\n    {\n      \"spanId\": \"a176cc2d3c2bb8d5\",\n      \"name\": \"chat\",\n      \"kind\": \"llm\",\n      \"model\": \"gpt-4o-mini\",\n      \"provider\": \"strands-agents\",\n      \"requestModel\": \"gpt-4o-mini\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 104,\n        \"outputTokens\": 12\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.prompt_tokens\": 104,\n        \"gen_ai.usage.input_tokens\": 104,\n        \"gen_ai.usage.completion_tokens\": 12,\n        \"gen_ai.usage.output_tokens\": 12,\n        \"gen_ai.usage.total_tokens\": 116\n      },\n      \"result\": {\n        \"status\": \"unpriced\",\n        \"reason\": \"provider-mismatch\",\n        \"message\": \"The model matches, but its recorded provider does not. Add a price for this provider.\"\n      }\n    },\n    {\n      \"spanId\": \"0dd3355bae33477b\",\n      \"name\": \"invoke_agent Strands Agents\",\n      \"kind\": \"agent\",\n      \"model\": \"gpt-4o-mini\",\n      \"provider\": \"strands-agents\",\n      \"requestModel\": \"gpt-4o-mini\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 175,\n        \"outputTokens\": 26,\n        \"cacheReadTokens\": 0,\n        \"cacheWriteTokens\": 0\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.prompt_tokens\": 175,\n        \"gen_ai.usage.completion_tokens\": 26,\n        \"gen_ai.usage.input_tokens\": 175,\n        \"gen_ai.usage.output_tokens\": 26,\n        \"gen_ai.usage.total_tokens\": 201,\n        \"gen_ai.usage.cache_read_input_tokens\": 0,\n        \"gen_ai.usage.cache_write_input_tokens\": 0\n      },\n      \"result\": {\n        \"status\": \"excluded\",\n        \"reason\": \"not-model-call\",\n        \"message\": \"Not classified as a model call. Wrapper usage can repeat child-call totals and is not added to the token estimate.\"\n      }\n    }\n  ],\n  \"notes\": [\n    \"Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.\",\n    \"Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.\",\n    \"LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.\",\n    \"Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.\",\n    \"Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.\",\n    \"No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans.\"\n  ],\n  \"warnings\": []\n}\n"
+        }
+      }
+    },
+    {
+      "id": "legacy-input-attribute",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "a2e5db9bbda7f068457977ba09d099c96feeaae13c9ec5b75e127b3bae39796f",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "feb1258e0e585c6cbf985f26914fa89c573aac32d1dd3c7ad0f07fc31bcb4f85",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "3eae60e7c1eb58b6085d1e425881aef2f247e2b8ac6888f8298d1843d49b0e2d",
+          "stdout": "legacy-input-attribute.json\ntrace e4f397606741f3b7a6e7a8c56a677c07  ·  6 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  731.0 ms \nllm               699.6 ms \ntool              2.6 ms   \nother             28.8 ms  \n\nTokens & cost by model\n──────────────────────\nmodel        provider        calls  input  output  token cost             \n───────────  ──────────────  ─────  ─────  ──────  ───────────────────────\ngpt-4o-mini  strands-agents  2      175    26      — subtotal (2 unpriced)\n\ntoken estimate: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nUse tracelens cost for rates, assumptions and per-call evidence; 1 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n731.0 ms elapsed = 731.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          699.6 ms    \nTool alone         2.6 ms      \nOther alone        28.8 ms     \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  invoke_agent Strands Agents 731.0 ms\n    execute_event_loop_cycle 690.0 ms\n      chat 663.5 ms\n"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a",
+          "stdout": "invoke_agent Strands Agents 731.0 ms\n  execute_event_loop_cycle 690.0 ms\n    chat 663.5 ms\n    execute_tool get_weather (get_weather) 2.6 ms\n  execute_event_loop_cycle 38.2 ms\n    chat 36.1 ms\n"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4",
+          "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-cost-evidence\",\n  \"traceId\": \"e4f397606741f3b7a6e7a8c56a677c07\",\n  \"priceTable\": [\n    {\n      \"id\": \"claude-fable-5-1\",\n      \"matchModel\": \"claude-fable-5-1\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 0.25,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-fable-5\",\n      \"matchModel\": \"claude-fable-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5-5\",\n      \"matchModel\": \"claude-opus-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 4,\n      \"outputPerMTok\": 20,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5\",\n      \"matchModel\": \"claude-opus-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-8\",\n      \"matchModel\": \"claude-opus-4-8\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-7\",\n      \"matchModel\": \"claude-opus-4-7\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-6\",\n      \"matchModel\": \"claude-opus-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5-5\",\n      \"matchModel\": \"claude-sonnet-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5\",\n      \"matchModel\": \"claude-sonnet-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-4-6\",\n      \"matchModel\": \"claude-sonnet-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 3,\n      \"outputPerMTok\": 15,\n      \"cacheReadPerMTok\": 0.3,\n      \"cacheWritePerMTok\": 3.75,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-haiku-4-5\",\n      \"matchModel\": \"claude-haiku-4-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 1,\n      \"outputPerMTok\": 5,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 1.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-astra\",\n      \"matchModel\": \"gpt-6-astra\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6.1-sol\",\n      \"matchModel\": \"gpt-6.1-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6.1-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-sol\",\n      \"matchModel\": \"gpt-6-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-luna\",\n      \"matchModel\": \"gpt-6-luna\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.5,\n      \"cacheReadPerMTok\": 0.01,\n      \"cacheWritePerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-5\",\n      \"matchModel\": \"gpt-5\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.25,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-mini\",\n      \"matchModel\": \"gpt-5-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.25,\n      \"outputPerMTok\": 2,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-nano\",\n      \"matchModel\": \"gpt-5-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.05,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.005,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-5-nano\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-4o-mini\",\n      \"matchModel\": \"gpt-4o-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.15,\n      \"outputPerMTok\": 0.6,\n      \"cacheReadPerMTok\": 0.075,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4o\",\n      \"matchModel\": \"gpt-4o\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2.5,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 1.25,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-nano\",\n      \"matchModel\": \"gpt-4.1-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-mini\",\n      \"matchModel\": \"gpt-4.1-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.4,\n      \"outputPerMTok\": 1.6,\n      \"cacheReadPerMTok\": 0.1,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1\",\n      \"matchModel\": \"gpt-4.1\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o4-mini\",\n      \"matchModel\": \"o4-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.1,\n      \"outputPerMTok\": 4.4,\n      \"cacheReadPerMTok\": 0.275,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o3\",\n      \"matchModel\": \"o3\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    }\n  ],\n  \"pricedCalls\": 0,\n  \"unpricedCalls\": 2,\n  \"excludedSpans\": 1,\n  \"knownCostUsd\": null,\n  \"estimatedCostUsd\": null,\n  \"rows\": [\n    {\n      \"spanId\": \"a28c61ccd1889071\",\n      \"name\": \"chat\",\n      \"kind\": \"llm\",\n      \"model\": \"gpt-4o-mini\",\n      \"provider\": \"strands-agents\",\n      \"requestModel\": \"gpt-4o-mini\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 71,\n        \"outputTokens\": 14\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.prompt_tokens\": 71,\n        \"gen_ai.usage.input_tokens\": 71,\n        \"gen_ai.usage.completion_tokens\": 14,\n        \"gen_ai.usage.output_tokens\": 14,\n        \"gen_ai.usage.total_tokens\": 85\n      },\n      \"result\": {\n        \"status\": \"unpriced\",\n        \"reason\": \"provider-mismatch\",\n        \"message\": \"The model matches, but its recorded provider does not. Add a price for this provider.\"\n      }\n    },\n    {\n      \"spanId\": \"a176cc2d3c2bb8d5\",\n      \"name\": \"chat\",\n      \"kind\": \"llm\",\n      \"model\": \"gpt-4o-mini\",\n      \"provider\": \"strands-agents\",\n      \"requestModel\": \"gpt-4o-mini\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 104,\n        \"outputTokens\": 12\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.prompt_tokens\": 104,\n        \"gen_ai.usage.input_tokens\": 104,\n        \"gen_ai.usage.completion_tokens\": 12,\n        \"gen_ai.usage.output_tokens\": 12,\n        \"gen_ai.usage.total_tokens\": 116\n      },\n      \"result\": {\n        \"status\": \"unpriced\",\n        \"reason\": \"provider-mismatch\",\n        \"message\": \"The model matches, but its recorded provider does not. Add a price for this provider.\"\n      }\n    },\n    {\n      \"spanId\": \"0dd3355bae33477b\",\n      \"name\": \"invoke_agent Strands Agents\",\n      \"kind\": \"agent\",\n      \"model\": \"gpt-4o-mini\",\n      \"provider\": \"strands-agents\",\n      \"requestModel\": \"gpt-4o-mini\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 175,\n        \"outputTokens\": 26,\n        \"cacheReadTokens\": 0,\n        \"cacheWriteTokens\": 0\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.prompt_tokens\": 175,\n        \"gen_ai.usage.completion_tokens\": 26,\n        \"gen_ai.usage.input_tokens\": 175,\n        \"gen_ai.usage.output_tokens\": 26,\n        \"gen_ai.usage.total_tokens\": 201,\n        \"gen_ai.usage.cache_read_input_tokens\": 0,\n        \"gen_ai.usage.cache_write_input_tokens\": 0\n      },\n      \"result\": {\n        \"status\": \"excluded\",\n        \"reason\": \"not-model-call\",\n        \"message\": \"Not classified as a model call. Wrapper usage can repeat child-call totals and is not added to the token estimate.\"\n      }\n    }\n  ],\n  \"notes\": [\n    \"Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.\",\n    \"Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.\",\n    \"LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.\",\n    \"Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.\",\n    \"Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.\",\n    \"No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans.\"\n  ],\n  \"warnings\": []\n}\n"
+        }
+      }
+    },
+    {
+      "id": "legacy-output-attribute",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "095c9a780ca624fc38c3536753b234d34e90cc02484f021cd8763e45490c1f0b",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "feb1258e0e585c6cbf985f26914fa89c573aac32d1dd3c7ad0f07fc31bcb4f85",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "1c31eff099f0725bbf3661af2fd4c735e656101245c998881ad5cfbec4ade80f"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "legacy-both-attribute",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "64f5d545e3356d99707a20e17b1cbd4532b6c1867a5f873db27dce64a3643883",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "feb1258e0e585c6cbf985f26914fa89c573aac32d1dd3c7ad0f07fc31bcb4f85",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "07a98b94a139815811d48e991d6c0f21bf89ded1f16b076fce8962b91c5af4f6"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "operation-details-control",
+      "source": {
+        "file": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+        "sha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2"
+      },
+      "inputSha256": "98bad12d2233d7298cfa42276dfef6cbf9bdf86d44875f1c7b136393d22ce338",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "bf57bc648362aec706f8a971d3a27df6a753fe5745510006a8a7dabfd91aba84",
+      "matches": true,
+      "measurementsSha256": "db8452e20d80538a6dbf76eb8393f0126e911f611057c10c809dd2e461276063",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "8c78147485e10e106583d192d7dc6bc6ab2bf990f1eca38aabdc5698363bd786"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e6d73ae00a5c4405b7450cf3757d3763bb25a3972d0b69d4aee4394e08b98ab2"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "287ae423546a22ccc453e259205cfdaa0e014e20edbe84fc4d98a14561b186c6"
+        }
+      }
+    },
+    {
+      "id": "operation-details-input-attribute",
+      "source": {
+        "file": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+        "sha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2"
+      },
+      "inputSha256": "38ed23086d6624e6ad202c04af16a887759fc436d1d204cb93bdc32ff800ca1e",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_3bE3z0GW3LsGNGXmDKqGuhdK",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "bf57bc648362aec706f8a971d3a27df6a753fe5745510006a8a7dabfd91aba84",
+      "matches": false,
+      "measurementsSha256": "db8452e20d80538a6dbf76eb8393f0126e911f611057c10c809dd2e461276063",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "7cbd23b7ede9cb280414d5eecfad66e1092c1489bdf47736d639b48ea6197d02"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e6d73ae00a5c4405b7450cf3757d3763bb25a3972d0b69d4aee4394e08b98ab2"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "287ae423546a22ccc453e259205cfdaa0e014e20edbe84fc4d98a14561b186c6"
+        }
+      }
+    },
+    {
+      "id": "operation-details-output-attribute",
+      "source": {
+        "file": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+        "sha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2"
+      },
+      "inputSha256": "5a77907cd28f0ec1a4c7f809a927971c4e3413856ca7d6eef0141b6da6c60839",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "bf57bc648362aec706f8a971d3a27df6a753fe5745510006a8a7dabfd91aba84",
+      "matches": false,
+      "measurementsSha256": "db8452e20d80538a6dbf76eb8393f0126e911f611057c10c809dd2e461276063",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "edb1e636bf5a0d8ba11fdf406e9c607af5a1ee178bbebb7370353abf52a51727"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e6d73ae00a5c4405b7450cf3757d3763bb25a3972d0b69d4aee4394e08b98ab2"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "287ae423546a22ccc453e259205cfdaa0e014e20edbe84fc4d98a14561b186c6"
+        }
+      }
+    },
+    {
+      "id": "operation-details-both-attribute",
+      "source": {
+        "file": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+        "sha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2"
+      },
+      "inputSha256": "1159f09dd54ba00ac215c485d388e0e1e3053497545738e5f60e8bd34154c61f",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "input attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "output attribute takes precedence"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "bf57bc648362aec706f8a971d3a27df6a753fe5745510006a8a7dabfd91aba84",
+      "matches": true,
+      "measurementsSha256": "db8452e20d80538a6dbf76eb8393f0126e911f611057c10c809dd2e461276063",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "896599003e3794275af5402f5b98fbddb55e98f4c7bdc0d8d07d58a929f71f52"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e6d73ae00a5c4405b7450cf3757d3763bb25a3972d0b69d4aee4394e08b98ab2"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "287ae423546a22ccc453e259205cfdaa0e014e20edbe84fc4d98a14561b186c6"
+        }
+      }
+    },
+    {
+      "id": "toolUse-string",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "a111d4be715075774dad62a9f66c674e5e5edc14204a343143d11168bb580e37",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":\"broken\"}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'input' in broken",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": ""
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": ""
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": ""
+        }
+      }
+    },
+    {
+      "id": "toolUse-number",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "4bdfffa5be9e3e1acc0112e5c8ac9b600ace47d833a0577ab31f72e0fba03516",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":1}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'input' in 1",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in 1\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in 1\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in 1\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "toolUse-true",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "a22f76e57cc8b5a620cb64aa2aedf9386fcc55d0d2fda4bce7efd21d89591782",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":true}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'input' in true",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "toolUse-false",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "76b0ad98775be7a58d6bd16549d428281ae6f6d83847ae5ed07ee5b0428b36f5",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":false}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "1c9353c6f54c4139cf6ccccc82ccdda9c4fcd5321fee005f3c2f542bce1eaafc",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "90a8d86034e9503e57611d117cda6a6e89275e2736816ff2b5490d97f2025b64"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolUse-zero",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "2988e58f7a17c09edbb4253dd0e45d475b2e556233b46fae9484e11cdb1ec4b4",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":0}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "a1a510c4efb1e4f5f735959298d712a996a2c2bffb61d540cc0df459d99ff91b",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "ff4592992504c7e8fcfd5461d36a5d2dcd3cb816da6be9032a43112f935d7e4c"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolUse-null",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "cbdf48372b8defd40f3866123159ec45f1e5fd0bef9b7917546ca83c78657bcf",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":null}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "cc505f1117d80398a7b5f5e100cffd6b4cb592019f2384bc12f679fa59d6a414",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "53ca2169621ec75f80077fb84c0e42e82a65d3320b6092c7df57852bb8e42d9b"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolUse-array",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "091a0fa361761c2baf9ca6f137b6fcd0cbc7c0269d1fa8d3b847fd6973328d95",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":[]}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "7fce5292cda6158e2682bfce1971e8d07a02025aecce06b66fc631e24efa29dc",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "c325a5b988f126d5f0a18e4c1f5ba5ea7c1fa571404df3e188b2ea7356a858b4"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolUse-empty",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "bf19b763124f60bb18a6a3eedabf6652b2008dbc4f4df0d2b401fec3171f21a8",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":{}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "ea26518d77b50da8d803eb3277898d0fb037066e29cf8544f41933c165d99df5",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "839b765cb189cda929d43a86c6b268c8ae90dc29b94a201e99498bf6a3482519"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolUse-partial",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "d66c515c3caf65aa2591874888ea0fa6c2e956a398b9e5f351862407787a804e",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolUse\":{\"toolUseId\":\"id\"}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "id"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "b6ca63b42801f7511b7236465a4b6feb1fa94d8beef3ef54bac05e8d159f5cba",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e7748190aac19ab402480f54fb4d653c7bada9d14dbeffa8e89c04435ab71859"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolResult-string",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "ab1d3184a9ad0ad4d1b3fe1ca92eee76e221b275269b4b293cbb589eae452132",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":\"broken\"}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'content' in broken",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "toolResult-number",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "68e5acbaa94864ecc0c218f7683ef7063aa2bc0836bf7ddae1e628a6caa57554",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":1}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'content' in 1",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in 1\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in 1\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in 1\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "toolResult-true",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "6dece0e6ece30de4a7545e6d6aab24600738a977aa83db842aae1fd0bcf817d5",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":true}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'content' in true",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "toolResult-false",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "bde9c1cbaba53ab05722d0e921a1d28bcf0c116f1fe558b6d48ccb7c6aa6466e",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":false}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "b52adaa520860427de2cba7d7180a01e786c9f2aff0e2b6e0294ed7240de0a02",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "2bce25fdcf59a76ba44e4105b639d1c5c2bcb6c83c34644b97d07e5a87ea7aed"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolResult-zero",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "e3142c8ef3f2e0a8b28528583812b6d7891cd5ed6c224fe8940e46070685202f",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":0}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "3fcda2af02b02440e737c010b80e423dd35c4195402477d44d8a24085049ec61",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "7c55ac2cf7deb487a03002d6d4bf0515552ee6c9fc9674b231574c838175577f"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolResult-null",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "bc91906266bbe0acc7dd74d6084f3ec64020b735fe7ca4fd5b361fd656d897a0",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":null}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "8dea50994aee540091964ba4177ef8fd595d745c3b773518e999016fca5b30ea",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "c8d7737e677dc9d52db27078246f3580bf708f92bfebe98feae6d841ed2a11cc"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolResult-array",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "2193c45c6e9de74af629de8c2b069e774a52aa30593010e64ba4fb1bde3cdfff",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":[]}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call_response"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "0e0eb554abf9aee5e9811c8e4bee6aede8477dc39132a24efd6cbf56f388e401",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "cf38a45c505a48330d81c4a8c8e625b13ab4eab841d092c51c393a33376c453b"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolResult-empty",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "d96233b5bf8babbdb8589e29d65763cb00ca21c30ae2165499f93c3195780e46",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":{}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call_response"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "1776e18da5d47c8903813b2f81af82cd48eb2395d17875fe4eeca463b50b1a12",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "ca454024021a03814c47e012ba2e2cb4c1e29d2c7defeb54eb7fecaea0b09716"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "toolResult-partial",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "112301fd4651172381b926558c32ae648b026d68310beffa8bd474af796db3f2",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":{\"toolUseId\":\"id\"}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call_response",
+                "id": "id"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "474c9b0284a8b75afeeb7a5bf7b1c6fd59de296046394d7f1a831627a8585d9d",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "c1d5ea4fa7d281281be5f2c7dc16f9352095809ffd4de6c08a0c250dd8c19e49"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "text-null",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "467fbead21f71dbcb8b6e26c4c18cbe7f591f5694557b5a14e08c86aee76c5f9",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"text\":null}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "e37763fd9839689736d984c58bbca1611fab2381c359a082e0c7541eef10f517",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "375016700cd2bc4defb953eb6c7dfb771b413502221ceab0f74f6d8c00b9b9bd"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "text-number",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "9c2feaa28b54dd4bacec42c74b6fb0a02ecab612933b7f69ab804931464eecb9",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"text\":42}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "9566f7e426b3338c6f284783f2335202d5a8f2e38eec27c0aaab0b6a73ce7110",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "d2b6b587515c95b39f3d9d1e6ed44832742c3b6e0ae7d988309210fa4219de82"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "text-object",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "f2d6cca4af56de7b682ab0a16a3e7363a28c4e64ded22c5c3bed21dab050aed9",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"text\":{}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "7923df642c77b3a80b60f11199bd1cd8581523e64f63144adaf1d742e6ae96bd",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "94a41ba57621e7f7083fb1f8460a6813af6e102058c893a25a313522e0ee52ff"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "text-array",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "aacdf3debbab079430a1c8055551e97102e579db607b768d990e7a49a3703da3",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"text\":[]}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "a271bcee2f0fe684e1ef26be4f357a026284a5bcec7c46a91e776791c6281fb6",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "18c69c6b7b81e1dc7290c3b01a05424afe501c1befb4d51c48aa98651508f499"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "ambiguous-members",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "c27ffaebd2cb5e08c8af55303f544d4f2e83286acff6c79847ad1dafb918371b",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"text\":\"keep this text\",\"toolUse\":{\"toolUseId\":\"id\",\"name\":\"weather\",\"input\":{}}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "id",
+                "name": "weather",
+                "arguments": {}
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "c793f64e8f4d3c805de6c6527ad8cba60b5f801c786b4ecda77aea641c7a760e",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "77fe33cde60615d29be2729dfdf9e2505e890563d1a9713dc09d777fcdaca4c0"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "mixed-neighbors",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "2a9a9643c1f6bec93d0cdcde000e1a85aea1a610b0f09b6a5e169f5b6ec2f29e",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"text\":\"before damaged block\"},{\"toolUse\":\"broken\"},{\"text\":\"after damaged block\"}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'input' in broken",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'input' in broken\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "input-damage",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "6a94a3bbc1b78f4f30b24e3a680885fa35125821e79bfc262203348c1c7170ef",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"toolResult\":true}]"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": 1
+      },
+      "error": "Cannot use 'in' operator to search for 'content' in true",
+      "matches": false,
+      "cli": {
+        "summary": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tree": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cost": {
+          "status": 1,
+          "stderr": "Cannot use 'in' operator to search for 'content' in true\n",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "raw-text-33",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "84a4c0c6feab7cbef47d22c479b77217aec16ba5b333c4ef03ac743ba5ba159b",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "ordinary text"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "ordinary text"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "339080bd597dd458cbd737e89f734a3ef675cd46613fbe30bae83a431b76d58d",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "0f4ad991b53fb96f97e990c0bba49040f0eae9b9cd827fbcc18f4dd8a6288a66"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "raw-text-34",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "34adead85a482470652ae2ff57b5fad61ab2b8360cd0d752f0e0899e4930537b",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"image\":{\"format\":\"png\"}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[{\"image\":{\"format\":\"png\"}}]"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "194effd532d519b2f679a0d96c68a3d6374eb478b0215f41bb52c0c3f83210c0",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e5589cd233cdc7a2e52169b5fbda9084f3647abf922d642755929279fb64c241"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "raw-text-35",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "640fb3b9e0910ec3dcdee325272ce1e590a7d67834cf88dd70c4c36feaf3aeb7",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[not JSON"
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "[not JSON"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "67194fbbc0c6976b0f0f48b83e6e489338be1a91c1e79b98923e0b042acd4570",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "e84a7dbd7c1879c3f714fb999a72f1d496f7183022c7b72237cfec52f392379f"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "json-whitespace",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "0e708ae5f821e556fb2c83da31e6e70fb6fbc84273e78e9d005bc56c8937dacc",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "call_VnxVKBi2f85Mxa9gATPB6myQ",
+                "name": "get_weather",
+                "arguments": {
+                  "city": "Paris"
+                }
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": " \n[{\"toolUse\": {\"toolUseId\": \"call_VnxVKBi2f85Mxa9gATPB6myQ\", \"name\": \"get_weather\", \"input\": {\"city\": \"Paris\"}}}]\t"
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "3ae56f95a8bcbefb909706b26bc4070945d6b0b80848daae501aa0a3d8d233ca",
+      "matches": false,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "8c19e4d273d17793c6c343ca53fd57b67a9e97aee496c7650d9b93f63726be11"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "null-tool-input",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "7abad8ddeed4c70b74ce272c0f24042289fb8228a82907f94950b8374c108872",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "id",
+                "name": "weather",
+                "arguments": null
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "id",
+                "name": "weather",
+                "arguments": null
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "9c354cc18f464808820ecf292fc6a279ef705bb83b91be49c752dbb9ac113ee1",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "65082b0d7b08a53b5f4cb19139e4da7db365e7e1dc70ce810a7c4f2e038af65d"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    },
+    {
+      "id": "valid-tool-result",
+      "source": {
+        "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+        "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+      },
+      "inputSha256": "01232a86d76c28c6e8f95bd09c13ba78d4e22af90b04504d612150b94b193f51",
+      "expected": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call_response",
+                "id": "id",
+                "response": [
+                  {
+                    "text": "72 F"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "warnings": 0
+      },
+      "actual": {
+        "input": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "What is the weather in Paris?"
+              }
+            ]
+          }
+        ],
+        "output": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call_response",
+                "id": "id",
+                "response": [
+                  {
+                    "text": "72 F"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "spanCount": 6,
+      "rawEventsSha256": "83692b4f66ff34fa82f8f4358d76716f7214454b6ef902c906da37c08f6fec5f",
+      "matches": true,
+      "measurementsSha256": "dcd16c4efe368776a42ea6af27ea65e99576340d7f638d4dbff3185aff67b08b",
+      "cli": {
+        "summary": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "d68a25f1d7a6e72a8030f728f824726e1ce69240c6b99ed281b1849cec9590c6"
+        },
+        "tree": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "86aa3ca0ae5e6a6d05db74ff8896b738e1863b6f424ec3dfafc8d467b092bd0a"
+        },
+        "cost": {
+          "status": 0,
+          "stderr": "",
+          "stdoutSha256": "5da42fbe03e9fcd11211ad330afbcc79bd65e337adeebadf9ad060d9976911b4"
+        }
+      }
+    }
+  ]
+}

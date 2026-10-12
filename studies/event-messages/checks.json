@@ -1,0 +1,1455 @@
+{
+  "checkedAtUtc": "2026-10-12T04:58:14.251165+00:00",
+  "baselineCommit": "3d3343d50b2754ec109db80cdb51dfc8338ab607",
+  "sourceCommit": "194a6d21f39cc394fea182890ff1e1e71c0cde34",
+  "node": "v24.21.0",
+  "scope": "Source and local built/installed artifacts only. No registry release, tag or hosted deployment.",
+  "checks": [
+    {
+      "command": "npm ci",
+      "exitCode": 0,
+      "result": "Fresh archive install; zero dependency vulnerabilities; esbuild postinstall blocked by npm install policy, platform package build succeeded.",
+      "log": {
+        "path": "clean-install.log",
+        "bytes": 818,
+        "sha256": "bb83e07ac656f1d865f2154d1d88dfc85b6b5a8ce8892e7521101efdc2bdd610"
+      }
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "result": "Passed",
+      "log": {
+        "path": "clean-lint.log",
+        "bytes": 75,
+        "sha256": "d98a2e038b1d08227fbdfd1c34357c0f2d5e0521fab915e3fef08002c3b87533"
+      }
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "result": "Both TypeScript projects passed",
+      "log": {
+        "path": "clean-types.log",
+        "bytes": 138,
+        "sha256": "b3c31f818208fb8d494fa9be0a4b1de9097feff2e04ac13da975f50554ce1b2f"
+      }
+    },
+    {
+      "command": "npm test",
+      "exitCode": 1,
+      "result": "360 passed; 20,001-span test took 1354.870355 ms against a 1000 ms ceiling with default worker concurrency.",
+      "log": {
+        "path": "clean-tests.log",
+        "bytes": 1400,
+        "sha256": "19bd99fc9b8cad457bcf2ebb25b2e4e27142023da7f8665c1edc82e79b67fffd"
+      }
+    },
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "exitCode": 0,
+      "result": "All 361 tests in 27 files passed; same performance ceiling unchanged.",
+      "log": {
+        "path": "clean-tests-two-workers.log",
+        "bytes": 506,
+        "sha256": "ce79149e4645cca412683b80405804ea5d01fc1fae80cbab69e86b011067bcea"
+      }
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "result": "Static site and compiled CLI built",
+      "log": {
+        "path": "clean-build.log",
+        "bytes": 2325,
+        "sha256": "783296ce1752ee1acea2de3c776a5daf3e240df1ef02d2f0bbe4a7a590933d1c"
+      }
+    },
+    {
+      "command": "npm run test:cli",
+      "exitCode": 0,
+      "result": "30 passed",
+      "log": {
+        "path": "clean-cli.log",
+        "bytes": 3124,
+        "sha256": "d9984e33ec85c8f60e4275a202778bac63e6892fb0e741d211663030465e91a4"
+      }
+    },
+    {
+      "command": "npm run test:browser",
+      "exitCode": 0,
+      "result": "Browser interaction/audit driver and all 120 Chromium/Firefox Playwright tests passed",
+      "log": {
+        "path": "clean-browser.log",
+        "bytes": 19428,
+        "sha256": "145331bfe4752ae6a15125b0b8809eb2fc899578e6136475307e150f3c38e936"
+      }
+    },
+    {
+      "command": "npm pack --json --pack-destination <package-dir>",
+      "exitCode": 0,
+      "result": "Created local tarball only",
+      "log": {
+        "path": "pack.log",
+        "bytes": 215,
+        "sha256": "81db3a8e8f69e7f099c703e29080a9333ace2d96cdb8a3dfc0d4fd02d454bf3c"
+      }
+    },
+    {
+      "command": "npm install <local-tarball>",
+      "exitCode": 0,
+      "result": "Separate package directory",
+      "log": {
+        "path": "installed.log",
+        "bytes": 410,
+        "sha256": "49e62b5db578e065a3fecfd67618b548b2356bc44223fc295283ba0cfa457a94"
+      }
+    },
+    {
+      "command": "npx --offline @antonsoloviev/tracelens summary trace.json",
+      "exitCode": 0,
+      "result": "Run from the separately installed package directory",
+      "log": {
+        "path": "readme-installed-corrected.err",
+        "bytes": 100,
+        "sha256": "0d1006872366b35f10889b30f8abb4a7bbef9c65edb5333afb122d31e874efb9"
+      }
+    }
+  ],
+  "performance": {
+    "node": "v24.21.0",
+    "environment": "14 vCPU WSL2 Linux, 48 GB RAM",
+    "spans": 20001,
+    "attributesPerSpan": 2,
+    "shape": "one parent and 20000 children; controlled, no model calls",
+    "warmupRuns": 2,
+    "timedRuns": 6,
+    "runsMs": {
+      "before": [
+        144.53626699999995,
+        161.9215670000001,
+        171.134411,
+        165.11281599999984,
+        138.65758400000004,
+        153.84073599999965
+      ],
+      "after": [
+        148.36550599999987,
+        167.70089499999995,
+        160.42798900000003,
+        147.97143800000026,
+        138.14717599999994,
+        142.7245109999999
+      ]
+    },
+    "medianMs": {
+      "before": 157.88115149999987,
+      "after": 148.16847200000007
+    }
+  },
+  "buildInputsByteMatched": [
+    {
+      "path": "eslint.config.js",
+      "bytes": 1529,
+      "sha256": "3cd3f62c15ab4848307302da79d820394edec9af90433ec26f93fe0bdbb487d2"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2032,
+      "sha256": "a4ef9b42bf3085adbd109e1192e00f108c4eb27676a70765458aae1fcc1a620e"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 101866,
+      "sha256": "7700912c5c891dd8e14b8816f6bbb621ac2086edd3e7d0f87439ad123843c5f2"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1980,
+      "sha256": "d78d0de02a1fd3775333bff921b5d515f8b59304fad571b95d71d5b0ec1b323d"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "bytes": 693,
+      "sha256": "81e2f0506f0e376f8df4c431a74d51681f6c0f4e11acd12061b7f84f93063804"
+    },
+    {
+      "path": "scripts/capture-links.py",
+      "bytes": 5313,
+      "sha256": "f9f136662cbdc2b3afe6eb2817dd9bb44a171381b48f7155e387337a4757856c"
+    },
+    {
+      "path": "scripts/capture-links.py.lock",
+      "bytes": 7648,
+      "sha256": "a42e50dbfe7833b17e41de1ecf0eb10b10b01f52615c3ad0013075dc2883f93f"
+    },
+    {
+      "path": "scripts/capture-timing.py",
+      "bytes": 5398,
+      "sha256": "9eedb0239ea9aa555a03da701a6de826410e39b159495eb9abff5bb5a3200fda"
+    },
+    {
+      "path": "scripts/check-timing.py",
+      "bytes": 3558,
+      "sha256": "ea1547a11372ff9dd5a8d543e0730ca65124648d8f0b7cecaf95e11530e68bd4"
+    },
+    {
+      "path": "scripts/cost-replay/README.md",
+      "bytes": 2660,
+      "sha256": "fb8dcde6d2517f6625d0365c0f0fdd0abba9e843e4f84b4a77da9f16939a22ea"
+    },
+    {
+      "path": "scripts/cost-replay/check.py",
+      "bytes": 3151,
+      "sha256": "efed6731a97a6a30b6da3d991aa14338aaeaaad91346f1824cc93b797b53f63e"
+    },
+    {
+      "path": "scripts/cost-replay/measure.mjs",
+      "bytes": 2055,
+      "sha256": "a475dcf176fcc1509b2cf44e2ff4bb6264609c2dcf73870023bcc5a4220b8856"
+    },
+    {
+      "path": "scripts/cost-replay/package-lock.json",
+      "bytes": 11683,
+      "sha256": "bb6d733ebfe6bbf1ecb4b86f7c3eb96a2b285d50b28e5d27c20c22d975fd81d2"
+    },
+    {
+      "path": "scripts/cost-replay/package.json",
+      "bytes": 481,
+      "sha256": "205aad76050c6d96d74510fe4ce01dc21b64d62a3391ecb77c5d52635701fac0"
+    },
+    {
+      "path": "scripts/cost-replay/replay.mjs",
+      "bytes": 4427,
+      "sha256": "680e89cd7c1f5f26eeb576a4c7a9b6f768f1fb5a69e4abf890fd63b4ec714154"
+    },
+    {
+      "path": "scripts/fix-shebang.mjs",
+      "bytes": 732,
+      "sha256": "2765fcbb0059237b724e736f70e6d733dcb4e6576baebeb09a49973282a6fcba"
+    },
+    {
+      "path": "scripts/instrumented-traces/common.py",
+      "bytes": 5650,
+      "sha256": "5674ebb4c1ddb746286cca977c51a11f6b6f92ee0df79202d0068edf8e29d701"
+    },
+    {
+      "path": "scripts/instrumented-traces/openinference.py",
+      "bytes": 786,
+      "sha256": "e0a7b95af18f341c5cb63923fbb1eb2e22a1fa77fb49ccf86e45b130dff20d9c"
+    },
+    {
+      "path": "scripts/instrumented-traces/openllmetry.py",
+      "bytes": 853,
+      "sha256": "9faccf2bc4caa8f9ea5aa8e1a16817de88c1204cab8920f7272f8951e3d7b519"
+    },
+    {
+      "path": "scripts/otlp-to-jaeger.mjs",
+      "bytes": 3280,
+      "sha256": "b38683797e736a4e178710638430c813cccb73648546000b79518f38cfbba1a3"
+    },
+    {
+      "path": "scripts/sync-examples.mjs",
+      "bytes": 890,
+      "sha256": "47a307fb7e0fc62cb1dfcd9494cd849ed10f02249497226a299fe34485b746ed"
+    },
+    {
+      "path": "scripts/verify-assets.py",
+      "bytes": 1913,
+      "sha256": "b79c8f8f88c7e0a9d0dceb6c626b1122d038dca30cc35905b010a43ef702b515"
+    },
+    {
+      "path": "scripts/verify-site.mjs",
+      "bytes": 7447,
+      "sha256": "155a5e834fc616d49cd5ab9ed2db6e03a954e1ad5adfec6cfeadb1d88cf89882"
+    },
+    {
+      "path": "src/cli/compare-report.ts",
+      "bytes": 3241,
+      "sha256": "7c80b2f5a62749999421e42ea28d00768a6e8f55b93068c4b86e3580e8d43c6d"
+    },
+    {
+      "path": "src/cli/cost-report.ts",
+      "bytes": 2144,
+      "sha256": "d9afc7a9655674015d87a3fac3377833dc801b71ef58ac48ac4ba1d35ab46daf"
+    },
+    {
+      "path": "src/cli/format.ts",
+      "bytes": 2079,
+      "sha256": "b14df07bda1f7b63f6d500612033bf95d9ebc431564e317cb7fc3cbd6427f161"
+    },
+    {
+      "path": "src/cli/index.ts",
+      "bytes": 13214,
+      "sha256": "2e8fb2894531f0ccd37844757c43537b18cd9910d61e8ed721475fcf2f123a7e"
+    },
+    {
+      "path": "src/cli/links-report.ts",
+      "bytes": 1251,
+      "sha256": "f2a1529e32ef8e9b3eab17b1cc625dc8aaba31cbfda3ec83c466b0d5f5852157"
+    },
+    {
+      "path": "src/cli/timing-report.ts",
+      "bytes": 1706,
+      "sha256": "19db41d3754deca8b506a2c80dfeb12b356e204628957bf4726f20707d8f31f7"
+    },
+    {
+      "path": "src/cli/version.ts",
+      "bytes": 115,
+      "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+    },
+    {
+      "path": "src/core/attributes.ts",
+      "bytes": 6471,
+      "sha256": "1cfcbe8b1a3b594bdda4e0ba6bcf3bdda804873f951a4246441f55ec0abd2e96"
+    },
+    {
+      "path": "src/core/compare.ts",
+      "bytes": 8818,
+      "sha256": "b274faf03ad0a8bb34fd5b641184bf39af79c3fc0a7643d05c230fdd8b238941"
+    },
+    {
+      "path": "src/core/cost-format.ts",
+      "bytes": 348,
+      "sha256": "59bc661e3863fa88b185ab25596579e8ad751a6412f7a8f3b60c740786d3447e"
+    },
+    {
+      "path": "src/core/cost-report.ts",
+      "bytes": 4280,
+      "sha256": "39db4ea5140c82574994595cc4d88d0785d721a7dc54b0d2fc8180a5fce9769d"
+    },
+    {
+      "path": "src/core/cost.ts",
+      "bytes": 10653,
+      "sha256": "e110e998121a0a662562297456680a7a9a29a60295ec5dfa7fac84bf091635cd"
+    },
+    {
+      "path": "src/core/critical-path.ts",
+      "bytes": 1329,
+      "sha256": "3e3f91b019ffbb28c3f20ae794cba943d28e61e45798c8fbdf4ab8c6bd821b3d"
+    },
+    {
+      "path": "src/core/decode.ts",
+      "bytes": 1009,
+      "sha256": "483151359dd88703aef52f5e864fff50818f4f808c98025773634b34642db822"
+    },
+    {
+      "path": "src/core/identity.ts",
+      "bytes": 1124,
+      "sha256": "d63e8bf170aac57a644ba37f1ee52dc9e7be64d1f1b7b5d6c07f648a471e69c3"
+    },
+    {
+      "path": "src/core/index.ts",
+      "bytes": 396,
+      "sha256": "868153c6b9370d73334c478a131d27ab011526bf5862e42daed21bc87567d6e5"
+    },
+    {
+      "path": "src/core/jaeger.ts",
+      "bytes": 10447,
+      "sha256": "3a153084319cfcdbe3de92fff83c8249ddda3f8668b3654038b59ac810c638f1"
+    },
+    {
+      "path": "src/core/layout.ts",
+      "bytes": 2422,
+      "sha256": "2794610ea5d122802ed3a9074365f6461d2af93f39b15092e04a759c79f7f955"
+    },
+    {
+      "path": "src/core/links.ts",
+      "bytes": 2054,
+      "sha256": "06a46ddd76c900e3c28bbc1a62aecf2b59ccee119d7bd92907ec61aa43a62beb"
+    },
+    {
+      "path": "src/core/normalize.ts",
+      "bytes": 34827,
+      "sha256": "159f758c0ff1b05a2163edb6116ed9e9cd55729cc6f5d6491c7ba8ef999b97e2"
+    },
+    {
+      "path": "src/core/otlp-parser.ts",
+      "bytes": 23248,
+      "sha256": "69f33a0b9c26e453392202684c42a925ee841279f089b2503143a682ecdaf9b5"
+    },
+    {
+      "path": "src/core/payload-depth.ts",
+      "bytes": 864,
+      "sha256": "2fa35c53b4860e25a073b238a66011d8fc26fb96708d4afed6208f3897bcfc61"
+    },
+    {
+      "path": "src/core/pricing.ts",
+      "bytes": 7352,
+      "sha256": "20811dbab5ad84f61412ca22602415f7bdd4885cf5f83e5f7e3d4ce583562594"
+    },
+    {
+      "path": "src/core/summary.ts",
+      "bytes": 5152,
+      "sha256": "1fe1f326929e2c5988f4d1b0ca6952cc6bf148f5fbc1178eb94bd71441301bbc"
+    },
+    {
+      "path": "src/core/timing.ts",
+      "bytes": 5970,
+      "sha256": "0409ea45d42cc2e716840e79df12ded9f72101dcc3c3fba0de74c940136de705"
+    },
+    {
+      "path": "src/core/types.ts",
+      "bytes": 4996,
+      "sha256": "47fc8c3c5793bea0c4e3cb0c3e76c8bb5f7597b9ecb3e8e960e2d543f28c196c"
+    },
+    {
+      "path": "src/web/comparison.ts",
+      "bytes": 13449,
+      "sha256": "913094da6235262e037eff71720bcc9a81aa657947876bac7791f400dc586cfb"
+    },
+    {
+      "path": "src/web/cost-panel.ts",
+      "bytes": 6800,
+      "sha256": "73ee527347a406ca8c617317993c781726e6ba3282b247a8028bdf26d768f29c"
+    },
+    {
+      "path": "src/web/detail-panel.ts",
+      "bytes": 9540,
+      "sha256": "a0e473c725984d90f69d7cb5f64213f2b5e01ae95cd598584e759082dcfc4ab8"
+    },
+    {
+      "path": "src/web/dom.ts",
+      "bytes": 1920,
+      "sha256": "5ce123f6e1313b27526490d0ca3c7a830cd5d9956457d92058ed9089f8d5fc7e"
+    },
+    {
+      "path": "src/web/dropzone.ts",
+      "bytes": 3685,
+      "sha256": "c53ea51ed8a90328a1963e45f9de24eff2c45fcc436125fab40d0c6265c565a7"
+    },
+    {
+      "path": "src/web/evidence.ts",
+      "bytes": 803,
+      "sha256": "6cd78631fcddbdaee7b5d7d1f930753b66dc3e975a3ea83e1c94cde56cdc5212"
+    },
+    {
+      "path": "src/web/fonts/LICENSE.txt",
+      "bytes": 9495,
+      "sha256": "9e3e181004bb003d10c36961b0a19b2003b82633a74c3be3e7cb83febff430cf"
+    },
+    {
+      "path": "src/web/fonts/fonts.css",
+      "bytes": 13751,
+      "sha256": "675f6398d37f2a9afc1b2eaab415486007111ee1146d3c8a192aff66ced70bc0"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-400-cyrillic-ext.woff2",
+      "bytes": 6912,
+      "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-400-cyrillic.woff2",
+      "bytes": 8356,
+      "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-400-latin-ext.woff2",
+      "bytes": 13348,
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-400-latin.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-400-vietnamese.woff2",
+      "bytes": 5868,
+      "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-500-cyrillic-ext.woff2",
+      "bytes": 6972,
+      "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-500-cyrillic.woff2",
+      "bytes": 8460,
+      "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-500-latin-ext.woff2",
+      "bytes": 13432,
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-500-latin.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-500-vietnamese.woff2",
+      "bytes": 6040,
+      "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-600-cyrillic-ext.woff2",
+      "bytes": 7692,
+      "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-600-cyrillic.woff2",
+      "bytes": 9352,
+      "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-600-latin-ext.woff2",
+      "bytes": 14328,
+      "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-600-latin.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-mono-600-vietnamese.woff2",
+      "bytes": 6932,
+      "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-sans-cyrillic-ext.woff2",
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-sans-cyrillic.woff2",
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-sans-greek.woff2",
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-sans-latin-ext.woff2",
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-sans-latin.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "src/web/fonts/ibm-plex-sans-vietnamese.woff2",
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+    },
+    {
+      "path": "src/web/format.ts",
+      "bytes": 2214,
+      "sha256": "2ea8f7536777c920da1d06a950bfb46746cebbba0ec69e10bc974b7f8ed58167"
+    },
+    {
+      "path": "src/web/kind-colors.ts",
+      "bytes": 509,
+      "sha256": "d3f8ce092b0ae9298f25dc1ef6fe699ef7afd9c633687bc889aeea21c09656e7"
+    },
+    {
+      "path": "src/web/links-panel.ts",
+      "bytes": 3090,
+      "sha256": "6a7dde50aab4f9c781246f7681c21c1e3e9f6041800d374943961f1aa0868ab4"
+    },
+    {
+      "path": "src/web/main.ts",
+      "bytes": 25532,
+      "sha256": "fdef321ddb1671295468bc8ff0f5fc7eea735d98330278504739445209511686"
+    },
+    {
+      "path": "src/web/paged-evidence.ts",
+      "bytes": 2651,
+      "sha256": "9435204cfd71e7ad0ca2c6458d8a435651a34412d792d5ac04e67fb9408a67cd"
+    },
+    {
+      "path": "src/web/price-settings.ts",
+      "bytes": 9352,
+      "sha256": "fb4553fc4ef19bb31863dfbcdb422115ad697cc630a9bd28f9e011a51550420c"
+    },
+    {
+      "path": "src/web/span-search.ts",
+      "bytes": 1926,
+      "sha256": "57c54e158a18ad824ff79a9f8e59273f19a21b39a3ed8636b09883e1680fdef0"
+    },
+    {
+      "path": "src/web/store.ts",
+      "bytes": 865,
+      "sha256": "a12b514d10bdc6b0294f577a28685c366b05677f8c020f4bc74f149459203604"
+    },
+    {
+      "path": "src/web/style.css",
+      "bytes": 30118,
+      "sha256": "26fdc6db5d1f81ddc16495b12eb92ec7296d84607c3387d8265e9510ca1cf07f"
+    },
+    {
+      "path": "src/web/summary-header.ts",
+      "bytes": 2638,
+      "sha256": "75aac3533cbbe6652c7d51c139a353480975e1c7c11f1048b213f01d966e8f18"
+    },
+    {
+      "path": "src/web/timing-panel.ts",
+      "bytes": 6844,
+      "sha256": "853f2f90cd2dcc3afd1375030986b4116671ad813e6640cea97a56762a270222"
+    },
+    {
+      "path": "src/web/trace-loader.ts",
+      "bytes": 2935,
+      "sha256": "6e2866c246909154ebf97cd454578b93247e758bc06c423da710a49fad328816"
+    },
+    {
+      "path": "src/web/trace-protocol.ts",
+      "bytes": 458,
+      "sha256": "48ea72d8f579cd4f64d2855d83f2bc029b9bb077ae200485dc3d6c83ef9f9941"
+    },
+    {
+      "path": "src/web/trace-transfer.ts",
+      "bytes": 1511,
+      "sha256": "645de93e0677ee62159ef390cc0dc70021e16e4d842ec16803ab35b320dd0456"
+    },
+    {
+      "path": "src/web/trace-worker.ts",
+      "bytes": 2416,
+      "sha256": "fbb5bee8b7b7691773842b84a5c35d36f8adf87a5e598c703547a6fff8d6d922"
+    },
+    {
+      "path": "src/web/tree-flatten.ts",
+      "bytes": 818,
+      "sha256": "84f5031cd237e0b0963c19c19089fb331f4ce55f494b2466b468bf3eb576dccf"
+    },
+    {
+      "path": "src/web/vite-env.d.ts",
+      "bytes": 38,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "path": "src/web/waterfall.ts",
+      "bytes": 19416,
+      "sha256": "b5299667837cf76810e682d17cd69dddbccd442ff14d26d8f485733e1d675856"
+    },
+    {
+      "path": "tests/attribute-values.test.ts",
+      "bytes": 6324,
+      "sha256": "91ad4e64477b07b6deefadcbb5c5c629150ef845aa77fe596a6349736cc65883"
+    },
+    {
+      "path": "tests/audit.test.ts",
+      "bytes": 9040,
+      "sha256": "9abe3ebca4ea9e7d9649ed8f3abcae9a453c74dbde9d9f6a78472823d135aa01"
+    },
+    {
+      "path": "tests/browser-audit.mjs",
+      "bytes": 7380,
+      "sha256": "251e06e7c5cc9a33298953e26f13952209dbb90fb648f3f60be5e8c6b033847d"
+    },
+    {
+      "path": "tests/browser-waterfall.mjs",
+      "bytes": 10619,
+      "sha256": "971916a31eca65a980aae89bae61d0a51d50fb82e6b616b8b3c7ae7332a587e4"
+    },
+    {
+      "path": "tests/browser.mjs",
+      "bytes": 8160,
+      "sha256": "617a51898749fc591414d744b0b65e3ea9bfaeee32b1f5a5c344680bcecf7188"
+    },
+    {
+      "path": "tests/browser/attribute-values.spec.mjs",
+      "bytes": 4829,
+      "sha256": "78e829563476c0edc1b7088062e254a38391d98e6073f3ec3b50296497439c0f"
+    },
+    {
+      "path": "tests/browser/cost.spec.mjs",
+      "bytes": 10041,
+      "sha256": "44df5386f967d07d0cca83ec44a418793ad75a98ebf8921cb6f15e8146c0b4f0"
+    },
+    {
+      "path": "tests/browser/dropped-evidence.spec.mjs",
+      "bytes": 4969,
+      "sha256": "f6d4d4565dca8138246b63c9f657f40fe29248fe3de38a87414a406d2b648253"
+    },
+    {
+      "path": "tests/browser/export-containers.spec.mjs",
+      "bytes": 1946,
+      "sha256": "95d107146f515248b2aadfe41db69a11d190eb3f1586d969e86ef115cf64f9fc"
+    },
+    {
+      "path": "tests/browser/import-evidence.spec.mjs",
+      "bytes": 16444,
+      "sha256": "5d630f0ce4a7c843629aad7e744f37277dc0e8094d12df019e5515b7153b3668"
+    },
+    {
+      "path": "tests/browser/import-integrity.spec.mjs",
+      "bytes": 2828,
+      "sha256": "1235eab185e6ce9926ba333b664992060fc3b9e4fc86631e3b4df3e94b1f2883"
+    },
+    {
+      "path": "tests/browser/links.spec.mjs",
+      "bytes": 9158,
+      "sha256": "0a6d6dc9cd189ea6307be79cfd219ab150bdd5dc7089c7229c725635d13a4444"
+    },
+    {
+      "path": "tests/browser/protobuf-identities.spec.mjs",
+      "bytes": 3730,
+      "sha256": "3ceff5fbc2bd33e862dd3bdf605689c7ddcc0fc20dd37d4d89ddc2b7a6dd13fa"
+    },
+    {
+      "path": "tests/browser/timing.spec.mjs",
+      "bytes": 7828,
+      "sha256": "ec18cb68723a34d538c55db9bb4b231d48a6df2c7a5822e6ebc63a70f57147fe"
+    },
+    {
+      "path": "tests/browser/workspace.spec.mjs",
+      "bytes": 19664,
+      "sha256": "618a90833025b77708268aef02ffeb9dd9ad3d21a808e881e9e4b9a1c9cbe669"
+    },
+    {
+      "path": "tests/census.test.ts",
+      "bytes": 7238,
+      "sha256": "3e3bcb6680cfe00a0967d4d77991dfd94e59a1142074e9d764c955060c876e4a"
+    },
+    {
+      "path": "tests/cli.test.mjs",
+      "bytes": 15472,
+      "sha256": "1657a1b98443260c190bd099e42215ac9031ee949cf4f320abdd8860e73dad33"
+    },
+    {
+      "path": "tests/compare.test.ts",
+      "bytes": 8560,
+      "sha256": "4a3d93c231faba1d5a2d645b4c4409fdd69b776dbdfe1d95322c9b904c045911"
+    },
+    {
+      "path": "tests/cost-evidence.test.ts",
+      "bytes": 9104,
+      "sha256": "6ecdaf8436efc943fad7def4cff3e7ab3ec4d9e9d32303ec3d1b00e33628f6fd"
+    },
+    {
+      "path": "tests/cost.test.ts",
+      "bytes": 3352,
+      "sha256": "d068f6fea09f598f3bf3f1771fa7eb1f31c61736b134bd5e2942e5e4a5f6bebc"
+    },
+    {
+      "path": "tests/decode.test.ts",
+      "bytes": 1816,
+      "sha256": "3290648841b09f521dd41d4ea495d959727303d0d4a3f332e97a53d7b5a0b200"
+    },
+    {
+      "path": "tests/dropped-evidence.test.ts",
+      "bytes": 4148,
+      "sha256": "ea943d463a7cc30959f23d74bc0ad8ec6490c6822d2da6d4b632f3b49054e2a9"
+    },
+    {
+      "path": "tests/event-messages.test.ts",
+      "bytes": 4677,
+      "sha256": "3cdd3dc70ce74758afe7754d296dd8ad85bd03d3826db1875cd246aec4b40847"
+    },
+    {
+      "path": "tests/evidence.test.ts",
+      "bytes": 1942,
+      "sha256": "ebdbb0d16cc2dffbcd33fb74c4f7f2ebe37d440f70d2151ff8d3a7c047abe684"
+    },
+    {
+      "path": "tests/export-containers.test.ts",
+      "bytes": 2779,
+      "sha256": "26a32349a2cf7e0562e0a5b6363a1d38b61d7330f968b26094a82469adfb965a"
+    },
+    {
+      "path": "tests/fixtures.ts",
+      "bytes": 1978,
+      "sha256": "dbc5b9ff80e9659e81fa0a70d93886af9f3bb16dac4e8a49cc92df510cf02fc1"
+    },
+    {
+      "path": "tests/fixtures/census/README.md",
+      "bytes": 2575,
+      "sha256": "5a42af98c5303160a2add6b63a09e7fe5dc331d5a33ff285173803af642a8dca"
+    },
+    {
+      "path": "tests/fixtures/census/openinference-litellm-embedding.json",
+      "bytes": 2305,
+      "sha256": "190757a917ea3f6f5928e491f08b5ef434bdb9bbbdf5d22a5638f2412c11d071"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-cohere-legacy-tool-calls.json",
+      "bytes": 10119,
+      "sha256": "c32ec86a2e2a9a329180321dcb403561de6b81e63dfc82b22e3ccb881546c8f3"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-mistral-embeddings-legacy.json",
+      "bytes": 2157,
+      "sha256": "d0efaa258d6cceb199aedd668bab90be1347dfe767e3d7e4dc5a774a6c456224"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-openai-reasoning.json",
+      "bytes": 3805,
+      "sha256": "8e2a8d8eddf48ac9d8d2e154cbef59172d95df83956f52eef914e3a822b34f0f"
+    },
+    {
+      "path": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+      "bytes": 20998,
+      "sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7"
+    },
+    {
+      "path": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+      "bytes": 20352,
+      "sha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2"
+    },
+    {
+      "path": "tests/fixtures/census/vercel-ai-sdk-6-deepseek-tool-call.json",
+      "bytes": 12254,
+      "sha256": "9b152219e15a46c1d90155c90ffebcf053377c78df78d8b88d506250943a502f"
+    },
+    {
+      "path": "tests/fixtures/census/vercel-ai-sdk-6-openai-responses-stream.json",
+      "bytes": 14670,
+      "sha256": "659588fa264215f9d8b30d04336603d09000ce61904f5f0e9718741f7b330cbb"
+    },
+    {
+      "path": "tests/fixtures/instrumented/openinference.json",
+      "bytes": 25636,
+      "sha256": "6a4cdea52bac1d6526d16a1b8e1029b336ebc93d8b9d5adf563d3f402289a476"
+    },
+    {
+      "path": "tests/fixtures/instrumented/openllmetry.json",
+      "bytes": 14631,
+      "sha256": "a20b5494916d31aaadeec664107701ff0c39fd876a98a7c23f86d77cb54489f3"
+    },
+    {
+      "path": "tests/fixtures/small-genai-semconv-trace.json",
+      "bytes": 26534,
+      "sha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940"
+    },
+    {
+      "path": "tests/fixtures/small-openinference-trace.json",
+      "bytes": 25739,
+      "sha256": "d1616024ceb3c925abf6526efcbd09cb3a7feb59d97c84b2cc42c1634ac1c918"
+    },
+    {
+      "path": "tests/fuzz.test.ts",
+      "bytes": 5050,
+      "sha256": "3ef6ff1a208fc97b564a6ac80e3abcba327f8f1bda7561d5db3ccd5a04d6b1d1"
+    },
+    {
+      "path": "tests/import-integrity.test.ts",
+      "bytes": 4235,
+      "sha256": "75a04eb813beb93f17fe5b4b8287408e7d1b861a7b1ac2d325bf7be7be9de23b"
+    },
+    {
+      "path": "tests/instrumented.test.ts",
+      "bytes": 10400,
+      "sha256": "4cc462cf23e7884d38344659d23fae7094a813b78bab9e60475fb93189ebc237"
+    },
+    {
+      "path": "tests/jaeger.test.ts",
+      "bytes": 5047,
+      "sha256": "8f1a9d460b28f99732f3386afccd384d514c5a783342ab37133b8a44f0ddb444"
+    },
+    {
+      "path": "tests/layout.test.ts",
+      "bytes": 2880,
+      "sha256": "83517a9fef29a10040b72c536d7187c7609784af9d8425c5ef67c4a8b3d3766e"
+    },
+    {
+      "path": "tests/links.test.ts",
+      "bytes": 5720,
+      "sha256": "b5508521d690ac5bd454030623f46d2a56f19fb9cc90825d12740027281bc644"
+    },
+    {
+      "path": "tests/normalize.test.ts",
+      "bytes": 3391,
+      "sha256": "f2d5a2773a39f64f4e02bd1178c358afb608aee626f6f184bc587251eb77632b"
+    },
+    {
+      "path": "tests/otlp-parser.test.ts",
+      "bytes": 7804,
+      "sha256": "6102bfd4d01519d9b28e8c93e33cc09815d902115c5a0d8a4150ac8a82b74903"
+    },
+    {
+      "path": "tests/payload-limits.test.ts",
+      "bytes": 3291,
+      "sha256": "496586e0492d8a7b1776cd505e089a19d91614170de8e8e855d2107a3609ddfa"
+    },
+    {
+      "path": "tests/protobuf-identities.test.ts",
+      "bytes": 4004,
+      "sha256": "56624daa1992788e47b5b284c46df08783b85c69395c14bb2fad06537ce88f32"
+    },
+    {
+      "path": "tests/span-search.test.ts",
+      "bytes": 3495,
+      "sha256": "27c42051080b787f231a05d974fa0c2b0a17db54df329ff93b5df398d737fcfd"
+    },
+    {
+      "path": "tests/summary.test.ts",
+      "bytes": 2573,
+      "sha256": "40549cb3ef75f852b9ee1b925f299a092e6fac4a9533156700eb1867703ca2a3"
+    },
+    {
+      "path": "tests/timing.test.ts",
+      "bytes": 6270,
+      "sha256": "560fc725c37c9978a87ea8447b37e3a5e663b42a05b995bc9776e2478fba3640"
+    },
+    {
+      "path": "tests/trace-text.test.ts",
+      "bytes": 11031,
+      "sha256": "ea9569bcda4823f0c5054103781b4c43e0258383c2248d17526263edacd6fe8a"
+    },
+    {
+      "path": "tests/trace-transfer.test.ts",
+      "bytes": 2884,
+      "sha256": "6f5b3efaa4e3f28d422ce2c05b82197e531a0bfa40a7a6e94a17c67b4bb8fb60"
+    },
+    {
+      "path": "tests/version.test.ts",
+      "bytes": 335,
+      "sha256": "72b80a6d0408a4281060a675f5f0382cb2a848d586324cbcbf312d2d65cd68a4"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "bytes": 428,
+      "sha256": "37f2aea8ce902c14129c7f6be7e35d02fdcf7bd1257eeb1287ed5cafe8aab808"
+    },
+    {
+      "path": "tsconfig.cli.json",
+      "bytes": 264,
+      "sha256": "b57fa490b7766ec954a7832523c2f9c95a7f6409f13f0f0a814d6b981980898e"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 300,
+      "sha256": "f75f887cdc4dc8ec8029c8e30ea01f52541c190c0bdf235459aff18698f22fae"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 250,
+      "sha256": "6c369fe97ec0f1a25810ddf589ca1d1e22124bee5dc594de8936a26075588010"
+    },
+    {
+      "path": "vitest.config.ts",
+      "bytes": 158,
+      "sha256": "e81250ce9c30d834f85f87b91dc8cef5197e87230b21b362e9344344aec17df8"
+    }
+  ],
+  "installedPackage": {
+    "tarball": {
+      "path": "antonsoloviev-tracelens-0.3.3.tgz",
+      "bytes": 50757,
+      "sha256": "08a41c4890305bb05ca56bc94e3dacee9dddfb283211d572098c1c366bec8662"
+    },
+    "filesByteMatched": [
+      {
+        "path": "dist-cli/cli/compare-report.js",
+        "bytes": 3138,
+        "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a"
+      },
+      {
+        "path": "dist-cli/cli/cost-report.js",
+        "bytes": 2162,
+        "sha256": "d380fc9e48022541269a23f26f20d7520ab0b95ff860b1f3d969ad10e21a6d2c"
+      },
+      {
+        "path": "dist-cli/cli/format.js",
+        "bytes": 1815,
+        "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea"
+      },
+      {
+        "path": "dist-cli/cli/index.js",
+        "bytes": 13503,
+        "sha256": "f97bcd8af93489d72bb85a2e5b0d48f2e8aa44759aa7aaddac665a5ec6a2f995"
+      },
+      {
+        "path": "dist-cli/cli/links-report.js",
+        "bytes": 1278,
+        "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+      },
+      {
+        "path": "dist-cli/cli/timing-report.js",
+        "bytes": 1708,
+        "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9"
+      },
+      {
+        "path": "dist-cli/cli/version.js",
+        "bytes": 115,
+        "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+      },
+      {
+        "path": "dist-cli/core/attributes.js",
+        "bytes": 6575,
+        "sha256": "367921d52cb5d6c338120edf5a7142884af35aab1e02948af37fcc2f7d12397b"
+      },
+      {
+        "path": "dist-cli/core/compare.js",
+        "bytes": 7100,
+        "sha256": "3b63674438dfb97393e8e4ea8c0c4eed67f9c5ac7838604c6a7b44a64c663515"
+      },
+      {
+        "path": "dist-cli/core/cost-format.js",
+        "bytes": 364,
+        "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f"
+      },
+      {
+        "path": "dist-cli/core/cost-report.js",
+        "bytes": 3270,
+        "sha256": "a106bff43558b2d35c9352a03593ee66e657704261c53bd5a5d125cc6581e697"
+      },
+      {
+        "path": "dist-cli/core/cost.js",
+        "bytes": 9252,
+        "sha256": "f0be36700b08475cfed1f5c1fe1eaab64498d61e601e7cc6e8ab75d900e5322d"
+      },
+      {
+        "path": "dist-cli/core/critical-path.js",
+        "bytes": 1313,
+        "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96"
+      },
+      {
+        "path": "dist-cli/core/decode.js",
+        "bytes": 1001,
+        "sha256": "a6389c31f9d2c724b3fd2c263562dc9acdddccb7d276d03e4bbd68b399ea66d8"
+      },
+      {
+        "path": "dist-cli/core/identity.js",
+        "bytes": 1146,
+        "sha256": "8631d361e56336fd309e2541d92210a24a7df9730ec8c6c032a6a697237a6956"
+      },
+      {
+        "path": "dist-cli/core/index.js",
+        "bytes": 396,
+        "sha256": "868153c6b9370d73334c478a131d27ab011526bf5862e42daed21bc87567d6e5"
+      },
+      {
+        "path": "dist-cli/core/jaeger.js",
+        "bytes": 10494,
+        "sha256": "e99daf8868016651ea6182d1be8d2c5318c2bed235b6da777311115e1fb79cbe"
+      },
+      {
+        "path": "dist-cli/core/layout.js",
+        "bytes": 1628,
+        "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e"
+      },
+      {
+        "path": "dist-cli/core/links.js",
+        "bytes": 1988,
+        "sha256": "47d787c4c0c33ae28c660a68e513035de37f0b53136f36d4d7a546631152c198"
+      },
+      {
+        "path": "dist-cli/core/normalize.js",
+        "bytes": 34154,
+        "sha256": "bbfd5b2295b37f5690186f0b024cbe30dee8ac26f26f3d27e9dc6942113eba6f"
+      },
+      {
+        "path": "dist-cli/core/otlp-parser.js",
+        "bytes": 23295,
+        "sha256": "6100b73a17dab2b9bd1739f4eab0f694f79ac571b14517232152f45302b2d610"
+      },
+      {
+        "path": "dist-cli/core/payload-depth.js",
+        "bytes": 855,
+        "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d"
+      },
+      {
+        "path": "dist-cli/core/pricing.js",
+        "bytes": 6360,
+        "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4"
+      },
+      {
+        "path": "dist-cli/core/summary.js",
+        "bytes": 4628,
+        "sha256": "62631ff99449c7dbae96d0ddee79ccb5c3b874854f62952e504c93f6c33579ee"
+      },
+      {
+        "path": "dist-cli/core/timing.js",
+        "bytes": 5050,
+        "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607"
+      },
+      {
+        "path": "dist-cli/core/types.js",
+        "bytes": 327,
+        "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974"
+      }
+    ],
+    "replays": [
+      {
+        "node": "v20.0.0",
+        "cases": 39,
+        "matches": 39,
+        "cliInvocations": 117,
+        "completeResultEquals": "after.json excluding node version",
+        "resultSha256": "c3e41b2e9e4a3bdff371367ada069216d348a12beac0768f8201eea5daae03b9"
+      },
+      {
+        "node": "v24.21.0",
+        "cases": 39,
+        "matches": 39,
+        "cliInvocations": 117,
+        "completeResultEquals": "after.json excluding node version",
+        "resultSha256": "c3e41b2e9e4a3bdff371367ada069216d348a12beac0768f8201eea5daae03b9"
+      }
+    ],
+    "bareBinRunsOnNode20": true
+  },
+  "readmeCommandOutputs": [
+    {
+      "path": "readme-cost.txt",
+      "bytes": 1551,
+      "sha256": "6506788432612b9bf6c7e7f6012a71629e56460fdaefe208d1400221435e2f87"
+    },
+    {
+      "path": "readme-cost.json",
+      "bytes": 12367,
+      "sha256": "379409bf592943a2734fb227d0e1227c215e5710429e128984ec51b4523f4e14"
+    },
+    {
+      "path": "readme-compare.txt",
+      "bytes": 2965,
+      "sha256": "0008eec3c6c6699939d2b68b3ceed0609bc0b890d997c1a443bfe22bf1b632d8"
+    },
+    {
+      "path": "readme-compare.json",
+      "bytes": 57126,
+      "sha256": "a1b23ac869a055e7b4b277c10f21d51cca2f65c6992ded5d97ba977c898cc45b"
+    },
+    {
+      "path": "readme-installed.txt",
+      "bytes": 2010,
+      "sha256": "ac5904376e348f233f75e0159751409bb6c9c3f0153eab1f2291a68faa7c0ba0"
+    },
+    {
+      "path": "readme-installed-node20.txt",
+      "bytes": 2010,
+      "sha256": "ac5904376e348f233f75e0159751409bb6c9c3f0153eab1f2291a68faa7c0ba0"
+    }
+  ],
+  "fonts": {
+    "bytesUnchangedFromBaseline": true,
+    "sourceBytes": 315324,
+    "files": [
+      {
+        "path": "src/web/fonts/ibm-plex-mono-400-cyrillic-ext.woff2",
+        "bytes": 6912,
+        "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-400-cyrillic.woff2",
+        "bytes": 8356,
+        "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-400-latin-ext.woff2",
+        "bytes": 13348,
+        "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-400-latin.woff2",
+        "bytes": 14708,
+        "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-400-vietnamese.woff2",
+        "bytes": 5868,
+        "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-500-cyrillic-ext.woff2",
+        "bytes": 6972,
+        "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-500-cyrillic.woff2",
+        "bytes": 8460,
+        "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-500-latin-ext.woff2",
+        "bytes": 13432,
+        "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-500-latin.woff2",
+        "bytes": 14888,
+        "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-500-vietnamese.woff2",
+        "bytes": 6040,
+        "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-600-cyrillic-ext.woff2",
+        "bytes": 7692,
+        "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-600-cyrillic.woff2",
+        "bytes": 9352,
+        "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-600-latin-ext.woff2",
+        "bytes": 14328,
+        "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-600-latin.woff2",
+        "bytes": 15620,
+        "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-mono-600-vietnamese.woff2",
+        "bytes": 6932,
+        "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-sans-cyrillic-ext.woff2",
+        "bytes": 23568,
+        "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-sans-cyrillic.woff2",
+        "bytes": 29512,
+        "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-sans-greek.woff2",
+        "bytes": 19500,
+        "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-sans-latin-ext.woff2",
+        "bytes": 30964,
+        "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-sans-latin.woff2",
+        "bytes": 45712,
+        "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+      },
+      {
+        "path": "src/web/fonts/ibm-plex-sans-vietnamese.woff2",
+        "bytes": 13160,
+        "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+      }
+    ]
+  },
+  "browser": [
+    {
+      "phase": "before",
+      "browser": "chromium",
+      "width": 1440,
+      "cases": 39,
+      "rejected": 8,
+      "loadedFacesAtDisconnect": 3,
+      "declaredFaces": 39,
+      "assetsByteMatched": 4,
+      "httpRequestsAfterDisconnect": 2,
+      "failedRequests": 2,
+      "consoleOrPageErrors": 2,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "before",
+      "browser": "chromium",
+      "width": 375,
+      "cases": 39,
+      "rejected": 8,
+      "loadedFacesAtDisconnect": 3,
+      "declaredFaces": 39,
+      "assetsByteMatched": 4,
+      "httpRequestsAfterDisconnect": 2,
+      "failedRequests": 2,
+      "consoleOrPageErrors": 2,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "before",
+      "browser": "firefox",
+      "width": 1440,
+      "cases": 39,
+      "rejected": 8,
+      "loadedFacesAtDisconnect": 3,
+      "declaredFaces": 39,
+      "assetsByteMatched": 4,
+      "httpRequestsAfterDisconnect": 3,
+      "failedRequests": 2,
+      "consoleOrPageErrors": 2,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "before",
+      "browser": "firefox",
+      "width": 375,
+      "cases": 39,
+      "rejected": 8,
+      "loadedFacesAtDisconnect": 3,
+      "declaredFaces": 39,
+      "assetsByteMatched": 4,
+      "httpRequestsAfterDisconnect": 3,
+      "failedRequests": 2,
+      "consoleOrPageErrors": 2,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "after",
+      "browser": "chromium",
+      "width": 1440,
+      "cases": 39,
+      "rejected": 0,
+      "loadedFacesAtDisconnect": 39,
+      "declaredFaces": 39,
+      "assetsByteMatched": 24,
+      "httpRequestsAfterDisconnect": 0,
+      "failedRequests": 0,
+      "consoleOrPageErrors": 0,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "after",
+      "browser": "chromium",
+      "width": 375,
+      "cases": 39,
+      "rejected": 0,
+      "loadedFacesAtDisconnect": 39,
+      "declaredFaces": 39,
+      "assetsByteMatched": 24,
+      "httpRequestsAfterDisconnect": 0,
+      "failedRequests": 0,
+      "consoleOrPageErrors": 0,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "after",
+      "browser": "firefox",
+      "width": 1440,
+      "cases": 39,
+      "rejected": 0,
+      "loadedFacesAtDisconnect": 39,
+      "declaredFaces": 39,
+      "assetsByteMatched": 24,
+      "httpRequestsAfterDisconnect": 0,
+      "failedRequests": 0,
+      "consoleOrPageErrors": 0,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    },
+    {
+      "phase": "after",
+      "browser": "firefox",
+      "width": 375,
+      "cases": 39,
+      "rejected": 0,
+      "loadedFacesAtDisconnect": 39,
+      "declaredFaces": 39,
+      "assetsByteMatched": 24,
+      "httpRequestsAfterDisconnect": 0,
+      "failedRequests": 0,
+      "consoleOrPageErrors": 0,
+      "externalRequests": 0,
+      "cspViolations": 0,
+      "screenshotsAuditedWithAxe": 2
+    }
+  ],
+  "screenshots": {
+    "allOpenedAndInspected": true,
+    "assessment": "Warnings and original content are readable; missing output is visibly restored. Mobile page has no horizontal overflow; timeline retains its own horizontal scrolling.",
+    "files": [
+      {
+        "path": "docs/assets/event-messages/after/chromium-1440-legacy-input-attribute.png",
+        "bytes": 85434,
+        "sha256": "1ae2c5d304a148cda2452803004f53b8378671517ab97f1c4f16378b52354acd"
+      },
+      {
+        "path": "docs/assets/event-messages/after/chromium-1440-toolUse-string.png",
+        "bytes": 90963,
+        "sha256": "2eee5422924e478852387f541cf401d07013b9eab454b62cf3e3996fc9b2e795"
+      },
+      {
+        "path": "docs/assets/event-messages/after/chromium-375-legacy-input-attribute.png",
+        "bytes": 78227,
+        "sha256": "232379be12dcec91fd2077da037ac476a4576f3925e8ced191afb219ec7c5397"
+      },
+      {
+        "path": "docs/assets/event-messages/after/chromium-375-toolUse-string.png",
+        "bytes": 86077,
+        "sha256": "8dde64e7450a66282366d0609bce8b7a635c14726121eeb0fc3ef3a1076959f7"
+      },
+      {
+        "path": "docs/assets/event-messages/after/firefox-1440-legacy-input-attribute.png",
+        "bytes": 115992,
+        "sha256": "46df59827551edce8f7a25c5ed3bfe3f89861b2508b7480f0717109761bf34c3"
+      },
+      {
+        "path": "docs/assets/event-messages/after/firefox-1440-toolUse-string.png",
+        "bytes": 125820,
+        "sha256": "1bb2dc5201eb652765de71d9aad72ee67e10b884e27423a635a68bda3e1e0d9a"
+      },
+      {
+        "path": "docs/assets/event-messages/after/firefox-375-legacy-input-attribute.png",
+        "bytes": 106447,
+        "sha256": "a483d17cab13b77b41fe49acf846d027aa12d941cb9add083f15a5ba3601ae4f"
+      },
+      {
+        "path": "docs/assets/event-messages/after/firefox-375-toolUse-string.png",
+        "bytes": 116796,
+        "sha256": "8cdba93358bf3c7021fccddcdb5d063442edb452217632c5746218eb7d6f288e"
+      },
+      {
+        "path": "docs/assets/event-messages/before/chromium-1440-legacy-input-attribute.png",
+        "bytes": 83340,
+        "sha256": "8dc327d130f302daac1885b8a926ef50255d30a79761d3f6753150924f595c8f"
+      },
+      {
+        "path": "docs/assets/event-messages/before/chromium-1440-toolUse-string.png",
+        "bytes": 48746,
+        "sha256": "1cccc6a62afc011a4a347abe120caf1f06c13ca05d2775261b92311d130e30a6"
+      },
+      {
+        "path": "docs/assets/event-messages/before/chromium-375-legacy-input-attribute.png",
+        "bytes": 71395,
+        "sha256": "3821555bdea5d369a4dfea085f7d52af1cb9a80ec4cc08be568ec2d41333a276"
+      },
+      {
+        "path": "docs/assets/event-messages/before/chromium-375-toolUse-string.png",
+        "bytes": 43150,
+        "sha256": "2691f22cbd1827b6797ac0da30da728c605ffb4ea30f5881e33419810bdaa63a"
+      },
+      {
+        "path": "docs/assets/event-messages/before/firefox-1440-legacy-input-attribute.png",
+        "bytes": 106977,
+        "sha256": "2dc7dd2de10962a612f63812b2312ddebaf02b1e50e78549b729cd5d7b8fc928"
+      },
+      {
+        "path": "docs/assets/event-messages/before/firefox-1440-toolUse-string.png",
+        "bytes": 72177,
+        "sha256": "1aa9fffcce3af9dde22d54c58d49dabb07898c044b7036d27c32ab660a461d49"
+      },
+      {
+        "path": "docs/assets/event-messages/before/firefox-375-legacy-input-attribute.png",
+        "bytes": 97962,
+        "sha256": "ffddcf704dd93fa7808d6a0b3e9ecbb3878d69a31cddb88347f2188761b238a4"
+      },
+      {
+        "path": "docs/assets/event-messages/before/firefox-375-toolUse-string.png",
+        "bytes": 65597,
+        "sha256": "46dfd45608ad4747b5b0ad572e1388950e698f50353ff1f0c66aae5b5d148176"
+      }
+    ]
+  },
+  "verificationCorrections": [
+    "The first replay comparison included newly added parser warnings in timing preservation; warnings were separated from the timing measurements before comparison.",
+    "The first browser driver tried the landing-page file input after a trace was loaded; corrected to use Load another trace before each new import.",
+    "Strict offline verification initially found the delayed monospace font requests; application startup now loads all bundled faces.",
+    "An initial npm exec with --prefix ran from the source checkout and resolved its non-executable source bin. The documented npx command passed from the separately installed directory, and its actual bin passed on Node 20."
+  ]
+}

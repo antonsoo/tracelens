@@ -4,6 +4,20 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Message events in partial exports
+
+- Keep a trace inspectable when a legacy message contains a malformed nested
+  tool payload. Preserve the whole original message as text and report a
+  trace/span/event/block warning instead of crashing or inventing an empty call.
+- Fill missing input and output messages independently from span events;
+  readable attributes retain precedence in their own direction. Accept JSON
+  whitespace around legacy content blocks.
+- Load bundled font faces at startup, so the first offline trace import does
+  not need to fetch monospace fonts. This moves font traffic to initial load.
+- Retain [captured controls, controlled mutations, before/after CLI and offline
+  browser evidence](studies/event-messages/README.md). Source change; no package
+  release or hosted deployment is included.
+
 ### Partial export containers
 
 - Warn when malformed resource/scope entries or non-array span collections

@@ -1,0 +1,252 @@
+{
+  "node": "v24.21.0",
+  "driver_sha256": "3129cd6d2347166fcd1095cfbddeb3b43b3a0a56f284e031b310475098c3f828",
+  "files": 22,
+  "traces": 27,
+  "spans": 127,
+  "unchanged": 22,
+  "cases": [
+    {
+      "file": "examples/comparison-baseline.json",
+      "bytes": 6812,
+      "source_sha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 6,
+      "before_sha256": "9035e83073e932f030765dd7c1ef572961ae7a96e480eb32c23f42a8bf19a748",
+      "after_sha256": "9035e83073e932f030765dd7c1ef572961ae7a96e480eb32c23f42a8bf19a748"
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "bytes": 6786,
+      "source_sha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 6,
+      "before_sha256": "ef3597eab35cdd82daaacd4bb5e21b5872ceb197185c0ce58559394948c8909e",
+      "after_sha256": "ef3597eab35cdd82daaacd4bb5e21b5872ceb197185c0ce58559394948c8909e"
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "bytes": 18360,
+      "source_sha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 2,
+      "before_sha256": "5e30bc5731a3218db3c514dbc1351179ef416284e31fe1255724d392700b829b",
+      "after_sha256": "5e30bc5731a3218db3c514dbc1351179ef416284e31fe1255724d392700b829b"
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "bytes": 49652,
+      "source_sha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 16,
+      "before_sha256": "bde4f7dc2ff4c8ca1be626a360da6fcd60e2080ce428ed10efa4fb6b0df6a846",
+      "after_sha256": "bde4f7dc2ff4c8ca1be626a360da6fcd60e2080ce428ed10efa4fb6b0df6a846"
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "bytes": 48864,
+      "source_sha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 16,
+      "before_sha256": "d756ed6ffc0ca5875a89f3de312b7d2a6d0bd52929c165a11a4ac781b2ad1254",
+      "after_sha256": "d756ed6ffc0ca5875a89f3de312b7d2a6d0bd52929c165a11a4ac781b2ad1254"
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "bytes": 25739,
+      "source_sha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 8,
+      "before_sha256": "d9e7cd6c9050ef38946b28879b156a61e07c104e26efb0e06f376817a38cf89c",
+      "after_sha256": "d9e7cd6c9050ef38946b28879b156a61e07c104e26efb0e06f376817a38cf89c"
+    },
+    {
+      "file": "examples/queue-links.json",
+      "bytes": 8990,
+      "source_sha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 4,
+      "spans": 9,
+      "before_sha256": "2a13bd7a4afb21ca4e4e75859547f94b7dd97df1d3f75e31cd5f7cc22293a952",
+      "after_sha256": "2a13bd7a4afb21ca4e4e75859547f94b7dd97df1d3f75e31cd5f7cc22293a952"
+    },
+    {
+      "file": "examples/queue-links.oracle.json",
+      "bytes": 4893,
+      "source_sha256": "1502cf77f3259ee4d20677189eb6c2cfd7b6d47b2ec6dbf9ea62ce63ced1fae8",
+      "unchanged": true,
+      "accepted": false,
+      "traces": 0,
+      "spans": 0,
+      "before_sha256": "7bb82a065ef503544128b226792e5a25eba1002bc0a393d9ea35b5735f6119eb",
+      "after_sha256": "7bb82a065ef503544128b226792e5a25eba1002bc0a393d9ea35b5735f6119eb"
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "bytes": 6048,
+      "source_sha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 7,
+      "before_sha256": "4e1a15cada15ae9a64495feaaf7e90cf7fecbbafc649ed5e50f0413584a8750e",
+      "after_sha256": "4e1a15cada15ae9a64495feaaf7e90cf7fecbbafc649ed5e50f0413584a8750e"
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "bytes": 6050,
+      "source_sha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 7,
+      "before_sha256": "d15bfd11a5328470041235812f13fe38487f86175ef3dc0782e238b198d16ce3",
+      "after_sha256": "d15bfd11a5328470041235812f13fe38487f86175ef3dc0782e238b198d16ce3"
+    },
+    {
+      "file": "tests/fixtures/census/openinference-litellm-embedding.json",
+      "bytes": 2305,
+      "source_sha256": "190757a917ea3f6f5928e491f08b5ef434bdb9bbbdf5d22a5638f2412c11d071",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 1,
+      "before_sha256": "9caf37b6e9baca9d41aeab931ae1a449f8e8a35cef582d2dde2770bfdcd6c717",
+      "after_sha256": "9caf37b6e9baca9d41aeab931ae1a449f8e8a35cef582d2dde2770bfdcd6c717"
+    },
+    {
+      "file": "tests/fixtures/census/openllmetry-cohere-legacy-tool-calls.json",
+      "bytes": 10119,
+      "source_sha256": "c32ec86a2e2a9a329180321dcb403561de6b81e63dfc82b22e3ccb881546c8f3",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 2,
+      "spans": 2,
+      "before_sha256": "9fc1022332f0880985d318c6cd95a0dffceef7a8b5b67bdcc185369065bfc177",
+      "after_sha256": "9fc1022332f0880985d318c6cd95a0dffceef7a8b5b67bdcc185369065bfc177"
+    },
+    {
+      "file": "tests/fixtures/census/openllmetry-mistral-embeddings-legacy.json",
+      "bytes": 2157,
+      "source_sha256": "d0efaa258d6cceb199aedd668bab90be1347dfe767e3d7e4dc5a774a6c456224",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 1,
+      "before_sha256": "b1f297476b0405e8636b85b75c6ea08747a5988ddaaffa2413b8fa2f359f8413",
+      "after_sha256": "b1f297476b0405e8636b85b75c6ea08747a5988ddaaffa2413b8fa2f359f8413"
+    },
+    {
+      "file": "tests/fixtures/census/openllmetry-openai-reasoning.json",
+      "bytes": 3805,
+      "source_sha256": "8e2a8d8eddf48ac9d8d2e154cbef59172d95df83956f52eef914e3a822b34f0f",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 1,
+      "before_sha256": "ca70636286ab042f31cf86ee148cfc69de99aa96b4f6421e41c8cc42550a5dff",
+      "after_sha256": "ca70636286ab042f31cf86ee148cfc69de99aa96b4f6421e41c8cc42550a5dff"
+    },
+    {
+      "file": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+      "bytes": 20998,
+      "source_sha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 6,
+      "before_sha256": "a6b428bdd4149d7dabb4c0b835a01f5c13b2f5941574b673649af46c2a68723a",
+      "after_sha256": "a6b428bdd4149d7dabb4c0b835a01f5c13b2f5941574b673649af46c2a68723a"
+    },
+    {
+      "file": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+      "bytes": 20352,
+      "source_sha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 6,
+      "before_sha256": "23f649c2416f8498b49fe6ac8a824f880cc5aea90a0cc1dae28cccd6ea30142f",
+      "after_sha256": "23f649c2416f8498b49fe6ac8a824f880cc5aea90a0cc1dae28cccd6ea30142f"
+    },
+    {
+      "file": "tests/fixtures/census/vercel-ai-sdk-6-deepseek-tool-call.json",
+      "bytes": 12254,
+      "source_sha256": "9b152219e15a46c1d90155c90ffebcf053377c78df78d8b88d506250943a502f",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 3,
+      "before_sha256": "93b191a97d8363d6d05d8dc0e87a236c040e99fdfc7bae22bb293f649578d36d",
+      "after_sha256": "93b191a97d8363d6d05d8dc0e87a236c040e99fdfc7bae22bb293f649578d36d"
+    },
+    {
+      "file": "tests/fixtures/census/vercel-ai-sdk-6-openai-responses-stream.json",
+      "bytes": 14670,
+      "source_sha256": "659588fa264215f9d8b30d04336603d09000ce61904f5f0e9718741f7b330cbb",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 2,
+      "before_sha256": "327a26f724082c22f55d980def4787b4bc34937863aaebac70dd2fb1526346ea",
+      "after_sha256": "327a26f724082c22f55d980def4787b4bc34937863aaebac70dd2fb1526346ea"
+    },
+    {
+      "file": "tests/fixtures/instrumented/openinference.json",
+      "bytes": 25636,
+      "source_sha256": "6a4cdea52bac1d6526d16a1b8e1029b336ebc93d8b9d5adf563d3f402289a476",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 2,
+      "spans": 6,
+      "before_sha256": "c0e2b3f0f5a28b25f84f64174aad45d31366d445457cea2e00511eaf4712b80e",
+      "after_sha256": "c0e2b3f0f5a28b25f84f64174aad45d31366d445457cea2e00511eaf4712b80e"
+    },
+    {
+      "file": "tests/fixtures/instrumented/openllmetry.json",
+      "bytes": 14631,
+      "source_sha256": "a20b5494916d31aaadeec664107701ff0c39fd876a98a7c23f86d77cb54489f3",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 2,
+      "spans": 6,
+      "before_sha256": "5d823bdc169ec0a8d2ba6072708b2ca255aef687a667f82602751828a0eb1c91",
+      "after_sha256": "5d823bdc169ec0a8d2ba6072708b2ca255aef687a667f82602751828a0eb1c91"
+    },
+    {
+      "file": "tests/fixtures/small-genai-semconv-trace.json",
+      "bytes": 26534,
+      "source_sha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 8,
+      "before_sha256": "d49b7d2ae4a963041a862df465b7da7a050d2a41fa9e311a2a05cf0b57057d51",
+      "after_sha256": "d49b7d2ae4a963041a862df465b7da7a050d2a41fa9e311a2a05cf0b57057d51"
+    },
+    {
+      "file": "tests/fixtures/small-openinference-trace.json",
+      "bytes": 25739,
+      "source_sha256": "d1616024ceb3c925abf6526efcbd09cb3a7feb59d97c84b2cc42c1634ac1c918",
+      "unchanged": true,
+      "accepted": true,
+      "traces": 1,
+      "spans": 8,
+      "before_sha256": "a1f66b4cce77f8a5f56d36d53f7ef1d0f17b1f24f720d70a20fcb81db29d856e",
+      "after_sha256": "a1f66b4cce77f8a5f56d36d53f7ef1d0f17b1f24f720d70a20fcb81db29d856e"
+    }
+  ]
+}

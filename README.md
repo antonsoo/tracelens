@@ -51,6 +51,14 @@ events; the earlier viewer reported no warning. [Reproduction and limits](studie
 Malformed Jaeger timing is also reported instead of becoming measured zero.
 [Verified source, install and public-build evidence](docs/verification-trace-integrity-2026-10-11.md).
 
+**Source update: damaged message events remain inspectable.** A malformed nested
+tool payload previously prevented an otherwise readable six-span trace from
+opening. The parser now retains its original message with a scoped warning.
+Input-message attributes also no longer hide valid output events.
+[Captured controls and before/after evidence](studies/event-messages/README.md).
+These changes require a source build; this update does not release npm or
+deploy the live demo.
+
 ![Recorded SDK call with its token calculation and rate source](docs/assets/cost-receipt-desktop.png)
 
 ![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
