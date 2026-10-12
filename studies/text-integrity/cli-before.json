@@ -1,0 +1,2635 @@
+{
+  "synthetic": true,
+  "node": "v26.7.0",
+  "baseline": true,
+  "manifestSha256": "3852d3a68b5dcd221ceb4c42f8de5584171705d9bc83eab605da021f00124b8b",
+  "matches": 32,
+  "total": 88,
+  "rows": [
+    {
+      "id": "otlp-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-continuation-80",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-continuation-81",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-overlong",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34792,
+      "stdoutSha256": "5196026930f112054112748da995d9bc11c114bcfd27b94e9a1fe400bba768c6",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ��"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34801,
+      "stdoutSha256": "1b6de3566ae61c8c3fea9762d4cbd90e41ce9b3e2e1961f9eca79914291d24c0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ���"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34810,
+      "stdoutSha256": "4e30999f72fa97b52ad9b457d21a756c9446c31a27a1d4225a3329d4594703d8",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ����"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-incomplete",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "\"input.json\": Not valid JSON: Unexpected non-whitespace character after JSON at position 242 (line 1 column 243)\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "otlp-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "\"input.json\": Not valid JSON: Unexpected non-whitespace character after JSON at position 242 (line 1 column 243)\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-continuation-80",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-continuation-81",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-overlong",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35080,
+      "stdoutSha256": "7f623cb262ddcf3bea17768fcb0ff7a461fbedbd46eff03da786d99ede36693a",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ��"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35089,
+      "stdoutSha256": "c8e790a9eeac1dbb435d4b65860927766d5e9533383e4c5e7b7fc8d0574a9d3d",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ���"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35098,
+      "stdoutSha256": "42de82fc816dea79feb0f43387ca0f6f0c0f2088f7e94e3f956aefcb65b82865",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ����"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-incomplete",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35450,
+      "stdoutSha256": "aaf5100b7f30408055d8f515674748a2f755042d48309d1b1dc6327caca12f86",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation valid"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35071,
+      "stdoutSha256": "5492fc83ed019a63c3cb18e81138c52eeb3a8542bfdca793433ae92751f1ace0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jsonl-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 35450,
+      "stdoutSha256": "aaf5100b7f30408055d8f515674748a2f755042d48309d1b1dc6327caca12f86",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation valid"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-continuation-80",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-continuation-81",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-overlong",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34792,
+      "stdoutSha256": "5196026930f112054112748da995d9bc11c114bcfd27b94e9a1fe400bba768c6",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ��"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34801,
+      "stdoutSha256": "1b6de3566ae61c8c3fea9762d4cbd90e41ce9b3e2e1961f9eca79914291d24c0",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ���"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34810,
+      "stdoutSha256": "4e30999f72fa97b52ad9b457d21a756c9446c31a27a1d4225a3329d4594703d8",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation ����"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-incomplete",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "\"input.json\": Not valid JSON: Unexpected non-whitespace character after JSON at position 254 (line 1 column 255)\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 34783,
+      "stdoutSha256": "6311b1d1ae3d75c943a1071b6af754c1ef440dd8791ba540b313ee25575c07ef",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "removed"
+        },
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "added"
+        }
+      ],
+      "matches": false
+    },
+    {
+      "id": "jaeger-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "\"input.json\": Not valid JSON: Unexpected non-whitespace character after JSON at position 254 (line 1 column 255)\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-continuation-80",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-continuation-81",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-overlong",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1364,
+      "stdoutSha256": "f425092fdee8c053c4890e1f4d4b28f9388e7ccd8e4657dd4321dbdf652d4aa0",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1367,
+      "stdoutSha256": "920232f8b5c4a3c6038359061ce66f0c7cedcf804a7c0d15a278c361b4678a4b",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1370,
+      "stdoutSha256": "8df868519ac59381b22e0d3bbb3e22c8dd9a2e94687cb6d3bef74ccf5de477a1",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-incomplete",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Unexpected non-whitespace character after JSON at position 192 (line 1 column 193)\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": false
+    },
+    {
+      "id": "prices-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Unexpected non-whitespace character after JSON at position 192 (line 1 column 193)\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": false
+    }
+  ],
+  "distinctDamagedNames": {
+    "exit": 0,
+    "stderr": "",
+    "report": {
+      "schemaVersion": 1,
+      "baselineTraceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidateTraceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "priceTable": [
+        {
+          "id": "claude-fable-5-1",
+          "matchModel": "claude-fable-5-1",
+          "provider": "anthropic",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 0.25,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-fable-5",
+          "matchModel": "claude-fable-5",
+          "provider": "anthropic",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-5-5",
+          "matchModel": "claude-opus-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 4,
+          "outputPerMTok": 20,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-5",
+          "matchModel": "claude-opus-5",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-8",
+          "matchModel": "claude-opus-4-8",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-7",
+          "matchModel": "claude-opus-4-7",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-6",
+          "matchModel": "claude-opus-4-6",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-5",
+          "matchModel": "claude-sonnet-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-4-6",
+          "matchModel": "claude-sonnet-4-6",
+          "provider": "anthropic",
+          "inputPerMTok": 3,
+          "outputPerMTok": 15,
+          "cacheReadPerMTok": 0.3,
+          "cacheWritePerMTok": 3.75,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "matchModel": "claude-haiku-4-5",
+          "provider": "anthropic",
+          "inputPerMTok": 1,
+          "outputPerMTok": 5,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 1.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6.1-sol",
+          "matchModel": "gpt-6.1-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "cacheWritePerMTok": 0.125,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-5",
+          "matchModel": "gpt-5",
+          "provider": "openai",
+          "inputPerMTok": 1.25,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.125,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-5-mini",
+          "matchModel": "gpt-5-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.25,
+          "outputPerMTok": 2,
+          "cacheReadPerMTok": 0.025,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-5-nano",
+          "matchModel": "gpt-5-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.05,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.005,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-4o-mini",
+          "matchModel": "gpt-4o-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.15,
+          "outputPerMTok": 0.6,
+          "cacheReadPerMTok": 0.075,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4o",
+          "matchModel": "gpt-4o",
+          "provider": "openai",
+          "inputPerMTok": 2.5,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 1.25,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1-nano",
+          "matchModel": "gpt-4.1-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.025,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1-mini",
+          "matchModel": "gpt-4.1-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.4,
+          "outputPerMTok": 1.6,
+          "cacheReadPerMTok": 0.1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1",
+          "matchModel": "gpt-4.1",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 8,
+          "cacheReadPerMTok": 0.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "o4-mini",
+          "matchModel": "o4-mini",
+          "provider": "openai",
+          "inputPerMTok": 1.1,
+          "outputPerMTok": 4.4,
+          "cacheReadPerMTok": 0.275,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "o3",
+          "matchModel": "o3",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 8,
+          "cacheReadPerMTok": 0.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        }
+      ],
+      "costEvidence": {
+        "baseline": {
+          "schemaVersion": 1,
+          "format": "tracelens-cost-evidence",
+          "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "priceTable": [
+            {
+              "id": "claude-fable-5-1",
+              "matchModel": "claude-fable-5-1",
+              "provider": "anthropic",
+              "inputPerMTok": 10,
+              "outputPerMTok": 50,
+              "cacheReadPerMTok": 0.25,
+              "cacheWritePerMTok": 12.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-fable-5",
+              "matchModel": "claude-fable-5",
+              "provider": "anthropic",
+              "inputPerMTok": 10,
+              "outputPerMTok": 50,
+              "cacheReadPerMTok": 1,
+              "cacheWritePerMTok": 12.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-5-5",
+              "matchModel": "claude-opus-5-5",
+              "provider": "anthropic",
+              "inputPerMTok": 4,
+              "outputPerMTok": 20,
+              "cacheReadPerMTok": 0.2,
+              "cacheWritePerMTok": 5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-5",
+              "matchModel": "claude-opus-5",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-4-8",
+              "matchModel": "claude-opus-4-8",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-4-7",
+              "matchModel": "claude-opus-4-7",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-4-6",
+              "matchModel": "claude-opus-4-6",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-sonnet-5-5",
+              "matchModel": "claude-sonnet-5-5",
+              "provider": "anthropic",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.1,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-sonnet-5",
+              "matchModel": "claude-sonnet-5",
+              "provider": "anthropic",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.2,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-sonnet-4-6",
+              "matchModel": "claude-sonnet-4-6",
+              "provider": "anthropic",
+              "inputPerMTok": 3,
+              "outputPerMTok": 15,
+              "cacheReadPerMTok": 0.3,
+              "cacheWritePerMTok": 3.75,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-haiku-4-5",
+              "matchModel": "claude-haiku-4-5",
+              "provider": "anthropic",
+              "inputPerMTok": 1,
+              "outputPerMTok": 5,
+              "cacheReadPerMTok": 0.1,
+              "cacheWritePerMTok": 1.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6-astra",
+              "matchModel": "gpt-6-astra",
+              "provider": "openai",
+              "inputPerMTok": 10,
+              "outputPerMTok": 50,
+              "cacheReadPerMTok": 1,
+              "cacheWritePerMTok": 12.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6.1-sol",
+              "matchModel": "gpt-6.1-sol",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.1,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6-sol",
+              "matchModel": "gpt-6-sol",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.2,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6-luna",
+              "matchModel": "gpt-6-luna",
+              "provider": "openai",
+              "inputPerMTok": 0.1,
+              "outputPerMTok": 0.5,
+              "cacheReadPerMTok": 0.01,
+              "cacheWritePerMTok": 0.125,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-5",
+              "matchModel": "gpt-5",
+              "provider": "openai",
+              "inputPerMTok": 1.25,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.125,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-5-mini",
+              "matchModel": "gpt-5-mini",
+              "provider": "openai",
+              "inputPerMTok": 0.25,
+              "outputPerMTok": 2,
+              "cacheReadPerMTok": 0.025,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-5-nano",
+              "matchModel": "gpt-5-nano",
+              "provider": "openai",
+              "inputPerMTok": 0.05,
+              "outputPerMTok": 0.4,
+              "cacheReadPerMTok": 0.005,
+              "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-4o-mini",
+              "matchModel": "gpt-4o-mini",
+              "provider": "openai",
+              "inputPerMTok": 0.15,
+              "outputPerMTok": 0.6,
+              "cacheReadPerMTok": 0.075,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4o",
+              "matchModel": "gpt-4o",
+              "provider": "openai",
+              "inputPerMTok": 2.5,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 1.25,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4.1-nano",
+              "matchModel": "gpt-4.1-nano",
+              "provider": "openai",
+              "inputPerMTok": 0.1,
+              "outputPerMTok": 0.4,
+              "cacheReadPerMTok": 0.025,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4.1-mini",
+              "matchModel": "gpt-4.1-mini",
+              "provider": "openai",
+              "inputPerMTok": 0.4,
+              "outputPerMTok": 1.6,
+              "cacheReadPerMTok": 0.1,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4.1",
+              "matchModel": "gpt-4.1",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 8,
+              "cacheReadPerMTok": 0.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "o4-mini",
+              "matchModel": "o4-mini",
+              "provider": "openai",
+              "inputPerMTok": 1.1,
+              "outputPerMTok": 4.4,
+              "cacheReadPerMTok": 0.275,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "o3",
+              "matchModel": "o3",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 8,
+              "cacheReadPerMTok": 0.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            }
+          ],
+          "pricedCalls": 0,
+          "unpricedCalls": 0,
+          "excludedSpans": 0,
+          "knownCostUsd": null,
+          "estimatedCostUsd": null,
+          "rows": [],
+          "notes": [
+            "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+            "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+            "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+            "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+            "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+            "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+          ],
+          "warnings": []
+        },
+        "candidate": {
+          "schemaVersion": 1,
+          "format": "tracelens-cost-evidence",
+          "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "priceTable": [
+            {
+              "id": "claude-fable-5-1",
+              "matchModel": "claude-fable-5-1",
+              "provider": "anthropic",
+              "inputPerMTok": 10,
+              "outputPerMTok": 50,
+              "cacheReadPerMTok": 0.25,
+              "cacheWritePerMTok": 12.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-fable-5",
+              "matchModel": "claude-fable-5",
+              "provider": "anthropic",
+              "inputPerMTok": 10,
+              "outputPerMTok": 50,
+              "cacheReadPerMTok": 1,
+              "cacheWritePerMTok": 12.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-5-5",
+              "matchModel": "claude-opus-5-5",
+              "provider": "anthropic",
+              "inputPerMTok": 4,
+              "outputPerMTok": 20,
+              "cacheReadPerMTok": 0.2,
+              "cacheWritePerMTok": 5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-5",
+              "matchModel": "claude-opus-5",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-4-8",
+              "matchModel": "claude-opus-4-8",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-4-7",
+              "matchModel": "claude-opus-4-7",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-opus-4-6",
+              "matchModel": "claude-opus-4-6",
+              "provider": "anthropic",
+              "inputPerMTok": 5,
+              "outputPerMTok": 25,
+              "cacheReadPerMTok": 0.5,
+              "cacheWritePerMTok": 6.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-sonnet-5-5",
+              "matchModel": "claude-sonnet-5-5",
+              "provider": "anthropic",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.1,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-sonnet-5",
+              "matchModel": "claude-sonnet-5",
+              "provider": "anthropic",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.2,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-sonnet-4-6",
+              "matchModel": "claude-sonnet-4-6",
+              "provider": "anthropic",
+              "inputPerMTok": 3,
+              "outputPerMTok": 15,
+              "cacheReadPerMTok": 0.3,
+              "cacheWritePerMTok": 3.75,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "claude-haiku-4-5",
+              "matchModel": "claude-haiku-4-5",
+              "provider": "anthropic",
+              "inputPerMTok": 1,
+              "outputPerMTok": 5,
+              "cacheReadPerMTok": 0.1,
+              "cacheWritePerMTok": 1.25,
+              "sourceUrl": "https://claude.com/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6-astra",
+              "matchModel": "gpt-6-astra",
+              "provider": "openai",
+              "inputPerMTok": 10,
+              "outputPerMTok": 50,
+              "cacheReadPerMTok": 1,
+              "cacheWritePerMTok": 12.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6.1-sol",
+              "matchModel": "gpt-6.1-sol",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.1,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6-sol",
+              "matchModel": "gpt-6-sol",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.2,
+              "cacheWritePerMTok": 2.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-6-luna",
+              "matchModel": "gpt-6-luna",
+              "provider": "openai",
+              "inputPerMTok": 0.1,
+              "outputPerMTok": 0.5,
+              "cacheReadPerMTok": 0.01,
+              "cacheWritePerMTok": 0.125,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-5",
+              "matchModel": "gpt-5",
+              "provider": "openai",
+              "inputPerMTok": 1.25,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 0.125,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-5-mini",
+              "matchModel": "gpt-5-mini",
+              "provider": "openai",
+              "inputPerMTok": 0.25,
+              "outputPerMTok": 2,
+              "cacheReadPerMTok": 0.025,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-5-nano",
+              "matchModel": "gpt-5-nano",
+              "provider": "openai",
+              "inputPerMTok": 0.05,
+              "outputPerMTok": 0.4,
+              "cacheReadPerMTok": 0.005,
+              "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+              "sourceDate": "2026-10-09"
+            },
+            {
+              "id": "gpt-4o-mini",
+              "matchModel": "gpt-4o-mini",
+              "provider": "openai",
+              "inputPerMTok": 0.15,
+              "outputPerMTok": 0.6,
+              "cacheReadPerMTok": 0.075,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4o",
+              "matchModel": "gpt-4o",
+              "provider": "openai",
+              "inputPerMTok": 2.5,
+              "outputPerMTok": 10,
+              "cacheReadPerMTok": 1.25,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4.1-nano",
+              "matchModel": "gpt-4.1-nano",
+              "provider": "openai",
+              "inputPerMTok": 0.1,
+              "outputPerMTok": 0.4,
+              "cacheReadPerMTok": 0.025,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4.1-mini",
+              "matchModel": "gpt-4.1-mini",
+              "provider": "openai",
+              "inputPerMTok": 0.4,
+              "outputPerMTok": 1.6,
+              "cacheReadPerMTok": 0.1,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "gpt-4.1",
+              "matchModel": "gpt-4.1",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 8,
+              "cacheReadPerMTok": 0.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "o4-mini",
+              "matchModel": "o4-mini",
+              "provider": "openai",
+              "inputPerMTok": 1.1,
+              "outputPerMTok": 4.4,
+              "cacheReadPerMTok": 0.275,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            },
+            {
+              "id": "o3",
+              "matchModel": "o3",
+              "provider": "openai",
+              "inputPerMTok": 2,
+              "outputPerMTok": 8,
+              "cacheReadPerMTok": 0.5,
+              "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+              "sourceDate": "2026-09-24"
+            }
+          ],
+          "pricedCalls": 0,
+          "unpricedCalls": 0,
+          "excludedSpans": 0,
+          "knownCostUsd": null,
+          "estimatedCostUsd": null,
+          "rows": [],
+          "notes": [
+            "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+            "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+            "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+            "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+            "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+            "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+          ],
+          "warnings": []
+        }
+      },
+      "timing": {
+        "baseline": {
+          "schemaVersion": 1,
+          "format": "tracelens-timing",
+          "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "startTimeUnixNano": "1790000000000000000",
+          "endTimeUnixNano": "1790000001000000000",
+          "elapsedNs": "1000000000",
+          "bucketsNs": {
+            "llm": "0",
+            "tool": "0",
+            "other": "1000000000",
+            "overlap": "0",
+            "uncovered": "0"
+          },
+          "summedSelfNs": "1000000000",
+          "overlapExcessNs": "0",
+          "peakConcurrency": 1,
+          "spanRefsPerInterval": 8,
+          "intervals": [
+            {
+              "offsetNs": "0",
+              "durationNs": "1000000000",
+              "bucket": "other",
+              "activeCount": 1,
+              "spanIds": [
+                "1111111111111111"
+              ],
+              "omittedSpanCount": 0
+            }
+          ],
+          "warnings": []
+        },
+        "candidate": {
+          "schemaVersion": 1,
+          "format": "tracelens-timing",
+          "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "startTimeUnixNano": "1790000000000000000",
+          "endTimeUnixNano": "1790000001000000000",
+          "elapsedNs": "1000000000",
+          "bucketsNs": {
+            "llm": "0",
+            "tool": "0",
+            "other": "1000000000",
+            "overlap": "0",
+            "uncovered": "0"
+          },
+          "summedSelfNs": "1000000000",
+          "overlapExcessNs": "0",
+          "peakConcurrency": 1,
+          "spanRefsPerInterval": 8,
+          "intervals": [
+            {
+              "offsetNs": "0",
+              "durationNs": "1000000000",
+              "bucket": "other",
+              "activeCount": 1,
+              "spanIds": [
+                "1111111111111111"
+              ],
+              "omittedSpanCount": 0
+            }
+          ],
+          "warnings": []
+        }
+      },
+      "wallTimeMs": {
+        "baseline": {
+          "value": 1000,
+          "missing": 0
+        },
+        "candidate": {
+          "value": 1000,
+          "missing": 0
+        },
+        "delta": 0,
+        "percent": 0
+      },
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 1000,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1000,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "operations": [
+        {
+          "key": "[[\"\",\"\",\"other\",\"operation �\"]]",
+          "path": [
+            "other operation �"
+          ],
+          "kind": "other",
+          "status": "matched",
+          "metrics": {
+            "calls": {
+              "baseline": {
+                "value": 1,
+                "missing": 0
+              },
+              "candidate": {
+                "value": 1,
+                "missing": 0
+              },
+              "delta": 0,
+              "percent": 0
+            },
+            "selfTimeMs": {
+              "baseline": {
+                "value": 1000,
+                "missing": 0
+              },
+              "candidate": {
+                "value": 1000,
+                "missing": 0
+              },
+              "delta": 0,
+              "percent": 0
+            },
+            "inputTokens": {
+              "baseline": {
+                "value": 0,
+                "missing": 0
+              },
+              "candidate": {
+                "value": 0,
+                "missing": 0
+              },
+              "delta": 0,
+              "percent": null
+            },
+            "outputTokens": {
+              "baseline": {
+                "value": 0,
+                "missing": 0
+              },
+              "candidate": {
+                "value": 0,
+                "missing": 0
+              },
+              "delta": 0,
+              "percent": null
+            },
+            "costUsd": {
+              "baseline": {
+                "value": 0,
+                "missing": 0
+              },
+              "candidate": {
+                "value": 0,
+                "missing": 0
+              },
+              "delta": 0,
+              "percent": null
+            },
+            "errors": {
+              "baseline": {
+                "value": 0,
+                "missing": 0
+              },
+              "candidate": {
+                "value": 0,
+                "missing": 0
+              },
+              "delta": 0,
+              "percent": null
+            }
+          },
+          "baselineCalls": [
+            {
+              "spanId": "1111111111111111",
+              "name": "operation �",
+              "model": null,
+              "durationMs": 1000,
+              "selfTimeMs": 1000,
+              "error": false
+            }
+          ],
+          "candidateCalls": [
+            {
+              "spanId": "1111111111111111",
+              "name": "operation �",
+              "model": null,
+              "durationMs": 1000,
+              "selfTimeMs": 1000,
+              "error": false
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    }
+  }
+}

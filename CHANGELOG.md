@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Damaged text imports
+
+- Reject malformed UTF-8 and BOM-marked UTF-16 before parsing traces or CLI
+  price files. Replacement decoding previously made different damaged names
+  identical and could report them as matched operations without a warning.
+- Keep valid Unicode, including literal replacement characters, unchanged.
+  Failed browser replacements preserve the previous comparison and support
+  retry. [Byte-level, CLI and browser evidence](studies/text-integrity/README.md).
+
 ### Message events in partial exports
 
 - Keep a trace inspectable when a legacy message contains a malformed nested

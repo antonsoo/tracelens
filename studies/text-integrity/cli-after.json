@@ -1,0 +1,999 @@
+{
+  "synthetic": true,
+  "node": "v26.7.0",
+  "baseline": false,
+  "manifestSha256": "3852d3a68b5dcd221ceb4c42f8de5584171705d9bc83eab605da021f00124b8b",
+  "matches": 88,
+  "total": 88,
+  "rows": [
+    {
+      "id": "otlp-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-continuation-80",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-continuation-81",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-overlong",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-incomplete",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "otlp-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33574,
+      "stdoutSha256": "69353399172bc2c5a0e263c6061239d72ee85bbe2a2768f93cc8f4e7738bdee4",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33518,
+      "stdoutSha256": "d7138c5101537ba74cfa0a062d3cbe01aca13fc123ff532f56a5b261f32681a0",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-continuation-80",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-continuation-81",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-overlong",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-incomplete",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jsonl-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 33001,
+      "stdoutSha256": "0fc5b59e5d1a233e2d33966b1440a7a827fb35138d345fdf0e9c9743dbc0233b",
+      "operations": [
+        {
+          "path": [
+            "other operation café 東京 🔥"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 32945,
+      "stdoutSha256": "8551cd9dddfb796ae222b53da399b0a3e5bb35f8b141e72eca84a50f2a60dcff",
+      "operations": [
+        {
+          "path": [
+            "other operation �"
+          ],
+          "status": "matched"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-continuation-80",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-continuation-81",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-overlong",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-incomplete",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "jaeger-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Can't read \"input.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-bom-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-bom-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-unicode",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1375,
+      "stdoutSha256": "bdf0b77454097499a939ae0911f1a1e9abcd9a64493e1f936fc57efb32642aa9",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-literal-replacement",
+      "valid": true,
+      "exit": 0,
+      "stderr": "",
+      "stdoutBytes": 1361,
+      "stdoutSha256": "48270c1a6154378cbb8d703afe296190935f3193ce6b4eca650a771186a8021f",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-continuation-80",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-continuation-81",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-overlong",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-beyond-unicode",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-incomplete",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-invalid-leading-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-8-bom-damaged",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16le-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-high-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-low-surrogate",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "id": "prices-utf-16be-odd-byte",
+      "valid": false,
+      "exit": 1,
+      "stderr": "Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    }
+  ],
+  "distinctDamagedNames": {
+    "exit": 1,
+    "stderr": "Can't read \"a.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.\n",
+    "report": null
+  }
+}

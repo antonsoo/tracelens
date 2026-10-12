@@ -1,0 +1,3363 @@
+{
+  "synthetic": true,
+  "baseline": false,
+  "manifestSha256": "3852d3a68b5dcd221ceb4c42f8de5584171705d9bc83eab605da021f00124b8b",
+  "captures": [
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 1440,
+      "rows": [
+        {
+          "id": "otlp-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        }
+      ],
+      "matches": 66,
+      "total": 66,
+      "recovered": true,
+      "screenshot": "chromium-1440.png",
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "a1f7e8fce370c66c3e649abd34a5c11a16f320055350ec32332d113d487bc1bb"
+        },
+        "assets/index-DUGRoTKM.css": {
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        "assets/index-D7hCMRwM.js": {
+          "bytes": 121510,
+          "sha256": "c82b7d334babf83ce14eb07be11f99887cb347e81afe4b414b66b38a7b93acb4"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      },
+      "errors": [],
+      "lateRequests": [],
+      "violations": [],
+      "overflow": 0
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 375,
+      "rows": [
+        {
+          "id": "otlp-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        }
+      ],
+      "matches": 66,
+      "total": 66,
+      "recovered": true,
+      "screenshot": "chromium-375.png",
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "a1f7e8fce370c66c3e649abd34a5c11a16f320055350ec32332d113d487bc1bb"
+        },
+        "assets/index-DUGRoTKM.css": {
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        "assets/index-D7hCMRwM.js": {
+          "bytes": 121510,
+          "sha256": "c82b7d334babf83ce14eb07be11f99887cb347e81afe4b414b66b38a7b93acb4"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      },
+      "errors": [],
+      "lateRequests": [],
+      "violations": [],
+      "overflow": 0
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 1440,
+      "rows": [
+        {
+          "id": "otlp-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        }
+      ],
+      "matches": 66,
+      "total": 66,
+      "recovered": true,
+      "screenshot": "firefox-1440.png",
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "a1f7e8fce370c66c3e649abd34a5c11a16f320055350ec32332d113d487bc1bb"
+        },
+        "assets/index-D7hCMRwM.js": {
+          "bytes": 121510,
+          "sha256": "c82b7d334babf83ce14eb07be11f99887cb347e81afe4b414b66b38a7b93acb4"
+        },
+        "assets/index-DUGRoTKM.css": {
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        }
+      },
+      "errors": [],
+      "lateRequests": [],
+      "violations": [],
+      "overflow": 0
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 375,
+      "rows": [
+        {
+          "id": "otlp-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "otlp-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"otlp-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "eb147c094a4c8b3d08c417d52fba080d552e04df73e94501290114f7eff3f4cf",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jsonl-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jsonl-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "4f804a5c0097663daf0c383b030110798f40bfc74170f6a9be4acd57f7310f30",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-unicode",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation café 東京 🔥"
+          ],
+          "downloadedReportSha256": "f97b24baf7da6e62e8fc78ec40a4d03d6a988cd1fd89c04b70c76ffd01a72a86",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-literal-replacement",
+          "valid": true,
+          "error": null,
+          "retainedPreviousReport": false,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-80",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-80.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-continuation-81",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-continuation-81.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-overlong",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-overlong.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-surrogate.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-beyond-unicode",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-beyond-unicode.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-incomplete",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-incomplete.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-invalid-leading-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-invalid-leading-byte.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-8-bom-damaged",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-8-bom-damaged.json\": Invalid UTF-8 text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-high-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-low-surrogate.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16le-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16le-odd-byte.json\": Invalid UTF-16LE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-high-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-high-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-low-surrogate",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-low-surrogate.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        },
+        {
+          "id": "jaeger-utf-16be-odd-byte",
+          "valid": false,
+          "error": "Couldn't compare \"jaeger-utf-16be-odd-byte.json\": Invalid UTF-16BE text. Re-export the file as valid UTF-8 or BOM-marked UTF-16 and try again.",
+          "retainedPreviousReport": true,
+          "candidateNames": [
+            "operation �"
+          ],
+          "downloadedReportSha256": "472201a066d6a547a1fdb9943b8860068a68a863c2acb0b04906cf5ddd5d100e",
+          "matches": true
+        }
+      ],
+      "matches": 66,
+      "total": 66,
+      "recovered": true,
+      "screenshot": "firefox-375.png",
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "a1f7e8fce370c66c3e649abd34a5c11a16f320055350ec32332d113d487bc1bb"
+        },
+        "assets/index-DUGRoTKM.css": {
+          "bytes": 35812,
+          "sha256": "6b66168f90d988dae57781dc33e504ced4819f3038e833b893b496cb5b1cbc7b"
+        },
+        "assets/index-D7hCMRwM.js": {
+          "bytes": 121510,
+          "sha256": "c82b7d334babf83ce14eb07be11f99887cb347e81afe4b414b66b38a7b93acb4"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      },
+      "errors": [],
+      "lateRequests": [],
+      "violations": [],
+      "overflow": 0
+    }
+  ]
+}

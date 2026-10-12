@@ -1,0 +1,546 @@
+{
+  "node": "v24.21.0",
+  "scope": "Nine repository examples, mixed synthetic and recorded provenance; see examples/README.md",
+  "rows": [
+    {
+      "file": "examples/comparison-baseline.json",
+      "command": "summary",
+      "inputBytes": 6812,
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "stdoutBytes": 1886,
+      "stdoutSha256": "0bdfa5a5d09d2c3e1bb6477cad33afe85246f5614c13f98dc11354462e11feff",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-baseline.json",
+      "command": "tree",
+      "inputBytes": 6812,
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "stdoutBytes": 182,
+      "stdoutSha256": "e75a2e202796410d8b5b26a9be84e49681b755ea102482dccbfd415aa62e75e1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-baseline.json",
+      "command": "timing",
+      "inputBytes": 6812,
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "stdoutBytes": 2852,
+      "stdoutSha256": "b5851a4f79e77922c975859a8e293a08c29440fee09324a033ee88855523c8c1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-baseline.json",
+      "command": "cost",
+      "inputBytes": 6812,
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "stdoutBytes": 12734,
+      "stdoutSha256": "b18b260720e961387e23168c6556aeb8cddac559d414db564632875b7e2dc366",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-baseline.json",
+      "command": "links",
+      "inputBytes": 6812,
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "stdoutBytes": 617,
+      "stdoutSha256": "6dade7230d4f42e74bcfcf245fdd0ab641a53fad35a6420af87bcbcf572a1c15",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-baseline.json",
+      "command": "compare",
+      "inputBytes": 6812,
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "stdoutBytes": 55056,
+      "stdoutSha256": "88fcf11ee3e9361eb1ce8488f21f1eceae18719861e993dbe8689f3c2eee97e8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "command": "summary",
+      "inputBytes": 6786,
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "stdoutBytes": 1869,
+      "stdoutSha256": "216690d2a34993cc1a3a31d9f97d58f0b48e8e6cbe4f83e1670b4e5b490a83ee",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "command": "tree",
+      "inputBytes": 6786,
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "stdoutBytes": 166,
+      "stdoutSha256": "f7b75f0202a8fcfc913a5dbd5e8d3f6c6f5164d5a924e96291841a74b2b9c1fd",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "command": "timing",
+      "inputBytes": 6786,
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "stdoutBytes": 2811,
+      "stdoutSha256": "3eab7d2d4d8be5b507b5ec3f1c1fd7d5d977e580152c5ae2bc275ecdce511496",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "command": "cost",
+      "inputBytes": 6786,
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "stdoutBytes": 12718,
+      "stdoutSha256": "1532606bf3316dfa7e510357f68db84815920dd3d5e6102323354d53f5be7d77",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "command": "links",
+      "inputBytes": 6786,
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "stdoutBytes": 617,
+      "stdoutSha256": "075c99c603055925e9d665bd0063e2f3ac8b4358d5c4b9bb49f69cc63081663a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/comparison-candidate.json",
+      "command": "compare",
+      "inputBytes": 6786,
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "stdoutBytes": 54934,
+      "stdoutSha256": "58df50a27c30c3cd386116d90c01888fe06b5dc3637ba29d98e08d6056b0fc34",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "command": "summary",
+      "inputBytes": 18360,
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "stdoutBytes": 1959,
+      "stdoutSha256": "3ed8136af80bd4d621b54d78c5ce8a3b4d320dc6ce53ab4152b0d5d699c3a457",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "command": "tree",
+      "inputBytes": 18360,
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "stdoutBytes": 55,
+      "stdoutSha256": "fac6fa9815b0eac8d6f4b60b2206a126090d64196ef6d5d92ccf65a233f4f615",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "command": "timing",
+      "inputBytes": 18360,
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "stdoutBytes": 1105,
+      "stdoutSha256": "6cf8ce5d6b3b6d254516cf67d3586bcc69d29787cffcc76a5ab99eb17e5d9933",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "command": "cost",
+      "inputBytes": 18360,
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "stdoutBytes": 12367,
+      "stdoutSha256": "379409bf592943a2734fb227d0e1227c215e5710429e128984ec51b4523f4e14",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "command": "links",
+      "inputBytes": 18360,
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "stdoutBytes": 617,
+      "stdoutSha256": "9cf7663e04158dce21b6996ba9db1be0b4ec1d3e7ad99cd24d9e77f19bb653fe",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/cost-nano-stream.json",
+      "command": "compare",
+      "inputBytes": 18360,
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "stdoutBytes": 44762,
+      "stdoutSha256": "ef1527a63806a6f4c24d2b5aa159cf32d3d17dc54c64f779d084bcab249b6168",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "command": "summary",
+      "inputBytes": 49652,
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "stdoutBytes": 2033,
+      "stdoutSha256": "4002ccf044437a5ca9498718830dab277fe0c69e7cdb9a25170638cd705c1025",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "command": "tree",
+      "inputBytes": 49652,
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "stdoutBytes": 672,
+      "stdoutSha256": "1a6d166de840426cefd1d04378acaa9172f4ba4d0edaf62278a192b55915dbc8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "command": "timing",
+      "inputBytes": 49652,
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "stdoutBytes": 6757,
+      "stdoutSha256": "6614df1434f89f155bb1484cdabf70db3b6228b90e7291f67206f764aa2d0079",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "command": "cost",
+      "inputBytes": 49652,
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "stdoutBytes": 20466,
+      "stdoutSha256": "dccc6aece4ff8809e03ae5710e0d6411b0c96445a096e1cdf785c3dd7727fb71",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "command": "links",
+      "inputBytes": 49652,
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "stdoutBytes": 617,
+      "stdoutSha256": "de4f816076cd7b55eaf6bf0d94566590485af04b869990de79aec0450ed71b80",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/genai-semconv-trace.json",
+      "command": "compare",
+      "inputBytes": 49652,
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "stdoutBytes": 100503,
+      "stdoutSha256": "0b0d3088d7772189222b284f90d269684e04fb1e9a18d3a5fd62f87d301abfd1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "command": "summary",
+      "inputBytes": 48864,
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "stdoutBytes": 2032,
+      "stdoutSha256": "5433d9dabf80c3b4544a6d65d3091f92313aed41b2055c269968c8cf8b4db69b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "command": "tree",
+      "inputBytes": 48864,
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "stdoutBytes": 672,
+      "stdoutSha256": "1a6d166de840426cefd1d04378acaa9172f4ba4d0edaf62278a192b55915dbc8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "command": "timing",
+      "inputBytes": 48864,
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "stdoutBytes": 6757,
+      "stdoutSha256": "6614df1434f89f155bb1484cdabf70db3b6228b90e7291f67206f764aa2d0079",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "command": "cost",
+      "inputBytes": 48864,
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "stdoutBytes": 20466,
+      "stdoutSha256": "dccc6aece4ff8809e03ae5710e0d6411b0c96445a096e1cdf785c3dd7727fb71",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "command": "links",
+      "inputBytes": 48864,
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "stdoutBytes": 8710,
+      "stdoutSha256": "38488eccea3f61dec5ba4f71398543693efe50af504ec8e3221394f662893e36",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/jaeger-genai-trace.json",
+      "command": "compare",
+      "inputBytes": 48864,
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "stdoutBytes": 100503,
+      "stdoutSha256": "0b0d3088d7772189222b284f90d269684e04fb1e9a18d3a5fd62f87d301abfd1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "command": "summary",
+      "inputBytes": 25739,
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "stdoutBytes": 1898,
+      "stdoutSha256": "e68b7147d7c303bb3a75f8ffb56e3942cd16e1618025ae3ae8fdef90715effe5",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "command": "tree",
+      "inputBytes": 25739,
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "stdoutBytes": 326,
+      "stdoutSha256": "bcb195ca4696511a9175e27ff7b044f2434a485a5d1ba408937e36fd06915423",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "command": "timing",
+      "inputBytes": 25739,
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "stdoutBytes": 3578,
+      "stdoutSha256": "1e9d31f9454063212d9d4f6e06af3cc04134f16049a67a2a48ce7fb522eb7ce7",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "command": "cost",
+      "inputBytes": 25739,
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "stdoutBytes": 14820,
+      "stdoutSha256": "b631ec187527a2d7d90c409c10640565b5ca39456c52306f79e7d3164a70db5a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "command": "links",
+      "inputBytes": 25739,
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "stdoutBytes": 617,
+      "stdoutSha256": "17494bcdbceb518452994fc46da4e3fa3fff1ccdb40a36f7b37376cbc38968d6",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/openinference-trace.json",
+      "command": "compare",
+      "inputBytes": 25739,
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "stdoutBytes": 65097,
+      "stdoutSha256": "00d1fb36ba641d6f9af2a50aa01befae683dae5c3cac1f3ae79dd90fe76f62e7",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/queue-links.json",
+      "command": "summary",
+      "inputBytes": 8990,
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "stdoutBytes": 1980,
+      "stdoutSha256": "b4d00695cd45bc44247c145962964c1967e59284e950a809a39ed7d74fc462f3",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/queue-links.json",
+      "command": "tree",
+      "inputBytes": 8990,
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "stdoutBytes": 524,
+      "stdoutSha256": "80297eaba4157e4ab9928491ea39d8b021038fc7cc890cc826d3e9962de20d96",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/queue-links.json",
+      "command": "timing",
+      "inputBytes": 8990,
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "stdoutBytes": 2691,
+      "stdoutSha256": "a755edeaa110b92d02af0bc04912ff6674f9459b6ee70521aa758a617f321eda",
+      "stderrSha256": "a716b37f0b19f8b26ef24b347e09dcbaf98675de38435e0c9e71fe52de98b0a7",
+      "identical": true
+    },
+    {
+      "file": "examples/queue-links.json",
+      "command": "cost",
+      "inputBytes": 8990,
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "stdoutBytes": 8721,
+      "stdoutSha256": "43c7d6fa782952fb087a1c0ff3519160a75b7e4b6bf62f0beda58810b52d38a9",
+      "stderrSha256": "a716b37f0b19f8b26ef24b347e09dcbaf98675de38435e0c9e71fe52de98b0a7",
+      "identical": true
+    },
+    {
+      "file": "examples/queue-links.json",
+      "command": "links",
+      "inputBytes": 8990,
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "stdoutBytes": 4506,
+      "stdoutSha256": "8b5bf5dd8f6f6889b85e706e77015baef66006b398788a67f72c2d6570154abc",
+      "stderrSha256": "a716b37f0b19f8b26ef24b347e09dcbaf98675de38435e0c9e71fe52de98b0a7",
+      "identical": true
+    },
+    {
+      "file": "examples/queue-links.json",
+      "command": "compare",
+      "inputBytes": 8990,
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "stdoutBytes": 49828,
+      "stdoutSha256": "be683e98b2b2443d352f30f9fd6dbccd88da50078da10ba3ba92f4d3a6bafb90",
+      "stderrSha256": "eb236c6c7ca6e5f2f97a1d3eedbd821a3f88f0c3a0addaf43dd1466e359028b3",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "command": "summary",
+      "inputBytes": 6048,
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "stdoutBytes": 1629,
+      "stdoutSha256": "a2ea3cd756b30c4cabe144237791ca549d16ae0aae25c2c66b4a8f8bf854ba2c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "command": "tree",
+      "inputBytes": 6048,
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "stdoutBytes": 165,
+      "stdoutSha256": "5d0ff63005702f63c8767403f775674431233e8141f9f2d46e41a5f52189f957",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "command": "timing",
+      "inputBytes": 6048,
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "stdoutBytes": 3300,
+      "stdoutSha256": "acedc19952d2ed96625560aeef42998b1cf0d28855fd7650203e5d5bac29044c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "command": "cost",
+      "inputBytes": 6048,
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "stdoutBytes": 8721,
+      "stdoutSha256": "3be9c3f594a061ad0122641ce0abaa7ad985753526d9891c56b5074bf4b9e81f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "command": "links",
+      "inputBytes": 6048,
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "stdoutBytes": 617,
+      "stdoutSha256": "22e98d65220254d50da6cfd066cc548a3b3778d20b40f90e15520cfcc84a9854",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-parallel.json",
+      "command": "compare",
+      "inputBytes": 6048,
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "stdoutBytes": 53773,
+      "stdoutSha256": "c1cbe37040a388d4ade74f2d690b0c6549a3d32a088fb4c7f8e8595d03e1d041",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "command": "summary",
+      "inputBytes": 6050,
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "stdoutBytes": 1629,
+      "stdoutSha256": "82ca41f5897469a2014b47e8a9d109fa7a440db34d8ad7a01fb1501860c42fc0",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "command": "tree",
+      "inputBytes": 6050,
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "stdoutBytes": 165,
+      "stdoutSha256": "efcca6df8afcd8d7ff4af13790652a5006dfe37fe2b64e4949a9dbecc301b8d0",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "command": "timing",
+      "inputBytes": 6050,
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "stdoutBytes": 3167,
+      "stdoutSha256": "cb8925aa9e97cdafe4a1910e4b65d49e32c7aa88c06f4137f219db7a6a305332",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "command": "cost",
+      "inputBytes": 6050,
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "stdoutBytes": 8721,
+      "stdoutSha256": "a0089863a8604ef03ca43dfbf95dc1994af6c0f129265e50772866d097b2351b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "command": "links",
+      "inputBytes": 6050,
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "stdoutBytes": 617,
+      "stdoutSha256": "87a365c521add33b6c9e9ac1ea8cff0bf18ef58a071e5e9ad4dc0179797603f2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "file": "examples/timing-sequential.json",
+      "command": "compare",
+      "inputBytes": 6050,
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "stdoutBytes": 53457,
+      "stdoutSha256": "85a0b273753c97c588fca9f481264913582c0a9160ccd84de80591bc208a2731",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    }
+  ]
+}

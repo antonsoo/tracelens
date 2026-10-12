@@ -184,6 +184,9 @@ on npm; the command it installs is `tracelens`).
   runs in a dedicated worker, including decoding, normalization and trace
   switching. Cancellation stops that worker and its pending reads. Failed
   or timed-out imports preserve the current run or comparison.
+  In source, malformed UTF-8 or BOM-marked UTF-16 is rejected before parsing,
+  so damaged names cannot silently become identical replacement characters.
+  Valid Unicode remains intact. [Byte-level replay and browser recovery](studies/text-integrity/README.md).
 - **Summary header** — total duration, LLM time vs. tool time (by *self*
   time, not double-counting nested spans), tokens in/out by model, an
   editable-price cost estimate, error and retry counts. The elapsed-time

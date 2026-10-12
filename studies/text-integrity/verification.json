@@ -1,0 +1,188 @@
+{
+  "productionCommit": "e0aa138c8b45defe4c2fdbff57bd4002fd11562c",
+  "cleanNode": "24.21.0",
+  "cleanNpm": "12.0.1",
+  "commands": [
+    "npm ci",
+    "npm run lint",
+    "npm run typecheck",
+    "npm test",
+    "npm run build",
+    "npm run test:cli",
+    "npm run test:browser",
+    "npm pack --ignore-scripts --json"
+  ],
+  "unitTests": 370,
+  "cliTests": 30,
+  "browserTests": 122,
+  "browserSmokeScriptsPassed": true,
+  "cleanCheckLogSha256": "014d358aa682735c15d5b742868b422be8799e244e60b5b20655d05b406464c6",
+  "archive": {
+    "name": "antonsoloviev-tracelens-0.3.3.tgz",
+    "bytes": 51053,
+    "sha256": "e79dc05379216cb3894dc69091e1677dcf9d048a04535114d699efa20f6c7f23",
+    "filesMatchInstalledAndClean": true,
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 1071,
+        "sha256": "e26144be8673d69c175126ad8dcd9ed78431464f0b97120b799dc75ec7edb647"
+      },
+      {
+        "path": "dist-cli/core/attributes.js",
+        "bytes": 6575,
+        "sha256": "367921d52cb5d6c338120edf5a7142884af35aab1e02948af37fcc2f7d12397b"
+      },
+      {
+        "path": "dist-cli/cli/compare-report.js",
+        "bytes": 3138,
+        "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a"
+      },
+      {
+        "path": "dist-cli/core/compare.js",
+        "bytes": 7100,
+        "sha256": "3b63674438dfb97393e8e4ea8c0c4eed67f9c5ac7838604c6a7b44a64c663515"
+      },
+      {
+        "path": "dist-cli/core/cost-format.js",
+        "bytes": 364,
+        "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f"
+      },
+      {
+        "path": "dist-cli/cli/cost-report.js",
+        "bytes": 2162,
+        "sha256": "d380fc9e48022541269a23f26f20d7520ab0b95ff860b1f3d969ad10e21a6d2c"
+      },
+      {
+        "path": "dist-cli/core/cost-report.js",
+        "bytes": 3270,
+        "sha256": "a106bff43558b2d35c9352a03593ee66e657704261c53bd5a5d125cc6581e697"
+      },
+      {
+        "path": "dist-cli/core/cost.js",
+        "bytes": 9252,
+        "sha256": "f0be36700b08475cfed1f5c1fe1eaab64498d61e601e7cc6e8ab75d900e5322d"
+      },
+      {
+        "path": "dist-cli/core/critical-path.js",
+        "bytes": 1313,
+        "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96"
+      },
+      {
+        "path": "dist-cli/core/decode.js",
+        "bytes": 1384,
+        "sha256": "fb2aa462446fee4b2a62af5756e653aa9098888dea0aaf0f52c7057c1f3e6067"
+      },
+      {
+        "path": "dist-cli/cli/format.js",
+        "bytes": 1815,
+        "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea"
+      },
+      {
+        "path": "dist-cli/core/identity.js",
+        "bytes": 1146,
+        "sha256": "8631d361e56336fd309e2541d92210a24a7df9730ec8c6c032a6a697237a6956"
+      },
+      {
+        "path": "dist-cli/cli/index.js",
+        "bytes": 13503,
+        "sha256": "f97bcd8af93489d72bb85a2e5b0d48f2e8aa44759aa7aaddac665a5ec6a2f995"
+      },
+      {
+        "path": "dist-cli/core/index.js",
+        "bytes": 396,
+        "sha256": "868153c6b9370d73334c478a131d27ab011526bf5862e42daed21bc87567d6e5"
+      },
+      {
+        "path": "dist-cli/core/jaeger.js",
+        "bytes": 10494,
+        "sha256": "e99daf8868016651ea6182d1be8d2c5318c2bed235b6da777311115e1fb79cbe"
+      },
+      {
+        "path": "dist-cli/core/layout.js",
+        "bytes": 1628,
+        "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e"
+      },
+      {
+        "path": "dist-cli/cli/links-report.js",
+        "bytes": 1278,
+        "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+      },
+      {
+        "path": "dist-cli/core/links.js",
+        "bytes": 1988,
+        "sha256": "47d787c4c0c33ae28c660a68e513035de37f0b53136f36d4d7a546631152c198"
+      },
+      {
+        "path": "dist-cli/core/normalize.js",
+        "bytes": 34154,
+        "sha256": "bbfd5b2295b37f5690186f0b024cbe30dee8ac26f26f3d27e9dc6942113eba6f"
+      },
+      {
+        "path": "dist-cli/core/otlp-parser.js",
+        "bytes": 23295,
+        "sha256": "6100b73a17dab2b9bd1739f4eab0f694f79ac571b14517232152f45302b2d610"
+      },
+      {
+        "path": "dist-cli/core/payload-depth.js",
+        "bytes": 855,
+        "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d"
+      },
+      {
+        "path": "dist-cli/core/pricing.js",
+        "bytes": 6360,
+        "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4"
+      },
+      {
+        "path": "dist-cli/core/summary.js",
+        "bytes": 4628,
+        "sha256": "62631ff99449c7dbae96d0ddee79ccb5c3b874854f62952e504c93f6c33579ee"
+      },
+      {
+        "path": "dist-cli/cli/timing-report.js",
+        "bytes": 1708,
+        "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9"
+      },
+      {
+        "path": "dist-cli/core/timing.js",
+        "bytes": 5050,
+        "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607"
+      },
+      {
+        "path": "dist-cli/core/types.js",
+        "bytes": 327,
+        "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974"
+      },
+      {
+        "path": "dist-cli/cli/version.js",
+        "bytes": 115,
+        "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+      },
+      {
+        "path": "package.json",
+        "bytes": 1980,
+        "sha256": "d78d0de02a1fd3775333bff921b5d515f8b59304fad571b95d71d5b0ec1b323d"
+      },
+      {
+        "path": "README.md",
+        "bytes": 27222,
+        "sha256": "3b4edfaead86ddfae3eddb1dc2a2b3c55c42aafc43ca30b1d9c6cd80328e26c9"
+      }
+    ]
+  },
+  "installedBin": [
+    {
+      "node": "v20.0.0",
+      "version": "tracelens 0.3.3",
+      "damagedComparisonExit": 1,
+      "damagedComparisonStdout": ""
+    },
+    {
+      "node": "v24.21.0",
+      "version": "tracelens 0.3.3",
+      "damagedComparisonExit": 1,
+      "damagedComparisonStdout": ""
+    }
+  ],
+  "allEightScreenshotsInspected": true
+}
