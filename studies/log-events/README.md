@@ -88,6 +88,39 @@ file selection, then turns networking off before inspecting both calls and
 downloading matched and unmatched evidence. It checks Chromium and Firefox at
 1440px dark and 375px light, and byte-compares served assets to the build.
 
+## Verified artifacts
+
+[`after.json`](after.json) retains the actual CLI reports and source hashes.
+[`verification.json`](verification.json) records a fresh 526-file archive of
+implementation `3791bdf9e4414fe06d2fc5e8ecee4c4f74d3969e`, locked `npm ci`, lint,
+types, 405 core/parser checks, 32 CLI checks, the browser smoke script, all 128
+browser suite checks, and the web/CLI build. Both locked SDK capture commands
+above also ran successfully. The subsequent source commit adds evidence only;
+tested runtime files are unchanged.
+
+The 56,404-byte source-built package has SHA-256
+`19c9926bcd00f9872ce366125e0ab5327636c15ed8599895852524f1a3eacf85`.
+Fresh installs executed the replay and actual executable entrypoint under
+Node 20.0.0 and 24.21.0. All 31 shipped files match the packed artifact, and
+both runtimes produced identical API/CLI evidence apart from the recorded
+runtime version. Package version remains 0.3.3; this tarball was not published.
+
+The four final browser workflows passed in Chromium 153.0.8010.12 and Firefox
+155.0 with no observed page errors, external requests, horizontal page overflow
+or settled-state axe violations. Each checked 24 app response bodies against
+the built files, independently fetched and compared the sample bytes, and
+downloaded the actual sample parsed by the worker. Each also downloaded three
+matched-span reports and one unmatched-log collection while offline. Keyboard
+scrolling and all eight retained screenshots were checked. The mobile timeline
+scrolls within its pane; long log JSON has its own bounded scroll area.
+
+An earlier broad run had one Firefox process crash in the existing trace-switch
+test. That exact test passed three isolated reruns; the final clean archive's
+full suite passed 128/128. The receipt retains this exception and the corrected
+harness assumptions. npm 12 blocked esbuild's postinstall under its script
+policy; the actual installed binary, builds and browser workflows still worked
+without changing that policy.
+
 ## Boundaries
 
 - Correlation requires both IDs and one target. No similar-name, timestamp or

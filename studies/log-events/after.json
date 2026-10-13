@@ -1,0 +1,1265 @@
+{
+  "node": "v24.21.0",
+  "scope": "Real local SDK exports of a synthetic conversation and actual SHA-256 computation; no model or external service called.",
+  "cases": [
+    {
+      "mode": "event-only",
+      "versions": {
+        "opentelemetry-util-genai": "1.2b0",
+        "opentelemetry-sdk": "1.45.1",
+        "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+        "protobuf": "7.36.2"
+      },
+      "spans": 4,
+      "matched": 2,
+      "messagesMatchSdkObjects": true,
+      "originalExportRecordsMatch": true,
+      "fileProvenanceMatches": true,
+      "noDuplicateMessages": true,
+      "controls": {
+        "summary": "unchanged except file provenance and message/log evidence",
+        "tree": "unchanged except file provenance and message/log evidence",
+        "timing": "unchanged except file provenance and message/log evidence",
+        "cost": "unchanged except file provenance and message/log evidence"
+      },
+      "logOnly": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "\"capture-event-only/logs.json\": This trace file has no resourceSpans — nothing to show. Select a trace export alongside any log files.\n"
+      },
+      "cli": {
+        "json": {
+          "schemaVersion": 1,
+          "format": "tracelens-log-evidence",
+          "traceId": "dbcf9c081dc33bc69110df1fb5066f8f",
+          "sourceFormat": "otlp-json",
+          "inputFiles": [
+            {
+              "name": "capture-event-only/traces.json",
+              "spanCount": 4,
+              "sourceFormat": "otlp-json"
+            },
+            {
+              "name": "capture-event-only/logs.json",
+              "spanCount": 0,
+              "logCount": 2,
+              "sourceFormat": "otlp-json"
+            }
+          ],
+          "matchedRecords": 2,
+          "spans": [
+            {
+              "traceId": "dbcf9c081dc33bc69110df1fb5066f8f",
+              "spanId": "956241ee1b8079be",
+              "name": "chat scripted-response",
+              "logs": [
+                {
+                  "raw": {
+                    "body": {},
+                    "attributes": [
+                      {
+                        "key": "gen_ai.operation.name",
+                        "value": {
+                          "stringValue": "chat"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.request.model",
+                        "value": {
+                          "stringValue": "scripted-response"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.provider.name",
+                        "value": {
+                          "stringValue": "local-control"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.response.finish_reasons",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "stringValue": "tool_calls"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.input.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "user"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "content",
+                                                    "value": {
+                                                      "stringValue": "Compute the SHA-256 of receipt-17."
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "text"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.output.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "assistant"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "arguments",
+                                                    "value": {
+                                                      "kvlistValue": {
+                                                        "values": [
+                                                          {
+                                                            "key": "text",
+                                                            "value": {
+                                                              "stringValue": "receipt-17"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "name",
+                                                    "value": {
+                                                      "stringValue": "sha256"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "id",
+                                                    "value": {
+                                                      "stringValue": "digest-1"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "tool_call"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "finish_reason",
+                                      "value": {
+                                        "stringValue": "tool_calls"
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.system_instructions",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "content",
+                                      "value": {
+                                        "stringValue": "Use the digest tool; do not invent its result."
+                                      }
+                                    },
+                                    {
+                                      "key": "type",
+                                      "value": {
+                                        "stringValue": "text"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "flags": 3,
+                    "traceId": "28+cCB3DO8aREN8ftQZvjw==",
+                    "spanId": "lWJB7huAeb4=",
+                    "observedTimeUnixNano": "1791917336076898643",
+                    "eventName": "gen_ai.client.inference.operation.details"
+                  },
+                  "source": {
+                    "path": "resourceLogs[0].scopeLogs[0].logRecords[0]",
+                    "file": {
+                      "index": 2,
+                      "name": "capture-event-only/logs.json"
+                    }
+                  },
+                  "attributes": {
+                    "gen_ai.operation.name": "chat",
+                    "gen_ai.request.model": "scripted-response",
+                    "gen_ai.provider.name": "local-control",
+                    "gen_ai.response.finish_reasons": [
+                      "tool_calls"
+                    ],
+                    "gen_ai.input.messages": [
+                      {
+                        "role": "user",
+                        "parts": [
+                          {
+                            "content": "Compute the SHA-256 of receipt-17.",
+                            "type": "text"
+                          }
+                        ],
+                        "name": null
+                      }
+                    ],
+                    "gen_ai.output.messages": [
+                      {
+                        "role": "assistant",
+                        "parts": [
+                          {
+                            "arguments": {
+                              "text": "receipt-17"
+                            },
+                            "name": "sha256",
+                            "id": "digest-1",
+                            "type": "tool_call"
+                          }
+                        ],
+                        "finish_reason": "tool_calls",
+                        "name": null
+                      }
+                    ],
+                    "gen_ai.system_instructions": [
+                      {
+                        "content": "Use the digest tool; do not invent its result.",
+                        "type": "text"
+                      }
+                    ]
+                  },
+                  "resourceAttributes": {
+                    "telemetry.sdk.language": "python",
+                    "telemetry.sdk.name": "opentelemetry",
+                    "telemetry.sdk.version": "1.45.1",
+                    "service.instance.id": "76a8e3cf-9251-4431-9b27-26246813ce88",
+                    "service.name": "local-genai-event-capture"
+                  },
+                  "observedTimeUnixNano": "1791917336076898643",
+                  "traceId": "dbcf9c081dc33bc69110df1fb5066f8f",
+                  "spanId": "956241ee1b8079be",
+                  "eventName": "gen_ai.client.inference.operation.details",
+                  "body": null,
+                  "scopeName": "tracelens.local-genai-capture",
+                  "scopeVersion": "1"
+                }
+              ],
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "Compute the SHA-256 of receipt-17."
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "tool_call",
+                      "id": "digest-1",
+                      "name": "sha256",
+                      "arguments": {
+                        "text": "receipt-17"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "systemInstructions": [
+                {
+                  "role": "system",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "Use the digest tool; do not invent its result."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "traceId": "dbcf9c081dc33bc69110df1fb5066f8f",
+              "spanId": "99d3709b7eb35656",
+              "name": "chat scripted-response",
+              "logs": [
+                {
+                  "raw": {
+                    "body": {},
+                    "attributes": [
+                      {
+                        "key": "gen_ai.operation.name",
+                        "value": {
+                          "stringValue": "chat"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.request.model",
+                        "value": {
+                          "stringValue": "scripted-response"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.provider.name",
+                        "value": {
+                          "stringValue": "local-control"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.response.finish_reasons",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "stringValue": "stop"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.input.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "tool"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "response",
+                                                    "value": {
+                                                      "kvlistValue": {
+                                                        "values": [
+                                                          {
+                                                            "key": "sha256",
+                                                            "value": {
+                                                              "stringValue": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "id",
+                                                    "value": {
+                                                      "stringValue": "digest-1"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "tool_call_response"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.output.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "assistant"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "content",
+                                                    "value": {
+                                                      "stringValue": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "text"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "finish_reason",
+                                      "value": {
+                                        "stringValue": "stop"
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "flags": 3,
+                    "traceId": "28+cCB3DO8aREN8ftQZvjw==",
+                    "spanId": "mdNwm36zVlY=",
+                    "observedTimeUnixNano": "1791917336077054823",
+                    "eventName": "gen_ai.client.inference.operation.details"
+                  },
+                  "source": {
+                    "path": "resourceLogs[0].scopeLogs[0].logRecords[1]",
+                    "file": {
+                      "index": 2,
+                      "name": "capture-event-only/logs.json"
+                    }
+                  },
+                  "attributes": {
+                    "gen_ai.operation.name": "chat",
+                    "gen_ai.request.model": "scripted-response",
+                    "gen_ai.provider.name": "local-control",
+                    "gen_ai.response.finish_reasons": [
+                      "stop"
+                    ],
+                    "gen_ai.input.messages": [
+                      {
+                        "role": "tool",
+                        "parts": [
+                          {
+                            "response": {
+                              "sha256": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                            },
+                            "id": "digest-1",
+                            "type": "tool_call_response"
+                          }
+                        ],
+                        "name": null
+                      }
+                    ],
+                    "gen_ai.output.messages": [
+                      {
+                        "role": "assistant",
+                        "parts": [
+                          {
+                            "content": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6",
+                            "type": "text"
+                          }
+                        ],
+                        "finish_reason": "stop",
+                        "name": null
+                      }
+                    ]
+                  },
+                  "resourceAttributes": {
+                    "telemetry.sdk.language": "python",
+                    "telemetry.sdk.name": "opentelemetry",
+                    "telemetry.sdk.version": "1.45.1",
+                    "service.instance.id": "76a8e3cf-9251-4431-9b27-26246813ce88",
+                    "service.name": "local-genai-event-capture"
+                  },
+                  "observedTimeUnixNano": "1791917336077054823",
+                  "traceId": "dbcf9c081dc33bc69110df1fb5066f8f",
+                  "spanId": "99d3709b7eb35656",
+                  "eventName": "gen_ai.client.inference.operation.details",
+                  "body": null,
+                  "scopeName": "tracelens.local-genai-capture",
+                  "scopeVersion": "1"
+                }
+              ],
+              "inputMessages": [
+                {
+                  "role": "tool",
+                  "parts": [
+                    {
+                      "type": "tool_call_response",
+                      "id": "digest-1",
+                      "response": {
+                        "sha256": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "unmatched": [],
+          "warnings": [],
+          "notes": [
+            "Matched records belong to the selected trace; unmatched records cover all selected files.",
+            "A log needs both traceId and spanId to join exactly one imported span. File order, names and clocks are not matching keys.",
+            "Span attributes and span events take precedence over log message content. Other log bodies remain evidence without an inferred message schema."
+          ]
+        },
+        "human": "\nCorrelated logs\n───────────────\nTrace dbcf9c081dc33bc69110df1fb5066f8f\n2 matched records in this trace; 0 unmatched records in the imported files.\n\nchat scripted-response (956241ee1b8079be)\n  gen_ai.client.inference.operation.details\n    file 2 (capture-event-only/logs.json), resourceLogs[0].scopeLogs[0].logRecords[0]\n    attributes: {\"gen_ai.operation.name\":\"chat\",\"gen_ai.request.model\":\"scripted-response\",\"gen_ai.provider.name\":\"local-control\",\"gen_ai.response.finish_reasons\":[\"tool_calls\"],\"gen_ai.input.messages\":[{\"role\":\"user\",\"parts\":[{\"content\":\"Compute the SHA-256 of receipt-17.\",\"type\":\"text\"}],\"name\":null}],\"gen_ai.output.messages\":[{\"role\":\"assistant\",\"parts\":[{\"arguments\":{\"text\":\"receipt-17\"},\"name\":\"sha256\",\"id\":\"digest-1\",\"type\":\"tool_call\"}],\"finish_reason\":\"tool_calls\",\"name\":null}],\"gen_ai.system_instructions\":[{\"content\":\"Use the digest tool; do not invent its result.\",\"type\":\"text\"}]}\n    body: null\nchat scripted-response (99d3709b7eb35656)\n  gen_ai.client.inference.operation.details\n    file 2 (capture-event-only/logs.json), resourceLogs[0].scopeLogs[0].logRecords[1]\n    attributes: {\"gen_ai.operation.name\":\"chat\",\"gen_ai.request.model\":\"scripted-response\",\"gen_ai.provider.name\":\"local-control\",\"gen_ai.response.finish_reasons\":[\"stop\"],\"gen_ai.input.messages\":[{\"role\":\"tool\",\"parts\":[{\"response\":{\"sha256\":\"3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6\"},\"id\":\"digest-1\",\"type\":\"tool_call_response\"}],\"name\":null}],\"gen_ai.output.messages\":[{\"role\":\"assistant\",\"parts\":[{\"content\":\"SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6\",\"type\":\"text\"}],\"finish_reason\":\"stop\",\"name\":null}]}\n    body: null\n\nUse --json to retain complete records, provenance and unmatched evidence.\nMatched records belong to the selected trace; unmatched records cover all selected files.\nA log needs both traceId and spanId to join exactly one imported span. File order, names and clocks are not matching keys.\nSpan attributes and span events take precedence over log message content. Other log bodies remain evidence without an inferred message schema.\n"
+      },
+      "fixtureHashes": {
+        "capture-event-only/traces.json": "685bacdf170b166fd542ede12f0b093e39d3525ba4fb8097eed66c27109ad51d",
+        "capture-event-only/logs.json": "49fbb8340479ade552ff614691b7893f07d46636503716bd9000b207eee9cdf9",
+        "capture-event-only/oracle.json": "05b33bda5a63061f16539604915af4c7b20d1c3e8a870ca2e2eb2f517046947d"
+      }
+    },
+    {
+      "mode": "span-and-event",
+      "versions": {
+        "opentelemetry-util-genai": "1.2b0",
+        "opentelemetry-sdk": "1.45.1",
+        "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+        "protobuf": "7.36.2"
+      },
+      "spans": 4,
+      "matched": 2,
+      "messagesMatchSdkObjects": true,
+      "originalExportRecordsMatch": true,
+      "fileProvenanceMatches": true,
+      "noDuplicateMessages": true,
+      "controls": {
+        "summary": "unchanged except file provenance and message/log evidence",
+        "tree": "unchanged except file provenance and message/log evidence",
+        "timing": "unchanged except file provenance and message/log evidence",
+        "cost": "unchanged except file provenance and message/log evidence"
+      },
+      "logOnly": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "\"capture-span-and-event/logs.json\": This trace file has no resourceSpans — nothing to show. Select a trace export alongside any log files.\n"
+      },
+      "cli": {
+        "json": {
+          "schemaVersion": 1,
+          "format": "tracelens-log-evidence",
+          "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+          "sourceFormat": "otlp-json",
+          "inputFiles": [
+            {
+              "name": "capture-span-and-event/traces.json",
+              "spanCount": 4,
+              "sourceFormat": "otlp-json"
+            },
+            {
+              "name": "capture-span-and-event/logs.json",
+              "spanCount": 0,
+              "logCount": 2,
+              "sourceFormat": "otlp-json"
+            }
+          ],
+          "matchedRecords": 2,
+          "spans": [
+            {
+              "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+              "spanId": "2c25ca383a9c7307",
+              "name": "chat scripted-response",
+              "logs": [
+                {
+                  "raw": {
+                    "body": {},
+                    "attributes": [
+                      {
+                        "key": "gen_ai.operation.name",
+                        "value": {
+                          "stringValue": "chat"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.request.model",
+                        "value": {
+                          "stringValue": "scripted-response"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.provider.name",
+                        "value": {
+                          "stringValue": "local-control"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.response.finish_reasons",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "stringValue": "tool_calls"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.input.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "user"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "content",
+                                                    "value": {
+                                                      "stringValue": "Compute the SHA-256 of receipt-17."
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "text"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.output.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "assistant"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "arguments",
+                                                    "value": {
+                                                      "kvlistValue": {
+                                                        "values": [
+                                                          {
+                                                            "key": "text",
+                                                            "value": {
+                                                              "stringValue": "receipt-17"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "name",
+                                                    "value": {
+                                                      "stringValue": "sha256"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "id",
+                                                    "value": {
+                                                      "stringValue": "digest-1"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "tool_call"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "finish_reason",
+                                      "value": {
+                                        "stringValue": "tool_calls"
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.system_instructions",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "content",
+                                      "value": {
+                                        "stringValue": "Use the digest tool; do not invent its result."
+                                      }
+                                    },
+                                    {
+                                      "key": "type",
+                                      "value": {
+                                        "stringValue": "text"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "flags": 3,
+                    "traceId": "tsSZszclQZfree1+DrrBuQ==",
+                    "spanId": "LCXKODqccwc=",
+                    "observedTimeUnixNano": "1791917336194536049",
+                    "eventName": "gen_ai.client.inference.operation.details"
+                  },
+                  "source": {
+                    "path": "resourceLogs[0].scopeLogs[0].logRecords[0]",
+                    "file": {
+                      "index": 2,
+                      "name": "capture-span-and-event/logs.json"
+                    }
+                  },
+                  "attributes": {
+                    "gen_ai.operation.name": "chat",
+                    "gen_ai.request.model": "scripted-response",
+                    "gen_ai.provider.name": "local-control",
+                    "gen_ai.response.finish_reasons": [
+                      "tool_calls"
+                    ],
+                    "gen_ai.input.messages": [
+                      {
+                        "role": "user",
+                        "parts": [
+                          {
+                            "content": "Compute the SHA-256 of receipt-17.",
+                            "type": "text"
+                          }
+                        ],
+                        "name": null
+                      }
+                    ],
+                    "gen_ai.output.messages": [
+                      {
+                        "role": "assistant",
+                        "parts": [
+                          {
+                            "arguments": {
+                              "text": "receipt-17"
+                            },
+                            "name": "sha256",
+                            "id": "digest-1",
+                            "type": "tool_call"
+                          }
+                        ],
+                        "finish_reason": "tool_calls",
+                        "name": null
+                      }
+                    ],
+                    "gen_ai.system_instructions": [
+                      {
+                        "content": "Use the digest tool; do not invent its result.",
+                        "type": "text"
+                      }
+                    ]
+                  },
+                  "resourceAttributes": {
+                    "telemetry.sdk.language": "python",
+                    "telemetry.sdk.name": "opentelemetry",
+                    "telemetry.sdk.version": "1.45.1",
+                    "service.instance.id": "dd901a33-be24-4590-80a3-c5b8c8df0db1",
+                    "service.name": "local-genai-event-capture"
+                  },
+                  "observedTimeUnixNano": "1791917336194536049",
+                  "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+                  "spanId": "2c25ca383a9c7307",
+                  "eventName": "gen_ai.client.inference.operation.details",
+                  "body": null,
+                  "scopeName": "tracelens.local-genai-capture",
+                  "scopeVersion": "1"
+                }
+              ],
+              "inputMessages": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "Compute the SHA-256 of receipt-17."
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "tool_call",
+                      "id": "digest-1",
+                      "name": "sha256",
+                      "arguments": {
+                        "text": "receipt-17"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "systemInstructions": [
+                {
+                  "role": "system",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "Use the digest tool; do not invent its result."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+              "spanId": "4bff86ae0e780840",
+              "name": "chat scripted-response",
+              "logs": [
+                {
+                  "raw": {
+                    "body": {},
+                    "attributes": [
+                      {
+                        "key": "gen_ai.operation.name",
+                        "value": {
+                          "stringValue": "chat"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.request.model",
+                        "value": {
+                          "stringValue": "scripted-response"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.provider.name",
+                        "value": {
+                          "stringValue": "local-control"
+                        }
+                      },
+                      {
+                        "key": "gen_ai.response.finish_reasons",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "stringValue": "stop"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.input.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "tool"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "response",
+                                                    "value": {
+                                                      "kvlistValue": {
+                                                        "values": [
+                                                          {
+                                                            "key": "sha256",
+                                                            "value": {
+                                                              "stringValue": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "id",
+                                                    "value": {
+                                                      "stringValue": "digest-1"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "tool_call_response"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "key": "gen_ai.output.messages",
+                        "value": {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "kvlistValue": {
+                                  "values": [
+                                    {
+                                      "key": "role",
+                                      "value": {
+                                        "stringValue": "assistant"
+                                      }
+                                    },
+                                    {
+                                      "key": "parts",
+                                      "value": {
+                                        "arrayValue": {
+                                          "values": [
+                                            {
+                                              "kvlistValue": {
+                                                "values": [
+                                                  {
+                                                    "key": "content",
+                                                    "value": {
+                                                      "stringValue": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                                                    }
+                                                  },
+                                                  {
+                                                    "key": "type",
+                                                    "value": {
+                                                      "stringValue": "text"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "key": "finish_reason",
+                                      "value": {
+                                        "stringValue": "stop"
+                                      }
+                                    },
+                                    {
+                                      "key": "name",
+                                      "value": {}
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "flags": 3,
+                    "traceId": "tsSZszclQZfree1+DrrBuQ==",
+                    "spanId": "S/+Grg54CEA=",
+                    "observedTimeUnixNano": "1791917336194706226",
+                    "eventName": "gen_ai.client.inference.operation.details"
+                  },
+                  "source": {
+                    "path": "resourceLogs[0].scopeLogs[0].logRecords[1]",
+                    "file": {
+                      "index": 2,
+                      "name": "capture-span-and-event/logs.json"
+                    }
+                  },
+                  "attributes": {
+                    "gen_ai.operation.name": "chat",
+                    "gen_ai.request.model": "scripted-response",
+                    "gen_ai.provider.name": "local-control",
+                    "gen_ai.response.finish_reasons": [
+                      "stop"
+                    ],
+                    "gen_ai.input.messages": [
+                      {
+                        "role": "tool",
+                        "parts": [
+                          {
+                            "response": {
+                              "sha256": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                            },
+                            "id": "digest-1",
+                            "type": "tool_call_response"
+                          }
+                        ],
+                        "name": null
+                      }
+                    ],
+                    "gen_ai.output.messages": [
+                      {
+                        "role": "assistant",
+                        "parts": [
+                          {
+                            "content": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6",
+                            "type": "text"
+                          }
+                        ],
+                        "finish_reason": "stop",
+                        "name": null
+                      }
+                    ]
+                  },
+                  "resourceAttributes": {
+                    "telemetry.sdk.language": "python",
+                    "telemetry.sdk.name": "opentelemetry",
+                    "telemetry.sdk.version": "1.45.1",
+                    "service.instance.id": "dd901a33-be24-4590-80a3-c5b8c8df0db1",
+                    "service.name": "local-genai-event-capture"
+                  },
+                  "observedTimeUnixNano": "1791917336194706226",
+                  "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+                  "spanId": "4bff86ae0e780840",
+                  "eventName": "gen_ai.client.inference.operation.details",
+                  "body": null,
+                  "scopeName": "tracelens.local-genai-capture",
+                  "scopeVersion": "1"
+                }
+              ],
+              "inputMessages": [
+                {
+                  "role": "tool",
+                  "parts": [
+                    {
+                      "type": "tool_call_response",
+                      "id": "digest-1",
+                      "response": {
+                        "sha256": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "outputMessages": [
+                {
+                  "role": "assistant",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "content": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "unmatched": [],
+          "warnings": [],
+          "notes": [
+            "Matched records belong to the selected trace; unmatched records cover all selected files.",
+            "A log needs both traceId and spanId to join exactly one imported span. File order, names and clocks are not matching keys.",
+            "Span attributes and span events take precedence over log message content. Other log bodies remain evidence without an inferred message schema."
+          ]
+        },
+        "human": "\nCorrelated logs\n───────────────\nTrace b6c499b337254197eb79ed7e0ebac1b9\n2 matched records in this trace; 0 unmatched records in the imported files.\n\nchat scripted-response (2c25ca383a9c7307)\n  gen_ai.client.inference.operation.details\n    file 2 (capture-span-and-event/logs.json), resourceLogs[0].scopeLogs[0].logRecords[0]\n    attributes: {\"gen_ai.operation.name\":\"chat\",\"gen_ai.request.model\":\"scripted-response\",\"gen_ai.provider.name\":\"local-control\",\"gen_ai.response.finish_reasons\":[\"tool_calls\"],\"gen_ai.input.messages\":[{\"role\":\"user\",\"parts\":[{\"content\":\"Compute the SHA-256 of receipt-17.\",\"type\":\"text\"}],\"name\":null}],\"gen_ai.output.messages\":[{\"role\":\"assistant\",\"parts\":[{\"arguments\":{\"text\":\"receipt-17\"},\"name\":\"sha256\",\"id\":\"digest-1\",\"type\":\"tool_call\"}],\"finish_reason\":\"tool_calls\",\"name\":null}],\"gen_ai.system_instructions\":[{\"content\":\"Use the digest tool; do not invent its result.\",\"type\":\"text\"}]}\n    body: null\nchat scripted-response (4bff86ae0e780840)\n  gen_ai.client.inference.operation.details\n    file 2 (capture-span-and-event/logs.json), resourceLogs[0].scopeLogs[0].logRecords[1]\n    attributes: {\"gen_ai.operation.name\":\"chat\",\"gen_ai.request.model\":\"scripted-response\",\"gen_ai.provider.name\":\"local-control\",\"gen_ai.response.finish_reasons\":[\"stop\"],\"gen_ai.input.messages\":[{\"role\":\"tool\",\"parts\":[{\"response\":{\"sha256\":\"3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6\"},\"id\":\"digest-1\",\"type\":\"tool_call_response\"}],\"name\":null}],\"gen_ai.output.messages\":[{\"role\":\"assistant\",\"parts\":[{\"content\":\"SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6\",\"type\":\"text\"}],\"finish_reason\":\"stop\",\"name\":null}]}\n    body: null\n\nUse --json to retain complete records, provenance and unmatched evidence.\nMatched records belong to the selected trace; unmatched records cover all selected files.\nA log needs both traceId and spanId to join exactly one imported span. File order, names and clocks are not matching keys.\nSpan attributes and span events take precedence over log message content. Other log bodies remain evidence without an inferred message schema.\n"
+      },
+      "fixtureHashes": {
+        "capture-span-and-event/traces.json": "663bbc6a68911d0c05bd2d1fd074f1d66423fec7af5be4d2a964edd5f5c167a5",
+        "capture-span-and-event/logs.json": "b074cd5b650458c20c4b811de1acaeaf946e13a4987831a082be3198e7af9611",
+        "capture-span-and-event/oracle.json": "09f65a7d20029ee087f4e575248f7306b490b68d85d2e4a85dfbb621af70019b"
+      }
+    }
+  ],
+  "combinedJsonLines": {
+    "matched": 2,
+    "physicalLogLine": 1,
+    "status": 0
+  }
+}
