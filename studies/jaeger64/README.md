@@ -13,6 +13,9 @@ uses that representation for spans and references. OTLP carries the complete
 | Jaeger UI/query JSON | `1234567890abcdef` |
 | OTLP JSON | `00000000000000001234567890abcdef` |
 
+The [upstream evidence receipt](upstream-encoding.json) records fetched source
+hashes and the 16-hex IDs in Jaeger's own query/UI conversion fixture.
+
 At `cd156221`, TraceLens grouped these as different traces. The source fix pads
 complete 16-hex trace IDs before any grouping, parent resolution, link lookup,
 selection or duplicate checks. It does not truncate a 128-bit identity.
@@ -75,6 +78,29 @@ all-OTLP control, and reject a duplicate candidate while preserving the previous
 comparison. All four completed with no page/CSP errors, external or late network
 requests, page overflow, or settled-state axe violations. The screenshots were
 visually inspected; the mobile waterfall scrolls within its pane.
+
+## Clean archive and installed package
+
+The [verification receipt](verification.json) covers implementation `3de85f9`.
+A fresh archive kept all 496 tracked files unchanged. Node 24.21.0 completed
+installation, lint, types, 385 core checks in each of two locales, the web/CLI
+build, and 30 CLI checks. The earlier captured SDK multifile replay also passed.
+All 33 web-build files matched the build used in the offline workflows.
+
+The broader browser suite passed 127 checks and encountered one Firefox target
+crash during an existing trace-switch cancellation check. Five isolated repeats
+of that unchanged check then passed. The [failure and retry log](browser-retry.txt)
+is retained. The cause was not established; its 32-hex IDs do not enter the
+changed normalization branch. No timeout, assertion or runtime code was changed
+to obtain the retry results. This was not a clean 128-check first run.
+
+The 52,873-byte local npm tarball has SHA-256
+`e83e78781b372f313b51cad051d580a8620142d35b1ab5c8890ed328ba070598`.
+Installed with lifecycle scripts disabled, all 26 compiled runtime files matched
+the clean build. The [Node 20.0.0](installed-node20.json) and
+[Node 24.21.0](installed-node24.json) installed replays each passed all 17 checks;
+their retained reports were identical apart from the Node version. CLI version
+commands also succeeded. The artifact remains local, with version 0.3.3.
 
 ## Identity boundaries
 

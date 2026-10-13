@@ -1,0 +1,27 @@
+{
+  "purpose": "Upstream encoding evidence; the application reproduction fixtures are separately authored synthetic inputs. No Jaeger server was run.",
+  "sources": [
+    {
+      "name": "ids",
+      "url": "https://raw.githubusercontent.com/jaegertracing/jaeger-idl/v0.9.0/model/v1/ids.go",
+      "bytes": 7616,
+      "sha256": "1aa9afba94ef94c28190d8ae9b5546294243713c4b96b2de747c56dbf03e4031"
+    },
+    {
+      "name": "converter",
+      "url": "https://raw.githubusercontent.com/jaegertracing/jaeger/v1.76.0/internal/uimodel/converter/v1/json/from_domain.go",
+      "bytes": 5590,
+      "sha256": "4487e864349b30685f724e6b181682ed40cd1fbbe53ca6a93c9a07b72e0ea6f2"
+    },
+    {
+      "name": "fixture",
+      "url": "https://raw.githubusercontent.com/jaegertracing/jaeger/v1.76.0/internal/uimodel/converter/v1/json/fixtures/ui_01.json",
+      "bytes": 3591,
+      "sha256": "dbd4375681317423c7a88c43bb86fe7b7bc3e8d4e2ee7a4b3320a7f12ed6aa20",
+      "traceId": "0000000000000001",
+      "spanTraceIds": [
+        "0000000000000001"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+Initial clean-suite result:
+
+  1) [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus 
+
+    Error: locator.selectOption: Target crashed 
+    Call log:
+      - waiting for locator('#tl-trace-picker')
+        - locator resolved to <select id="tl-trace-picker" class="tl-trace-select mono" data-focus-key="trace-picker">…</select>
+      - attempting select option action
+        - waiting for element to be visible and enabled
+
+
+      169 |   await picker.selectOption(ids[1]);
+      170 |   await expect(picker).toHaveValue(ids[0]);
+    > 171 |   await picker.selectOption(ids[2]);
+          |                ^
+      172 |   await page.evaluate((id) => window.switches[id](), ids[1]);
+      173 |   await expect(picker).toHaveValue(ids[0]);
+      174 |   await page.evaluate((id) => window.switches[id](), ids[2]);
+        at <scratch>/clean-3de85f9/tests/browser/import-evidence.spec.mjs:171:16
+
+    Error: page.evaluate: Target page, context or browser has been closed
+
+      31 |   expect(page.errors).toEqual([]);
+      32 |   expect(page.externalRequests).toEqual([]);
+    > 33 |   expect(await page.evaluate(() => window.violations)).toEqual([]);
+         |                     ^
+      34 |   expect(await page.evaluate(() => window.rejections)).toEqual([]);
+      35 |   expect(await page.evaluate(() => window.liveWorkers.size)).toBe(0);
+      36 | });
+        at <scratch>/clean-3de85f9/tests/browser/import-evidence.spec.mjs:33:21
+
+    Error Context: test-results/import-evidence-newer-trac-4adfb-ork-and-retain-picker-focus-firefox/error-context.md
+
+  1 failed
+    [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus 
+  127 passed (2.4m)
+
+Isolated unchanged check:
+npm notice run @antonsoloviev/tracelens@0.3.3 npx
+npm notice run 'playwright' test tests/browser/import-evidence.spec.mjs --project=firefox --grep newer trace switches --repeat-each=5 --workers=1
+[WebServer] (node:3701760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:3701782) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.6s)
+(node:3702027) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.3s)
+(node:3702267) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.5s)
+(node:3702514) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.5s)
+(node:3702754) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.3s)
+
+  5 passed (14.1s)
