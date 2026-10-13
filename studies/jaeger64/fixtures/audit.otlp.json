@@ -1,0 +1,39 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "worker"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "spanId": "0000000000000004",
+              "name": "receipt",
+              "startTimeUnixNano": "1790000000012000000",
+              "endTimeUnixNano": "1790000000013000000",
+              "links": [
+                {
+                  "traceId": "00000000000000001234567890abcdef",
+                  "spanId": "0000000000000001"
+                },
+                {
+                  "traceId": "00000000000000001234567890abcdef",
+                  "spanId": "0000000000000002"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

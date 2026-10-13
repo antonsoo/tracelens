@@ -29,6 +29,16 @@ Standard and URL-safe base64, with or without padding, are supported; padding
 bits must be canonical. Unknown identifier forms retain their spelling and
 case. This is a viewer's input decoder, not complete OTLP schema validation.
 
+**64-bit trace IDs (source checkout).** A complete 16-character hexadecimal
+trace ID is left-padded with sixteen zeros, matching its 128-bit OTLP identity.
+Jaeger's query/UI exporter uses this shorter spelling when the high word is
+zero. Normalization applies before trace selection, parent/link resolution and
+duplicate detection, including mixed-format file groups. A complete short ID
+selects that identity before hexadecimal prefix matching. Span IDs stay at
+16 hex characters; other short or opaque labels are not padded. A nonzero high
+word remains a different trace, even if the low words match.
+See the [reproduction and upstream encoding references](../studies/jaeger64/README.md).
+
 `MessageToJson(..., preserving_proto_field_name=True)` also writes fields such
 as `resource_spans`, `trace_id` and `string_value`. The source parser accepts
 those spellings, including nested typed attributes. Exact base64 trace IDs can

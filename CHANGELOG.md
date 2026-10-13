@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Jaeger 64-bit trace identities
+
+- Join Jaeger's complete 16-hex trace IDs with equivalent zero-padded OTLP
+  IDs. Mixed service exports previously split one request into separate traces,
+  leaving parents and audit links unresolved and bypassing duplicate detection.
+- Accept either complete spelling in trace selectors. Keep nonzero high words
+  distinct and preserve other short or opaque labels.
+- [CLI and offline-browser reproduction](studies/jaeger64/README.md).
+  Source update only; no npm release or hosted deployment.
+
 ### Related trace exports
 
 - Choose or drop up to 32 OTLP/JSON, Collector JSONL or Jaeger files together

@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "traceID": "1234567890abcdef",
+      "spans": [
+        {
+          "traceID": "1234567890abcdef",
+          "spanID": "0000000000000001",
+          "operationName": "dispatch request",
+          "startTime": 1790000000000000,
+          "duration": 10000,
+          "tags": [],
+          "references": [],
+          "processID": "p1"
+        }
+      ],
+      "processes": {
+        "p1": {
+          "serviceName": "gateway",
+          "tags": []
+        }
+      }
+    }
+  ]
+}

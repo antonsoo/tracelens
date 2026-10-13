@@ -8,6 +8,11 @@ const BASE64_TRACE = /^[A-Za-z\d+/_-]{22}(?:==)?$/;
 
 export function normalizeId(raw: unknown, bytes: 8 | 16): string {
   if (typeof raw !== 'string') return '';
+  // Jaeger's UI/query JSON omits the zero high word of a 128-bit trace ID.
+  // Its complete 16-digit form and OTLP's zero-padded 32-digit form identify
+  // the same trace. Normalize before grouping, duplicate checks and links.
+  // Span IDs already occupy eight bytes; other short/opaque IDs stay as-is.
+  if (bytes === 16 && raw.length === 16 && HEX.test(raw)) return raw.toLowerCase().padStart(32, '0');
   const pattern = bytes === 8 ? BASE64_SPAN : BASE64_TRACE;
   if (pattern.test(raw)) {
     const standard = raw.replace(/-/g, '+').replace(/_/g, '/').replace(/=+$/, '');

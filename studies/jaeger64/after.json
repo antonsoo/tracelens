@@ -1,0 +1,400 @@
+{
+  "node": "v26.7.0",
+  "fixtures": [
+    {
+      "name": "gateway.jaeger.json",
+      "bytes": 503,
+      "sha256": "92d4ae65b1bd8caf2bbe1e0d44166caaef473785bc4f79643d7904f9b2692f26"
+    },
+    {
+      "name": "worker.otlp.json",
+      "bytes": 1753,
+      "sha256": "1e880aa0fc19a419fef19b05dc5eb0653fa47e403874af4a63ff4c63f5df6bb5"
+    },
+    {
+      "name": "audit.otlp.json",
+      "bytes": 939,
+      "sha256": "2f58a72f685236440b00dae47504ca423881c087b77be52eadc7981ab60738c3"
+    },
+    {
+      "name": "gateway.otlp.json",
+      "bytes": 610,
+      "sha256": "fb4607d8c8c8c835fa503aaacc9b67678eddbdb8b8acb38692afe349eb16e9b7"
+    }
+  ],
+  "correct": 17,
+  "total": 17,
+  "results": [
+    {
+      "name": "gateway first: one complete request",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "roots": [
+          "0000000000000001"
+        ],
+        "spans": [
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000001",
+            "name": "dispatch request",
+            "depth": 0,
+            "start": "1790000000000000000",
+            "end": "1790000000010000000",
+            "attributes": {},
+            "service": "gateway",
+            "links": []
+          },
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000002",
+            "parentSpanId": "0000000000000001",
+            "name": "process request",
+            "depth": 1,
+            "start": "1790000000001000000",
+            "end": "1790000000009000000",
+            "attributes": {},
+            "service": "worker",
+            "links": []
+          },
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000003",
+            "parentSpanId": "0000000000000002",
+            "name": "chat gpt-4o",
+            "depth": 2,
+            "start": "1790000000002000000",
+            "end": "1790000000007000000",
+            "attributes": {
+              "gen_ai.operation.name": "chat",
+              "gen_ai.request.model": "gpt-4o",
+              "gen_ai.usage.input_tokens": 1000,
+              "gen_ai.usage.output_tokens": 100
+            },
+            "service": "worker",
+            "links": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "worker first: one complete request",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "roots": [
+          "0000000000000001"
+        ],
+        "spans": [
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000001",
+            "name": "dispatch request",
+            "depth": 0,
+            "start": "1790000000000000000",
+            "end": "1790000000010000000",
+            "attributes": {},
+            "service": "gateway",
+            "links": []
+          },
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000002",
+            "parentSpanId": "0000000000000001",
+            "name": "process request",
+            "depth": 1,
+            "start": "1790000000001000000",
+            "end": "1790000000009000000",
+            "attributes": {},
+            "service": "worker",
+            "links": []
+          },
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000003",
+            "parentSpanId": "0000000000000002",
+            "name": "chat gpt-4o",
+            "depth": 2,
+            "start": "1790000000002000000",
+            "end": "1790000000007000000",
+            "attributes": {
+              "gen_ai.operation.name": "chat",
+              "gen_ai.request.model": "gpt-4o",
+              "gen_ai.usage.input_tokens": 1000,
+              "gen_ai.usage.output_tokens": 100
+            },
+            "service": "worker",
+            "links": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "select 1234567890abcdef",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "spans": 3
+      }
+    },
+    {
+      "name": "select 1234567890ABCDEF",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "spans": 3
+      }
+    },
+    {
+      "name": "select 00000000000000001234567890abcdef",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "spans": 3
+      }
+    },
+    {
+      "name": "select AAAAAAAAAAASNFZ4kKvN7w==",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "spans": 3
+      }
+    },
+    {
+      "name": "audit links find gateway and worker",
+      "correct": true,
+      "observed": [
+        {
+          "traceId": "00000000000000001234567890abcdef",
+          "spanId": "0000000000000001",
+          "attributes": {},
+          "target": {
+            "status": "available",
+            "name": "dispatch request"
+          }
+        },
+        {
+          "traceId": "00000000000000001234567890abcdef",
+          "spanId": "0000000000000002",
+          "attributes": {},
+          "target": {
+            "status": "available",
+            "name": "process request"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mixed-format duplicate is rejected",
+      "correct": true,
+      "observed": "rejected"
+    },
+    {
+      "name": "single Jaeger document rejects aliases of one span",
+      "correct": true,
+      "observed": "rejected"
+    },
+    {
+      "name": "Jaeger parent reference uses equivalent padded ID",
+      "correct": true,
+      "observed": {
+        "traceId": "00000000000000001234567890abcdef",
+        "roots": [
+          "0000000000000001"
+        ],
+        "spans": [
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000001",
+            "name": "dispatch request",
+            "depth": 0,
+            "start": "1790000000000000000",
+            "end": "1790000000010000000",
+            "attributes": {},
+            "service": "gateway",
+            "links": []
+          },
+          {
+            "traceId": "00000000000000001234567890abcdef",
+            "spanId": "0000000000000002",
+            "parentSpanId": "0000000000000001",
+            "name": "dispatch request",
+            "depth": 1,
+            "start": "1790000000000000000",
+            "end": "1790000000010000000",
+            "attributes": {},
+            "service": "gateway",
+            "links": [
+              {
+                "traceId": "00000000000000001234567890abcdef",
+                "spanId": "0000000000000001",
+                "attributes": {
+                  "opentracing.ref_type": "child_of"
+                },
+                "target": {
+                  "status": "available",
+                  "name": "dispatch request"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "nonzero high word is a different trace",
+      "correct": true,
+      "observed": [
+        "00000000000000001234567890abcdef",
+        "11111111111111111234567890abcdef"
+      ]
+    },
+    {
+      "name": "CLI summary: same report as canonical OTLP control",
+      "correct": true,
+      "observed": {
+        "status": 0,
+        "stdout": "gateway.jaeger.json, worker.otlp.json, audit.otlp.json\ntrace 00000000000000001234567890abcdef  ·  3 spans  ·  1 root span(s)\n2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  10.0 ms  \nllm               5.0 ms   \ntool              0.0 ms   \nother             5.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel   provider        calls  input  output  token cost\n──────  ──────────────  ─────  ─────  ──────  ──────────\ngpt-4o  (not recorded)  1      1,000  100     $0.0035   \n\ntoken estimate: $0.0035\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n10.0 ms elapsed = 10.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          5.0 ms      \nTool alone         0.0 ms      \nOther alone        5.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  dispatch request 10.0 ms\n    process request 8.0 ms\n      chat gpt-4o 5.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "CLI tree: same report as canonical OTLP control",
+      "correct": true,
+      "observed": {
+        "status": 0,
+        "stdout": "2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\ndispatch request 10.0 ms\n  process request 8.0 ms\n    chat gpt-4o 5.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "CLI timing: same report as canonical OTLP control",
+      "correct": true,
+      "observed": {
+        "status": 0,
+        "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-timing\",\n  \"traceId\": \"00000000000000001234567890abcdef\",\n  \"startTimeUnixNano\": \"1790000000000000000\",\n  \"endTimeUnixNano\": \"1790000000010000000\",\n  \"elapsedNs\": \"10000000\",\n  \"bucketsNs\": {\n    \"llm\": \"5000000\",\n    \"tool\": \"0\",\n    \"other\": \"5000000\",\n    \"overlap\": \"0\",\n    \"uncovered\": \"0\"\n  },\n  \"summedSelfNs\": \"10000000\",\n  \"overlapExcessNs\": \"0\",\n  \"peakConcurrency\": 1,\n  \"spanRefsPerInterval\": 8,\n  \"intervals\": [\n    {\n      \"offsetNs\": \"0\",\n      \"durationNs\": \"1000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000001\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"1000000\",\n      \"durationNs\": \"1000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000002\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"2000000\",\n      \"durationNs\": \"5000000\",\n      \"bucket\": \"llm\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000003\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"7000000\",\n      \"durationNs\": \"2000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000002\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"9000000\",\n      \"durationNs\": \"1000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000001\"\n      ],\n      \"omittedSpanCount\": 0\n    }\n  ],\n  \"warnings\": []\n}\n",
+        "stderr": "2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\n"
+      }
+    },
+    {
+      "name": "CLI cost: same report as canonical OTLP control",
+      "correct": true,
+      "observed": {
+        "status": 0,
+        "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-cost-evidence\",\n  \"traceId\": \"00000000000000001234567890abcdef\",\n  \"priceTable\": [\n    {\n      \"id\": \"claude-fable-5-1\",\n      \"matchModel\": \"claude-fable-5-1\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 0.25,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-fable-5\",\n      \"matchModel\": \"claude-fable-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5-5\",\n      \"matchModel\": \"claude-opus-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 4,\n      \"outputPerMTok\": 20,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5\",\n      \"matchModel\": \"claude-opus-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-8\",\n      \"matchModel\": \"claude-opus-4-8\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-7\",\n      \"matchModel\": \"claude-opus-4-7\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-6\",\n      \"matchModel\": \"claude-opus-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5-5\",\n      \"matchModel\": \"claude-sonnet-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5\",\n      \"matchModel\": \"claude-sonnet-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-4-6\",\n      \"matchModel\": \"claude-sonnet-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 3,\n      \"outputPerMTok\": 15,\n      \"cacheReadPerMTok\": 0.3,\n      \"cacheWritePerMTok\": 3.75,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-haiku-4-5\",\n      \"matchModel\": \"claude-haiku-4-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 1,\n      \"outputPerMTok\": 5,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 1.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-astra\",\n      \"matchModel\": \"gpt-6-astra\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6.1-sol\",\n      \"matchModel\": \"gpt-6.1-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6.1-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-sol\",\n      \"matchModel\": \"gpt-6-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-luna\",\n      \"matchModel\": \"gpt-6-luna\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.5,\n      \"cacheReadPerMTok\": 0.01,\n      \"cacheWritePerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-5\",\n      \"matchModel\": \"gpt-5\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.25,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-mini\",\n      \"matchModel\": \"gpt-5-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.25,\n      \"outputPerMTok\": 2,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-nano\",\n      \"matchModel\": \"gpt-5-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.05,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.005,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-5-nano\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-4o-mini\",\n      \"matchModel\": \"gpt-4o-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.15,\n      \"outputPerMTok\": 0.6,\n      \"cacheReadPerMTok\": 0.075,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4o\",\n      \"matchModel\": \"gpt-4o\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2.5,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 1.25,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-nano\",\n      \"matchModel\": \"gpt-4.1-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-mini\",\n      \"matchModel\": \"gpt-4.1-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.4,\n      \"outputPerMTok\": 1.6,\n      \"cacheReadPerMTok\": 0.1,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1\",\n      \"matchModel\": \"gpt-4.1\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o4-mini\",\n      \"matchModel\": \"o4-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.1,\n      \"outputPerMTok\": 4.4,\n      \"cacheReadPerMTok\": 0.275,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o3\",\n      \"matchModel\": \"o3\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    }\n  ],\n  \"pricedCalls\": 1,\n  \"unpricedCalls\": 0,\n  \"excludedSpans\": 0,\n  \"knownCostUsd\": 0.0035,\n  \"estimatedCostUsd\": 0.0035,\n  \"rows\": [\n    {\n      \"spanId\": \"0000000000000003\",\n      \"name\": \"chat gpt-4o\",\n      \"kind\": \"llm\",\n      \"model\": \"gpt-4o\",\n      \"provider\": null,\n      \"requestModel\": \"gpt-4o\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 1000,\n        \"outputTokens\": 100\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.input_tokens\": 1000,\n        \"gen_ai.usage.output_tokens\": 100\n      },\n      \"result\": {\n        \"status\": \"priced\",\n        \"costUsd\": 0.0035,\n        \"matchedModel\": \"gpt-4o\",\n        \"entry\": {\n          \"id\": \"gpt-4o\",\n          \"matchModel\": \"gpt-4o\",\n          \"provider\": \"openai\",\n          \"inputPerMTok\": 2.5,\n          \"outputPerMTok\": 10,\n          \"cacheReadPerMTok\": 1.25,\n          \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n          \"sourceDate\": \"2026-09-24\"\n        },\n        \"match\": \"exact\",\n        \"components\": [\n          {\n            \"kind\": \"input\",\n            \"tokens\": 1000,\n            \"perMillionUsd\": 2.5,\n            \"costUsd\": 0.0025,\n            \"rateSource\": \"input\"\n          },\n          {\n            \"kind\": \"cache-read\",\n            \"tokens\": 0,\n            \"perMillionUsd\": 1.25,\n            \"costUsd\": 0,\n            \"rateSource\": \"cache-read\"\n          },\n          {\n            \"kind\": \"cache-write\",\n            \"tokens\": 0,\n            \"perMillionUsd\": 2.5,\n            \"costUsd\": 0,\n            \"rateSource\": \"input\"\n          },\n          {\n            \"kind\": \"output\",\n            \"tokens\": 100,\n            \"perMillionUsd\": 10,\n            \"costUsd\": 0.001,\n            \"rateSource\": \"output\"\n          }\n        ],\n        \"assumptions\": [\n          \"No response model recorded; using the request model.\",\n          \"No provider recorded; using the openai reference rate.\",\n          \"No cache-read count recorded; assuming zero cache reads.\",\n          \"No cache-write count recorded; assuming zero cache writes.\"\n        ]\n      }\n    }\n  ],\n  \"notes\": [\n    \"Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.\",\n    \"Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.\",\n    \"LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.\",\n    \"Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.\",\n    \"Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.\",\n    \"No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans.\"\n  ],\n  \"warnings\": []\n}\n",
+        "stderr": "2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\n"
+      }
+    },
+    {
+      "name": "CLI links exports both available targets",
+      "correct": true,
+      "observed": {
+        "schemaVersion": 1,
+        "format": "tracelens-span-links",
+        "traceId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sourceFormat": "mixed-json",
+        "inputFiles": [
+          {
+            "name": "gateway.jaeger.json",
+            "spanCount": 1,
+            "sourceFormat": "jaeger-json"
+          },
+          {
+            "name": "worker.otlp.json",
+            "spanCount": 2,
+            "sourceFormat": "otlp-json"
+          },
+          {
+            "name": "audit.otlp.json",
+            "spanCount": 1,
+            "sourceFormat": "otlp-json"
+          }
+        ],
+        "linkCount": 2,
+        "reportedDroppedLinks": 0,
+        "skippedInvalidLinks": 0,
+        "notes": [
+          "Targets are resolved by trace ID and span ID across the selected files only.",
+          "Missing targets may be unsampled, unexported or omitted; the cause is not inferred.",
+          "Links do not establish elapsed time, waiting time, execution order or additional cost.",
+          "Dropped counts are exporter-reported; inspect warnings for malformed evidence."
+        ],
+        "spans": [
+          {
+            "spanId": "0000000000000004",
+            "name": "receipt",
+            "sourceFile": {
+              "index": 3,
+              "name": "audit.otlp.json"
+            },
+            "links": [
+              {
+                "traceId": "00000000000000001234567890abcdef",
+                "spanId": "0000000000000001",
+                "attributes": {},
+                "target": {
+                  "status": "available",
+                  "name": "dispatch request"
+                }
+              },
+              {
+                "traceId": "00000000000000001234567890abcdef",
+                "spanId": "0000000000000002",
+                "attributes": {},
+                "target": {
+                  "status": "available",
+                  "name": "process request"
+                }
+              }
+            ],
+            "droppedLinksCount": 0,
+            "invalidLinkCount": 0
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "name": "CLI duplicate exits with an error",
+      "correct": true,
+      "observed": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "\"gateway.jaeger.json, gateway.otlp.json\": Duplicate span identity 00000000000000001234567890abcdef/0000000000000001 in file 1 (gateway.jaeger.json) and file 2 (gateway.otlp.json). Choose non-overlapping exports; no files were imported.\n"
+      }
+    }
+  ],
+  "observations": {
+    "summary": {
+      "status": 0,
+      "stdout": "gateway.jaeger.json, worker.otlp.json, audit.otlp.json\ntrace 00000000000000001234567890abcdef  ·  3 spans  ·  1 root span(s)\n2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  10.0 ms  \nllm               5.0 ms   \ntool              0.0 ms   \nother             5.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel   provider        calls  input  output  token cost\n──────  ──────────────  ─────  ─────  ──────  ──────────\ngpt-4o  (not recorded)  1      1,000  100     $0.0035   \n\ntoken estimate: $0.0035\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n10.0 ms elapsed = 10.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          5.0 ms      \nTool alone         0.0 ms      \nOther alone        5.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  dispatch request 10.0 ms\n    process request 8.0 ms\n      chat gpt-4o 5.0 ms\n",
+      "stderr": ""
+    },
+    "tree": {
+      "status": 0,
+      "stdout": "2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\ndispatch request 10.0 ms\n  process request 8.0 ms\n    chat gpt-4o 5.0 ms\n",
+      "stderr": ""
+    },
+    "timing": {
+      "status": 0,
+      "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-timing\",\n  \"traceId\": \"00000000000000001234567890abcdef\",\n  \"startTimeUnixNano\": \"1790000000000000000\",\n  \"endTimeUnixNano\": \"1790000000010000000\",\n  \"elapsedNs\": \"10000000\",\n  \"bucketsNs\": {\n    \"llm\": \"5000000\",\n    \"tool\": \"0\",\n    \"other\": \"5000000\",\n    \"overlap\": \"0\",\n    \"uncovered\": \"0\"\n  },\n  \"summedSelfNs\": \"10000000\",\n  \"overlapExcessNs\": \"0\",\n  \"peakConcurrency\": 1,\n  \"spanRefsPerInterval\": 8,\n  \"intervals\": [\n    {\n      \"offsetNs\": \"0\",\n      \"durationNs\": \"1000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000001\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"1000000\",\n      \"durationNs\": \"1000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000002\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"2000000\",\n      \"durationNs\": \"5000000\",\n      \"bucket\": \"llm\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000003\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"7000000\",\n      \"durationNs\": \"2000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000002\"\n      ],\n      \"omittedSpanCount\": 0\n    },\n    {\n      \"offsetNs\": \"9000000\",\n      \"durationNs\": \"1000000\",\n      \"bucket\": \"other\",\n      \"activeCount\": 1,\n      \"spanIds\": [\n        \"0000000000000001\"\n      ],\n      \"omittedSpanCount\": 0\n    }\n  ],\n  \"warnings\": []\n}\n",
+      "stderr": "2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\n"
+    },
+    "cost": {
+      "status": 0,
+      "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-cost-evidence\",\n  \"traceId\": \"00000000000000001234567890abcdef\",\n  \"priceTable\": [\n    {\n      \"id\": \"claude-fable-5-1\",\n      \"matchModel\": \"claude-fable-5-1\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 0.25,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-fable-5\",\n      \"matchModel\": \"claude-fable-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5-5\",\n      \"matchModel\": \"claude-opus-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 4,\n      \"outputPerMTok\": 20,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-5\",\n      \"matchModel\": \"claude-opus-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-8\",\n      \"matchModel\": \"claude-opus-4-8\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-7\",\n      \"matchModel\": \"claude-opus-4-7\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-opus-4-6\",\n      \"matchModel\": \"claude-opus-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 5,\n      \"outputPerMTok\": 25,\n      \"cacheReadPerMTok\": 0.5,\n      \"cacheWritePerMTok\": 6.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5-5\",\n      \"matchModel\": \"claude-sonnet-5-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-5\",\n      \"matchModel\": \"claude-sonnet-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-sonnet-4-6\",\n      \"matchModel\": \"claude-sonnet-4-6\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 3,\n      \"outputPerMTok\": 15,\n      \"cacheReadPerMTok\": 0.3,\n      \"cacheWritePerMTok\": 3.75,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"claude-haiku-4-5\",\n      \"matchModel\": \"claude-haiku-4-5\",\n      \"provider\": \"anthropic\",\n      \"inputPerMTok\": 1,\n      \"outputPerMTok\": 5,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 1.25,\n      \"sourceUrl\": \"https://claude.com/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-astra\",\n      \"matchModel\": \"gpt-6-astra\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 10,\n      \"outputPerMTok\": 50,\n      \"cacheReadPerMTok\": 1,\n      \"cacheWritePerMTok\": 12.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6.1-sol\",\n      \"matchModel\": \"gpt-6.1-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.1,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6.1-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-sol\",\n      \"matchModel\": \"gpt-6-sol\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.2,\n      \"cacheWritePerMTok\": 2.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-6-sol\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-6-luna\",\n      \"matchModel\": \"gpt-6-luna\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.5,\n      \"cacheReadPerMTok\": 0.01,\n      \"cacheWritePerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-5\",\n      \"matchModel\": \"gpt-5\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.25,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 0.125,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-mini\",\n      \"matchModel\": \"gpt-5-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.25,\n      \"outputPerMTok\": 2,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-5-nano\",\n      \"matchModel\": \"gpt-5-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.05,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.005,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/models/gpt-5-nano\",\n      \"sourceDate\": \"2026-10-09\"\n    },\n    {\n      \"id\": \"gpt-4o-mini\",\n      \"matchModel\": \"gpt-4o-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.15,\n      \"outputPerMTok\": 0.6,\n      \"cacheReadPerMTok\": 0.075,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4o\",\n      \"matchModel\": \"gpt-4o\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2.5,\n      \"outputPerMTok\": 10,\n      \"cacheReadPerMTok\": 1.25,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-nano\",\n      \"matchModel\": \"gpt-4.1-nano\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.1,\n      \"outputPerMTok\": 0.4,\n      \"cacheReadPerMTok\": 0.025,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1-mini\",\n      \"matchModel\": \"gpt-4.1-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 0.4,\n      \"outputPerMTok\": 1.6,\n      \"cacheReadPerMTok\": 0.1,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"gpt-4.1\",\n      \"matchModel\": \"gpt-4.1\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o4-mini\",\n      \"matchModel\": \"o4-mini\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 1.1,\n      \"outputPerMTok\": 4.4,\n      \"cacheReadPerMTok\": 0.275,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    },\n    {\n      \"id\": \"o3\",\n      \"matchModel\": \"o3\",\n      \"provider\": \"openai\",\n      \"inputPerMTok\": 2,\n      \"outputPerMTok\": 8,\n      \"cacheReadPerMTok\": 0.5,\n      \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n      \"sourceDate\": \"2026-09-24\"\n    }\n  ],\n  \"pricedCalls\": 1,\n  \"unpricedCalls\": 0,\n  \"excludedSpans\": 0,\n  \"knownCostUsd\": 0.0035,\n  \"estimatedCostUsd\": 0.0035,\n  \"rows\": [\n    {\n      \"spanId\": \"0000000000000003\",\n      \"name\": \"chat gpt-4o\",\n      \"kind\": \"llm\",\n      \"model\": \"gpt-4o\",\n      \"provider\": null,\n      \"requestModel\": \"gpt-4o\",\n      \"responseModel\": null,\n      \"usage\": {\n        \"inputTokens\": 1000,\n        \"outputTokens\": 100\n      },\n      \"usageAttributes\": {\n        \"gen_ai.usage.input_tokens\": 1000,\n        \"gen_ai.usage.output_tokens\": 100\n      },\n      \"result\": {\n        \"status\": \"priced\",\n        \"costUsd\": 0.0035,\n        \"matchedModel\": \"gpt-4o\",\n        \"entry\": {\n          \"id\": \"gpt-4o\",\n          \"matchModel\": \"gpt-4o\",\n          \"provider\": \"openai\",\n          \"inputPerMTok\": 2.5,\n          \"outputPerMTok\": 10,\n          \"cacheReadPerMTok\": 1.25,\n          \"sourceUrl\": \"https://developers.openai.com/api/docs/pricing\",\n          \"sourceDate\": \"2026-09-24\"\n        },\n        \"match\": \"exact\",\n        \"components\": [\n          {\n            \"kind\": \"input\",\n            \"tokens\": 1000,\n            \"perMillionUsd\": 2.5,\n            \"costUsd\": 0.0025,\n            \"rateSource\": \"input\"\n          },\n          {\n            \"kind\": \"cache-read\",\n            \"tokens\": 0,\n            \"perMillionUsd\": 1.25,\n            \"costUsd\": 0,\n            \"rateSource\": \"cache-read\"\n          },\n          {\n            \"kind\": \"cache-write\",\n            \"tokens\": 0,\n            \"perMillionUsd\": 2.5,\n            \"costUsd\": 0,\n            \"rateSource\": \"input\"\n          },\n          {\n            \"kind\": \"output\",\n            \"tokens\": 100,\n            \"perMillionUsd\": 10,\n            \"costUsd\": 0.001,\n            \"rateSource\": \"output\"\n          }\n        ],\n        \"assumptions\": [\n          \"No response model recorded; using the request model.\",\n          \"No provider recorded; using the openai reference rate.\",\n          \"No cache-read count recorded; assuming zero cache reads.\",\n          \"No cache-write count recorded; assuming zero cache writes.\"\n        ]\n      }\n    }\n  ],\n  \"notes\": [\n    \"Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.\",\n    \"Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.\",\n    \"LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.\",\n    \"Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.\",\n    \"Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.\",\n    \"No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans.\"\n  ],\n  \"warnings\": []\n}\n",
+      "stderr": "2 traces in the selected files; showing 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)\n  also: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)   --trace aaaaaaaa\n"
+    },
+    "links": {
+      "status": 0,
+      "stdout": "{\n  \"schemaVersion\": 1,\n  \"format\": \"tracelens-span-links\",\n  \"traceId\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n  \"sourceFormat\": \"mixed-json\",\n  \"inputFiles\": [\n    {\n      \"name\": \"gateway.jaeger.json\",\n      \"spanCount\": 1,\n      \"sourceFormat\": \"jaeger-json\"\n    },\n    {\n      \"name\": \"worker.otlp.json\",\n      \"spanCount\": 2,\n      \"sourceFormat\": \"otlp-json\"\n    },\n    {\n      \"name\": \"audit.otlp.json\",\n      \"spanCount\": 1,\n      \"sourceFormat\": \"otlp-json\"\n    }\n  ],\n  \"linkCount\": 2,\n  \"reportedDroppedLinks\": 0,\n  \"skippedInvalidLinks\": 0,\n  \"notes\": [\n    \"Targets are resolved by trace ID and span ID across the selected files only.\",\n    \"Missing targets may be unsampled, unexported or omitted; the cause is not inferred.\",\n    \"Links do not establish elapsed time, waiting time, execution order or additional cost.\",\n    \"Dropped counts are exporter-reported; inspect warnings for malformed evidence.\"\n  ],\n  \"spans\": [\n    {\n      \"spanId\": \"0000000000000004\",\n      \"name\": \"receipt\",\n      \"sourceFile\": {\n        \"index\": 3,\n        \"name\": \"audit.otlp.json\"\n      },\n      \"links\": [\n        {\n          \"traceId\": \"00000000000000001234567890abcdef\",\n          \"spanId\": \"0000000000000001\",\n          \"attributes\": {},\n          \"target\": {\n            \"status\": \"available\",\n            \"name\": \"dispatch request\"\n          }\n        },\n        {\n          \"traceId\": \"00000000000000001234567890abcdef\",\n          \"spanId\": \"0000000000000002\",\n          \"attributes\": {},\n          \"target\": {\n            \"status\": \"available\",\n            \"name\": \"process request\"\n          }\n        }\n      ],\n      \"droppedLinksCount\": 0,\n      \"invalidLinkCount\": 0\n    }\n  ],\n  \"warnings\": []\n}\n",
+      "stderr": "2 traces in the selected files; showing aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (receipt, 1 span, 1.0 ms)\n  also: 00000000000000001234567890abcdef (dispatch request, 3 spans, 10.0 ms)   --trace 00000000\n"
+    },
+    "duplicate": {
+      "status": 1,
+      "stdout": "",
+      "stderr": "\"gateway.jaeger.json, gateway.otlp.json\": Duplicate span identity 00000000000000001234567890abcdef/0000000000000001 in file 1 (gateway.jaeger.json) and file 2 (gateway.otlp.json). Choose non-overlapping exports; no files were imported.\n"
+    }
+  }
+}

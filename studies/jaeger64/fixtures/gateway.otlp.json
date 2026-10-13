@@ -1,0 +1,29 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "gateway"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "00000000000000001234567890abcdef",
+              "spanId": "0000000000000001",
+              "name": "dispatch request",
+              "startTimeUnixNano": "1790000000000000000",
+              "endTimeUnixNano": "1790000000010000000"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

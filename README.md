@@ -146,6 +146,8 @@ on npm; the command it installs is `tracelens`).
   selecting a trace; retain source filenames and reject overlapping identities.
   The CLI accepts file groups for inspection and comparison.
   [Captured workflow, commands and limits](studies/multifile/README.md).
+  The source build also joins [Jaeger's 64-bit trace ID spelling](studies/jaeger64/README.md)
+  to its zero-padded OTLP identity, including parent links and duplicate checks.
 - **Jaeger JSON too** — a trace downloaded from the Jaeger UI is converted to
   OTLP (microsecond times, typed tags, span kind and status from their tags,
   logs as events) and gets the same checks.
