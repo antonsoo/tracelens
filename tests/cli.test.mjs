@@ -305,3 +305,29 @@ test('multi-file CLI restores SDK parents and compares complete groups', () => {
     assert.equal(bad.stdout, '');
   }
 });
+test('logs joins separately exported SDK message records and retains their source', () => {
+  const root = 'studies/log-events/capture-event-only/';
+  const result = run('logs', root + 'traces.json', root + 'logs.json', '--json');
+  assert.equal(result.status, 0, result.stderr);
+  const report = JSON.parse(result.stdout);
+  assert.equal(report.format, 'tracelens-log-evidence');
+  assert.equal(report.matchedRecords, 2);
+  assert.deepEqual(report.unmatched, []);
+  assert.deepEqual(report.warnings, []);
+  assert.equal(report.spans[0].inputMessages[0].parts[0].content, 'Compute the SHA-256 of receipt-17.');
+  assert.equal(report.spans[0].outputMessages[0].parts[0].name, 'sha256');
+  assert.equal(report.spans[0].logs[0].source.file.name, root + 'logs.json');
+  assert.equal(report.spans[0].logs[0].timeUnixNano, undefined);
+  assert.equal(typeof report.spans[0].logs[0].observedTimeUnixNano, 'string');
+});
+
+test('logs reads the combined SDK example and asks for traces when only logs were selected', () => {
+  const result = run('logs', 'examples/genai-log-events.jsonl');
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /2 matched records/);
+  assert.match(result.stdout, /line 1, resourceLogs/);
+  const alone = run('logs', 'studies/log-events/capture-event-only/logs.json', '--json');
+  assert.equal(alone.status, 1);
+  assert.match(alone.stderr, /Select a trace export/);
+  assert.equal(alone.stdout, '');
+});

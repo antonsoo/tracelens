@@ -18,6 +18,16 @@ tree, per-span prompts and completions, tool calls, token usage and
 estimated cost, errors and retries, and a "where did the time and money go"
 summary — nothing leaves the browser tab.
 
+**Source update: read messages exported as logs.** The OpenTelemetry Python
+GenAI helper can put prompts, tool calls and completions in separate OTLP log
+records. Previously those messages disappeared from a combined JSONL import,
+and selecting the trace and log files together failed. Select both exports
+now: TraceLens joins full trace/span identities, shows the transcript, and keeps
+the original log fields and their source locations downloadable.
+[SDK capture, browser walkthrough and limits](studies/log-events/README.md).
+Build this source to use the Logs tab and `tracelens logs`; this update does
+not release npm or deploy the live demo.
+
 **[Compare two runs](https://antonsoo.github.io/tracelens/?example=compare)** to see which operations changed: elapsed time, calls,
 tokens, estimated cost and errors, with every aggregate linked back to its
 original spans. Repeated calls are grouped by operation path, so inserting

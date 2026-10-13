@@ -42,6 +42,24 @@ export interface SpanEvent {
   droppedAttributesCount?: number;
 }
 
+/** A separately exported OTLP log, never an invented span or span event. */
+export interface TraceLogRecord {
+  traceId?: string;
+  spanId?: string;
+  eventName?: string;
+  timeUnixNano?: bigint;
+  observedTimeUnixNano?: bigint;
+  attributes: AttrMap;
+  body?: unknown;
+  resourceAttributes: AttrMap;
+  scopeName?: string;
+  scopeVersion?: string;
+  droppedAttributesCount?: number;
+  /** The original decoded record keeps severity, flags and unknown fields. */
+  raw: unknown;
+  source: { path: string; line?: number; file?: { index: number; name: string } };
+}
+
 export interface SpanLink {
   traceId: string;
   spanId: string;
@@ -117,6 +135,8 @@ export interface ParsedSpan {
   status: { code: StatusCode; message?: string };
   attributes: AttrMap;
   events: SpanEvent[];
+  /** Correlated by both trace and span identity, independently of timestamps. */
+  logs?: TraceLogRecord[];
   /** Exporter-reported omissions; absent has the OTLP default of zero. */
   droppedAttributesCount?: number;
   droppedEventsCount?: number;
@@ -164,9 +184,11 @@ export interface ParsedTrace {
   minStartNs: bigint;
   maxEndNs: bigint;
   warnings: ParseWarning[];
+  /** Logs lacking exactly one matching span, retained separately from measurements. */
+  unmatchedLogs?: TraceLogRecord[];
   /** The file's format: Jaeger JSON is converted to OTLP/JSON before parsing. */
   sourceFormat: 'otlp-json' | 'jaeger-json' | 'mixed-json';
-  inputFiles?: { name: string; spanCount: number; sourceFormat: 'otlp-json' | 'jaeger-json' }[];
+  inputFiles?: { name: string; spanCount: number; logCount?: number; sourceFormat: 'otlp-json' | 'jaeger-json' }[];
   /**
    * Every trace in the file, in order of start time. A collector's export
    * holds whatever passed through it; `spans` and `roots` are one of them

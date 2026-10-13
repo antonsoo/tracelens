@@ -1,0 +1,107 @@
+{
+  "scope": "Synthetic conversation and actual local SHA-256 computation; real SDK instrumentation and export; no model or external service called",
+  "mode": "SPAN_AND_EVENT",
+  "versions": {
+    "opentelemetry-util-genai": "1.2b0",
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "spanCount": 4,
+  "logCount": 2,
+  "logs": [
+    {
+      "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+      "spanId": "2c25ca383a9c7307",
+      "eventName": "gen_ai.client.inference.operation.details",
+      "timestamp": "None",
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "scripted-response",
+        "gen_ai.provider.name": "local-control",
+        "gen_ai.response.finish_reasons": [
+          "tool_calls"
+        ],
+        "gen_ai.input.messages": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "content": "Compute the SHA-256 of receipt-17.",
+                "type": "text"
+              }
+            ],
+            "name": null
+          }
+        ],
+        "gen_ai.output.messages": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "arguments": {
+                  "text": "receipt-17"
+                },
+                "name": "sha256",
+                "id": "digest-1",
+                "type": "tool_call"
+              }
+            ],
+            "finish_reason": "tool_calls",
+            "name": null
+          }
+        ],
+        "gen_ai.system_instructions": [
+          {
+            "content": "Use the digest tool; do not invent its result.",
+            "type": "text"
+          }
+        ]
+      },
+      "body": null
+    },
+    {
+      "traceId": "b6c499b337254197eb79ed7e0ebac1b9",
+      "spanId": "4bff86ae0e780840",
+      "eventName": "gen_ai.client.inference.operation.details",
+      "timestamp": "None",
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "scripted-response",
+        "gen_ai.provider.name": "local-control",
+        "gen_ai.response.finish_reasons": [
+          "stop"
+        ],
+        "gen_ai.input.messages": [
+          {
+            "role": "tool",
+            "parts": [
+              {
+                "response": {
+                  "sha256": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                },
+                "id": "digest-1",
+                "type": "tool_call_response"
+              }
+            ],
+            "name": null
+          }
+        ],
+        "gen_ai.output.messages": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "content": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6",
+                "type": "text"
+              }
+            ],
+            "finish_reason": "stop",
+            "name": null
+          }
+        ]
+      },
+      "body": null
+    }
+  ]
+}

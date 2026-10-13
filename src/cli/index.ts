@@ -16,6 +16,8 @@ import { formatTiming } from './timing-report.js';
 import { formatCostReport } from './cost-report.js';
 import { buildLinksReport } from '../core/links.js';
 import { formatLinks } from './links-report.js';
+import { buildLogsReport } from '../core/logs.js';
+import { formatLogs } from './logs-report.js';
 
 const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)
 
@@ -26,6 +28,8 @@ ${bold('Usage:')}
                                   Print the span tree
   tracelens links <trace.json> [more-files...] [--trace <id>] [--json]
                                   Inspect span links across the imported files
+  tracelens logs <trace.json> [logs.json...] [--trace <id>] [--json]
+                                  Inspect correlated log records and captured messages
   tracelens timing <trace.json> [more-files...] [--trace <id>] [--json]
                                   Explain elapsed time, overlaps and gaps
   tracelens cost <trace.json> [more-files...] [--trace <id>] [--json] [--prices <prices.json>]
@@ -230,7 +234,7 @@ async function main(): Promise<void> {
     console.log(HELP);
     return;
   }
-  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing' && cmd !== 'cost' && cmd !== 'links') {
+  if (cmd !== 'summary' && cmd !== 'tree' && cmd !== 'compare' && cmd !== 'timing' && cmd !== 'cost' && cmd !== 'links' && cmd !== 'logs') {
     console.error(red(`Unknown command "${safe(cmd)}".`));
     console.log(HELP);
     process.exitCode = 1;
@@ -262,7 +266,7 @@ async function main(): Promise<void> {
       return;
     }
     const priced = cmd === 'summary' || cmd === 'cost';
-    const json = cmd === 'timing' || cmd === 'cost' || cmd === 'links';
+    const json = cmd === 'timing' || cmd === 'cost' || cmd === 'links' || cmd === 'logs';
     const usage = `Usage: tracelens ${cmd} <trace.json> [more-files...] [--trace <id>]${json ? ' [--json]' : ''}${priced ? ' [--prices <prices.json>]' : ''}`;
     const args = parseArgs(rest, ['--trace', ...(priced ? ['--prices'] : [])], json, usage);
     if (!args.files.length) throw new UsageError(usage);
@@ -276,7 +280,12 @@ async function main(): Promise<void> {
       return;
     }
     const trace = await loadTrace(args.files, args.traces.get('--trace'));
-    if (cmd === 'links') {
+    if (cmd === 'logs') {
+      const report = buildLogsReport(trace);
+      for (const line of otherTraces(trace, '--trace')) console.error(line);
+      console.log(args.json ? JSON.stringify(report, (_key, value: unknown) => typeof value === 'bigint' ? value.toString() : value, 2) : formatLogs(report));
+    }
+    else if (cmd === 'links') {
       const report = buildLinksReport(trace);
       for (const line of otherTraces(trace, '--trace')) console.error(line);
       console.log(args.json ? JSON.stringify(report, null, 2) : formatLinks(report));

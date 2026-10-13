@@ -82,12 +82,12 @@ describe('parseTraceText', () => {
     expect(() => parseTraceText([lines[0], '{"resourceSpans": [', lines[2]].join('\n'))).toThrow(TraceParseError);
   });
 
-  it('skips lines of metrics and logs written to the same file, and counts them', () => {
+  it('skips metric lines, while accepting an empty log batch alongside traces', () => {
     const lines = asLines(genai, [8, 8]);
     const text = ['{"resourceMetrics":[{"scopeMetrics":[]}]}', lines[0], '{"resourceLogs":[]}', '{"resourceMetrics":[]}', lines[1]].join('\n');
     const trace = parseTraceText(text);
     expect(trace.spans).toHaveLength(16);
-    expect(trace.warnings.map((w) => w.message)).toEqual(['Skipped 3 lines of metrics, logs or profiles: only traces are read.']);
+    expect(trace.warnings.map((w) => w.message)).toEqual(['Skipped 2 lines of metrics or profiles: only traces and correlated logs are read.']);
     expect(() => parseTraceText('{"resourceMetrics":[]}\n{"resourceLogs":[]}\n')).toThrow('no resourceSpans');
   });
 

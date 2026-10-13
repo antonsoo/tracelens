@@ -10,7 +10,7 @@ import type { SpanLink } from '../core/types.js';
 import { hasLinks } from '../core/links.js';
 import { renderSpanLinks } from './links-panel.js';
 
-export type DetailTab = 'overview' | 'messages' | 'tool' | 'attributes' | 'events' | 'links';
+export type DetailTab = 'overview' | 'messages' | 'tool' | 'attributes' | 'events' | 'logs' | 'links';
 
 export function availableTabs(span: ParsedSpan): DetailTab[] {
   const tabs: DetailTab[] = ['overview'];
@@ -18,6 +18,7 @@ export function availableTabs(span: ParsedSpan): DetailTab[] {
   if (span.genai?.toolArguments !== undefined || span.genai?.toolResult !== undefined) tabs.push('tool');
   tabs.push('attributes');
   if (span.events.length > 0) tabs.push('events');
+  if (span.logs?.length) tabs.push('logs');
   if (hasLinks(span)) tabs.push('links');
   return tabs;
 }
@@ -28,6 +29,7 @@ const TAB_LABEL: Record<DetailTab, string> = {
   tool: 'Tool I/O',
   attributes: 'Attributes',
   events: 'Events',
+  logs: 'Logs',
   links: 'Links',
 };
 
@@ -97,7 +99,7 @@ export function renderDetailPanel(
     ),
     h('div', { className: 'tl-evidence-download' },
       h('button', { className: 'tl-btn', 'data-focus-key': 'download-span', onClick: () => downloadEvidence(spanEvidence(span), 'tracelens-span.json') }, 'Download span JSON'),
-      h('span', { className: 'dim' }, 'Decoded attributes, messages, events and links. Long values below are previews.')),
+      h('span', { className: 'dim' }, 'Decoded attributes, messages, events, logs and links. Long values below are previews.')),
   );
 
   const tabBar = h(
@@ -184,6 +186,20 @@ export function renderDetailPanel(
     panel.appendChild(pagedEvidence(span, 'Resource attributes', Object.entries(span.resourceAttributes), (page) => kvTable(page.map(([k, v]) => [k, jsonPreview(v, 400)]))));
   } else if (tab === 'links') {
     panel.appendChild(renderSpanLinks(span, onNavigateLink));
+  } else if (tab === 'logs') {
+    panel.appendChild(h('p', { className: 'dim' }, 'Joined by trace ID and span ID. These records were exported separately from span events.'));
+    panel.appendChild(pagedEvidence(span, 'Logs', span.logs ?? [], page => h('div', {}, ...page.map(log => h('div', { className: 'tl-msg tl-log-record' },
+      h('div', { className: 'tl-msg-role' }, textPreview(log.eventName ?? 'Log record', 200)),
+      h('p', { className: 'dim' }, textPreview(`${log.source.file ? `File ${log.source.file.index}: ${log.source.file.name}; ` : ''}${log.source.line ? `line ${log.source.line}; ` : ''}${log.source.path}`)),
+      h('pre', { tabIndex: 0, 'aria-label': 'Decoded log record',
+        'data-focus-key': `log-${span.spanId}-${log.source.file?.index ?? 0}-${log.source.line ?? 0}-${log.source.path}` }, jsonPreview({
+        attributes: log.attributes, body: log.body,
+        timeUnixNano: log.timeUnixNano, observedTimeUnixNano: log.observedTimeUnixNano,
+        scopeName: log.scopeName, scopeVersion: log.scopeVersion,
+        resourceAttributes: log.resourceAttributes, droppedAttributesCount: log.droppedAttributesCount,
+      })),
+      h('p', { className: 'dim' }, 'Download span JSON includes the complete decoded record and original export fields.'),
+    ))), 20));
   } else if (tab === 'events') {
     panel.appendChild(pagedEvidence(span, 'Events', span.events, (page) => h('div', {}, ...page.map((ev) => {
       const isException = ev.name === 'exception';

@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Messages in OTLP log exports
+
+- Join OTLP log records to imported spans by complete trace ID and span ID,
+  across separate JSON files, combined documents and Collector-style JSONL.
+- Read current GenAI inference-details messages from matched logs when span
+  attributes/events do not already supply that direction. Preserve unmatched
+  records and original decoded fields, including filename/line/path provenance.
+- Add a Logs detail tab, unmatched-log download, `tracelens logs` report and
+  a discoverable local SDK capture. Logs do not add spans, durations, errors,
+  token measurements or charges.
+- [Actual SDK reproduction and replay](studies/log-events/README.md).
+  Source update only; no npm release or hosted deployment.
+
 ### Jaeger 64-bit trace identities
 
 - Join Jaeger's complete 16-hex trace IDs with equivalent zero-padded OTLP

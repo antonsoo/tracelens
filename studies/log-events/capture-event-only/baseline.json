@@ -1,0 +1,43 @@
+{
+  "baselineCommit": "bbfbe4407fe8d9c32e0151fe979b1071b80dece9",
+  "spans": [
+    {
+      "id": "956241ee1b8079be",
+      "name": "chat scripted-response",
+      "kind": "llm",
+      "input": [],
+      "output": [],
+      "system": []
+    },
+    {
+      "id": "99d3709b7eb35656",
+      "name": "chat scripted-response",
+      "kind": "llm",
+      "input": [],
+      "output": [],
+      "system": []
+    },
+    {
+      "id": "91ba0097103df082",
+      "name": "sha256",
+      "kind": "tool",
+      "input": [],
+      "output": [],
+      "system": []
+    },
+    {
+      "id": "bea5c00926122e9e",
+      "name": "inspect a document digest",
+      "kind": "agent",
+      "input": [],
+      "output": [],
+      "system": []
+    }
+  ],
+  "warnings": [
+    {
+      "message": "Skipped 1 line of metrics, logs or profiles: only traces are read."
+    }
+  ],
+  "separate": "File 2 (logs.json): Not a recognizable trace export: expected OTLP/JSON (a top-level \"resourceSpans\" array) or Jaeger JSON (a \"data\" array of traces with \"spans\")."
+}

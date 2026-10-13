@@ -11,6 +11,7 @@ import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 import { normalizeId } from './identity.js';
 import { assertPayloadDepth, TraceParseError } from './payload-depth.js';
 import { decodeAttributes } from './attributes.js';
+import { collectLogs, correlateLogs, hasLogSignal, type LogBatch } from './logs.js';
 export { TraceParseError } from './payload-depth.js';
 export { decodeAnyValue } from './attributes.js';
 
@@ -191,7 +192,7 @@ function chooseTrace(listings: TraceListing[], wanted: string | undefined, scope
  * A file with several traces yields one of them (see `ParseOptions`) and
  * lists them all in `traces`.
  */
-function collectSpans(json: unknown): {
+function collectSpans(json: unknown, allowEmpty = false): {
   all: ParsedSpan[]; warnings: ParseWarning[]; sourceFormat: 'otlp-json' | 'jaeger-json';
 } {
   assertPayloadDepth(json);
@@ -202,14 +203,14 @@ function collectSpans(json: unknown): {
   const sourceFormat = isJaegerJson(json) ? 'jaeger-json' : 'otlp-json';
   if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json, warnings);
   const root = isRecord(json) ? json : { resourceSpans: json };
-  const resourceSpans = root.resourceSpans ?? root.resource_spans;
+  const resourceSpans = root.resourceSpans ?? root.resource_spans ?? (hasLogSignal(root) ? [] : undefined);
   if (!Array.isArray(resourceSpans)) {
     throw new TraceParseError(
       'Not a recognizable trace export: expected OTLP/JSON (a top-level "resourceSpans" array) or Jaeger JSON (a "data" array of traces with "spans").',
     );
   }
-  if (resourceSpans.length === 0) {
-    throw new TraceParseError('This trace file has no resourceSpans — nothing to show.');
+  if (resourceSpans.length === 0 && !allowEmpty) {
+    throw new TraceParseError('This trace file has no resourceSpans — nothing to show. Select a trace export alongside any log files.');
   }
 
   const all: ParsedSpan[] = [];
@@ -311,7 +312,7 @@ function collectSpans(json: unknown): {
     }
   }
 
-  if (all.length === 0) {
+  if (all.length === 0 && !allowEmpty) {
     throw new TraceParseError('No valid spans were found in this file.');
   }
   return { all, warnings, sourceFormat };
@@ -319,7 +320,8 @@ function collectSpans(json: unknown): {
 
 export function parseOtlpJson(json: unknown, options: ParseOptions = {}): ParsedTrace {
   const { all, warnings, sourceFormat } = collectSpans(json);
-  return assembleTrace(all, warnings, sourceFormat, options);
+  const unmatchedLogs = correlateLogs(all, collectLogs([{ json }], warnings), warnings);
+  return { ...assembleTrace(all, warnings, sourceFormat, options), ...(unmatchedLogs.length ? { unmatchedLogs } : {}) };
 }
 
 function assembleTrace(all: ParsedSpan[], warnings: ParseWarning[], sourceFormat: ParsedTrace['sourceFormat'], options: ParseOptions): ParsedTrace {
@@ -432,14 +434,15 @@ function assembleTrace(all: ParsedSpan[], warnings: ParseWarning[], sourceFormat
 }
 
 /** What a line of a collector's file can hold besides traces. */
-const OTHER_SIGNALS = ['resourceMetrics', 'resource_metrics', 'resourceLogs', 'resource_logs', 'resourceProfiles', 'resource_profiles'];
+const OTHER_SIGNALS = ['resourceMetrics', 'resource_metrics', 'resourceProfiles', 'resource_profiles'];
 
-function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warnings: ParseWarning[] } {
+function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warnings: ParseWarning[]; logBatches: LogBatch[] } {
   const lines = text.split(/\r\n|\n|\r/).map((text, index) => ({ text, number: index + 1 })).filter((line) => line.text.trim().length > 0);
   if (lines.length < 2) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
 
   const resourceSpans: unknown[] = [];
   const warnings: ParseWarning[] = [];
+  const logBatches: LogBatch[] = [];
   let otherSignals = 0;
   for (let i = 0; i < lines.length; i++) {
     let value: unknown;
@@ -456,8 +459,11 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
       throw new TraceParseError(`Not valid JSON, and not JSON Lines either: line ${lines[i]!.number}: ${reason}`);
     }
     const batch = isRecord(value) ? (value.resourceSpans ?? value.resource_spans) : value;
+    if (hasLogSignal(value)) logBatches.push({ json: value, line: lines[i]!.number });
     if (Array.isArray(batch)) {
       for (const entry of batch) resourceSpans.push(entry);
+    } else if (hasLogSignal(value) && batch === undefined) {
+      // Standalone logs can precede or follow their trace batch.
     } else if (isRecord(value) && OTHER_SIGNALS.some((key) => key in value)) {
       otherSignals++;
     } else {
@@ -465,9 +471,9 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
     }
   }
   if (otherSignals > 0) {
-    warnings.push({ message: `Skipped ${otherSignals} ${otherSignals === 1 ? 'line' : 'lines'} of metrics, logs or profiles: only traces are read.` });
+    warnings.push({ message: `Skipped ${otherSignals} ${otherSignals === 1 ? 'line' : 'lines'} of metrics or profiles: only traces and correlated logs are read.` });
   }
-  return { json: { resourceSpans }, warnings };
+  return { json: { resourceSpans }, warnings, logBatches };
 }
 
 /**
@@ -476,22 +482,26 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
  * the OpenTelemetry Collector's file exporter writes (a line per batch).
  * The lines are read as one export.
  */
-function readTraceText(text: string): { json: unknown; warnings: ParseWarning[] } {
+function readTraceText(text: string): { json: unknown; warnings: ParseWarning[]; logBatches: LogBatch[] } {
   let json: unknown;
   let lineWarnings: ParseWarning[] = [];
+  let logBatches: LogBatch[] = [];
   try {
     json = JSON.parse(text);
+    if (hasLogSignal(json)) logBatches.push({ json });
   } catch (err) {
     if (!(err instanceof SyntaxError)) throw err;
-    ({ json, warnings: lineWarnings } = parseJsonLines(text, err));
+    ({ json, warnings: lineWarnings, logBatches } = parseJsonLines(text, err));
   }
-  return { json, warnings: lineWarnings };
+  return { json, warnings: lineWarnings, logBatches };
 }
 
 export function parseTraceText(text: string, options: ParseOptions = {}): ParsedTrace {
-  const { json, warnings: lineWarnings } = readTraceText(text);
-  const trace = parseOtlpJson(json, options);
-  return lineWarnings.length > 0 ? { ...trace, warnings: [...lineWarnings, ...trace.warnings] } : trace;
+  const { json, warnings: lineWarnings, logBatches } = readTraceText(text);
+  const { all, warnings, sourceFormat } = collectSpans(json);
+  warnings.unshift(...lineWarnings);
+  const unmatchedLogs = correlateLogs(all, collectLogs(logBatches, warnings), warnings);
+  return { ...assembleTrace(all, warnings, sourceFormat, options), ...(unmatchedLogs.length ? { unmatchedLogs } : {}) };
 }
 
 export const MAX_TRACE_INPUTS = 32;
@@ -512,17 +522,22 @@ export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOp
   const warnings: ParseWarning[] = [];
   const inputFiles: NonNullable<ParsedTrace['inputFiles']> = [];
   const identities = new Map<string, Map<string, ParsedSpan>>();
+  const logs: ReturnType<typeof collectLogs> = [];
   for (const [index, input] of inputs.entries()) {
     const sourceFile = { index: index + 1, name: input.name };
     let collected: ReturnType<typeof collectSpans>;
+    let logCount = 0;
     try {
       const decoded = readTraceText(input.text);
-      collected = collectSpans(decoded.json);
+      collected = collectSpans(decoded.json, decoded.logBatches.length > 0);
       for (const warning of decoded.warnings) warnings.push(fromFile(warning, sourceFile));
+      const fileLogs = collectLogs(decoded.logBatches, warnings, sourceFile);
+      logCount = fileLogs.length;
+      for (const log of fileLogs) logs.push(log);
     } catch (error) {
       throw new TraceParseError(`File ${sourceFile.index} (${input.name}): ${error instanceof Error ? error.message : String(error)}`);
     }
-    inputFiles.push({ name: input.name, spanCount: collected.all.length, sourceFormat: collected.sourceFormat });
+    inputFiles.push({ name: input.name, spanCount: collected.all.length, ...(logCount ? { logCount } : {}), sourceFormat: collected.sourceFormat });
     for (const warning of collected.warnings) warnings.push(fromFile(warning, sourceFile));
     for (const span of collected.all) {
       span.sourceFile = sourceFile;
@@ -538,5 +553,7 @@ export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOp
   }
   const formats = new Set(inputFiles.map(file => file.sourceFormat));
   const sourceFormat = formats.size === 1 ? inputFiles[0]!.sourceFormat : 'mixed-json';
-  return { ...assembleTrace(all, warnings, sourceFormat, options), inputFiles };
+  if (!all.length) throw new TraceParseError('No valid spans were found. Select the trace export alongside its log files.');
+  const unmatchedLogs = correlateLogs(all, logs, warnings);
+  return { ...assembleTrace(all, warnings, sourceFormat, options), inputFiles, ...(unmatchedLogs.length ? { unmatchedLogs } : {}) };
 }

@@ -1,0 +1,188 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "76a8e3cf-9251-4431-9b27-26246813ce88"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "local-genai-event-capture"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.local-genai-capture",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "28+cCB3DO8aREN8ftQZvjw==",
+              "spanId": "lWJB7huAeb4=",
+              "parentSpanId": "vqXACSYSLp4=",
+              "name": "chat scripted-response",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1791917336076830302",
+              "endTimeUnixNano": "1791917336076934933",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "local-control"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_calls"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "28+cCB3DO8aREN8ftQZvjw==",
+              "spanId": "mdNwm36zVlY=",
+              "parentSpanId": "vqXACSYSLp4=",
+              "name": "chat scripted-response",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1791917336077012642",
+              "endTimeUnixNano": "1791917336077081605",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "local-control"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "stop"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ],
+          "schemaUrl": "https://opentelemetry.io/schemas/1.37.0"
+        },
+        {
+          "scope": {
+            "name": "tracelens.local-workflow",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "28+cCB3DO8aREN8ftQZvjw==",
+              "spanId": "kboAlxA98II=",
+              "parentSpanId": "vqXACSYSLp4=",
+              "name": "sha256",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1791917336076967726",
+              "endTimeUnixNano": "1791917336076986782",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "sha256"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "28+cCB3DO8aREN8ftQZvjw==",
+              "spanId": "vqXACSYSLp4=",
+              "name": "inspect a document digest",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1791917336076785876",
+              "endTimeUnixNano": "1791917336077088748",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

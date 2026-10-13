@@ -1,0 +1,218 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "dd901a33-be24-4590-80a3-c5b8c8df0db1"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "local-genai-event-capture"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.local-genai-capture",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "tsSZszclQZfree1+DrrBuQ==",
+              "spanId": "LCXKODqccwc=",
+              "parentSpanId": "VQqXtHv6xU4=",
+              "name": "chat scripted-response",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1791917336194428342",
+              "endTimeUnixNano": "1791917336194570886",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "local-control"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "tool_calls"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"user\",\"parts\":[{\"content\":\"Compute the SHA-256 of receipt-17.\",\"type\":\"text\"}],\"name\":null}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"assistant\",\"parts\":[{\"arguments\":{\"text\":\"receipt-17\"},\"name\":\"sha256\",\"id\":\"digest-1\",\"type\":\"tool_call\"}],\"finish_reason\":\"tool_calls\",\"name\":null}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"content\":\"Use the digest tool; do not invent its result.\",\"type\":\"text\"}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "tsSZszclQZfree1+DrrBuQ==",
+              "spanId": "S/+Grg54CEA=",
+              "parentSpanId": "VQqXtHv6xU4=",
+              "name": "chat scripted-response",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1791917336194650910",
+              "endTimeUnixNano": "1791917336194730924",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "local-control"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "stop"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"tool\",\"parts\":[{\"response\":{\"sha256\":\"3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6\"},\"id\":\"digest-1\",\"type\":\"tool_call_response\"}],\"name\":null}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"assistant\",\"parts\":[{\"content\":\"SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6\",\"type\":\"text\"}],\"finish_reason\":\"stop\",\"name\":null}]"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ],
+          "schemaUrl": "https://opentelemetry.io/schemas/1.37.0"
+        },
+        {
+          "scope": {
+            "name": "tracelens.local-workflow",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "tsSZszclQZfree1+DrrBuQ==",
+              "spanId": "ys8oZVYW+w4=",
+              "parentSpanId": "VQqXtHv6xU4=",
+              "name": "sha256",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1791917336194603919",
+              "endTimeUnixNano": "1791917336194622816",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "sha256"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "traceId": "tsSZszclQZfree1+DrrBuQ==",
+              "spanId": "VQqXtHv6xU4=",
+              "name": "inspect a document digest",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1791917336194333269",
+              "endTimeUnixNano": "1791917336194736134",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

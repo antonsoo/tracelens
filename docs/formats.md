@@ -13,6 +13,35 @@ on this for a new integration.
 
 ## 1. Wire format: OTLP/JSON
 
+**Related log exports (source checkout).** Select OTLP traces and logs together,
+or open a JSON/JSONL export containing both signals. Log collections use
+`resourceLogs[].scopeLogs[].logRecords[]` (snake_case is also accepted).
+Both trace ID and span ID must resolve to exactly one imported span; names,
+timestamps and file order never supply a missing identity. All-zero IDs are
+absent context. Unmatched records stay in an explicit downloadable collection.
+Logs alone cannot produce a waterfall.
+
+The current `gen_ai.client.inference.operation.details` event's structured
+`gen_ai.input.messages`, `gen_ai.output.messages`, `gen_ai.system_instructions`
+and finish reasons can fill missing normalized content. Precedence applies
+independently per direction: span attributes, then span events, then logs.
+Other log bodies remain inspectable without guessing a message schema.
+All matched records remain attached even when higher-precedence content wins.
+Records preserve import order; they are not sorted by clocks or deduplicated.
+Log severity, token-like attributes and timestamps do not create measured
+span errors, token counts, duration or cost.
+
+`span.logs` retains decoded attributes/body/resource metadata, optional
+timestamps, original decoded record fields under `raw`, and source collection
+path, physical JSONL line and file index/name when importing multiple files.
+The Logs tab uses a bounded decoded preview; **Download span JSON** contains
+the full record. The `logs --json` CLI report includes matched records for the
+selected trace and unmatched records across all imported files. Matching logs
+for other traces appear when selecting those traces, not as unmatched records.
+Positive dropped-attribute counts and malformed structures produce warnings;
+an unknown omitted-record count stays unknown. This is decoded evidence, not
+a byte-for-byte wire archive. [SDK capture and exact limits](../studies/log-events/README.md).
+
 Source: [`opentelemetry-proto`](https://github.com/open-telemetry/opentelemetry-proto),
 `opentelemetry/proto/trace/v1/trace.proto` and
 `opentelemetry/proto/common/v1/common.proto` (`main` branch, checked

@@ -460,6 +460,7 @@ function renderApp(): void {
   const warnings = activeTrace.warnings.length ? h('details', { className: 'tl-compare-warnings' },
     h('summary', {}, `${activeTrace.warnings.length} parser warnings`),
     h('button', { className: 'tl-btn', onClick: () => downloadEvidence(activeTrace.warnings, 'tracelens-warnings.json') }, 'Download warnings JSON'),
+    activeTrace.unmatchedLogs?.length ? h('button', { className: 'tl-btn', onClick: () => downloadEvidence(activeTrace.unmatchedLogs, 'tracelens-unmatched-logs.json') }, 'Download unmatched logs') : null,
     pagedEvidence(activeTrace, 'Parser warnings', activeTrace.warnings, (page) => h('ul', {}, ...page.map((warning) => h('li', {}, textPreview(warning.message)))))) : null;
   mount(app, buildHeader(state), loadNotice(state), state.loadError ? h('div', { className: 'tl-load-error', role: 'alert' }, state.loadError) : null, h('main', { className: 'tl-page-main' }, picker, warnings, summaryEl, costEl, timingEl, linksEl, h('div', { className: 'tl-main' }, centerEl, detailEl)));
   // After the mount: the waterfall measures its track and restores its scroll position, which a
@@ -505,6 +506,9 @@ if (new URLSearchParams(window.location.search).get('example') === 'timing') {
 }
 if (new URLSearchParams(window.location.search).get('example') === 'cost') {
   void loadExample('examples/cost-nano-stream.json');
+}
+if (new URLSearchParams(window.location.search).get('example') === 'logs') {
+  void loadExample('examples/genai-log-events.jsonl');
 }
 
 let resizeTimer: ReturnType<typeof setTimeout> | undefined;

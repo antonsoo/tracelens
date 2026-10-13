@@ -710,6 +710,8 @@ a {
 }
 
 .tl-link-record > :not(.tl-msg-role) { margin: 10px; }
+.tl-log-record > :not(.tl-msg-role) { margin: 10px; }
+.tl-log-record pre { max-height: 320px; overflow: auto; }
 .tl-link-record p { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 11.5px; }
 .tl-tabs { flex-wrap: wrap; }
 

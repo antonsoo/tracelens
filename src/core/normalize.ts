@@ -589,15 +589,17 @@ function eventContentParts(content: unknown, onMalformed: (blockIndex: number) =
  * Current-spec event: `gen_ai.client.inference.operation.details`, whose attributes are
  * `gen_ai.input.messages`, `gen_ai.output.messages` and `gen_ai.system_instructions`, written
  * by Strands in its default mode. */
-function extractEventMessages(span: ParsedSpan, onWarning?: (warning: ParseWarning) => void): { input?: NormalizedMessage[]; output?: NormalizedMessage[]; system?: NormalizedMessage[]; finishReasons?: string[] } {
+function extractEventMessages(span: ParsedSpan, onWarning?: (warning: ParseWarning) => void,
+  records = span.events.map(event => ({ name: event.name, attributes: event.attributes })), source = 'events',
+): { input?: NormalizedMessage[]; output?: NormalizedMessage[]; system?: NormalizedMessage[]; finishReasons?: string[] } {
   const input: NormalizedMessage[] = [];
   const output: NormalizedMessage[] = [];
   const system: NormalizedMessage[] = [];
   const finishReasons: string[] = [];
-  for (const [eventIndex, ev] of span.events.entries()) {
+  for (const [eventIndex, ev] of records.entries()) {
     const onMalformed = (blockIndex: number): void => onWarning?.({
       traceId: span.traceId, spanId: span.spanId,
-      message: `events[${eventIndex}] (${ev.name}) content block [${blockIndex}] is malformed or ambiguous. Kept the original message as text; inspect the raw event for details.`,
+      message: `${source}[${eventIndex}] (${ev.name}) content block [${blockIndex}] is malformed or ambiguous. Kept the original message as text; inspect the raw event for details.`,
     });
     const content = ev.attributes['content'];
     if (ev.name === 'gen_ai.client.inference.operation.details') {
@@ -646,15 +648,27 @@ export function normalizeSpan(span: ParsedSpan, onWarning?: (warning: ParseWarni
 
   const convention: Convention = aiSdk ? 'vercel-ai' : otel ? 'otel-genai' : oi ? 'openinference' : 'none';
 
-  if (genai) {
+  if (genai || span.logs?.length) {
     const events = extractEventMessages(span, onWarning);
-    genai = {
-      ...genai,
-      ...(!genai.inputMessages && events.input ? { inputMessages: events.input } : {}),
-      ...(!genai.outputMessages && events.output ? { outputMessages: events.output } : {}),
-      ...(!genai.systemInstructions && events.system ? { systemInstructions: events.system } : {}),
-      ...(!genai.finishReasons && events.finishReasons ? { finishReasons: events.finishReasons } : {}),
-    };
+    const logs = extractEventMessages(span, onWarning, (span.logs ?? []).map(log => ({
+      // The current details convention uses structured attributes. Other log
+      // event bodies stay visible without guessing an older message schema.
+      name: log.eventName === 'gen_ai.client.inference.operation.details' ? log.eventName : '',
+      attributes: log.attributes,
+    })), 'logs');
+    const input = events.input ?? logs.input;
+    const output = events.output ?? logs.output;
+    const system = events.system ?? logs.system;
+    const finishReasons = events.finishReasons ?? logs.finishReasons;
+    if (genai || input || output || system) {
+      genai = {
+        ...genai,
+        ...(!genai?.inputMessages && input ? { inputMessages: input } : {}),
+        ...(!genai?.outputMessages && output ? { outputMessages: output } : {}),
+        ...(!genai?.systemInstructions && system ? { systemInstructions: system } : {}),
+        ...(!genai?.finishReasons && finishReasons ? { finishReasons } : {}),
+      };
+    }
   }
 
   let agentKind: AgentSpanKind = 'other';
