@@ -17,6 +17,7 @@
  */
 
 import { normalizeId } from './identity.js';
+import { decodeStatus } from './status.js';
 import type { ParseWarning } from './types.js';
 
 type Json = Record<string, unknown>;
@@ -87,13 +88,31 @@ function attributes(tags: Json[]): Json[] {
   return tags.filter((t) => !LIFTED_TAGS.has(t.key as string)).map((t) => ({ key: t.key, value: anyValue(t) }));
 }
 
-function status(tags: Json[]): Json | undefined {
-  const byKey = new Map(tags.map((t) => [t.key as string, t.value]));
-  const code = asText(byKey.get('otel.status_code')).toUpperCase();
-  const message = byKey.get('otel.status_description');
-  const failed = code === 'ERROR' || byKey.get('error') === true || byKey.get('error') === 'true';
-  if (!failed && code !== 'OK') return undefined;
-  return { code: failed ? 'STATUS_CODE_ERROR' : 'STATUS_CODE_OK', ...(typeof message === 'string' ? { message } : {}) };
+function status(tags: Json[], warn: (message: string) => void): { status?: Json; raw?: Json[] } {
+  const codes = tags.filter(tag => tag.key === 'otel.status_code');
+  const errors = tags.filter(tag => tag.key === 'error');
+  const description = tags.find(tag => tag.key === 'otel.status_description');
+  if (!codes.length && !errors.length) return {};
+  const raw = tags.filter(tag => ['otel.status_code', 'otel.status_description', 'error'].includes(tag.key as string));
+  const undecidable = (): { status: Json; raw: Json[] } => ({ status: { code: 'UNKNOWN' }, raw });
+  // A duplicate declaration cannot identify which status belongs to the span.
+  if (codes.length > 1 || errors.length > 1) return undecidable();
+  const codeValue = codes[0]?.value;
+  const decoded = decodeStatus({ code: typeof codeValue === 'string' ? codeValue.toUpperCase() : codeValue }, () => {});
+  const errorValue = errors[0]?.value;
+  const validError = !errors.length || errorValue === true || errorValue === false || errorValue === 'true' || errorValue === 'false';
+  const validCode = !codes.length || (codeValue !== undefined && codeValue !== null && decoded.code !== 'UNKNOWN');
+  const failed = decoded.code === 'ERROR' || errorValue === true || errorValue === 'true';
+  if (!validCode || !validError) {
+    if (!failed) return undecidable();
+    // Retain independently recorded failure instead of letting another damaged
+    // tag hide it. Raw tags explain why the declaration needed this fallback.
+    warn('A Jaeger status tag is unreadable; an independent ERROR/error=true declaration still records failure. Raw status tags are retained.');
+  }
+  if (!failed && decoded.code !== 'OK') return {};
+  return { status: { code: failed ? 'STATUS_CODE_ERROR' : 'STATUS_CODE_OK',
+    ...(description ? { message: description.value } : {}) },
+    ...(!validCode || !validError || (description && description.value != null && typeof description.value !== 'string') ? { raw } : {}) };
 }
 
 function referencesOf(span: Json, traceId: unknown): { parent?: string; links: unknown } {
@@ -154,7 +173,8 @@ export function jaegerToOtlp(json: unknown, warnings: ParseWarning[] = []): { re
       const tags = tagList(raw.tags);
       const kind = tags.find((t) => t.key === 'span.kind');
       const { parent, links } = referencesOf(raw, raw.traceID ?? trace.traceID);
-      const spanStatus = status(tags);
+      const spanStatus = status(tags, message => warnings.push({ message,
+        spanId: normalizeId(raw.spanID, 8), traceId: normalizeId(raw.traceID ?? trace.traceID, 16) }));
       const start = microsToNanos(raw.startTime);
       const span: Json = {
         traceId: raw.traceID ?? trace.traceID,
@@ -169,7 +189,8 @@ export function jaegerToOtlp(json: unknown, warnings: ParseWarning[] = []): { re
         attributes: attributes(tags),
         events: events(raw.logs, warnings, normalizeId(raw.spanID, 8), normalizeId(raw.traceID ?? trace.traceID, 16)),
         links,
-        ...(spanStatus ? { status: spanStatus } : {}),
+        ...(spanStatus.status ? { status: spanStatus.status } : {}),
+        ...(spanStatus.raw ? { _tracelensStatusRaw: spanStatus.raw } : {}),
       };
       // A span may carry its process inline instead of by processID.
       const processId = typeof raw.processID === 'string' ? raw.processID : `inline-${i}`;

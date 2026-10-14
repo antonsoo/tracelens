@@ -12,7 +12,7 @@ export type SpanKind =
   | 'PRODUCER'
   | 'CONSUMER';
 
-export type StatusCode = 'UNSET' | 'OK' | 'ERROR';
+export type StatusCode = 'UNSET' | 'OK' | 'ERROR' | 'UNKNOWN';
 
 /** The high-level "shape" tracelens buckets a span into for coloring and rollups. */
 export type AgentSpanKind =
@@ -132,7 +132,7 @@ export interface ParsedSpan {
   startTimeUnixNano: bigint;
   endTimeUnixNano: bigint;
   durationNs: bigint;
-  status: { code: StatusCode; message?: string };
+  status: { code: StatusCode; message?: string; raw?: unknown };
   attributes: AttrMap;
   events: SpanEvent[];
   /** Correlated by both trace and span identity, independently of timestamps. */

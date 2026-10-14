@@ -6,6 +6,7 @@ import { selfTimeNs } from './summary.js';
 import type { AgentSpanKind, ParsedSpan, ParsedTrace } from './types.js';
 import { buildTiming } from './timing.js';
 import type { TraceTiming } from './timing.js';
+import { isKnownStatusCode } from './status.js';
 
 /** A parsed trace may be inspectable without supporting a quantitative comparison. */
 export class TraceComparisonError extends Error {
@@ -33,7 +34,8 @@ export interface CallEvidence {
   model: string | null;
   durationMs: number;
   selfTimeMs: number;
-  error: boolean;
+  /** null means the recorded outcome could not be decoded. */
+  error: boolean | null;
 }
 
 export interface RunMetrics {
@@ -174,12 +176,12 @@ function collect(trace: ParsedTrace, costs: TraceCostReport): { groups: Map<stri
       model: span.genai?.responseModel ?? span.genai?.requestModel ?? null,
       durationMs: Number(span.durationNs) / 1_000_000,
       selfTimeMs: self,
-      error: span.status.code === 'ERROR',
+      error: isKnownStatusCode(span.status.code) ? span.status.code === 'ERROR' : null,
     });
     for (const target of [group.metrics, metrics]) {
       target.calls.value++;
       target.selfTimeMs.value += self;
-      target.errors.value += span.status.code === 'ERROR' ? 1 : 0;
+      addMeasurement(target.errors, isKnownStatusCode(span.status.code) ? (span.status.code === 'ERROR' ? 1 : 0) : undefined);
       if (!isModelCall(span.agentKind)) continue;
       const usage = span.genai?.usage;
       addMeasurement(target.inputTokens, isTokenCount(usage?.inputTokens) ? usage.inputTokens : undefined);

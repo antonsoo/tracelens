@@ -161,6 +161,11 @@ on npm; the command it installs is `tracelens`).
 - **Jaeger JSON too** — a trace downloaded from the Jaeger UI is converted to
   OTLP (microsecond times, typed tags, span kind and status from their tags,
   logs as events) and gets the same checks.
+- **Status evidence (source build)** — quoted integer error codes retain the
+  recorded failure. Unreadable or unfamiliar status codes retain their raw
+  fields and make error/retry counts unknown; comparisons no longer claim a
+  100% error reduction from damaged status data.
+  [Native SDK, CLI and offline-browser reproduction](studies/status-evidence/README.md).
 - **Two semantic conventions**, read side by side: OpenTelemetry's GenAI
   semconv (`gen_ai.*`, including the legacy per-message-event fallback
   older instrumentation still emits) and OpenInference (`openinference.*`,

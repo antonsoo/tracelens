@@ -1,0 +1,1314 @@
+{
+  "schemaVersion": 1,
+  "baselineTraceId": "8b889c00b20546aca5f704bb8de83d5e",
+  "candidateTraceId": "8b889c00b20546aca5f704bb8de83d5e",
+  "priceTable": [
+    {
+      "id": "claude-fable-5-1",
+      "matchModel": "claude-fable-5-1",
+      "provider": "anthropic",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 0.25,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-fable-5",
+      "matchModel": "claude-fable-5",
+      "provider": "anthropic",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 1,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-5-5",
+      "matchModel": "claude-opus-5-5",
+      "provider": "anthropic",
+      "inputPerMTok": 4,
+      "outputPerMTok": 20,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-5",
+      "matchModel": "claude-opus-5",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "matchModel": "claude-opus-4-8",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-4-7",
+      "matchModel": "claude-opus-4-7",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "matchModel": "claude-opus-4-6",
+      "provider": "anthropic",
+      "inputPerMTok": 5,
+      "outputPerMTok": 25,
+      "cacheReadPerMTok": 0.5,
+      "cacheWritePerMTok": 6.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "matchModel": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "matchModel": "claude-sonnet-5",
+      "provider": "anthropic",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "matchModel": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "inputPerMTok": 3,
+      "outputPerMTok": 15,
+      "cacheReadPerMTok": 0.3,
+      "cacheWritePerMTok": 3.75,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "matchModel": "claude-haiku-4-5",
+      "provider": "anthropic",
+      "inputPerMTok": 1,
+      "outputPerMTok": 5,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 1.25,
+      "sourceUrl": "https://claude.com/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6-astra",
+      "matchModel": "gpt-6-astra",
+      "provider": "openai",
+      "inputPerMTok": 10,
+      "outputPerMTok": 50,
+      "cacheReadPerMTok": 1,
+      "cacheWritePerMTok": 12.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "matchModel": "gpt-6.1-sol",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.1,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6-sol",
+      "matchModel": "gpt-6-sol",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.2,
+      "cacheWritePerMTok": 2.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-6-luna",
+      "matchModel": "gpt-6-luna",
+      "provider": "openai",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.5,
+      "cacheReadPerMTok": 0.01,
+      "cacheWritePerMTok": 0.125,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-5",
+      "matchModel": "gpt-5",
+      "provider": "openai",
+      "inputPerMTok": 1.25,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 0.125,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-5-mini",
+      "matchModel": "gpt-5-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.25,
+      "outputPerMTok": 2,
+      "cacheReadPerMTok": 0.025,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-5-nano",
+      "matchModel": "gpt-5-nano",
+      "provider": "openai",
+      "inputPerMTok": 0.05,
+      "outputPerMTok": 0.4,
+      "cacheReadPerMTok": 0.005,
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+      "sourceDate": "2026-10-09"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "matchModel": "gpt-4o-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.15,
+      "outputPerMTok": 0.6,
+      "cacheReadPerMTok": 0.075,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4o",
+      "matchModel": "gpt-4o",
+      "provider": "openai",
+      "inputPerMTok": 2.5,
+      "outputPerMTok": 10,
+      "cacheReadPerMTok": 1.25,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1-nano",
+      "matchModel": "gpt-4.1-nano",
+      "provider": "openai",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.4,
+      "cacheReadPerMTok": 0.025,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1-mini",
+      "matchModel": "gpt-4.1-mini",
+      "provider": "openai",
+      "inputPerMTok": 0.4,
+      "outputPerMTok": 1.6,
+      "cacheReadPerMTok": 0.1,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "gpt-4.1",
+      "matchModel": "gpt-4.1",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 8,
+      "cacheReadPerMTok": 0.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "o4-mini",
+      "matchModel": "o4-mini",
+      "provider": "openai",
+      "inputPerMTok": 1.1,
+      "outputPerMTok": 4.4,
+      "cacheReadPerMTok": 0.275,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    },
+    {
+      "id": "o3",
+      "matchModel": "o3",
+      "provider": "openai",
+      "inputPerMTok": 2,
+      "outputPerMTok": 8,
+      "cacheReadPerMTok": 0.5,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "sourceDate": "2026-09-24"
+    }
+  ],
+  "costEvidence": {
+    "baseline": {
+      "schemaVersion": 1,
+      "format": "tracelens-cost-evidence",
+      "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+      "priceTable": [
+        {
+          "id": "claude-fable-5-1",
+          "matchModel": "claude-fable-5-1",
+          "provider": "anthropic",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 0.25,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-fable-5",
+          "matchModel": "claude-fable-5",
+          "provider": "anthropic",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-5-5",
+          "matchModel": "claude-opus-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 4,
+          "outputPerMTok": 20,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-5",
+          "matchModel": "claude-opus-5",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-8",
+          "matchModel": "claude-opus-4-8",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-7",
+          "matchModel": "claude-opus-4-7",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-6",
+          "matchModel": "claude-opus-4-6",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-5",
+          "matchModel": "claude-sonnet-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-4-6",
+          "matchModel": "claude-sonnet-4-6",
+          "provider": "anthropic",
+          "inputPerMTok": 3,
+          "outputPerMTok": 15,
+          "cacheReadPerMTok": 0.3,
+          "cacheWritePerMTok": 3.75,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "matchModel": "claude-haiku-4-5",
+          "provider": "anthropic",
+          "inputPerMTok": 1,
+          "outputPerMTok": 5,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 1.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6.1-sol",
+          "matchModel": "gpt-6.1-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "cacheWritePerMTok": 0.125,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-5",
+          "matchModel": "gpt-5",
+          "provider": "openai",
+          "inputPerMTok": 1.25,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.125,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-5-mini",
+          "matchModel": "gpt-5-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.25,
+          "outputPerMTok": 2,
+          "cacheReadPerMTok": 0.025,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-5-nano",
+          "matchModel": "gpt-5-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.05,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.005,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-4o-mini",
+          "matchModel": "gpt-4o-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.15,
+          "outputPerMTok": 0.6,
+          "cacheReadPerMTok": 0.075,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4o",
+          "matchModel": "gpt-4o",
+          "provider": "openai",
+          "inputPerMTok": 2.5,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 1.25,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1-nano",
+          "matchModel": "gpt-4.1-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.025,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1-mini",
+          "matchModel": "gpt-4.1-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.4,
+          "outputPerMTok": 1.6,
+          "cacheReadPerMTok": 0.1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1",
+          "matchModel": "gpt-4.1",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 8,
+          "cacheReadPerMTok": 0.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "o4-mini",
+          "matchModel": "o4-mini",
+          "provider": "openai",
+          "inputPerMTok": 1.1,
+          "outputPerMTok": 4.4,
+          "cacheReadPerMTok": 0.275,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "o3",
+          "matchModel": "o3",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 8,
+          "cacheReadPerMTok": 0.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        }
+      ],
+      "pricedCalls": 0,
+      "unpricedCalls": 0,
+      "excludedSpans": 0,
+      "knownCostUsd": null,
+      "estimatedCostUsd": null,
+      "rows": [],
+      "notes": [
+        "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+        "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+        "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+        "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+        "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+        "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+      ],
+      "warnings": []
+    },
+    "candidate": {
+      "schemaVersion": 1,
+      "format": "tracelens-cost-evidence",
+      "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+      "priceTable": [
+        {
+          "id": "claude-fable-5-1",
+          "matchModel": "claude-fable-5-1",
+          "provider": "anthropic",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 0.25,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-fable-5",
+          "matchModel": "claude-fable-5",
+          "provider": "anthropic",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-5-5",
+          "matchModel": "claude-opus-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 4,
+          "outputPerMTok": 20,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-5",
+          "matchModel": "claude-opus-5",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-8",
+          "matchModel": "claude-opus-4-8",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-7",
+          "matchModel": "claude-opus-4-7",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-opus-4-6",
+          "matchModel": "claude-opus-4-6",
+          "provider": "anthropic",
+          "inputPerMTok": 5,
+          "outputPerMTok": 25,
+          "cacheReadPerMTok": 0.5,
+          "cacheWritePerMTok": 6.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-5-5",
+          "matchModel": "claude-sonnet-5-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-5",
+          "matchModel": "claude-sonnet-5",
+          "provider": "anthropic",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-sonnet-4-6",
+          "matchModel": "claude-sonnet-4-6",
+          "provider": "anthropic",
+          "inputPerMTok": 3,
+          "outputPerMTok": 15,
+          "cacheReadPerMTok": 0.3,
+          "cacheWritePerMTok": 3.75,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "matchModel": "claude-haiku-4-5",
+          "provider": "anthropic",
+          "inputPerMTok": 1,
+          "outputPerMTok": 5,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 1.25,
+          "sourceUrl": "https://claude.com/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-astra",
+          "matchModel": "gpt-6-astra",
+          "provider": "openai",
+          "inputPerMTok": 10,
+          "outputPerMTok": 50,
+          "cacheReadPerMTok": 1,
+          "cacheWritePerMTok": 12.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6.1-sol",
+          "matchModel": "gpt-6.1-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.1,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-sol",
+          "matchModel": "gpt-6-sol",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.2,
+          "cacheWritePerMTok": 2.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-6-luna",
+          "matchModel": "gpt-6-luna",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.5,
+          "cacheReadPerMTok": 0.01,
+          "cacheWritePerMTok": 0.125,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-5",
+          "matchModel": "gpt-5",
+          "provider": "openai",
+          "inputPerMTok": 1.25,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 0.125,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-5-mini",
+          "matchModel": "gpt-5-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.25,
+          "outputPerMTok": 2,
+          "cacheReadPerMTok": 0.025,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-5-nano",
+          "matchModel": "gpt-5-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.05,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.005,
+          "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+          "sourceDate": "2026-10-09"
+        },
+        {
+          "id": "gpt-4o-mini",
+          "matchModel": "gpt-4o-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.15,
+          "outputPerMTok": 0.6,
+          "cacheReadPerMTok": 0.075,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4o",
+          "matchModel": "gpt-4o",
+          "provider": "openai",
+          "inputPerMTok": 2.5,
+          "outputPerMTok": 10,
+          "cacheReadPerMTok": 1.25,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1-nano",
+          "matchModel": "gpt-4.1-nano",
+          "provider": "openai",
+          "inputPerMTok": 0.1,
+          "outputPerMTok": 0.4,
+          "cacheReadPerMTok": 0.025,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1-mini",
+          "matchModel": "gpt-4.1-mini",
+          "provider": "openai",
+          "inputPerMTok": 0.4,
+          "outputPerMTok": 1.6,
+          "cacheReadPerMTok": 0.1,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "gpt-4.1",
+          "matchModel": "gpt-4.1",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 8,
+          "cacheReadPerMTok": 0.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "o4-mini",
+          "matchModel": "o4-mini",
+          "provider": "openai",
+          "inputPerMTok": 1.1,
+          "outputPerMTok": 4.4,
+          "cacheReadPerMTok": 0.275,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        },
+        {
+          "id": "o3",
+          "matchModel": "o3",
+          "provider": "openai",
+          "inputPerMTok": 2,
+          "outputPerMTok": 8,
+          "cacheReadPerMTok": 0.5,
+          "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+          "sourceDate": "2026-09-24"
+        }
+      ],
+      "pricedCalls": 0,
+      "unpricedCalls": 0,
+      "excludedSpans": 0,
+      "knownCostUsd": null,
+      "estimatedCostUsd": null,
+      "rows": [],
+      "notes": [
+        "Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.",
+        "Rates retain their source dates. A dated model snapshot can use its base model rate; this does not recover historical prices.",
+        "LLM and embedding calls contribute token charges. Rerankers remain unpriced. Other spans with model/usage fields are listed as excluded.",
+        "Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.",
+        "Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.",
+        "No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans."
+      ],
+      "warnings": [
+        "Unrecognized or malformed span status; retained the raw status. Its error outcome is unknown."
+      ]
+    }
+  },
+  "timing": {
+    "baseline": {
+      "schemaVersion": 1,
+      "format": "tracelens-timing",
+      "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+      "startTimeUnixNano": "1792011014310290731",
+      "endTimeUnixNano": "1792011014310873629",
+      "elapsedNs": "582898",
+      "bucketsNs": {
+        "llm": "0",
+        "tool": "388482",
+        "other": "194416",
+        "overlap": "0",
+        "uncovered": "0"
+      },
+      "summedSelfNs": "582898",
+      "overlapExcessNs": "0",
+      "peakConcurrency": 1,
+      "spanRefsPerInterval": 8,
+      "intervals": [
+        {
+          "offsetNs": "0",
+          "durationNs": "33154",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "95d513d290f64039"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "33154",
+          "durationNs": "380506",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "b46787fdde618b30"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "413660",
+          "durationNs": "83141",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "95d513d290f64039"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "496801",
+          "durationNs": "7976",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "3d57ed9a332845fc"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "504777",
+          "durationNs": "78121",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "95d513d290f64039"
+          ],
+          "omittedSpanCount": 0
+        }
+      ],
+      "warnings": []
+    },
+    "candidate": {
+      "schemaVersion": 1,
+      "format": "tracelens-timing",
+      "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+      "startTimeUnixNano": "1792011014310290731",
+      "endTimeUnixNano": "1792011014310873629",
+      "elapsedNs": "582898",
+      "bucketsNs": {
+        "llm": "0",
+        "tool": "388482",
+        "other": "194416",
+        "overlap": "0",
+        "uncovered": "0"
+      },
+      "summedSelfNs": "582898",
+      "overlapExcessNs": "0",
+      "peakConcurrency": 1,
+      "spanRefsPerInterval": 8,
+      "intervals": [
+        {
+          "offsetNs": "0",
+          "durationNs": "33154",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "95d513d290f64039"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "33154",
+          "durationNs": "380506",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "b46787fdde618b30"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "413660",
+          "durationNs": "83141",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "95d513d290f64039"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "496801",
+          "durationNs": "7976",
+          "bucket": "tool",
+          "activeCount": 1,
+          "spanIds": [
+            "3d57ed9a332845fc"
+          ],
+          "omittedSpanCount": 0
+        },
+        {
+          "offsetNs": "504777",
+          "durationNs": "78121",
+          "bucket": "other",
+          "activeCount": 1,
+          "spanIds": [
+            "95d513d290f64039"
+          ],
+          "omittedSpanCount": 0
+        }
+      ],
+      "warnings": [
+        {
+          "message": "Unrecognized or malformed span status; retained the raw status. Its error outcome is unknown.",
+          "spanId": "b46787fdde618b30",
+          "traceId": "8b889c00b20546aca5f704bb8de83d5e"
+        }
+      ]
+    }
+  },
+  "wallTimeMs": {
+    "baseline": {
+      "value": 0.582898,
+      "missing": 0
+    },
+    "candidate": {
+      "value": 0.582898,
+      "missing": 0
+    },
+    "delta": 0,
+    "percent": 0
+  },
+  "metrics": {
+    "calls": {
+      "baseline": {
+        "value": 3,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 3,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": 0
+    },
+    "selfTimeMs": {
+      "baseline": {
+        "value": 0.582898,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0.582898,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": 0
+    },
+    "inputTokens": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    },
+    "outputTokens": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    },
+    "costUsd": {
+      "baseline": {
+        "value": 0,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 0
+      },
+      "delta": 0,
+      "percent": null
+    },
+    "errors": {
+      "baseline": {
+        "value": 1,
+        "missing": 0
+      },
+      "candidate": {
+        "value": 0,
+        "missing": 1
+      },
+      "delta": null,
+      "percent": null
+    }
+  },
+  "operations": [
+    {
+      "key": "[[\"\",\"controlled-status-capture\",\"other\",\"status capture\"],[\"\",\"controlled-status-capture\",\"tool\",\"retrieve\"]]",
+      "path": [
+        "controlled-status-capture: other status capture",
+        "controlled-status-capture: tool retrieve"
+      ],
+      "kind": "tool",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 2,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 2,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 0.388482,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0.388482,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 1
+          },
+          "delta": null,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "b46787fdde618b30",
+          "name": "retrieve",
+          "model": null,
+          "durationMs": 0.380506,
+          "selfTimeMs": 0.380506,
+          "error": true
+        },
+        {
+          "spanId": "3d57ed9a332845fc",
+          "name": "retrieve",
+          "model": null,
+          "durationMs": 0.007976,
+          "selfTimeMs": 0.007976,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "b46787fdde618b30",
+          "name": "retrieve",
+          "model": null,
+          "durationMs": 0.380506,
+          "selfTimeMs": 0.380506,
+          "error": null
+        },
+        {
+          "spanId": "3d57ed9a332845fc",
+          "name": "retrieve",
+          "model": null,
+          "durationMs": 0.007976,
+          "selfTimeMs": 0.007976,
+          "error": false
+        }
+      ]
+    },
+    {
+      "key": "[[\"\",\"controlled-status-capture\",\"other\",\"status capture\"]]",
+      "path": [
+        "controlled-status-capture: other status capture"
+      ],
+      "kind": "other",
+      "status": "matched",
+      "metrics": {
+        "calls": {
+          "baseline": {
+            "value": 1,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 1,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "selfTimeMs": {
+          "baseline": {
+            "value": 0.194416,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0.194416,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": 0
+        },
+        "inputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "outputTokens": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "costUsd": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        },
+        "errors": {
+          "baseline": {
+            "value": 0,
+            "missing": 0
+          },
+          "candidate": {
+            "value": 0,
+            "missing": 0
+          },
+          "delta": 0,
+          "percent": null
+        }
+      },
+      "baselineCalls": [
+        {
+          "spanId": "95d513d290f64039",
+          "name": "agent run",
+          "model": null,
+          "durationMs": 0.582898,
+          "selfTimeMs": 0.194416,
+          "error": false
+        }
+      ],
+      "candidateCalls": [
+        {
+          "spanId": "95d513d290f64039",
+          "name": "agent run",
+          "model": null,
+          "durationMs": 0.582898,
+          "selfTimeMs": 0.194416,
+          "error": false
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "Candidate: Unrecognized or malformed span status; retained the raw status. Its error outcome is unknown."
+  ]
+}

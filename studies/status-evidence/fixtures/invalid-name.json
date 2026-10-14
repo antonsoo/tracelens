@@ -1,0 +1,131 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "controlled-status-capture"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.status-capture",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+              "spanId": "b46787fdde618b30",
+              "parentSpanId": "95d513d290f64039",
+              "name": "retrieve",
+              "kind": 1,
+              "startTimeUnixNano": "1792011014310323885",
+              "endTimeUnixNano": "1792011014310704391",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "retrieve"
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "timeUnixNano": "1792011014310691737",
+                  "name": "exception",
+                  "attributes": [
+                    {
+                      "key": "exception.type",
+                      "value": {
+                        "stringValue": "RuntimeError"
+                      }
+                    },
+                    {
+                      "key": "exception.message",
+                      "value": {
+                        "stringValue": "Controlled local fixture failure."
+                      }
+                    },
+                    {
+                      "key": "exception.stacktrace",
+                      "value": {
+                        "stringValue": "Controlled local failure; full stack intentionally excluded."
+                      }
+                    },
+                    {
+                      "key": "exception.escaped",
+                      "value": {
+                        "stringValue": "False"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "message": "Controlled local fixture failure.",
+                "code": "garbled"
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+              "spanId": "3d57ed9a332845fc",
+              "parentSpanId": "95d513d290f64039",
+              "name": "retrieve",
+              "kind": 1,
+              "startTimeUnixNano": "1792011014310787532",
+              "endTimeUnixNano": "1792011014310795508",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "retrieve"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+              "spanId": "95d513d290f64039",
+              "name": "agent run",
+              "kind": 1,
+              "startTimeUnixNano": "1792011014310290731",
+              "endTimeUnixNano": "1792011014310873629",
+              "attributes": [
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "status capture"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

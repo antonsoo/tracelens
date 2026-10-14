@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "format": "tracelens-span-evidence",
+  "traceId": "8b889c00b20546aca5f704bb8de83d5e",
+  "spanId": "b46787fdde618b30",
+  "parentSpanId": "95d513d290f64039",
+  "name": "retrieve",
+  "kind": "INTERNAL",
+  "startTimeUnixNano": "1792011014310323885",
+  "endTimeUnixNano": "1792011014310704391",
+  "durationNs": "380506",
+  "status": {
+    "code": "UNSET",
+    "message": "Controlled local fixture failure."
+  },
+  "attributes": {
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.name": "retrieve"
+  },
+  "events": [
+    {
+      "name": "exception",
+      "timeUnixNano": "1792011014310691737",
+      "attributes": {
+        "exception.type": "RuntimeError",
+        "exception.message": "Controlled local fixture failure.",
+        "exception.stacktrace": "Controlled local failure; full stack intentionally excluded.",
+        "exception.escaped": "False"
+      }
+    }
+  ],
+  "links": [],
+  "resourceAttributes": {
+    "service.name": "controlled-status-capture"
+  },
+  "scopeName": "tracelens.status-capture",
+  "scopeVersion": "1",
+  "agentKind": "tool",
+  "convention": "otel-genai",
+  "depth": 1,
+  "children": [],
+  "genai": {
+    "operationName": "execute_tool",
+    "toolName": "retrieve"
+  }
+}

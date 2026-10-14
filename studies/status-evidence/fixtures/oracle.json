@@ -1,0 +1,140 @@
+{
+  "packages": {
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "driverSha256": "4122b2b6899792dd131ac2a996d84c1a890b22535ee89dcb5fd90f1cefe5c1fc",
+  "spans": [
+    {
+      "spanId": "b46787fdde618b30",
+      "name": "retrieve",
+      "status": "ERROR",
+      "description": "Controlled local fixture failure."
+    },
+    {
+      "spanId": "3d57ed9a332845fc",
+      "name": "retrieve",
+      "status": "OK",
+      "description": null
+    },
+    {
+      "spanId": "95d513d290f64039",
+      "name": "agent run",
+      "status": "UNSET",
+      "description": null
+    }
+  ],
+  "variants": [
+    {
+      "name": "native-integers",
+      "file": "native-integers.json",
+      "inputCode": 2,
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "d6df505af7e3df8220e381e7a1d3453512dd1d569d49c1c150bb459bfa42d9bb"
+    },
+    {
+      "name": "native-names",
+      "file": "native-names.json",
+      "inputCode": "STATUS_CODE_ERROR",
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "9f9a14043c2e65b2d89cc712bf8643b54704170ffb46bc3425c34c041b00f858"
+    },
+    {
+      "name": "quoted-integer",
+      "file": "quoted-integer.json",
+      "inputCode": "2",
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "3c8bad32e6460bc9324fe1be4de2e2399a73f6b92abf2da322bec940ee4880bd"
+    },
+    {
+      "name": "quoted-leading-zero",
+      "file": "quoted-leading-zero.json",
+      "inputCode": "02",
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "918c8ce7ddb7edf49eafd7304ac5be8282e54bd85e0604050de7565979718270"
+    },
+    {
+      "name": "quoted-signed-integer",
+      "file": "quoted-signed-integer.json",
+      "inputCode": "+2",
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "d74a97466776ee409e4f1249f5a499cdb34e91965f1d3747d425623405a05dec"
+    },
+    {
+      "name": "quoted-surrounding-space",
+      "file": "quoted-surrounding-space.json",
+      "inputCode": " 2 ",
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "8090a8c5603094bc4fff38b067f3b7061284dfbfb4c14aeda938fe572cc25449"
+    },
+    {
+      "name": "unknown-future-code",
+      "file": "unknown-future-code.json",
+      "inputCode": 3,
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 3
+      },
+      "sha256": "4de302b124e2825dce5a0d9835b82e6aca6336ccd511d0f581edabe3082bbfa9"
+    },
+    {
+      "name": "invalid-name",
+      "file": "invalid-name.json",
+      "inputCode": "garbled",
+      "protobuf": {
+        "accepted": false,
+        "exception": "ParseError"
+      },
+      "sha256": "cc1c4aa236a1259740871413489d09edec6de84804df6182159a3cdda09d2442"
+    },
+    {
+      "name": "invalid-fraction",
+      "file": "invalid-fraction.json",
+      "inputCode": 2.5,
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 2
+      },
+      "sha256": "c1e2ee772fdaf8fe9a58a5ee84786e0b80b600f199840b7f53fcad9b67ec3e2b"
+    },
+    {
+      "name": "invalid-boolean",
+      "file": "invalid-boolean.json",
+      "inputCode": false,
+      "protobuf": {
+        "accepted": true,
+        "errorSpanCode": 0
+      },
+      "sha256": "a5075ebe41c780f10bf6562b4f3529cf6c3c62689061a803567d57e796b5e70a"
+    },
+    {
+      "name": "invalid-substring-name",
+      "file": "invalid-substring-name.json",
+      "inputCode": "ERRORSTATUS_CODE_",
+      "protobuf": {
+        "accepted": false,
+        "exception": "ParseError"
+      },
+      "sha256": "46eec711c8ae468a72b5abeac10072f6e5e9af9787d38aebb0a25d069d3bbd1c"
+    }
+  ]
+}

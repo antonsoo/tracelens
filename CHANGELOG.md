@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Span status evidence
+
+- Decode exact quoted integer enum values without dropping recorded errors.
+  Keep missing/null statuses as the protocol default, while unfamiliar codes
+  and malformed declarations remain unknown with scoped warnings and raw data.
+- Preserve known error subtotals and expose missing status/retry evidence in
+  CLI summaries, browser headers and comparison JSON. Error deltas stay unknown;
+  unrelated call counts and timings remain measurable.
+- Retain unreadable/duplicate Jaeger status tags. Independently recorded failure
+  survives a different unreadable tag. Span downloads retain original fields.
+- [Native SDK capture, reference decoder and before/after workflows](studies/status-evidence/README.md).
+  Source update only; no npm release or manual hosted deployment.
+
 ### Cost estimate input coverage
 
 - Preserve retained-call charges as a known subtotal after observed span-import

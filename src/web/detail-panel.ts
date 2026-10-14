@@ -145,6 +145,7 @@ export function renderDetailPanel(
       ['parent span id', span.parentSpanId ?? '(root)'],
     ];
     if (span.status.message) rows.push(['status message', span.status.message]);
+    if (span.status.raw !== undefined) rows.push(['raw status', jsonPreview(span.status.raw)]);
     panel.appendChild(kvTable(rows));
   } else if (tab === 'messages') {
     if (span.genai?.systemInstructions) {

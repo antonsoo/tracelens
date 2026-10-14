@@ -5,7 +5,7 @@
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto
 // https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto
 // (verified against the `main` branch, 2026-09-24).
-import type { ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, SpanLink, StatusCode, TraceInput, TraceListing } from './types.js';
+import type { ParseWarning, ParsedSpan, ParsedTrace, SpanEvent, SpanKind, SpanLink, TraceInput, TraceListing } from './types.js';
 import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 import { normalizeId } from './identity.js';
@@ -13,6 +13,7 @@ import { assertPayloadDepth, TraceParseError } from './payload-depth.js';
 import { traceField } from './field-alias.js';
 import { decodeAttributes } from './attributes.js';
 import { collectLogs, correlateLogs, hasLogSignal, type LogBatch } from './logs.js';
+import { decodeStatus } from './status.js';
 export { TraceParseError } from './payload-depth.js';
 export { decodeAnyValue } from './attributes.js';
 
@@ -23,12 +24,6 @@ const SPAN_KIND_BY_NUMBER: Record<number, SpanKind> = {
   3: 'CLIENT',
   4: 'PRODUCER',
   5: 'CONSUMER',
-};
-
-const STATUS_CODE_BY_NUMBER: Record<number, StatusCode> = {
-  0: 'UNSET',
-  1: 'OK',
-  2: 'ERROR',
 };
 
 function isRecord(v: unknown): v is Record<string, unknown> {
@@ -61,19 +56,6 @@ function decodeSpanKind(raw: unknown): SpanKind {
     if (VALID_SPAN_KIND_NAMES.has(cleaned)) return cleaned as SpanKind;
   }
   return 'UNSPECIFIED';
-}
-
-function decodeStatus(raw: unknown): { code: StatusCode; message?: string } {
-  if (!isRecord(raw)) return { code: 'UNSET' };
-  const codeRaw = raw.code;
-  let code: StatusCode = 'UNSET';
-  if (typeof codeRaw === 'number') code = STATUS_CODE_BY_NUMBER[codeRaw] ?? 'UNSET';
-  else if (typeof codeRaw === 'string') {
-    const cleaned = codeRaw.replace('STATUS_CODE_', '');
-    if (cleaned === 'OK' || cleaned === 'ERROR' || cleaned === 'UNSET') code = cleaned;
-  }
-  const message = typeof raw.message === 'string' ? raw.message : undefined;
-  return message !== undefined ? { code, message } : { code };
 }
 
 function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, traceId: string): SpanEvent[] {
@@ -293,7 +275,8 @@ function collectSpans(json: unknown, allowEmpty = false): {
           startTimeUnixNano: start,
           endTimeUnixNano: end,
           durationNs: end - start,
-          status: decodeStatus(raw.status),
+          status: decodeStatus(raw.status, message => warnings.push({ message, spanId, traceId: spanTraceId }),
+            sourceFormat === 'jaeger-json' ? raw._tracelensStatusRaw : undefined),
           attributes,
           events: decodeEvents(raw.events, warnings, spanId, spanTraceId),
           ...(droppedAttributesCount !== undefined ? { droppedAttributesCount } : {}),

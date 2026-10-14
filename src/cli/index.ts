@@ -157,10 +157,17 @@ function printSummary(path: string, trace: ParsedTrace, prices: PriceEntry[]): v
   console.log(dim(`Use tracelens cost for rates, assumptions and per-call evidence; ${summary.costReport.excludedSpans} non-call span(s) with model/usage data excluded.`));
 
   console.log(heading('Errors & possible retries'));
+  const partialImport = summary.costReport.incompleteInput;
+  const errorText = partialImport ? yellow(`${summary.errorCount} retained span(s) reported error; incomplete span inventory`)
+    : summary.unknownStatusCount ? yellow(`${summary.errorCount} span(s) reported error; ${summary.unknownStatusCount} status outcome(s) unknown`)
+      : summary.errorCount > 0 ? red(`${summary.errorCount} span(s) ended in error`) : green('no errors');
+  const retryText = partialImport ? `${summary.retryCount} observed possible retried call(s); complete count unknown`
+    : summary.unknownRetryCount ? `${summary.retryCount} observed possible retried call(s); ${summary.unknownRetryCount} preceding status outcome(s) unknown`
+      : `${summary.retryCount} possible retried call(s)`;
   console.log(
-    `${summary.errorCount > 0 ? red(`${summary.errorCount} span(s) ended in error`) : green('no errors')}` +
+    errorText +
       dim('  ·  ') +
-      `${summary.retryCount} possible retried call(s)`,
+      retryText,
   );
 
   console.log(formatTiming(summary.timing, false));
@@ -183,7 +190,7 @@ function printTree(trace: ParsedTrace): void {
   const pending = [...trace.roots].reverse();
   while (pending.length) {
     const span = pending.pop()!;
-    const statusMark = span.status.code === 'ERROR' ? red(' ✗') : '';
+    const statusMark = span.status.code === 'ERROR' ? red(' ✗') : span.status.code === 'UNKNOWN' ? yellow(' ?') : '';
     const label = safe(span.genai?.toolName ? `${span.name} (${span.genai.toolName})` : span.name);
     console.log(`${'  '.repeat(span.depth)}${kindColor(span.agentKind, label)} ${dim(fmtMs(spanDurationMs(span)))}${statusMark}`);
     for (let i = span.children.length - 1; i >= 0; i--) pending.push(span.children[i]!);

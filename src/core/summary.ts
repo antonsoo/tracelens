@@ -7,6 +7,7 @@ import type { ParsedSpan, ParsedTrace } from './types.js';
 import { computeCriticalPath } from './critical-path.js';
 import { buildTiming, selfIntervals } from './timing.js';
 import type { TraceTiming } from './timing.js';
+import { isKnownStatusCode } from './status.js';
 
 export interface ModelUsageRow {
   model: string;
@@ -27,7 +28,11 @@ export interface TraceSummary {
   otherSelfTimeMs: number;
   spanCount: number;
   errorCount: number;
+  /** Present only when retained spans lack a decodable status outcome. */
+  unknownStatusCount?: number;
   retryCount: number;
+  /** Eligible repetitions whose preceding call has an unreadable outcome. */
+  unknownRetryCount?: number;
   modelUsage: ModelUsageRow[];
   /** Known subtotal; consult costReport.estimatedCostUsd for full-estimate availability. */
   totalCostUsd?: number;
@@ -47,8 +52,9 @@ export function selfTimeNs(span: ParsedSpan): bigint {
 /** A possible retry follows a failed, completed same-parent tool call.
  * The trace cannot prove identical intent; successful repetitions and
  * overlapping calls alone are not evidence of a retry. */
-function countRetries(spans: ParsedSpan[]): number {
+function countRetries(spans: ParsedSpan[]): { count: number; unknown: number } {
   let retries = 0;
+  let unknown = 0;
   const byParent = new Map<string, ParsedSpan[]>();
   for (const s of spans) {
     if (s.agentKind !== 'tool') continue;
@@ -64,11 +70,14 @@ function countRetries(spans: ParsedSpan[]): number {
       const label = s.genai?.toolName ?? s.name;
       const previous = seen.get(label);
       // Equal-start zero-duration calls do not establish temporal order.
-      if (previous?.status.code === 'ERROR' && previous.startTimeUnixNano < s.startTimeUnixNano && previous.endTimeUnixNano <= s.startTimeUnixNano) retries += 1;
+      if (previous && previous.startTimeUnixNano < s.startTimeUnixNano && previous.endTimeUnixNano <= s.startTimeUnixNano) {
+        if (previous.status.code === 'ERROR') retries += 1;
+        else if (!isKnownStatusCode(previous.status.code)) unknown += 1;
+      }
       seen.set(label, s);
     }
   }
-  return retries;
+  return { count: retries, unknown };
 }
 
 export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): TraceSummary {
@@ -76,6 +85,7 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
   let toolSelf = 0n;
   let otherSelf = 0n;
   let errorCount = 0;
+  let unknownStatusCount = 0;
   const usageByModel = new Map<string, ModelUsageRow>();
   const costReport = buildCostReport(trace, priceTable);
   const costBySpan = new Map(costReport.rows.map((row) => [row.spanId, row.result]));
@@ -87,6 +97,7 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
     else otherSelf += self;
 
     if (span.status.code === 'ERROR') errorCount += 1;
+    if (!isKnownStatusCode(span.status.code)) unknownStatusCount += 1;
 
     if (isModelCall(span.agentKind)) {
       const genai = span.genai ?? {};
@@ -119,6 +130,7 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
   }
 
   const totalCostUsd = costReport.knownCostUsd ?? undefined;
+  const retries = countRetries(trace.spans);
 
   return {
     totalDurationMs: Number(trace.maxEndNs - trace.minStartNs) / 1_000_000,
@@ -127,7 +139,9 @@ export function buildSummary(trace: ParsedTrace, priceTable: PriceEntry[]): Trac
     otherSelfTimeMs: Number(otherSelf) / 1_000_000,
     spanCount: trace.spans.length,
     errorCount,
-    retryCount: countRetries(trace.spans),
+    ...(unknownStatusCount ? { unknownStatusCount } : {}),
+    retryCount: retries.count,
+    ...(retries.unknown ? { unknownRetryCount: retries.unknown } : {}),
     modelUsage: [...usageByModel.values()].sort((a, b) => b.calls - a.calls),
     ...(totalCostUsd !== undefined ? { totalCostUsd } : {}),
     uncostedCalls: costReport.unpricedCalls,

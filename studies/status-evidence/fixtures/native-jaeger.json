@@ -1,0 +1,172 @@
+{
+  "data": [
+    {
+      "traceID": "8b889c00b20546aca5f704bb8de83d5e",
+      "spans": [
+        {
+          "traceID": "8b889c00b20546aca5f704bb8de83d5e",
+          "spanID": "b46787fdde618b30",
+          "operationName": "retrieve",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "8b889c00b20546aca5f704bb8de83d5e",
+              "spanID": "95d513d290f64039"
+            }
+          ],
+          "startTime": 1792011014310323,
+          "duration": 381,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "retrieve"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.status-capture"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "ERROR"
+            },
+            {
+              "key": "error",
+              "type": "bool",
+              "value": true
+            },
+            {
+              "key": "otel.status_description",
+              "type": "string",
+              "value": "Controlled local fixture failure."
+            }
+          ],
+          "logs": [
+            {
+              "timestamp": 1792011014310691,
+              "fields": [
+                {
+                  "key": "event",
+                  "type": "string",
+                  "value": "exception"
+                },
+                {
+                  "key": "exception.type",
+                  "type": "string",
+                  "value": "RuntimeError"
+                },
+                {
+                  "key": "exception.message",
+                  "type": "string",
+                  "value": "Controlled local fixture failure."
+                },
+                {
+                  "key": "exception.stacktrace",
+                  "type": "string",
+                  "value": "Controlled local failure; full stack intentionally excluded."
+                },
+                {
+                  "key": "exception.escaped",
+                  "type": "string",
+                  "value": "False"
+                }
+              ]
+            }
+          ],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "8b889c00b20546aca5f704bb8de83d5e",
+          "spanID": "3d57ed9a332845fc",
+          "operationName": "retrieve",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "8b889c00b20546aca5f704bb8de83d5e",
+              "spanID": "95d513d290f64039"
+            }
+          ],
+          "startTime": 1792011014310787,
+          "duration": 8,
+          "tags": [
+            {
+              "key": "gen_ai.operation.name",
+              "type": "string",
+              "value": "execute_tool"
+            },
+            {
+              "key": "gen_ai.tool.name",
+              "type": "string",
+              "value": "retrieve"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.status-capture"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "8b889c00b20546aca5f704bb8de83d5e",
+          "spanID": "95d513d290f64039",
+          "operationName": "agent run",
+          "references": [],
+          "startTime": 1792011014310290,
+          "duration": 583,
+          "tags": [
+            {
+              "key": "gen_ai.agent.name",
+              "type": "string",
+              "value": "status capture"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "internal"
+            },
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "tracelens.status-capture"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        }
+      ],
+      "processes": {
+        "p1": {
+          "serviceName": "controlled-status-capture",
+          "tags": []
+        }
+      },
+      "warnings": null
+    }
+  ],
+  "total": 0,
+  "limit": 0,
+  "offset": 0,
+  "errors": null
+}

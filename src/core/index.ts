@@ -7,6 +7,7 @@ export * from './pricing.js';
 export * from './critical-path.js';
 export * from './timing.js';
 export * from './summary.js';
+export * from './status.js';
 export * from './layout.js';
 export * from './compare.js';
 export * from './jaeger.js';

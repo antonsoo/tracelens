@@ -119,7 +119,7 @@ function evidence(calls: CallEvidence[], side: ComparisonSide, cb: Callbacks): H
                   },
                   call.name,
                 ),
-                h('span', { className: 'mono dim' }, `${fmtMs(call.selfTimeMs)} self${call.error ? ' / error' : ''}`),
+                h('span', { className: 'mono dim' }, `${fmtMs(call.selfTimeMs)} self${call.error === null ? ' / status unknown' : call.error ? ' / error' : ''}`),
                 h('code', { className: 'dim' }, call.spanId),
                 call.model ? h('span', { className: 'dim' }, call.model) : null,
               ),
