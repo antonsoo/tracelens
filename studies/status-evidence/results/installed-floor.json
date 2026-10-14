@@ -1,0 +1,13 @@
+{
+  "node": "v20.0.0",
+  "baselineSha256": "97248d2691cca38c7aec1447cfd55d526aa646fd44e99dc4dc5a65ad50cfb911",
+  "parserSha256": "7ed8da68b8f525e8b664bd1e56eda92a723bb1e57dba79618807ccabc26e1499",
+  "cases": 39,
+  "consoleWorkflows": 156,
+  "disagreements": 0,
+  "retention": "Full reports are shared by SHA-256 references. CLI JSON stdout is exactly JSON.stringify(reports[stdoutReportRef], null, 2) followed by one newline; its raw SHA-256 is verified before retention. Other stdout/stderr remains unedited.",
+  "sourceCapture": "after.json",
+  "sourceCaptureSha256": "2a1653f243814d2ef66cca5baff2da48f8bb6af750da11b8e860e44e2084e68a",
+  "recordsMatchSource": true,
+  "reportsMatchSource": true
+}

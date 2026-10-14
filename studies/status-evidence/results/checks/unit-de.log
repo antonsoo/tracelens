@@ -1,0 +1,16 @@
+
+> @antonsoloviev/tracelens@0.3.3 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.2 /tmp/claude-1000/tracelens-status-verify/clean
+
+
+ Test Files  34 passed (34)
+      Tests  462 passed (462)
+   Start at  14:34:34
+   Duration  3.76s (tests 72%, import 14%, transform 12%, worker 2%)
+
+    Isolate  34 workers spawned · ~76ms startup each (spawn + environment, per file)
+             at least ~1.21s faster with isolate: false — reuses workers across files instead of one per file
+

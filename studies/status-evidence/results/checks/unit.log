@@ -1,0 +1,17 @@
+
+> @antonsoloviev/tracelens@0.3.3 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.2 /tmp/claude-1000/tracelens-status-verify/clean
+
+
+ Test Files  34 passed (34)
+      Tests  462 passed (462)
+   Start at  14:34:28
+   Duration  6.25s (tests 47%, transform 43%, import 8%, worker 1%)
+
+  Transform  transforming modules took 3.24s · 43% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+

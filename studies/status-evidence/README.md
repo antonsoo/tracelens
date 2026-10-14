@@ -123,3 +123,23 @@ readable within the existing layout.
 
 These measurements describe source and local production builds. No npm release,
 version tag or manual hosted deployment is included.
+
+The implementation is `ceaf5651e0af34f8cdb7498973e634c316d452d8`. On 2026-10-14,
+a fresh Node 24.21.0 install passed lint, strict types, 462 unit tests in each of
+the default and German locales, both production builds, 32 CLI integration tests,
+the existing browser audit and 134 Playwright interactions. Full unit runs used
+two workers without relaxing assertions or deadlines. All 673 implementation
+archive files and 602 baseline archive files were byte-verified; implementation
+files remained unchanged after checks. The 34 web and 30 CLI build files are
+identical between the clean Node 24 and working Node 26 builds.
+
+A locally packed 0.3.3 tarball was installed into a separate empty consumer.
+All 33 package files match the clean build and consumer bytes. Actual installed
+CLI replays on exact Node 20.0.0 and Node 26.7.0 each passed 156 workflows, with
+full records/reports equal to the source replay. The clean Node 24 replay agrees
+too. The tarball is 59,430 bytes, SHA-256
+`451d98b36d3e846a1b56660f26e47d04ad903d5ee477834013c78530d309ccd9`.
+[Verification receipt](results/verification.json) retains commands, build/package
+file digests and limits; the three replay receipts reference the byte-identical
+source records instead of copying them again. `verify.py` checks these retained
+observations against the clean build and consumer before writing the receipt.
