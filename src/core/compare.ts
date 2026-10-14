@@ -7,6 +7,11 @@ import type { AgentSpanKind, ParsedSpan, ParsedTrace } from './types.js';
 import { buildTiming } from './timing.js';
 import type { TraceTiming } from './timing.js';
 
+/** A parsed trace may be inspectable without supporting a quantitative comparison. */
+export class TraceComparisonError extends Error {
+  override name = 'TraceComparisonError';
+}
+
 /** A subtotal plus the number of calls that did not report this measurement. */
 export interface Measurement {
   value: number;
@@ -197,16 +202,16 @@ export function compareTraces(baseline: ParsedTrace, candidate: ParsedTrace, pri
   for (const [side, trace] of [['baseline', baseline], ['candidate', candidate]] as const) {
     const issue = trace.warnings.find((warning) => warning.comparisonIssue);
     if (issue) {
-      throw new Error(`Cannot compare ${side}: ${issue.message} Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.`);
+      throw new TraceComparisonError(`Cannot compare ${side}: ${issue.message} Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.`);
     }
     // Public callers can construct a ParsedTrace directly. Do not infer a
     // complete operation ancestry or a duration from an invalid supplied tree.
     const ids = new Set(trace.spans.map((span) => span.spanId));
     if (trace.spans.some((span) => span.parentSpanId && !ids.has(span.parentSpanId))) {
-      throw new Error(`Cannot compare ${side}: a span parent is absent. Supply the related parent export to establish complete operation ancestry.`);
+      throw new TraceComparisonError(`Cannot compare ${side}: a span parent is absent. Supply the related parent export to establish complete operation ancestry.`);
     }
     if (trace.spans.some((span) => span.endTimeUnixNano < span.startTimeUnixNano || span.durationNs !== span.endTimeUnixNano - span.startTimeUnixNano)) {
-      throw new Error(`Cannot compare ${side}: a span interval is invalid. Correct the source timestamps before comparing runs.`);
+      throw new TraceComparisonError(`Cannot compare ${side}: a span interval is invalid. Correct the source timestamps before comparing runs.`);
     }
   }
   const costEvidence = { baseline: buildCostReport(baseline, prices), candidate: buildCostReport(candidate, prices) };

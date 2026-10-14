@@ -1,9 +1,10 @@
 // Structural fuzzing: the three example traces with fields dropped, duplicated, renamed and
 // replaced by junk of the wrong type. Whatever comes in, the parser either returns a trace the
-// summary and comparison can use, or throws TraceParseError: never a TypeError from deep inside.
+// summary can inspect, or throws TraceParseError. Incomplete imports may refuse comparison
+// with TraceComparisonError; neither boundary may leak a TypeError from deep inside.
 import { expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { buildSummary, compareTraces, DEFAULT_PRICE_TABLE, parseOtlpJson, parseTraceText, TraceParseError } from '../src/core/index.js';
+import { buildSummary, compareTraces, DEFAULT_PRICE_TABLE, parseOtlpJson, parseTraceText, TraceComparisonError, TraceParseError } from '../src/core/index.js';
 
 function rng(seed: number): () => number {
   let s = seed >>> 0;
@@ -30,9 +31,9 @@ function mutate(node: unknown, r: () => number, depth = 0): unknown {
   return node;
 }
 
-it('fuzz: mutated OTLP and Jaeger documents only ever raise TraceParseError', () => {
+it('fuzz: mutated OTLP and Jaeger documents only raise declared input/comparison errors', () => {
   const docs = ['genai-semconv-trace.json', 'jaeger-genai-trace.json', 'openinference-trace.json'].map((n) => JSON.parse(readFileSync(new URL(`../examples/${n}`, import.meta.url), 'utf8')) as unknown);
-  let parsed = 0, rejected = 0;
+  let parsed = 0, rejected = 0, compared = 0, comparisonRejected = 0;
   const bad: string[] = [];
   for (let seed = 1; seed <= 1500 && bad.length < 6; seed++) {
     const r = rng(seed);
@@ -41,10 +42,12 @@ it('fuzz: mutated OTLP and Jaeger documents only ever raise TraceParseError', ()
       const trace = parseOtlpJson(doc);
       const summary = buildSummary(trace, DEFAULT_PRICE_TABLE);
       JSON.stringify(summary.modelUsage);
-      compareTraces(trace, trace, DEFAULT_PRICE_TABLE);
       parsed++;
+      compareTraces(trace, trace, DEFAULT_PRICE_TABLE);
+      compared++;
     } catch (err) {
       if (err instanceof TraceParseError) rejected++;
+      else if (err instanceof TraceComparisonError) comparisonRejected++;
       else bad.push(`seed ${seed}: ${(err as Error).stack?.split('\n').slice(0, 3).join(' | ')}`);
     }
   }
@@ -52,14 +55,16 @@ it('fuzz: mutated OTLP and Jaeger documents only ever raise TraceParseError', ()
   // Both outcomes have to occur, or the mutations aren't exercising anything.
   expect(parsed).toBeGreaterThan(100);
   expect(rejected).toBeGreaterThan(100);
+  expect(compared).toBeGreaterThan(0);
+  expect(comparisonRejected).toBeGreaterThan(0);
 });
 
 const JUNK_LINES = ['{}', '[]', 'null', '42', '"text"', '{"resourceMetrics":[]}', '{"resourceLogs":[{}]}', '{"resourceSpans":{}}', '{"resourceSpans":[null]}', '{"resourceSpans":', 'x', '{"data":[]}'];
 
-it('fuzz: files of lines, cut, shuffled and padded with junk, only ever raise TraceParseError', () => {
+it('fuzz: damaged JSONL only raises declared input/comparison errors', () => {
   const docs = ['genai-semconv-trace.json', 'openinference-trace.json', 'comparison-baseline.json', 'comparison-candidate.json'].map((n) => JSON.parse(readFileSync(new URL(`../examples/${n}`, import.meta.url), 'utf8')) as unknown);
   const ids = docs.map((doc) => parseOtlpJson(doc).traceId);
-  let parsed = 0, rejected = 0, several = 0;
+  let parsed = 0, rejected = 0, several = 0, compared = 0, comparisonRejected = 0;
   const bad: string[] = [];
   for (let seed = 1; seed <= 1200 && bad.length < 6; seed++) {
     const r = rng(seed);
@@ -80,11 +85,13 @@ it('fuzz: files of lines, cut, shuffled and padded with junk, only ever raise Tr
       if (trace.traces.reduce((n, t) => n + t.spanCount, 0) < trace.spans.length) throw new Error('more spans read than listed');
       if (trace.spans.some((s) => s.traceId !== trace.traceId)) throw new Error('a span of another trace was read');
       buildSummary(trace, DEFAULT_PRICE_TABLE);
-      compareTraces(trace, trace, DEFAULT_PRICE_TABLE);
       parsed++;
       if (trace.traces.length > 1) several++;
+      compareTraces(trace, trace, DEFAULT_PRICE_TABLE);
+      compared++;
     } catch (err) {
       if (err instanceof TraceParseError) rejected++;
+      else if (err instanceof TraceComparisonError) comparisonRejected++;
       else bad.push(`seed ${seed}: ${(err as Error).stack?.split('\n').slice(0, 3).join(' | ')}`);
     }
   }
@@ -92,4 +99,6 @@ it('fuzz: files of lines, cut, shuffled and padded with junk, only ever raise Tr
   expect(parsed).toBeGreaterThan(100);
   expect(several).toBeGreaterThan(50);
   expect(rejected).toBeGreaterThan(100);
+  expect(compared).toBeGreaterThan(0);
+  expect(comparisonRejected).toBeGreaterThan(0);
 });

@@ -46,7 +46,7 @@ it('does not contaminate another trace with a skipped Jaeger span record', () =>
   const span = { spanID: '1', operationName: 'control', startTime: 1, duration: 1 };
   const input = { data: [{ traceID: 'aa', spans: [null, span] }, { traceID: 'bb', spans: [span] }] };
   expect(parseOtlpJson(input, { traceId: 'aa' }).warnings).toEqual([
-    { message: 'Jaeger spans[0]: skipped a non-object span entry.', traceId: 'aa' },
+    { comparisonIssue: 'span-inventory', message: 'Jaeger spans[0]: skipped a non-object span entry.', traceId: 'aa' },
   ]);
   expect(parseOtlpJson(input, { traceId: 'bb' }).warnings).toEqual([]);
 });

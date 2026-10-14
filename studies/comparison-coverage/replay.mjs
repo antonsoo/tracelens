@@ -4,6 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { comparisonCases } from './cases.mjs';
 
@@ -16,7 +17,7 @@ const out = resolve(option('--out') ?? resolve(root, 'studies/comparison-coverag
 const moduleRoot = resolve(dirname(cli), '..');
 const { parseTraceInputs, compareTraces, DEFAULT_PRICE_TABLE } = await import(pathToFileURL(resolve(moduleRoot, 'core/index.js')));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
-const work = mkdtempSync('/tmp/tracelens-comparison-coverage-');
+const work = mkdtempSync(resolve(option('--work-root') ?? tmpdir(), 'tracelens-comparison-coverage-'));
 const records = [];
 for (const item of comparisonCases(root)) {
   const folder = resolve(work, item.id); mkdirSync(folder);
