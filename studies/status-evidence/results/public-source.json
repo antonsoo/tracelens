@@ -1,0 +1,504 @@
+{
+  "publicSourceCommit": "440588be9a68316f43bcab6c025158c17e5fd3d0",
+  "baselineCommit": "b7773d699ec3590c81bd455f87a2d36581e53ce2",
+  "cleanTreeBeforeVerification": true,
+  "remoteHeadMatchesLocal": true,
+  "files": {
+    "CHANGELOG.md": {
+      "bytes": 26018,
+      "sha256": "1a289684fe2897616c433f107887d9e4990d3ed636928e060bce9b6101dd8714",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/CHANGELOG.md"
+    },
+    "README.md": {
+      "bytes": 30486,
+      "sha256": "7b6e64afbe35f883062ce16f7134f4092921ac3784fe62d4b51dc91b19311db3",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/README.md"
+    },
+    "docs/assets/status-evidence/after-chromium-1440-comparison.png": {
+      "bytes": 84471,
+      "sha256": "ec04cdbf7dd2291cf97ce56f18e01ffb342e82759021eb62d9c17689de4a054e",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-chromium-1440-comparison.png"
+    },
+    "docs/assets/status-evidence/after-chromium-1440-summary.png": {
+      "bytes": 88060,
+      "sha256": "667f10989c801326a67a9e93c854494f051535f079f68820514eaed38313dbfb",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-chromium-1440-summary.png"
+    },
+    "docs/assets/status-evidence/after-chromium-375-comparison.png": {
+      "bytes": 56516,
+      "sha256": "ce542b9701e32a875b66b5a2199cb2edf1fcf0efb3c1dffb553a88b44485f353",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-chromium-375-comparison.png"
+    },
+    "docs/assets/status-evidence/after-chromium-375-summary.png": {
+      "bytes": 77671,
+      "sha256": "c32d0fd23f52767c4094761d3cabab1b0536402b5a40ed88b3a72cc5a3566472",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-chromium-375-summary.png"
+    },
+    "docs/assets/status-evidence/after-firefox-1440-comparison.png": {
+      "bytes": 124275,
+      "sha256": "aaa237680a961e6fd73e5f658ab420e2944af7e0325bbe182d817ce6ec327b42",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-firefox-1440-comparison.png"
+    },
+    "docs/assets/status-evidence/after-firefox-1440-summary.png": {
+      "bytes": 123052,
+      "sha256": "7acd53ea7c5fb9c8059d5d029dd4b20b96fd1a9043a4e9948aaca7bc99749588",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-firefox-1440-summary.png"
+    },
+    "docs/assets/status-evidence/after-firefox-375-comparison.png": {
+      "bytes": 78945,
+      "sha256": "ed67bb2c23060fab859df4efb5c20020d4dd997047bf5ea2a90361949f6b7156",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-firefox-375-comparison.png"
+    },
+    "docs/assets/status-evidence/after-firefox-375-summary.png": {
+      "bytes": 111008,
+      "sha256": "1f4285a34a497846c613715cfd6e518757b0fac50fcf8eaa1de2fc2c00d7ee37",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/after-firefox-375-summary.png"
+    },
+    "docs/assets/status-evidence/before-chromium-1440-comparison.png": {
+      "bytes": 85967,
+      "sha256": "afcf7645ebfc14d5dc461d01984037473c5759c67aed76d77aaf3b76a0bb7bb3",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-chromium-1440-comparison.png"
+    },
+    "docs/assets/status-evidence/before-chromium-1440-summary.png": {
+      "bytes": 82531,
+      "sha256": "5a7973b2f1ec78618c2e6f25d023813bde6e9b9b68662a90494826f0f0734d6c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-chromium-1440-summary.png"
+    },
+    "docs/assets/status-evidence/before-chromium-375-comparison.png": {
+      "bytes": 56159,
+      "sha256": "72366aa97475facdc3a54d0da3a9bc73a058cf8bd90bdb0de3d1cbae41b7c086",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-chromium-375-comparison.png"
+    },
+    "docs/assets/status-evidence/before-chromium-375-summary.png": {
+      "bytes": 71877,
+      "sha256": "2487f76d82c893986ef83dd4a4d70e7869a008a561428f53de50a92b9e1abb63",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-chromium-375-summary.png"
+    },
+    "docs/assets/status-evidence/before-firefox-1440-comparison.png": {
+      "bytes": 126895,
+      "sha256": "d5b023c3b2fd7033984c63be95d4f6e49ddf1aea6b128f453527e581e1de6458",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-firefox-1440-comparison.png"
+    },
+    "docs/assets/status-evidence/before-firefox-1440-summary.png": {
+      "bytes": 114407,
+      "sha256": "6b4f8d24989b29e94c58a329d9dde093a82b71c393427c044aaca5dd8897fc80",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-firefox-1440-summary.png"
+    },
+    "docs/assets/status-evidence/before-firefox-375-comparison.png": {
+      "bytes": 78279,
+      "sha256": "73db2bf75f9b160f9f63b9dab39b19b6e2ba6e3a9a83cd7f55c0c373b3c62add",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-firefox-375-comparison.png"
+    },
+    "docs/assets/status-evidence/before-firefox-375-summary.png": {
+      "bytes": 103899,
+      "sha256": "4dad15e6b960769f82c5b78a083e62d1f903699e5e74406e8497e2ad814dac49",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/docs/assets/status-evidence/before-firefox-375-summary.png"
+    },
+    "src/cli/index.ts": {
+      "bytes": 16479,
+      "sha256": "5dffeaa700573cc42d21c18dcaed3a6b22925832940a5f87ef3e636f3228d4ad",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/cli/index.ts"
+    },
+    "src/core/compare.ts": {
+      "bytes": 10798,
+      "sha256": "76ede574ac1531ad6c283e5e4873ecf7b32fd023997d2e2743996dae432a9298",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/compare.ts"
+    },
+    "src/core/index.ts": {
+      "bytes": 470,
+      "sha256": "3c1fc8e8a5f6dc4a13a1a4c36b9dbfc0e9bee00a7b09a8ca7370b62243f99bf9",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/index.ts"
+    },
+    "src/core/jaeger.ts": {
+      "bytes": 12209,
+      "sha256": "790f4242c921acbcac4143e4397b3b8ea4e6ebd431fb63acfd06145307531da5",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/jaeger.ts"
+    },
+    "src/core/otlp-parser.ts": {
+      "bytes": 28840,
+      "sha256": "70728407532957b3a3651604d9706304a097bc0dfc59944516c3f76ddb27f505",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/otlp-parser.ts"
+    },
+    "src/core/status.ts": {
+      "bytes": 2263,
+      "sha256": "d98c699702ad4b04549237dcb6454c128c929e6a947b47a436916a63298048a6",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/status.ts"
+    },
+    "src/core/summary.ts": {
+      "bytes": 5944,
+      "sha256": "0d4f1dce53287c8555bfded37e0b45a2d1742b8111a1a4366db07a6a8ce1edf2",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/summary.ts"
+    },
+    "src/core/types.ts": {
+      "bytes": 6443,
+      "sha256": "5c2b241a91f5aac304bbdd27ce9508ef7248ce295edd28602f4f55795697157c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/core/types.ts"
+    },
+    "src/web/comparison.ts": {
+      "bytes": 13539,
+      "sha256": "069bfd4c32d216d98893e785eb5ad19fe9dbc973919772d07cb9325745ebaf66",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/web/comparison.ts"
+    },
+    "src/web/detail-panel.ts": {
+      "bytes": 11134,
+      "sha256": "929cf2cfae5c61f268db708cd41dcca3b16e365601847bf958d4b7573e406431",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/web/detail-panel.ts"
+    },
+    "src/web/summary-header.ts": {
+      "bytes": 3543,
+      "sha256": "804818c796821079762953d5cabab3e924eb843502c247ccaeaff7cb4aa8b7c7",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/src/web/summary-header.ts"
+    },
+    "studies/status-evidence/README.md": {
+      "bytes": 9284,
+      "sha256": "8aee66bea21470863edb0265348fca4b25360fa210af136f5c52e8788047d66d",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/README.md"
+    },
+    "studies/status-evidence/browser.mjs": {
+      "bytes": 9547,
+      "sha256": "53bc9d3e96d17e90f92739533f0c1acbf0ff03692b4637a359f9b695d2eba549",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/browser.mjs"
+    },
+    "studies/status-evidence/capture.py": {
+      "bytes": 5296,
+      "sha256": "4122b2b6899792dd131ac2a996d84c1a890b22535ee89dcb5fd90f1cefe5c1fc",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/capture.py"
+    },
+    "studies/status-evidence/fixtures/invalid-boolean.json": {
+      "bytes": 3947,
+      "sha256": "a5075ebe41c780f10bf6562b4f3529cf6c3c62689061a803567d57e796b5e70a",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/invalid-boolean.json"
+    },
+    "studies/status-evidence/fixtures/invalid-fraction.json": {
+      "bytes": 3945,
+      "sha256": "c1e2ee772fdaf8fe9a58a5ee84786e0b80b600f199840b7f53fcad9b67ec3e2b",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/invalid-fraction.json"
+    },
+    "studies/status-evidence/fixtures/invalid-name.json": {
+      "bytes": 3951,
+      "sha256": "cc1c4aa236a1259740871413489d09edec6de84804df6182159a3cdda09d2442",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/invalid-name.json"
+    },
+    "studies/status-evidence/fixtures/invalid-substring-name.json": {
+      "bytes": 3961,
+      "sha256": "46eec711c8ae468a72b5abeac10072f6e5e9af9787d38aebb0a25d069d3bbd1c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/invalid-substring-name.json"
+    },
+    "studies/status-evidence/fixtures/native-integers.json": {
+      "bytes": 3943,
+      "sha256": "d6df505af7e3df8220e381e7a1d3453512dd1d569d49c1c150bb459bfa42d9bb",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/native-integers.json"
+    },
+    "studies/status-evidence/fixtures/native-jaeger.json": {
+      "bytes": 4713,
+      "sha256": "d8d82090cb242ca782f9e0eff1874630f9ef29a614ca1182ac7a08c8d3d2f276",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/native-jaeger.json"
+    },
+    "studies/status-evidence/fixtures/native-names.json": {
+      "bytes": 3961,
+      "sha256": "9f9a14043c2e65b2d89cc712bf8643b54704170ffb46bc3425c34c041b00f858",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/native-names.json"
+    },
+    "studies/status-evidence/fixtures/oracle.json": {
+      "bytes": 3779,
+      "sha256": "863a6e6795ab7d5e167df5e6e93d35fdc5f48a67dc67ce0e7ed60b9d51d63255",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/oracle.json"
+    },
+    "studies/status-evidence/fixtures/quoted-integer.json": {
+      "bytes": 3945,
+      "sha256": "3c8bad32e6460bc9324fe1be4de2e2399a73f6b92abf2da322bec940ee4880bd",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/quoted-integer.json"
+    },
+    "studies/status-evidence/fixtures/quoted-leading-zero.json": {
+      "bytes": 3946,
+      "sha256": "918c8ce7ddb7edf49eafd7304ac5be8282e54bd85e0604050de7565979718270",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/quoted-leading-zero.json"
+    },
+    "studies/status-evidence/fixtures/quoted-signed-integer.json": {
+      "bytes": 3946,
+      "sha256": "d74a97466776ee409e4f1249f5a499cdb34e91965f1d3747d425623405a05dec",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/quoted-signed-integer.json"
+    },
+    "studies/status-evidence/fixtures/quoted-surrounding-space.json": {
+      "bytes": 3947,
+      "sha256": "8090a8c5603094bc4fff38b067f3b7061284dfbfb4c14aeda938fe572cc25449",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/quoted-surrounding-space.json"
+    },
+    "studies/status-evidence/fixtures/unknown-future-code.json": {
+      "bytes": 3943,
+      "sha256": "4de302b124e2825dce5a0d9835b82e6aca6336ccd511d0f581edabe3082bbfa9",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/fixtures/unknown-future-code.json"
+    },
+    "studies/status-evidence/replay.mjs": {
+      "bytes": 8381,
+      "sha256": "d40f397c53b2cb0c623257445644f812d7a1b290086520178e64a33f8e98dbd3",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/replay.mjs"
+    },
+    "studies/status-evidence/results/after.json": {
+      "bytes": 602787,
+      "sha256": "2a1653f243814d2ef66cca5baff2da48f8bb6af750da11b8e860e44e2084e68a",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/after.json"
+    },
+    "studies/status-evidence/results/before.json": {
+      "bytes": 450559,
+      "sha256": "37b97ec5d681070bf563ad58836da7dd9fe64505ec97857e52c1e7d3526dd6fe",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/before.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-1440-invalid-name-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-1440-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-1440-quoted-integer-comparison.json": {
+      "bytes": 37732,
+      "sha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-1440-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-1440-span.json": {
+      "bytes": 1277,
+      "sha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-1440-span.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-1440-unknown-future-code-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-1440-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-375-invalid-name-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-375-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-375-quoted-integer-comparison.json": {
+      "bytes": 37732,
+      "sha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-375-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-375-span.json": {
+      "bytes": 1277,
+      "sha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-375-span.json"
+    },
+    "studies/status-evidence/results/browser/after-chromium-375-unknown-future-code-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-chromium-375-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-1440-invalid-name-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-1440-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-1440-quoted-integer-comparison.json": {
+      "bytes": 37732,
+      "sha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-1440-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-1440-span.json": {
+      "bytes": 1277,
+      "sha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-1440-span.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-1440-unknown-future-code-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-1440-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-375-invalid-name-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-375-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-375-quoted-integer-comparison.json": {
+      "bytes": 37732,
+      "sha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-375-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-375-span.json": {
+      "bytes": 1277,
+      "sha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-375-span.json"
+    },
+    "studies/status-evidence/results/browser/after-firefox-375-unknown-future-code-comparison.json": {
+      "bytes": 38210,
+      "sha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/after-firefox-375-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-1440-invalid-name-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-1440-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-1440-quoted-integer-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-1440-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-1440-span.json": {
+      "bytes": 1237,
+      "sha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-1440-span.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-1440-unknown-future-code-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-1440-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-375-invalid-name-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-375-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-375-quoted-integer-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-375-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-375-span.json": {
+      "bytes": 1237,
+      "sha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-375-span.json"
+    },
+    "studies/status-evidence/results/browser/before-chromium-375-unknown-future-code-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-chromium-375-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-1440-invalid-name-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-1440-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-1440-quoted-integer-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-1440-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-1440-span.json": {
+      "bytes": 1237,
+      "sha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-1440-span.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-1440-unknown-future-code-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-1440-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-375-invalid-name-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-375-invalid-name-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-375-quoted-integer-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-375-quoted-integer-comparison.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-375-span.json": {
+      "bytes": 1237,
+      "sha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-375-span.json"
+    },
+    "studies/status-evidence/results/browser/before-firefox-375-unknown-future-code-comparison.json": {
+      "bytes": 37741,
+      "sha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/before-firefox-375-unknown-future-code-comparison.json"
+    },
+    "studies/status-evidence/results/browser/receipt.json": {
+      "bytes": 66688,
+      "sha256": "155ecfbc102a4292e4a343d598aec6fd1dabe02c29e70d5a314cee33d1730fe4",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/browser/receipt.json"
+    },
+    "studies/status-evidence/results/checks/browser.log": {
+      "bytes": 21521,
+      "sha256": "358b7975895575bcf906e7e3edb6e97dd0296fab02c09c702e1744b2f629805f",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/browser.log"
+    },
+    "studies/status-evidence/results/checks/build.log": {
+      "bytes": 2230,
+      "sha256": "56a4ea2f2e18ef36344155885ab6b1106bcfc42f69f5ebe81dec57df1b925ae9",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/build.log"
+    },
+    "studies/status-evidence/results/checks/cli.log": {
+      "bytes": 3273,
+      "sha256": "00aec5540f8545d062c8837ea357225eb8f349a878b43306830414400dd4b06e",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/cli.log"
+    },
+    "studies/status-evidence/results/checks/install.log": {
+      "bytes": 749,
+      "sha256": "84830be1241d627108f2e13f83b0e3f82fcab93b4ac4dc3ff2bf74aef2da5aec",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/install.log"
+    },
+    "studies/status-evidence/results/checks/lint.log": {
+      "bytes": 51,
+      "sha256": "db670e96ed80e60bef69186c2d702b1e39b3c714d46a86ca01df2d6561fcca6f",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/lint.log"
+    },
+    "studies/status-evidence/results/checks/types.log": {
+      "bytes": 114,
+      "sha256": "21c6bed1e2c8a573a651b2ac217f9cc61c0da4996a0b4d36301d0454149b60ae",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/types.log"
+    },
+    "studies/status-evidence/results/checks/unit-de.log": {
+      "bytes": 480,
+      "sha256": "e01e62584d9a7c04bb45eda0fdd1e193ac6a8da43e7879b218b279dd76f443d2",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/unit-de.log"
+    },
+    "studies/status-evidence/results/checks/unit.log": {
+      "bytes": 535,
+      "sha256": "ecff16613670e501754d838a5d75f56226ee8ed280f4086dbe3d2b49243bec8a",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/checks/unit.log"
+    },
+    "studies/status-evidence/results/clean-source.json": {
+      "bytes": 700,
+      "sha256": "6ef1f641684d6553f82ec1f8cf34e4d11ca0d1eec1917da7e3c20985db24dd22",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/clean-source.json"
+    },
+    "studies/status-evidence/results/installed-current.json": {
+      "bytes": 699,
+      "sha256": "45493d8fe13071df36c4ef9f6f631701769e1116c7f66461c260bb9d07283d2f",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/installed-current.json"
+    },
+    "studies/status-evidence/results/installed-floor.json": {
+      "bytes": 699,
+      "sha256": "75039e3dda88f497e6bca43a5c0cc899b7c343e20a4f1858fb0c448fb386f2fa",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/installed-floor.json"
+    },
+    "studies/status-evidence/results/verification.json": {
+      "bytes": 24529,
+      "sha256": "4bbdcfbbdaa2713c70ab11cb68d7b0abc019a9d51e34e9c01a14d1864c38c274",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/results/verification.json"
+    },
+    "studies/status-evidence/retain.mjs": {
+      "bytes": 1676,
+      "sha256": "1d3d2eb7609fc7381b5ffa48f771c491faeff0da996a0e359c1863ede786f69f",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/retain.mjs"
+    },
+    "studies/status-evidence/verify.py": {
+      "bytes": 7086,
+      "sha256": "2bdb0de9b7a2683fff9b998e5f5e7c61455959035519fca617afdf5ffde1086c",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/studies/status-evidence/verify.py"
+    },
+    "tests/status-evidence.test.ts": {
+      "bytes": 6126,
+      "sha256": "0e635ff587b7f7415bddd3c4187fdb0703d5e4209567923299fea536b5ada522",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/440588be9a68316f43bcab6c025158c17e5fd3d0/tests/status-evidence.test.ts"
+    }
+  },
+  "checkedFiles": 96,
+  "temporaryAssetRefRemoved": true,
+  "originalCommitsPreserved": true,
+  "packTransfer": {
+    "base": "b7773d699ec3590c81bd455f87a2d36581e53ce2",
+    "head": "440588be9a68316f43bcab6c025158c17e5fd3d0",
+    "packBytes": 64511,
+    "status": [
+      "unpack ok",
+      "ok refs/heads/main"
+    ],
+    "assetRef": "refs/heads/codex/tracelens-status-assets",
+    "exactOriginalCommitsPublished": true
+  },
+  "registryPublicationPerformed": false,
+  "manualDeploymentPerformed": false
+}

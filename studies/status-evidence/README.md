@@ -143,3 +143,12 @@ too. The tarball is 59,430 bytes, SHA-256
 file digests and limits; the three replay receipts reference the byte-identical
 source records instead of copying them again. `verify.py` checks these retained
 observations against the clean build and consumer before writing the receipt.
+
+The implementation and verification commits are now public on `main` at
+`440588be9a68316f43bcab6c025158c17e5fd3d0`. All 96 changed files were fetched
+from pinned public raw URLs and matched to the clean local source byte for byte.
+[Public source receipt](results/public-source.json) records sizes and SHA-256
+digests. Bulk Git uploads timed out; verified assets and a smaller remaining
+pack transferred the exact original commits. The temporary asset ref was removed
+after verification. This publishes source; no registry release or manual hosted
+deployment was performed.
