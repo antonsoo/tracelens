@@ -13,6 +13,8 @@ either affected side before producing a report. The existing browser validates
 before committing a candidate or trace selection, so rejection retains the
 previous complete comparison. Individual partial traces remain inspectable
 with their original warnings; the guard does not recover discarded contents.
+The exported core raises `TraceComparisonError` for these coverage refusals;
+parser failures remain separately recognizable as `TraceParseError`.
 
 The gate covers missing/invalid identifiers and timestamps, non-object records,
 unreadable span containers, truncated JSONL tails, reversed intervals clamped
@@ -57,3 +59,49 @@ The [SDK fixture provenance](../../tests/fixtures/census/README.md) identifies
 the instrumentations and captured provider-response replays. No model,
 collector, provider or Jaeger server is called by this study. All damage
 variants are explicitly constructed, not observed production incidents.
+
+## Installed artifact and real browser verification
+
+| Verified workflow | Result |
+|---|---|
+| Core API and actual CLI | [Baseline](results/before.json): 60 of 111 disagreements; [corrected source](results/after.json): zero |
+| Ordinary controls | All 45 complete core/JSON/terminal captures identical |
+| Fresh Node 24.21.0 archive | Lint, strict types, 431 unit checks in each default/German locale, both builds, 32 CLI checks, the additional browser audit and 132 production-browser checks pass |
+| Installed local 0.3.3 archive | [Node 26.7.0](results/installed-current.json) and exact [Node 20.0.0](results/installed-floor.json): 111 workflows each, complete captures match source |
+| Artifact identity | All 561 baseline and 565 implementation archived files match source; all 34 web and 29 CLI build files match Node 24/26; all 32 packed files match the clean build and install |
+| Actual offline production app | [64 replacement workflows](results/browser.json), Chromium/Firefox at 1440/375 px: 32 baseline disagreements, zero corrected; rejection keeps the complete previous downloaded report exactly |
+| Recovery and loaded bytes | All eight views recover with the unchanged native input; all 24 served/browser-loaded files match each tested build; server shuts down before the replacement workflows |
+| Visual and accessibility review | All eight screenshots inspected; no overflow, script/CSP errors, external/late requests or axe findings in the replay |
+
+The [verification receipt](results/verification.json) retains source, input,
+build, packed-file, check-log and screenshot hashes. The package was installed
+from the local archive; its unchanged `0.3.3` version does not identify a new
+npm release. The installed bin and exact-floor summary/tree/links commands also
+run successfully. No registry release, tag, manual deployment or remote CI
+result is claimed.
+
+```sh
+node studies/comparison-coverage/browser.mjs \
+  /tmp/tracelens-before/dist /tmp/tracelens-after/dist /tmp/comparison-browser
+```
+
+The first full run exposed an exact warning-object assertion and two fuzz
+checks that assumed every inspectable parsed trace could be compared. The
+fuzzer now distinguishes typed comparison refusals and parse failures while
+still rejecting unexpected exceptions. Final fresh checks were rerun. The
+first browser-driver attempt started before its target build existed and
+failed with `ENOENT`; the final replay uses completed production builds.
+Neither observation was presented as a repaired product failure.
+
+These unedited screenshots show the actual missing-end-timestamp workflow.
+The baseline accepts five spans and claims 40.6% fewer input tokens. The
+corrected screenshot shows rejection and the **retained original six-span
+comparison**. Its zero changes belong to that retained complete input; they
+are not results for the rejected candidate.
+
+| View | Baseline | Corrected |
+|---|---|---|
+| Chromium, 1440 px | [Before](../../docs/assets/comparison-coverage/before-chromium-1440.png) | [After](../../docs/assets/comparison-coverage/after-chromium-1440.png) |
+| Chromium, 375 px | [Before](../../docs/assets/comparison-coverage/before-chromium-375.png) | [After](../../docs/assets/comparison-coverage/after-chromium-375.png) |
+| Firefox, 1440 px | [Before](../../docs/assets/comparison-coverage/before-firefox-1440.png) | [After](../../docs/assets/comparison-coverage/after-firefox-1440.png) |
+| Firefox, 375 px | [Before](../../docs/assets/comparison-coverage/before-firefox-375.png) | [After](../../docs/assets/comparison-coverage/after-firefox-375.png) |
