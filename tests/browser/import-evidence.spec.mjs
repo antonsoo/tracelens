@@ -152,11 +152,26 @@ test('damaged text cannot replace a comparison and a valid Unicode retry succeed
 test('newer trace switches terminate obsolete work and retain picker focus', async ({ page }) => {
   await page.addInitScript(() => {
     window.switches = {};
+    window.terminatedSwitches = [];
     const WorkingWorker = Worker;
     window.Worker = class extends WorkingWorker {
+      set onmessage(handler) {
+        // Queue a real parser response. Releasing it after supersession must
+        // exercise stale delivery, rather than posting new work to a worker
+        // which the application correctly terminated.
+        super.onmessage = handler ? event => {
+          if (!this.switchId) { handler(event); return; }
+          window.switches[this.switchId] = () => handler(event);
+        } : null;
+      }
+      get onmessage() { return super.onmessage; }
       postMessage(request) {
-        if (request.source.kind !== 'text') { super.postMessage(request); return; }
-        window.switches[request.traceId] = () => super.postMessage(request);
+        this.switchId = request.source.kind === 'text' ? request.traceId : null;
+        super.postMessage(request);
+      }
+      terminate() {
+        if (this.switchId) window.terminatedSwitches.push(this.switchId);
+        super.terminate();
       }
     };
   });
@@ -167,12 +182,16 @@ test('newer trace switches terminate obsolete work and retain picker focus', asy
   await expect(picker).toHaveValue(ids[0]);
   await picker.focus();
   await picker.selectOption(ids[1]);
+  await expect.poll(() => page.evaluate(id => typeof window.switches[id], ids[1])).toBe('function');
   await expect(picker).toHaveValue(ids[0]);
   await picker.selectOption(ids[2]);
+  await expect.poll(() => page.evaluate(id => typeof window.switches[id], ids[2])).toBe('function');
   await page.evaluate((id) => window.switches[id](), ids[1]);
+  expect(await page.evaluate(() => window.terminatedSwitches)).toContain(ids[1]);
   await expect(picker).toHaveValue(ids[0]);
   await page.evaluate((id) => window.switches[id](), ids[2]);
   await expect(picker).toHaveValue(ids[2]);
+  expect(await page.evaluate(() => window.terminatedSwitches)).toContain(ids[2]);
   await expect(picker).toBeFocused();
 });
 
