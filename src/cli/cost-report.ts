@@ -7,7 +7,8 @@ export function formatCostReport(report: TraceCostReport): string {
   const lines = [
     bold(`Token cost evidence for trace ${safe(report.traceId)}`),
     `${report.pricedCalls} priced / ${report.unpricedCalls} unpriced model calls; ${report.excludedSpans} excluded spans`,
-    `${report.unpricedCalls ? 'Known subtotal' : 'Token estimate'}: ${money(report.knownCostUsd)}`,
+    `${report.unpricedCalls || report.incompleteInput ? 'Known subtotal' : 'Token estimate'}: ${money(report.knownCostUsd)}`,
+    ...(report.incompleteInput ? ['Incomplete span inventory: full token estimate and missing call count are unknown. Counts above describe retained spans only.'] : []),
     dim('At the supplied rates. Not an invoice; context premiums, service tiers and tool fees are outside this estimate.'),
   ];
   for (const row of report.rows) {

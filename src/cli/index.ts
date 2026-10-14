@@ -147,12 +147,13 @@ function printSummary(path: string, trace: ParsedTrace, prices: PriceEntry[]): v
         ]),
       ),
     );
-    const totalLine = `token estimate: ${fmtUsd(summary.totalCostUsd)}`;
+    const totalLine = `${summary.costReport.incompleteInput ? 'known token cost subtotal' : 'token estimate'}: ${fmtUsd(summary.totalCostUsd)}`;
     console.log(`\n${bold(totalLine)}${summary.uncostedCalls > 0 ? dim(`  (known subtotal; ${summary.uncostedCalls} call(s) lack valid usage or pricing)`) : ''}`);
   } else {
     console.log(heading('Tokens & cost by model'));
     console.log(dim('No model-call spans were found.'));
   }
+  if (summary.costReport.incompleteInput) console.log(dim('Incomplete span inventory: full token estimate and missing call count are unknown. Charges and counts describe retained spans only.'));
   console.log(dim(`Use tracelens cost for rates, assumptions and per-call evidence; ${summary.costReport.excludedSpans} non-call span(s) with model/usage data excluded.`));
 
   console.log(heading('Errors & possible retries'));

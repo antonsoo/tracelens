@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Cost estimate input coverage
+
+- Preserve retained-call charges as a known subtotal after observed span-import
+  losses or unresolved parent spans; leave the full estimate unknown. Do not
+  invent missing call counts or classify absent calls as unpriced retained calls.
+- Explain incomplete inventory in CLI cost/summary output and the browser cost
+  header and ledger. Complete imports, including valid zero charges and optional
+  timing/event warnings, retain their pricing behavior.
+- Add native SDK and labelled damage replays under `studies/cost-coverage`.
+
 ### Comparison import coverage
 
 - Reject quantitative comparisons after a span/container was skipped, an

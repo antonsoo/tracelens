@@ -63,7 +63,7 @@ export function renderCostPanel(trace: ParsedTrace, report: TraceCostReport, ins
   const draw = (): void => {
     const rows = report.rows.filter((row) => state.filter === 'all' || row.result.status === state.filter);
     mount(body,
-      h('p', {}, report.unpricedCalls ? 'Some model calls could not be priced. The headline is a known subtotal.' : 'Inspect the token charges and rate assumptions behind the estimate.'),
+      h('p', {}, report.incompleteInput ? 'The span inventory is incomplete. The full token estimate is unknown; charges and call counts shown describe retained spans only.' : report.unpricedCalls ? 'Some model calls could not be priced. The headline is a known subtotal.' : 'Inspect the token charges and rate assumptions behind the estimate.'),
       h('div', { className: 'tl-cost-controls' },
         h('label', {}, 'Show ', h('select', { 'aria-label': `${label} cost status`, 'data-focus-key': `cost-${label}-filter`, onChange: (event: Event) => {
           state.filter = (event.target as HTMLSelectElement).value;

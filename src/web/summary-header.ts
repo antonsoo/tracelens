@@ -30,6 +30,7 @@ export function renderSummaryHeader(container: HTMLElement, summary: TraceSummar
   const outputMissing = summary.modelUsage.some((row) => row.missingOutputCalls > 0);
   const inputTokens = summary.modelUsage.reduce((sum, row) => sum + row.inputTokens, 0);
   const outputTokens = summary.modelUsage.reduce((sum, row) => sum + row.outputTokens, 0);
+  const partialCost = summary.uncostedCalls > 0 || summary.costReport.incompleteInput;
 
   mount(
     container,
@@ -37,7 +38,7 @@ export function renderSummaryHeader(container: HTMLElement, summary: TraceSummar
       cell('Total duration', fmtMs(summary.totalDurationMs)),
       cell('LLM / tool summed self time', `${fmtMs(summary.llmSelfTimeMs)} / ${fmtMs(summary.toolSelfTimeMs)}`, timebar),
       cell('Tokens in / out', h('span', { title: `Known subtotals: ${fmtInt(inputTokens)} input / ${fmtInt(outputTokens)} output` }, `${inputMissing ? 'Unknown' : fmtInt(inputTokens)} / ${outputMissing ? 'Unknown' : fmtInt(outputTokens)}`)),
-      cell(summary.uncostedCalls > 0 ? 'Known token cost subtotal' : 'Estimated token cost', fmtUsd(summary.totalCostUsd), summary.uncostedCalls > 0 ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' }, `${summary.uncostedCalls} call(s) uncosted`) : undefined),
+      cell(partialCost ? 'Known token cost subtotal' : 'Estimated token cost', fmtUsd(summary.totalCostUsd), partialCost ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' }, [summary.costReport.incompleteInput ? 'Incomplete span inventory' : '', summary.uncostedCalls > 0 ? `${summary.uncostedCalls} call(s) uncosted` : ''].filter(Boolean).join('; ')) : undefined),
       cell('Spans / errors', `${fmtInt(summary.spanCount)} / ${summary.errorCount}`),
       cell('Possible retries', fmtInt(summary.retryCount)),
       cell('Models', topModels || '—'),

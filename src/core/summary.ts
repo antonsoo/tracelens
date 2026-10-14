@@ -29,6 +29,7 @@ export interface TraceSummary {
   errorCount: number;
   retryCount: number;
   modelUsage: ModelUsageRow[];
+  /** Known subtotal; consult costReport.estimatedCostUsd for full-estimate availability. */
   totalCostUsd?: number;
   uncostedCalls: number;
   criticalPath: ParsedSpan[];

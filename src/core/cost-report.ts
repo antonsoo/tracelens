@@ -27,7 +27,10 @@ export interface TraceCostReport {
   excludedSpans: number;
   /** null if there are no priced calls (zero is a real, fully calculated charge). */
   knownCostUsd: number | null;
-  /** null if any model call is unpriced, or there are no model calls. */
+  /** Present only when skipped span evidence or an absent parent makes inventory incomplete.
+   * Call counts and knownCostUsd still describe retained spans; missing calls are not invented. */
+  incompleteInput?: true;
+  /** null if input inventory is incomplete, any model call is unpriced, or no calls are priced. */
   estimatedCostUsd: number | null;
   rows: CostRow[];
   notes: string[];
@@ -70,11 +73,15 @@ export function buildCostReport(trace: ParsedTrace, prices: PriceEntry[]): Trace
     else excludedSpans++;
   }
   const knownCostUsd = pricedCalls && Number.isFinite(known) ? known : null;
+  const ids = new Set(trace.spans.map((span) => span.spanId));
+  const incompleteInput = trace.warnings.some((warning) => warning.comparisonIssue === 'span-inventory')
+    || trace.spans.some((span) => span.parentSpanId && !ids.has(span.parentSpanId));
   return {
     schemaVersion: 1, format: 'tracelens-cost-evidence', traceId: trace.traceId,
     priceTable: prices.map((entry) => ({ ...entry })),
     pricedCalls, unpricedCalls, excludedSpans, knownCostUsd,
-    estimatedCostUsd: unpricedCalls === 0 ? knownCostUsd : null,
+    ...(incompleteInput ? { incompleteInput: true as const } : {}),
+    estimatedCostUsd: !incompleteInput && unpricedCalls === 0 ? knownCostUsd : null,
     rows,
     notes: [
       'Token charges at the supplied rates, not an invoice. Service tiers, context premiums, region, taxes and tool fees are not inferred.',
@@ -83,6 +90,7 @@ export function buildCostReport(trace: ParsedTrace, prices: PriceEntry[]): Trace
       'Embedding vectors have no completion-token charge. Reasoning tokens are already part of output usage and are not added again.',
       'Missing optional cache counts are assumed zero. Missing cache rates use the input rate; per-call assumptions disclose both.',
       'No cross-instrumentation deduplication is inferred. Two model-call spans may describe the same request; inspect their source spans.',
+      ...(incompleteInput ? ['The span inventory is incomplete. Charges and call counts describe retained spans only; the full token estimate and missing call count are unknown.'] : []),
     ],
     warnings: [
       ...trace.warnings.map((warning) => warning.message),

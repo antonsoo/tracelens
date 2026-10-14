@@ -460,6 +460,12 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   input tokens; the candidate now fails comparison validation and the browser
   retains its previous result. Partial traces remain individually inspectable.
   [Reproduction, native controls and limits](studies/comparison-coverage/README.md).
+- Cost reports preserve retained charges after observed import losses or missing
+  parents, but mark the full token estimate unknown. `knownCostUsd` remains a
+  subtotal; `estimatedCostUsd` is null and `incompleteInput: true` is present.
+  Call counts describe retained spans; the number of missing calls is unknown.
+  Optional event warnings and invalid timing alone do not change token charges.
+  [Native SDK cost reproduction and scope](studies/cost-coverage/README.md).
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of
