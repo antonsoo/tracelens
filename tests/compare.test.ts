@@ -166,8 +166,8 @@ describe('trace comparison', () => {
     cyclic.roots = [];
     expect(() => compareTraces(cyclic, cyclic, prices)).toThrow('incomplete span tree');
   });
-  it('preserves parser warnings', () => {
-    const a = parse(span('a', 0, 1, 'missing'));
+  it('preserves harmless optional-event parser warnings', () => {
+    const a = parseOtlpJson(otlpDoc([fakeSpan({ spanId: 'a', startNs: 0, endNs: 1, events: [null] })]));
     expect(compareTraces(a, a, prices).warnings).toHaveLength(2);
   });
   it('explains the synthetic example using independently calculated totals', () => {

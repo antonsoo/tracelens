@@ -148,7 +148,7 @@ export function jaegerToOtlp(json: unknown, warnings: ParseWarning[] = []): { re
     (trace.spans as unknown[]).forEach((raw, i) => {
       if (!isRecord(raw)) {
         const traceId = normalizeId(trace.traceID, 16);
-        warnings.push({ message: `Jaeger spans[${i}]: skipped a non-object span entry.`, ...(traceId ? { traceId } : {}) });
+        warnings.push({ comparisonIssue: 'span-inventory', message: `Jaeger spans[${i}]: skipped a non-object span entry.`, ...(traceId ? { traceId } : {}) });
         return;
       }
       const tags = tagList(raw.tags);

@@ -4,6 +4,18 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Comparison import coverage
+
+- Reject quantitative comparisons after a span/container was skipped, an
+  interval was reversed, a collector JSONL tail was truncated, or a required
+  parent remains absent. Structured parser issues preserve trace/file scope;
+  warning wording is not used to decide completeness.
+- Keep individual partial-trace inspection, optional event/link warnings and
+  valid zero-duration comparisons. Related files can resolve missing parents
+  before comparison. Rejected browser replacements retain the previous result.
+- Add native SDK controls and labelled damage cases under
+  `studies/comparison-coverage`; no npm release or hosted update is included.
+
 ### Competing protocol field spellings
 
 - Reject non-null camelCase/snake_case declarations of the same trace collection,

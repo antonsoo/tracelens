@@ -161,6 +161,8 @@ export interface ParsedSpan {
 
 export interface ParseWarning {
   message: string;
+  /** Import can remain inspectable while a quantitative comparison is unsupported. */
+  comparisonIssue?: 'span-inventory' | 'span-timing' | 'span-ancestry';
   sourceFile?: { index: number; name: string };
   spanId?: string;
   /** The trace the warning is about, when it is about one: a file can hold several. */

@@ -454,6 +454,12 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   ignored. Single spellings remain supported; ambiguous log scalar fields stay
   raw evidence with warnings and unavailable normalized values.
   [CLI and offline browser reproduction](studies/field-aliases/README.md).
+- In the source checkout, quantitative comparisons reject observed span-import
+  losses, invalid intervals and unresolved or unreadable parent identities.
+  A damaged timestamp in a native capture previously appeared as 40.6% fewer
+  input tokens; the candidate now fails comparison validation and the browser
+  retains its previous result. Partial traces remain individually inspectable.
+  [Reproduction, native controls and limits](studies/comparison-coverage/README.md).
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of

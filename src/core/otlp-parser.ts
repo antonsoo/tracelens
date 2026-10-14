@@ -39,7 +39,7 @@ function isRecord(v: unknown): v is Record<string, unknown> {
 function spanCollection(raw: unknown, path: string, warnings: ParseWarning[]): unknown[] {
   if (raw === undefined || raw === null) return [];
   if (Array.isArray(raw)) return raw;
-  warnings.push({ message: `${path}: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown.` });
+  warnings.push({ comparisonIssue: 'span-inventory', message: `${path}: expected an array; contained span evidence could not be imported. The number and trace identities of missing spans are unknown.` });
   return [];
 }
 
@@ -219,7 +219,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
   for (const [resourceIndex, rs] of resourceSpans.entries()) {
     const resourcePath = `resourceSpans[${resourceIndex}]`;
     if (!isRecord(rs)) {
-      warnings.push({ message: `${resourcePath}: skipped a non-object resource entry; contained span evidence is unknown.` });
+      warnings.push({ comparisonIssue: 'span-inventory', message: `${resourcePath}: skipped a non-object resource entry; contained span evidence is unknown.` });
       continue;
     }
     const resourceWarnings: string[] = [];
@@ -230,7 +230,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
     for (const [scopeIndex, ss] of scopeSpans.entries()) {
       const scopePath = `${resourcePath}.scopeSpans[${scopeIndex}]`;
       if (!isRecord(ss)) {
-        warnings.push({ message: `${scopePath}: skipped a non-object scope entry; contained span evidence is unknown.` });
+        warnings.push({ comparisonIssue: 'span-inventory', message: `${scopePath}: skipped a non-object scope entry; contained span evidence is unknown.` });
         continue;
       }
       const scope = ss.scope;
@@ -241,13 +241,13 @@ function collectSpans(json: unknown, allowEmpty = false): {
       for (const [spanIndex, raw] of spans.entries()) {
         const spanPath = `${scopePath}.spans[${spanIndex}]`;
         if (!isRecord(raw)) {
-          warnings.push({ message: `${spanPath}: skipped a non-object span entry; its trace identity is unknown.` });
+          warnings.push({ comparisonIssue: 'span-inventory', message: `${spanPath}: skipped a non-object span entry; its trace identity is unknown.` });
           continue;
         }
         const spanId = normalizeId(traceField(raw, 'spanId', 'span_id', spanPath), 8);
         const spanTraceId = normalizeId(traceField(raw, 'traceId', 'trace_id', spanPath), 16);
         if (!spanId || !spanTraceId) {
-          warnings.push({ message: `${spanPath}: skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).`,
+          warnings.push({ comparisonIssue: 'span-inventory', message: `${spanPath}: skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).`,
             ...(spanTraceId ? { traceId: spanTraceId } : {}), ...(spanId ? { spanId } : {}) });
           continue;
         }
@@ -258,11 +258,12 @@ function collectSpans(json: unknown, allowEmpty = false): {
           const advice = sourceFormat === 'jaeger-json'
             ? 'Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.'
             : 'Use unsigned decimal nanosecond strings (or safe integer numbers).';
-          warnings.push({ message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. ${advice}`, spanId, traceId: spanTraceId });
+          warnings.push({ comparisonIssue: 'span-inventory', message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. ${advice}`, spanId, traceId: spanTraceId });
           continue;
         }
         if (end < start) {
           warnings.push({
+            comparisonIssue: 'span-timing',
             message: `Span "${String(raw.name)}" has an end time before its start time (clock skew?) — clamped to start.`,
             spanId,
             traceId: spanTraceId,
@@ -272,6 +273,9 @@ function collectSpans(json: unknown, allowEmpty = false): {
 
         const parentRaw = traceField(raw, 'parentSpanId', 'parent_span_id', spanPath);
         const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
+        if (parentRaw != null && typeof parentRaw !== 'string') {
+          warnings.push({ comparisonIssue: 'span-ancestry', message: `Span "${String(raw.name)}" has an invalid parentSpanId; its ancestry is unknown and it is shown as a root.`, spanId, traceId: spanTraceId });
+        }
 
         const attributes = decodeAttributes(raw.attributes, message => warnings.push({ message, spanId, traceId: spanTraceId }));
         const name = typeof raw.name === 'string' ? raw.name : '(unnamed span)';
@@ -391,6 +395,7 @@ function assembleTrace(all: ParsedSpan[], warnings: ParseWarning[], sourceFormat
     } else {
       if (span.parentSpanId) {
         chosenWarnings.push(fromFile({
+          comparisonIssue: 'span-ancestry',
           message: `Span "${span.name}" references a parent (${span.parentSpanId}) not present in ${scope} — shown as a root.`,
           spanId: span.spanId,
           traceId,
@@ -454,7 +459,7 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
       if (i === 0) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
       // A file the collector is still writing, or a copy cut short, ends mid-line.
       if (i === lines.length - 1) {
-        warnings.push({ message: `The last line (${lines[i]!.number}) is not complete JSON and was skipped: the export may still have been in progress.` });
+        warnings.push({ comparisonIssue: 'span-inventory', message: `The last line (${lines[i]!.number}) is not complete JSON and was skipped: the export may still have been in progress.` });
         break;
       }
       throw new TraceParseError(`Not valid JSON, and not JSON Lines either: line ${lines[i]!.number}: ${reason}`);
