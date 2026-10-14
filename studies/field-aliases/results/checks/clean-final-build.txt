@@ -1,0 +1,39 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 build
+npm notice run npm run build:web && npm run build:cli
+npm notice run @antonsoloviev/tracelens@0.3.3 prebuild:web
+npm notice run node scripts/sync-examples.mjs
+synced 10 example traces into public/examples/
+npm notice run @antonsoloviev/tracelens@0.3.3 build:web
+npm notice run vite build
+vite v6.4.3 building for production...
+transforming...
+✓ 46 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              2.43 kB │ gzip:  0.94 kB
+dist/assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2      5.87 kB
+dist/assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2      6.04 kB
+dist/assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2    6.91 kB
+dist/assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2      6.93 kB
+dist/assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2    6.97 kB
+dist/assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2    7.69 kB
+dist/assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2        8.36 kB
+dist/assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2        8.46 kB
+dist/assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2        9.35 kB
+dist/assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2         13.16 kB
+dist/assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2      13.35 kB
+dist/assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2      13.43 kB
+dist/assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2      14.33 kB
+dist/assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2          14.71 kB
+dist/assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2          14.89 kB
+dist/assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2          15.62 kB
+dist/assets/ibm-plex-sans-greek-CmyJS8uq.woff2              19.50 kB
+dist/assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2       23.57 kB
+dist/assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2           29.51 kB
+dist/assets/ibm-plex-sans-latin-ext-CIII54If.woff2          30.96 kB
+dist/assets/ibm-plex-sans-latin-IvpUvPa2.woff2              45.71 kB
+dist/assets/index-CH0HlhpT.css                              35.91 kB │ gzip:  6.33 kB
+dist/assets/index-BJneryWg.js                              131.17 kB │ gzip: 41.51 kB
+✓ built in 430ms
+npm notice run @antonsoloviev/tracelens@0.3.3 build:cli
+npm notice run tsc -p tsconfig.cli.json && node scripts/fix-shebang.mjs

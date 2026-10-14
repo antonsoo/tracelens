@@ -61,6 +61,36 @@ loading the original native file. Served asset bytes are compared with the
 tested build; records retain browser versions, hashes, screenshots, overflow,
 CSP violations and page errors.
 
+## Installed and clean-checkout verification
+
+The [verification receipt](results/verification.json) identifies the parser
+commit and the fresh archive used for installation, lint, type checks,
+425 unit checks, both builds, 32 CLI checks and 132 Chromium/Firefox browser
+checks. The additional existing browser audit passed too. All 32 files in the
+packed `0.3.3` archive match that clean build and the installed package;
+[the inventory](results/package-files.json) retains their hashes. This is a
+local package build, not a new registry release.
+
+The same 28 CLI workflows passed from that installation on
+[Node 26.7.0](results/installed-current.json) and
+[Node 20.20.2](results/installed-floor.json), the supported major-version
+floor. The browser study's served assets also match the final clean build.
+All eight before/after screenshots were inspected, including the phone-width
+error message and the retained six-span comparison.
+
+The first full browser run had 131 passes and a Firefox page crash in an
+existing rapid trace-switch test. The
+[original log](results/checks/clean-browser.txt) is retained. Running that
+unchanged test against the baseline passed once and then six times; the crash
+was not reproduced there. Its old harness delayed *sending* parser work and
+later posted it to an already terminated worker. The revised test queues an
+actual parser response before cancellation and delivers it after
+supersession, checking termination, ignored stale results and picker focus.
+That scenario passed eight repetitions across both engines, and the subsequent
+fresh full run passed all 132 cases. This is a test correction, not evidence
+that a Firefox engine crash has been fixed. Normalized logs for the initial,
+baseline, repeated and final checks are in [results/checks](results/checks/).
+
 ## Why refuse rather than pick a field?
 
 Canonical [OTLP JSON](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding)
@@ -83,6 +113,6 @@ last-key behavior. Unrecognized fields and application payload properties
 are outside this alias check. The imported data is not authenticated, and
 passing this check cannot establish complete instrumentation.
 
-The source correction is unreleased. No npm package or hosted deployment is
-claimed. The web build is `npm run build:web`, with output in `dist/`; the
+The source correction has no corresponding npm release or verified hosted
+deployment. The web build is `npm run build:web`, with output in `dist/`; the
 CLI build is `npm run build:cli`, with output in `dist-cli/`.

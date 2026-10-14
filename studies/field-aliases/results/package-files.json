@@ -1,0 +1,258 @@
+[
+  {
+    "path": "LICENSE",
+    "bytes": 1071,
+    "sha256": "e26144be8673d69c175126ad8dcd9ed78431464f0b97120b799dc75ec7edb647",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/attributes.js",
+    "bytes": 6575,
+    "sha256": "367921d52cb5d6c338120edf5a7142884af35aab1e02948af37fcc2f7d12397b",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/compare-report.js",
+    "bytes": 3138,
+    "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/compare.js",
+    "bytes": 7321,
+    "sha256": "c852e558e8e4c9a600f4a4dcc26a18e7dbbd1cb9b39b5d87226b7e7f0855bd7f",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/cost-format.js",
+    "bytes": 364,
+    "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/cost-report.js",
+    "bytes": 2162,
+    "sha256": "d380fc9e48022541269a23f26f20d7520ab0b95ff860b1f3d969ad10e21a6d2c",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/cost-report.js",
+    "bytes": 3270,
+    "sha256": "a106bff43558b2d35c9352a03593ee66e657704261c53bd5a5d125cc6581e697",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/cost.js",
+    "bytes": 9252,
+    "sha256": "f0be36700b08475cfed1f5c1fe1eaab64498d61e601e7cc6e8ab75d900e5322d",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/critical-path.js",
+    "bytes": 1313,
+    "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/decode.js",
+    "bytes": 1384,
+    "sha256": "fb2aa462446fee4b2a62af5756e653aa9098888dea0aaf0f52c7057c1f3e6067",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/field-alias.js",
+    "bytes": 601,
+    "sha256": "439e670cfe9292fbe1082bf77fe4d7d446233ab5b081475a4452a39d14216626",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/format.js",
+    "bytes": 1815,
+    "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/identity.js",
+    "bytes": 1573,
+    "sha256": "2302db98279d1a895a3a9310786607914bc9723ac8b6dcf2a5125ab52d6f853f",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/index.js",
+    "bytes": 15910,
+    "sha256": "7993a35d062733671401908ba50f66f0085cc2532b4743ace717aad1baa39169",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/index.js",
+    "bytes": 441,
+    "sha256": "824ffa8b05dc3af31e71c7b36014b21e424683a908fed5d8d821be22930de436",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/jaeger.js",
+    "bytes": 10494,
+    "sha256": "e99daf8868016651ea6182d1be8d2c5318c2bed235b6da777311115e1fb79cbe",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/layout.js",
+    "bytes": 1628,
+    "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/links-report.js",
+    "bytes": 1278,
+    "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/links.js",
+    "bytes": 2244,
+    "sha256": "ead1f314baa8eb9c6430e7e38218673379683be5d771d2e76496a5478d1c13ab",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/logs-report.js",
+    "bytes": 1133,
+    "sha256": "50d452f6b19d143ff8fbff89c8f33bb7cab27df226b958ef9b05e534f74cd92f",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/logs.js",
+    "bytes": 10251,
+    "sha256": "bcd3fd46496848d0fefb6c238a7bc3b3931c47bb1a9deadf7d91d17d6a1e0215",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/normalize.js",
+    "bytes": 34956,
+    "sha256": "23abf708955c37b57ea8423bac9c08826324a6558f0c02091760d04eb4880aac",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/otlp-parser.js",
+    "bytes": 28527,
+    "sha256": "024ce523c05edfa15dd8b28994dd62a222558da6ca2f98eed255cddfd7f862b1",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/payload-depth.js",
+    "bytes": 855,
+    "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/pricing.js",
+    "bytes": 6360,
+    "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/summary.js",
+    "bytes": 4628,
+    "sha256": "62631ff99449c7dbae96d0ddee79ccb5c3b874854f62952e504c93f6c33579ee",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/timing-report.js",
+    "bytes": 1708,
+    "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/timing.js",
+    "bytes": 5050,
+    "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/core/types.js",
+    "bytes": 327,
+    "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "dist-cli/cli/version.js",
+    "bytes": 115,
+    "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "package.json",
+    "bytes": 1980,
+    "sha256": "d78d0de02a1fd3775333bff921b5d515f8b59304fad571b95d71d5b0ec1b323d",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  },
+  {
+    "path": "README.md",
+    "bytes": 29170,
+    "sha256": "e9e9cd449effb96e8e4b3f3c25d73e118d4e76ed1b62e593a5d37736fb34905d",
+    "cleanBuildMatches": true,
+    "installedMatches": true,
+    "finalCleanBuildMatches": true
+  }
+]

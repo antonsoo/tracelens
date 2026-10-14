@@ -1,0 +1,33 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 npx
+npm notice run 'playwright' test tests/browser/import-evidence.spec.mjs --grep newer trace switches --repeat-each=4
+[WebServer] (node:531475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 2 workers
+
+(node:531497) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:531496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (525ms)
+  ✓  2 [chromium] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (526ms)
+(node:531713) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:531719) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [chromium] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (532ms)
+  ✓  3 [chromium] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (572ms)
+(node:531935) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:531942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.8s)
+  ✓  6 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.8s)
+(node:532479) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:532538) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.6s)
+  ✓  8 [firefox] › tests/browser/import-evidence.spec.mjs:152:1 › newer trace switches terminate obsolete work and retain picker focus (1.6s)
+
+  8 passed (9.0s)

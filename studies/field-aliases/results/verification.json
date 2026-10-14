@@ -1,0 +1,92 @@
+{
+  "baselineCommit": "83a4bacafae0944e013149df1e3d834ca70db4af",
+  "codeCommit": "0afda9936ee2dec82cf52f5288014c0aaaae71cf",
+  "cleanArchiveCommit": "9d77d594aa2b8d6dab1eb642be48d7987057acb4",
+  "cleanChecks": {
+    "install": "npm ci",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck",
+    "unit": {
+      "command": "npm test",
+      "passed": 425
+    },
+    "build": "npm run build",
+    "cli": {
+      "command": "npm run test:cli",
+      "passed": 32
+    },
+    "browser": {
+      "command": "npm run test:browser",
+      "passedPlaywright": 132,
+      "additionalLegacyBrowserAudit": "passed"
+    }
+  },
+  "replay": {
+    "cases": 28,
+    "nativeFixtures": 8,
+    "derivedControls": 20,
+    "baselineDisagreements": 18,
+    "correctedDisagreements": 0,
+    "installed": [
+      {
+        "node": "v26.7.0",
+        "cases": 28,
+        "disagreements": 0
+      },
+      {
+        "node": "v20.20.2",
+        "cases": 28,
+        "disagreements": 0
+      }
+    ]
+  },
+  "browserStudy": {
+    "engines": [
+      "chromium 153.0.8010.12",
+      "firefox 155.0"
+    ],
+    "widths": [
+      1440,
+      375
+    ],
+    "candidateReplacementsPerCapture": 2,
+    "correctedRejectedReplacements": 8,
+    "baselineRejectedReplacements": 0,
+    "priorComparisonDownloadsExactlyRetained": true,
+    "offline": true,
+    "servedAssetComparisonsWithFinalCleanBuild": 96,
+    "allMatch": true,
+    "screenshotsVisuallyInspected": 8
+  },
+  "package": {
+    "file": "antonsoloviev-tracelens-0.3.3.tgz",
+    "version": "0.3.3",
+    "bytes": 56981,
+    "sha256": "39edf2a3c13790abee13c08f4970802bcb147f71ac397020b6c9e67d542e9dd1",
+    "files": 32,
+    "allArchiveAndInstalledFilesMatchCleanBuild": true,
+    "inventory": "package-files.json"
+  },
+  "traceSwitchAudit": {
+    "initialFullRun": {
+      "passed": 131,
+      "failed": 1,
+      "observation": "Firefox Target crashed during an existing trace-switch test. Retained in checks/clean-browser.txt."
+    },
+    "unchangedBaselineFirefox": {
+      "singlePassed": 1,
+      "repeatedPassed": 6,
+      "crashReproduced": false
+    },
+    "capturedReplyTest": {
+      "repeatedPassed": 8,
+      "engines": [
+        "chromium",
+        "firefox"
+      ],
+      "change": "Queue an actual parser response before cancellation, then deliver that queued response after supersession. Do not post new work to a terminated worker.",
+      "runtimeEngineCrashFixClaimed": false
+    }
+  },
+  "boundary": "Locally built and installed 0.3.3 archive, committed source, local offline browser checks. No npm publication, tag or hosted deployment is claimed."
+}

@@ -1,0 +1,15 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 test
+npm notice run vitest run
+
+ RUN  v5.0.2 <work>/clean-final
+
+
+ Test Files  31 passed (31)
+      Tests  425 passed (425)
+   Start at  22:09:40
+   Duration  2.14s (tests 55%, transform 32%, import 11%, worker 2%)
+
+  Transform  transforming modules took 2.36s · 32% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+
