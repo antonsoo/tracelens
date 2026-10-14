@@ -1,0 +1,12 @@
+{
+  "population": "Native SDK exports and labelled import damage; illustrative user rates, no live model or collector requests.",
+  "node": "v26.7.0",
+  "cliSha256": "fac640edfbabe6308e8149e03d22461d7d664711ca30b602bc4a36610956a993",
+  "cases": 37,
+  "workflows": 185,
+  "disagreements": 0,
+  "sourceCapture": "after.json",
+  "sourceCaptureSha256": "f97613fcf74417588685514bcfe00262a1c7ff454cc9e4ac97c762080a93e20f",
+  "recordsMatchSource": true,
+  "recordsSha256": "9d6dbbca9635d37f98533894e7474573c429cd473c553db701850a483f3f881e"
+}

@@ -67,3 +67,58 @@ then takes both browsers offline and stops the local server before subsequent
 file imports. Cost JSON and selected-call receipts are real downloads. The
 corrected cost exports must equal the CLI/core observations. Re-importing the
 complete capture must restore its original estimate and full JSON report.
+
+## Measured verification
+
+On 2026-10-14, baseline `2c88eb6b61370c2f605fe8f388dc170dd3bc376d` was replayed
+against implementation `926be7d0b457825c7129c01c727edf10fb0fc2b6` on 14 vCPU WSL2
+Linux with 48 GB RAM. The baseline and implementation archive files were compared
+byte for byte, including after the implementation's checks.
+
+| Workflow | Cases / runs | Before disagreements | After disagreements |
+| --- | ---: | ---: | ---: |
+| Core cost/summary and CLI JSON/text | 37 cases, 185 workflows | 85 | 0 |
+| Packed CLI, Node 26.7.0 | 185 workflows | - | 0 |
+| Packed CLI, exact Node 20.0.0 | 185 workflows | - | 0 |
+| Offline Chromium/Firefox, 1440 and 375 px | 80 workflows across both builds | 24 | 0 |
+
+All 100 unaffected API/CLI captures are identical, including ten captures for
+already-rejected malformed Jaeger controls. Every retained API charge is unchanged.
+The browser checks include real cost-report and selected-call receipt downloads,
+restoring the complete capture, accessibility checks, no external/late requests,
+no page or policy errors, and no document overflow. Each of eight views served
+and browser-loaded the same 24 files, matched to its tested production build.
+
+Fresh Node 24.21.0 verification passed install, lint, strict types, 437 unit tests
+in each of the default and German locales, both builds, 32 CLI tests, the existing
+browser audit, and 134 Playwright tests. The initial default-concurrency runs hit
+unchanged parser/fuzz wall-clock limits; full runs with `npm test -- --maxWorkers=2`
+passed both locales without changing an assertion or deadline. The compiled
+parser is byte-identical before and after; `results/parser-timing.json` records an
+isolated synthetic 20,001-span replay separately from these unit timing failures.
+
+All 588 implementation archive files remained unchanged after checks; all 580
+baseline archive files match their pinned source. The 34 web and 29 CLI build
+files match between clean Node 24 and working Node 26 builds. All 32 packed files
+match the clean build and separate installed consumer byte for byte. The local
+0.3.3 tarball is 57,998 bytes, SHA-256
+`b53ccc7a4b56a002ea82af6fc824b26ec157a7a9044623cb3da06f3fabee6664`.
+`results/verification.json` retains file digests, check commands and log hashes;
+installed receipts reference the byte-identical full source observations to avoid
+copying them a second time.
+
+These results describe source and a locally packed artifact. No npm release,
+version tag, manual deployment or remote CI success is claimed.
+
+## Real browser captures
+
+Each image shows the damaged native import at the illustrative rates. The dollar
+amount is unchanged; its coverage and headline are corrected. The mobile ledger
+uses its existing internal scrolling area. All eight screenshots were inspected.
+
+| Browser / viewport | Before | After |
+| --- | --- | --- |
+| Chromium / dark 1440 | [before](../../docs/assets/cost-coverage/before-chromium-1440.png) | [after](../../docs/assets/cost-coverage/after-chromium-1440.png) |
+| Chromium / light 375 | [before](../../docs/assets/cost-coverage/before-chromium-375.png) | [after](../../docs/assets/cost-coverage/after-chromium-375.png) |
+| Firefox / dark 1440 | [before](../../docs/assets/cost-coverage/before-firefox-1440.png) | [after](../../docs/assets/cost-coverage/after-firefox-1440.png) |
+| Firefox / light 375 | [before](../../docs/assets/cost-coverage/before-firefox-375.png) | [after](../../docs/assets/cost-coverage/after-firefox-375.png) |
