@@ -74,7 +74,7 @@ variants are explicitly constructed, not observed production incidents.
 | Visual and accessibility review | All eight screenshots inspected; no overflow, script/CSP errors, external/late requests or axe findings in the replay |
 
 The [verification receipt](results/verification.json) retains source, input,
-build, packed-file, check-log and screenshot hashes. The package was installed
+build, packed-file, check-log and screenshot hashes.
 All installed records match the complete source capture and reference its
 hash instead of duplicating it. Browser records reference a retained report
 by `reportRef`; nine distinct report objects represent the 64 actual downloads.
