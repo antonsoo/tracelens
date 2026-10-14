@@ -13,6 +13,16 @@ on this for a new integration.
 
 ## 1. Wire format: OTLP/JSON
 
+**Field spelling conflicts (source checkout).** CamelCase and snake_case
+exports remain usable individually, but competing non-null declarations of
+the same trace field are refused rather than choosing one. This includes
+resource/scope collections, span identities/times/omission counts, and event
+or link fields, including within Collector JSONL batches. Null companions
+are treated as unset. Log scalar conflicts retain both raw fields, warn,
+and leave the normalized value unavailable; log identity conflicts already
+remain unattributed. This is an evidence-preserving viewer policy, not a
+claim of full ProtoJSON conformance. [Reproduction](../studies/field-aliases/README.md).
+
 **Related log exports (source checkout).** Select OTLP traces and logs together,
 or open a JSON/JSONL export containing both signals. Log collections use
 `resourceLogs[].scopeLogs[].logRecords[]` (snake_case is also accepted).

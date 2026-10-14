@@ -448,6 +448,12 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   in the source checkout. Readable spans remain available, but the number and
   identity of spans inside an unreadable container stay unknown. This is also
   local source work; complete instrumentation cannot be inferred from the file.
+- Competing camelCase/snake_case trace fields are rejected in the source checkout.
+  A partitioned native six-span capture previously displayed only its agent root,
+  with no model calls or warnings, because the second resource collection was
+  ignored. Single spellings remain supported; ambiguous log scalar fields stay
+  raw evidence with warnings and unavailable normalized values.
+  [CLI and offline browser reproduction](studies/field-aliases/README.md).
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
 - "Critical path" is the heuristic described above, not a guarantee of

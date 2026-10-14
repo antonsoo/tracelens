@@ -75,21 +75,28 @@ export function collectLogs(batches: readonly LogBatch[], warnings: ParseWarning
           };
           const traceId = identity('traceId', 'trace_id', 16);
           const spanId = identity('spanId', 'span_id', 8);
+          const field = (camel: string, snake: string): unknown => {
+            if (raw[camel] != null && raw[snake] != null) {
+              warn(path, `both ${camel} and ${snake} are present; kept the raw fields without selecting a value.`);
+              return undefined;
+            }
+            return raw[camel] ?? raw[snake];
+          };
           // All-zero trace context means absent, not a real correlation target.
           const hasTrace = Boolean(traceId && !/^0+$/.test(traceId));
           const hasSpan = Boolean(spanId && !/^0+$/.test(spanId));
-          const eventName = raw.eventName ?? raw.event_name;
+          const eventName = field('eventName', 'event_name');
           const attributes = decodeAttributes(raw.attributes, message => warn(path, message), `${path}.attributes`);
           const times: { timeUnixNano?: bigint; observedTimeUnixNano?: bigint } = {};
           for (const [camel, snake] of [['timeUnixNano', 'time_unix_nano'], ['observedTimeUnixNano', 'observed_time_unix_nano']] as const) {
-            const value = raw[camel] ?? raw[snake];
+            const value = field(camel, snake);
             const parsed = timestamp(value);
             if (parsed !== undefined) times[camel] = parsed;
             else if (value !== undefined && value !== null && value !== '0' && value !== 0) {
               warn(path, `invalid ${camel}; kept the raw value, without inventing an event time.`);
             }
           }
-          const droppedRaw = raw.droppedAttributesCount ?? raw.dropped_attributes_count;
+          const droppedRaw = field('droppedAttributesCount', 'dropped_attributes_count');
           let dropped: number | undefined;
           if (droppedRaw !== undefined && droppedRaw !== null) {
             const count = typeof droppedRaw === 'string' && /^\d+$/.test(droppedRaw) ? Number(droppedRaw) : droppedRaw;

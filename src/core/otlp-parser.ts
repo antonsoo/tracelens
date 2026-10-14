@@ -10,6 +10,7 @@ import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 import { normalizeId } from './identity.js';
 import { assertPayloadDepth, TraceParseError } from './payload-depth.js';
+import { traceField } from './field-alias.js';
 import { decodeAttributes } from './attributes.js';
 import { collectLogs, correlateLogs, hasLogSignal, type LogBatch } from './logs.js';
 export { TraceParseError } from './payload-depth.js';
@@ -88,9 +89,9 @@ function decodeEvents(raw: unknown, warnings: ParseWarning[], spanId: string, tr
     }
     const rec = e;
     const name = typeof rec.name === 'string' ? rec.name : '';
-    const droppedAttributesCount = droppedCount(rec.droppedAttributesCount ?? rec.dropped_attributes_count,
+    const droppedAttributesCount = droppedCount(traceField(rec, 'droppedAttributesCount', 'dropped_attributes_count', `events[${index}]`),
       'droppedAttributesCount', `Event ${index + 1} ("${name}")`, 'attributes', warnings, spanId, traceId);
-    const time = toBigNanos(rec.timeUnixNano ?? rec.time_unix_nano ?? 0);
+    const time = toBigNanos(traceField(rec, 'timeUnixNano', 'time_unix_nano', `events[${index}]`) ?? 0);
     if (time === undefined) {
       warnings.push({ message: 'Skipped an event with an invalid timestamp.', spanId, traceId });
       return [];
@@ -132,12 +133,12 @@ function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, tra
   const links: SpanLink[] = [];
   for (const [index, entry] of raw.entries()) {
     if (!isRecord(entry)) { invalid++; continue; }
-    const targetTrace = normalizeId(entry.traceId ?? entry.trace_id, 16);
-    const targetSpan = normalizeId(entry.spanId ?? entry.span_id, 8);
+    const targetTrace = normalizeId(traceField(entry, 'traceId', 'trace_id', `links[${index}]`), 16);
+    const targetSpan = normalizeId(traceField(entry, 'spanId', 'span_id', `links[${index}]`), 8);
     if (!targetTrace || !targetSpan) { invalid++; continue; }
-    const traceState = entry.traceState ?? entry.trace_state;
+    const traceState = traceField(entry, 'traceState', 'trace_state', `links[${index}]`);
     const flags = optionalUint32(entry.flags, 'link flags', warnings, spanId, traceId);
-    const dropped = optionalUint32(entry.droppedAttributesCount ?? entry.dropped_attributes_count, 'link droppedAttributesCount', warnings, spanId, traceId);
+    const dropped = optionalUint32(traceField(entry, 'droppedAttributesCount', 'dropped_attributes_count', `links[${index}]`), 'link droppedAttributesCount', warnings, spanId, traceId);
     links.push({ traceId: targetTrace, spanId: targetSpan, attributes: decodeAttributes(entry.attributes, message => warnings.push({ message, spanId, traceId }), `links[${index}].attributes`),
       ...(typeof traceState === 'string' ? { traceState } : {}),
       ...(flags !== undefined ? { flags } : {}),
@@ -203,7 +204,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
   const sourceFormat = isJaegerJson(json) ? 'jaeger-json' : 'otlp-json';
   if (sourceFormat === 'jaeger-json') json = jaegerToOtlp(json, warnings);
   const root = isRecord(json) ? json : { resourceSpans: json };
-  const resourceSpans = root.resourceSpans ?? root.resource_spans ?? (hasLogSignal(root) ? [] : undefined);
+  const resourceSpans = traceField(root, 'resourceSpans', 'resource_spans', 'Trace export') ?? (hasLogSignal(root) ? [] : undefined);
   if (!Array.isArray(resourceSpans)) {
     throw new TraceParseError(
       'Not a recognizable trace export: expected OTLP/JSON (a top-level "resourceSpans" array) or Jaeger JSON (a "data" array of traces with "spans").',
@@ -224,7 +225,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
     const resourceWarnings: string[] = [];
     const resourceAttributes = decodeAttributes(isRecord(rs.resource) ? rs.resource.attributes : undefined, message => resourceWarnings.push(message), 'resource.attributes');
     const resourceTraces = new Set<string>();
-    const scopeSpans = spanCollection(rs.scopeSpans ?? rs.scope_spans, `${resourcePath}.scopeSpans`, warnings);
+    const scopeSpans = spanCollection(traceField(rs, 'scopeSpans', 'scope_spans', resourcePath), `${resourcePath}.scopeSpans`, warnings);
 
     for (const [scopeIndex, ss] of scopeSpans.entries()) {
       const scopePath = `${resourcePath}.scopeSpans[${scopeIndex}]`;
@@ -243,16 +244,16 @@ function collectSpans(json: unknown, allowEmpty = false): {
           warnings.push({ message: `${spanPath}: skipped a non-object span entry; its trace identity is unknown.` });
           continue;
         }
-        const spanId = normalizeId(raw.spanId ?? raw.span_id, 8);
-        const spanTraceId = normalizeId(raw.traceId ?? raw.trace_id, 16);
+        const spanId = normalizeId(traceField(raw, 'spanId', 'span_id', spanPath), 8);
+        const spanTraceId = normalizeId(traceField(raw, 'traceId', 'trace_id', spanPath), 16);
         if (!spanId || !spanTraceId) {
           warnings.push({ message: `${spanPath}: skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).`,
             ...(spanTraceId ? { traceId: spanTraceId } : {}), ...(spanId ? { spanId } : {}) });
           continue;
         }
         resourceTraces.add(spanTraceId);
-        const start = toBigNanos(raw.startTimeUnixNano ?? raw.start_time_unix_nano);
-        let end = toBigNanos(raw.endTimeUnixNano ?? raw.end_time_unix_nano);
+        const start = toBigNanos(traceField(raw, 'startTimeUnixNano', 'start_time_unix_nano', spanPath));
+        let end = toBigNanos(traceField(raw, 'endTimeUnixNano', 'end_time_unix_nano', spanPath));
         if (start === undefined || end === undefined) {
           const advice = sourceFormat === 'jaeger-json'
             ? 'Jaeger startTime and duration must be unsigned microsecond integers, representable as nanosecond timestamps.'
@@ -269,14 +270,14 @@ function collectSpans(json: unknown, allowEmpty = false): {
           end = start;
         }
 
-        const parentRaw = raw.parentSpanId ?? raw.parent_span_id;
+        const parentRaw = traceField(raw, 'parentSpanId', 'parent_span_id', spanPath);
         const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
 
         const attributes = decodeAttributes(raw.attributes, message => warnings.push({ message, spanId, traceId: spanTraceId }));
         const name = typeof raw.name === 'string' ? raw.name : '(unnamed span)';
-        const droppedAttributesCount = droppedCount(raw.droppedAttributesCount ?? raw.dropped_attributes_count,
+        const droppedAttributesCount = droppedCount(traceField(raw, 'droppedAttributesCount', 'dropped_attributes_count', spanPath),
           'droppedAttributesCount', `Span "${name}"`, 'attributes', warnings, spanId, spanTraceId);
-        const droppedEventsCount = droppedCount(raw.droppedEventsCount ?? raw.dropped_events_count,
+        const droppedEventsCount = droppedCount(traceField(raw, 'droppedEventsCount', 'dropped_events_count', spanPath),
           'droppedEventsCount', `Span "${name}"`, 'events', warnings, spanId, spanTraceId);
 
         const base: ParsedSpan = {
@@ -294,7 +295,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
           ...(droppedAttributesCount !== undefined ? { droppedAttributesCount } : {}),
           ...(droppedEventsCount !== undefined ? { droppedEventsCount } : {}),
           ...decodeLinks(raw.links, warnings, spanId, spanTraceId),
-          droppedLinksCount: optionalUint32(raw.droppedLinksCount ?? raw.dropped_links_count, 'droppedLinksCount', warnings, spanId, spanTraceId),
+          droppedLinksCount: optionalUint32(traceField(raw, 'droppedLinksCount', 'dropped_links_count', spanPath), 'droppedLinksCount', warnings, spanId, spanTraceId),
           resourceAttributes,
           ...(scopeName ? { scopeName } : {}),
           ...(scopeVersion ? { scopeVersion } : {}),
@@ -458,7 +459,7 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
       }
       throw new TraceParseError(`Not valid JSON, and not JSON Lines either: line ${lines[i]!.number}: ${reason}`);
     }
-    const batch = isRecord(value) ? (value.resourceSpans ?? value.resource_spans) : value;
+    const batch = isRecord(value) ? traceField(value, 'resourceSpans', 'resource_spans', `Line ${lines[i]!.number}`) : value;
     if (hasLogSignal(value)) logBatches.push({ json: value, line: lines[i]!.number });
     if (Array.isArray(batch)) {
       for (const entry of batch) resourceSpans.push(entry);

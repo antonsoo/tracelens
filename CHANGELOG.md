@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Competing protocol field spellings
+
+- Reject non-null camelCase/snake_case declarations of the same trace collection,
+  span identity, timing, omission count, event field or link field. Previously,
+  selecting the camelCase field could silently hide five spans and all model
+  calls in a partitioned six-span native capture, without a warning.
+- Check each JSONL trace batch before flattening it. A single spelling and an
+  unset/null companion remain supported. Ambiguous log scalar fields retain
+  their raw values with warnings and no chosen normalized measurement/name.
+- CLI and offline browser replacements reject ambiguity before a misleading
+  report is produced; browser rejection preserves the previous comparison.
+  [Native controls, before/after and artifact evidence](studies/field-aliases/README.md).
+
 ### Messages in OTLP log exports
 
 - Join OTLP log records to imported spans by complete trace ID and span ID,
