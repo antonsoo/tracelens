@@ -75,6 +75,13 @@ variants are explicitly constructed, not observed production incidents.
 
 The [verification receipt](results/verification.json) retains source, input,
 build, packed-file, check-log and screenshot hashes. The package was installed
+All installed records match the complete source capture and reference its
+hash instead of duplicating it. Browser records reference a retained report
+by `reportRef`; nine distinct report objects represent the 64 actual downloads.
+The retention step checks each reference against the original full capture.
+The drivers still produce complete independent captures when rerun.
+
+The package was installed
 from the local archive; its unchanged `0.3.3` version does not identify a new
 npm release. The installed bin and exact-floor summary/tree/links commands also
 run successfully. No registry release, tag, manual deployment or remote CI
