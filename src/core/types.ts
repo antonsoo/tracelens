@@ -131,6 +131,8 @@ export interface ParsedSpan {
   kind: SpanKind;
   startTimeUnixNano: bigint;
   endTimeUnixNano: bigint;
+  /** Supplied end when an end-before-start interval was clamped for display. */
+  originalEndTimeUnixNano?: bigint;
   durationNs: bigint;
   status: { code: StatusCode; message?: string; raw?: unknown };
   attributes: AttrMap;

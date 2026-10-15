@@ -243,6 +243,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
           warnings.push({ comparisonIssue: 'span-inventory', message: `Skipped span "${String(raw.name)}" with missing or invalid timestamps. ${advice}`, spanId, traceId: spanTraceId });
           continue;
         }
+        const originalEndTimeUnixNano = end < start ? end : undefined;
         if (end < start) {
           warnings.push({
             comparisonIssue: 'span-timing',
@@ -274,6 +275,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
           kind: decodeSpanKind(raw.kind),
           startTimeUnixNano: start,
           endTimeUnixNano: end,
+          ...(originalEndTimeUnixNano !== undefined ? { originalEndTimeUnixNano } : {}),
           durationNs: end - start,
           status: decodeStatus(raw.status, message => warnings.push({ message, spanId, traceId: spanTraceId }),
             sourceFormat === 'jaeger-json' ? raw._tracelensStatusRaw : undefined),

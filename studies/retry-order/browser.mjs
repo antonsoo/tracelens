@@ -9,16 +9,20 @@ import { chromium, firefox } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 
 const [beforeArg, afterArg, outArg] = process.argv.slice(2);
+const completion = process.argv.includes('--completion');
 assert(beforeArg && afterArg && outArg, 'Expected BEFORE_DIST AFTER_DIST OUTPUT');
 const here = dirname(fileURLToPath(import.meta.url));
-const out = resolve(outArg), images = resolve(here, '../../docs/assets/retry-order');
+const out = resolve(outArg), images = resolve(here, '../../docs/assets/retry-order', ...(completion ? ['completion'] : []));
 await mkdir(out, { recursive: true });
 await mkdir(images, { recursive: true });
 const native = JSON.parse(await readFile(resolve(here, 'fixtures/native.json'), 'utf8'));
 const oracle = JSON.parse(await readFile(resolve(here, 'fixtures/oracle.json'), 'utf8'));
 const failed = oracle.observations.find(o => o.outcome === 'ERROR').spanId;
 const spans = native.resourceSpans[0].scopeSpans[0].spans;
-const root = spans.find(s => !s.parentSpanId), tools = spans.filter(s => s.parentSpanId);
+const root = spans.find(s => !s.parentSpanId);
+const tools = spans.filter(s => s.parentSpanId && (!completion || s.spanId !== oracle.observations.find(o => o.role === 'successful-peer').spanId));
+if (completion) tools.find(s => s.spanId === failed).endTimeUnixNano = String(BigInt(oracle.observations[0].startTimeUnixNano) - 1n);
+const spanCount = tools.length + 1;
 const permutations = values => values.length ? values.flatMap((v, i) =>
   permutations(values.filter((_, j) => i !== j)).map(rest => [v, ...rest])) : [[]];
 const hash = raw => createHash('sha256').update(raw).digest('hex');
@@ -71,14 +75,14 @@ for (const [phase, directory] of [['before', beforeArg], ['after', afterArg]]) {
           await context.setOffline(true); offline = true;
           server.closeAllConnections(); await new Promise(done => server.close(done));
           const values = [];
-          for (const [i, order] of permutations(tools).entries()) {
+          for (const [i, order] of (completion ? [tools] : permutations(tools)).entries()) {
             if (i) await page.getByRole('button', { name: 'Load another trace', exact: true }).click();
             const doc = structuredClone(native);
             doc.resourceSpans[0].scopeSpans[0].spans = [root, ...order];
             await page.locator('#tl-file-input').setInputFiles({ name: `order-${i}.json`,
               mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(doc)) });
-            await page.waitForFunction(() => !document.querySelector('.tl-load-notice') &&
-              document.querySelectorAll('.tl-wf-row').length === 4);
+            await page.waitForFunction(count => !document.querySelector('.tl-load-notice') &&
+              document.querySelectorAll('.tl-wf-row').length === count, spanCount);
             const cell = page.locator('.tl-summary-cell').filter({
               has: page.locator('.tl-summary-label', { hasText: 'Possible retries' }),
             });
@@ -87,11 +91,11 @@ for (const [phase, directory] of [['before', beforeArg], ['after', afterArg]]) {
             if (phase === 'after') { assert.equal(value, 'Unknown'); assert.match(text, /0 observed; 1 predecessor\(s\) uncertain/); }
             values.push({ order: order.map(s => s.spanId), value, text });
           }
-          if (phase === 'before') assert.deepEqual([...new Set(values.map(v => v.value))].sort(), ['0', '1']);
+          if (phase === 'before') assert.deepEqual([...new Set(values.map(v => v.value))].sort(), completion ? ['1'] : ['0', '1']);
           const errorCell = await page.locator('.tl-summary-cell').filter({
             has: page.locator('.tl-summary-label', { hasText: 'Spans / errors' }),
           }).innerText();
-          assert.match(errorCell, /4 \/ 1/);
+          assert.match(errorCell, new RegExp(`${spanCount} / 1`));
           await page.locator('.tl-wf-row.status-error').click();
           const download = page.waitForEvent('download');
           await page.getByRole('button', { name: 'Download span JSON', exact: true }).click();
@@ -100,6 +104,10 @@ for (const [phase, directory] of [['before', beforeArg], ['after', afterArg]]) {
           assert.equal(selected.spanId, failed);
           assert.equal(selected.status.code, 'ERROR');
           assert.equal(selected.startTimeUnixNano, oracle.observations[0].startTimeUnixNano);
+          if (completion && phase === 'after') {
+            assert.equal(selected.originalEndTimeUnixNano, String(BigInt(oracle.observations[0].startTimeUnixNano) - 1n));
+            assert.equal(selected.endTimeUnixNano, selected.startTimeUnixNano);
+          }
           await writeFile(resolve(out, `${phase}-${name}-${width}-span.json`), raw);
           const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
           const csp = await page.evaluate(() => window.policyViolations);
@@ -111,7 +119,7 @@ for (const [phase, directory] of [['before', beforeArg], ['after', afterArg]]) {
           for (const [asset, digest] of Object.entries(loaded)) assert.equal(digest, served[asset]);
           observations.push({ phase, browser: name, version: browser.version(), width, theme, firstImportOffline: true,
             values, errorCell, selectedSpanSha256: hash(raw), served, loaded, errors, external, late, csp, axe, overflow });
-          console.log(`${phase} ${name} ${width}: all six imports, summary, raw download and offline checks passed`);
+          console.log(`${phase} ${name} ${width}: ${values.length} imports, summary, download and offline checks passed`);
         } finally {
           server.closeAllConnections(); server.close(); await context.close();
         }
@@ -119,4 +127,4 @@ for (const [phase, directory] of [['before', beforeArg], ['after', afterArg]]) {
     } finally { await browser.close(); }
   }
 }
-await writeFile(resolve(out, 'browser.json'), JSON.stringify({ imports: observations.length * 6, observations }, null, 2) + '\n');
+await writeFile(resolve(out, 'browser.json'), JSON.stringify({ imports: observations.reduce((sum, o) => sum + o.values.length, 0), observations }, null, 2) + '\n');

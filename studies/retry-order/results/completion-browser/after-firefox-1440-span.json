@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "format": "tracelens-span-evidence",
+  "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+  "spanId": "b213b4b7888e87a4",
+  "parentSpanId": "6967108eff194050",
+  "name": "lookup",
+  "kind": "INTERNAL",
+  "startTimeUnixNano": "1792000000001000000",
+  "endTimeUnixNano": "1792000000001000000",
+  "originalEndTimeUnixNano": "1792000000000999999",
+  "durationNs": "0",
+  "status": {
+    "code": "ERROR",
+    "message": "Controlled local lookup failure."
+  },
+  "attributes": {
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.name": "lookup"
+  },
+  "events": [],
+  "links": [],
+  "resourceAttributes": {
+    "service.name": "controlled-retry-order"
+  },
+  "scopeName": "tracelens.retry-order",
+  "scopeVersion": "1",
+  "agentKind": "tool",
+  "convention": "otel-genai",
+  "depth": 1,
+  "children": [],
+  "genai": {
+    "operationName": "execute_tool",
+    "toolName": "lookup"
+  }
+}

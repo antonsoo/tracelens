@@ -423,7 +423,10 @@ for each trace, parent and tool name. Every call in the group sees the same
 immediately preceding distinct-start group. All predecessor candidates must
 support a completed failure to count a possible retry. If their outcomes or
 completion evidence disagree, the call contributes to `unknownRetryCount`.
-An unreadable preceding outcome also stays unknown. If every candidate rules
+An unreadable preceding outcome also stays unknown. A failed predecessor whose
+end-before-start interval was clamped has unknown completion, not an observed
+retry. A known successful predecessor still rules out a retry, and valid
+zero-duration failures remain supported. If every candidate rules
 out a completed failure, it adds no possible retry. Multiple later calls can
 each follow a known earlier failed group; they do not become predecessors of
 one another just because they appear consecutively in an export.
@@ -460,7 +463,11 @@ survive tab, theme and viewport changes while the same span is retained.
 **Download span JSON** exports `schemaVersion: 1` and
 `format: "tracelens-span-evidence"`, followed by the complete decoded span
 fields. Nanosecond `bigint` fields are decimal strings; `children` contains
-child span IDs, without copying descendants. `attributes`,
+child span IDs, without copying descendants. If the supplied end preceded the
+start, `endTimeUnixNano` is the clamped display interval and
+`originalEndTimeUnixNano` retains the supplied end as a decimal string.
+The warning and that original value remain available; clamping does not repair
+the recorded timing. `attributes`,
 `resourceAttributes`, normalized `genai` fields and events include all decoded
 entries retained by the import. Exporter omission counts describe missing
 span/event evidence; the download cannot recover what was never exported.

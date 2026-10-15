@@ -33,6 +33,11 @@ describe('equal-start retry predecessors', () => {
     ['both successful', [tool('a', 0, 2, 1), tool('b', 0, 2, 1), tool('c', 3, 4, 1)], [0, 0]],
     ['unreadable outcome', [tool('a', 0, 2, 8), tool('b', 0, 2, 1), tool('c', 3, 4, 1)], [0, 1]],
     ['conflicting completion', [tool('a', 0, 2, 2), tool('b', 0, 6, 2), tool('c', 3, 4, 1)], [0, 1]],
+    ['clamped failed completion', [tool('a', 2, 1, 2), tool('c', 3, 4, 1)], [0, 1]],
+    ['clamped successful completion', [tool('a', 2, 1, 1), tool('c', 3, 4, 1)], [0, 0]],
+    ['clamped unreadable completion', [tool('a', 2, 1, 8), tool('c', 3, 4, 1)], [0, 1]],
+    ['clamped failed peer', [tool('a', 2, 1, 2), tool('b', 2, 2, 2), tool('c', 3, 4, 1)], [0, 1]],
+    ['valid zero-duration failure', [tool('a', 2, 2, 2), tool('c', 3, 4, 1)], [1, 0]],
     ['overlapping failures', [tool('a', 0, 6, 2), tool('b', 0, 6, 2), tool('c', 3, 4, 1)], [0, 0]],
     ['parallel later attempts', [tool('a', 0, 2, 2), tool('b', 3, 4, 1), tool('c', 3, 4, 1)], [2, 0]],
     ['same-start zero durations', [tool('a', 0, 0, 2), tool('b', 0, 0, 1), tool('c', 0, 0, 1)], [0, 0]],
@@ -48,6 +53,17 @@ describe('equal-start retry predecessors', () => {
       .toEqual([0, 0]);
     const a = tool('a', 0, 2, 2), b = { ...tool('b', 3, 4, 1), traceId: 'b'.repeat(32) };
     expect(counts([a, b])).toEqual([0, 0]);
+  });
+
+  it('keeps the supplied reversed end alongside the drawable clamped interval', () => {
+    const trace = parseOtlpJson(otlpDoc([tool('a', 2, 1, 2), tool('b', 3, 4, 1)]));
+    const failed = trace.spans.find(span => span.status.code === 'ERROR')!;
+    expect(failed.originalEndTimeUnixNano).toBe(1n);
+    expect(failed.endTimeUnixNano).toBe(2n);
+    expect(failed.durationNs).toBe(0n);
+    expect(trace.warnings).toEqual([expect.objectContaining({ comparisonIssue: 'span-timing', spanId: failed.spanId })]);
+    const summary = buildSummary(trace, []);
+    expect([summary.retryCount, summary.unknownRetryCount, summary.errorCount]).toEqual([0, 1, 1]);
   });
 
   it('handles large timestamp peer groups without enumerating every candidate pair', () => {

@@ -6,6 +6,10 @@ All notable changes to this project are documented in this file.
 
 ### Timestamp ties in possible retries
 
+- Keep completion unknown when a failed predecessor's reversed interval was
+  clamped for display. Preserve its supplied end in `originalEndTimeUnixNano`,
+  including span JSON downloads. Valid zero-duration failures and successful
+  or overlapping controls retain their interpretation.
 - Stop using serialized record order to select the preceding tool-call outcome
   when calls have identical start timestamps. Evaluate timestamp peer groups
   together for each trace, parent and tool name.
@@ -15,7 +19,7 @@ All notable changes to this project are documented in this file.
 - Preserve all spans and statuses. `unknownRetryCount` now also includes
   ambiguous predecessor evidence; browser and terminal summaries explain it.
   [Native SDK capture and all-permutation CLI/browser checks](studies/retry-order/README.md).
-  Unreleased local source change; no registry release or hosted deployment.
+  Unreleased source change; no registry release or manual hosted deployment.
 
 ### Span status evidence
 

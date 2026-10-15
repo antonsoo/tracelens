@@ -113,6 +113,53 @@ The fixed-capture replay is also suitable for a separately installed package:
 pass its executable's JavaScript path with `--cli`, and optionally `--node`
 for another supported runtime.
 
+## Clamping cannot establish completion
+
+A second replay removes the successful timestamp peer from the same native
+capture, leaving a failed lookup and a later successful lookup. The valid
+capture has one possible retry. Declared damage changes the failed call's end
+to one nanosecond before its start. Previously the importer clamped it to zero
+duration, discarded the supplied end, and still reported one possible retry.
+The warning did not prevent the unsupported inference.
+
+The parser now retains `originalEndTimeUnixNano` beside its drawable interval.
+Retry inference treats completion of that failed call as unknown. Its known
+ERROR status and the parser warning remain intact. This does not make other
+timing aggregates valid: comparisons still reject reversed intervals, and
+individual display timings remain clamped as before.
+
+| Predecessor control | Before: observed / unknown | After: observed / unknown |
+|---|---:|---:|
+| Valid completed ERROR | 1 / 0 | 1 / 0 |
+| End-before-start ERROR | 1 / 0 | 0 / 1 |
+| Valid zero-duration ERROR | 1 / 0 | 1 / 0 |
+| Overlapping ERROR | 0 / 0 | 0 / 0 |
+| End-before-start OK | 0 / 0 | 0 / 0 |
+| End-before-start unreadable status | 0 / 1 | 0 / 1 |
+
+[`completion.mjs`](completion.mjs) declares every mutation and replays the real
+CLI; [before](results/completion-before.json) and
+[after](results/completion-after.json) retain inputs, hashes, expected counts,
+warnings and terminal output. The unchanged peer-order replay still agrees.
+
+```bash
+node studies/retry-order/completion.mjs --out completion.json
+node studies/retry-order/browser.mjs BEFORE_DIST dist completion-browser --completion
+```
+
+The [completion browser receipt](results/completion-browser/browser.json)
+covers a fresh offline import in Chromium and Firefox at 1440 px/dark and
+375 px/light for baseline `375a311` and the correction. All eight views retain
+three spans and one known error; the corrected header shows Unknown, zero
+observed and one uncertain predecessor. Corrected span downloads retain the
+supplied reversed end and the clamped display end separately. Served assets
+match the tested build; page errors, late/external requests, CSP/accessibility
+violations and document overflow are absent. All eight screenshots were
+visually inspected, including [desktop](../../docs/assets/retry-order/completion/after-chromium-1440.png)
+and [phone](../../docs/assets/retry-order/completion/after-firefox-375.png).
+
+## Original verification snapshot
+
 The default parallel unit run failed the parser's existing one-second
 performance assertion and the fuzz test's five-second deadline on this shared
 host. The complete 474-test suite then passed with `--maxWorkers=1`, preserving

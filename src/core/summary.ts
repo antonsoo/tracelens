@@ -31,7 +31,7 @@ export interface TraceSummary {
   /** Present only when retained spans lack a decodable status outcome. */
   unknownStatusCount?: number;
   retryCount: number;
-  /** Repetitions whose preceding outcome is unreadable or ambiguous among timestamp peers. */
+  /** Repetitions whose preceding outcome or completion is unreadable or ambiguous. */
   unknownRetryCount?: number;
   modelUsage: ModelUsageRow[];
   /** Known subtotal; consult costReport.estimatedCostUsd for full-estimate availability. */
@@ -76,9 +76,14 @@ function countRetries(spans: ParsedSpan[]): { count: number; unknown: number } {
       let no = false;
       let unreadable = false;
       for (const candidate of previous) {
-        if (candidate.endTimeUnixNano > start) no = true;
+        // A clamped interval is drawable, but cannot establish completion.
+        // A known non-failure still rules out a retry independently of timing.
+        if (isKnownStatusCode(candidate.status.code) && candidate.status.code !== 'ERROR') no = true;
+        else if (candidate.originalEndTimeUnixNano !== undefined ||
+          candidate.endTimeUnixNano < candidate.startTimeUnixNano ||
+          candidate.durationNs !== candidate.endTimeUnixNano - candidate.startTimeUnixNano) unreadable = true;
+        else if (candidate.endTimeUnixNano > start) no = true;
         else if (candidate.status.code === 'ERROR') yes = true;
-        else if (isKnownStatusCode(candidate.status.code)) no = true;
         else unreadable = true;
       }
       if (unreadable || (yes && no)) unknown += end - i;
