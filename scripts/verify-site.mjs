@@ -5,9 +5,15 @@ import { chromium, firefox } from 'playwright';
 import assert from 'node:assert/strict';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { resolve, join } from 'node:path';
 const [url, directory] = process.argv.slice(2);
-if (!url || !directory) throw new Error('Usage: node scripts/verify-site.mjs <site-url> <output-directory>');
+if (!url || !directory) throw new Error('Usage: node scripts/verify-site.mjs <site-url> <output-directory> [--inspection] [--engine=chromium|firefox]');
+const inspection = process.argv.includes('--inspection');
+const selectedEngine = process.argv.find(arg => arg.startsWith('--engine='))?.slice('--engine='.length);
+if (selectedEngine && !['chromium', 'firefox'].includes(selectedEngine)) throw new Error(`Unknown browser engine: ${selectedEngine}`);
+const verifyInspection = inspection ? (await import('./verify-inspection.mjs')).verifyInspection : undefined;
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const output = resolve(directory);
 await mkdir(output, { recursive: true });
 const origin = new URL(url).origin;
@@ -28,14 +34,29 @@ async function download(page, button) {
 }
 const observations = [];
 for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
+  if (selectedEngine && browserName !== selectedEngine) continue;
   const browser = await launcher.launch();
   try {
     for (const theme of ['dark', 'light']) for (const width of [1440, 375]) {
-      const context = await browser.newContext({ viewport: { width, height: 960 }, colorScheme: theme });
+      const context = await browser.newContext({ viewport: { width, height: 960 }, colorScheme: theme, reducedMotion: 'reduce' });
       const page = await context.newPage();
       const errors = [], external = [], csp = [];
+      const loaded = {}, pending = [], lateInspectionRequests = [];
+      let inspectionOffline = false, captureAssets = inspection;
       page.on('pageerror', (error) => errors.push(String(error)));
-      page.on('request', (request) => { if (new URL(request.url()).origin !== origin) external.push(request.url()); });
+      page.on('request', (request) => {
+        if (new URL(request.url()).origin !== origin) external.push(request.url());
+        if (inspectionOffline && /^https?:/.test(request.url())) lateInspectionRequests.push(request.url());
+      });
+      if (inspection) page.on('response', response => {
+        if (!captureAssets || !response.url().startsWith(origin + new URL(url).pathname)) return;
+        const path = new URL(response.url()).pathname.slice(new URL(url).pathname.length) || 'index.html';
+        pending.push((async () => {
+          const digest = hash(await response.body());
+          assert.equal(digest, hash(await readFile(join('dist', path))), `${name}: ${path}`);
+          loaded[path] = digest;
+        })().catch(error => errors.push(`${path}: ${error}`)));
+      });
       await page.exposeFunction('recordCsp', (directive) => csp.push(directive));
       await page.addInitScript(() => document.addEventListener('securitypolicyviolation', (event) => window.recordCsp(event.violatedDirective)));
       const name = `${browserName}-${theme}-${width}`;
@@ -50,6 +71,14 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
         }
       }
       await page.goto(url);
+      if (inspection) {
+        // Read entry assets before navigating. Worker-owned sample responses can
+        // disappear from Chromium's protocol as soon as that worker completes;
+        // verify-assets.py separately checks every public file, including samples.
+        await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.fonts].map(font => font.load())); });
+        await Promise.all(pending);
+        captureAssets = false;
+      }
       await page.getByRole('button', { name: 'Follow queued jobs (local SDK capture)' }).click();
       const links = page.locator('.tl-links');
       await links.locator('summary').click();
@@ -60,6 +89,7 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
       const span = await download(page, page.getByRole('button', { name: 'Download span JSON' }));
       assert.equal(span.links.length, 3);
       assert.equal(span.droppedLinksCount, 1);
+      await Promise.all(pending);
       await context.setOffline(true);
       await page.getByRole('button', { name: 'Inspect enqueue job 2', exact: true }).click();
       await page.locator('.tl-detail-title').filter({ hasText: /^enqueue job 2$/ }).waitFor();
@@ -74,6 +104,7 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
       await receipt.waitFor();
       assert.match(await receipt.innerText(), /\$0\.00081907/);
       await inspect('cost');
+      await Promise.all(pending);
       await context.setOffline(true);
       const cost = await download(page, receipt.getByRole('button', { name: 'Download cost receipt' }));
       assert.deepEqual(cost.result, expected.cost.rows.find((row) => row.kind === 'llm').result);
@@ -85,6 +116,7 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
       assert.equal(prices.find((row) => row.id === 'gpt-6.1-sol').cacheReadPerMTok, 0.1);
       await page.getByRole('button', { name: 'Cancel', exact: true }).click();
 
+      await Promise.all(pending);
       await page.goto(url);
       await page.getByRole('button', { name: 'Parallel vs sequential (local capture)' }).click();
       const panels = page.locator('.tl-timing');
@@ -92,6 +124,7 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
       await panels.first().locator('.tl-timing-window').first().click();
       await page.locator('.tl-timing-source h3').waitFor();
       await inspect('timing');
+      await Promise.all(pending);
       await context.setOffline(true);
       const comparison = await download(page, page.getByRole('button', { name: 'Export JSON', exact: true }));
       assert.deepEqual(comparison.timing, expected.timing);
@@ -103,6 +136,14 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
       await page.locator('.tl-detail-title').filter({ hasText: targetName }).waitFor();
       await page.getByRole('button', { name: 'Back to comparison' }).click();
       assert.deepEqual(await download(page, page.getByRole('button', { name: 'Export JSON', exact: true })), comparison);
+      let inspectionRecords;
+      if (verifyInspection) {
+        inspectionOffline = true;
+        inspectionRecords = await verifyInspection({ page, width, download, inspect });
+        await Promise.all(pending);
+        assert(Object.hasOwn(loaded, 'index.html'), `${name}: no entry HTML recorded`);
+        assert.deepEqual(lateInspectionRequests, []);
+      }
       assert.deepEqual(errors, []);
       assert.deepEqual(external, []);
       assert.deepEqual(csp, []);
@@ -110,9 +151,11 @@ for (const [browserName, launcher] of Object.entries({ chromium, firefox })) {
         linksEqualCli: true, offlineTarget: 'enqueue job 2', batchLinks: 3, droppedLinks: 1,
         costEqualCli: true, offlineCostReceipt: true, refreshedPrices: true,
         timingEqualCli: true, completeIntervalExport: true, offlineComparisonPreserved: true,
-        overflows, errors, external, csp });
-      await writeFile(join(output, 'verification.json'), JSON.stringify({ url, observations }, null, 2) + '\n');
+        overflows, errors, external, csp,
+        ...(inspection ? { inspection: inspectionRecords, loaded, lateInspectionRequests } : {}) });
+      await writeFile(join(output, 'verification.json'), JSON.stringify({ checkedAt: new Date().toISOString(), url, observations }, null, 2) + '\n');
       console.log(`${name}: links, cost, prices and timing agree; offline navigation/downloads agree`);
+      if (inspection) console.log(`${name}: retry/completion evidence, partial tokens and long-trace navigation agree offline`);
       await context.close();
     }
   } finally { await browser.close(); }

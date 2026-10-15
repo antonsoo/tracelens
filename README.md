@@ -86,7 +86,7 @@ on npm; the command it installs is `tracelens`).
 |---|---|
 | Source checkout | Current parser, browser and CLI, including `timing`, `cost`, `links` and `logs`. |
 | npm 0.3.3 | Published inspection commands; predates those four commands and the current correctness repairs. |
-| Live demo | A separate browser deployment; source verification does not establish its deployed revision. |
+| Live demo | [Verified inspection build](docs/verification-inspection-2026-10-14.md#public-browser-deployment), updated separately from npm. |
 
 ## Screenshots
 
@@ -416,22 +416,21 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
 - Incomplete or invalid token counts leave costs unknown. Single-run
   totals label partial costs as subtotals. Cache counts must be included
   in total input; billing details beyond the token price table are not modeled.
-  The source checkout also validates typed attribute values before normalization:
+  The current importer also validates typed attribute values before normalization:
   empty integers cannot become zero, duplicate attributes cannot select the last
   count, and valid quoted doubles remain numeric. Rejected values stay inspectable.
   [SDK control, altered exports and offline downloads](studies/attribute-values/README.md).
-  This decoder correction is local source work, not a deployed or npm release.
 - Malformed resource/scope containers now produce [source-path warnings](studies/export-containers/README.md)
-  in the source checkout. Readable spans remain available, but the number and
-  identity of spans inside an unreadable container stay unknown. This is also
-  local source work; complete instrumentation cannot be inferred from the file.
-- Competing camelCase/snake_case trace fields are rejected in the source checkout.
+  while readable spans remain available. The number and identity of spans inside
+  an unreadable container stay unknown; complete instrumentation cannot be
+  inferred from the file.
+- Competing camelCase/snake_case trace fields are rejected by the current importer.
   A partitioned native six-span capture previously displayed only its agent root,
   with no model calls or warnings, because the second resource collection was
   ignored. Single spellings remain supported; ambiguous log scalar fields stay
   raw evidence with warnings and unavailable normalized values.
   [CLI and offline browser reproduction](studies/field-aliases/README.md).
-- In the source checkout, quantitative comparisons reject observed span-import
+- Quantitative comparisons reject observed span-import
   losses, invalid intervals and unresolved or unreadable parent identities.
   A damaged timestamp in a native capture previously appeared as 40.6% fewer
   input tokens; the candidate now fails comparison validation and the browser
@@ -445,7 +444,7 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   [Native SDK cost reproduction and scope](studies/cost-coverage/README.md).
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
-  In this source build, calls with identical start timestamps are evaluated
+  Calls with identical start timestamps are evaluated
   together. Conflicting predecessor outcomes leave the count unknown rather
   than letting export order select a failure or success. A clamped failed
   interval also leaves completion unknown, retaining the supplied end in

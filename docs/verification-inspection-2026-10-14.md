@@ -70,6 +70,49 @@ focused run; the phone layout has improved without changing the evidence.
 [Phone history](assets/message-decoding/history-chromium-375.png),
 [desktop system parts](assets/message-decoding/system-firefox-1440.png).
 
+## Public browser deployment
+
+The existing `gh-pages` branch was advanced without rewriting its history. It
+serves the clean application's `dist/` output; no registry package or version tag
+was created.
+
+| Artifact | Revision or result |
+|---|---|
+| Application implementation | `0c51954276879eb13c763f4523316a062c7c2a2c` |
+| Published Pages branch | [`2f11ff24d12425ea6218d89bfd5874844f47c69f`](https://github.com/antonsoo/tracelens/commit/2f11ff24d12425ea6218d89bfd5874844f47c69f) |
+| Clean build versus public HTTP files | 34/34 byte-identical |
+| Existing npm version | 0.3.3; unchanged by this work |
+
+The [deployment receipt](verification/inspection-2026-10-14/deployment.json)
+records both branch heads and the exact file hashes. The previous hashed
+JavaScript and CSS files remain available for clients holding the older HTML;
+they are additional files, not part of the 34-file current-build comparison.
+
+The public URL was exercised in Chromium and Firefox, both themes, at 1440
+and 375 pixels: eight contexts, using separate invocations for each engine.
+The [Chromium](verification/inspection-2026-10-14/public-chromium.json) and
+[Firefox](verification/inspection-2026-10-14/public-firefox.json) receipts retain
+browser versions, actual first-navigation asset hashes, selected-span downloads,
+geometry, input hashes and request/error checks. The driver reads entry HTML,
+JavaScript, CSS and fonts before changing routes; the independent HTTP receipt
+also checks every shipped example.
+
+Each context compares actual links, cost and timing downloads with the CLI,
+follows a cross-trace target offline, and preserves a comparison after inspecting
+its active interval. Six further local-file imports run offline: native timestamp
+peers, a declared reversed failed interval, complete/partial/recovered Strands
+token coverage and the synthetic 6,000-span trace. Unknown quantities stay
+unknown, the supplied reversed end survives the download, and keyboard End
+reaches the last span while zoom preserves scrolling. These are warm offline
+publication checks; the earlier clean suite and studies separately verify first
+file imports after disconnecting fresh contexts.
+
+There were no page errors, external requests, CSP violations, horizontal
+document overflows or HTTP requests during the six offline imports. The final
+long-trace view also passes the accessibility audit in every context. All 16
+public-site screenshots were inspected, including the [phone last-span view](assets/inspection-published/inspection-chromium-light-375.png)
+and [cost receipt](assets/inspection-published/cost-firefox-light-375.png).
+
 ## Reproduction
 
 ```bash
@@ -84,3 +127,14 @@ The individual studies document their independent schedules, declared damage,
 measured populations and replay arguments. Installed replays accept `--cli`
 and `--node`; the selected executable's directory determines the imported core.
 Build output is `dist/` for the static app and `dist-cli/` for the package.
+
+From a built checkout, repeat the publication checks with:
+
+```bash
+python scripts/verify-assets.py https://antonsoo.github.io/tracelens/ dist public-assets.json --build-source 0c51954276879eb13c763f4523316a062c7c2a2c
+node scripts/verify-site.mjs https://antonsoo.github.io/tracelens/ public-chromium --inspection --engine=chromium
+node scripts/verify-site.mjs https://antonsoo.github.io/tracelens/ public-firefox --inspection --engine=firefox
+```
+
+The served version can change after this capture; compare hashes before
+attributing subsequent observations to this implementation.

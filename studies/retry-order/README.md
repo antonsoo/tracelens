@@ -200,4 +200,6 @@ are byte-identical to the inspected/installed implementation. The remaining
 [corrected four-case run](results/verification/targeted-browser.log).
 
 The build command is `npm run build`, producing `dist/` for the static browser
-app and `dist-cli/` for the npm CLI. Both remain local artifacts for review.
+app and `dist-cli/` for the npm CLI. At the original capture both were local
+artifacts for review. The [consolidated verification](../../docs/verification-inspection-2026-10-14.md)
+records the later source push and public browser deployment; npm remains unreleased.

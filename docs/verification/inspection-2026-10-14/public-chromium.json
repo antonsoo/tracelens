@@ -1,0 +1,846 @@
+{
+  "checkedAt": "2026-10-15T07:12:01.432Z",
+  "url": "https://antonsoo.github.io/tracelens/",
+  "observations": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "dark",
+      "width": 1440,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        },
+        {
+          "scenario": "inspection",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": [],
+      "inspection": [
+        {
+          "name": "timestamp-peers",
+          "inputSha256": "9613ad4a8eb4cd8cd56907e9456759d769ce9475853b1ba695d5932fdcad246e",
+          "spans": 4,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000002000000",
+            "durationNs": "1000000",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "clamped-completion",
+          "inputSha256": "f29aeb0acbe8ff2b37e066469417dbbcd56cd8d6e1f10b1e9cdd1ebeaffafdcc",
+          "spans": 3,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000001000000",
+            "originalEndTimeUnixNano": "1792000000000999999",
+            "durationNs": "0",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "complete-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "partial-tokens",
+          "inputSha256": "dd1127907ff766d7d22281f2bfd2f619bd65e20156fc9dd22955d57b42f18651",
+          "spans": 5,
+          "tokenValue": "Unknown / Unknown",
+          "tokenText": "TOKENS IN / OUT\nUnknown / Unknown\n104 / 12 reported; partial import"
+        },
+        {
+          "name": "recovered-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "synthetic-long-trace",
+          "inputSha256": "e22d2ec1770468fec7ece5fd3a9abe1b9be1d35c7a363a769ce7be44caecb1fa",
+          "spans": 6000,
+          "lastSpanReached": true,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "adadadadadadadadadadadadadadadad",
+            "spanId": "000000000000176f",
+            "parentSpanId": "ffffffffffffffff",
+            "name": "call 5999",
+            "kind": "UNSPECIFIED",
+            "startTimeUnixNano": "11998000",
+            "endTimeUnixNano": "11999000",
+            "durationNs": "1000",
+            "status": {
+              "code": "UNSET"
+            },
+            "attributes": {},
+            "events": [],
+            "links": [],
+            "resourceAttributes": {},
+            "agentKind": "other",
+            "convention": "none",
+            "depth": 1,
+            "children": []
+          },
+          "zoomPreservedScroll": true,
+          "geometry": {
+            "viewportHeight": 960,
+            "centerHeight": 747.5625,
+            "detailDistanceFromTimeline": 0,
+            "visibleTimelineWidth": 679,
+            "renderedRows": 38
+          },
+          "axe": []
+        }
+      ],
+      "loaded": {
+        "index.html": "21843e9a7c73780ddd63fe268289366a39281856a169db642faf2b152032f8a2",
+        "assets/index-Dgc6-VJk.css": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f",
+        "assets/index-DvEzsv6g.js": "1ab0e8054d540827fda79dda29179635150fc1701f79f2c34c30de0a6b5eacc9",
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe",
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce",
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9",
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb",
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470",
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2",
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2",
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0",
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea",
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc",
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910",
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a",
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015",
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa",
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6",
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b",
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83",
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81",
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+      },
+      "lateInspectionRequests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "dark",
+      "width": 375,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        },
+        {
+          "scenario": "inspection",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": [],
+      "inspection": [
+        {
+          "name": "timestamp-peers",
+          "inputSha256": "9613ad4a8eb4cd8cd56907e9456759d769ce9475853b1ba695d5932fdcad246e",
+          "spans": 4,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000002000000",
+            "durationNs": "1000000",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "clamped-completion",
+          "inputSha256": "f29aeb0acbe8ff2b37e066469417dbbcd56cd8d6e1f10b1e9cdd1ebeaffafdcc",
+          "spans": 3,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000001000000",
+            "originalEndTimeUnixNano": "1792000000000999999",
+            "durationNs": "0",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "complete-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "partial-tokens",
+          "inputSha256": "dd1127907ff766d7d22281f2bfd2f619bd65e20156fc9dd22955d57b42f18651",
+          "spans": 5,
+          "tokenValue": "Unknown / Unknown",
+          "tokenText": "TOKENS IN / OUT\nUnknown / Unknown\n104 / 12 reported; partial import"
+        },
+        {
+          "name": "recovered-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "synthetic-long-trace",
+          "inputSha256": "e22d2ec1770468fec7ece5fd3a9abe1b9be1d35c7a363a769ce7be44caecb1fa",
+          "spans": 6000,
+          "lastSpanReached": true,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "adadadadadadadadadadadadadadadad",
+            "spanId": "000000000000176f",
+            "parentSpanId": "ffffffffffffffff",
+            "name": "call 5999",
+            "kind": "UNSPECIFIED",
+            "startTimeUnixNano": "11998000",
+            "endTimeUnixNano": "11999000",
+            "durationNs": "1000",
+            "status": {
+              "code": "UNSET"
+            },
+            "attributes": {},
+            "events": [],
+            "links": [],
+            "resourceAttributes": {},
+            "agentKind": "other",
+            "convention": "none",
+            "depth": 1,
+            "children": []
+          },
+          "zoomPreservedScroll": true,
+          "geometry": {
+            "viewportHeight": 960,
+            "centerHeight": 576,
+            "detailDistanceFromTimeline": 576,
+            "visibleTimelineWidth": 168.75,
+            "renderedRows": 28
+          },
+          "axe": []
+        }
+      ],
+      "loaded": {
+        "index.html": "21843e9a7c73780ddd63fe268289366a39281856a169db642faf2b152032f8a2",
+        "assets/index-Dgc6-VJk.css": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f",
+        "assets/index-DvEzsv6g.js": "1ab0e8054d540827fda79dda29179635150fc1701f79f2c34c30de0a6b5eacc9",
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce",
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9",
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6",
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a",
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc",
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910",
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015",
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa",
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea",
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb",
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81",
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2",
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b",
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935",
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0",
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470",
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2",
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe",
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+      },
+      "lateInspectionRequests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "light",
+      "width": 1440,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        },
+        {
+          "scenario": "inspection",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": [],
+      "inspection": [
+        {
+          "name": "timestamp-peers",
+          "inputSha256": "9613ad4a8eb4cd8cd56907e9456759d769ce9475853b1ba695d5932fdcad246e",
+          "spans": 4,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000002000000",
+            "durationNs": "1000000",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "clamped-completion",
+          "inputSha256": "f29aeb0acbe8ff2b37e066469417dbbcd56cd8d6e1f10b1e9cdd1ebeaffafdcc",
+          "spans": 3,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000001000000",
+            "originalEndTimeUnixNano": "1792000000000999999",
+            "durationNs": "0",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "complete-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "partial-tokens",
+          "inputSha256": "dd1127907ff766d7d22281f2bfd2f619bd65e20156fc9dd22955d57b42f18651",
+          "spans": 5,
+          "tokenValue": "Unknown / Unknown",
+          "tokenText": "TOKENS IN / OUT\nUnknown / Unknown\n104 / 12 reported; partial import"
+        },
+        {
+          "name": "recovered-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "synthetic-long-trace",
+          "inputSha256": "e22d2ec1770468fec7ece5fd3a9abe1b9be1d35c7a363a769ce7be44caecb1fa",
+          "spans": 6000,
+          "lastSpanReached": true,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "adadadadadadadadadadadadadadadad",
+            "spanId": "000000000000176f",
+            "parentSpanId": "ffffffffffffffff",
+            "name": "call 5999",
+            "kind": "UNSPECIFIED",
+            "startTimeUnixNano": "11998000",
+            "endTimeUnixNano": "11999000",
+            "durationNs": "1000",
+            "status": {
+              "code": "UNSET"
+            },
+            "attributes": {},
+            "events": [],
+            "links": [],
+            "resourceAttributes": {},
+            "agentKind": "other",
+            "convention": "none",
+            "depth": 1,
+            "children": []
+          },
+          "zoomPreservedScroll": true,
+          "geometry": {
+            "viewportHeight": 960,
+            "centerHeight": 747.5625,
+            "detailDistanceFromTimeline": 0,
+            "visibleTimelineWidth": 679,
+            "renderedRows": 38
+          },
+          "axe": []
+        }
+      ],
+      "loaded": {
+        "index.html": "21843e9a7c73780ddd63fe268289366a39281856a169db642faf2b152032f8a2",
+        "assets/index-Dgc6-VJk.css": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f",
+        "assets/index-DvEzsv6g.js": "1ab0e8054d540827fda79dda29179635150fc1701f79f2c34c30de0a6b5eacc9",
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe",
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce",
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9",
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b",
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81",
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a",
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc",
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83",
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa",
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6",
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2",
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2",
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb",
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910",
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea",
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015",
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935",
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0",
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+      },
+      "lateInspectionRequests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "theme": "light",
+      "width": 375,
+      "linksEqualCli": true,
+      "offlineTarget": "enqueue job 2",
+      "batchLinks": 3,
+      "droppedLinks": 1,
+      "costEqualCli": true,
+      "offlineCostReceipt": true,
+      "refreshedPrices": true,
+      "timingEqualCli": true,
+      "completeIntervalExport": true,
+      "offlineComparisonPreserved": true,
+      "overflows": [
+        {
+          "scenario": "links",
+          "overflow": false
+        },
+        {
+          "scenario": "cost",
+          "overflow": false
+        },
+        {
+          "scenario": "timing",
+          "overflow": false
+        },
+        {
+          "scenario": "inspection",
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "csp": [],
+      "inspection": [
+        {
+          "name": "timestamp-peers",
+          "inputSha256": "9613ad4a8eb4cd8cd56907e9456759d769ce9475853b1ba695d5932fdcad246e",
+          "spans": 4,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000002000000",
+            "durationNs": "1000000",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "clamped-completion",
+          "inputSha256": "f29aeb0acbe8ff2b37e066469417dbbcd56cd8d6e1f10b1e9cdd1ebeaffafdcc",
+          "spans": 3,
+          "retryValue": "Unknown",
+          "knownErrors": 1,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+            "spanId": "b213b4b7888e87a4",
+            "parentSpanId": "6967108eff194050",
+            "name": "lookup",
+            "kind": "INTERNAL",
+            "startTimeUnixNano": "1792000000001000000",
+            "endTimeUnixNano": "1792000000001000000",
+            "originalEndTimeUnixNano": "1792000000000999999",
+            "durationNs": "0",
+            "status": {
+              "code": "ERROR",
+              "message": "Controlled local lookup failure."
+            },
+            "attributes": {
+              "gen_ai.operation.name": "execute_tool",
+              "gen_ai.tool.name": "lookup"
+            },
+            "events": [],
+            "links": [],
+            "resourceAttributes": {
+              "service.name": "controlled-retry-order"
+            },
+            "scopeName": "tracelens.retry-order",
+            "scopeVersion": "1",
+            "agentKind": "tool",
+            "convention": "otel-genai",
+            "depth": 1,
+            "children": [],
+            "genai": {
+              "operationName": "execute_tool",
+              "toolName": "lookup"
+            }
+          }
+        },
+        {
+          "name": "complete-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "partial-tokens",
+          "inputSha256": "dd1127907ff766d7d22281f2bfd2f619bd65e20156fc9dd22955d57b42f18651",
+          "spans": 5,
+          "tokenValue": "Unknown / Unknown",
+          "tokenText": "TOKENS IN / OUT\nUnknown / Unknown\n104 / 12 reported; partial import"
+        },
+        {
+          "name": "recovered-tokens",
+          "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+          "spans": 6,
+          "tokenValue": "175 / 26",
+          "tokenText": "TOKENS IN / OUT\n175 / 26"
+        },
+        {
+          "name": "synthetic-long-trace",
+          "inputSha256": "e22d2ec1770468fec7ece5fd3a9abe1b9be1d35c7a363a769ce7be44caecb1fa",
+          "spans": 6000,
+          "lastSpanReached": true,
+          "selectedSpan": {
+            "schemaVersion": 1,
+            "format": "tracelens-span-evidence",
+            "traceId": "adadadadadadadadadadadadadadadad",
+            "spanId": "000000000000176f",
+            "parentSpanId": "ffffffffffffffff",
+            "name": "call 5999",
+            "kind": "UNSPECIFIED",
+            "startTimeUnixNano": "11998000",
+            "endTimeUnixNano": "11999000",
+            "durationNs": "1000",
+            "status": {
+              "code": "UNSET"
+            },
+            "attributes": {},
+            "events": [],
+            "links": [],
+            "resourceAttributes": {},
+            "agentKind": "other",
+            "convention": "none",
+            "depth": 1,
+            "children": []
+          },
+          "zoomPreservedScroll": true,
+          "geometry": {
+            "viewportHeight": 960,
+            "centerHeight": 576,
+            "detailDistanceFromTimeline": 576,
+            "visibleTimelineWidth": 168.75,
+            "renderedRows": 28
+          },
+          "axe": []
+        }
+      ],
+      "loaded": {
+        "index.html": "21843e9a7c73780ddd63fe268289366a39281856a169db642faf2b152032f8a2",
+        "assets/index-Dgc6-VJk.css": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f",
+        "assets/index-DvEzsv6g.js": "1ab0e8054d540827fda79dda29179635150fc1701f79f2c34c30de0a6b5eacc9",
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9",
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce",
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0",
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b",
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910",
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a",
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc",
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea",
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa",
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6",
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015",
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935",
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb",
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2",
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2",
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470",
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81",
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe",
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+      },
+      "lateInspectionRequests": []
+    }
+  ]
+}
