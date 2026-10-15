@@ -1,0 +1,29 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 test
+npm notice run vitest run --maxWorkers=1 tests/otlp-parser.test.ts
+
+ RUN  v5.0.2 <baseline-checkout>
+
+ ❯ tests/otlp-parser.test.ts (14 tests | 1 failed) 2064ms
+   ❯ parseOtlpJson performance on a large generated trace (1)
+     × parses 20,000 spans in well under a second 1836ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/otlp-parser.test.ts > parseOtlpJson performance on a large generated trace > parses 20,000 spans in well under a second
+AssertionError: expected 1523.962395 to be less than 1000
+ ❯ tests/otlp-parser.test.ts:118:23
+    116|     // Generous bound: this machine (14 vCPU WSL2, 48GB RAM) parses th…
+    117|     // of ms; 1000ms leaves headroom for CI hardware without being a m…
+    118|     expect(elapsedMs).toBeLessThan(1000);
+       |                       ^
+    119|   });
+    120| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 passed (14)
+   Start at  22:40:35
+   Duration  3.84s (tests 61%, transform 34%, import 4%)
+

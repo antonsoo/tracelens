@@ -112,3 +112,44 @@ The screenshots were visually inspected:
 The fixed-capture replay is also suitable for a separately installed package:
 pass its executable's JavaScript path with `--cli`, and optionally `--node`
 for another supported runtime.
+
+The default parallel unit run failed the parser's existing one-second
+performance assertion and the fuzz test's five-second deadline on this shared
+host. The complete 474-test suite then passed with `--maxWorkers=1`, preserving
+both assertions and deadlines; all 32 CLI checks passed too. The original
+[parallel timing failures](results/checks.log) and
+[sequential results](results/checks-sequential.log) are retained. Checkout
+paths in those logs are normalized to `<checkout>`.
+
+A fresh archive of `7311fe7` passed lint, type checking, web/CLI builds and
+all 32 console checks. Its unit run passed 473/474 tests; the same parser
+wall-clock assertion exceeded one second on the baseline too, with identical
+parser source bytes. That timing check remains an unresolved qualification;
+no threshold was changed. [Baseline timing](results/verification/parser-baseline.log)
+and [clean checks](results/verification/clean-checks.log) retain the failures.
+
+The packed npm artifact was installed outside the source checkout. All six
+permutations and actual CLI summaries agree with source on Node 20.0.0 and
+26.7.0. All 33 package files match the clean build and installed files; all
+34 web files match the build inspected in the offline browser replay.
+[Package, source and asset hashes](results/verification/receipt.json),
+[Node 20 replay](results/verification/installed20.json), and
+[Node 26 replay](results/verification/installed26.json).
+
+The broader browser run also exposed a verification race in the existing
+attribute-evidence test: its final trace selection was followed immediately
+by a click on the old row, before the worker returned the selected trace.
+Commit `c70b9ed` waits for the requested trace's row label before opening
+attributes; `375a311` also waits for actual parser completion in the attribute
+and export-container checks. They change test synchronization, with no
+application change. The original broader run passed 132/134 scenarios,
+with a Chromium attribute timeout and Firefox container-download timeout.
+A fresh archive of `375a311` then passed all four affected workflows in both
+engines with the original assertions and timeouts. Its built application files
+are byte-identical to the inspected/installed implementation. The remaining
+130 scenarios were not repeated after those test-only edits.
+[Original broad run](results/verification/clean-browser-initial.log) and
+[corrected four-case run](results/verification/targeted-browser.log).
+
+The build command is `npm run build`, producing `dist/` for the static browser
+app and `dist-cli/` for the npm CLI. Both remain local artifacts for review.

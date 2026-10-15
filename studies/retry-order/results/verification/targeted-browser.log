@@ -1,0 +1,17 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 npx
+npm notice run 'playwright' test tests/browser/attribute-values.spec.mjs tests/browser/export-containers.spec.mjs --workers=1
+[WebServer] (node:3189063) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:3189095) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/browser/attribute-values.spec.mjs:15:1 › typed values survive worker import, offline trace selection and cost/evidence downloads (11.5s)
+  ✓  2 [chromium] › tests/browser/export-containers.spec.mjs:5:1 › damaged export containers remain visible through offline trace selection and downloads (536ms)
+(node:3189657) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [firefox] › tests/browser/attribute-values.spec.mjs:15:1 › typed values survive worker import, offline trace selection and cost/evidence downloads (13.3s)
+  ✓  4 [firefox] › tests/browser/export-containers.spec.mjs:5:1 › damaged export containers remain visible through offline trace selection and downloads (864ms)
+
+  4 passed (29.5s)

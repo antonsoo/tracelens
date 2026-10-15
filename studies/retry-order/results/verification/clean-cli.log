@@ -1,0 +1,43 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 test:cli
+npm notice run node --test tests/cli.test.mjs
+✔ links CLI retains SDK evidence and selects linked traces without prose on JSON stdout (888.450345ms)
+✔ CLI emits a versioned JSON report without prose on stdout (179.018988ms)
+✔ CLI text explains concurrent work and the direction of changes (314.490567ms)
+✔ CLI supports --json before filenames (228.802015ms)
+✔ CLI rejects invalid arguments: examples/comparison-baseline.json (147.856369ms)
+✔ CLI rejects invalid arguments: examples/comparison-baseline.json examples/comparison-candidate.json --bogus (221.45379ms)
+✔ CLI rejects invalid arguments: examples/comparison-baseline.json examples/comparison-candidate.json third.json (210.245251ms)
+✔ CLI rejects invalid arguments: examples/comparison-baseline.json examples/comparison-candidate.json --json --json (191.317482ms)
+✔ CLI reports a missing file as an error without corrupting JSON stdout (167.453898ms)
+✔ existing summary and tree commands still work (285.316172ms)
+✔ timing JSON keeps exact interval arithmetic and explains the elapsed-time difference (510.429811ms)
+✔ SDK-captured requests distinguish parallel work from sequential work (311.33717ms)
+✔ cost CLI explains a real recorded call and agrees with the comparison export (429.890649ms)
+✔ a custom price file controls cost, summary and comparison without changing browser settings (1002.081616ms)
+✔ cost CLI keeps unpriced embeddings and exact zero rates distinct (262.369796ms)
+✔ summary reads a run that the collector wrote as several lines (581.278886ms)
+✔ summary of a file with several traces reads the largest and lists the others with their flag (154.282211ms)
+✔ --trace reads another trace, by ID or by the start of one (1992.252876ms)
+✔ --trace with an ID the file does not hold is refused in one line that lists what it holds (148.037666ms)
+✔ compare reads the two runs out of one collector file (1077.898336ms)
+✔ CLI rejects invalid arguments: summary collector.jsonl --trace (161.66635ms)
+✔ CLI rejects invalid arguments: summary collector.jsonl --trace --json (223.259051ms)
+✔ CLI rejects invalid arguments: summary collector.jsonl --json (123.543176ms)
+✔ CLI rejects invalid arguments: summary collector.jsonl --baseline-trace aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (90.399741ms)
+✔ CLI rejects invalid arguments: tree collector.jsonl --trace aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --trace bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb (147.52898ms)
+✔ CLI rejects invalid arguments: compare collector.jsonl collector.jsonl --trace aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (93.365467ms)
+✔ CLI rejects invalid arguments: compare collector.jsonl collector.jsonl --baseline-trace (142.896857ms)
+✔ a file that is neither JSON nor JSON Lines is refused in one line (439.421916ms)
+✔ names from the trace cannot write escape sequences to the terminal (981.141298ms)
+✔ multi-file CLI restores SDK parents and compares complete groups (2222.994223ms)
+✔ logs joins separately exported SDK message records and retains their source (283.089105ms)
+✔ logs reads the combined SDK example and asks for traces when only logs were selected (507.97411ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14954.521381
+{"permutations":6,"disagreements":0,"observed":["0 observed; 1 unknown"]}
