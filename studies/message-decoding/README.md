@@ -42,9 +42,10 @@ browser transfer and rendering. Before is the normalization implementation in
 `7e6888f`; the result files identify its exact compiled bytes.
 
 History peak RSS is essentially unchanged. System-parts RSS falls slightly;
-the claim here is lower import CPU time, not a general memory reduction. These
-two workloads do not predict speedups for arbitrary traces, and shared-host
-load changes absolute times. No test assertion or deadline was relaxed.
+the claim here is lower elapsed core import time, not a general memory reduction
+or a measurement of process CPU usage. These two workloads do not predict
+speedups for arbitrary traces, and shared-host load changes absolute times.
+No test assertion or deadline was relaxed.
 
 ## Evidence stays equivalent
 
