@@ -1,0 +1,118 @@
+[
+  {
+    "browser": "chromium",
+    "width": 375,
+    "offlineBeforeFirstImport": true,
+    "nativeSha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+    "damagedSha256": "e21ef669d0cef1312a8ab66381eb5748cc149d0ffa95af3d47b1212d904bcfb0",
+    "refusedReplacementMessages": [
+      "Couldn't compare \"ambiguous.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"ambiguous-last.jsonl\": Line 2: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"2 files: native.json, ambiguous-logs.json\": File 2 (ambiguous-logs.json): Duplicate JSON object field at character 20. Re-export with one explicit value per field; no trace measurements were selected from this file."
+    ],
+    "retainedSpanId": "8f5ff93df22ebb1b",
+    "retainedStatus": {
+      "code": "ERROR",
+      "message": "calculator backend did not respond within 2000ms (upstream timeout)"
+    },
+    "selectedSpanSha256": "5783d47c48ec644403d61ac85ff3366eddf8c84c37865449fe50f76fd0729656",
+    "completeControl": {
+      "spans": 8,
+      "errors": 2
+    },
+    "genuinelyUnfinishedTailWarnings": 1,
+    "pageErrors": [],
+    "externalRequests": [],
+    "lateRequests": [],
+    "accessibilityViolations": [],
+    "screenshotSha256": "b0e51f1fbdadd79bb2f401493a0f4fab5f8545ab9d3d169a512cd58fe6bb3614",
+    "screenshotBytes": 97221
+  },
+  {
+    "browser": "firefox",
+    "width": 375,
+    "offlineBeforeFirstImport": true,
+    "nativeSha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+    "damagedSha256": "e21ef669d0cef1312a8ab66381eb5748cc149d0ffa95af3d47b1212d904bcfb0",
+    "refusedReplacementMessages": [
+      "Couldn't compare \"ambiguous.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"ambiguous-last.jsonl\": Line 2: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"2 files: native.json, ambiguous-logs.json\": File 2 (ambiguous-logs.json): Duplicate JSON object field at character 20. Re-export with one explicit value per field; no trace measurements were selected from this file."
+    ],
+    "retainedSpanId": "8f5ff93df22ebb1b",
+    "retainedStatus": {
+      "code": "ERROR",
+      "message": "calculator backend did not respond within 2000ms (upstream timeout)"
+    },
+    "selectedSpanSha256": "5783d47c48ec644403d61ac85ff3366eddf8c84c37865449fe50f76fd0729656",
+    "completeControl": {
+      "spans": 8,
+      "errors": 2
+    },
+    "genuinelyUnfinishedTailWarnings": 1,
+    "pageErrors": [],
+    "externalRequests": [],
+    "lateRequests": [],
+    "accessibilityViolations": [],
+    "screenshotSha256": "71157cd2870337b4e7449cc13c9fb697b52663ffef34271467add5f6fa351d74",
+    "screenshotBytes": 139919
+  },
+  {
+    "browser": "chromium",
+    "width": 1440,
+    "offlineBeforeFirstImport": true,
+    "nativeSha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+    "damagedSha256": "e21ef669d0cef1312a8ab66381eb5748cc149d0ffa95af3d47b1212d904bcfb0",
+    "refusedReplacementMessages": [
+      "Couldn't compare \"ambiguous.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"ambiguous-last.jsonl\": Line 2: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"2 files: native.json, ambiguous-logs.json\": File 2 (ambiguous-logs.json): Duplicate JSON object field at character 20. Re-export with one explicit value per field; no trace measurements were selected from this file."
+    ],
+    "retainedSpanId": "8f5ff93df22ebb1b",
+    "retainedStatus": {
+      "code": "ERROR",
+      "message": "calculator backend did not respond within 2000ms (upstream timeout)"
+    },
+    "selectedSpanSha256": "5783d47c48ec644403d61ac85ff3366eddf8c84c37865449fe50f76fd0729656",
+    "completeControl": {
+      "spans": 8,
+      "errors": 2
+    },
+    "genuinelyUnfinishedTailWarnings": 1,
+    "pageErrors": [],
+    "externalRequests": [],
+    "lateRequests": [],
+    "accessibilityViolations": [],
+    "screenshotSha256": "b4dc8be2ac9fea949ed9b608bd8c0940d6404633c46360bb838ec8687fb48591",
+    "screenshotBytes": 114241
+  },
+  {
+    "browser": "firefox",
+    "width": 1440,
+    "offlineBeforeFirstImport": true,
+    "nativeSha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+    "damagedSha256": "e21ef669d0cef1312a8ab66381eb5748cc149d0ffa95af3d47b1212d904bcfb0",
+    "refusedReplacementMessages": [
+      "Couldn't compare \"ambiguous.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"ambiguous-last.jsonl\": Line 2: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.",
+      "Couldn't compare \"2 files: native.json, ambiguous-logs.json\": File 2 (ambiguous-logs.json): Duplicate JSON object field at character 20. Re-export with one explicit value per field; no trace measurements were selected from this file."
+    ],
+    "retainedSpanId": "8f5ff93df22ebb1b",
+    "retainedStatus": {
+      "code": "ERROR",
+      "message": "calculator backend did not respond within 2000ms (upstream timeout)"
+    },
+    "selectedSpanSha256": "5783d47c48ec644403d61ac85ff3366eddf8c84c37865449fe50f76fd0729656",
+    "completeControl": {
+      "spans": 8,
+      "errors": 2
+    },
+    "genuinelyUnfinishedTailWarnings": 1,
+    "pageErrors": [],
+    "externalRequests": [],
+    "lateRequests": [],
+    "accessibilityViolations": [],
+    "screenshotSha256": "0edb3d1b269b6b653f65f3ebe2a86a8c4bfb43b6391eeac928df9bab34bd1453",
+    "screenshotBytes": 159068
+  }
+]

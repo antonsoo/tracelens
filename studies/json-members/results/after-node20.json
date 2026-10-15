@@ -1,0 +1,2530 @@
+{
+  "checkedAt": "2026-10-15T10:15:33.317Z",
+  "node": "v20.20.2",
+  "source": {
+    "path": "tests/fixtures/small-genai-semconv-trace.json",
+    "sha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+    "provenance": "Retained eight-span SDK fixture; repeated members are controlled local damage, not native exporter output."
+  },
+  "coreSha256": "66cb849e460a4ec4f676baa39eabc687b84f0809526930d49e708c71fe507d5b",
+  "results": [
+    {
+      "name": "native",
+      "role": "control",
+      "bytes": 26534,
+      "inputSha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+      "parsed": {
+        "outcome": "parsed",
+        "spans": 8,
+        "errors": 2,
+        "warnings": [],
+        "modelUsage": [
+          {
+            "model": "gpt-4o-mini-2024-07-18",
+            "provider": "openai",
+            "calls": 3,
+            "inputTokens": 845,
+            "outputTokens": 163,
+            "missingInputCalls": 0,
+            "missingOutputCalls": 0,
+            "uncostedCalls": 0,
+            "costUsd": 0.00020534999999999998
+          }
+        ],
+        "cost": 0.00020534999999999998
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 0,
+          "stdout": "<inputs>/native.json\ntrace 7b492209afa649a21d4072c6ccaefb77  ·  8 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  167.5 ms \nllm               90.5 ms  \ntool              71.5 ms  \nother             5.5 ms   \n\nTokens & cost by model\n──────────────────────\nmodel                   provider  calls  input  output  token cost \n──────────────────────  ────────  ─────  ─────  ──────  ───────────\ngpt-4o-mini-2024-07-18  openai    3      845    163     $0.00020535\n\ntoken estimate: $0.00020535\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n2 span(s) ended in error  ·  1 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n167.5 ms elapsed = 167.5 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          90.5 ms     \nTool alone         71.5 ms     \nOther alone        5.5 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  invoke_agent research-agent 167.5 ms\n    chat gpt-4o-mini 30.2 ms\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "status-error-then-ok",
+      "role": "controlled repeated-member damage",
+      "bytes": 13673,
+      "inputSha256": "e74c6513e9af6971d31d3cd19868fcc49f129386eca15e9840541e1cc2897c47",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "tree",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "cost",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "timing",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "links",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "logs",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "compare",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-error-then-ok.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "status-ok-then-error",
+      "role": "controlled repeated-member damage",
+      "bytes": 13673,
+      "inputSha256": "d7ba6db68a768870e7d888d2377296efba9b0e44938bf36218f851e4b0152440",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-ok-then-error.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "status-escaped-key",
+      "role": "controlled repeated-member damage",
+      "bytes": 13678,
+      "inputSha256": "e21ef669d0cef1312a8ab66381eb5748cc149d0ffa95af3d47b1212d904bcfb0",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-escaped-key.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "status-identical",
+      "role": "controlled repeated-member damage",
+      "bytes": 13673,
+      "inputSha256": "a384eec50bc42dba783de8e6550c63151fcb73df8d5b7cf5a7c4d73884748c58",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/status-identical.json\": Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "inventory-last-subset",
+      "role": "controlled repeated-member damage",
+      "bytes": 15160,
+      "inputSha256": "858c6a6d125eeaf62b727fa59945a8b3b8c6d505fec986a22410c6a0ec960731",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "tree",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "cost",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "timing",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "links",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "logs",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        },
+        {
+          "command": "compare",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-last-subset.json\": Duplicate JSON object field at character 13661. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "inventory-resourceSpans",
+      "role": "controlled repeated-member damage",
+      "bytes": 13683,
+      "inputSha256": "5e772c915cae8080d2160469be85c979e09c8674cd6bf8cdaa1a4f03c4ea35d9",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 21. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-resourceSpans.json\": Duplicate JSON object field at character 21. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "inventory-scopeSpans",
+      "role": "controlled repeated-member damage",
+      "bytes": 13680,
+      "inputSha256": "99bc0d412d1d254b3e419ecfac22d00bae9b386735b65f243921b439fb98f9b2",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 557. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-scopeSpans.json\": Duplicate JSON object field at character 557. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "inventory-spans",
+      "role": "controlled repeated-member damage",
+      "bytes": 13675,
+      "inputSha256": "71925ca0ab43282e9234c46823851a938f8d0554cdfa56c09acbdcd08f23e1cb",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 637. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/inventory-spans.json\": Duplicate JSON object field at character 637. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "usage-last-zero",
+      "role": "controlled repeated-member damage",
+      "bytes": 13679,
+      "inputSha256": "49b8c03cf978be7cb99cff2306b95416a0281129dd80d0e7e7be01ae06196e7f",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 1536. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/usage-last-zero.json\": Duplicate JSON object field at character 1536. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "future-field",
+      "role": "controlled repeated-member damage",
+      "bytes": 13686,
+      "inputSha256": "92d1aff64b251cc9967de2683c497b39e4e5844536ac9e3984441fa8a4d21332",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 13. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/future-field.json\": Duplicate JSON object field at character 13. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "prototype-field",
+      "role": "controlled repeated-member damage",
+      "bytes": 13694,
+      "inputSha256": "8f782ac16fb0bc4af6d5a7d7c04f7aa9ecea5ccfb9d98d615d455ba73b326fe8",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 17. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/prototype-field.json\": Duplicate JSON object field at character 17. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "empty-field",
+      "role": "controlled repeated-member damage",
+      "bytes": 13674,
+      "inputSha256": "5a8befbbc042a3d0f6c5d1c2786c452b79af70c1889f1de3606d443b26c85ade",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Duplicate JSON object field at character 7. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/empty-field.json\": Duplicate JSON object field at character 7. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "jsonl-line-1",
+      "role": "controlled repeated-member damage",
+      "bytes": 13717,
+      "inputSha256": "fa60669e69c174449d532f988935e43198dcd19a3fdf936b3360640865a9279d",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Line 1: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/jsonl-line-1.json\": Line 1: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "jsonl-line-2",
+      "role": "controlled repeated-member damage",
+      "bytes": 13717,
+      "inputSha256": "28248495182137bcd9e5b120817eb429b91e440cd892eb88840ae81bb8278da4",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Line 2: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/jsonl-line-2.json\": Line 2: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "jsonl-line-3",
+      "role": "controlled repeated-member damage",
+      "bytes": 13717,
+      "inputSha256": "976024e3fd2e3b6a25176e509d95cc2d337b8710e41005c67ecab0c8eedb0a00",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "Line 3: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/jsonl-line-3.json\": Line 3: Duplicate JSON object field at character 6974. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "multifile-logs",
+      "role": "controlled repeated-member damage",
+      "bytes": 37,
+      "inputSha256": "09a438e60d4f72d3a66bef2bf58ba5e0d9762f3ad7363de40459bcb5f6e3b97b",
+      "parsed": {
+        "outcome": "rejected",
+        "message": "File 2 (multifile-logs.json): Duplicate JSON object field at character 20. Re-export with one explicit value per field; no trace measurements were selected from this file."
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "\"<inputs>/native-companion.json, <inputs>/multifile-logs.json\": File 2 (<inputs>/multifile-logs.json): Duplicate JSON object field at character 20. Re-export with one explicit value per field; no trace measurements were selected from this file.\n"
+        }
+      ]
+    },
+    {
+      "name": "quoted-json-and-siblings",
+      "role": "control",
+      "bytes": 13748,
+      "inputSha256": "2264fe1203c89eb0b3771ce242935cfcaa787f7803770b581ef999a13d6b0478",
+      "parsed": {
+        "outcome": "parsed",
+        "spans": 8,
+        "errors": 2,
+        "warnings": [],
+        "modelUsage": [
+          {
+            "model": "gpt-4o-mini-2024-07-18",
+            "provider": "openai",
+            "calls": 3,
+            "inputTokens": 845,
+            "outputTokens": 163,
+            "missingInputCalls": 0,
+            "missingOutputCalls": 0,
+            "uncostedCalls": 0,
+            "costUsd": 0.00020534999999999998
+          }
+        ],
+        "cost": 0.00020534999999999998
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 0,
+          "stdout": "<inputs>/quoted-json-and-siblings.json\ntrace 7b492209afa649a21d4072c6ccaefb77  ·  8 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  167.5 ms \nllm               90.5 ms  \ntool              71.5 ms  \nother             5.5 ms   \n\nTokens & cost by model\n──────────────────────\nmodel                   provider  calls  input  output  token cost \n──────────────────────  ────────  ─────  ─────  ──────  ───────────\ngpt-4o-mini-2024-07-18  openai    3      845    163     $0.00020535\n\ntoken estimate: $0.00020535\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n2 span(s) ended in error  ·  1 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n167.5 ms elapsed = 167.5 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          90.5 ms     \nTool alone         71.5 ms     \nOther alone        5.5 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  invoke_agent research-agent 167.5 ms\n    chat gpt-4o-mini 30.2 ms\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "jsonl-unfinished",
+      "role": "control",
+      "bytes": 13683,
+      "inputSha256": "6b93ac0454f0548731f83774874d0c7b621c6101d17db81cff3c4dc40f1048ec",
+      "parsed": {
+        "outcome": "parsed",
+        "spans": 8,
+        "errors": 2,
+        "warnings": [
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "The last line (2) is not complete JSON and was skipped: the export may still have been in progress."
+          }
+        ],
+        "modelUsage": [
+          {
+            "model": "gpt-4o-mini-2024-07-18",
+            "provider": "openai",
+            "calls": 3,
+            "inputTokens": 845,
+            "outputTokens": 163,
+            "missingInputCalls": 0,
+            "missingOutputCalls": 0,
+            "uncostedCalls": 0,
+            "costUsd": 0.00020534999999999998
+          }
+        ],
+        "cost": 0.00020534999999999998
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 0,
+          "stdout": "<inputs>/jsonl-unfinished.json\ntrace 7b492209afa649a21d4072c6ccaefb77  ·  8 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  167.5 ms \nllm               90.5 ms  \ntool              71.5 ms  \nother             5.5 ms   \n\nTokens & cost by model\n──────────────────────\nmodel                   provider  calls  input  output  token cost \n──────────────────────  ────────  ─────  ─────  ──────  ───────────\ngpt-4o-mini-2024-07-18  openai    3      845    163     $0.00020535\n\nknown token cost subtotal: $0.00020535\nIncomplete span inventory: full token estimate and missing call count are unknown. Charges and counts describe retained spans only.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n2 retained span(s) reported error; incomplete span inventory  ·  1 observed possible retried call(s); complete count unknown\n\nElapsed-time accounting\n───────────────────────\n167.5 ms elapsed = 167.5 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          90.5 ms     \nTool alone         71.5 ms     \nOther alone        5.5 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  invoke_agent research-agent 167.5 ms\n    chat gpt-4o-mini 30.2 ms\n\nParser warnings\n───────────────\n  ⚠ The last line (2) is not complete JSON and was skipped: the export may still have been in progress.\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "jsonl-unfinished-duplicate",
+      "role": "control",
+      "bytes": 13702,
+      "inputSha256": "ad60bb0b2f0a2cb38b00576e22df2b498ad5b89c667b0f65018e9569cb73bdd4",
+      "parsed": {
+        "outcome": "parsed",
+        "spans": 8,
+        "errors": 2,
+        "warnings": [
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "The last line (2) is not complete JSON and was skipped: the export may still have been in progress."
+          }
+        ],
+        "modelUsage": [
+          {
+            "model": "gpt-4o-mini-2024-07-18",
+            "provider": "openai",
+            "calls": 3,
+            "inputTokens": 845,
+            "outputTokens": 163,
+            "missingInputCalls": 0,
+            "missingOutputCalls": 0,
+            "uncostedCalls": 0,
+            "costUsd": 0.00020534999999999998
+          }
+        ],
+        "cost": 0.00020534999999999998
+      },
+      "cli": [
+        {
+          "command": "summary",
+          "exitCode": 0,
+          "stdout": "<inputs>/jsonl-unfinished-duplicate.json\ntrace 7b492209afa649a21d4072c6ccaefb77  ·  8 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  167.5 ms \nllm               90.5 ms  \ntool              71.5 ms  \nother             5.5 ms   \n\nTokens & cost by model\n──────────────────────\nmodel                   provider  calls  input  output  token cost \n──────────────────────  ────────  ─────  ─────  ──────  ───────────\ngpt-4o-mini-2024-07-18  openai    3      845    163     $0.00020535\n\nknown token cost subtotal: $0.00020535\nIncomplete span inventory: full token estimate and missing call count are unknown. Charges and counts describe retained spans only.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n2 retained span(s) reported error; incomplete span inventory  ·  1 observed possible retried call(s); complete count unknown\n\nElapsed-time accounting\n───────────────────────\n167.5 ms elapsed = 167.5 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          90.5 ms     \nTool alone         71.5 ms     \nOther alone        5.5 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  invoke_agent research-agent 167.5 ms\n    chat gpt-4o-mini 30.2 ms\n\nParser warnings\n───────────────\n  ⚠ The last line (2) is not complete JSON and was skipped: the export may still have been in progress.\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "corpus": [
+    {
+      "path": "docs/cost-evidence/after.json",
+      "inputSha256": "0ed5426b615ab584572f3b8786948d30095db83d50c805312ef17465da0e6de6",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/cost-evidence/before.json",
+      "inputSha256": "7c029c5de986882e49279458aa6462803f56f1491068229f5f43a41a467884bf",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/cost-evidence/decimal-check.json",
+      "inputSha256": "ff6da97f5cf9d095f0ffcad8852e7900d39ddf8dab1579aff6d62e47340b580c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/cost-evidence/package.json",
+      "inputSha256": "114e21b2eded33078b48c5e32837c92c40c315bd0d8e06e6ff68d206c341c518",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/cost-evidence/performance.json",
+      "inputSha256": "69d7595250538ae0f26fbf41354775eb6272ed52944570f0c3af599d3d8d56be",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/cost-evidence/replay.json",
+      "inputSha256": "adab2844f86532768339695ee6a42b0cce44c48825b1843b1576224ca490ceec",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/browser-hosted.json",
+      "inputSha256": "6eee9aab97e61d1f12ade8aa78564fb4cdc9a4c9bd05ce24942eb773f2dab8c4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/browser-local.json",
+      "inputSha256": "26e7916257b4e731e5b8064bcd5dd3ddd2c87a7b150a18c5b7957d4596a16991",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-cost/cost.json",
+      "inputSha256": "054545d32ec139213f1bfff119db944af6a2a7915e312e412e5e168f1f1df9d4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-cost/decimal-check.json",
+      "inputSha256": "ff6da97f5cf9d095f0ffcad8852e7900d39ddf8dab1579aff6d62e47340b580c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-cost/replay.json",
+      "inputSha256": "22ddc647cc69272e0184141e47814afb32195b55632a84b3e9ab0f8fc87b7cb7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-cost/trace.json",
+      "inputSha256": "951b3e2a3711b1a62446abaa5ad26a1654efdd54c51c5621df69e55714ee26f4",
+      "outcome": "parsed",
+      "resultSha256": "090a2a52fbd30dea853879b939e8c7582ed3b943c49384dbc5b6b17a7a442cc9"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-links/queue-links.json",
+      "inputSha256": "35a71a1800ac6fa8c5dc69c2affcf5b1963e96fa3c88dfbc2f52f75ce8ccd756",
+      "outcome": "parsed",
+      "resultSha256": "79da2a4579ab55e663ba3bf4f21785796a37094d76ce33db558f63f98ec190a7"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-links/queue-links.oracle.json",
+      "inputSha256": "85a13c890dfa4d6b0d49ea5cbae33686b609b37f767e6788208b59a206be7e71",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-links/replay.json",
+      "inputSha256": "189f46625a13f7089abeb30a3e1e8b77622b64557e95150f6e8304a990d562ae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-timing/parallel-oracle.json",
+      "inputSha256": "8f1fc1a0559f7a5fd7f1071a335e1bf23e5096f3bdeb2f94c2509a6055796b2e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-timing/parallel-report.json",
+      "inputSha256": "62c38742fc6a6d44cf191e62b5a4f63fab7cc4c8561b9fc0cb9753187096b606",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-timing/sequential-oracle.json",
+      "inputSha256": "8ccce19bfaad9c536845769b3cbffa0898260bbebc6092e2daa7d795219248a7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-timing/sequential-report.json",
+      "inputSha256": "a8d67b6880c3e08e9946959f3165c6b6d01fbb69378137da74fd0ef35e202eb1",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-timing/timing-parallel.json",
+      "inputSha256": "e4f0923096e08b4809620d66a1964afbbf3abef580637ca9ce27e0b0f0da6c71",
+      "outcome": "parsed",
+      "resultSha256": "d51592322d75f2277492b728ef7646d36099c4ab7555cbfd080a16acdfad9718"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/fresh-timing/timing-sequential.json",
+      "inputSha256": "8474c75e02ab33811b1195a90320d6e77f15917b4f26e948648e442e9bd7271d",
+      "outcome": "parsed",
+      "resultSha256": "fdbbf7e8b4262c748315bf7b8042811055f2b37e07a5801ce33cf9000fc0b687"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/hosted-assets.json",
+      "inputSha256": "e5f402bb341f032359d09f37be1332719aefe700e2dd1e85a350d99eedd4a1a8",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/installed-cli.json",
+      "inputSha256": "155e7c39b524259616ba819237e252570944108e27dd0d71c4cf7fc0aed6d052",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/links-node20.json",
+      "inputSha256": "05551f6ad2e23b46b234d5b6e699366dd486c031f721b866c66eedc675731fb1",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/links-node26.json",
+      "inputSha256": "189f46625a13f7089abeb30a3e1e8b77622b64557e95150f6e8304a990d562ae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/prices-node20.json",
+      "inputSha256": "556315b98a2b8e3676e80d68d58973e5165548f004c411ad2f989cb73e02d82a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/publish-evidence-2026-10-09/prices-node26.json",
+      "inputSha256": "97fcf1959db219161f4502ebaed8dcf74642de1b65d5460cae749f2dead42bce",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/checks.json",
+      "inputSha256": "475678058ef20ad5c3e139fa4e9246006c72418520f4057454a27952d867ccc0",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/corpus.json",
+      "inputSha256": "4d2692bb0c230052b326d2575ce922afece4f89e3fbdb634304078765938e03a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/dropped-node20.json",
+      "inputSha256": "ac5d8cff6ed7d341c7cccfbf7f15ceb1b56fce1949b4e52e0ee372cc0efc77fa",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/dropped-node26.json",
+      "inputSha256": "4c3eb9c8d93737862950318dddef960e16a5f0d0b4289eb1d87da63fa4386496",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/installed.json",
+      "inputSha256": "8523253669e1b47db5d5c736a9d22d9887ffda2a08fe58347a5f281d5327bae4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/integrity-node20.json",
+      "inputSha256": "d209cbc59a8c728f51c3537f44ce19efd31aac64f567451eea7155b036c037cb",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/integrity-node26.json",
+      "inputSha256": "d209cbc59a8c728f51c3537f44ce19efd31aac64f567451eea7155b036c037cb",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/served-files.json",
+      "inputSha256": "87018104a05e86aa90ef08198b56c8b2d50867ac5c51c3039db3332dc6e578b7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/trace-integrity-2026-10-11/worker-probe.json",
+      "inputSha256": "4777ad198d13c48baeff6d490180659758606fd788d98587ccf8d88177b4b37b",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "docs/verification-timing-assets-2026-10-07.json",
+      "inputSha256": "f244d15e907a81207c15342ae0cb424a7155427232efb03346ce904986c77fb2",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification-timing-browser-2026-10-07.json",
+      "inputSha256": "6e19e95686dc47ba459a61b7c7085af688cc37dc71ec737759f20a52336ddca2",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "docs/verification-timing-result-2026-10-07.json",
+      "inputSha256": "84f7550db4419e201fbd51156780b0cfe798ea92bba646dcf8f63b3c641d5c3c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/artifact.json",
+      "inputSha256": "f4e5785ff06b189d3f4882953cba020ae14b32d9be4605f263ef0a721f006b13",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/clean.json",
+      "inputSha256": "c2422eac4574c7c18f81b9fb6428414b36438bdc64743c0b411258d1a143b022",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/deployment.json",
+      "inputSha256": "7d1d7e16ef62653934648f042635b5965670027d6a7afe91deb500ecfbaa68e1",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-20-completion.json",
+      "inputSha256": "57c8f598253581aba38f87786906ea712ca0022b2238e2b1df1a8499a6180236",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-20-cost.json",
+      "inputSha256": "7f4787d2bfd56d2f8bae703a5c7ddc2da89405c011c93ceb61a09f918be58ecf",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-20-messages.json",
+      "inputSha256": "7b09a6e798f11cd9f9be63f81bbd7bef7d08b5a150f7c7bcadce91c397abcc85",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-20-retry.json",
+      "inputSha256": "80514d0af09897e361fa9967a6076c3bd877bf8163df8929625f488332f60e5f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-26-completion.json",
+      "inputSha256": "751594c88f7f0fcb39e71ab8f8240a0987156eb91ef5f561114b69c1fe41a80a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-26-cost.json",
+      "inputSha256": "ac8a190a5397ddac5cdfb6beb41be797c3e0223805564871595cbd81748f0aef",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-26-messages.json",
+      "inputSha256": "4aa49b2853e4300b3c5efe5a432b701b67b620a7d5d0f6620fb35b425bd6b613",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed-26-retry.json",
+      "inputSha256": "93f868ae0f5d94649772889c6cc482a9599f43f0907a18816ebab91acd10239a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/installed.json",
+      "inputSha256": "a41285b6023d5670ae18982dee2c93b9b4533222dfc16aa97bcd7b3aba78c54d",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/public-chromium.json",
+      "inputSha256": "d87628af3f4f82b2192df5914769bc3a9f86b70636de6aa8ae8baeadb4c6f574",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "docs/verification/inspection-2026-10-14/public-firefox.json",
+      "inputSha256": "6ad32ca9441c40ebce16dfb2d98fac496f4967a37e204fd2142b6721cbe38486",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "examples/comparison-baseline.json",
+      "inputSha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59",
+      "outcome": "parsed",
+      "resultSha256": "c1399c1d5b70490314abf90f8028fb6585d9fc680b67dfb89bd8442a26e7eddf"
+    },
+    {
+      "path": "examples/comparison-candidate.json",
+      "inputSha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7",
+      "outcome": "parsed",
+      "resultSha256": "1f2e5ff8e454854a137b758a3142b3f965fa3470ed1b7fe49e27758ecbac420c"
+    },
+    {
+      "path": "examples/cost-nano-stream.json",
+      "inputSha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd",
+      "outcome": "parsed",
+      "resultSha256": "bb9f61e5ca05bd574f1da6937ce35adbf5f5a698e4dd8e8bcd1f3ae4acdc797f"
+    },
+    {
+      "path": "examples/genai-log-events.jsonl",
+      "inputSha256": "45460fd1c80fba771db85199f8484aa7763097252766c9d7d2de9be3b172555d",
+      "outcome": "parsed",
+      "resultSha256": "5d32b84be7f63b9841e00c8a20a5a23443b60170feb9191b78bdb41e09faaf5f"
+    },
+    {
+      "path": "examples/genai-semconv-trace.json",
+      "inputSha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b",
+      "outcome": "parsed",
+      "resultSha256": "29e9bf3222c874e0a5fffa07c130a0230869f597c6febd627604b427e249197c"
+    },
+    {
+      "path": "examples/jaeger-genai-trace.json",
+      "inputSha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370",
+      "outcome": "parsed",
+      "resultSha256": "319dbea68133f3ab46f4982e9d89994ae449e50807a42c5de6abd1ba813a4c78"
+    },
+    {
+      "path": "examples/openinference-trace.json",
+      "inputSha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e",
+      "outcome": "parsed",
+      "resultSha256": "23302c8aa400ca4a0323a0b343144f7912832b34114cadce956db3564371790a"
+    },
+    {
+      "path": "examples/queue-links.json",
+      "inputSha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573",
+      "outcome": "parsed",
+      "resultSha256": "2530441c765df2470a861d4d64bf81dfa536f9a363690e3686f7998c0d2e3e9c"
+    },
+    {
+      "path": "examples/queue-links.oracle.json",
+      "inputSha256": "1502cf77f3259ee4d20677189eb6c2cfd7b6d47b2ec6dbf9ea62ce63ced1fae8",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "examples/timing-parallel.json",
+      "inputSha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5",
+      "outcome": "parsed",
+      "resultSha256": "426e754cd3241b52db8cbe0f87aa4dc77ac0c60a63feb774face7a4f4e25dfda"
+    },
+    {
+      "path": "examples/timing-sequential.json",
+      "inputSha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c",
+      "outcome": "parsed",
+      "resultSha256": "2ea829a5cd03f7bb9871532aa34e3645c6012244baf5cdb769d43fadda9bbf94"
+    },
+    {
+      "path": "package-lock.json",
+      "inputSha256": "7700912c5c891dd8e14b8816f6bbb621ac2086edd3e7d0f87439ad123843c5f2",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "package.json",
+      "inputSha256": "d78d0de02a1fd3775333bff921b5d515f8b59304fad571b95d71d5b0ec1b323d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "scripts/cost-replay/package-lock.json",
+      "inputSha256": "bb6d733ebfe6bbf1ecb4b86f7c3eb96a2b285d50b28e5d27c20c22d975fd81d2",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "scripts/cost-replay/package.json",
+      "inputSha256": "205aad76050c6d96d74510fe4ce01dc21b64d62a3391ecb77c5d52635701fac0",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/after.json",
+      "inputSha256": "de4742797f45337c7943b58471a3dc6a78012526ed6fd95de94cb6ae4fd80291",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/before.json",
+      "inputSha256": "c902ca943342e8a9515a08b9250af18b714ea0b320db550d59953cd9bdd41063",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/browser-chromium.json",
+      "inputSha256": "7891e270196fd35dfc4661f164382ed18f793a148c8df63f73d04a864fba265d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/browser-firefox.json",
+      "inputSha256": "7891e270196fd35dfc4661f164382ed18f793a148c8df63f73d04a864fba265d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/checks.json",
+      "inputSha256": "6c45ff9c0e7d1cd25f1fd2b5493272236bbea22cdd3fe6ea9fdf89bed7d5613b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/corpus.json",
+      "inputSha256": "c17f880107dba0d1f8af0440ae7f07545d3b38bf9e8b6cef448bb52828efb3cb",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/capture.json",
+      "inputSha256": "fe7bb5dd3fcdc1738b78ea38ebf4436078508019ebdd0e1085d50e9554380e24",
+      "outcome": "parsed",
+      "resultSha256": "c567688edeb48954c97673bad1550a0195400c3961d37eddc8cffdbe7b58ea46"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/oracle.json",
+      "inputSha256": "b4520c6ea564cf5ad4f46f840d2cea791c33784c5f792c68a40042f5c68fe990",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/prices.json",
+      "inputSha256": "e1d2feac0cadcd6157f1bc4c2a989392387303d232d64658a995bba9e03c3da0",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/sdk-control.json",
+      "inputSha256": "323633b4cf2461f33ac0f270f580699f3635fa452c10def6df4bdde5881ed188",
+      "outcome": "parsed",
+      "resultSha256": "37aa32ff10eaebce62f13d82f15e420f5d9b516a10c2db5af6930ad41d7392ea"
+    },
+    {
+      "path": "studies/attribute-values/installed-node20.json",
+      "inputSha256": "f289aa8a807c6c807493d398e5b4952ca33fc4b5dd0fe09aa3c58ed8fa294654",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/installed-node26.json",
+      "inputSha256": "cbd3e35d8071cf908d617ca2d5551cb4c90dacc495e090a01944e8723d1e3d9a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/attribute-values/performance.json",
+      "inputSha256": "6a8574eda5659da6065c73519b8c3e0012ed31daca66fd99e59aa39fb901abdf",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/comparison-coverage/results/after.json",
+      "inputSha256": "9a7cb05d75e8e9565a53410049ed9370fbb113f7ae630ee2a3dad9b610b6a856",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/comparison-coverage/results/before.json",
+      "inputSha256": "79cb41fb587f9ac5d7b6aefd442036b4f93f42dad145c03ca5de643f3f0ca3b7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/comparison-coverage/results/browser.json",
+      "inputSha256": "89945569036f006ec1d73d056db6b483f53bc1361a26a564d7c5e356be3d69d4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/comparison-coverage/results/installed-current.json",
+      "inputSha256": "fe4c804f6756c67ff334a4da815785940d3027751484bb6139da78af73419cf0",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/comparison-coverage/results/installed-floor.json",
+      "inputSha256": "118ab71f8a0acd56341402ea094c380e112b8fad7e0bc9e675bb546aa52363d3",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/comparison-coverage/results/verification.json",
+      "inputSha256": "fdc894653f31e84ea09198653e09ad0b972d187d9f50313485a25e8d6fc21286",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/after.json",
+      "inputSha256": "f97613fcf74417588685514bcfe00262a1c7ff454cc9e4ac97c762080a93e20f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/before.json",
+      "inputSha256": "c0348b8dfa3c5edd2e1213f94f3085f2bf19bd81381a23b4b3a73bc3bf5f8b9e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/browser.json",
+      "inputSha256": "827eefdba005fb0f1a71c53853f3b01006441d4365e132f06d67198ebd2f35b7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/clean-source.json",
+      "inputSha256": "e0a2ea5f70220babd2056a2d3fd53b11a2a7b587f03feb0f883ced86d13c77fd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/installed-current.json",
+      "inputSha256": "51f59a8b7b5057d15c2fdba7575a4cde3b77015e046a7414484d433c2bb23dc5",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/installed-floor.json",
+      "inputSha256": "2896dc01c40fc4a416ec57858f81f0659add2c03327ffbb023f08e4952b0cb07",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/parser-timing.json",
+      "inputSha256": "53ee80106e6a735c1093ba16ee5adbfc232dff9c9f926cd90e8419fdea18af01",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/after-chromium-1440-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/after-chromium-375-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/after-firefox-1440-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/after-firefox-375-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/before-chromium-1440-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/before-chromium-375-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/before-firefox-1440-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/before-firefox-375-accessibility.json",
+      "inputSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/cost-coverage/results/token-coverage/observations.json",
+      "inputSha256": "c15deb115e0d05a0eaa4c0b778f0861e38762e5538bb62f123c34075e8389c6b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/cost-coverage/results/verification.json",
+      "inputSha256": "dcf7f7dff86c9783475d382e980d53eac15ff2650da6a67191ca64d9b37cd453",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/default-prices/after.json",
+      "inputSha256": "6fee56311495d2ef2e5233d5c3ae2239af93150cd80a4bb2ff22f9b37be00685",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/default-prices/before.json",
+      "inputSha256": "432178daa079293ee018547032f1cb9fd514c4ba8cbb1ac07dbcdf02b47f56e3",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/dropped-evidence/after.json",
+      "inputSha256": "ac453b22b91b0db7f5c790efae3bbf2eb95c0fa7eae75e5de742c652e7677126",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/dropped-evidence/before.json",
+      "inputSha256": "3eb352b6695d4e43d3512969526c10cf785626bf844bbfe37887c0269d079997",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/dropped-evidence/browser-chromium.json",
+      "inputSha256": "0f83a296e33bfa2442d4d5efaaa9a5657cb1343447de120884579f05840381a7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/dropped-evidence/browser-firefox.json",
+      "inputSha256": "0f83a296e33bfa2442d4d5efaaa9a5657cb1343447de120884579f05840381a7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/dropped-evidence/corpus.json",
+      "inputSha256": "4d2692bb0c230052b326d2575ce922afece4f89e3fbdb634304078765938e03a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/capture.otlp.json",
+      "inputSha256": "05cff19bbb79270edc8f82511b823ba093d1d6fc510808bb828d1a6355e353e3",
+      "outcome": "parsed",
+      "resultSha256": "2e6410d5361512937bd9ff1dab2c320c206b64bef7c24bea858bbf886e78d0ed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/capture.proto-snake.json",
+      "inputSha256": "ca29640e0b17fd4542327e6d14679db6c413ff7972281086414a1c8ebd93edb9",
+      "outcome": "parsed",
+      "resultSha256": "2e6410d5361512937bd9ff1dab2c320c206b64bef7c24bea858bbf886e78d0ed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/capture.proto.json",
+      "inputSha256": "4fc42b9f230b424ff45e192ccf6d7ba61232d087673d86d80852722db09b5410",
+      "outcome": "parsed",
+      "resultSha256": "2e6410d5361512937bd9ff1dab2c320c206b64bef7c24bea858bbf886e78d0ed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/oracle.json",
+      "inputSha256": "a4b8e5ea3f1054c251f6c4a018ee4fc665ba80547caf8ecd6cb58e144ea0e7c7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/after.json",
+      "inputSha256": "21e71baf48f7357fec0e191d4c3f15912963eb983c31680fc1bb0d874bd9e19d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/before.json",
+      "inputSha256": "9721bf0b745a405ba186e18f794faf8f1c26f75cf227d88002a7b099528af05d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/browser-after.json",
+      "inputSha256": "0af1258b91ca83e5bfaee61c2d5e89a1485720721cf0942b182d3ac3355df07b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/browser-before.json",
+      "inputSha256": "bf83bc9a8bfa6efa55c260b39675d93d891949180902d083fdaf9b0046a085d4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/checks.json",
+      "inputSha256": "22bd3ed89f09d625d25ab01f235c84907b4159843919159a12943f97914ffc2d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/corpus.json",
+      "inputSha256": "47223a80a62bbdad894c0581e68d04f2b4b3ef2bc0f5f62e61b36c9c18b50d9a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/event-messages/performance.json",
+      "inputSha256": "21e8650835503da765647845573e52ae7dacb22424ec90c2905f5d33872edb41",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/after.json",
+      "inputSha256": "870fe27820a98145eefd54eeb6d12da963da83b16421d1adfcaae435f3d04e1f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/before.json",
+      "inputSha256": "a023790e4ef06714e0e997986d839e4cf2f91c6d9b4b446865babb0093f2dd64",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/browser-chromium.json",
+      "inputSha256": "2f9a92b199b496ff16bfe80034783c4c929c5e5f3be87a926555bb27974b1b90",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/browser-firefox.json",
+      "inputSha256": "2f9a92b199b496ff16bfe80034783c4c929c5e5f3be87a926555bb27974b1b90",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/checks.json",
+      "inputSha256": "db5cde5a36b7d5a4b788e819c11d059f22c513c5283088d5a0d3275ea04a00ac",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/corpus.json",
+      "inputSha256": "c17f880107dba0d1f8af0440ae7f07545d3b38bf9e8b6cef448bb52828efb3cb",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/installed-attributes-node20.json",
+      "inputSha256": "6ccf172bf4e1e969720d1ab654e8697dea274f147d587d8e2aa5bc2f111c26c2",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/installed-attributes-node26.json",
+      "inputSha256": "210e82ea28af391caedcaff25df43ce4379d245e0424321ef1e33c06b29cb7a6",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/installed-containers-node20.json",
+      "inputSha256": "06d829605294be9b098edec324521a920fabe45fcc2c157686f39ebfd893f2a2",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/installed-containers-node26.json",
+      "inputSha256": "870fe27820a98145eefd54eeb6d12da963da83b16421d1adfcaae435f3d04e1f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/partial.json",
+      "inputSha256": "77d153e7141600275b5a04b79b34f9b22b5e184518ee71d35a7ca81ae950f98a",
+      "outcome": "parsed",
+      "resultSha256": "b4e98d099b2d33488f1a8a669dddd64a10cd9851098afee2225bfbc807904576"
+    },
+    {
+      "path": "studies/export-containers/performance-concurrent.json",
+      "inputSha256": "3576181bb238f144470658305163f6a2539aa61f83f165773f420267dd61233e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/performance.json",
+      "inputSha256": "590034c9dac88de12d73cfe59c63f6557a83f7f95131b5a92f2d30f963191125",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/publication.json",
+      "inputSha256": "a4738828cde7e5a149f33c01d085122788aa09b73ac4acacca50a812debd3819",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/export-containers/verification-diagnostics.json",
+      "inputSha256": "5618d355d81a848f42d05f9337ee28c2585278463161b4718a4873b50faf1c59",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/after.json",
+      "inputSha256": "4b4ff5d3e4000814e147e80b9f7349a9eb2a5b8fd0da6eb3b46305cbf53e3d71",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/before.json",
+      "inputSha256": "68062fa0d1915f12fa02cb144e6ff4e5d896cb8352a558c71d09107e1b0f209f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/browser-after/browser.json",
+      "inputSha256": "bbcaf108b330a3e600833ffa6b96ebeb0b82b20d3b63f31c049fbd0dbefa5e0d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/browser-before/browser.json",
+      "inputSha256": "6703dd934c8113f777e2fc8ca784fc06ddeed16fcc133d87e6e345d62ba35686",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/installed-current.json",
+      "inputSha256": "4b4ff5d3e4000814e147e80b9f7349a9eb2a5b8fd0da6eb3b46305cbf53e3d71",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/installed-floor.json",
+      "inputSha256": "1087baeca57ac6c69a2bfe6dc8834f238bdd82ad2aa629de9d9d155bbae99546",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/field-aliases/results/package-files.json",
+      "inputSha256": "d157af3b69273386ff1264e1eb96b747256d0727f909fb99ca3970efe2a18353",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "studies/field-aliases/results/verification.json",
+      "inputSha256": "5bc0306395ada64fd69ff8a5a9601e62b849e4df952894adeb69442d92a0be51",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/import-integrity/after.json",
+      "inputSha256": "d209cbc59a8c728f51c3537f44ce19efd31aac64f567451eea7155b036c037cb",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/import-integrity/before.json",
+      "inputSha256": "3a195334a289c43786d90ca4012b81b815d8e4728ecabd1bf7b3a1abc98f6d8e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/import-integrity/browser-chromium.json",
+      "inputSha256": "a1bbe19728c2fce8e41f81ac6a8fc7095547a4d4db0693d86765b0b0a2a5cd50",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/import-integrity/browser-firefox.json",
+      "inputSha256": "a1bbe19728c2fce8e41f81ac6a8fc7095547a4d4db0693d86765b0b0a2a5cd50",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/import-integrity/jaeger-partial.json",
+      "inputSha256": "3cd25d01c2ab2e2a13ad3396fa9c1b088fb22974245411efcac49c7c2f127195",
+      "outcome": "parsed",
+      "resultSha256": "3bc332deed72a22cab2daa6131c033d3b85fe5f45039aca0578a9a36d4eb2e10"
+    },
+    {
+      "path": "studies/instrumentation-census/emitters.json",
+      "inputSha256": "a3467f0eba6033e0ab58a2e6666538cf41c1a7fec8fa0a0e46d9c5573a6ab72f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/instrumentation-census/results.json",
+      "inputSha256": "ec980fadcac9c39e63c606a3377103cbfb3b7863064e71b6dc564d57cdfe941b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/after.json",
+      "inputSha256": "bf2066cae4b333bea0228303992ed0ea23f785cc053e012b79532c38361f85c5",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/before.json",
+      "inputSha256": "2b6a0290531836c51b1420eb85448410fe05ce731b9acbfdced294803a0669dc",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/browser-after.json",
+      "inputSha256": "59361b964081fd9a3d946330b89055ae19ba1fbf2b31e4bdad6bfc475114f4de",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/browser-before.json",
+      "inputSha256": "c18b95c6b9075f5060744cda87d4b646ccd1134a894fb722b6631e1fdbbeb3b6",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/audit.otlp.json",
+      "inputSha256": "2f58a72f685236440b00dae47504ca423881c087b77be52eadc7981ab60738c3",
+      "outcome": "parsed",
+      "resultSha256": "d6ba20f974be1bb74e159fee7df321782c9b68427514cbda146091b35e8e8c4d"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/gateway.jaeger.json",
+      "inputSha256": "92d4ae65b1bd8caf2bbe1e0d44166caaef473785bc4f79643d7904f9b2692f26",
+      "outcome": "parsed",
+      "resultSha256": "d59bd4b28551b20359b82fb61cceb250ff26a689b0dd8a9abd0cb063f98d130e"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/gateway.otlp.json",
+      "inputSha256": "fb4607d8c8c8c835fa503aaacc9b67678eddbdb8b8acb38692afe349eb16e9b7",
+      "outcome": "parsed",
+      "resultSha256": "31825df3f901f94059344342e3074f69f6634a224cfe6d42f082dbd5a36335f4"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/worker.otlp.json",
+      "inputSha256": "1e880aa0fc19a419fef19b05dc5eb0653fa47e403874af4a63ff4c63f5df6bb5",
+      "outcome": "parsed",
+      "resultSha256": "820a24ac69b87e0823da1339f807d184dc9e1715c8a799d937305cd5d257e68c"
+    },
+    {
+      "path": "studies/jaeger64/installed-node20.json",
+      "inputSha256": "a941435d09b1b20cecd221eeb4220bc087482f17bf38e999becee453f9afe2ad",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/installed-node24.json",
+      "inputSha256": "de20ddb0196d76e4d42158c1d65b33ab61189e260b8468bb7e81ad439f787c16",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/upstream-encoding.json",
+      "inputSha256": "80e444816624f6b7078e530d2c6637e8688bb5d5bdb45fc2e08e04dd9acf6b92",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/jaeger64/verification.json",
+      "inputSha256": "c7137b9d88de8c392cd7ebbaf2f3ef2682990615c74f5f98925c49951c02eed3",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/log-events/after.json",
+      "inputSha256": "4d35c0f5fcb895de20b2eeae4a2dfab921b3bf4a51998d7728d8030f635bc281",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/log-events/capture-event-only/baseline.json",
+      "inputSha256": "1329aaac64d4daf49da07d5815328f483b08c96aef40ebf1611eb44b4707c61c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/log-events/capture-event-only/combined.jsonl",
+      "inputSha256": "45460fd1c80fba771db85199f8484aa7763097252766c9d7d2de9be3b172555d",
+      "outcome": "parsed",
+      "resultSha256": "5d32b84be7f63b9841e00c8a20a5a23443b60170feb9191b78bdb41e09faaf5f"
+    },
+    {
+      "path": "studies/log-events/capture-event-only/logs.json",
+      "inputSha256": "49fbb8340479ade552ff614691b7893f07d46636503716bd9000b207eee9cdf9",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/log-events/capture-event-only/oracle.json",
+      "inputSha256": "05b33bda5a63061f16539604915af4c7b20d1c3e8a870ca2e2eb2f517046947d",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/log-events/capture-event-only/traces.json",
+      "inputSha256": "685bacdf170b166fd542ede12f0b093e39d3525ba4fb8097eed66c27109ad51d",
+      "outcome": "parsed",
+      "resultSha256": "54cd4f308eadf2090fabb66d3b32a8f4de650d56fd5eac90372db29a2b999019"
+    },
+    {
+      "path": "studies/log-events/capture-span-and-event/logs.json",
+      "inputSha256": "b074cd5b650458c20c4b811de1acaeaf946e13a4987831a082be3198e7af9611",
+      "outcome": "rejected",
+      "resultSha256": "e96f3969ace7af00d331118f5729edb1cf17efc9a799ef52db7ec0cd0bad40a7"
+    },
+    {
+      "path": "studies/log-events/capture-span-and-event/oracle.json",
+      "inputSha256": "09f65a7d20029ee087f4e575248f7306b490b68d85d2e4a85dfbb621af70019b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/log-events/capture-span-and-event/traces.json",
+      "inputSha256": "663bbc6a68911d0c05bd2d1fd074f1d66423fec7af5be4d2a964edd5f5c167a5",
+      "outcome": "parsed",
+      "resultSha256": "f6c68dab6e2efe60b3662e3a4a95fa8e320d7e9b1f7ebbd4c0418b36f2ad6b6f"
+    },
+    {
+      "path": "studies/log-events/verification.json",
+      "inputSha256": "55411aaa22b47dfb5bc7ab3bba5a0ef71672b4794ecba6c0c9ee59cc5c972f44",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/history-chromium-1440.json",
+      "inputSha256": "b785f95a7eed1e985179fd44c1e5cae603e0cbe07d93c478f7ba78c3bd1df957",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/history-chromium-375.json",
+      "inputSha256": "02432a6c89f9cbd9d087643a68a45a2214c48b94070219d733a622c41f017c61",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/history-firefox-1440.json",
+      "inputSha256": "669044594f6acf159583656fac5e02dc145904cd11420bfd94c0076f39d9644a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/history-firefox-375.json",
+      "inputSha256": "fb3c2b71f8c4ff41771bb36f2e82cfe802ce58dbdfab45cfd43f82b0e2651a60",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/system-chromium-1440.json",
+      "inputSha256": "83523569c2bd32d067a9995ee823e01e66902a4c86081a87f8a5d5e18d38b9f9",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/system-chromium-375.json",
+      "inputSha256": "e860d07af940175c0b6174b6ebef9eb1e42d88d8a04f24858d2ef05fad955585",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/system-firefox-1440.json",
+      "inputSha256": "334c94f37faa15dc9e06dd5f5776c1c0662892a52c0b654dd190d977970ea9de",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/browser/system-firefox-375.json",
+      "inputSha256": "66dbb297203dd9a59e977a89affea9df3bd4812d21734a8d844edc7e0c9c4ee8",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/node20.json",
+      "inputSha256": "0a73f0a5bf70c4ade69cb6803c4a3114b21d79a4988cd8f8904a490a29d02dae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/message-decoding/results/node26.json",
+      "inputSha256": "75834c2615b225cf3753a9869e4be53660d9680d43ae9b70ff3e2f1471897e07",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/mobile-waterfall/results/after/receipt.json",
+      "inputSha256": "511341607f2d7fbc5c476efcafc7bf428f0bf2d25648d6579a415447c6b88221",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/mobile-waterfall/results/before/receipt.json",
+      "inputSha256": "b6fd16daca4169617ebe7a63f958490733abf3bd7e8add01ac78342352b35cc5",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/after.json",
+      "inputSha256": "f4d314e20f482c0504faa3f07386dcadc4b9824da3b80e0a22224c2a6afa4f07",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/before.json",
+      "inputSha256": "3d4b3275d4cebb2e0ca56580e21c1245f6525dbd71d3c5f9cbe77198aa896fac",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/browser-after.json",
+      "inputSha256": "0942821d08121554e6c52e6629354b1c3f9854985637e53886f1a9722fdad2a6",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/browser-before.json",
+      "inputSha256": "df09577b09e77a7e231a5ea26b5160fc9f82744f837697197d8d9508c802e81f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/fixtures/audit.jsonl",
+      "inputSha256": "993e3f55ccd86d23a3554f830d9de45e216cb113670f53576dce2b7d72773358",
+      "outcome": "parsed",
+      "resultSha256": "ba8137582366fc23e74f56b519b43057a012c229287022513eeaedd452692752"
+    },
+    {
+      "path": "studies/multifile/fixtures/gateway.jsonl",
+      "inputSha256": "2ff23c8de632e8b1926f923eb7268519438c7f7056d7dc6e9913cde9f2e22eb2",
+      "outcome": "parsed",
+      "resultSha256": "14b23dec9d8b3043d98477ce381c83a7256c90b693a0e5cb36caa7a8facd996e"
+    },
+    {
+      "path": "studies/multifile/fixtures/oracle.json",
+      "inputSha256": "a6fbb144189f07807e3ce82d0440e2e4ad230d665a3f60a1f23de8247057ad45",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/fixtures/receipts.json",
+      "inputSha256": "f5fe02aa084fad1ec864940ea0e9905e7ac8de28d257d8fde6e2115f4223964b",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "studies/multifile/fixtures/worker.json",
+      "inputSha256": "bd20cbf9251be09bbcb01cd5da1e4f0385e1148b8cd242b8e13a2896dec27056",
+      "outcome": "parsed",
+      "resultSha256": "5d35f3e0c424298a8954282a798a18374d93709240e147504bbe38a1a63f7a92"
+    },
+    {
+      "path": "studies/multifile/scale.json",
+      "inputSha256": "620fa152e5d1e9656324e3ffd5d3a1fddc32002d88a270721da29d9462d4b1af",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/multifile/verification.json",
+      "inputSha256": "139ba7c892a5b8874eb19cca3fb59aac2da427f092b6baf41f19896870c1900e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/after.json",
+      "inputSha256": "ec73a346cd587e1b771ab634e61817b9a7194acd31926966ff55928e8e24c0ed",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/before.json",
+      "inputSha256": "ea838fc9862d4720891645695e456ff231d9ff2f158739f911b986c77da38200",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/browser-chromium.json",
+      "inputSha256": "db254a23adb296de6e537a1e855aa9548d73cdaaf8765df9fa6be27bf7e8623e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/browser-firefox.json",
+      "inputSha256": "db254a23adb296de6e537a1e855aa9548d73cdaaf8765df9fa6be27bf7e8623e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/checks.json",
+      "inputSha256": "c77696cc2b378cf29de8112c9dce65862992d2c1b64a5b2e3eab2083ea003650",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/corpus.json",
+      "inputSha256": "38a289d316ba6ce4c59d0b3f2374c32e16a0200df0d9a55d89b5b0d6fa55a512",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/all.otlp.json",
+      "inputSha256": "a1905fd1c7695055aca373454ff7b02d389f95b684394b153117c842b799d784",
+      "outcome": "parsed",
+      "resultSha256": "36fb7a373560c63a2706e9453ae2f2d7e912256e6c0f43ba61d55231a0472da0"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/all.proto-snake.json",
+      "inputSha256": "994f2a64671a3581accd2944f4fe38f7c4352793a5e566fe45b887ca8d2e0ae9",
+      "outcome": "parsed",
+      "resultSha256": "36fb7a373560c63a2706e9453ae2f2d7e912256e6c0f43ba61d55231a0472da0"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/all.proto.json",
+      "inputSha256": "62b7d4b732544fdbd1dd2d21983ff324f7c6d14cd6de91a5dfebfb5191cf3f50",
+      "outcome": "parsed",
+      "resultSha256": "36fb7a373560c63a2706e9453ae2f2d7e912256e6c0f43ba61d55231a0472da0"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/oracle.json",
+      "inputSha256": "4ce186298e023adf26d1913ec23204930e6607253538027b918b0ad1d15dda01",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/span-collision.otlp.json",
+      "inputSha256": "1187d5628360a48be1815afd15672cc40688111bc1607aa4ecc512ff63b65e19",
+      "outcome": "parsed",
+      "resultSha256": "dba8f3930e365f50937dd9583cb3fca7627654ed972acc54ce2260df692b95a7"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/span-collision.proto-snake.json",
+      "inputSha256": "a46061ce1d7ebb215405566b032b34a134ad220fa4bfd05411a1c3143b77dcfe",
+      "outcome": "parsed",
+      "resultSha256": "dba8f3930e365f50937dd9583cb3fca7627654ed972acc54ce2260df692b95a7"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/span-collision.proto.json",
+      "inputSha256": "ca170b0f2d359f3839a294e598df4be4ee9e58f6c5cfb2564eb2b24f97b40599",
+      "outcome": "parsed",
+      "resultSha256": "dba8f3930e365f50937dd9583cb3fca7627654ed972acc54ce2260df692b95a7"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/trace-collision.otlp.json",
+      "inputSha256": "0fcf9c9098571c33aca0435cd4f507442ac08ce644a320166a92a44f812b97bc",
+      "outcome": "parsed",
+      "resultSha256": "861bb35895747f940de80d9a92df1e3624ef456a3c4cd33bc7f0983e7c90a135"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/trace-collision.proto-snake.json",
+      "inputSha256": "ed56bdd8c793557895c247a3c3590511c45d67ce2343515af6a7d31b1ec89b2b",
+      "outcome": "parsed",
+      "resultSha256": "861bb35895747f940de80d9a92df1e3624ef456a3c4cd33bc7f0983e7c90a135"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/trace-collision.proto.json",
+      "inputSha256": "fe27ba95f79bc2da18c7b964f588ceb0a0a699e6f388c348e7f30457f50bcd36",
+      "outcome": "parsed",
+      "resultSha256": "861bb35895747f940de80d9a92df1e3624ef456a3c4cd33bc7f0983e7c90a135"
+    },
+    {
+      "path": "studies/protobuf-identities/installed-node20.json",
+      "inputSha256": "24959b26c5671872314624cd171b9aeff434dcbead5d65c0fa22f0852d8ac452",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/protobuf-identities/installed-node26.json",
+      "inputSha256": "ec73a346cd587e1b771ab634e61817b9a7194acd31926966ff55928e8e24c0ed",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/fixtures/native.json",
+      "inputSha256": "24ab8c5427ef4fe4f2b54102f1751e86ed76492b732dda98fda7488ee438e9f8",
+      "outcome": "parsed",
+      "resultSha256": "16e5a78f962e901a3fcc6fd3c94a74d29dfd2ab9b80b9769edddb38e55058ba7"
+    },
+    {
+      "path": "studies/retry-order/fixtures/oracle.json",
+      "inputSha256": "c5f7353d08f35bf7c04007ba26d3c0cd80b02fb53c58749c59f29c0e7e3a4736",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/after.json",
+      "inputSha256": "bfe83100521ce777a3c31615815a30b6e2269b01911b25028fe9d9fd9b342e02",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/before.json",
+      "inputSha256": "1f9a393f3bc35e411e9970906d07a75126ec90b13239dd6c871f89cdfe62164a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/after-chromium-1440-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/after-chromium-375-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/after-firefox-1440-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/after-firefox-375-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/before-chromium-1440-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/before-chromium-375-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/before-firefox-1440-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/before-firefox-375-span.json",
+      "inputSha256": "2315fefce431c0d9596c943d9aa8336edf689d475890333f2516103ae275bddd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/browser/browser.json",
+      "inputSha256": "dd17519216ff94c9c294bbda1aaefdef0718f791dd9e47062e9afb67a71f0e93",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-after.json",
+      "inputSha256": "dfb3e0aa8cd13ac213d58f8db06b45fad291aee338a23033b4d4b408d5c59a2e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-before.json",
+      "inputSha256": "85b9a4e9ef547745e69fb079541464a5b66ae261fb1b780c7dbbef131db64e1b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/after-chromium-1440-span.json",
+      "inputSha256": "17729033dd7866bdec5bd652703d0ac00a78f99646201d125d8b1784ecdec7fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/after-chromium-375-span.json",
+      "inputSha256": "17729033dd7866bdec5bd652703d0ac00a78f99646201d125d8b1784ecdec7fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/after-firefox-1440-span.json",
+      "inputSha256": "17729033dd7866bdec5bd652703d0ac00a78f99646201d125d8b1784ecdec7fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/after-firefox-375-span.json",
+      "inputSha256": "17729033dd7866bdec5bd652703d0ac00a78f99646201d125d8b1784ecdec7fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/before-chromium-1440-span.json",
+      "inputSha256": "d03bff3824ec6411e93df3e0e14fe1dabcc798f19e417558799f734a4fb7e3ae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/before-chromium-375-span.json",
+      "inputSha256": "d03bff3824ec6411e93df3e0e14fe1dabcc798f19e417558799f734a4fb7e3ae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/before-firefox-1440-span.json",
+      "inputSha256": "d03bff3824ec6411e93df3e0e14fe1dabcc798f19e417558799f734a4fb7e3ae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/before-firefox-375-span.json",
+      "inputSha256": "d03bff3824ec6411e93df3e0e14fe1dabcc798f19e417558799f734a4fb7e3ae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/completion-browser/browser.json",
+      "inputSha256": "b95a4ba53d7edf650fb7653142253330c9b4351e582160a6e9be581f4f840379",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/node20-source.json",
+      "inputSha256": "6392160692d045fd6707871e81ceed58c3bdef149350b8b62051dc1870090faa",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/verification/installed20.json",
+      "inputSha256": "6392160692d045fd6707871e81ceed58c3bdef149350b8b62051dc1870090faa",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/verification/installed26.json",
+      "inputSha256": "bfe83100521ce777a3c31615815a30b6e2269b01911b25028fe9d9fd9b342e02",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/verification/receipt.json",
+      "inputSha256": "5790edd378f16c48cff4ea579f4692a6951f0de2a73ad6a295aefc970bd78cd4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/retry-order/results/verification/verified-package.json",
+      "inputSha256": "0943c63908ba88d6cae3a5f7b118177b2171f2699c03baed42cd9495ed1a3369",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/before.json",
+      "inputSha256": "2a480f0bd868f134477b35d6f952f74caf5f1343e69c0dfdfdc2e3c57f908fd1",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/browser-observations.json",
+      "inputSha256": "86c94d4c21939e339fb79a2ca32a0e0e04f28e67314cbc81bf62234bd6329e84",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/browser-span.json",
+      "inputSha256": "8977fc2228c278b084edfe54ef2dfa443c295f5fe4a2a53775def2f44a82abde",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/cli-links-v20.0.0.json",
+      "inputSha256": "8b5bf5dd8f6f6889b85e706e77015baef66006b398788a67f72c2d6570154abc",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/cli-links-v26.7.0.json",
+      "inputSha256": "8b5bf5dd8f6f6889b85e706e77015baef66006b398788a67f72c2d6570154abc",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/current.json",
+      "inputSha256": "8ef2ef349a861326e22eeb037ff02e07ead412a3db33b0d2f0a2581ec07b668a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/installed-cli.json",
+      "inputSha256": "1dbc6beb08174a3616ed1278f93532d36365adc871dd2fec267b198b4362c536",
+      "outcome": "rejected",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64"
+    },
+    {
+      "path": "studies/span-links/installed-node20.json",
+      "inputSha256": "4e4051a4562394cdcadbc57c5b59f515a33abda923409ce0d36d2b1fe84c5c93",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/installed-node26.json",
+      "inputSha256": "8ef2ef349a861326e22eeb037ff02e07ead412a3db33b0d2f0a2581ec07b668a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/performance-before.json",
+      "inputSha256": "e79f3b0af74e9cfd6f106e60e08ff69d2b5ff19289f01df6726f868ff1e38dba",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/span-links/performance-current.json",
+      "inputSha256": "1eafcea16b88fedc4ab7e11bbcdebb67c49def1f84df7913d80b802b538259b5",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-boolean.json",
+      "inputSha256": "a5075ebe41c780f10bf6562b4f3529cf6c3c62689061a803567d57e796b5e70a",
+      "outcome": "parsed",
+      "resultSha256": "65444f149dc3606f8a98bf968a60617504d43a7735a5b2fb993624b3dc23c4ad"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-fraction.json",
+      "inputSha256": "c1e2ee772fdaf8fe9a58a5ee84786e0b80b600f199840b7f53fcad9b67ec3e2b",
+      "outcome": "parsed",
+      "resultSha256": "e47c7fd4616c35de050c6ee123e58a6897c8aac71ae4874837e07d7e9651c274"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-name.json",
+      "inputSha256": "cc1c4aa236a1259740871413489d09edec6de84804df6182159a3cdda09d2442",
+      "outcome": "parsed",
+      "resultSha256": "0fa85729983873cdd709ee625627fab62091a140cbdece37efaab8fb786e1a32"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-substring-name.json",
+      "inputSha256": "46eec711c8ae468a72b5abeac10072f6e5e9af9787d38aebb0a25d069d3bbd1c",
+      "outcome": "parsed",
+      "resultSha256": "cdfcb3f944d8cbbff9902bf3d40a0b2e657e90588a391ab2110d0339f134ab4a"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/native-integers.json",
+      "inputSha256": "d6df505af7e3df8220e381e7a1d3453512dd1d569d49c1c150bb459bfa42d9bb",
+      "outcome": "parsed",
+      "resultSha256": "34c532acb6bef6ecb59fac18627052609ca491fd6138c4e90f557e58393915d7"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/native-jaeger.json",
+      "inputSha256": "d8d82090cb242ca782f9e0eff1874630f9ef29a614ca1182ac7a08c8d3d2f276",
+      "outcome": "parsed",
+      "resultSha256": "e76576f4da16a3b207bf6afcce693a14765c76be8640031725d59a9b31cfd332"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/native-names.json",
+      "inputSha256": "9f9a14043c2e65b2d89cc712bf8643b54704170ffb46bc3425c34c041b00f858",
+      "outcome": "parsed",
+      "resultSha256": "34c532acb6bef6ecb59fac18627052609ca491fd6138c4e90f557e58393915d7"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/oracle.json",
+      "inputSha256": "863a6e6795ab7d5e167df5e6e93d35fdc5f48a67dc67ce0e7ed60b9d51d63255",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-integer.json",
+      "inputSha256": "3c8bad32e6460bc9324fe1be4de2e2399a73f6b92abf2da322bec940ee4880bd",
+      "outcome": "parsed",
+      "resultSha256": "34c532acb6bef6ecb59fac18627052609ca491fd6138c4e90f557e58393915d7"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-leading-zero.json",
+      "inputSha256": "918c8ce7ddb7edf49eafd7304ac5be8282e54bd85e0604050de7565979718270",
+      "outcome": "parsed",
+      "resultSha256": "34c532acb6bef6ecb59fac18627052609ca491fd6138c4e90f557e58393915d7"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-signed-integer.json",
+      "inputSha256": "d74a97466776ee409e4f1249f5a499cdb34e91965f1d3747d425623405a05dec",
+      "outcome": "parsed",
+      "resultSha256": "34c532acb6bef6ecb59fac18627052609ca491fd6138c4e90f557e58393915d7"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-surrounding-space.json",
+      "inputSha256": "8090a8c5603094bc4fff38b067f3b7061284dfbfb4c14aeda938fe572cc25449",
+      "outcome": "parsed",
+      "resultSha256": "34c532acb6bef6ecb59fac18627052609ca491fd6138c4e90f557e58393915d7"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/unknown-future-code.json",
+      "inputSha256": "4de302b124e2825dce5a0d9835b82e6aca6336ccd511d0f581edabe3082bbfa9",
+      "outcome": "parsed",
+      "resultSha256": "06b0ef8fee45c02b1054b25459c4921004d1042318aa7a497c0fe1c44989062b"
+    },
+    {
+      "path": "studies/status-evidence/results/after.json",
+      "inputSha256": "2a1653f243814d2ef66cca5baff2da48f8bb6af750da11b8e860e44e2084e68a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/before.json",
+      "inputSha256": "37b97ec5d681070bf563ad58836da7dd9fe64505ec97857e52c1e7d3526dd6fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-1440-invalid-name-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-1440-quoted-integer-comparison.json",
+      "inputSha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-1440-span.json",
+      "inputSha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-1440-unknown-future-code-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-375-invalid-name-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-375-quoted-integer-comparison.json",
+      "inputSha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-375-span.json",
+      "inputSha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-chromium-375-unknown-future-code-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-1440-invalid-name-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-1440-quoted-integer-comparison.json",
+      "inputSha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-1440-span.json",
+      "inputSha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-1440-unknown-future-code-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-375-invalid-name-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-375-quoted-integer-comparison.json",
+      "inputSha256": "4a73a0c63d70f1260a716417bbca309827cfcd3db82dccfd9774a9be677ca653",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-375-span.json",
+      "inputSha256": "b5baaa370baeeac9927cc7a42eca999db6251c8353c364b8a7ca6d66bc1ce377",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/after-firefox-375-unknown-future-code-comparison.json",
+      "inputSha256": "8d0110f6b7e5cb5e2c5a063d9b2bb1667cd3c95a46c2d965420448cc2247f014",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-1440-invalid-name-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-1440-quoted-integer-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-1440-span.json",
+      "inputSha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-1440-unknown-future-code-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-375-invalid-name-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-375-quoted-integer-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-375-span.json",
+      "inputSha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-chromium-375-unknown-future-code-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-1440-invalid-name-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-1440-quoted-integer-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-1440-span.json",
+      "inputSha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-1440-unknown-future-code-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-375-invalid-name-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-375-quoted-integer-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-375-span.json",
+      "inputSha256": "5ff791cb258d3b93b2fd04ca393d64dcce9438566d6855f142d3e578a9fc79fe",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/before-firefox-375-unknown-future-code-comparison.json",
+      "inputSha256": "4d4b02be34e5f9e7a713e34e5cbfbfc8b4b2617c41e106e51039f43a2780be9c",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/browser/receipt.json",
+      "inputSha256": "155ecfbc102a4292e4a343d598aec6fd1dabe02c29e70d5a314cee33d1730fe4",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/clean-source.json",
+      "inputSha256": "6ef1f641684d6553f82ec1f8cf34e4d11ca0d1eec1917da7e3c20985db24dd22",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/installed-current.json",
+      "inputSha256": "45493d8fe13071df36c4ef9f6f631701769e1116c7f66461c260bb9d07283d2f",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/installed-floor.json",
+      "inputSha256": "75039e3dda88f497e6bca43a5c0cc899b7c343e20a4f1858fb0c448fb386f2fa",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/public-source.json",
+      "inputSha256": "f8a42dbba9074bc372b0594c43736f0e599f44ad9643a10eef9e476c951ef7d7",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/status-evidence/results/verification.json",
+      "inputSha256": "4bbdcfbbdaa2713c70ab11cb68d7b0abc019a9d51e34e9c01a14d1864c38c274",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/after/browser.json",
+      "inputSha256": "5960ffcd6761c6fc3b5022e5c861c2027440964d78db2b6f1bff6043d0a4088a",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/before/browser.json",
+      "inputSha256": "7909d94f0774fad9a0e13eaf103983507789692cb4e6205f2a49e60979000026",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/build.json",
+      "inputSha256": "b830af62a3936df661f24efacbbf7b353304993a1692e7543ae28ecafb4962fd",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/cases.json",
+      "inputSha256": "3852d3a68b5dcd221ceb4c42f8de5584171705d9bc83eab605da021f00124b8b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/cli-after.json",
+      "inputSha256": "faa3cd14d3bc410831006e8387ffde59fc7164011da8d04e1244029a36db696b",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/cli-before.json",
+      "inputSha256": "773ee63b5d6d6fcdee8a168481e02956f4ede99d7ad7bc1025b9535ef54f3b79",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/compatibility-node20.json",
+      "inputSha256": "3bd8c472824bd76b0b6697605ce692ccea84a95ee874ab2703341b9069b3c1a0",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/compatibility-node24.json",
+      "inputSha256": "a6d5a38820f01edcbdab51329bd26307a7fe3af1ad8fa8c5e49a094d58c86765",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/compatibility.json",
+      "inputSha256": "6f5227d5df05c1948a1e10e8741bf9ce3258d7ca728f2d9d6de49e733e92754e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/installed-node20.json",
+      "inputSha256": "5e5314582deb59fa1890d2a913b61b7b10672de11e9fab2499c081b96c7158d8",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/installed-node24.json",
+      "inputSha256": "642b8be0e247207f99cc59c62ca4653f02b59eab8b50d3b41e6670c9ff547798",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "studies/text-integrity/verification.json",
+      "inputSha256": "c8918d03cfa7861f1df36867517828f5392ce42a7ba7b263bd094a753447a3ea",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "tests/fixtures/census/openinference-litellm-embedding.json",
+      "inputSha256": "190757a917ea3f6f5928e491f08b5ef434bdb9bbbdf5d22a5638f2412c11d071",
+      "outcome": "parsed",
+      "resultSha256": "1b585fc0a07339253a870dc162bd67752c541c98756f8530e2d37f45036decdf"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-cohere-legacy-tool-calls.json",
+      "inputSha256": "c32ec86a2e2a9a329180321dcb403561de6b81e63dfc82b22e3ccb881546c8f3",
+      "outcome": "parsed",
+      "resultSha256": "238932b4e263691a4011863ede8482aff8e22d192f9c32847efa3036940d146e"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-mistral-embeddings-legacy.json",
+      "inputSha256": "d0efaa258d6cceb199aedd668bab90be1347dfe767e3d7e4dc5a774a6c456224",
+      "outcome": "parsed",
+      "resultSha256": "d12f802134b809b98c87d35993cde781eefaf094fb51232efc8416940152cc7b"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-openai-reasoning.json",
+      "inputSha256": "8e2a8d8eddf48ac9d8d2e154cbef59172d95df83956f52eef914e3a822b34f0f",
+      "outcome": "parsed",
+      "resultSha256": "7af6961f3615ae5a8c2ad97b7918a2f18561f54612182da8d6e3e36bbb435d54"
+    },
+    {
+      "path": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+      "inputSha256": "5aa10a120bdb2b8b339e64e948c0778c910ede388d43312b6291060e137688e7",
+      "outcome": "parsed",
+      "resultSha256": "48ca6001fe3efacf8f1e753b36d68ed3fddad66776e6bd459594ca874cef76b1"
+    },
+    {
+      "path": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+      "inputSha256": "4e41c0dbaf838ba8fb93c684206adc400fb6e6cf3820ead09ea934f03d6908f2",
+      "outcome": "parsed",
+      "resultSha256": "bf3471096b337629c6c660068c88e5c27998f214ee51e39f4e3da4a4b7660d12"
+    },
+    {
+      "path": "tests/fixtures/census/vercel-ai-sdk-6-deepseek-tool-call.json",
+      "inputSha256": "9b152219e15a46c1d90155c90ffebcf053377c78df78d8b88d506250943a502f",
+      "outcome": "parsed",
+      "resultSha256": "1ce50fc184fd9152dfc14acfdc9d5cabbfa224ffb150ce8e976f1ecd84fb282a"
+    },
+    {
+      "path": "tests/fixtures/census/vercel-ai-sdk-6-openai-responses-stream.json",
+      "inputSha256": "659588fa264215f9d8b30d04336603d09000ce61904f5f0e9718741f7b330cbb",
+      "outcome": "parsed",
+      "resultSha256": "e70f8023dfcdb8f94557b131f85c50e6e4266b7ddd69cc21c69c0a735dd7f522"
+    },
+    {
+      "path": "tests/fixtures/instrumented/openinference.json",
+      "inputSha256": "6a4cdea52bac1d6526d16a1b8e1029b336ebc93d8b9d5adf563d3f402289a476",
+      "outcome": "parsed",
+      "resultSha256": "068e5da143dcd36cdc4dd3a76a835ea43088f5efba3938e7a2b5b0381396dcbb"
+    },
+    {
+      "path": "tests/fixtures/instrumented/openllmetry.json",
+      "inputSha256": "a20b5494916d31aaadeec664107701ff0c39fd876a98a7c23f86d77cb54489f3",
+      "outcome": "parsed",
+      "resultSha256": "26c131dec5edb19a42ab5f250f2b05954fdb54122feb8de8ad8f765b6429fd77"
+    },
+    {
+      "path": "tests/fixtures/small-genai-semconv-trace.json",
+      "inputSha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940",
+      "outcome": "parsed",
+      "resultSha256": "f9c69b56187eb89edbf9a743c59f727c8c49072b9b7efac932c3358284e1977d"
+    },
+    {
+      "path": "tests/fixtures/small-openinference-trace.json",
+      "inputSha256": "d1616024ceb3c925abf6526efcbd09cb3a7feb59d97c84b2cc42c1634ac1c918",
+      "outcome": "parsed",
+      "resultSha256": "069130e1078e6ff0b71c673fda8e551aa8319f440e765d20bbcfb556251c9e18"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "inputSha256": "37f2aea8ce902c14129c7f6be7e35d02fdcf7bd1257eeb1287ed5cafe8aab808",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "tsconfig.cli.json",
+      "inputSha256": "b57fa490b7766ec954a7832523c2f9c95a7f6409f13f0f0a814d6b981980898e",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    },
+    {
+      "path": "tsconfig.json",
+      "inputSha256": "f75f887cdc4dc8ec8029c8e30ea01f52541c190c0bdf235459aff18698f22fae",
+      "outcome": "rejected",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46"
+    }
+  ]
+}

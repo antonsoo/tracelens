@@ -9,6 +9,17 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Repeated JSON object fields
+
+- Reject repeated field names in original JSON/JSONL text before reporting
+  status, usage or span inventory. Decode escaped names for identity, keep
+  sibling object scopes independent and avoid echoing payload data in errors.
+- A complete ambiguous final JSONL record fails the import; genuinely
+  unfinished collector tails keep their explicit partial-import warning.
+  File groups fail together and browser failures retain loaded evidence.
+- [Native SDK fixture damage, CLI/browser replay and import overhead](studies/json-members/README.md).
+  Source change only; no npm release or manual hosted deployment.
+
 ### Long traces on phones
 
 - Bound the narrow-layout timeline panel so selected details stay nearby as

@@ -135,11 +135,25 @@ measurement. Duplicate attribute keys retain the original values under
 `duplicateAttributeValues`, without choosing one. Diagnostics identify the
 attribute path and affected trace/span, including nested values, events and
 links. Resource diagnostics apply only to traces using that resource. This is
-not a complete Protobuf validator: unknown future fields are ignored, byte
-strings are not decoded/validated, and duplicate literal JSON object keys are
-already collapsed by JSON.parse. The
+not a complete Protobuf validator: unknown future fields are ignored and byte
+strings are not decoded/validated. The
 [attribute-value study](../studies/attribute-values/README.md) records the
 supported forms and intentional differences from the Python parser.
+
+The source text importer rejects repeated JSON object field names before
+selecting trace evidence, including identical values, unknown fields and
+equivalent escaped spellings such as `code` and `\u0063ode`. Names can repeat
+in different objects. A JSON-looking prompt string is still literal content.
+This strict inspection policy prevents a later status, token value or span
+container from silently replacing an earlier one. It differs from the
+[ProtoJSON parser recommendation](https://protobuf.dev/programming-guides/json/#duplicate-keys)
+to retain the last occurrence. It is not a claim that repeated names violate
+JSON grammar or that this inspector implements every Protobuf parsing rule.
+`parseOtlpJson()` accepts already-decoded objects and cannot recover keys a
+caller's JSON decoder has overwritten; use `parseTraceText()` or
+`parseTraceInputs()` on the original text for this check. JSON encoded inside
+message/tool strings still follows the existing embedded-payload decoder.
+[Reproduction, compatibility controls and measured overhead](../studies/json-members/README.md).
 
 A file may be JSON Lines, with an export on each line: that is what the
 Collector's `file` exporter writes, a line per batch (see its README, "File
@@ -150,6 +164,9 @@ names the line. Lines of metrics, logs or profiles written to the same file
 are skipped and counted in a warning.
 Line numbers include blank lines in the original file, for LF, CRLF and
 CR separators.
+A complete JSONL record with a repeated object field is an import error even
+on the final line; it is never treated as an unfinished collector tail.
+Multi-file imports reject the whole group if any file contains such a record.
 
 The parser accepts at most 128 nested JSON object/array containers,
 counting from the document root. JSON embedded in message and tool

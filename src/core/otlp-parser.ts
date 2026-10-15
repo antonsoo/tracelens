@@ -10,6 +10,7 @@ import { normalizeSpan } from './normalize.js';
 import { isJaegerJson, jaegerToOtlp } from './jaeger.js';
 import { normalizeId } from './identity.js';
 import { assertPayloadDepth, TraceParseError } from './payload-depth.js';
+import { readTraceJson } from './read-json.js';
 import { traceField } from './field-alias.js';
 import { decodeAttributes } from './attributes.js';
 import { collectLogs, correlateLogs, hasLogSignal, type LogBatch } from './logs.js';
@@ -438,8 +439,11 @@ function parseJsonLines(text: string, whole: SyntaxError): { json: unknown; warn
   for (let i = 0; i < lines.length; i++) {
     let value: unknown;
     try {
-      value = JSON.parse(lines[i]!.text);
+      value = readTraceJson(lines[i]!.text);
     } catch (err) {
+      if (err instanceof TraceParseError) {
+        throw new TraceParseError(`Line ${lines[i]!.number}: ${err.message}`);
+      }
       const reason = err instanceof Error ? err.message : String(err);
       if (i === 0) throw new TraceParseError(`Not valid JSON: ${whole.message}`);
       // A file the collector is still writing, or a copy cut short, ends mid-line.
@@ -478,7 +482,7 @@ function readTraceText(text: string): { json: unknown; warnings: ParseWarning[];
   let lineWarnings: ParseWarning[] = [];
   let logBatches: LogBatch[] = [];
   try {
-    json = JSON.parse(text);
+    json = readTraceJson(text);
     if (hasLogSignal(json)) logBatches.push({ json });
   } catch (err) {
     if (!(err instanceof SyntaxError)) throw err;
