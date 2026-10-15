@@ -31,7 +31,7 @@ export interface TraceSummary {
   /** Present only when retained spans lack a decodable status outcome. */
   unknownStatusCount?: number;
   retryCount: number;
-  /** Eligible repetitions whose preceding call has an unreadable outcome. */
+  /** Repetitions whose preceding outcome is unreadable or ambiguous among timestamp peers. */
   unknownRetryCount?: number;
   modelUsage: ModelUsageRow[];
   /** Known subtotal; consult costReport.estimatedCostUsd for full-estimate availability. */
@@ -55,26 +55,36 @@ export function selfTimeNs(span: ParsedSpan): bigint {
 function countRetries(spans: ParsedSpan[]): { count: number; unknown: number } {
   let retries = 0;
   let unknown = 0;
-  const byParent = new Map<string, ParsedSpan[]>();
+  const byTool = new Map<string, ParsedSpan[]>();
   for (const s of spans) {
     if (s.agentKind !== 'tool') continue;
-    const key = JSON.stringify([s.traceId, s.parentSpanId ?? '']);
-    const list = byParent.get(key) ?? [];
+    const key = JSON.stringify([s.traceId, s.parentSpanId ?? '', s.genai?.toolName ?? s.name]);
+    const list = byTool.get(key) ?? [];
     list.push(s);
-    byParent.set(key, list);
+    byTool.set(key, list);
   }
-  for (const siblings of byParent.values()) {
-    const seen = new Map<string, ParsedSpan>();
-    const sorted = [...siblings].sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : a.startTimeUnixNano > b.startTimeUnixNano ? 1 : 0));
-    for (const s of sorted) {
-      const label = s.genai?.toolName ?? s.name;
-      const previous = seen.get(label);
-      // Equal-start zero-duration calls do not establish temporal order.
-      if (previous && previous.startTimeUnixNano < s.startTimeUnixNano && previous.endTimeUnixNano <= s.startTimeUnixNano) {
-        if (previous.status.code === 'ERROR') retries += 1;
-        else if (!isKnownStatusCode(previous.status.code)) unknown += 1;
+  for (const calls of byTool.values()) {
+    calls.sort((a, b) => (a.startTimeUnixNano < b.startTimeUnixNano ? -1 : a.startTimeUnixNano > b.startTimeUnixNano ? 1 : 0));
+    let previous: ParsedSpan[] = [];
+    for (let i = 0; i < calls.length;) {
+      const start = calls[i]!.startTimeUnixNano;
+      let end = i + 1;
+      while (end < calls.length && calls[end]!.startTimeUnixNano === start) end++;
+      // Equal-start peers have no order. Each call in this batch must see the
+      // same preceding batch, rather than whichever record happened to be last.
+      let yes = false;
+      let no = false;
+      let unreadable = false;
+      for (const candidate of previous) {
+        if (candidate.endTimeUnixNano > start) no = true;
+        else if (candidate.status.code === 'ERROR') yes = true;
+        else if (isKnownStatusCode(candidate.status.code)) no = true;
+        else unreadable = true;
       }
-      seen.set(label, s);
+      if (unreadable || (yes && no)) unknown += end - i;
+      else if (yes) retries += end - i;
+      previous = calls.slice(i, end);
+      i = end;
     }
   }
   return { count: retries, unknown };

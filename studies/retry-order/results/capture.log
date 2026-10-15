@@ -1,0 +1,2 @@
+Installed 7 packages in 90ms
+{"spans": 4, "observations": [{"role": "failed-peer", "spanId": "b213b4b7888e87a4", "startTimeUnixNano": "1792000000001000000", "endTimeUnixNano": "1792000000002000000", "outcome": "ERROR"}, {"role": "successful-peer", "spanId": "3159b58f809c8f67", "startTimeUnixNano": "1792000000001000000", "endTimeUnixNano": "1792000000002000000", "outcome": "OK"}, {"role": "later-call", "spanId": "00b55aee043eb047", "startTimeUnixNano": "1792000000003000000", "endTimeUnixNano": "1792000000004000000", "outcome": "OK"}]}

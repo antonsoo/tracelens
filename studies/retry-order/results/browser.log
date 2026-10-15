@@ -1,0 +1,8 @@
+before chromium 1440: all six imports, summary, raw download and offline checks passed
+before chromium 375: all six imports, summary, raw download and offline checks passed
+before firefox 1440: all six imports, summary, raw download and offline checks passed
+before firefox 375: all six imports, summary, raw download and offline checks passed
+after chromium 1440: all six imports, summary, raw download and offline checks passed
+after chromium 375: all six imports, summary, raw download and offline checks passed
+after firefox 1440: all six imports, summary, raw download and offline checks passed
+after firefox 375: all six imports, summary, raw download and offline checks passed

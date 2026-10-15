@@ -1,0 +1,38 @@
+{
+  "packages": {
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "driverSha256": "aaf3d9c3668efaa69f9314095220bc4da90d6bdaf84f56f673b8060441778cce",
+  "nativeSha256": "24ab8c5427ef4fe4f2b54102f1751e86ed76492b732dda98fda7488ee438e9f8",
+  "schedule": "Synthetic, explicitly supplied SDK start/end timestamps; outcomes from local dictionary lookups.",
+  "observations": [
+    {
+      "role": "failed-peer",
+      "spanId": "b213b4b7888e87a4",
+      "startTimeUnixNano": "1792000000001000000",
+      "endTimeUnixNano": "1792000000002000000",
+      "outcome": "ERROR"
+    },
+    {
+      "role": "successful-peer",
+      "spanId": "3159b58f809c8f67",
+      "startTimeUnixNano": "1792000000001000000",
+      "endTimeUnixNano": "1792000000002000000",
+      "outcome": "OK"
+    },
+    {
+      "role": "later-call",
+      "spanId": "00b55aee043eb047",
+      "startTimeUnixNano": "1792000000003000000",
+      "endTimeUnixNano": "1792000000004000000",
+      "outcome": "OK"
+    }
+  ],
+  "expected": {
+    "retryCount": 0,
+    "unknownRetryCount": 1
+  },
+  "reason": "The later call has equally timed ERROR and OK predecessor candidates; export order cannot select one."
+}

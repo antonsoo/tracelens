@@ -473,6 +473,10 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   [Native SDK cost reproduction and scope](studies/cost-coverage/README.md).
 - Possible retries are inferred from a new tool call after a failed,
   completed call with the same name and parent. Repetition alone is not a retry.
+  In this source build, calls with identical start timestamps are evaluated
+  together. Conflicting predecessor outcomes leave the count unknown rather
+  than letting export order select a failure or success.
+  [Native SDK permutations and offline browser evidence](studies/retry-order/README.md).
 - "Critical path" is the heuristic described above, not a guarantee of
   optimality under concurrency.
 - The browser takes files up to 25 MiB and reads each file whole in a

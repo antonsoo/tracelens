@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Timestamp ties in possible retries
+
+- Stop using serialized record order to select the preceding tool-call outcome
+  when calls have identical start timestamps. Evaluate timestamp peer groups
+  together for each trace, parent and tool name.
+- Retain an unknown retry count when equally timed predecessor candidates have
+  conflicting outcomes or completion evidence. Parallel later calls all see
+  the preceding group; they do not hide one another's earlier failed attempt.
+- Preserve all spans and statuses. `unknownRetryCount` now also includes
+  ambiguous predecessor evidence; browser and terminal summaries explain it.
+  [Native SDK capture and all-permutation CLI/browser checks](studies/retry-order/README.md).
+  Unreleased local source change; no registry release or hosted deployment.
+
 ### Span status evidence
 
 - Decode exact quoted integer enum values without dropping recorded errors.

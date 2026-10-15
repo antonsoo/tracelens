@@ -45,7 +45,7 @@ export function renderSummaryHeader(container: HTMLElement, summary: TraceSummar
           `${summary.errorCount} reported; ${partialImport ? 'partial import' : `${summary.unknownStatusCount} status unknown`}`) : undefined),
       cell('Possible retries', partialImport || summary.unknownRetryCount ? 'Unknown' : fmtInt(summary.retryCount),
         partialImport || summary.unknownRetryCount ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' },
-          `${summary.retryCount} observed; ${partialImport ? 'partial import' : `${summary.unknownRetryCount} status unknown`}`) : undefined),
+          `${summary.retryCount} observed; ${partialImport ? 'partial import' : `${summary.unknownRetryCount} predecessor(s) uncertain`}`) : undefined),
       cell('Models', topModels || '—'),
     ),
   );

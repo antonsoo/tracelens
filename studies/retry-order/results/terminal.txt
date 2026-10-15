@@ -1,0 +1,39 @@
+studies/retry-order/fixtures/native.json
+trace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)
+
+Timing
+──────
+bucket            self time
+────────────────  ─────────
+total wall clock  5.0 ms   
+llm               0.0 ms   
+tool              3.0 ms   
+other             3.0 ms   
+
+Tokens & cost by model
+──────────────────────
+No model-call spans were found.
+Use tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.
+
+Errors & possible retries
+─────────────────────────
+1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown
+
+Elapsed-time accounting
+───────────────────────
+5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered
+Recorded coverage  Elapsed time
+─────────────────  ────────────
+LLM alone          0.0 ms      
+Tool alone         1.0 ms      
+Other alone        3.0 ms      
+Overlapping work   1.0 ms      
+No recorded span   0.0 ms      
+Peak concurrent self-time spans: 2. Parent/child nesting is excluded.
+Timestamp coverage is not CPU use, a causal critical path, or proof of idle time.
+
+Longest-child chain (heuristic)
+───────────────────────────────
+longest-duration child chosen at each nesting level — see docs/formats.md
+  local lookup experiment 5.0 ms
+    lookup (lookup) 1.0 ms

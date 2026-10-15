@@ -162,7 +162,7 @@ function printSummary(path: string, trace: ParsedTrace, prices: PriceEntry[]): v
     : summary.unknownStatusCount ? yellow(`${summary.errorCount} span(s) reported error; ${summary.unknownStatusCount} status outcome(s) unknown`)
       : summary.errorCount > 0 ? red(`${summary.errorCount} span(s) ended in error`) : green('no errors');
   const retryText = partialImport ? `${summary.retryCount} observed possible retried call(s); complete count unknown`
-    : summary.unknownRetryCount ? `${summary.retryCount} observed possible retried call(s); ${summary.unknownRetryCount} preceding status outcome(s) unknown`
+    : summary.unknownRetryCount ? `${summary.retryCount} observed possible retried call(s); ${summary.unknownRetryCount} preceding call outcome(s) unknown`
       : `${summary.retryCount} possible retried call(s)`;
   console.log(
     errorText +

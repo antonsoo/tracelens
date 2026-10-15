@@ -418,7 +418,20 @@ call with the same tool name and parent. Successful repeated calls and
 overlapping attempts do not count. The trace does not establish that
 two calls had identical intent, so the UI labels these **possible retries**.
 Calls sharing a start timestamp, including zero-duration calls, do not
-establish the temporal order needed for that retry inference.
+establish temporal order against each other. They are processed as a group
+for each trace, parent and tool name. Every call in the group sees the same
+immediately preceding distinct-start group. All predecessor candidates must
+support a completed failure to count a possible retry. If their outcomes or
+completion evidence disagree, the call contributes to `unknownRetryCount`.
+An unreadable preceding outcome also stays unknown. If every candidate rules
+out a completed failure, it adds no possible retry. Multiple later calls can
+each follow a known earlier failed group; they do not become predecessors of
+one another just because they appear consecutively in an export.
+
+[`studies/retry-order`](../studies/retry-order/README.md) retains a native SDK
+capture for which unchanged span permutations formerly produced 0 or 1 possible
+retry. They now consistently produce 0 observed and 1 unknown. This remains a
+heuristic, not a reconstruction of intent or proof that a retry happened.
 
 ## 8. Browser inspection and evidence downloads
 

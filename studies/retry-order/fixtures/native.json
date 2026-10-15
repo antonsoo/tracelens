@@ -1,0 +1,118 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "controlled-retry-order"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.retry-order",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+              "spanId": "b213b4b7888e87a4",
+              "parentSpanId": "6967108eff194050",
+              "name": "lookup",
+              "kind": 1,
+              "startTimeUnixNano": "1792000000001000000",
+              "endTimeUnixNano": "1792000000002000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "lookup"
+                  }
+                }
+              ],
+              "status": {
+                "message": "Controlled local lookup failure.",
+                "code": 2
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+              "spanId": "3159b58f809c8f67",
+              "parentSpanId": "6967108eff194050",
+              "name": "lookup",
+              "kind": 1,
+              "startTimeUnixNano": "1792000000001000000",
+              "endTimeUnixNano": "1792000000002000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "lookup"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+              "spanId": "00b55aee043eb047",
+              "parentSpanId": "6967108eff194050",
+              "name": "lookup",
+              "kind": 1,
+              "startTimeUnixNano": "1792000000003000000",
+              "endTimeUnixNano": "1792000000004000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "lookup"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              },
+              "flags": 256
+            },
+            {
+              "traceId": "8acf7e9351a137e3674b9c8f47fe031a",
+              "spanId": "6967108eff194050",
+              "name": "local lookup experiment",
+              "kind": 1,
+              "startTimeUnixNano": "1792000000000000000",
+              "endTimeUnixNano": "1792000000005000000",
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

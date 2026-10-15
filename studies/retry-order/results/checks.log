@@ -1,0 +1,47 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 lint
+npm notice run eslint .
+npm notice run @antonsoloviev/tracelens@0.3.3 typecheck
+npm notice run tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.cli.json
+npm notice run @antonsoloviev/tracelens@0.3.3 test
+npm notice run vitest run
+
+ RUN  v5.0.2 <checkout>
+
+ ❯ tests/otlp-parser.test.ts (14 tests | 1 failed) 3339ms
+   ❯ parseOtlpJson performance on a large generated trace (1)
+     × parses 20,000 spans in well under a second 2062ms
+ ❯ tests/fuzz.test.ts (2 tests | 1 failed) 9582ms
+   × fuzz: mutated OTLP and Jaeger documents only raise declared input/comparison errors 6996ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/fuzz.test.ts > fuzz: mutated OTLP and Jaeger documents only raise declared input/comparison errors
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/fuzz.test.ts:34:1
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/otlp-parser.test.ts > parseOtlpJson performance on a large generated trace > parses 20,000 spans in well under a second
+AssertionError: expected 1635.5681689999997 to be less than 1000
+ ❯ tests/otlp-parser.test.ts:118:23
+    116|     // Generous bound: this machine (14 vCPU WSL2, 48GB RAM) parses th…
+    117|     // of ms; 1000ms leaves headroom for CI hardware without being a m…
+    118|     expect(elapsedMs).toBeLessThan(1000);
+       |                       ^
+    119|   });
+    120| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 33 passed (35)
+      Tests  2 failed | 472 passed (474)
+   Start at  22:30:18
+   Duration  12.89s (transform 43%, tests 41%, import 14%, worker 2%)
+
+  Transform  transforming modules took 31.11s · 43% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+
