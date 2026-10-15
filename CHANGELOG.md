@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+Entries describe source changes at capture time. The
+[consolidated verification](docs/verification-inspection-2026-10-14.md) records
+later build and publication checks; older source-only notes describe their
+original capture rather than the current hosted feature inventory.
+
 ### Long traces on phones
 
 - Bound the narrow-layout timeline panel so selected details stay nearby as

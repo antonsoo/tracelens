@@ -1,0 +1,293 @@
+{
+  "node": "v20.0.0",
+  "corpusFiles": 54,
+  "disagreements": 0,
+  "corpus": [
+    {
+      "path": "tests/fixtures/census/openinference-litellm-embedding.json",
+      "resultSha256": "06e75d2776de421a309fccb6d607a26acb6594a37d85bcf695803845b6670b48",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-cohere-legacy-tool-calls.json",
+      "resultSha256": "37d0af00b77a5bfe56bed9f170d2c88a5e5d997878a1460f258c0e0d9605c90b",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-mistral-embeddings-legacy.json",
+      "resultSha256": "e30ae64b9bc82c61cbe7b646906863110143554ea1295ff222c9bdc4c880e64f",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/openllmetry-openai-reasoning.json",
+      "resultSha256": "6faef7555bc1608b54394cb7c318368b781836fba406fa3266f70ffb57b29e45",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/strands-legacy-events-tool-call.json",
+      "resultSha256": "612dd25c508d97f8cf3ac6abae8337b09220b7a59841b5041e656ea41b49ba67",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/strands-operation-details-events-tool-call.json",
+      "resultSha256": "21e9dc403d08f4ca5465fa184049914422bb48d7009d282329889b5f150793ff",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/vercel-ai-sdk-6-deepseek-tool-call.json",
+      "resultSha256": "bb6d0e74af706298b9f191cab95080a3eac89bba23955dfa9d1c5d81f3a73bed",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/census/vercel-ai-sdk-6-openai-responses-stream.json",
+      "resultSha256": "b4e102f6ca10554ead5152c68566b75c8a7ebfda21dc8d35a887f22842b26628",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/instrumented/openinference.json",
+      "resultSha256": "93bdbc2e75f1543f05df8637b88f38b26d0af7a29b2826f62a2c4ad1f7f6f6ce",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/instrumented/openllmetry.json",
+      "resultSha256": "802d56ee080288e6fcc49126c3c460162c28d22eba89bf8ac1da20b4f2a22b51",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/small-genai-semconv-trace.json",
+      "resultSha256": "d9d56070c9fb9269cb66c5b920ea62b2ec0160941c412e661735278199d0d1e2",
+      "outcome": "parsed"
+    },
+    {
+      "path": "tests/fixtures/small-openinference-trace.json",
+      "resultSha256": "2c8f6741963633a21ff29a411fbe0bcf042d58eb27ae1aa45c8bfd0ac82f4ea4",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/capture.json",
+      "resultSha256": "8f2001a5828f3d093f937a5ab4d1db1ab2bd198e32c910c9615f799cd31e18d3",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/oracle.json",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/prices.json",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/attribute-values/fixtures/sdk-control.json",
+      "resultSha256": "cc611963c1be279f343edab0f080a5ce982e20bc627f2414ee43348305bb8adb",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/capture.otlp.json",
+      "resultSha256": "8e1c71c199ff6da98db641bb4fab51fe29240f1d5094cd27b6483cebda272bd3",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/capture.proto-snake.json",
+      "resultSha256": "8e1c71c199ff6da98db641bb4fab51fe29240f1d5094cd27b6483cebda272bd3",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/capture.proto.json",
+      "resultSha256": "8e1c71c199ff6da98db641bb4fab51fe29240f1d5094cd27b6483cebda272bd3",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/dropped-evidence/fixtures/oracle.json",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/audit.otlp.json",
+      "resultSha256": "0be0afc5543a9750e871e6895e834414440d4eea06e1816850ab5a563f0206e6",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/gateway.jaeger.json",
+      "resultSha256": "49b071213432b86c45a7a9a0497a0e3176299095f8c29c0b765cccc8f2e81a49",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/gateway.otlp.json",
+      "resultSha256": "07ff6c36810c7e21d985cad07759d6bd0856bc085b56a98928df0b63b0407e5b",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/jaeger64/fixtures/worker.otlp.json",
+      "resultSha256": "af53481568244823236d2f88b55f715fe3285b86085a1d0776b5e8b5cc0787dc",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/multifile/fixtures/audit.jsonl",
+      "resultSha256": "a44aaab40f9efdde9e04ba6cbba15c5b1038354f3f344685e6b67fca0ac6fadb",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/multifile/fixtures/gateway.jsonl",
+      "resultSha256": "f76792b44984d489f2f5408632e875624cc1d096d74bc025d470329627a7f5ce",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/multifile/fixtures/oracle.json",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/multifile/fixtures/receipts.json",
+      "resultSha256": "0d26f185a69a328f9ab836389d17ea8f98c9bf767cf246f041f6ea3afff25d64",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/multifile/fixtures/worker.json",
+      "resultSha256": "1a6d79ff06168444d746f3a734eec94bff0fa6f25d52d2aef6bbe7d57cecfade",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/all.otlp.json",
+      "resultSha256": "c47e46a417bad6254bda8847058d14d1bc517c3c9f8653852b716d3df2d31d25",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/all.proto-snake.json",
+      "resultSha256": "c47e46a417bad6254bda8847058d14d1bc517c3c9f8653852b716d3df2d31d25",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/all.proto.json",
+      "resultSha256": "c47e46a417bad6254bda8847058d14d1bc517c3c9f8653852b716d3df2d31d25",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/oracle.json",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/span-collision.otlp.json",
+      "resultSha256": "14ea3e9b906d6025bbe7ffbb441ce86228ddd6923582c0da1ab3e4164f2c0699",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/span-collision.proto-snake.json",
+      "resultSha256": "14ea3e9b906d6025bbe7ffbb441ce86228ddd6923582c0da1ab3e4164f2c0699",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/span-collision.proto.json",
+      "resultSha256": "14ea3e9b906d6025bbe7ffbb441ce86228ddd6923582c0da1ab3e4164f2c0699",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/trace-collision.otlp.json",
+      "resultSha256": "851c0ac0582a661d465bd55c44b06fcbc2ddc2153d57a2aefc01811168895e21",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/trace-collision.proto-snake.json",
+      "resultSha256": "851c0ac0582a661d465bd55c44b06fcbc2ddc2153d57a2aefc01811168895e21",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/protobuf-identities/fixtures/trace-collision.proto.json",
+      "resultSha256": "851c0ac0582a661d465bd55c44b06fcbc2ddc2153d57a2aefc01811168895e21",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/retry-order/fixtures/native.json",
+      "resultSha256": "d409142082a87c153958f7cc765de6794ef7aeb6801266cfcd639d345ae0759f",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/retry-order/fixtures/oracle.json",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-boolean.json",
+      "resultSha256": "df2e31ac63c1ebee5df0f775815bec9ac0e9b4e9a688adc24ae3262009810131",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-fraction.json",
+      "resultSha256": "ac8a1f1421b357325ee81a69d5517b8abfbd73869c3e2c8e5c66d3ddeee6d7cb",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-name.json",
+      "resultSha256": "90bc6fca73c505924e687ff6a7ee7cee5c0289960ac480302497dd1c3f251320",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/invalid-substring-name.json",
+      "resultSha256": "ee6c36955eb1d55d6a7a161817589356315b67917ff49d893b0aa3b7e78f2493",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/native-integers.json",
+      "resultSha256": "45b6068d9b3f398e820eb3d5ca6980354a57c700a4701d56234191e25f74f78d",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/native-jaeger.json",
+      "resultSha256": "5bc122e88a5ebf5a6ea402a15477dd19e78f07c0b4c9c1a7c620d7be9b78fbaa",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/native-names.json",
+      "resultSha256": "45b6068d9b3f398e820eb3d5ca6980354a57c700a4701d56234191e25f74f78d",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/oracle.json",
+      "resultSha256": "d718fa77d86ede9da7acf6ffc74cb81015768688e4b2ac91d35e322df965bd46",
+      "outcome": "rejected"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-integer.json",
+      "resultSha256": "45b6068d9b3f398e820eb3d5ca6980354a57c700a4701d56234191e25f74f78d",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-leading-zero.json",
+      "resultSha256": "45b6068d9b3f398e820eb3d5ca6980354a57c700a4701d56234191e25f74f78d",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-signed-integer.json",
+      "resultSha256": "45b6068d9b3f398e820eb3d5ca6980354a57c700a4701d56234191e25f74f78d",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/quoted-surrounding-space.json",
+      "resultSha256": "45b6068d9b3f398e820eb3d5ca6980354a57c700a4701d56234191e25f74f78d",
+      "outcome": "parsed"
+    },
+    {
+      "path": "studies/status-evidence/fixtures/unknown-future-code.json",
+      "resultSha256": "2014a805e95a84637ddf3b46e60dc9284c338d3906d09cfc16232260d5ceda84",
+      "outcome": "parsed"
+    }
+  ],
+  "workloads": [
+    {
+      "kind": "history",
+      "inputSha256": "08c61e4ede8b9f594ac1e3b429c572510ffdb086f12082c1b48720f5b6d5b52d",
+      "outputSha256": "80f6468dca51f0686099bc31ce55be3293218242d1c4cd95ad8ec2319f6b832d",
+      "spans": 161,
+      "inputMessagesPerCall": 800
+    },
+    {
+      "kind": "system",
+      "inputSha256": "5f69540681432771edc7165e0f8465db57b8a5fe43074ece02a38cfb031ffe4f",
+      "outputSha256": "7845912f01a19ecb4026e425bc0353c81e6d78258bda545511d7f2b43bbab22e",
+      "spans": 51,
+      "inputMessagesPerCall": 10
+    }
+  ]
+}

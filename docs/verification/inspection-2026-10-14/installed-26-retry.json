@@ -1,0 +1,139 @@
+{
+  "node": "v26.7.0",
+  "nativeSha256": "24ab8c5427ef4fe4f2b54102f1751e86ed76492b732dda98fda7488ee438e9f8",
+  "summaryModuleSha256": "1ba16be223c06b683fcaf825faeac24e8d5b5370e5767d190e7276f0912dc49f",
+  "expected": {
+    "retryCount": 0,
+    "unknownRetryCount": 1
+  },
+  "permutations": 6,
+  "disagreements": 0,
+  "records": [
+    {
+      "index": 0,
+      "order": [
+        "b213b4b7888e87a4",
+        "3159b58f809c8f67",
+        "00b55aee043eb047"
+      ],
+      "retryCount": 0,
+      "unknownRetryCount": 1,
+      "errorCount": 1,
+      "warnings": [],
+      "agrees": true,
+      "terminalAgrees": true,
+      "command": [
+        "tracelens",
+        "summary",
+        "trace.json"
+      ],
+      "stdout": "trace.json\ntrace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  5.0 ms   \nllm               0.0 ms   \ntool              3.0 ms   \nother             3.0 ms   \n\nTokens & cost by model\n──────────────────────\nNo model-call spans were found.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown\n\nElapsed-time accounting\n───────────────────────\n5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         1.0 ms      \nOther alone        3.0 ms      \nOverlapping work   1.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 2. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  local lookup experiment 5.0 ms\n    lookup (lookup) 1.0 ms\n",
+      "stderr": ""
+    },
+    {
+      "index": 1,
+      "order": [
+        "b213b4b7888e87a4",
+        "00b55aee043eb047",
+        "3159b58f809c8f67"
+      ],
+      "retryCount": 0,
+      "unknownRetryCount": 1,
+      "errorCount": 1,
+      "warnings": [],
+      "agrees": true,
+      "terminalAgrees": true,
+      "command": [
+        "tracelens",
+        "summary",
+        "trace.json"
+      ],
+      "stdout": "trace.json\ntrace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  5.0 ms   \nllm               0.0 ms   \ntool              3.0 ms   \nother             3.0 ms   \n\nTokens & cost by model\n──────────────────────\nNo model-call spans were found.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown\n\nElapsed-time accounting\n───────────────────────\n5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         1.0 ms      \nOther alone        3.0 ms      \nOverlapping work   1.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 2. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  local lookup experiment 5.0 ms\n    lookup (lookup) 1.0 ms\n",
+      "stderr": ""
+    },
+    {
+      "index": 2,
+      "order": [
+        "3159b58f809c8f67",
+        "b213b4b7888e87a4",
+        "00b55aee043eb047"
+      ],
+      "retryCount": 0,
+      "unknownRetryCount": 1,
+      "errorCount": 1,
+      "warnings": [],
+      "agrees": true,
+      "terminalAgrees": true,
+      "command": [
+        "tracelens",
+        "summary",
+        "trace.json"
+      ],
+      "stdout": "trace.json\ntrace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  5.0 ms   \nllm               0.0 ms   \ntool              3.0 ms   \nother             3.0 ms   \n\nTokens & cost by model\n──────────────────────\nNo model-call spans were found.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown\n\nElapsed-time accounting\n───────────────────────\n5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         1.0 ms      \nOther alone        3.0 ms      \nOverlapping work   1.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 2. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  local lookup experiment 5.0 ms\n    lookup (lookup) 1.0 ms\n",
+      "stderr": ""
+    },
+    {
+      "index": 3,
+      "order": [
+        "3159b58f809c8f67",
+        "00b55aee043eb047",
+        "b213b4b7888e87a4"
+      ],
+      "retryCount": 0,
+      "unknownRetryCount": 1,
+      "errorCount": 1,
+      "warnings": [],
+      "agrees": true,
+      "terminalAgrees": true,
+      "command": [
+        "tracelens",
+        "summary",
+        "trace.json"
+      ],
+      "stdout": "trace.json\ntrace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  5.0 ms   \nllm               0.0 ms   \ntool              3.0 ms   \nother             3.0 ms   \n\nTokens & cost by model\n──────────────────────\nNo model-call spans were found.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown\n\nElapsed-time accounting\n───────────────────────\n5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         1.0 ms      \nOther alone        3.0 ms      \nOverlapping work   1.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 2. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  local lookup experiment 5.0 ms\n    lookup (lookup) 1.0 ms\n",
+      "stderr": ""
+    },
+    {
+      "index": 4,
+      "order": [
+        "00b55aee043eb047",
+        "b213b4b7888e87a4",
+        "3159b58f809c8f67"
+      ],
+      "retryCount": 0,
+      "unknownRetryCount": 1,
+      "errorCount": 1,
+      "warnings": [],
+      "agrees": true,
+      "terminalAgrees": true,
+      "command": [
+        "tracelens",
+        "summary",
+        "trace.json"
+      ],
+      "stdout": "trace.json\ntrace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  5.0 ms   \nllm               0.0 ms   \ntool              3.0 ms   \nother             3.0 ms   \n\nTokens & cost by model\n──────────────────────\nNo model-call spans were found.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown\n\nElapsed-time accounting\n───────────────────────\n5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         1.0 ms      \nOther alone        3.0 ms      \nOverlapping work   1.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 2. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  local lookup experiment 5.0 ms\n    lookup (lookup) 1.0 ms\n",
+      "stderr": ""
+    },
+    {
+      "index": 5,
+      "order": [
+        "00b55aee043eb047",
+        "3159b58f809c8f67",
+        "b213b4b7888e87a4"
+      ],
+      "retryCount": 0,
+      "unknownRetryCount": 1,
+      "errorCount": 1,
+      "warnings": [],
+      "agrees": true,
+      "terminalAgrees": true,
+      "command": [
+        "tracelens",
+        "summary",
+        "trace.json"
+      ],
+      "stdout": "trace.json\ntrace 8acf7e9351a137e3674b9c8f47fe031a  ·  4 spans  ·  1 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  5.0 ms   \nllm               0.0 ms   \ntool              3.0 ms   \nother             3.0 ms   \n\nTokens & cost by model\n──────────────────────\nNo model-call spans were found.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n1 span(s) ended in error  ·  0 observed possible retried call(s); 1 preceding call outcome(s) unknown\n\nElapsed-time accounting\n───────────────────────\n5.0 ms elapsed = 6.0 ms summed self time - 1.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         1.0 ms      \nOther alone        3.0 ms      \nOverlapping work   1.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 2. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  local lookup experiment 5.0 ms\n    lookup (lookup) 1.0 ms\n",
+      "stderr": ""
+    }
+  ]
+}

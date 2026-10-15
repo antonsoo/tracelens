@@ -1,0 +1,14 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 test
+npm notice run vitest run --maxWorkers=1
+
+ RUN  v5.0.2 <checkout>
+
+
+ Test Files  35 passed (35)
+      Tests  482 passed (482)
+   Start at  23:41:13
+   Duration  9.73s (tests 75%, import 14%, transform 9%, worker 2%)
+
+    Isolate  35 workers spawned · ~96ms startup each (spawn + environment, per file)
+             at least ~3.25s faster with isolate: false — reuses workers across files instead of one per file
+

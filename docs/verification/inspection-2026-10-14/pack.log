@@ -1,0 +1,185 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 prepare
+npm notice run npm run build:cli
+npm notice run @antonsoloviev/tracelens@0.3.3 build:cli
+npm notice run tsc -p tsconfig.cli.json && node scripts/fix-shebang.mjs
+{
+  "@antonsoloviev/tracelens": {
+    "id": "@antonsoloviev/tracelens@0.3.3",
+    "name": "@antonsoloviev/tracelens",
+    "version": "0.3.3",
+    "size": 59506,
+    "unpackedSize": 206630,
+    "shasum": "ed8aa2639198464de35470030d97b4f5293d31ab",
+    "integrity": "sha512-OMuH8Teqo9Ozm6az50784Wbvx2oz6/FO6Agzls/6GzuuFT0A7X9FANpPdbnemmLUV8BwprnYAB5Xk10v68iUXw==",
+    "filename": "antonsoloviev-tracelens-0.3.3.tgz",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 29729,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/compare-report.js",
+        "size": 3138,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/cost-report.js",
+        "size": 2362,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/format.js",
+        "size": 1815,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/index.js",
+        "size": 16902,
+        "mode": 493
+      },
+      {
+        "path": "dist-cli/cli/links-report.js",
+        "size": 1278,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/logs-report.js",
+        "size": 1133,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/timing-report.js",
+        "size": 1708,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/cli/version.js",
+        "size": 115,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/attributes.js",
+        "size": 6575,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/compare.js",
+        "size": 8930,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/cost-format.js",
+        "size": 364,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/cost-report.js",
+        "size": 3807,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/cost.js",
+        "size": 9252,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/critical-path.js",
+        "size": 1313,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/decode.js",
+        "size": 1384,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/field-alias.js",
+        "size": 601,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/identity.js",
+        "size": 1573,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/index.js",
+        "size": 470,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/jaeger.js",
+        "size": 12280,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/layout.js",
+        "size": 1628,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/links.js",
+        "size": 2244,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/logs.js",
+        "size": 10251,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/normalize.js",
+        "size": 34980,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/otlp-parser.js",
+        "size": 28880,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/payload-depth.js",
+        "size": 855,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/pricing.js",
+        "size": 6360,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/status.js",
+        "size": 2099,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/summary.js",
+        "size": 6176,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/timing.js",
+        "size": 5050,
+        "mode": 420
+      },
+      {
+        "path": "dist-cli/core/types.js",
+        "size": 327,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 1980,
+        "mode": 420
+      }
+    ],
+    "entryCount": 33,
+    "bundled": []
+  }
+}

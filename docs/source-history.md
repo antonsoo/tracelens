@@ -8,6 +8,10 @@ Source, npm and the hosted app are separate artifacts. A source receipt does not
 establish a registry release or the deployed browser revision. The linked
 verification documents describe the specific builds and endpoints checked.
 
+The [consolidated inspection verification](verification-inspection-2026-10-14.md)
+records the newer clean build, installed-runtime checks and publication boundary
+for retry, token-coverage, large-message and phone-layout corrections.
+
 | Area | Reproduced behavior and correction | Evidence |
 |---|---|---|
 | Model rates | A recorded nano stream matched `gpt-5` and its token charge was overstated 25x. Match whole model names and providers, retaining component rates and source fields. | [Cost-accounting walkthrough and independent decimal check](cost-accounting.md). |

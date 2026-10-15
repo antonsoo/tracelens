@@ -5,8 +5,9 @@ one succeeds. A later call follows both. TraceLens previously reported either
 0 or 1 possible retry depending only on which peer appeared last in the file.
 The source now retains the ambiguous preceding outcome as unknown.
 
-This is an **unreleased local source change**. No npm publication or hosted
-deployment was made.
+These package changes remain **unreleased to npm**. The original captures and
+verification snapshots are retained below; the [later consolidated checks](../../docs/verification-inspection-2026-10-14.md)
+record the clean build, installed runtimes and subsequent publication state.
 
 ## Actual SDK spans, controlled schedule
 

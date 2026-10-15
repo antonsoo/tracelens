@@ -1,0 +1,20 @@
+[
+  {
+    "runtime": "v20.0.0",
+    "retryPermutations": 6,
+    "completionCases": 6,
+    "costWorkflows": 185,
+    "fixtureFiles": 54,
+    "largeWorkloads": 2,
+    "disagreements": 0
+  },
+  {
+    "runtime": "v26.7.0",
+    "retryPermutations": 6,
+    "completionCases": 6,
+    "costWorkflows": 185,
+    "fixtureFiles": 54,
+    "largeWorkloads": 2,
+    "disagreements": 0
+  }
+]

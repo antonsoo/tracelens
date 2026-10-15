@@ -1,0 +1,16 @@
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+npm notice run @antonsoloviev/tracelens@0.3.3 prepare
+npm notice run npm run build:cli
+npm notice run @antonsoloviev/tracelens@0.3.3 build:cli
+npm notice run tsc -p tsconfig.cli.json && node scripts/fix-shebang.mjs
+
+added 151 packages, and audited 152 packages in 4s
+
+44 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm warn install-scripts 1 package had install scripts blocked because they are not covered by allowScripts:
+npm warn install-scripts   esbuild@0.25.12 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.

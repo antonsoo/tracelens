@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-15T06:44:49.197693+00:00",
+  "sourceRevision": "0c51954276879eb13c763f4523316a062c7c2a2c",
+  "trackedFilesUnchanged": 805,
+  "stages": [
+    {
+      "name": "install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exit": 0,
+      "seconds": 4.3273878160107415
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit": 0,
+      "seconds": 6.394356945995241
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "seconds": 3.8300508109969087
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=1"
+      ],
+      "exit": 0,
+      "seconds": 10.15821913300897
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "seconds": 2.3709716809971724
+    },
+    {
+      "name": "cli",
+      "command": [
+        "npm",
+        "run",
+        "test:cli"
+      ],
+      "exit": 0,
+      "seconds": 4.5760991490096785
+    },
+    {
+      "name": "browser",
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exit": 0,
+      "seconds": 195.4234707140131
+    },
+    {
+      "name": "pack",
+      "command": [
+        "npm",
+        "pack",
+        "--pack-destination",
+        "verification",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 2.945645744999638
+    }
+  ]
+}

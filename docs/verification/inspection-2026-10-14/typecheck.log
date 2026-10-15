@@ -1,0 +1,2 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 typecheck
+npm notice run tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.cli.json
