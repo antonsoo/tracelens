@@ -1,7 +1,7 @@
 # tracelens
 
 **A zero-install viewer for LLM agent traces.** Drop an OpenTelemetry export,
-see every model call, tool call, token and dollar on a timeline.
+inspect model calls, tool calls, token usage and estimated cost on a timeline.
 
 [![npm](https://img.shields.io/npm/v/@antonsoloviev/tracelens)](https://www.npmjs.com/package/@antonsoloviev/tracelens)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -18,62 +18,18 @@ tree, per-span prompts and completions, tool calls, token usage and
 estimated cost, errors and retries, and a "where did the time and money go"
 summary — nothing leaves the browser tab.
 
-**Source update: read messages exported as logs.** The OpenTelemetry Python
-GenAI helper can put prompts, tool calls and completions in separate OTLP log
-records. Previously those messages disappeared from a combined JSONL import,
-and selecting the trace and log files together failed. Select both exports
-now: TraceLens joins full trace/span identities, shows the transcript, and keeps
-the original log fields and their source locations downloadable.
-[SDK capture, browser walkthrough and limits](studies/log-events/README.md).
-Build this source to use the Logs tab and `tracelens logs`; this update does
-not release npm or deploy the live demo.
-
-**[Compare two runs](https://antonsoo.github.io/tracelens/?example=compare)** to see which operations changed: elapsed time, calls,
-tokens, estimated cost and errors, with every aggregate linked back to its
-original spans. Repeated calls are grouped by operation path, so inserting
-a new model turn does not shift a guessed one-to-one alignment.
-
-The viewer also explains **why summed work differs from elapsed time**:
-inspect overlaps, gaps and the original spans in each interval. The new
-**Parallel vs sequential (local capture)** example uses SDK timestamps from
-actual loopback HTTP requests. [Timing walkthrough](docs/timing.md).
-
-The viewer also makes **token costs inspectable**. A recorded nano stream
-was priced as `gpt-5`, overstating its token charge by 25x. Whole model names
-and providers now determine the rate. Open a call to inspect fresh input,
-cached input, output, rate sources and assumptions; export the same receipt
-from the browser or `tracelens cost`. [Try the recorded SDK replay](docs/cost-accounting.md).
-
-**Follow queued work across traces** in the SDK queue example.
-Inspect recorded span links, follow targets present in the file, and retain
-missing targets and exporter omission counts in JSON reports. This also fixes
-Jaeger references attaching to unrelated local spans that reuse a span ID.
-The browser and `tracelens links` share the same evidence; linked inspection
-keeps comparison runs intact. [Walkthrough and limits](docs/span-links.md).
-These features are available in the live demo and source checkout. The npm
-0.3.3 release predates the new `timing`, `cost` and `links` commands; build the
-source to use those commands. [Publication verification](docs/verification-publish-2026-10-09.md).
-
-**Exporter limits can hide evidence.** The viewer and source parser retain reported
-dropped span attributes, events and event attributes, and exposes the counts
-in warnings and span downloads. A controlled SDK capture dropped all five
-events; the earlier viewer reported no warning. [Reproduction and limits](studies/dropped-evidence/README.md).
-Malformed Jaeger timing is also reported instead of becoming measured zero.
-[Verified source, install and public-build evidence](docs/verification-trace-integrity-2026-10-11.md).
-
-**Source update: damaged message events remain inspectable.** A malformed nested
-tool payload previously prevented an otherwise readable six-span trace from
-opening. The parser now retains its original message with a scoped warning.
-Input-message attributes also no longer hide valid output events.
-[Captured controls and before/after evidence](studies/event-messages/README.md).
-These changes require a source build; this update does not release npm or
-deploy the live demo.
-
 ![Recorded SDK call with its token calculation and rate source](docs/assets/cost-receipt-desktop.png)
 
-![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
+| Question | Workflow |
+|---|---|
+| What changed between two runs? | [Compare operation paths and inspect their spans](docs/comparison.md), or [open the synthetic comparison](https://antonsoo.github.io/tracelens/?example=compare). |
+| Why does summed work exceed elapsed time? | [Inspect overlap, gaps and exclusive intervals](docs/timing.md), with a captured loopback HTTP example. |
+| Which calls contributed to the token charge? | [Inspect per-call usage, rates, sources and exported receipts](docs/cost-accounting.md). |
+| Where did queued work or separate messages go? | [Follow span links](docs/span-links.md) and [join related OTLP trace/log exports](studies/log-events/README.md). |
 
-![tracelens waterfall, dark mode, with a message thread expanded](docs/assets/hero-dark.png)
+Use the source checkout below for current parsing and accounting behavior.
+The [source history](docs/source-history.md) keeps reproduced defects,
+before/after evidence and publication boundaries together.
 
 ## On real instrumentation output
 
@@ -90,7 +46,7 @@ replay, and compared extracted model, usage and tool fields with the recorded re
 - It missed most of what is newer: cache-read tokens in 37 of 86 calls,
   reasoning tokens in 259 of 280, tool calls in 120 of 291. From the Vercel AI
   SDK's `ai.*` spans it showed none of the three.
-- The current viewer and source checkout read those dialects: 85 of 86, 193 of 280, 250
+- The parser correction in that census read those dialects: 85 of 86, 193 of 280, 250
   of 291. The parser was changed to read these same spans, so that is coverage
   of what it was shown, not a prediction for the next library.
 - 86 calls have no reasoning tokens in the span at all, and 60 token figures
@@ -126,7 +82,17 @@ That runs the published package
 ([`@antonsoloviev/tracelens`](https://www.npmjs.com/package/@antonsoloviev/tracelens)
 on npm; the command it installs is `tracelens`).
 
+| Distribution | Scope |
+|---|---|
+| Source checkout | Current parser, browser and CLI, including `timing`, `cost`, `links` and `logs`. |
+| npm 0.3.3 | Published inspection commands; predates those four commands and the current correctness repairs. |
+| Live demo | A separate browser deployment; source verification does not establish its deployed revision. |
+
 ## Screenshots
+
+![Run comparison with paired self-time bars and added/removed operations; synthetic example](docs/assets/comparison-dark.png)
+
+![tracelens waterfall, dark mode, with a message thread expanded](docs/assets/hero-dark.png)
 
 | | |
 |---|---|
@@ -214,6 +180,8 @@ on npm; the command it installs is `tracelens`).
   editable-price cost estimate, error and retry counts. The elapsed-time
   breakdown separates single-span work, overlapping work and uncovered time,
   with exact nanosecond evidence and source inspection.
+  Partial imports leave full token/error/retry totals unknown while retaining
+  known subtotals. [Native capture and browser controls](studies/cost-coverage/README.md#token-headlines-after-a-partial-import).
 - **CLI** (`tracelens summary` / `tracelens tree`) for the same numbers in
   a terminal, e.g. in a CI log. Names taken from the trace are printed
   without their control characters, so a trace cannot send escape sequences
@@ -475,7 +443,9 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   completed call with the same name and parent. Repetition alone is not a retry.
   In this source build, calls with identical start timestamps are evaluated
   together. Conflicting predecessor outcomes leave the count unknown rather
-  than letting export order select a failure or success.
+  than letting export order select a failure or success. A clamped failed
+  interval also leaves completion unknown, retaining the supplied end in
+  `originalEndTimeUnixNano`; valid zero-duration failures remain supported.
   [Native SDK permutations and offline browser evidence](studies/retry-order/README.md).
 - "Critical path" is the heuristic described above, not a guarantee of
   optimality under concurrency.
@@ -523,6 +493,11 @@ SDK export against the upstream response using independent decimal arithmetic.
 download retains every value. They also cancel a deliberately busy parser
 and exercise worker failures. These are regression guards, not general
 latency guarantees; payload shape and the browser still affect performance.
+
+Large GenAI message fields are decoded once and shared by message/finish-reason
+extraction. [Controlled import measurements](studies/message-decoding/README.md)
+retain native-capture equivalence checks and separate core timing from browser
+loading, rendering and file I/O.
 
 ## Development
 
