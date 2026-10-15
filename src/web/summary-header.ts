@@ -26,19 +26,21 @@ export function renderSummaryHeader(container: HTMLElement, summary: TraceSummar
     .slice(0, 3)
     .map((r) => `${r.model} ×${r.calls}`)
     .join(', ');
-  const inputMissing = summary.modelUsage.some((row) => row.missingInputCalls > 0);
-  const outputMissing = summary.modelUsage.some((row) => row.missingOutputCalls > 0);
+  const partialImport = summary.costReport.incompleteInput;
+  const inputMissing = partialImport || summary.modelUsage.some((row) => row.missingInputCalls > 0);
+  const outputMissing = partialImport || summary.modelUsage.some((row) => row.missingOutputCalls > 0);
   const inputTokens = summary.modelUsage.reduce((sum, row) => sum + row.inputTokens, 0);
   const outputTokens = summary.modelUsage.reduce((sum, row) => sum + row.outputTokens, 0);
   const partialCost = summary.uncostedCalls > 0 || summary.costReport.incompleteInput;
-  const partialImport = summary.costReport.incompleteInput;
 
   mount(
     container,
     h('div', { className: 'tl-summary' },
       cell('Total duration', fmtMs(summary.totalDurationMs)),
       cell('LLM / tool summed self time', `${fmtMs(summary.llmSelfTimeMs)} / ${fmtMs(summary.toolSelfTimeMs)}`, timebar),
-      cell('Tokens in / out', h('span', { title: `Known subtotals: ${fmtInt(inputTokens)} input / ${fmtInt(outputTokens)} output` }, `${inputMissing ? 'Unknown' : fmtInt(inputTokens)} / ${outputMissing ? 'Unknown' : fmtInt(outputTokens)}`)),
+      cell('Tokens in / out', h('span', { title: `Known subtotals from retained spans: ${fmtInt(inputTokens)} input / ${fmtInt(outputTokens)} output` }, `${inputMissing ? 'Unknown' : fmtInt(inputTokens)} / ${outputMissing ? 'Unknown' : fmtInt(outputTokens)}`),
+        partialImport ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' },
+          `${fmtInt(inputTokens)} / ${fmtInt(outputTokens)} reported; partial import`) : undefined),
       cell(partialCost ? 'Known token cost subtotal' : 'Estimated token cost', fmtUsd(summary.totalCostUsd), partialCost ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' }, [summary.costReport.incompleteInput ? 'Incomplete span inventory' : '', summary.uncostedCalls > 0 ? `${summary.uncostedCalls} call(s) uncosted` : ''].filter(Boolean).join('; ')) : undefined),
       cell('Spans / errors', `${fmtInt(summary.spanCount)} / ${partialImport || summary.unknownStatusCount ? 'Unknown' : summary.errorCount}`,
         partialImport || summary.unknownStatusCount ? h('div', { className: 'faint', style: 'font-size:10px;margin-top:2px' },

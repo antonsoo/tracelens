@@ -11,6 +11,7 @@ import { costCases, illustrativePrices } from './cases.mjs';
 import { parseTraceText } from '../../dist-cli/core/index.js';
 
 const [beforeArg, afterArg, outArg] = process.argv.slice(2);
+const tokens = process.argv.includes('--tokens');
 assert(beforeArg && afterArg && outArg, 'Expected BEFORE_DIST AFTER_DIST OUTPUT');
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..'), out = resolve(outArg);
 const cases = costCases(root);
@@ -90,15 +91,23 @@ for (const [phase, distArg] of [['before', beforeArg], ['after', afterArg]]) {
             const report = await download();
             const header = await page.locator('.tl-summary').textContent();
             const explanation = await ledger.locator('.tl-cost-body > p').first().innerText();
-            const agrees = item.incomplete ? report.incompleteInput === true && report.estimatedCostUsd === null
+            const tokenCell = page.locator('.tl-summary-cell').filter({ has: page.locator('.tl-summary-label', { hasText: 'Tokens in / out' }) });
+            const tokenValue = await tokenCell.locator('.tl-summary-value').innerText();
+            const tokenText = await tokenCell.innerText();
+            const tokenTitle = await tokenCell.locator('[title]').getAttribute('title');
+            const tokenAgrees = item.incomplete ? tokenValue === 'Unknown / Unknown' && tokenText.includes('reported; partial import')
+              : tokenValue === '175 / 26';
+            const costAgrees = item.incomplete ? report.incompleteInput === true && report.estimatedCostUsd === null
               && header.includes('Known token cost subtotal') && explanation.includes('full token estimate is unknown')
               : !report.incompleteInput && report.estimatedCostUsd === original.estimatedCostUsd && header.includes('Estimated token cost');
+            const agrees = costAgrees && (!tokens || tokenAgrees);
             if (phase === 'after') {
               assert(agrees, JSON.stringify({ engine, width, id, incompleteInput: report.incompleteInput, estimatedCostUsd: report.estimatedCostUsd, header, explanation }));
               assert.deepEqual(report, expected.find(row => row.id === id && row.kind === 'core-cost').report);
             }
-            records.push({ phase, engine, width, id, inputSha256: hash(item.candidate), agrees, header, explanation, report });
+            records.push({ phase, engine, width, id, inputSha256: hash(item.candidate), agrees, header, tokenValue, tokenText, tokenTitle, explanation, report });
             if (id === selected[0]) {
+              await page.evaluate(() => Promise.all(document.getAnimations().map(animation => animation.finished)));
               await ledger.scrollIntoViewIfNeeded();
               await page.screenshot({ path: resolve(out, `${phase}-${engine}-${width}.png`), fullPage: true });
               await ledger.getByRole('button', { name: 'chat', exact: true }).click();
@@ -112,10 +121,13 @@ for (const [phase, distArg] of [['before', beforeArg], ['after', afterArg]]) {
           await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
           await page.locator('.tl-cost-ledger > summary').click();
           const recovered = await download(); assert.deepEqual(recovered, original);
-          const violations = (await new AxeBuilder({ page }).analyze()).violations.map(row => row.id);
+          await page.evaluate(() => Promise.all(document.getAnimations().map(animation => animation.finished)));
+          const accessibility = (await new AxeBuilder({ page }).analyze()).violations;
+          const violations = accessibility.map(row => row.id);
+          await writeFile(resolve(out, `${phase}-${engine}-${width}-accessibility.json`), JSON.stringify(accessibility, null, 2) + '\n');
           const policy = await page.evaluate(() => window.policyViolations);
           const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
-          assert.deepEqual(violations, []); assert.deepEqual(errors, []); assert.deepEqual(external, []);
+          assert.deepEqual(violations, [], `${phase} ${engine} ${width}: ${JSON.stringify(accessibility)}`); assert.deepEqual(errors, []); assert.deepEqual(external, []);
           assert.deepEqual(late, []); assert.deepEqual(policy, []); assert(!overflow);
           await Promise.all(pending);
           views.push({ phase, engine, browser: browser.version(), width, recovered: true, served, loaded,

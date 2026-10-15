@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Token totals after incomplete imports
+
+- Withhold full browser input/output token totals when span inventory is
+  incomplete. Keep reported retained-span subtotals visible, without guessing
+  omitted calls or tokens. Complete imports and optional timing/event warnings
+  retain their totals; per-call usage and cost exports are unchanged.
+- [Native Strands capture and offline before/after replay](studies/cost-coverage/README.md#token-headlines-after-a-partial-import).
+
 ### Timestamp ties in possible retries
 
 - Keep completion unknown when a failed predecessor's reversed interval was

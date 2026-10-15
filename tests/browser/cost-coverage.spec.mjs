@@ -12,6 +12,8 @@ test('partial SDK import retains charges and discloses unknown full cost offline
   const original = await readFile(native, 'utf8');
   await page.locator('#tl-file-input').setInputFiles({ name: 'input-0.json', mimeType: 'application/json', buffer: Buffer.from(original) });
   await expect(page.locator('.tl-summary')).toContainText('$0.000227');
+  const tokens = page.locator('.tl-summary-cell').filter({ has: page.locator('.tl-summary-label', { hasText: 'Tokens in / out' }) });
+  await expect(tokens.locator('.tl-summary-value')).toHaveText('175 / 26');
   await context.setOffline(true);
   const doc = JSON.parse(original);
   delete doc.resourceSpans[0].scopeSpans[0].spans[0].endTimeUnixNano;
@@ -24,6 +26,9 @@ test('partial SDK import retains charges and discloses unknown full cost offline
   await expect(page.locator('.tl-summary')).toContainText('Known token cost subtotal');
   await expect(page.locator('.tl-summary')).toContainText('$0.000128');
   await expect(page.locator('.tl-summary')).toContainText('Incomplete span inventory');
+  await expect(tokens.locator('.tl-summary-value')).toHaveText('Unknown / Unknown');
+  await expect(tokens).toContainText('104 / 12 reported; partial import');
+  await expect(tokens.locator('[title]')).toHaveAttribute('title', 'Known subtotals from retained spans: 104 input / 12 output');
   await page.locator('.tl-cost-ledger > summary').click();
   await expect(page.locator('.tl-cost-body')).toContainText('full token estimate is unknown');
   const pending = page.waitForEvent('download');
@@ -35,5 +40,6 @@ test('partial SDK import retains charges and discloses unknown full cost offline
   await page.locator('#tl-file-input').setInputFiles({ name: 'input-0.json', mimeType: 'application/json', buffer: Buffer.from(original) });
   await expect(page.locator('.tl-summary')).toContainText('Estimated token cost');
   await expect(page.locator('.tl-summary')).not.toContainText('Incomplete span inventory');
+  await expect(tokens.locator('.tl-summary-value')).toHaveText('175 / 26');
   expect(errors).toEqual([]);
 });

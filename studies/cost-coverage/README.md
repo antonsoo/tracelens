@@ -70,6 +70,33 @@ complete capture must restore its original estimate and full JSON report.
 
 ## Measured verification
 
+### Token headlines after a partial import
+
+The earlier cost repair qualified money, errors and retries but left the browser's
+token headline at `104 / 12` after skipping the first model call. That was a
+retained subtotal presented where a complete trace showed its full `175 / 26`.
+The browser now shows `Unknown / Unknown`, with `104 / 12 reported; partial import`
+visible below it. The tooltip identifies retained-span subtotals. Missing spans
+do not establish a count of omitted calls, tokens or models.
+
+The token correction does not change parsing, per-call usage, pricing, JSON
+exports or CLI behavior. Complete captures, valid zero-duration spans and
+optional event/timing warnings retain their full `175 / 26` headline. Loading
+the intact capture again restores it.
+
+Run the existing production-browser replay with `--tokens` to check this
+boundary too. The [token receipt](results/token-coverage/observations.json)
+retains 80 before/after workflows at 1440 and 375 px in Chromium and Firefox:
+24 incomplete-inventory headlines disagreed before, zero after. All full cost
+downloads match the core/CLI controls, and selected-call receipts remain exact.
+The replay waits for finite bar-intro animations before inspecting settled
+screenshots and contrast. It reports no settled accessibility, page, policy or
+overflow errors, or external/late requests. All eight screenshots were inspected,
+including [corrected desktop](results/token-coverage/after-chromium-1440.png)
+and [corrected phone](results/token-coverage/after-firefox-375.png).
+
+### Original cost verification snapshot
+
 On 2026-10-14, baseline `2c88eb6b61370c2f605fe8f388dc170dd3bc376d` was replayed
 against implementation `926be7d0b457825c7129c01c727edf10fb0fc2b6` on 14 vCPU WSL2
 Linux with 48 GB RAM. The baseline and implementation archive files were compared
