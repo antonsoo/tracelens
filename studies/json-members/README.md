@@ -165,3 +165,10 @@ samples above retain the actual cost of the new text check.
 The tarball is a local verification artifact carrying the unchanged 0.3.3
 version, not a newly published package. Its SHA-256 is
 `15ff0a98426272f5037d7f289d8c1041cfc18e44f403b782cb503c2188a96e69`.
+
+Source was pushed at `4860910ef62e050de3d5ce9a9da3c3203e7b6fc9`.
+The [public source receipt](results/public-source.json) confirms a clean
+checkout, matching remote main, and exact bytes for all 17 changed files
+plus the original SDK fixture at that pinned revision. This later receipt
+commit documents that observation; it does not establish an npm release
+or the revision served by the public browser demo.

@@ -1,0 +1,118 @@
+{
+  "checkedAt": "2026-10-15T10:23:38.497918+00:00",
+  "repository": "https://github.com/antonsoo/tracelens",
+  "revision": "4860910ef62e050de3d5ce9a9da3c3203e7b6fc9",
+  "remoteHeadMatches": true,
+  "treeWasClean": true,
+  "scope": "Pinned public source bytes only; not a registry release or hosted deployment receipt.",
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/CHANGELOG.md",
+      "bytes": 29572,
+      "sha256": "950a4ca280af5df05dced1d7a8f8da548576a0f51ed44b4bd1965dd8cd28a7ea"
+    },
+    {
+      "path": "docs/assets/json-members/retained-error-1440.png",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/docs/assets/json-members/retained-error-1440.png",
+      "bytes": 114241,
+      "sha256": "b4dc8be2ac9fea949ed9b608bd8c0940d6404633c46360bb838ec8687fb48591"
+    },
+    {
+      "path": "docs/assets/json-members/retained-error-375.png",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/docs/assets/json-members/retained-error-375.png",
+      "bytes": 97221,
+      "sha256": "b0e51f1fbdadd79bb2f401493a0f4fab5f8545ab9d3d169a512cd58fe6bb3614"
+    },
+    {
+      "path": "docs/formats.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/docs/formats.md",
+      "bytes": 35335,
+      "sha256": "1d470f64de56172dd030102991808586b260e7723a6160640d3238a9d12fde81"
+    },
+    {
+      "path": "docs/source-history.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/docs/source-history.md",
+      "bytes": 4710,
+      "sha256": "78eec7d60efbf3f858532ac2cc7daf32ea985a410ee7bec6282a071867dddef2"
+    },
+    {
+      "path": "src/core/otlp-parser.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/src/core/otlp-parser.ts",
+      "bytes": 29185,
+      "sha256": "b8ff14cff0e50a07c9963d615a5a40434c9767bbd3bb913775eaadd57b1da26b"
+    },
+    {
+      "path": "src/core/read-json.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/src/core/read-json.ts",
+      "bytes": 2007,
+      "sha256": "361abcc9662d72dc0c9cfd2cb5c23206d98f995e7a10637d0b05e42c735dcc8a"
+    },
+    {
+      "path": "studies/json-members/README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/README.md",
+      "bytes": 9260,
+      "sha256": "6cd5dae06fc2978a6831e918d4a06103d6e0cbac371421b1a102791e1ad6826a"
+    },
+    {
+      "path": "studies/json-members/replay.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/replay.mjs",
+      "bytes": 8494,
+      "sha256": "771b1b17f37e1d7caa467e31b809cf8ca04f99166f54ef612a9730fa2e549094"
+    },
+    {
+      "path": "studies/json-members/results/after-node20.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/results/after-node20.json",
+      "bytes": 126232,
+      "sha256": "c8955bc128e0d43df86ea9d2f8fdb2079346ca50a484087d72240c1a34a1d0a4"
+    },
+    {
+      "path": "studies/json-members/results/after-node26.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/results/after-node26.json",
+      "bytes": 126231,
+      "sha256": "019f52adfbfa134d61eef8ab4165b3118fb31ca07327101cbbb5a1365c83decc"
+    },
+    {
+      "path": "studies/json-members/results/artifacts.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/results/artifacts.json",
+      "bytes": 33869,
+      "sha256": "00725ded0d26faf80f6a3aecfd9aae3bb0c4d3c915d7cf1ef2bb58dc7efe87cd"
+    },
+    {
+      "path": "studies/json-members/results/before-node26.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/results/before-node26.json",
+      "bytes": 225459,
+      "sha256": "89a58d723ec3a42d553d01f994b412dd780bd5bc864f141ed16cfd8c0dc88c8d"
+    },
+    {
+      "path": "studies/json-members/results/browser.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/results/browser.json",
+      "bytes": 6274,
+      "sha256": "19a4e6e1a3a94687da7570404b7ab95e07404e38a024373b3152065340a4013b"
+    },
+    {
+      "path": "studies/json-members/results/overhead-node26.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/studies/json-members/results/overhead-node26.json",
+      "bytes": 28880,
+      "sha256": "cec49f4a40cc0bdc1019104f5ca87017e86c54a5441dd39b8a3d85b27fe9711b"
+    },
+    {
+      "path": "tests/browser/json-members.spec.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/tests/browser/json-members.spec.mjs",
+      "bytes": 5199,
+      "sha256": "9bf06bbc3100d634f1cefb874dceac7c16703d2ece761d7fae4cb509532b47e8"
+    },
+    {
+      "path": "tests/json-members.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/tests/json-members.test.ts",
+      "bytes": 4164,
+      "sha256": "727f40486e6a3637511b1bd4e1b5bfdf64ddcbf3c8400c46137d463e8abea04c"
+    },
+    {
+      "path": "tests/fixtures/small-genai-semconv-trace.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/4860910ef62e050de3d5ce9a9da3c3203e7b6fc9/tests/fixtures/small-genai-semconv-trace.json",
+      "bytes": 26534,
+      "sha256": "28be8daecbb82b3dee6eb3c265b02e7b55ac8eca556867416ebdb4ca08463940"
+    }
+  ]
+}
