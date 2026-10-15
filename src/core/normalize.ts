@@ -45,15 +45,11 @@ function mergeUsage(oi: TokenUsage | undefined, otel: TokenUsage | undefined): T
  * JSON string (span attributes can't hold nested objects in some exporters) or already
  * structured (if the exporter used arrayValue/kvlistValue faithfully). Handle both. */
 function parseMessageList(v: unknown): NormalizedMessage[] | undefined {
-  let value = v;
-  if (typeof value === 'string') {
-    try {
-      value = parsePayloadJson(value);
-    } catch (error) {
-      if (!(error instanceof SyntaxError)) throw error;
-      return undefined;
-    }
-  }
+  return normalizeMessageList(parseJsonish(v));
+}
+
+/** Normalize one decoded value; a string result is not another encoded list. */
+function normalizeMessageList(value: unknown): NormalizedMessage[] | undefined {
   if (!Array.isArray(value)) return undefined;
   const messages: NormalizedMessage[] = [];
   for (const m of value) {
@@ -78,8 +74,7 @@ function parseMessageList(v: unknown): NormalizedMessage[] | undefined {
 
 /** Each output message carries its own `finish_reason` in the current spec; Strands and
  * OpenLLMetry's newer instrumentations write nothing to `gen_ai.response.finish_reasons`. */
-function finishReasonsOfMessages(v: unknown): string[] | undefined {
-  const list = parseJsonish(v);
+function finishReasonsOfMessages(list: unknown): string[] | undefined {
   if (!Array.isArray(list)) return undefined;
   const reasons = list.map((m) => (typeof m === 'object' && m !== null ? str((m as Record<string, unknown>).finish_reason) : undefined)).filter((r): r is string => r !== undefined);
   return reasons.length > 0 ? reasons : undefined;
@@ -89,12 +84,11 @@ function finishReasonsOfMessages(v: unknown): string[] | undefined {
  * messages: there is no role on its entries, and the role is the system's. Older exporters
  * wrote a list of messages instead, which is read as before. */
 function parseSystemInstructions(v: unknown): NormalizedMessage[] | undefined {
-  const messages = parseMessageList(v);
+  const value = parseJsonish(v);
+  if (!Array.isArray(value)) return undefined;
+  const messages = normalizeMessageList(value);
   if (!messages) return undefined;
-  let value = v;
-  if (typeof value === 'string') value = parsePayloadJson(value);
-  const entries = value as unknown[];
-  const areParts = entries.every((e) => typeof e === 'object' && e !== null && !('role' in e) && !('parts' in e));
+  const areParts = value.every((e) => typeof e === 'object' && e !== null && !('role' in e) && !('parts' in e));
   if (!areParts) return messages;
   return [{ role: 'system', parts: messages.flatMap((m) => m.parts) }];
 }
@@ -174,7 +168,13 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
   // OpenLLMetry before it adopted gen_ai.input.messages wrote indexed gen_ai.prompt.N.* / gen_ai.completion.N.*.
   const indexedInput = attrs['gen_ai.input.messages'] === undefined ? extractIndexedMessages(attrs, 'gen_ai.prompt') : undefined;
   const indexedOutput = attrs['gen_ai.output.messages'] === undefined ? extractIndexedMessages(attrs, 'gen_ai.completion') : undefined;
-  const finishReasons = strArray(attrs['gen_ai.response.finish_reasons']) ?? finishReasonsOfMessages(attrs['gen_ai.output.messages']) ?? indexedOutput?.finishReasons;
+  // Message JSON can hold the complete history. Decode each field once, sharing
+  // the output value with finish-reason extraction instead of reparsing it.
+  const inputMessages = parseMessageList(attrs['gen_ai.input.messages']);
+  const outputValue = parseJsonish(attrs['gen_ai.output.messages']);
+  const outputMessages = normalizeMessageList(outputValue);
+  const systemInstructions = parseSystemInstructions(attrs['gen_ai.system_instructions']);
+  const finishReasons = strArray(attrs['gen_ai.response.finish_reasons']) ?? finishReasonsOfMessages(outputValue) ?? indexedOutput?.finishReasons;
 
   const info: GenAiInfo = {
     ...(operationName ? { operationName } : {}),
@@ -191,13 +191,11 @@ function extractOtelGenAi(attrs: AttrMap): GenAiInfo | undefined {
       : {}),
     ...(finishReasons ? { finishReasons } : {}),
     ...(usage ? { usage } : {}),
-    ...(parseMessageList(attrs['gen_ai.input.messages']) ? { inputMessages: parseMessageList(attrs['gen_ai.input.messages']) } : {}),
-    ...(parseMessageList(attrs['gen_ai.output.messages']) ? { outputMessages: parseMessageList(attrs['gen_ai.output.messages']) } : {}),
+    ...(inputMessages ? { inputMessages } : {}),
+    ...(outputMessages ? { outputMessages } : {}),
     ...(indexedInput ? { inputMessages: indexedInput.messages } : {}),
     ...(indexedOutput ? { outputMessages: indexedOutput.messages } : {}),
-    ...(parseSystemInstructions(attrs['gen_ai.system_instructions'])
-      ? { systemInstructions: parseSystemInstructions(attrs['gen_ai.system_instructions']) }
-      : {}),
+    ...(systemInstructions ? { systemInstructions } : {}),
     ...(str(attrs['gen_ai.tool.name']) ? { toolName: str(attrs['gen_ai.tool.name']) } : {}),
     ...(str(attrs['gen_ai.tool.call.id']) ? { toolCallId: str(attrs['gen_ai.tool.call.id']) } : {}),
     ...(str(attrs['gen_ai.tool.description']) ? { toolDescription: str(attrs['gen_ai.tool.description']) } : {}),
@@ -603,9 +601,10 @@ function extractEventMessages(span: ParsedSpan, onWarning?: (warning: ParseWarni
     });
     const content = ev.attributes['content'];
     if (ev.name === 'gen_ai.client.inference.operation.details') {
+      const outputValue = parseJsonish(ev.attributes['gen_ai.output.messages']);
       input.push(...(parseMessageList(ev.attributes['gen_ai.input.messages']) ?? []));
-      output.push(...(parseMessageList(ev.attributes['gen_ai.output.messages']) ?? []));
-      finishReasons.push(...(finishReasonsOfMessages(ev.attributes['gen_ai.output.messages']) ?? []));
+      output.push(...(normalizeMessageList(outputValue) ?? []));
+      finishReasons.push(...(finishReasonsOfMessages(outputValue) ?? []));
       system.push(...(parseSystemInstructions(ev.attributes['gen_ai.system_instructions']) ?? []));
     } else if (ev.name === 'gen_ai.system.message' || ev.name === 'gen_ai.user.message' || ev.name === 'gen_ai.assistant.message' || ev.name === 'gen_ai.tool.message') {
       const role = ev.name.split('.')[1] ?? 'unknown';

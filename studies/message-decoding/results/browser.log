@@ -1,0 +1,21 @@
+npm notice run @antonsoloviev/tracelens@0.3.3 npx
+npm notice run 'playwright' test tests/browser/message-import.spec.mjs --workers=1
+[WebServer] (node:3253688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:3253714) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/browser/message-import.spec.mjs:8:3 › history message workload survives first offline import and complete download at 1440px (6.4s)
+  ✓  2 [chromium] › tests/browser/message-import.spec.mjs:8:3 › history message workload survives first offline import and complete download at 375px (5.9s)
+  ✓  3 [chromium] › tests/browser/message-import.spec.mjs:8:3 › system message workload survives first offline import and complete download at 1440px (3.3s)
+  ✓  4 [chromium] › tests/browser/message-import.spec.mjs:8:3 › system message workload survives first offline import and complete download at 375px (4.0s)
+(node:3254462) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 [firefox] › tests/browser/message-import.spec.mjs:8:3 › history message workload survives first offline import and complete download at 1440px (9.3s)
+  ✓  6 [firefox] › tests/browser/message-import.spec.mjs:8:3 › history message workload survives first offline import and complete download at 375px (7.2s)
+  ✓  7 [firefox] › tests/browser/message-import.spec.mjs:8:3 › system message workload survives first offline import and complete download at 1440px (4.7s)
+  ✓  8 [firefox] › tests/browser/message-import.spec.mjs:8:3 › system message workload survives first offline import and complete download at 375px (4.1s)
+
+  8 passed (48.6s)

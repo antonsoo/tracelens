@@ -2,11 +2,28 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { parseOtlpJson } from '../src/core/otlp-parser.js';
+import { attr, fakeSpan, otlpDoc, sv } from './fixtures.js';
 
 const FIXTURES = fileURLToPath(new URL('./fixtures/', import.meta.url));
 function loadTrace(name: string) {
   return parseOtlpJson(JSON.parse(readFileSync(FIXTURES + name, 'utf8')));
 }
+
+it.each(['attributes', 'events'])('decodes message JSON once in %s without reinterpreting a string value', location => {
+  const messages = [{ role: 'assistant', finish_reason: 'stop', parts: [{ type: 'text', content: 'Retained answer' }] }];
+  const encoded = JSON.stringify(messages);
+  for (const [value, expected] of [[encoded, messages], [JSON.stringify(encoded), undefined]] as const) {
+    const fields = [attr('gen_ai.output.messages', sv(value))];
+    const span = fakeSpan({ spanId: '01'.repeat(8), startNs: 0, endNs: 10,
+      attributes: [attr('gen_ai.operation.name', sv('chat')), ...(location === 'attributes' ? fields : [])] });
+    if (location === 'events') span.events = [{ name: 'gen_ai.client.inference.operation.details', timeUnixNano: '1', attributes: fields }];
+    const parsed = parseOtlpJson(otlpDoc([span])).spans[0]!;
+    expect(parsed.genai?.outputMessages).toEqual(expected?.map(({ role, parts }) => ({ role, parts })));
+    expect(parsed.genai?.finishReasons).toEqual(expected ? ['stop'] : undefined);
+    if (location === 'attributes') expect(parsed.attributes['gen_ai.output.messages']).toBe(value);
+    else expect(parsed.events[0]!.attributes['gen_ai.output.messages']).toBe(value);
+  }
+});
 
 describe('OTel GenAI semconv mapping (gen_ai.*)', () => {
   const trace = loadTrace('small-genai-semconv-trace.json');

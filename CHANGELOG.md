@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Large message import work
+
+- Decode GenAI message fields once, sharing output messages with finish-reason
+  extraction. Preserve normalized content and malformed-input behavior across
+  span attributes, events and correlated logs; retain raw source attributes.
+- Controlled 18.7 MB history and 5.2 MB instruction imports take 28-59% less
+  core time on Node 20.0.0 and 26.7.0. History peak RSS is essentially unchanged.
+  [Samples, unchanged fixture evidence and limitations](studies/message-decoding/README.md).
+
 ### Token totals after incomplete imports
 
 - Withhold full browser input/output token totals when span inventory is
