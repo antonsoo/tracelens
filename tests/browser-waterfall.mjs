@@ -100,13 +100,22 @@ export async function auditWaterfall(browser, target, root) {
     await page.keyboard.press('ArrowLeft');
     assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('data-index')), '0');
 
-    // On a phone the page scrolls, not the pane; rows are still rendered only where they show.
+    // On a phone the long timeline has its own bounded pane, keeping details nearby.
     await page.setViewportSize({ width: 375, height: 800 });
     await page.waitForTimeout(250); // The app debounces resize by 120ms.
-    await page.evaluate(() => window.scrollTo(0, 60_000));
+    await scroller.scrollIntoViewIfNeeded();
+    await scroller.evaluate((el) => { el.scrollTop = 100_000; });
     await settle(page);
-    const phone = await page.evaluate(() => ({ rows: document.querySelectorAll('.tl-wf-row').length, first: Number(document.querySelector('.tl-wf-row')?.getAttribute('data-index')), y: window.scrollY }));
-    assert.ok(phone.rows > 10 && phone.rows < 200 && phone.first > 2000, `rows follow the page scroll (${JSON.stringify(phone)})`);
+    const phone = await page.evaluate(() => ({ rows: document.querySelectorAll('.tl-wf-row').length,
+      first: Number(document.querySelector('.tl-wf-row')?.getAttribute('data-index')),
+      centerHeight: document.querySelector('.tl-center').getBoundingClientRect().height,
+      visibleTimelineWidth: document.querySelector('.tl-waterfall-scroll').clientWidth - document.querySelector('.tl-wf-label').getBoundingClientRect().width,
+      detailDistance: document.querySelector('.tl-detail-pane').getBoundingClientRect().top - document.querySelector('.tl-center').getBoundingClientRect().top }));
+    assert.ok(phone.rows > 10 && phone.rows < 200 && phone.first > 2000, `rows follow the timeline scroll (${JSON.stringify(phone)})`);
+    assert.ok(phone.centerHeight <= 800 && phone.detailDistance <= 800, 'selected span details stay within one viewport of the timeline start');
+    assert.ok(phone.visibleTimelineWidth >= 125, 'the sticky labels leave at least a third of the phone width for timing');
+    await page.locator('.tl-wf-row[data-index="4010"]').click();
+    assert.match(await page.locator('.tl-detail-pane').innerText(), /step_4010|turn_4010/);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'page must not overflow at 375px');
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.waitForTimeout(250);
@@ -153,5 +162,5 @@ export async function auditWaterfall(browser, target, root) {
     await context.close();
   }
   assert.deepEqual(errors, []);
-  console.log('PASS: timeline width, 6,000-span trace (rows in view only, scroll and focus kept through select and zoom), keyboard tree navigation, phone-width page scroll, collector JSON Lines with a trace picker.');
+  console.log('PASS: timeline width, 6,000-span trace (rows in view only, scroll and focus kept through select and zoom), keyboard tree navigation, bounded phone timeline, collector JSON Lines with a trace picker.');
 }

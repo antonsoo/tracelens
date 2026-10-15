@@ -27,6 +27,13 @@ for (const kind of ['history', 'system']) for (const width of [1440, 375]) {
     const counts = page.locator('.tl-summary-cell').filter({ has: page.locator('.tl-summary-label', { hasText: 'Spans / errors' }) });
     await expect(counts.locator('.tl-summary-value')).toHaveText(`${expected} / 0`);
     const importMs = performance.now() - started;
+    if (width === 375) {
+      const distance = await page.evaluate(() => document.querySelector('.tl-detail-pane').getBoundingClientRect().top -
+        document.querySelector('.tl-center').getBoundingClientRect().top);
+      expect(distance).toBeLessThanOrEqual(1000);
+      const track = await page.evaluate(() => document.querySelector('.tl-waterfall-scroll').clientWidth - document.querySelector('.tl-wf-label').getBoundingClientRect().width);
+      expect(track).toBeGreaterThanOrEqual(125);
+    }
     await page.locator('.tl-wf-row[data-index="1"]').click();
     await page.getByRole('tab', { name: 'Messages', exact: true }).click();
     const region = page.getByRole('region', { name: kind === 'history' ? 'Input messages' : 'System messages', exact: true });

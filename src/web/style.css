@@ -393,6 +393,13 @@ a {
   .tl-main {
     flex-direction: column;
   }
+  /* Keep selected details near the timeline regardless of span count. */
+  .tl-center {
+    flex: none;
+    min-height: 0;
+    max-height: max(360px, 60dvh);
+    border-right: none;
+  }
   .tl-detail-pane {
     width: 100%;
     max-height: none;
@@ -446,6 +453,7 @@ a {
   align-items: center;
   gap: 5px;
   padding: 0 8px;
+  padding-left: var(--tl-tree-indent, 8px);
   border-right: 1px solid var(--border);
   overflow: hidden;
   white-space: nowrap;
@@ -453,6 +461,12 @@ a {
   position: sticky;
   left: 0;
   z-index: 1;
+}
+@media (max-width: 900px) {
+  .tl-wf-label {
+    width: min(340px, 55vw);
+    padding-left: min(var(--tl-tree-indent, 8px), 64px);
+  }
 }
 .tl-wf-row.selected .tl-wf-label {
   background: var(--surface-2);

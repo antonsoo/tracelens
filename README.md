@@ -196,6 +196,10 @@ on npm; the command it installs is `tracelens`).
   operations, per-side span inspection, and JSON export with pricing inputs.
   Missing measurements remain unknown; an unpriced call cannot become a
   claim of cost savings.
+- **Phone inspection (source build)** keeps the timeline in a bounded scrolling
+  panel, with room for its timing track beside the labels. Selected details stay
+  near the timeline even for thousands of spans; keyboard navigation and full
+  downloads remain available. [Before/after geometry and browser checks](studies/mobile-waterfall/README.md).
 - Light and dark themes, zero telemetry. After the app loads, local file
   imports, loaded trace switching and evidence downloads work offline.
   The parser is bundled with the app and runs in cancellable blob workers.
@@ -459,9 +463,9 @@ the same trace in Jaeger's JSON, written by `scripts/otlp-to-jaeger.mjs`.
   256-level ancestry limit. Excessive payload depth rejects the import
   instead of silently dropping evidence.
 - JSON Lines is read for OTLP only. Jaeger's JSON is one document.
-- The waterfall's fixed-width label column doesn't reflow below ~375px; the
-  timeline track scrolls horizontally on a phone rather than compressing
-  illegibly.
+- Phone labels share the width with the timing track; the track still scrolls
+  horizontally to inspect its full scale. Very deep trees cap visual indentation
+  while retaining actual tree levels and complete span evidence.
 
 ## Tests
 

@@ -19,6 +19,7 @@ verification documents describe the specific builds and endpoints checked.
 | Partial imports | Retained charges and tokens could appear to be complete totals after a model call was skipped. Keep known subtotals, withhold full estimates and totals, and preserve complete controls. | [Native cost and token-coverage replay](../studies/cost-coverage/README.md). |
 | Possible retries | Unchanged timestamp peers produced 0 or 1 retry depending on export order. Clamped reversed intervals also implied completed failures. Preserve ambiguous outcome/completion evidence as unknown and keep the supplied reversed end downloadable. | [Native permutations, timing damage and offline browser evidence](../studies/retry-order/README.md). |
 | Large message imports | The same JSON history was decoded repeatedly for message and finish-reason extraction. Share one decoded value, preserving normalized fields, warnings and rejected inputs. | [Controlled timing, fixture equivalence and offline downloads](../studies/message-decoding/README.md). |
+| Phone inspection | A 6,000-span trace put selected details about 150,206 pixels below the timeline start. Bound the timeline pane, leave room beside labels for timing, and retain all rows and downloads. | [Before/after geometry and keyboard/download controls](../studies/mobile-waterfall/README.md). |
 
 The instrumentation census is a separate historical study of supported dialects,
 not an accuracy estimate for every subsequent revision. It replayed recorded

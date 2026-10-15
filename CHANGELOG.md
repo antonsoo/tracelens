@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Long traces on phones
+
+- Bound the narrow-layout timeline panel so selected details stay nearby as
+  span counts grow. Give the timing track room beside sticky labels and cap
+  visual indentation while retaining full tree levels and source evidence.
+- Preserve virtual scrolling, keyboard navigation, distant-span selection,
+  zoom position and complete downloads. A 375 by 800 view now places details
+  480 pixels below the timeline start for both 160 and 6,000 spans.
+  [Before/after browser measurements](studies/mobile-waterfall/README.md).
+
 ### Large message import work
 
 - Decode GenAI message fields once, sharing output messages with finish-reason

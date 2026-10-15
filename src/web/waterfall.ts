@@ -208,7 +208,7 @@ export function renderWaterfall(
     const toolSuffix = toolName && !span.name.includes(toolName) ? ` (${toolName})` : '';
     const label = h(
       'div',
-      { className: 'tl-wf-label', style: `padding-left:${8 + Math.min(span.depth, 12) * 14}px` },
+      { className: 'tl-wf-label', style: `--tl-tree-indent:${8 + Math.min(span.depth, 12) * 14}px` },
       toggle,
       h('span', { className: `tl-kind-dot ${kindClass(span.agentKind)}` }),
       h('span', { className: 'tl-wf-name', title: span.name + toolSuffix }, span.name + toolSuffix),
@@ -274,8 +274,8 @@ export function renderWaterfall(
 
   /**
    * Renders the rows that can be seen. Which those are is read off the
-   * page, not off a scroll offset: on a wide screen the waterfall scrolls
-   * inside its pane, on a narrow one the whole page scrolls past it.
+   * page, not off a scroll offset: both scrolling inside the pane and
+   * scrolling the page past it change which rows are visible.
    */
   const renderRows = (): void => {
     // Remembered here and not only on scroll events: those arrive a frame after the scroll, and
