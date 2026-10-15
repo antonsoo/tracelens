@@ -27,6 +27,7 @@ test('typed values survive worker import, offline trace selection and cost/evide
   const results = [];
   for (const expected of oracle.cases) {
     await page.locator('#tl-trace-picker').selectOption(expected.traceId);
+    await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
     await expect(page.locator('.tl-wf-row').first()).toContainText(expected.name);
     await page.locator('.tl-wf-row').first().click();
     const evidence = await download(page, 'Download span JSON');
@@ -56,6 +57,7 @@ test('typed values survive worker import, offline trace selection and cost/evide
     results.push({ name: expected.name, span: evidence, cost: report, warnings });
   }
   await page.locator('#tl-trace-picker').selectOption(oracle.cases.find(c => c.name === 'empty integer').traceId);
+  await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
   await expect(page.locator('.tl-wf-row').first()).toContainText('empty integer');
   await page.locator('.tl-wf-row').first().click();
   await page.getByRole('tab', { name: 'Attributes', exact: true }).click();

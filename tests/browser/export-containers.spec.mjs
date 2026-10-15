@@ -12,6 +12,7 @@ test('damaged export containers remain visible through offline trace selection a
   const results = [];
   for (const traceId of [first, second]) {
     await page.locator('#tl-trace-picker').selectOption(traceId);
+    await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
     await expect(page.locator('.tl-wf-row')).toHaveCount(1);
     const warnings = page.locator('.tl-compare-warnings');
     await expect(warnings.locator('summary')).toHaveText('4 parser warnings');
