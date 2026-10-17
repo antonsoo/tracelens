@@ -1,0 +1,88 @@
+{
+  "sourceRevision": "acf6f927c4f1723afad1a288fc9af97bb6578b10",
+  "archive": "antonsoloviev-tracelens-0.3.3.tgz",
+  "bytes": 60912,
+  "sha256": "8c9e4e2e3c1a69b8bda73783e795f36ce2063383f1311fc5d777cdabdf5251d2",
+  "installations": [
+    {
+      "node": "v20.0.0",
+      "packageVersion": "0.3.3",
+      "runtimeFiles": 31,
+      "runtimeFilesByteEqualCleanBuild": true,
+      "cases": 62,
+      "matched": 62,
+      "retainedFiles": 342,
+      "retainedEvidenceEqualsSource": true,
+      "executableReceiptEqualsSource": true,
+      "installOutputSha256": "173305d58295f53c47c4faa42b5d5084ac4a259f5e975340c5d84d415d78c050",
+      "replayOutput": {
+        "mode": "after",
+        "cases": 62,
+        "matched": 62,
+        "focusedEstimate": null,
+        "realZero": 0,
+        "retainedFiles": 342,
+        "parsedFiles": 65,
+        "filesWithConflicts": []
+      }
+    },
+    {
+      "node": "v24.21.0",
+      "packageVersion": "0.3.3",
+      "runtimeFiles": 31,
+      "runtimeFilesByteEqualCleanBuild": true,
+      "cases": 62,
+      "matched": 62,
+      "retainedFiles": 342,
+      "retainedEvidenceEqualsSource": true,
+      "executableReceiptEqualsSource": true,
+      "installOutputSha256": "42d84fc52ec351cf38f3ebb2d6931695ead1af7889ff678167894afd364167df",
+      "replayOutput": {
+        "mode": "after",
+        "cases": 62,
+        "matched": 62,
+        "focusedEstimate": null,
+        "realZero": 0,
+        "retainedFiles": 342,
+        "parsedFiles": 65,
+        "filesWithConflicts": []
+      }
+    }
+  ],
+  "freshNativeSdkCapture": {
+    "node": "v24.21.0",
+    "byteEqualFixtures": [
+      {
+        "file": "invalid.json",
+        "bytes": 3351,
+        "sha256": "61675aa36976daec9cd9b8e1f87c544693e9bd36048a717a51f7be86e41ab9cf"
+      },
+      {
+        "file": "reasoning.json",
+        "bytes": 3525,
+        "sha256": "78ff5ba117cca6985d553e19bafc6e9c6ba907ff667a149e39963496f244d530"
+      },
+      {
+        "file": "equal-zero.json",
+        "bytes": 3139,
+        "sha256": "0c532239efd049afda574dba6323ef31b8ec8e0b571e81cc7f82912d747363ec"
+      },
+      {
+        "file": "prices.json",
+        "bytes": 265,
+        "sha256": "1d7fcf6134652616faf65add6a1a8ff6375203fe71f7c0c98f83460f7c984186"
+      },
+      {
+        "file": "focused.json",
+        "bytes": 3331,
+        "sha256": "e8cf5fbbdbc6d1ba69c9de5579885273d4bbd6dbc4bd3ebb28c775c26845f8ab"
+      },
+      {
+        "file": "native.json",
+        "bytes": 126827,
+        "sha256": "0fcdbaf93406308c81bb9b5694986d3dc0e52867cea3b8dcbac57d7149fcd802"
+      }
+    ],
+    "captureLedgerNodeVersionDiffers": true
+  }
+}

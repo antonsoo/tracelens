@@ -1,0 +1,282 @@
+{
+  "revision": "acf6f927c4f1723afad1a288fc9af97bb6578b10",
+  "archiveSha256": "560edc57652e6e82d85b99ef3c8c75a9e6ee4511c044253a17adad126cf4955d",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "node": "v24.21.0",
+  "checks": [
+    {
+      "name": "install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 0,
+      "seconds": 6.096,
+      "outputSha256": "bd31bbd8d88b9621f4b339a9c082a4d475b94da0960e33cf049a32b6c9528371"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 9.844,
+      "outputSha256": "db670e96ed80e60bef69186c2d702b1e39b3c714d46a86ca01df2d6561fcca6f"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 5.195,
+      "outputSha256": "21c6bed1e2c8a573a651b2ac217f9cc61c0da4996a0b4d36301d0454149b60ae"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 1,
+      "seconds": 5.477,
+      "outputSha256": "467d8d462b6beed16bc23162f163c77ffef9d2dbc1cdf3a1373c5c1bbd9e33d6"
+    },
+    {
+      "name": "unit-retry-bounded-workers",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "exitCode": 0,
+      "seconds": 6.184,
+      "outputSha256": "8e350dd7a9458fa18aaba15b7e896e7351d710609c9cef8fd2ee8ac69ea5beaa"
+    },
+    {
+      "name": "unit-comma-locale",
+      "command": [
+        "env",
+        "LC_ALL=de_DE.UTF-8",
+        "LANG=de_DE.UTF-8",
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 4.259,
+      "outputSha256": "fd5c69d91846102254c63737a6a67155eb1473342311c625f825b1840c1bc89f"
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 3.171,
+      "outputSha256": "2455cfc66fc351ee08099ccb29e0c99c2e4dec55a8910c007d0cfc9605222e75"
+    },
+    {
+      "name": "cli",
+      "command": [
+        "npm",
+        "run",
+        "test:cli"
+      ],
+      "exitCode": 0,
+      "seconds": 5.389,
+      "outputSha256": "d385a427bb9f00c5ff008fb61ec3db70a5c2077921a23ed55678903602f8567e"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exitCode": 0,
+      "seconds": 190.992,
+      "outputSha256": "5f9fecb62290e4d47a0d2dceb061892b02ef2e15ccde2e0be80108dbdb3b5345"
+    },
+    {
+      "name": "native-replay",
+      "command": [
+        "node",
+        "studies/usage-conflicts/replay.mjs",
+        ".",
+        "<temporary-output>",
+        "after"
+      ],
+      "exitCode": 0,
+      "seconds": 0.594,
+      "outputSha256": "3bdf6a5e9dc7e5412c122a7ef90ad756c31d231d94fddfd252b63f63312e4c2a"
+    },
+    {
+      "name": "usage-browser",
+      "command": [
+        "node",
+        "studies/usage-conflicts/browser.mjs",
+        ".",
+        "<temporary-output>",
+        "after"
+      ],
+      "exitCode": 0,
+      "seconds": 16.282,
+      "outputSha256": "b24a5b976b9e0558bb6fb472ae18aac43123d8f45a612885b85c1aa6888db008"
+    }
+  ],
+  "buildFiles": {
+    "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+      "bytes": 8356,
+      "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+    },
+    "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+      "bytes": 6912,
+      "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+    },
+    "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+      "bytes": 13348,
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+    },
+    "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+      "bytes": 5868,
+      "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+    },
+    "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+      "bytes": 8460,
+      "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+    },
+    "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+      "bytes": 6972,
+      "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+    },
+    "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+      "bytes": 13432,
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+    },
+    "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+      "bytes": 6040,
+      "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+    },
+    "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+      "bytes": 9352,
+      "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+    },
+    "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+      "bytes": 7692,
+      "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+    },
+    "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+      "bytes": 14328,
+      "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+    },
+    "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+      "bytes": 6932,
+      "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+    },
+    "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+    },
+    "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+    },
+    "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+    },
+    "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+    },
+    "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+    },
+    "assets/index-BMzOz67d.js": {
+      "bytes": 137691,
+      "sha256": "47ba5c229f9737b76263512d81308ff2c565f72ffb6ad2532977ad8232177804"
+    },
+    "assets/index-Dgc6-VJk.css": {
+      "bytes": 36138,
+      "sha256": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f"
+    },
+    "examples/comparison-baseline.json": {
+      "bytes": 6812,
+      "sha256": "a18bac23b74d9acda83216351336d0fd31237d5339dea0194509fad9903b3d59"
+    },
+    "examples/comparison-candidate.json": {
+      "bytes": 6786,
+      "sha256": "691eaab79c2b97292bdc8875cbb2aa812c7a8dc64a474ee7071b7808ba556df7"
+    },
+    "examples/cost-nano-stream.json": {
+      "bytes": 18360,
+      "sha256": "4e0ae4f9bf699c8ab5975e2fccec98dd4c85036e60a5848349b1ab85057802fd"
+    },
+    "examples/genai-log-events.jsonl": {
+      "bytes": 6743,
+      "sha256": "45460fd1c80fba771db85199f8484aa7763097252766c9d7d2de9be3b172555d"
+    },
+    "examples/genai-semconv-trace.json": {
+      "bytes": 49652,
+      "sha256": "c06473513c7a90f8a415ad8ff450b553eb3ffe615bb9c10d45840956288ae02b"
+    },
+    "examples/jaeger-genai-trace.json": {
+      "bytes": 48864,
+      "sha256": "37405105cca2dc1b17f91af1b4803a31ea522e39b7b521f7472ae3fbccb37370"
+    },
+    "examples/openinference-trace.json": {
+      "bytes": 25739,
+      "sha256": "f43eb022714cb8bf9a4771e70992684a793ea3b75ac433aa109c404b4594a25e"
+    },
+    "examples/queue-links.json": {
+      "bytes": 8990,
+      "sha256": "7e229d5106922cfd8f39c702f18f3893d01f636c52e740fb4019084900487573"
+    },
+    "examples/timing-parallel.json": {
+      "bytes": 6048,
+      "sha256": "cafc8292566c059bfbcf6a9fb50243aa0808b3ca5870d9f77df9a1903c875fa5"
+    },
+    "examples/timing-sequential.json": {
+      "bytes": 6050,
+      "sha256": "eea8b4bd41d1ba551c41f4bc8a57a272dc252cfefcfe76e969c0d285bba6153c"
+    },
+    "index.html": {
+      "bytes": 2433,
+      "sha256": "37eb297c38ed194e9574c6458ed423930695c3767d8a51cdd7ff8bdae99d9f3d"
+    }
+  },
+  "workingBuildMatches": true,
+  "observedCounts": {
+    "unit": 564,
+    "unitCommaLocale": 564,
+    "cliIntegrations": 32,
+    "broaderBrowserScenarios": 146,
+    "usageBrowserContexts": 4,
+    "usageBrowserDownloads": 32
+  },
+  "initialFailure": "The first unbounded unit run exceeded the existing 1000 ms 20,001-span wall-clock assertion (1252.978446 ms); all 563 other assertions passed. The complete suite passed with maxWorkers=2, then the default suite passed in de_DE.UTF-8. The threshold was unchanged."
+}

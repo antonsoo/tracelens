@@ -112,3 +112,21 @@ cache counts cannot use it. Price matching can independently prevent a charge.
 The package version remains 0.3.3. Local source/browser receipts do not
 establish an npm release or hosted deployment. Publication verification is
 recorded separately after those artifacts are checked.
+
+The [clean archive receipt](results/clean-checks.json) records Node 24.21.0
+installation, lint, type checks, 564 unit assertions, the same 564 in a
+comma-decimal locale, 32 CLI integrations, 146 broader browser scenarios and
+this study's four offline contexts/32 downloads. The initial unbounded unit
+run exceeded the existing 1,000 ms assertion for 20,001 spans (1,253 ms);
+all 563 other assertions passed. The full suite passed with two workers,
+then the default suite passed in the comma-decimal locale. The threshold
+was unchanged. Direct isolated checks of that sample took 252-312 ms on
+the baseline and 252-345 ms on the corrected artifact (six runs each,
+14 vCPU WSL2, 48 GB RAM); these ranges do not establish a speed difference.
+
+The [installed-artifact receipt](results/installed.json) records a fresh
+60,912-byte local tarball installed on Node 20.0.0 and 24.21.0. All 31
+runtime files equal the clean build. Each installed executable reproduced
+all 62 selected cases and the 342 retained-file outcomes. A separate fresh
+native SDK installation reserialized all six JSON fixture files byte for
+byte; its capture ledger differs in its recorded Node version.
