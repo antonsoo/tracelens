@@ -261,7 +261,7 @@ tracelens reads, per span:
 | Models | `gen_ai.request.model`, `gen_ai.response.model` | |
 | Agent / conversation | `gen_ai.agent.name`, `gen_ai.conversation.id` | |
 | Request params | `gen_ai.request.temperature`, `gen_ai.request.max_tokens` | |
-| Token usage | `gen_ai.usage.input_tokens` / `.output_tokens` (falling back to the pre-2024.11 `gen_ai.usage.prompt_tokens` / `.completion_tokens`), `gen_ai.usage.cache_read.input_tokens`, `gen_ai.usage.cache_creation.input_tokens` (also accepted as `.cache_write.input_tokens`), `gen_ai.usage.reasoning.output_tokens`. Also accepted, because real emitters write them: `gen_ai.usage.cache_read_input_tokens` / `.cache_write_input_tokens` / `.cache_creation_input_tokens` (Strands), `gen_ai.usage.reasoning_tokens` (OpenLLMetry), `gen_ai.usage.details.reasoning_tokens` and `.details.thoughts_tokens` (Pydantic AI) | Feeds the cost calculator (§4) and the summary header's token/cost rollup. Per the spec, `input_tokens` includes both cache counts. |
+| Token usage | `gen_ai.usage.input_tokens` / `.output_tokens` (also accepting the pre-2024.11 `gen_ai.usage.prompt_tokens` / `.completion_tokens`; repeated quantities must agree), `gen_ai.usage.cache_read.input_tokens`, `gen_ai.usage.cache_creation.input_tokens` (also accepted as `.cache_write.input_tokens`), `gen_ai.usage.reasoning.output_tokens`. Also accepted, because real emitters write them: `gen_ai.usage.cache_read_input_tokens` / `.cache_write_input_tokens` / `.cache_creation_input_tokens` (Strands), `gen_ai.usage.reasoning_tokens` (OpenLLMetry), `gen_ai.usage.details.reasoning_tokens` and `.details.thoughts_tokens` (Pydantic AI) | Feeds the cost calculator (§4) and the summary header's token/cost rollup. Per the spec, `input_tokens` includes both cache counts. |
 | Finish reasons | `gen_ai.response.finish_reasons`, else the `finish_reason` of each output message | string array |
 | Messages | `gen_ai.input.messages`, `gen_ai.output.messages`, `gen_ai.system_instructions` (as attributes, or as the attributes of a `gen_ai.client.inference.operation.details` span event, which is where Strands puts them) | Per spec, an array of `{"role", "parts": [{"type": "text"\|"tool_call"\|"tool_call_response", ...}]}`. Span attributes can't hold nested objects in every exporter, so tracelens accepts this either as a real structured `arrayValue`/`kvlistValue` **or** as a JSON-encoded string attribute (both are legal per spec — "MAY be recorded as a JSON string if structured format is not supported"). |
 | Tool calls | `gen_ai.tool.name`, `gen_ai.tool.call.id`, `gen_ai.tool.description`, `gen_ai.tool.type`, `gen_ai.tool.call.arguments`, `gen_ai.tool.call.result` | Arguments/result: same JSON-string-or-structured handling as messages. |
@@ -314,7 +314,7 @@ was seen (spans from the libraries' own recorded-response tests, see
 |---|---|---|
 | `llm.request.type` (`chat`, `completion`, `embedding`, `rerank`) | OpenLLMetry Cohere, Mistral | the kind of call, when there is no `gen_ai.operation.name` |
 | `gen_ai.prompt.N.role` / `.content`, `gen_ai.completion.N.role` / `.content` / `.finish_reason` / `.tool_calls.M.id` / `.name` / `.arguments` | OpenLLMetry Cohere, Mistral (0.62.4) | the input and output messages, including tool calls; `.content` that is a JSON list of `{"type": "text"}` blocks is shown as text |
-| `ai.operationId`, `ai.model.id`, `ai.model.provider`, `ai.response.model`, `ai.response.finishReason`, `ai.usage.inputTokens` / `.outputTokens` / `.cachedInputTokens` / `.reasoningTokens` (and `ai.usage.inputTokenDetails.*`, `ai.usage.outputTokenDetails.*`), `ai.prompt.messages`, `ai.response.text`, `ai.response.toolCalls`, `ai.toolCall.name` / `.id` / `.args` / `.result` | Vercel AI SDK 4-6 `experimental_telemetry`; AI SDK 7 `LegacyOpenTelemetry` | `ai.<fn>.doGenerate` and `.doStream` are model calls, `.doEmbed` embeddings, `ai.toolCall` tools; `ai.generateText`, `ai.streamText` and the other wrapper spans repeat their step totals and are shown as chains, so a call is not counted twice. The spans also carry a few `gen_ai.*` attributes, which take precedence field by field. Convention is shown as `vercel-ai`. |
+| `ai.operationId`, `ai.model.id`, `ai.model.provider`, `ai.response.model`, `ai.response.finishReason`, `ai.usage.inputTokens` / `.outputTokens` / `.cachedInputTokens` / `.reasoningTokens` (and `ai.usage.inputTokenDetails.*`, `ai.usage.outputTokenDetails.*`), `ai.prompt.messages`, `ai.response.text`, `ai.response.toolCalls`, `ai.toolCall.name` / `.id` / `.args` / `.result` | Vercel AI SDK 4-6 `experimental_telemetry`; AI SDK 7 `LegacyOpenTelemetry` | `ai.<fn>.doGenerate` and `.doStream` are model calls, `.doEmbed` embeddings, `ai.toolCall` tools; `ai.generateText`, `ai.streamText` and the other wrapper spans repeat their step totals and are shown as chains, so a call is not counted twice. The spans also carry a few `gen_ai.*` attributes. Non-usage metadata keeps field-by-field precedence; repeated usage quantities must agree. Convention is shown as `vercel-ai`. |
 | `embedding.model_name` | OpenInference embedding spans (OpenAI, LiteLLM, google-genai) | the model of an embedding call, which `llm.model_name` does not name |
 
 ## 3. OpenInference conventions (`openinference.*`, `llm.*`)
@@ -347,9 +347,16 @@ under `tool_calls`.
 
 ## 4. Cost estimation
 
-When both conventions occur on a span, usage is merged field by field;
-an explicitly supplied OTel field takes precedence. Invalid supplied
-counts remain invalid rather than falling back to another convention.
+Usage is reconciled field by field across recognized aliases and conventions.
+Repeated counts must agree; a disagreement leaves that quantity undefined
+with `conflictingFields` and a scoped parser warning. An invalid supplied
+count stays invalid even when another convention supplies a usable number.
+Neither source order nor a newer attribute name selects a measurement.
+Original attributes remain available in span and cost downloads. A conflicting
+reasoning breakdown or separate total does not prevent a charge supported by
+unambiguous inclusive input, output and cache counts. Conflicting billing
+operands leave that charge unknown. This does not mark the span inventory
+incomplete. [Native SDK reproduction and limits](../studies/usage-conflicts/README.md).
 Without an explicit kind/operation, GenAI model or usage attributes are
 treated as evidence of an LLM call; a tool name takes precedence. This is
 a legacy-export heuristic, so producers should still supply operation names.

@@ -25,6 +25,7 @@ summary — nothing leaves the browser tab.
 | What changed between two runs? | [Compare operation paths and inspect their spans](docs/comparison.md), or [open the synthetic comparison](https://antonsoo.github.io/tracelens/?example=compare). |
 | Why does summed work exceed elapsed time? | [Inspect overlap, gaps and exclusive intervals](docs/timing.md), with a captured loopback HTTP example. |
 | Which calls contributed to the token charge? | [Inspect per-call usage, rates, sources and exported receipts](docs/cost-accounting.md). |
+| Why do two token counters disagree? | [Inspect retained aliases and an explicitly unknown charge](studies/usage-conflicts/README.md). |
 | Where did queued work or separate messages go? | [Follow span links](docs/span-links.md) and [join related OTLP trace/log exports](studies/log-events/README.md). |
 
 Use the source checkout below for current parsing and accounting behavior.

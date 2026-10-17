@@ -51,7 +51,10 @@ export function spanCostEvidence(span: ParsedSpan, prices: PriceEntry[]): CostRo
     provider: genai.provider ?? null,
     requestModel: genai.requestModel ?? null,
     responseModel: genai.responseModel ?? null,
-    usage: genai.usage ? { ...genai.usage, ...(genai.usage.invalidFields ? { invalidFields: [...genai.usage.invalidFields] } : {}) } : null,
+    usage: genai.usage ? { ...genai.usage,
+      ...(genai.usage.invalidFields ? { invalidFields: [...genai.usage.invalidFields] } : {}),
+      ...(genai.usage.conflictingFields ? { conflictingFields: [...genai.usage.conflictingFields] } : {}),
+    } : null,
     usageAttributes: Object.fromEntries(Object.entries(span.attributes).filter(([key]) =>
       key.startsWith('gen_ai.usage.') || key.startsWith('llm.token_count.') || key.startsWith('ai.usage.'))),
     result: isModelCall(span.agentKind) ? explainSpanCost(genai, prices, span.agentKind) : {

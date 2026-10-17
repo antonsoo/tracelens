@@ -20,7 +20,7 @@ export interface SpanCost {
 }
 
 export type CostReason = 'missing-model' | 'no-price' | 'provider-mismatch' | 'ambiguous-price'
-  | 'invalid-price-table' | 'missing-input' | 'missing-output' | 'invalid-usage'
+  | 'invalid-price-table' | 'missing-input' | 'missing-output' | 'invalid-usage' | 'conflicting-usage'
   | 'inconsistent-cache' | 'unsupported-billing' | 'numeric-overflow';
 
 export type CostExplanation =
@@ -112,7 +112,7 @@ export function isModelCall(kind: AgentSpanKind): boolean {
 
 /** Embeddings produce vectors, not completion tokens. Keep contradictory readings visible. */
 export function modelOutputTokens(genai: GenAiInfo, kind: AgentSpanKind): number | undefined {
-  if (genai.usage?.invalidFields?.includes('outputTokens')) return undefined;
+  if (genai.usage?.invalidFields?.includes('outputTokens') || genai.usage?.conflictingFields?.includes('outputTokens')) return undefined;
   return genai.usage?.outputTokens ?? (kind === 'embedding' ? 0 : undefined);
 }
 
@@ -123,7 +123,14 @@ export function explainSpanCost(genai: GenAiInfo, table: PriceEntry[], kind: Age
   const price = matchPrice(genai, table);
   if (price.status === 'unpriced') return price;
   const usage = genai.usage;
-  if (usage?.invalidFields?.length) return unknownCost('invalid-usage', `Invalid recorded usage: ${usage.invalidFields.join(', ')}.`);
+  // Reasoning is already included in output, and a separate total counter is
+  // not an operand. Keep those quantities unknown without discarding a charge
+  // whose actual input/output/cache operands are all unambiguous.
+  const affectsCharge = (field: string): boolean => field !== 'reasoningOutputTokens' && field !== 'totalTokens';
+  const conflicts = usage?.conflictingFields?.filter(affectsCharge) ?? [];
+  const invalid = usage?.invalidFields?.filter(affectsCharge) ?? [];
+  if (conflicts.length) return unknownCost('conflicting-usage', `Conflicting recorded usage: ${conflicts.join(', ')}. Inspect the original usage attributes; no alias is selected as the measurement.`);
+  if (invalid.length) return unknownCost('invalid-usage', `Invalid recorded usage: ${invalid.join(', ')}.`);
   if (usage?.inputTokens === undefined) return unknownCost('missing-input', 'Input token usage was not recorded.');
   const output = modelOutputTokens(genai, kind);
   if (output === undefined) return unknownCost('missing-output', 'Output token usage was not recorded.');
@@ -135,6 +142,8 @@ export function explainSpanCost(genai: GenAiInfo, table: PriceEntry[], kind: Age
 
   const entry = { ...price.entry };
   const assumptions: string[] = [];
+  const unusedProblems = [...(usage.conflictingFields ?? []), ...(usage.invalidFields ?? [])].filter(field => !affectsCharge(field));
+  if (unusedProblems.length) assumptions.push(`Unusable recorded breakdowns (${[...new Set(unusedProblems)].join(', ')}) are not operands in this charge. Input, output and cache counts are assessed separately.`);
   if (!genai.responseModel?.trim()) assumptions.push('No response model recorded; using the request model.');
   if (!genai.provider?.trim() && entry.provider.trim()) assumptions.push(`No provider recorded; using the ${entry.provider} reference rate.`);
   if (!entry.provider.trim()) assumptions.push('This price entry explicitly applies to any provider.');

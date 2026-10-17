@@ -1,0 +1,13 @@
+[
+  {
+    "id": "Controlled user-supplied rates",
+    "matchModel": "controlled-model",
+    "provider": "example",
+    "inputPerMTok": 1,
+    "outputPerMTok": 1,
+    "cacheReadPerMTok": 0,
+    "cacheWritePerMTok": 2,
+    "sourceUrl": "",
+    "sourceDate": ""
+  }
+]

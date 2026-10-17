@@ -19,25 +19,44 @@ function strArray(v: unknown): string[] | undefined {
   return out.length > 0 ? out : undefined;
 }
 
-type UsageField = Exclude<keyof TokenUsage, 'invalidFields'>;
+type UsageField = Exclude<keyof TokenUsage, 'invalidFields' | 'conflictingFields'>;
 function extractUsage(attrs: AttrMap, fields: Partial<Record<UsageField, string[]>>): TokenUsage | undefined {
   const usage: TokenUsage = {};
   for (const field of Object.keys(fields) as UsageField[]) {
-    const key = fields[field]!.find((key) => Object.hasOwn(attrs, key));
-    if (!key) continue;
-    const value = attrs[key];
-    usage[field] = isTokenCount(value) ? value : undefined;
-    if (!isTokenCount(value)) (usage.invalidFields ??= []).push(field);
+    let present = false, invalid = false, conflict = false;
+    let first: number | undefined;
+    for (const key of fields[field]!) {
+      if (!Object.hasOwn(attrs, key)) continue;
+      present = true;
+      const value = attrs[key];
+      if (!isTokenCount(value)) invalid = true;
+      else if (first === undefined) first = value;
+      else if (value !== first) conflict = true;
+    }
+    if (!present) continue;
+    // Undefined plus a diagnostic is distinct from an absent optional count.
+    usage[field] = invalid || conflict ? undefined : first;
+    if (invalid) (usage.invalidFields ??= []).push(field);
+    else if (conflict) (usage.conflictingFields ??= []).push(field);
   }
   return Object.keys(usage).length ? usage : undefined;
 }
 
-function mergeUsage(oi: TokenUsage | undefined, otel: TokenUsage | undefined): TokenUsage | undefined {
-  if (!oi || !otel) return otel ?? oi;
-  const merged = { ...oi, ...otel };
-  const invalid = [...(oi.invalidFields ?? []).filter((field) => !Object.hasOwn(otel, field)), ...(otel.invalidFields ?? [])];
+function mergeUsage(earlier: TokenUsage | undefined, later: TokenUsage | undefined): TokenUsage | undefined {
+  if (!earlier || !later) return later ?? earlier;
+  const merged = { ...earlier, ...later };
+  const invalid = new Set([...(earlier.invalidFields ?? []), ...(later.invalidFields ?? [])]);
+  const conflicts = new Set([...(earlier.conflictingFields ?? []), ...(later.conflictingFields ?? [])]);
+  const fields = [...new Set([...Object.keys(earlier), ...Object.keys(later)])]
+    .filter((key) => key !== 'invalidFields' && key !== 'conflictingFields') as UsageField[];
+  for (const field of fields) {
+    if (!invalid.has(field) && Object.hasOwn(earlier, field) && Object.hasOwn(later, field) && earlier[field] !== later[field]) conflicts.add(field);
+    if (invalid.has(field) || conflicts.has(field)) merged[field] = undefined;
+  }
   delete merged.invalidFields;
-  if (invalid.length) merged.invalidFields = invalid;
+  delete merged.conflictingFields;
+  if (invalid.size) merged.invalidFields = [...invalid];
+  if (conflicts.size) merged.conflictingFields = [...conflicts];
   return merged;
 }
 
@@ -635,14 +654,18 @@ export function normalizeSpan(span: ParsedSpan, onWarning?: (warning: ParseWarni
   const oi = extractOpenInference(span.attributes);
   const aiSdk = extractAiSdk(span.attributes);
 
-  // Read in order of how current each convention is; a later one overrides an earlier one field by
-  // field, and token counts are merged field by field.
+  // Metadata retains convention precedence. Quantities must agree across
+  // recognized sources; a newer spelling cannot resolve contradictory usage.
   let genai: GenAiInfo | undefined;
   for (const info of [aiSdk, oi, otel]) {
     if (!info) continue;
     const usage = mergeUsage(genai?.usage, info.usage);
     genai = { ...genai, ...info };
     if (usage) genai.usage = usage;
+  }
+  for (const field of genai?.usage?.conflictingFields ?? []) {
+    onWarning?.({ traceId: span.traceId, spanId: span.spanId,
+      message: `Conflicting token usage for ${field}; the normalized count is unavailable. Original usage attributes are retained.` });
   }
 
   const convention: Convention = aiSdk ? 'vercel-ai' : otel ? 'otel-genai' : oi ? 'openinference' : 'none';

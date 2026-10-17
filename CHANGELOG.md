@@ -9,6 +9,18 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Conflicting token counters
+
+- Reconcile all recognized usage aliases and conventions on a span. Keep a
+  disputed quantity unknown, retain original values and emit a scoped warning
+  instead of selecting the first alias or the last convention. Equal counts
+  still count once, including zero; invalid earlier sources stay invalid.
+- Leave cost unknown when an input, output or cache operand conflicts. An
+  unusable reasoning breakdown or separate total remains unknown without
+  discarding a charge supported by unambiguous inclusive operands.
+- [Native SDK cases, offline receipts and retained-input replay](studies/usage-conflicts/README.md).
+  The package version is unchanged; this entry describes source behavior.
+
 ### Repeated JSON object fields
 
 - Reject repeated field names in original JSON/JSONL text before reporting

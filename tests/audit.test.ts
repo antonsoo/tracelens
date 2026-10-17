@@ -36,10 +36,10 @@ describe('untrusted pricing and token accounting', () => {
     expect(cost.value).toBeCloseTo(0.00028, 10);
     expect(cost.missing).toBe(0);
   });
-  it('merges mixed usage field by field, with OTel precedence only for fields it supplies', () => {
-    const trace = parse([attr('openinference.span.kind', sv('LLM')), attr('llm.model_name', sv('known')), attr('llm.token_count.prompt', iv(100)), attr('llm.token_count.completion', iv(20)), attr('gen_ai.usage.input_tokens', iv(200))]);
+  it('merges agreeing usage field by field without discarding an earlier output count', () => {
+    const trace = parse([attr('openinference.span.kind', sv('LLM')), attr('llm.model_name', sv('known')), attr('llm.token_count.prompt', iv(100)), attr('llm.token_count.completion', iv(20)), attr('gen_ai.usage.input_tokens', iv(100))]);
     expect(trace.spans[0]!.agentKind).toBe('llm');
-    expect(trace.spans[0]!.genai?.usage).toEqual({ inputTokens: 200, outputTokens: 20 });
+    expect(trace.spans[0]!.genai?.usage).toEqual({ inputTokens: 100, outputTokens: 20 });
     expect(buildSummary(trace, [price]).uncostedCalls).toBe(0);
   });
   it.each([dv(-1), dv(1.5), sv('bad'), iv(Number.MAX_SAFE_INTEGER + 1)])('does not turn invalid optional cache usage into zero: %j', (value) => {
@@ -64,9 +64,10 @@ describe('untrusted pricing and token accounting', () => {
     expect(report.metrics.outputTokens.baseline).toEqual({ value: 20, missing: 0 });
     expect(buildSummary(trace, [price]).modelUsage[0]).toMatchObject({ inputTokens: 0, missingInputCalls: 1, outputTokens: 20, missingOutputCalls: 0 });
   });
-  it.each([[dv(-1), iv(100), 0], [iv(100), dv(-1), 1]])('preserves validity when merging explicitly supplied usage fields', (oiInput, otelInput, uncostedCalls) => {
+  it.each([[dv(-1), iv(100)], [iv(100), dv(-1)]])('keeps invalid supplied usage unavailable in either convention', (oiInput, otelInput) => {
     const trace = parse([attr('openinference.span.kind', sv('LLM')), attr('llm.model_name', sv('known')), attr('llm.token_count.prompt', oiInput), attr('llm.token_count.completion', iv(20)), attr('gen_ai.usage.input_tokens', otelInput)]);
-    expect(buildSummary(trace, [price]).uncostedCalls).toBe(uncostedCalls);
+    expect(buildSummary(trace, [price]).uncostedCalls).toBe(1);
+    expect(trace.spans[0]!.genai?.usage?.inputTokens).toBeUndefined();
   });
 });
 

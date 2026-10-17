@@ -1,0 +1,11 @@
+{
+  "files": 342,
+  "parsed": 65,
+  "rejected": 277,
+  "changedInputs": 0,
+  "changedNormalizedOrSummaryOrRejections": 0,
+  "inputsWithNewConflicts": 0,
+  "denominator": "Tracked JSON/JSONL files at ec264582888bb44dd446865c72e67f306c2c6f91, pinned before edits; includes metadata and deliberately invalid examples, not 342 independent trace observations.",
+  "beforeSha256": "a350c312be2c21ada1fbb00d7f768fc90a69fb4d09f3bdcab9a2461320083cae",
+  "afterSha256": "a4c4f9ba9681d9c84c1fb16464f3e294fa503e6377e3785a874cd486ecd49fce"
+}

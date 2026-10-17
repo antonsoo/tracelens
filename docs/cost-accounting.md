@@ -84,6 +84,22 @@ nano rates, without importing the TraceLens matcher or price table.
 
 ## Matching rules
 
+Repeated usage measurements must agree before they can enter a charge.
+For example, `gen_ai.usage.input_tokens: 0` together with legacy
+`gen_ai.usage.prompt_tokens: 1000000` leaves input and cost unknown; the
+newer name does not make zero the correct measurement. Equal duplicates,
+including a genuine zero, are counted once. This also applies across
+OpenInference, Vercel AI and GenAI attributes on the same span.
+
+Cost JSON exposes `usage.conflictingFields`, the original `usageAttributes`
+and an unpriced reason of `conflicting-usage`. Invalid supplied counts stay
+invalid rather than disappearing behind another alias. Reasoning tokens
+are already included in output: an unusable reasoning breakdown stays
+unknown and is disclosed, while an agreed inclusive output can still be
+priced. A separate total is also not an operand. Missing cache counts
+retain the existing disclosed zero assumption; conflicting cache counts
+cannot use that assumption. [Controlled native SDK exports and before/after receipts](../studies/usage-conflicts/README.md).
+
 The response model takes precedence. A request model is used only when no
 response model was recorded, not when a response model failed to match.
 Names and providers are trimmed and compared case-insensitively.

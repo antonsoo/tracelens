@@ -89,6 +89,8 @@ export interface NormalizedMessage {
 export interface TokenUsage {
   /** Present but invalid fields must not be mistaken for absent optional counts. */
   invalidFields?: string[];
+  /** Recognized aliases disagree; no convention or attribute order picks a count. */
+  conflictingFields?: string[];
   inputTokens?: number;
   outputTokens?: number;
   cacheReadTokens?: number;
