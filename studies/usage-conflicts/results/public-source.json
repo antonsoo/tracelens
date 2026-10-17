@@ -1,0 +1,137 @@
+{
+  "checkedAt": "2026-10-17T07:28:05.530643+00:00",
+  "localMain": "7e65ba8868a1636159d46baf244795f9022b9366",
+  "remoteMain": "7e65ba8868a1636159d46baf244795f9022b9366",
+  "cleanTreeAtCapture": true,
+  "files": [
+    {
+      "file": "src/core/normalize.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/src/core/normalize.ts",
+      "httpStatus": 200,
+      "bytes": 37021,
+      "sha256": "e7b365ca3f934cbb5501205d35ee448910ded0be0ba0cdf695bba8df8fca83e5",
+      "state": "verified"
+    },
+    {
+      "file": "src/core/types.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/src/core/types.ts",
+      "httpStatus": 200,
+      "bytes": 6678,
+      "sha256": "74ac75a64fbf3279637e5cd00b86faaba5b4cd23a5297c485b1cdd924500b66e",
+      "state": "verified"
+    },
+    {
+      "file": "src/core/cost.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/src/core/cost.ts",
+      "httpStatus": 200,
+      "bytes": 11739,
+      "sha256": "c4ae81fc9c7a1ae36ba43683e7e5c6e7360f8f988a47f2daa39dfe89e3b0189f",
+      "state": "verified"
+    },
+    {
+      "file": "src/core/cost-report.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/src/core/cost-report.ts",
+      "httpStatus": 200,
+      "bytes": 5172,
+      "sha256": "c662a9f95ac8e03f20f814a4d0f8dd5621f7e8507ac938fff9f93db90bae19a7",
+      "state": "verified"
+    },
+    {
+      "file": "tests/usage-conflicts.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/tests/usage-conflicts.test.ts",
+      "httpStatus": 200,
+      "bytes": 4902,
+      "sha256": "a0ecc3eee2f27ff045d58a64369876126516e2183719ddd7633ce6387acfd492",
+      "state": "verified"
+    },
+    {
+      "file": "docs/formats.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/docs/formats.md",
+      "httpStatus": 200,
+      "bytes": 35972,
+      "sha256": "5ca8ebd06a7dae0c412e0a79fc9b0445c683a438b5a5cef6f8d7efde0d4c73ba",
+      "state": "verified"
+    },
+    {
+      "file": "docs/cost-accounting.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/docs/cost-accounting.md",
+      "httpStatus": 200,
+      "bytes": 10593,
+      "sha256": "2453af023fe8eed7598603bb358e33e0d581be7c307eb77f65ea8cc1b8d1f241",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/capture/capture.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/capture/capture.mjs",
+      "httpStatus": 200,
+      "bytes": 9331,
+      "sha256": "aec282da72bbd8cc6d1c3a94f32d52b7b00f095b0ba88b123af9ca82ee0edceb",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/capture/package-lock.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/capture/package-lock.json",
+      "httpStatus": 200,
+      "bytes": 6271,
+      "sha256": "cb9d571e5f8df7852ca19ff689362dd953ae3ee9b5012f850156f6e2de83727b",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/fixtures/native.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/fixtures/native.json",
+      "httpStatus": 200,
+      "bytes": 126827,
+      "sha256": "0fcdbaf93406308c81bb9b5694986d3dc0e52867cea3b8dcbac57d7149fcd802",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/replay.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/replay.mjs",
+      "httpStatus": 200,
+      "bytes": 5923,
+      "sha256": "ddba17183fa654c3abdad1fe8d7e2932f731a106e5e8230203a3206de2cf55e5",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/browser.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/browser.mjs",
+      "httpStatus": 200,
+      "bytes": 8629,
+      "sha256": "75b25e7f9e4e1327ae4029e166867c7b1ef94cb685963873a4e0cbaac753f93b",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/results/after.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/results/after.json",
+      "httpStatus": 200,
+      "bytes": 224263,
+      "sha256": "a4c4f9ba9681d9c84c1fb16464f3e294fa503e6377e3785a874cd486ecd49fce",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/results/clean-checks.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/results/clean-checks.json",
+      "httpStatus": 200,
+      "bytes": 9255,
+      "sha256": "d2e8385ceb0544f0363ea5da37d90800677cd358feed0ecb4f74cb9eaa38dcc5",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/results/installed.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/results/installed.json",
+      "httpStatus": 200,
+      "bytes": 2612,
+      "sha256": "685b131e31c50980fbabd40250da3650721884603f44d45422864c542d5c9acd",
+      "state": "verified"
+    },
+    {
+      "file": "studies/usage-conflicts/README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/tracelens/7e65ba8868a1636159d46baf244795f9022b9366/studies/usage-conflicts/README.md",
+      "httpStatus": 200,
+      "bytes": 7663,
+      "sha256": "075ec9e263b078aeca7ca6046385c899459990d6506cee6f1da815a4de56f518",
+      "state": "verified"
+    }
+  ],
+  "boundary": "Public pinned source bytes only. Does not establish a registry release, CI result or hosted browser revision."
+}

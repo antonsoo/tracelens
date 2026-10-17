@@ -1,0 +1,1265 @@
+{
+  "mode": "after",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "offlineBeforeFirstInput": true,
+      "observations": [
+        {
+          "name": "focused",
+          "result": {
+            "status": "unpriced",
+            "reason": "conflicting-usage",
+            "message": "Conflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement."
+          },
+          "usage": {
+            "conflictingFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [
+            "Conflicting token usage for inputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nConflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "equal-zero",
+          "result": {
+            "status": "priced",
+            "costUsd": 0,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "0 / 0",
+          "receiptText": "Token cost calculation\n\n$0\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t0\t$1\t$0\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0\n}\nDownload cost receipt"
+        },
+        {
+          "name": "reasoning",
+          "result": {
+            "status": "priced",
+            "costUsd": 1,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 1000000,
+                "perMillionUsd": 1,
+                "costUsd": 1,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "Unusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.",
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 1000000,
+            "conflictingFields": [
+              "reasoningOutputTokens"
+            ]
+          },
+          "warnings": [
+            "Conflicting token usage for reasoningOutputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "0 / 1,000,000",
+          "receiptText": "Token cost calculation\n\n$1\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t1,000,000\t$1\t$1\nUnusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 1000000,\n  \"gen_ai.usage.reasoning.output_tokens\": 0,\n  \"gen_ai.usage.reasoning_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "invalid",
+          "result": {
+            "status": "unpriced",
+            "reason": "invalid-usage",
+            "message": "Invalid recorded usage: inputTokens."
+          },
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nInvalid recorded usage: inputTokens.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": \"not-a-count\"\n}\nDownload cost receipt"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "chromium-1440-focused-cost.json",
+          "bytes": 2292,
+          "sha256": "641bd7570e04e2c91a959e6861a712c7fe68dabc869f720e21b013ad74e163a8"
+        },
+        {
+          "file": "chromium-1440-focused-receipt.json",
+          "bytes": 1071,
+          "sha256": "c78e167339d9554b600c25d6142342116b9cbac1b42c70ae8f3be7c2e8abf346"
+        },
+        {
+          "file": "chromium-1440-equal-zero-cost.json",
+          "bytes": 3239,
+          "sha256": "58b0633145815192d4054d2973ec445b6ef95098d9296dd934b2b3a2ad8600ff"
+        },
+        {
+          "file": "chromium-1440-equal-zero-receipt.json",
+          "bytes": 1979,
+          "sha256": "4a18cff0bbc6073812c7a0e476bd0989d97360281219f66601fe5ced7e148a87"
+        },
+        {
+          "file": "chromium-1440-reasoning-cost.json",
+          "bytes": 3737,
+          "sha256": "d6f920776dc8ad8609875f176de0cabd49f9ba2a133544f12cfcc95d9c102155"
+        },
+        {
+          "file": "chromium-1440-reasoning-receipt.json",
+          "bytes": 2316,
+          "sha256": "dd1a793d1b2ad45103f61308f72ffce49587681dcfd5e5b25f00d0f149be6b9f"
+        },
+        {
+          "file": "chromium-1440-invalid-cost.json",
+          "bytes": 2090,
+          "sha256": "d5cc3447084f21b2b0c50b1148468efb0539525eb659e9c4dc04191ca91cb75c"
+        },
+        {
+          "file": "chromium-1440-invalid-receipt.json",
+          "bytes": 996,
+          "sha256": "848b508a8bb388c257273ca0e2e645835a21799ee4836b44ae837df80dd5957d"
+        }
+      ],
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "37eb297c38ed194e9574c6458ed423930695c3767d8a51cdd7ff8bdae99d9f3d"
+        },
+        "assets/index-Dgc6-VJk.css": {
+          "bytes": 36138,
+          "sha256": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f"
+        },
+        "assets/index-BMzOz67d.js": {
+          "bytes": 137691,
+          "sha256": "47ba5c229f9737b76263512d81308ff2c565f72ffb6ad2532977ad8232177804"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        }
+      },
+      "pageErrors": [],
+      "csp": [],
+      "externalRequests": [],
+      "offlineRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "offlineBeforeFirstInput": true,
+      "observations": [
+        {
+          "name": "focused",
+          "result": {
+            "status": "unpriced",
+            "reason": "conflicting-usage",
+            "message": "Conflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement."
+          },
+          "usage": {
+            "conflictingFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [
+            "Conflicting token usage for inputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nConflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "equal-zero",
+          "result": {
+            "status": "priced",
+            "costUsd": 0,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "0 / 0",
+          "receiptText": "Token cost calculation\n\n$0\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t0\t$1\t$0\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0\n}\nDownload cost receipt"
+        },
+        {
+          "name": "reasoning",
+          "result": {
+            "status": "priced",
+            "costUsd": 1,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 1000000,
+                "perMillionUsd": 1,
+                "costUsd": 1,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "Unusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.",
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 1000000,
+            "conflictingFields": [
+              "reasoningOutputTokens"
+            ]
+          },
+          "warnings": [
+            "Conflicting token usage for reasoningOutputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "0 / 1,000,000",
+          "receiptText": "Token cost calculation\n\n$1\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t1,000,000\t$1\t$1\nUnusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 1000000,\n  \"gen_ai.usage.reasoning.output_tokens\": 0,\n  \"gen_ai.usage.reasoning_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "invalid",
+          "result": {
+            "status": "unpriced",
+            "reason": "invalid-usage",
+            "message": "Invalid recorded usage: inputTokens."
+          },
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nInvalid recorded usage: inputTokens.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": \"not-a-count\"\n}\nDownload cost receipt"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "chromium-375-focused-cost.json",
+          "bytes": 2292,
+          "sha256": "641bd7570e04e2c91a959e6861a712c7fe68dabc869f720e21b013ad74e163a8"
+        },
+        {
+          "file": "chromium-375-focused-receipt.json",
+          "bytes": 1071,
+          "sha256": "c78e167339d9554b600c25d6142342116b9cbac1b42c70ae8f3be7c2e8abf346"
+        },
+        {
+          "file": "chromium-375-equal-zero-cost.json",
+          "bytes": 3239,
+          "sha256": "58b0633145815192d4054d2973ec445b6ef95098d9296dd934b2b3a2ad8600ff"
+        },
+        {
+          "file": "chromium-375-equal-zero-receipt.json",
+          "bytes": 1979,
+          "sha256": "4a18cff0bbc6073812c7a0e476bd0989d97360281219f66601fe5ced7e148a87"
+        },
+        {
+          "file": "chromium-375-reasoning-cost.json",
+          "bytes": 3737,
+          "sha256": "d6f920776dc8ad8609875f176de0cabd49f9ba2a133544f12cfcc95d9c102155"
+        },
+        {
+          "file": "chromium-375-reasoning-receipt.json",
+          "bytes": 2316,
+          "sha256": "dd1a793d1b2ad45103f61308f72ffce49587681dcfd5e5b25f00d0f149be6b9f"
+        },
+        {
+          "file": "chromium-375-invalid-cost.json",
+          "bytes": 2090,
+          "sha256": "d5cc3447084f21b2b0c50b1148468efb0539525eb659e9c4dc04191ca91cb75c"
+        },
+        {
+          "file": "chromium-375-invalid-receipt.json",
+          "bytes": 996,
+          "sha256": "848b508a8bb388c257273ca0e2e645835a21799ee4836b44ae837df80dd5957d"
+        }
+      ],
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "37eb297c38ed194e9574c6458ed423930695c3767d8a51cdd7ff8bdae99d9f3d"
+        },
+        "assets/index-Dgc6-VJk.css": {
+          "bytes": 36138,
+          "sha256": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f"
+        },
+        "assets/index-BMzOz67d.js": {
+          "bytes": 137691,
+          "sha256": "47ba5c229f9737b76263512d81308ff2c565f72ffb6ad2532977ad8232177804"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        }
+      },
+      "pageErrors": [],
+      "csp": [],
+      "externalRequests": [],
+      "offlineRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "offlineBeforeFirstInput": true,
+      "observations": [
+        {
+          "name": "focused",
+          "result": {
+            "status": "unpriced",
+            "reason": "conflicting-usage",
+            "message": "Conflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement."
+          },
+          "usage": {
+            "conflictingFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [
+            "Conflicting token usage for inputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nConflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "equal-zero",
+          "result": {
+            "status": "priced",
+            "costUsd": 0,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "0 / 0",
+          "receiptText": "Token cost calculation\n\n$0\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t0\t$1\t$0\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0\n}\nDownload cost receipt"
+        },
+        {
+          "name": "reasoning",
+          "result": {
+            "status": "priced",
+            "costUsd": 1,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 1000000,
+                "perMillionUsd": 1,
+                "costUsd": 1,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "Unusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.",
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 1000000,
+            "conflictingFields": [
+              "reasoningOutputTokens"
+            ]
+          },
+          "warnings": [
+            "Conflicting token usage for reasoningOutputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "0 / 1,000,000",
+          "receiptText": "Token cost calculation\n\n$1\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t1,000,000\t$1\t$1\nUnusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 1000000,\n  \"gen_ai.usage.reasoning.output_tokens\": 0,\n  \"gen_ai.usage.reasoning_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "invalid",
+          "result": {
+            "status": "unpriced",
+            "reason": "invalid-usage",
+            "message": "Invalid recorded usage: inputTokens."
+          },
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nInvalid recorded usage: inputTokens.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": \"not-a-count\"\n}\nDownload cost receipt"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "firefox-1440-focused-cost.json",
+          "bytes": 2292,
+          "sha256": "641bd7570e04e2c91a959e6861a712c7fe68dabc869f720e21b013ad74e163a8"
+        },
+        {
+          "file": "firefox-1440-focused-receipt.json",
+          "bytes": 1071,
+          "sha256": "c78e167339d9554b600c25d6142342116b9cbac1b42c70ae8f3be7c2e8abf346"
+        },
+        {
+          "file": "firefox-1440-equal-zero-cost.json",
+          "bytes": 3239,
+          "sha256": "58b0633145815192d4054d2973ec445b6ef95098d9296dd934b2b3a2ad8600ff"
+        },
+        {
+          "file": "firefox-1440-equal-zero-receipt.json",
+          "bytes": 1979,
+          "sha256": "4a18cff0bbc6073812c7a0e476bd0989d97360281219f66601fe5ced7e148a87"
+        },
+        {
+          "file": "firefox-1440-reasoning-cost.json",
+          "bytes": 3737,
+          "sha256": "d6f920776dc8ad8609875f176de0cabd49f9ba2a133544f12cfcc95d9c102155"
+        },
+        {
+          "file": "firefox-1440-reasoning-receipt.json",
+          "bytes": 2316,
+          "sha256": "dd1a793d1b2ad45103f61308f72ffce49587681dcfd5e5b25f00d0f149be6b9f"
+        },
+        {
+          "file": "firefox-1440-invalid-cost.json",
+          "bytes": 2090,
+          "sha256": "d5cc3447084f21b2b0c50b1148468efb0539525eb659e9c4dc04191ca91cb75c"
+        },
+        {
+          "file": "firefox-1440-invalid-receipt.json",
+          "bytes": 996,
+          "sha256": "848b508a8bb388c257273ca0e2e645835a21799ee4836b44ae837df80dd5957d"
+        }
+      ],
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "37eb297c38ed194e9574c6458ed423930695c3767d8a51cdd7ff8bdae99d9f3d"
+        },
+        "assets/index-Dgc6-VJk.css": {
+          "bytes": 36138,
+          "sha256": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f"
+        },
+        "assets/index-BMzOz67d.js": {
+          "bytes": 137691,
+          "sha256": "47ba5c229f9737b76263512d81308ff2c565f72ffb6ad2532977ad8232177804"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        }
+      },
+      "pageErrors": [],
+      "csp": [],
+      "externalRequests": [],
+      "offlineRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "offlineBeforeFirstInput": true,
+      "observations": [
+        {
+          "name": "focused",
+          "result": {
+            "status": "unpriced",
+            "reason": "conflicting-usage",
+            "message": "Conflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement."
+          },
+          "usage": {
+            "conflictingFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [
+            "Conflicting token usage for inputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nConflicting recorded usage: inputTokens. Inspect the original usage attributes; no alias is selected as the measurement.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "equal-zero",
+          "result": {
+            "status": "priced",
+            "costUsd": 0,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "0 / 0",
+          "receiptText": "Token cost calculation\n\n$0\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t0\t$1\t$0\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0\n}\nDownload cost receipt"
+        },
+        {
+          "name": "reasoning",
+          "result": {
+            "status": "priced",
+            "costUsd": 1,
+            "matchedModel": "Controlled user-supplied rates",
+            "entry": {
+              "id": "Controlled user-supplied rates",
+              "matchModel": "controlled-model",
+              "provider": "example",
+              "inputPerMTok": 1,
+              "outputPerMTok": 1,
+              "cacheReadPerMTok": 0,
+              "cacheWritePerMTok": 2,
+              "sourceUrl": "",
+              "sourceDate": ""
+            },
+            "match": "exact",
+            "components": [
+              {
+                "kind": "input",
+                "tokens": 0,
+                "perMillionUsd": 1,
+                "costUsd": 0,
+                "rateSource": "input"
+              },
+              {
+                "kind": "cache-read",
+                "tokens": 0,
+                "perMillionUsd": 0,
+                "costUsd": 0,
+                "rateSource": "cache-read"
+              },
+              {
+                "kind": "cache-write",
+                "tokens": 0,
+                "perMillionUsd": 2,
+                "costUsd": 0,
+                "rateSource": "cache-write"
+              },
+              {
+                "kind": "output",
+                "tokens": 1000000,
+                "perMillionUsd": 1,
+                "costUsd": 1,
+                "rateSource": "output"
+              }
+            ],
+            "assumptions": [
+              "Unusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.",
+              "No cache-read count recorded; assuming zero cache reads.",
+              "No cache-write count recorded; assuming zero cache writes."
+            ]
+          },
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 1000000,
+            "conflictingFields": [
+              "reasoningOutputTokens"
+            ]
+          },
+          "warnings": [
+            "Conflicting token usage for reasoningOutputTokens; the normalized count is unavailable. Original usage attributes are retained."
+          ],
+          "tokenHeader": "0 / 1,000,000",
+          "receiptText": "Token cost calculation\n\n$1\n\nControlled user-supplied rates / exact model match / example\n\nUser-supplied rate; no source URL.; source date: not supplied\n\nTokens multiplied by USD per million tokens\nComponent\tTokens\tRate\tCharge\nFresh input\t0\t$1\t$0\nCache read\t0\t$0\t$0\nCache write\t0\t$2\t$0\nOutput\t1,000,000\t$1\t$1\nUnusable recorded breakdowns (reasoningOutputTokens) are not operands in this charge. Input, output and cache counts are assessed separately.\nNo cache-read count recorded; assuming zero cache reads.\nNo cache-write count recorded; assuming zero cache writes.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 1000000,\n  \"gen_ai.usage.reasoning.output_tokens\": 0,\n  \"gen_ai.usage.reasoning_tokens\": 1000000\n}\nDownload cost receipt"
+        },
+        {
+          "name": "invalid",
+          "result": {
+            "status": "unpriced",
+            "reason": "invalid-usage",
+            "message": "Invalid recorded usage: inputTokens."
+          },
+          "usage": {
+            "invalidFields": [
+              "inputTokens"
+            ],
+            "outputTokens": 0
+          },
+          "warnings": [],
+          "tokenHeader": "Unknown / 0",
+          "receiptText": "Token cost calculation\n\nUnpriced\n\nInvalid recorded usage: inputTokens.\n\nToken charges at the supplied rates. Context premiums, service tiers and tool fees are outside this estimate.\n\nRecorded usage attributes\n{\n  \"gen_ai.usage.input_tokens\": 0,\n  \"gen_ai.usage.output_tokens\": 0,\n  \"gen_ai.usage.prompt_tokens\": \"not-a-count\"\n}\nDownload cost receipt"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "firefox-375-focused-cost.json",
+          "bytes": 2292,
+          "sha256": "641bd7570e04e2c91a959e6861a712c7fe68dabc869f720e21b013ad74e163a8"
+        },
+        {
+          "file": "firefox-375-focused-receipt.json",
+          "bytes": 1071,
+          "sha256": "c78e167339d9554b600c25d6142342116b9cbac1b42c70ae8f3be7c2e8abf346"
+        },
+        {
+          "file": "firefox-375-equal-zero-cost.json",
+          "bytes": 3239,
+          "sha256": "58b0633145815192d4054d2973ec445b6ef95098d9296dd934b2b3a2ad8600ff"
+        },
+        {
+          "file": "firefox-375-equal-zero-receipt.json",
+          "bytes": 1979,
+          "sha256": "4a18cff0bbc6073812c7a0e476bd0989d97360281219f66601fe5ced7e148a87"
+        },
+        {
+          "file": "firefox-375-reasoning-cost.json",
+          "bytes": 3737,
+          "sha256": "d6f920776dc8ad8609875f176de0cabd49f9ba2a133544f12cfcc95d9c102155"
+        },
+        {
+          "file": "firefox-375-reasoning-receipt.json",
+          "bytes": 2316,
+          "sha256": "dd1a793d1b2ad45103f61308f72ffce49587681dcfd5e5b25f00d0f149be6b9f"
+        },
+        {
+          "file": "firefox-375-invalid-cost.json",
+          "bytes": 2090,
+          "sha256": "d5cc3447084f21b2b0c50b1148468efb0539525eb659e9c4dc04191ca91cb75c"
+        },
+        {
+          "file": "firefox-375-invalid-receipt.json",
+          "bytes": 996,
+          "sha256": "848b508a8bb388c257273ca0e2e645835a21799ee4836b44ae837df80dd5957d"
+        }
+      ],
+      "assets": {
+        "index.html": {
+          "bytes": 2433,
+          "sha256": "37eb297c38ed194e9574c6458ed423930695c3767d8a51cdd7ff8bdae99d9f3d"
+        },
+        "assets/index-Dgc6-VJk.css": {
+          "bytes": 36138,
+          "sha256": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f"
+        },
+        "assets/index-BMzOz67d.js": {
+          "bytes": 137691,
+          "sha256": "47ba5c229f9737b76263512d81308ff2c565f72ffb6ad2532977ad8232177804"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2": {
+          "bytes": 6912,
+          "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2": {
+          "bytes": 6972,
+          "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+        },
+        "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2": {
+          "bytes": 13432,
+          "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2": {
+          "bytes": 7692,
+          "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+        },
+        "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2": {
+          "bytes": 6040,
+          "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+        },
+        "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2": {
+          "bytes": 9352,
+          "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+        },
+        "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2": {
+          "bytes": 8356,
+          "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2": {
+          "bytes": 5868,
+          "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2": {
+          "bytes": 8460,
+          "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+        },
+        "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2": {
+          "bytes": 13348,
+          "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+        },
+        "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2": {
+          "bytes": 13160,
+          "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+        },
+        "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2": {
+          "bytes": 23568,
+          "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-greek-CmyJS8uq.woff2": {
+          "bytes": 19500,
+          "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2": {
+          "bytes": 29512,
+          "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+        },
+        "assets/ibm-plex-sans-latin-ext-CIII54If.woff2": {
+          "bytes": 30964,
+          "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+        },
+        "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2": {
+          "bytes": 6932,
+          "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+        },
+        "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2": {
+          "bytes": 14328,
+          "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+        }
+      },
+      "pageErrors": [],
+      "csp": [],
+      "externalRequests": [],
+      "offlineRequests": []
+    }
+  ]
+}

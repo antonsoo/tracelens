@@ -1,0 +1,29 @@
+{
+  "screenshots": [
+    {
+      "file": "firefox-1440.png",
+      "bytes": 151248,
+      "sha256": "789171abd259cba241699969dfc5e4445598044fe0e8e3a4d656353082e87ab8",
+      "byteEqualInspectedCleanScreenshot": true
+    },
+    {
+      "file": "chromium-375.png",
+      "bytes": 109449,
+      "sha256": "5f6a86b69c268a065c82639b1caf2e649b41dc3a58c9a5526497d585d4e2a3c6",
+      "byteEqualInspectedCleanScreenshot": true
+    },
+    {
+      "file": "firefox-375.png",
+      "bytes": 157023,
+      "sha256": "69046b20c2a29e8319ebd89a9898afe3f5a6eaa6a64c1fdee88eeafe997daf49",
+      "byteEqualInspectedCleanScreenshot": true
+    },
+    {
+      "file": "chromium-1440.png",
+      "bytes": 104483,
+      "sha256": "2061a812f48fa86177ecd01e089321d690639b7f7eed18c275e026a4aca59407",
+      "byteEqualInspectedCleanScreenshot": true
+    }
+  ],
+  "scope": "Hosted screenshots are byte-identical to the four visually inspected clean-build captures retained in docs/assets/usage-conflicts/after."
+}

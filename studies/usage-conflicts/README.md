@@ -130,3 +130,15 @@ runtime files equal the clean build. Each installed executable reproduced
 all 62 selected cases and the 342 retained-file outcomes. A separate fresh
 native SDK installation reserialized all six JSON fixture files byte for
 byte; its capture ledger differs in its recorded Node version.
+
+The pushed [public-source receipt](results/public-source.json) verifies 16
+pinned files at `7e65ba8868a1636159d46baf244795f9022b9366`, with clean local
+and remote main equality at capture. The clean build from `acf6f92` was
+published by fast-forwarding `gh-pages` to `570e576`; later source commits
+add documentation/receipts. The [canonical HTTP check](results/hosted-bytes.json)
+matched all 34 build files, root before/after, and explicit `index.html`.
+The [hosted browser replay](results/hosted-browser.json) passed all four
+contexts and 32 downloads after disconnection before the first input.
+Its [four screenshots](results/hosted-screenshots.json) are byte-identical
+to the inspected clean-build captures. These checks do not establish an
+npm release or a remote CI result; version 0.3.3 is unchanged.

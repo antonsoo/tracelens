@@ -1,0 +1,21 @@
+{
+  "node": "v24.21.0",
+  "scope": "Six sequential isolated parseOtlpJson calls per built artifact with explicit GC before each call; existing generated 20,001-span tool trace shape. No instrumentation overhead, file parsing, statistical speed claim or CI guarantee. Original and corrected use identical constructed input, with span/root-child counts checked.",
+  "machine": "14 vCPU WSL2 Linux, 48 GB RAM",
+  "baselineSamplesMs": [
+    311.864246,
+    281.887667,
+    286.56804,
+    251.57084399999985,
+    274.1327140000001,
+    252.06194700000015
+  ],
+  "correctedSamplesMs": [
+    345.068811,
+    272.41507400000006,
+    282.657563,
+    251.5644420000001,
+    333.2209109999999,
+    284.372218
+  ]
+}
