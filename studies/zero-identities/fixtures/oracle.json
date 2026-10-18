@@ -1,0 +1,137 @@
+{
+  "scope": "Native SDK fault controls: an explicitly broken custom ID generator.\n\nSDK SpanContext.is_valid is observed before serialization. This does not claim\nthe default SDK generator produces zero IDs. No network or model calls occur.\n",
+  "packages": {
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-proto": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "captureSha256": "302ae24d3c5fa9e438603ef1ba7bced5d6a8275ef95c8e55e564d4ebca35a992",
+  "observations": [
+    {
+      "name": "zero-trace-1",
+      "traceId": "00000000000000000000000000000000",
+      "spanId": "0000000000000004",
+      "sdkIsValid": false,
+      "recording": true
+    },
+    {
+      "name": "zero-trace-2",
+      "traceId": "00000000000000000000000000000000",
+      "spanId": "0000000000000005",
+      "sdkIsValid": false,
+      "recording": true
+    },
+    {
+      "name": "zero-trace-3",
+      "traceId": "00000000000000000000000000000000",
+      "spanId": "0000000000000006",
+      "sdkIsValid": false,
+      "recording": true
+    },
+    {
+      "name": "zero-span-1",
+      "traceId": "aabbccddeeff00112233445566778899",
+      "spanId": "0000000000000000",
+      "sdkIsValid": false,
+      "recording": true
+    },
+    {
+      "name": "both-zero-1",
+      "traceId": "00000000000000000000000000000000",
+      "spanId": "0000000000000000",
+      "sdkIsValid": false,
+      "recording": true
+    },
+    {
+      "name": "valid-1",
+      "traceId": "aabbccddeeff00112233445566778899",
+      "spanId": "0000000000000001",
+      "sdkIsValid": true,
+      "recording": true
+    },
+    {
+      "name": "valid-2",
+      "traceId": "aabbccddeeff00112233445566778899",
+      "spanId": "0000000000000002",
+      "sdkIsValid": true,
+      "recording": true
+    }
+  ],
+  "files": [
+    {
+      "file": "zero-trace.traces.pb",
+      "bytes": 635,
+      "sha256": "5962ebb4359a8c94dab27bffab7af97c1c9072ca9b2e4299b6caa54772211b1c"
+    },
+    {
+      "file": "zero-trace.json",
+      "bytes": 3317,
+      "sha256": "25a340ac45614bf7fddc80e0bc4904a571c6d16c7aa70dc0f2926abb6991df48"
+    },
+    {
+      "file": "zero-trace.snake.json",
+      "bytes": 3353,
+      "sha256": "d7e461d76e31b1dd2890ddef86c3d1c62a30e6dcdb6ce654315601aed7936484"
+    },
+    {
+      "file": "zero-span.traces.pb",
+      "bytes": 264,
+      "sha256": "3434500eb808addc3d6703315421dfd45c859a6a77e407c160c23f730690c140"
+    },
+    {
+      "file": "zero-span.json",
+      "bytes": 1384,
+      "sha256": "d80419eefd20d766e08232d13991992e92df7faf3aaeb11d5c11d7a4fe863b1f"
+    },
+    {
+      "file": "zero-span.snake.json",
+      "bytes": 1398,
+      "sha256": "9359f856c077b3fc13a654e5920ec7189a19116ce1382d0d9587b6411c89243b"
+    },
+    {
+      "file": "both-zero.traces.pb",
+      "bytes": 264,
+      "sha256": "cef89d52a24b6a71e5fa0fed7aa0fce51f49d317783e3f1500e608fe18bd997d"
+    },
+    {
+      "file": "both-zero.json",
+      "bytes": 1384,
+      "sha256": "df2e5972a5a88a34f3ffd013047e34e9e2d2ac87b63fe487dfac2500f49be7a6"
+    },
+    {
+      "file": "both-zero.snake.json",
+      "bytes": 1398,
+      "sha256": "91b9425679c99c5b15b2260c6d5aa8af869c43472ec3e944d6bc26a71ba4e4af"
+    },
+    {
+      "file": "valid.traces.pb",
+      "bytes": 438,
+      "sha256": "0be5ff5adc9df8785098cbb2fff82549fc749027d9e2d0d4ff73b44b94c62168"
+    },
+    {
+      "file": "valid.json",
+      "bytes": 2337,
+      "sha256": "2cc50d45ce156c2256f859fc5c64e6b6a0ca751a20210515041b9ef1fb8458e2"
+    },
+    {
+      "file": "valid.snake.json",
+      "bytes": 2362,
+      "sha256": "772c81b9d8c96f976d074433c0356b029eb329f3dd1a24d54e0399a18bac1cd6"
+    },
+    {
+      "file": "mixed.traces.pb",
+      "bytes": 1361,
+      "sha256": "b0b142128ad0edcb726e860dee1fa2ee605337e5cdea23aded06192c6218c6eb"
+    },
+    {
+      "file": "mixed.json",
+      "bytes": 7165,
+      "sha256": "3a896612d356458a2427ff5afffc3b8a1c7c089c4594d5728dd77ba7bcc913b4"
+    },
+    {
+      "file": "mixed.snake.json",
+      "bytes": 7245,
+      "sha256": "d171a14727637b0ccf558aa077b420496f77cb4981a0db9524d754626bd1bc29"
+    }
+  ]
+}

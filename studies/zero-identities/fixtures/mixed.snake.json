@@ -1,0 +1,235 @@
+{
+  "resource_spans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "string_value": "declared-id-generator-control"
+            }
+          }
+        ]
+      },
+      "scope_spans": [
+        {
+          "scope": {
+            "name": "zero-identity-study"
+          },
+          "spans": [
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAA==",
+              "span_id": "AAAAAAAAAAQ=",
+              "name": "zero-trace-1",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626094750818",
+              "end_time_unix_nano": "1792317626094817241",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "1000"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAA==",
+              "span_id": "AAAAAAAAAAU=",
+              "name": "zero-trace-2",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626094881058",
+              "end_time_unix_nano": "1792317626094891970",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "1000"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAA==",
+              "span_id": "AAAAAAAAAAY=",
+              "name": "zero-trace-3",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626094931478",
+              "end_time_unix_nano": "1792317626094940787",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "1000"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "qrvM3e7/ABEiM0RVZneImQ==",
+              "span_id": "AAAAAAAAAAA=",
+              "name": "zero-span-1",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626095712233",
+              "end_time_unix_nano": "1792317626095727794",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "1000"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "AAAAAAAAAAAAAAAAAAAAAA==",
+              "span_id": "AAAAAAAAAAA=",
+              "name": "both-zero-1",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626095949045",
+              "end_time_unix_nano": "1792317626095959235",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "1000"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "qrvM3e7/ABEiM0RVZneImQ==",
+              "span_id": "AAAAAAAAAAE=",
+              "name": "valid-1",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626096259554",
+              "end_time_unix_nano": "1792317626096270987",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "10"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            },
+            {
+              "trace_id": "qrvM3e7/ABEiM0RVZneImQ==",
+              "span_id": "AAAAAAAAAAI=",
+              "name": "valid-2",
+              "kind": "SPAN_KIND_INTERNAL",
+              "start_time_unix_nano": "1792317626096312229",
+              "end_time_unix_nano": "1792317626096318000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "string_value": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "string_value": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "int_value": "10"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

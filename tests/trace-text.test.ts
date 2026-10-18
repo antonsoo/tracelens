@@ -190,7 +190,7 @@ describe('a file with several traces', () => {
   it('stays quick on a collector file of many traces', () => {
     const spans: unknown[] = [];
     for (let t = 0; t < 2_000; t++) {
-      const traceId = t.toString(16).padStart(32, '0');
+      const traceId = (t + 1).toString(16).padStart(32, '0');
       for (let i = 0; i < 10; i++) spans.push(fakeSpan({ traceId, spanId: `s${i}`, ...(i ? { parentSpanId: 's0' } : {}), startNs: t * 1000 + i, endNs: t * 1000 + i + 5 }));
     }
     const text = Array.from({ length: 200 }, (_, k) => JSON.stringify(otlpDoc(spans.slice(k * 100, (k + 1) * 100)))).join('\n');

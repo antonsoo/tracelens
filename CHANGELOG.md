@@ -9,6 +9,18 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### All-zero identities
+
+- Treat complete hexadecimal/Base64 all-zero trace and span IDs as unavailable,
+  including Jaeger's complete 64-bit trace form. Preserve short opaque legacy
+  labels. Skip invalid spans with inventory warnings; refuse invalid-only files
+  and comparisons with incomplete evidence rather than inventing measurements.
+- Keep invalid parent ancestry explicit and exclude invalid link targets with
+  omission counts. Existing absent-context log behavior remains unchanged.
+- Retain native SDK exports from an explicitly broken custom ID generator,
+  with the SDK's validity observations before encoding. Valid controls and
+  existing example imports are unchanged; no registry release is included.
+
 ### Native OTLP protobuf imports
 
 - Decode raw SDK OTLP/HTTP request bodies and Collector length-prefixed trace/log

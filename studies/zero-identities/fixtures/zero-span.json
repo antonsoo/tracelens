@@ -1,0 +1,55 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "declared-id-generator-control"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "zero-identity-study"
+          },
+          "spans": [
+            {
+              "traceId": "qrvM3e7/ABEiM0RVZneImQ==",
+              "spanId": "AAAAAAAAAAA=",
+              "name": "zero-span-1",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792317626095712233",
+              "endTimeUnixNano": "1792317626095727794",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "scripted-response"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1000"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

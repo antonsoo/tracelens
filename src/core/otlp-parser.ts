@@ -128,7 +128,7 @@ function decodeLinks(raw: unknown, warnings: ParseWarning[], spanId: string, tra
       ...(dropped !== undefined ? { droppedAttributesCount: dropped } : {}),
     });
   }
-  if (invalid) warnings.push({ message: `Skipped ${invalid} malformed link record(s) with missing traceId/spanId.`, spanId, traceId });
+  if (invalid) warnings.push({ message: `Skipped ${invalid} malformed link record(s) with missing or invalid traceId/spanId.`, spanId, traceId });
   return { links, ...(invalid ? { invalidLinkCount: invalid } : {}) };
 }
 
@@ -230,7 +230,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
         const spanId = normalizeId(traceField(raw, 'spanId', 'span_id', spanPath), 8);
         const spanTraceId = normalizeId(traceField(raw, 'traceId', 'trace_id', spanPath), 16);
         if (!spanId || !spanTraceId) {
-          warnings.push({ comparisonIssue: 'span-inventory', message: `${spanPath}: skipped a span with a missing traceId/spanId (name: ${String(raw.name)}).`,
+          warnings.push({ comparisonIssue: 'span-inventory', message: `${spanPath}: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: ${String(raw.name)}).`,
             ...(spanTraceId ? { traceId: spanTraceId } : {}), ...(spanId ? { spanId } : {}) });
           continue;
         }
@@ -257,7 +257,7 @@ function collectSpans(json: unknown, allowEmpty = false): {
 
         const parentRaw = traceField(raw, 'parentSpanId', 'parent_span_id', spanPath);
         const parentSpanId = typeof parentRaw === 'string' && parentRaw.length > 0 ? normalizeId(parentRaw, 8) : undefined;
-        if (parentRaw != null && typeof parentRaw !== 'string') {
+        if (parentRaw != null && (typeof parentRaw !== 'string' || (parentRaw.length > 0 && !parentSpanId))) {
           warnings.push({ comparisonIssue: 'span-ancestry', message: `Span "${String(raw.name)}" has an invalid parentSpanId; its ancestry is unknown and it is shown as a root.`, spanId, traceId: spanTraceId });
         }
 

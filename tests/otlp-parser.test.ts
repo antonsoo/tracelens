@@ -95,7 +95,7 @@ describe('parseOtlpJson performance on a large generated trace', () => {
     const rootId = 'ff'.repeat(8);
     spans.push(fakeSpan({ spanId: rootId, startNs: 0, endNs: 20_000_000 }));
     for (let i = 0; i < 20_000; i++) {
-      const id = i.toString(16).padStart(16, '0');
+      const id = (i + 1).toString(16).padStart(16, '0');
       spans.push(
         fakeSpan({
           spanId: id,
@@ -113,8 +113,8 @@ describe('parseOtlpJson performance on a large generated trace', () => {
     const elapsedMs = performance.now() - start;
     expect(trace.spans.length).toBe(20_001);
     expect(trace.roots[0]!.children.length).toBe(20_000);
-    // Generous bound: this machine (14 vCPU WSL2, 48GB RAM) parses this in low tens
-    // of ms; 1000ms leaves headroom for CI hardware without being a meaningless bound.
+    // Keep valid nonzero span IDs in this performance control. The deadline
+    // is unchanged; concurrent host workloads can still exceed its headroom.
     expect(elapsedMs).toBeLessThan(1000);
   });
 });

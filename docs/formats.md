@@ -114,7 +114,12 @@ Jaeger's query/UI exporter uses this shorter spelling when the high word is
 zero. Normalization applies before trace selection, parent/link resolution and
 duplicate detection, including mixed-format file groups. A complete short ID
 selects that identity before hexadecimal prefix matching. Span IDs stay at
-16 hex characters; other short or opaque labels are not padded. A nonzero high
+16 hex characters; other short or opaque labels are not padded. Complete
+all-zero trace/span IDs are unavailable in hexadecimal or canonical Base64.
+Invalid spans warn as incomplete inventory; invalid-only files refuse, and
+incomplete imports cannot establish comparison deltas. Zero parent context
+remains unknown ancestry; invalid link targets are omitted with counts.
+[Native SDK validity controls](../studies/zero-identities/README.md). A nonzero high
 word remains a different trace, even if the low words match.
 See the [reproduction and upstream encoding references](../studies/jaeger64/README.md).
 

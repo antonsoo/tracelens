@@ -1,0 +1,431 @@
+{
+  "scope": "Native SDK exports under an explicitly broken custom ID generator. Independent SDK SpanContext.is_valid observations precede serialization. This is a controlled fault, not a default-SDK incident or a live model call.",
+  "node": "v26.7.0",
+  "oracleSha256": "cadcc2ef7d21f5039ebde81016461b25d9f4a51cb7adb2dd388069dba079ebb1",
+  "sdkValid": 2,
+  "sdkInvalid": 5,
+  "cases": 18,
+  "failures": 0,
+  "rows": [
+    {
+      "file": "zero-trace.traces.pb",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"zero-trace.traces.pb\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "zero-span.traces.pb",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"zero-span.traces.pb\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "both-zero.traces.pb",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"both-zero.traces.pb\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "valid.traces.pb",
+      "shouldRefuse": false,
+      "correct": true,
+      "observed": {
+        "traceId": "aabbccddeeff00112233445566778899",
+        "spans": [
+          {
+            "name": "valid-1",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000001"
+          },
+          {
+            "name": "valid-2",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000002"
+          }
+        ],
+        "traces": [
+          {
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spans": 2
+          }
+        ],
+        "inputTokens": 20,
+        "incompleteInput": false,
+        "warnings": []
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid.traces.pb\ntrace aabbccddeeff00112233445566778899  ·  2 spans  ·  2 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  0.1 ms   \nllm               0.0 ms   \ntool              0.0 ms   \nother             0.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel              provider        calls  input  output               token cost             \n─────────────────  ──────────────  ─────  ─────  ───────────────────  ───────────────────────\nscripted-response  (not recorded)  2      20     unknown (2 missing)  — subtotal (2 unpriced)\n\ntoken estimate: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n0.1 ms elapsed = 0.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         0.0 ms      \nOther alone        0.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  valid-1 0.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "mixed.traces.pb",
+      "shouldRefuse": false,
+      "correct": true,
+      "observed": {
+        "traceId": "aabbccddeeff00112233445566778899",
+        "spans": [
+          {
+            "name": "valid-1",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000001"
+          },
+          {
+            "name": "valid-2",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000002"
+          }
+        ],
+        "traces": [
+          {
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spans": 2
+          }
+        ],
+        "inputTokens": 20,
+        "incompleteInput": true,
+        "warnings": [
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+            "spanId": "0000000000000004"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+            "spanId": "0000000000000005"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+            "spanId": "0000000000000006"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+            "traceId": "aabbccddeeff00112233445566778899"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+          }
+        ]
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "mixed.traces.pb\ntrace aabbccddeeff00112233445566778899  ·  2 spans  ·  2 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  0.1 ms   \nllm               0.0 ms   \ntool              0.0 ms   \nother             0.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel              provider        calls  input  output               token cost             \n─────────────────  ──────────────  ─────  ─────  ───────────────────  ───────────────────────\nscripted-response  (not recorded)  2      20     unknown (2 missing)  — subtotal (2 unpriced)\n\nknown token cost subtotal: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nIncomplete span inventory: full token estimate and missing call count are unknown. Charges and counts describe retained spans only.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n0 retained span(s) reported error; incomplete span inventory  ·  0 observed possible retried call(s); complete count unknown\n\nElapsed-time accounting\n───────────────────────\n0.1 ms elapsed = 0.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         0.0 ms      \nOther alone        0.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  valid-1 0.0 ms\n\nParser warnings\n───────────────\n  ⚠ resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1).\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "mixed.traces.pb",
+      "operation": "explicit-valid-trace-and-comparison",
+      "correct": true,
+      "selectedTrace": "aabbccddeeff00112233445566778899",
+      "retainedSpans": 2,
+      "inputTokens": 20,
+      "error": "Cannot compare candidate: resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1). Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Cannot compare candidate: resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1). Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.\n"
+      }
+    },
+    {
+      "file": "zero-trace.json",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"zero-trace.json\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "zero-span.json",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"zero-span.json\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "both-zero.json",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"both-zero.json\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "valid.json",
+      "shouldRefuse": false,
+      "correct": true,
+      "observed": {
+        "traceId": "aabbccddeeff00112233445566778899",
+        "spans": [
+          {
+            "name": "valid-1",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000001"
+          },
+          {
+            "name": "valid-2",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000002"
+          }
+        ],
+        "traces": [
+          {
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spans": 2
+          }
+        ],
+        "inputTokens": 20,
+        "incompleteInput": false,
+        "warnings": []
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid.json\ntrace aabbccddeeff00112233445566778899  ·  2 spans  ·  2 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  0.1 ms   \nllm               0.0 ms   \ntool              0.0 ms   \nother             0.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel              provider        calls  input  output               token cost             \n─────────────────  ──────────────  ─────  ─────  ───────────────────  ───────────────────────\nscripted-response  (not recorded)  2      20     unknown (2 missing)  — subtotal (2 unpriced)\n\ntoken estimate: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n0.1 ms elapsed = 0.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         0.0 ms      \nOther alone        0.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  valid-1 0.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "mixed.json",
+      "shouldRefuse": false,
+      "correct": true,
+      "observed": {
+        "traceId": "aabbccddeeff00112233445566778899",
+        "spans": [
+          {
+            "name": "valid-1",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000001"
+          },
+          {
+            "name": "valid-2",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000002"
+          }
+        ],
+        "traces": [
+          {
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spans": 2
+          }
+        ],
+        "inputTokens": 20,
+        "incompleteInput": true,
+        "warnings": [
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+            "spanId": "0000000000000004"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+            "spanId": "0000000000000005"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+            "spanId": "0000000000000006"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+            "traceId": "aabbccddeeff00112233445566778899"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+          }
+        ]
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "mixed.json\ntrace aabbccddeeff00112233445566778899  ·  2 spans  ·  2 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  0.1 ms   \nllm               0.0 ms   \ntool              0.0 ms   \nother             0.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel              provider        calls  input  output               token cost             \n─────────────────  ──────────────  ─────  ─────  ───────────────────  ───────────────────────\nscripted-response  (not recorded)  2      20     unknown (2 missing)  — subtotal (2 unpriced)\n\nknown token cost subtotal: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nIncomplete span inventory: full token estimate and missing call count are unknown. Charges and counts describe retained spans only.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n0 retained span(s) reported error; incomplete span inventory  ·  0 observed possible retried call(s); complete count unknown\n\nElapsed-time accounting\n───────────────────────\n0.1 ms elapsed = 0.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         0.0 ms      \nOther alone        0.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  valid-1 0.0 ms\n\nParser warnings\n───────────────\n  ⚠ resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1).\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "mixed.json",
+      "operation": "explicit-valid-trace-and-comparison",
+      "correct": true,
+      "selectedTrace": "aabbccddeeff00112233445566778899",
+      "retainedSpans": 2,
+      "inputTokens": 20,
+      "error": "Cannot compare candidate: resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1). Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Cannot compare candidate: resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1). Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.\n"
+      }
+    },
+    {
+      "file": "zero-trace.snake.json",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"zero-trace.snake.json\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "zero-span.snake.json",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"zero-span.snake.json\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "both-zero.snake.json",
+      "shouldRefuse": true,
+      "correct": true,
+      "error": "No valid spans were found in this file.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "\"both-zero.snake.json\": No valid spans were found in this file.\n"
+      }
+    },
+    {
+      "file": "valid.snake.json",
+      "shouldRefuse": false,
+      "correct": true,
+      "observed": {
+        "traceId": "aabbccddeeff00112233445566778899",
+        "spans": [
+          {
+            "name": "valid-1",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000001"
+          },
+          {
+            "name": "valid-2",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000002"
+          }
+        ],
+        "traces": [
+          {
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spans": 2
+          }
+        ],
+        "inputTokens": 20,
+        "incompleteInput": false,
+        "warnings": []
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid.snake.json\ntrace aabbccddeeff00112233445566778899  ·  2 spans  ·  2 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  0.1 ms   \nllm               0.0 ms   \ntool              0.0 ms   \nother             0.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel              provider        calls  input  output               token cost             \n─────────────────  ──────────────  ─────  ─────  ───────────────────  ───────────────────────\nscripted-response  (not recorded)  2      20     unknown (2 missing)  — subtotal (2 unpriced)\n\ntoken estimate: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\nno errors  ·  0 possible retried call(s)\n\nElapsed-time accounting\n───────────────────────\n0.1 ms elapsed = 0.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         0.0 ms      \nOther alone        0.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  valid-1 0.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "mixed.snake.json",
+      "shouldRefuse": false,
+      "correct": true,
+      "observed": {
+        "traceId": "aabbccddeeff00112233445566778899",
+        "spans": [
+          {
+            "name": "valid-1",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000001"
+          },
+          {
+            "name": "valid-2",
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spanId": "0000000000000002"
+          }
+        ],
+        "traces": [
+          {
+            "traceId": "aabbccddeeff00112233445566778899",
+            "spans": 2
+          }
+        ],
+        "inputTokens": 20,
+        "incompleteInput": true,
+        "warnings": [
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+            "spanId": "0000000000000004"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+            "spanId": "0000000000000005"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+            "spanId": "0000000000000006"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+            "traceId": "aabbccddeeff00112233445566778899"
+          },
+          {
+            "comparisonIssue": "span-inventory",
+            "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+          }
+        ]
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "mixed.snake.json\ntrace aabbccddeeff00112233445566778899  ·  2 spans  ·  2 root span(s)\n\nTiming\n──────\nbucket            self time\n────────────────  ─────────\ntotal wall clock  0.1 ms   \nllm               0.0 ms   \ntool              0.0 ms   \nother             0.0 ms   \n\nTokens & cost by model\n──────────────────────\nmodel              provider        calls  input  output               token cost             \n─────────────────  ──────────────  ─────  ─────  ───────────────────  ───────────────────────\nscripted-response  (not recorded)  2      20     unknown (2 missing)  — subtotal (2 unpriced)\n\nknown token cost subtotal: —  (known subtotal; 2 call(s) lack valid usage or pricing)\nIncomplete span inventory: full token estimate and missing call count are unknown. Charges and counts describe retained spans only.\nUse tracelens cost for rates, assumptions and per-call evidence; 0 non-call span(s) with model/usage data excluded.\n\nErrors & possible retries\n─────────────────────────\n0 retained span(s) reported error; incomplete span inventory  ·  0 observed possible retried call(s); complete count unknown\n\nElapsed-time accounting\n───────────────────────\n0.1 ms elapsed = 0.0 ms summed self time - 0.0 ms overlap excess + 0.0 ms uncovered\nRecorded coverage  Elapsed time\n─────────────────  ────────────\nLLM alone          0.0 ms      \nTool alone         0.0 ms      \nOther alone        0.0 ms      \nOverlapping work   0.0 ms      \nNo recorded span   0.0 ms      \nPeak concurrent self-time spans: 1. Parent/child nesting is excluded.\nTimestamp coverage is not CPU use, a causal critical path, or proof of idle time.\n\nLongest-child chain (heuristic)\n───────────────────────────────\nlongest-duration child chosen at each nesting level — see docs/formats.md\n  valid-1 0.0 ms\n\nParser warnings\n───────────────\n  ⚠ resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).\n  ⚠ resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1).\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "mixed.snake.json",
+      "operation": "explicit-valid-trace-and-comparison",
+      "correct": true,
+      "selectedTrace": "aabbccddeeff00112233445566778899",
+      "retainedSpans": 2,
+      "inputTokens": 20,
+      "error": "Cannot compare candidate: resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1). Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.",
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Cannot compare candidate: resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1). Quantitative comparisons need complete span imports, resolved parents and valid intervals. Inspect the trace individually or supply the complete, corrected export.\n"
+      }
+    }
+  ]
+}

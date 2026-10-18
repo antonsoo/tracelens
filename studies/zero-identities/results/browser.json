@@ -1,0 +1,499 @@
+{
+  "scope": "Fourteen actual Chromium/Firefox checks on the local production build: 12 native carrier/viewport contexts plus two invalid-only replacement controls. SDK contexts, warnings, cost and span downloads, offline behavior, accessibility and comparison refusal are checked.",
+  "passed": 14,
+  "failed": 0,
+  "contexts": [
+    {
+      "suffix": "json",
+      "width": 1440,
+      "browser": "chromium",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "json",
+      "width": 1440,
+      "browser": "firefox",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "json",
+      "width": 375,
+      "browser": "chromium",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "json",
+      "width": 375,
+      "browser": "firefox",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "snake.json",
+      "width": 1440,
+      "browser": "chromium",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "snake.json",
+      "width": 1440,
+      "browser": "firefox",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "snake.json",
+      "width": 375,
+      "browser": "chromium",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "snake.json",
+      "width": 375,
+      "browser": "firefox",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "traces.pb",
+      "width": 1440,
+      "browser": "chromium",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "traces.pb",
+      "width": 1440,
+      "browser": "firefox",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "traces.pb",
+      "width": 375,
+      "browser": "chromium",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "suffix": "traces.pb",
+      "width": 375,
+      "browser": "firefox",
+      "retainedSpans": 2,
+      "invalidContexts": 5,
+      "inputTokens": 20,
+      "warnings": [
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[0]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-1).",
+          "spanId": "0000000000000004"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[1]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-2).",
+          "spanId": "0000000000000005"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[2]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-trace-3).",
+          "spanId": "0000000000000006"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[3]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: zero-span-1).",
+          "traceId": "aabbccddeeff00112233445566778899"
+        },
+        {
+          "comparisonIssue": "span-inventory",
+          "message": "resourceSpans[0].scopeSpans[0].spans[4]: skipped a span with a missing traceId/spanId or a complete all-zero identity (name: both-zero-1)."
+        }
+      ],
+      "incompleteInput": true,
+      "comparisonRefused": true,
+      "offline": true,
+      "errors": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    }
+  ]
+}
