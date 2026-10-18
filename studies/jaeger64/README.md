@@ -167,3 +167,12 @@ The initial default-concurrency unit run passes 613 checks and exceeds the
 unchanged one-second 20,000-span deadline once (1,200.76 ms). With two workers,
 all 614 checks pass without changing assertions or runtime code. This is not
 a claim of an entirely clean first default-concurrency run.
+
+
+Source `80d9c72` and verification `3238fda` are public. Deployment `dc964f8`
+[serves all 36 clean build files exactly](id-labels-hosted-bytes.json), and
+[all 25 prior immutable asset URLs](id-labels-assets.json) retain their original
+bytes. The [public browser replay](id-labels-hosted.json) agrees with the local
+observations in every engine/width context: distinct picker and comparison
+labels, complete visible span IDs and eight actual offline downloads with
+unchanged payload hashes. No npm registry release accompanies this correction.

@@ -1,0 +1,164 @@
+{
+  "url": "https://antonsoo.github.io/tracelens/",
+  "phase": "after",
+  "scope": "Two explicitly constructed Jaeger traces have identical names, clocks and measurements but distinct valid 64-bit trace and span IDs. Real UI labels, canonical selection values and actual offline span downloads are checked. No native Jaeger capture or source measurement change is claimed.",
+  "sourceSha256": "64aa8e6deab097f2bd67782bcfa44257a9012fce79705330af4b5dea93512741",
+  "rows": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "phase": "after",
+      "options": [
+        {
+          "text": "1234567890abcdee · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdee",
+          "title": "00000000000000001234567890abcdee"
+        },
+        {
+          "text": "1234567890abcdef · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdef",
+          "title": "00000000000000001234567890abcdef"
+        }
+      ],
+      "inspected": [
+        {
+          "visibleSpanId": "0000000000000001",
+          "traceId": "00000000000000001234567890abcdef",
+          "spanId": "0000000000000001",
+          "downloadSha256": "e72e8ce34b4f0ce274b8db8a523a677348cda839e28a0dae6dd19e21fc0a5cc2"
+        },
+        {
+          "visibleSpanId": "0000000000000002",
+          "traceId": "00000000000000001234567890abcdee",
+          "spanId": "0000000000000002",
+          "downloadSha256": "a0b0c95b0b9427c2321df3d85a3d5e87e42eb72fe65800b3bb76c2f08acd0ea7"
+        }
+      ],
+      "comparisonLabels": [
+        "two-jaeger-traces.json · trace 1234567890abcdef of 2",
+        "candidate-jaeger-traces.json · trace 1234567890abcdee of 2"
+      ],
+      "offline": true,
+      "pageErrors": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "phase": "after",
+      "options": [
+        {
+          "text": "1234567890abcdee · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdee",
+          "title": "00000000000000001234567890abcdee"
+        },
+        {
+          "text": "1234567890abcdef · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdef",
+          "title": "00000000000000001234567890abcdef"
+        }
+      ],
+      "inspected": [
+        {
+          "visibleSpanId": "0000000000000001",
+          "traceId": "00000000000000001234567890abcdef",
+          "spanId": "0000000000000001",
+          "downloadSha256": "e72e8ce34b4f0ce274b8db8a523a677348cda839e28a0dae6dd19e21fc0a5cc2"
+        },
+        {
+          "visibleSpanId": "0000000000000002",
+          "traceId": "00000000000000001234567890abcdee",
+          "spanId": "0000000000000002",
+          "downloadSha256": "a0b0c95b0b9427c2321df3d85a3d5e87e42eb72fe65800b3bb76c2f08acd0ea7"
+        }
+      ],
+      "comparisonLabels": [
+        "two-jaeger-traces.json · trace 1234567890abcdef of 2",
+        "candidate-jaeger-traces.json · trace 1234567890abcdee of 2"
+      ],
+      "offline": true,
+      "pageErrors": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "phase": "after",
+      "options": [
+        {
+          "text": "1234567890abcdee · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdee",
+          "title": "00000000000000001234567890abcdee"
+        },
+        {
+          "text": "1234567890abcdef · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdef",
+          "title": "00000000000000001234567890abcdef"
+        }
+      ],
+      "inspected": [
+        {
+          "visibleSpanId": "0000000000000001",
+          "traceId": "00000000000000001234567890abcdef",
+          "spanId": "0000000000000001",
+          "downloadSha256": "e72e8ce34b4f0ce274b8db8a523a677348cda839e28a0dae6dd19e21fc0a5cc2"
+        },
+        {
+          "visibleSpanId": "0000000000000002",
+          "traceId": "00000000000000001234567890abcdee",
+          "spanId": "0000000000000002",
+          "downloadSha256": "a0b0c95b0b9427c2321df3d85a3d5e87e42eb72fe65800b3bb76c2f08acd0ea7"
+        }
+      ],
+      "comparisonLabels": [
+        "two-jaeger-traces.json · trace 1234567890abcdef of 2",
+        "candidate-jaeger-traces.json · trace 1234567890abcdee of 2"
+      ],
+      "offline": true,
+      "pageErrors": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "phase": "after",
+      "options": [
+        {
+          "text": "1234567890abcdee · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdee",
+          "title": "00000000000000001234567890abcdee"
+        },
+        {
+          "text": "1234567890abcdef · dispatch request · 2026-09-21 14:13:20 UTC · 1 span · 10.0 ms",
+          "value": "00000000000000001234567890abcdef",
+          "title": "00000000000000001234567890abcdef"
+        }
+      ],
+      "inspected": [
+        {
+          "visibleSpanId": "0000000000000001",
+          "traceId": "00000000000000001234567890abcdef",
+          "spanId": "0000000000000001",
+          "downloadSha256": "e72e8ce34b4f0ce274b8db8a523a677348cda839e28a0dae6dd19e21fc0a5cc2"
+        },
+        {
+          "visibleSpanId": "0000000000000002",
+          "traceId": "00000000000000001234567890abcdee",
+          "spanId": "0000000000000002",
+          "downloadSha256": "a0b0c95b0b9427c2321df3d85a3d5e87e42eb72fe65800b3bb76c2f08acd0ea7"
+        }
+      ],
+      "comparisonLabels": [
+        "two-jaeger-traces.json · trace 1234567890abcdef of 2",
+        "candidate-jaeger-traces.json · trace 1234567890abcdee of 2"
+      ],
+      "offline": true,
+      "pageErrors": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    }
+  ]
+}
