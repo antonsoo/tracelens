@@ -67,3 +67,12 @@ retain only the two valid identities, download five inventory warnings and an
 incomplete cost report, and preserve the inspected trace after comparison
 refusal. Invalid-only replacements also refuse without replacing the valid
 trace. Four screenshots retain the actual UI; no new controls were added.
+
+A fresh archive of `1b0765f` repeats lint, types, all 596 unit checks, build
+and all 32 CLI integrations on Node 24.21.0. The separate local package repeats
+all 18 native identity/CLI cases without a disagreement on
+[Node 20.0.0](results/installed-node20.json) and
+[Node 24.21.0](results/installed-node24.json). All
+[39 compiled files](results/package.json) match the clean build. The four local
+browser screenshots were opened and inspected; they retain unknown full totals
+and the known retained subtotal rather than displaying the invalid calls.
