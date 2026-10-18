@@ -157,3 +157,13 @@ node studies/jaeger64/id-labels.mjs https://antonsoo.github.io/tracelens/ /tmp/j
 
 The label correction is verified locally at capture time. Its clean-build and
 public delivery receipts follow separately; npm metadata remains 0.3.3.
+
+
+The [fresh Node 24 archive receipt](id-labels-build.json) covers `80d9c72`.
+Fresh installation, lint, types and production builds pass; all 36 web files
+match the inspected local build. All 39 compiled CLI/core files are identical
+to the prior width-validated archive, and all 32 CLI integrations pass.
+The initial default-concurrency unit run passes 613 checks and exceeds the
+unchanged one-second 20,000-span deadline once (1,200.76 ms). With two workers,
+all 614 checks pass without changing assertions or runtime code. This is not
+a claim of an entirely clean first default-concurrency run.
