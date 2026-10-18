@@ -2,7 +2,7 @@ import type { NormalizedMessage, NormalizedMessagePart, ParsedSpan, PriceEntry }
 import { hasCostEvidence, spanCostEvidence, spanDurationMs } from '../core/index.js';
 import { renderCostReceipt } from './cost-panel.js';
 import { h, mount } from './dom.js';
-import { fmtInt, fmtMs, jsonPreview, textPreview } from './format.js';
+import { fmtInt, fmtMs, jsonPreview, spanIdLabel, textPreview } from './format.js';
 import { kindClass, KIND_LABEL } from './kind-colors.js';
 import { pagedEvidence } from './paged-evidence.js';
 import { downloadEvidence, spanEvidence } from './evidence.js';
@@ -95,7 +95,7 @@ export function renderDetailPanel(
       h('span', {}, KIND_LABEL[span.agentKind]),
       h('span', { className: 'mono' }, fmtMs(spanDurationMs(span))),
       h('span', {}, span.status.code === 'ERROR' ? h('span', { style: 'color:var(--accent-error)' }, 'error') : span.status.code.toLowerCase()),
-      h('span', { className: 'mono faint' }, span.spanId.slice(0, 12)),
+      h('span', { className: 'mono faint', title: textPreview(span.spanId, 128) }, spanIdLabel(span.spanId)),
     ),
     h('div', { className: 'tl-evidence-download' },
       h('button', { className: 'tl-btn', 'data-focus-key': 'download-span', onClick: () => downloadEvidence(spanEvidence(span), 'tracelens-span.json') }, 'Download span JSON'),

@@ -118,3 +118,42 @@ the exporter recorded every span. Canonical trace IDs in reports from older
 
 The package version remains 0.3.3. This source change does not update the npm
 release or hosted demo.
+
+
+## Identity labels
+
+The picker at `66890ce` abbreviates every trace with its first eight characters.
+For a canonicalized 64-bit Jaeger trace those are always `00000000`. Two traces
+with matching names, clocks and counts therefore have identical options.
+The detail header similarly shows only twelve leading zeroes for counter-like
+span IDs such as `0000000000000001` and `0000000000000002`.
+
+The label now starts with the complete significant sixteen-character trace ID
+when its high 64 bits are zero. Other longer trace IDs have a marked prefix
+preview. The complete canonical ID remains the option value and is available
+in its tooltip. Comparison names use the same label, and the detail header
+shows all sixteen characters of a standard span ID. This changes display text;
+canonical identities, grouping, timing and exported evidence are unchanged.
+
+[`id-labels.mjs`](id-labels.mjs) constructs two traces from the explicitly
+synthetic gateway fixture above. Their names, clocks and measurements match;
+only their complete trace and span IDs differ. This is a UI control, not a
+native Jaeger capture. The [public before receipt](id-labels-before.json) and
+[local after receipt](id-labels-after.json) cover Chromium and Firefox at
+1440px dark and 375px light. Both options and comparison names now distinguish
+the traces. Actual offline span downloads retain byte-identical identities
+and complete payload hashes before and after. Each run reports no page errors,
+horizontal page overflow or settled comparison accessibility violations.
+
+All eight [trace/detail and comparison screenshots](../../docs/assets/jaeger64-labels/)
+were opened and inspected. The sixteen-character trace label remains visible
+at phone width; comparison names wrap within their columns. This does not
+claim that arbitrary longer IDs with a shared prefix get unique preview text;
+the canonical selection values and full standard-ID tooltips remain distinct.
+
+```sh
+node studies/jaeger64/id-labels.mjs https://antonsoo.github.io/tracelens/ /tmp/jaeger-labels after
+```
+
+The label correction is verified locally at capture time. Its clean-build and
+public delivery receipts follow separately; npm metadata remains 0.3.3.

@@ -9,6 +9,15 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Distinct Jaeger identity labels
+
+- Show complete significant 64-bit trace IDs before other picker metadata and
+  show all sixteen hexadecimal span-ID characters in the detail panel. Keep
+  complete canonical trace IDs in selection values, tooltips and downloads.
+- Use the same trace labels in comparisons. Longer identity previews are
+  explicitly marked; parsing, grouping and exported evidence remain unchanged.
+- [Retained before/after browser control](studies/jaeger64/README.md#identity-labels).
+
 ### Exact native identity widths
 
 - Validate nonempty binary trace IDs as sixteen bytes and span/parent IDs as

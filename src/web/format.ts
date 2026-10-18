@@ -20,6 +20,16 @@ export function fmtPct(n: number): string {
   return `${(n * 100).toFixed(0)}%`;
 }
 
+/** Show the complete significant 64-bit ID when a Jaeger trace was zero-extended. */
+export function traceIdLabel(id: string): string {
+  const significant = /^0{16}[\da-f]{16}$/i.test(id) ? id.slice(16) : id;
+  return significant.length <= 16 ? significant : `${significant.slice(0, 8)}…`;
+}
+
+export function spanIdLabel(id: string): string {
+  return id.length <= 16 ? id : `${id.slice(0, 12)}…`;
+}
+
 export function textPreview(value: string, maxLen = 4000): string {
   return value.length > maxLen ? value.slice(0, maxLen) + '\n… (preview; download for full value)' : value;
 }

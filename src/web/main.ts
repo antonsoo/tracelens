@@ -5,7 +5,7 @@ import type { ParsedSpan, ParsedTrace, PriceEntry, TraceComparison, TraceListing
 import { Store } from './store.js';
 import { loadTrace } from './trace-loader.js';
 import { h, mount } from './dom.js';
-import { fmtInt, fmtMs, textPreview } from './format.js';
+import { fmtInt, fmtMs, textPreview, traceIdLabel } from './format.js';
 import { pagedEvidence } from './paged-evidence.js';
 import { downloadEvidence } from './evidence.js';
 import { renderDropzone } from './dropzone.js';
@@ -313,12 +313,12 @@ function logoSvg(): HTMLElement {
 
 function describeListing(t: TraceListing): string {
   const started = new Date(Number(t.startNs / 1_000_000n)).toISOString().slice(0, 19).replace('T', ' ');
-  return `${started} UTC · ${t.rootName} · ${fmtInt(t.spanCount)} ${t.spanCount === 1 ? 'span' : 'spans'} · ${fmtMs(Number(t.durationNs) / 1_000_000)} · ${t.traceId.slice(0, 8)}`;
+  return `${traceIdLabel(t.traceId)} · ${t.rootName} · ${started} UTC · ${fmtInt(t.spanCount)} ${t.spanCount === 1 ? 'span' : 'spans'} · ${fmtMs(Number(t.durationNs) / 1_000_000)}`;
 }
 
 /** In a comparison, a file of several traces is named with the trace that was read from it. */
 function nameWithTrace(name: string, trace: ParsedTrace): string {
-  return trace.traces.length > 1 ? `${name} · trace ${trace.traceId.slice(0, 8)} of ${trace.traces.length}` : name;
+  return trace.traces.length > 1 ? `${name} · trace ${traceIdLabel(trace.traceId)} of ${trace.traces.length}` : name;
 }
 
 /** For a file that holds several traces: says so, and lets another one be read. */
@@ -327,7 +327,7 @@ function tracePicker(trace: ParsedTrace, source: RetainedTraceSource | null): HT
   const select = h(
     'select',
     { id: 'tl-trace-picker', 'data-focus-key': 'trace-picker', className: 'tl-trace-select mono', onChange: (e: Event) => void pickTrace((e.target as HTMLSelectElement).value) },
-    ...trace.traces.map((t) => h('option', { value: t.traceId, ...(t.traceId === trace.traceId ? { selected: 'selected' } : {}) }, describeListing(t))),
+    ...trace.traces.map((t) => h('option', { value: t.traceId, title: textPreview(t.traceId, 128), ...(t.traceId === trace.traceId ? { selected: 'selected' } : {}) }, describeListing(t))),
   );
   return h(
     'div',
