@@ -189,3 +189,8 @@ Firefox, at desktop and phone widths. It repeats first import while offline,
 exact evidence downloads, cross-trace navigation and recovery after a corrupt
 comparison replacement. All 36 canonical build files match their captured
 production hashes. No npm registry release is established by these checks.
+
+Native byte identities now also have [exact-width checks](../protobuf-id-widths/README.md).
+The actual Collector independently rejects twelve wrong-width controls which
+the original importer accepted. This semantic OTLP constraint is separate from
+generic Protobuf wire validity and from opaque legacy JSON compatibility.

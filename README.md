@@ -111,7 +111,9 @@ on npm; the command it installs is `tracelens`).
   and framing. Preserve exact IDs, nanosecond clocks and typed attributes through
   the existing inspection and comparison workflows. Eleven independent wire
   controls include two malformed inputs accepted by the unguarded runtime;
-  import checks reject them before producing measurements.
+  import checks reject them before producing measurements. Native binary
+  identities also require exact byte widths, independently checked against the
+  actual Collector. [Sixteen byte-width controls](studies/protobuf-id-widths/README.md).
   [Native capture, filenames, browser downloads and limits](studies/otlp-binary/README.md).
   Available in the public demo and source CLI; no npm registry release yet.
 - **Invalid zero identities (source checkout)** — complete all-zero trace and

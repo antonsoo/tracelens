@@ -11,7 +11,7 @@ The original convention audit below checked the cited files directly on
 "development" upstream and change between checks — re-verify before relying
 on this for a new integration.
 
-## Native OTLP protobuf (source checkout)
+## Native OTLP protobuf
 
 `decodeTraceFile(bytes, name)` decodes a declared native input into the same
 inspection model. It does not retry malformed JSON as binary. Protobuf carries
@@ -31,7 +31,12 @@ does not declare it. The CLI, file picker, comparison inputs and offline trace
 selection share this decoder. Select logs alongside their trace exports.
 
 The pinned OpenTelemetry schemas and generated Protobuf runtime interpret the
-values. A separate check enforces each nested message's byte extent and rejects
+values. Nonempty native trace IDs must contain sixteen bytes; span IDs,
+parent IDs and link span IDs must contain eight. Wrong-width identities reject
+the complete binary input, including logs. Empty optional context keeps its
+existing absent-context policy. Opaque legacy JSON labels remain separate.
+[Native Collector width controls](../studies/protobuf-id-widths/README.md).
+A separate check enforces each nested message's byte extent and rejects
 length overflows before decoding. Invalid UTF-8 and incomplete frames refuse
 the whole file; the browser retains its previous report on failure. Limits are
 25 MiB of binary data, 100,000 batches, 64 nested message/group levels, one

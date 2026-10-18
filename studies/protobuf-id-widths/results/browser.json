@@ -1,0 +1,9 @@
+{
+  "scope": "26 actual local production-build browser checks: ten original native import cases, fourteen zero-identity cases, two wrong-width atomic-replacement and recovery cases. Chromium/Firefox, desktop and phone contexts as defined in the committed tests.",
+  "passed": 26,
+  "failed": 0,
+  "originalNativeImports": 10,
+  "zeroIdentityCases": 14,
+  "wrongWidthRecoveryCases": 2,
+  "runnerLogSha256": "de1dd0cb30feca2e0a5c8a26dc8e8e352b9ae62b75d719274aa60694302f2460"
+}

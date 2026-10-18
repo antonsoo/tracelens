@@ -1,0 +1,214 @@
+{
+  "scope": "Explicit identity-width controls, checked by the actual native Collector.\n\nInputs start from retained SDK requests. Altered fields are labelled below;\nthese are constructed protocol controls, not naturally emitted bad SDK data.\n",
+  "collectorVersion": "otelcol version 0.163.1",
+  "collectorBinarySha256": "f02a7a36cdd1d31d37bf7769aaa2dd76cfcc875c391ada6a486396682aeb377f",
+  "captureSha256": "afce5b78a77b1c2e813b18a49cce313f226fdee632418c1722168def18a408ef",
+  "cases": [
+    {
+      "file": "native-control.traces.pb",
+      "signal": "traces",
+      "origin": "unaltered retained SDK request",
+      "alteredField": null,
+      "width": null,
+      "sha256": "0be5ff5adc9df8785098cbb2fff82549fc749027d9e2d0d4ff73b44b94c62168",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA="
+    },
+    {
+      "file": "trace-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 15,
+      "sha256": "926c37d258bbb113ab878445f88482660e72c76d82941b0e8a92c19384ecde30",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA=="
+    },
+    {
+      "file": "trace-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 17,
+      "sha256": "c880fc9f72f8a5827b9ddc1a7d7c976bdeaf262500f087f48918c1f915ce6473",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA=="
+    },
+    {
+      "file": "span-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 7,
+      "sha256": "29be9ebd5fc0755cdbd33f6cdecb55678e06f5068054bd05c3f8bf3a74d60624",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "span-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 9,
+      "sha256": "901ce818ecfd8b0d1fdf8d5e20d49f633d174522f62ac9c101d400244e18cc74",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "parent-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "parent_span_id",
+      "width": 7,
+      "sha256": "7735fec83f22b00d62bc3a23638d538624e6a225a75a1423e8518be90f5fbea9",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "parent-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "parent_span_id",
+      "width": 9,
+      "sha256": "54737d7e9fb8b458c05a34ef23b19c3e172b6042cded25a0f520d3bb043e0418",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "link-trace-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "link.trace_id",
+      "width": 15,
+      "sha256": "707ca06bd5bdc7c2e60fc77df356deadd36793b2feb96d436a07b7e866ab1df4",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA=="
+    },
+    {
+      "file": "link-span-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "link.span_id",
+      "width": 9,
+      "sha256": "a20c1dcf3c96d5f274a8493f4d0f6fe2761baad6565793fc7030c2a77472f835",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "empty-parent-control.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "parent_span_id",
+      "width": 0,
+      "sha256": "0be5ff5adc9df8785098cbb2fff82549fc749027d9e2d0d4ff73b44b94c62168",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA="
+    },
+    {
+      "file": "native-control.logs.pb",
+      "signal": "logs",
+      "origin": "unaltered retained SDK request",
+      "alteredField": null,
+      "width": null,
+      "sha256": "d31310c5fcff801cd96969ba64c65860ca76a1e5610ae0928058b350e2b4eba8",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA="
+    },
+    {
+      "file": "trace-short.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 15,
+      "sha256": "2d0c1dc4a93a129c119a298cbfdbaea6efaa813caf449a8d53a6d1c3663932af",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA=="
+    },
+    {
+      "file": "trace-long.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 17,
+      "sha256": "63afd85142b46bd36dbf985e632fcfa7d03fbfc5a3522fef003c0baaefe60c5c",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA=="
+    },
+    {
+      "file": "span-short.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 7,
+      "sha256": "39ba0b215bdd8479a94dc4f17e6a7f686155f5ffdd782c828aaf79d086af3b10",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "span-long.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 9,
+      "sha256": "627e85017de770e4accea4f90ea2332bff435c63d7806cce13157cc54e306ee2",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro"
+    },
+    {
+      "file": "absent-context-control.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "both",
+      "width": 0,
+      "sha256": "131214a5aa29214459725fae52e524dcc255d1bd4dab870c5434f27fd74a201d",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA="
+    }
+  ],
+  "collectorExports": [
+    {
+      "file": "collector/traces.jsonl",
+      "batches": 2,
+      "records": 4,
+      "sha256": "5db2ad4658d92ff3eca765812976c46d98ffdfeb2a1b9b21ac88fd67301360b3"
+    },
+    {
+      "file": "collector/logs.jsonl",
+      "batches": 2,
+      "records": 2,
+      "sha256": "7affe0093b3fca3936a0d0de77d0bbb8810ecfbbf0c969040940d0d9bb73e56f"
+    }
+  ]
+}

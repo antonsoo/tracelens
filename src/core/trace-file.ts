@@ -15,6 +15,13 @@ export const MAX_PROTOBUF_BYTES = 25 * 1024 * 1024;
 export const MAX_PROTOBUF_BATCHES = 100_000;
 const MAX_DECODED_UNITS = 25 * 1024 * 1024;
 
+/** Native byte fields carry an exact width, unlike opaque legacy JSON labels.
+ * Missing byte values keep the parser's existing incomplete/absent-context
+ * policy. A nonempty value of another width is not an OTLP identity. */
+function assertIdWidth(value: Uint8Array, bytes: 8 | 16, field: string): void {
+  if (value.length && value.length !== bytes) throw new Error(`${field} has ${value.length} bytes; OTLP requires ${bytes} bytes for a nonempty identity`);
+}
+
 /** Protobuf has neither a magic number nor a signal discriminator. Require a
  * declared kind/framing, by filename or explicit library option; never retry
  * failed JSON as protobuf or silently retry one framing as the other. */
@@ -82,11 +89,24 @@ export function decodeTraceFile(bytes: Uint8Array, name: string, format = protob
       if (format.signal === 'traces') {
         assertProtobufWire(ExportTraceServiceRequestSchema, batch, budget);
         const message = fromBinary(ExportTraceServiceRequestSchema, batch, { recursionLimit: MAX_PROTOBUF_DEPTH });
+        for (const resource of message.resourceSpans) for (const scope of resource.scopeSpans) for (const span of scope.spans) {
+          assertIdWidth(span.traceId, 16, 'Span trace_id');
+          assertIdWidth(span.spanId, 8, 'Span span_id');
+          assertIdWidth(span.parentSpanId, 8, 'Span parent_span_id');
+          for (const link of span.links) {
+            assertIdWidth(link.traceId, 16, 'Link trace_id');
+            assertIdWidth(link.spanId, 8, 'Link span_id');
+          }
+        }
         unknown += unknownFields(message);
         json = toJson(ExportTraceServiceRequestSchema, message, { enumAsInteger: true });
       } else {
         assertProtobufWire(ExportLogsServiceRequestSchema, batch, budget);
         const message = fromBinary(ExportLogsServiceRequestSchema, batch, { recursionLimit: MAX_PROTOBUF_DEPTH });
+        for (const resource of message.resourceLogs) for (const scope of resource.scopeLogs) for (const log of scope.logRecords) {
+          assertIdWidth(log.traceId, 16, 'LogRecord trace_id');
+          assertIdWidth(log.spanId, 8, 'LogRecord span_id');
+        }
         unknown += unknownFields(message);
         json = toJson(ExportLogsServiceRequestSchema, message, { enumAsInteger: true });
       }

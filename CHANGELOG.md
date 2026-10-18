@@ -9,6 +9,16 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Exact native identity widths
+
+- Validate nonempty binary trace IDs as sixteen bytes and span/parent IDs as
+  eight, including links and logs. Reject the complete import on a bad later
+  batch; keep empty optional context and opaque legacy JSON policies separate.
+- Retain sixteen controls checked by the actual Collector HTTP receiver:
+  twelve wrong-width inputs are rejected there and by TraceLens, while four
+  original/empty-context controls remain accepted. Generic Protobuf accepts
+  all sixteen wire messages; the additional restriction is specific to OTLP.
+
 ### All-zero identities
 
 - Treat complete hexadecimal/Base64 all-zero trace and span IDs as unavailable,

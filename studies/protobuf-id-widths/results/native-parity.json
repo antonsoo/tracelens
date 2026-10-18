@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "node": "v26.7.0",
+  "scope": "Retained native SDK requests and actual Collector files, with SDK object observations checked before each CLI workflow. No source inference, model call or registry release is established.",
+  "oracleSha256": "12c175e7860f1dbdc63bda1b554f3d11f3079c5b0782352ca01eefcc9b151aae",
+  "supported": true,
+  "cases": [
+    {
+      "carrier": "collector",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "supported": true,
+      "spans": 4,
+      "logs": 2,
+      "exactSdkObservations": true,
+      "sourceFormat": "otlp-protobuf-framed",
+      "commands": {
+        "summary": {
+          "exitCode": 0,
+          "bytes": 2410,
+          "sha256": "4020810b1515f1e550b6e2ff8bf262ea8d9e80f50054d94f84ddf6a403f47599"
+        },
+        "tree": {
+          "exitCode": 0,
+          "bytes": 340,
+          "sha256": "23bce15d0131351df8b5ef919988e59557fb7df670232dfb5c0c9b58089249d6"
+        },
+        "timing": {
+          "exitCode": 0,
+          "bytes": 1924,
+          "sha256": "9c17d8167f1b90764476430da299d2740011cfec998573445c5b86d6b522a2cf"
+        },
+        "cost": {
+          "exitCode": 0,
+          "bytes": 9745,
+          "sha256": "d93ddbe54186d98627ce3a9596cc1172e1df09ebc6cfd24181a32a51039881a4"
+        },
+        "links": {
+          "exitCode": 0,
+          "bytes": 911,
+          "sha256": "fb79199ee68b2519120baeb2e20eac2f922f68772b7fea71727211ba826401d9"
+        },
+        "logs": {
+          "exitCode": 0,
+          "bytes": 21101,
+          "sha256": "d45cfa1720a13dcf5590d1d90ed15d2b2a035a0b500df42a4eb5f00b20ddec8e"
+        }
+      }
+    },
+    {
+      "carrier": "collector",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "supported": true,
+      "spans": 2,
+      "logs": 0,
+      "exactSdkObservations": true,
+      "sourceFormat": "otlp-protobuf-framed",
+      "commands": {
+        "summary": {
+          "exitCode": 0,
+          "bytes": 1830,
+          "sha256": "b99efe61def3f92cedf2e1433ebb7b0f26b4d7f3a9522cc3d5ae793ee9caafcd"
+        },
+        "tree": {
+          "exitCode": 0,
+          "bytes": 266,
+          "sha256": "fd816e16107bfaba014e7cb9343712528e5bfb55ad1368e3cc4c508b4ddc785f"
+        },
+        "timing": {
+          "exitCode": 0,
+          "bytes": 1089,
+          "sha256": "c5a63a854f461f940d8ff48c35a5591973f3707371b4abee682addf9d4459d24"
+        },
+        "cost": {
+          "exitCode": 0,
+          "bytes": 8721,
+          "sha256": "a5452c79363309ea6de3fbfddd14daa28291849ee2e06cbe36ae4f581f8200b9"
+        },
+        "links": {
+          "exitCode": 0,
+          "bytes": 1504,
+          "sha256": "330c932d0381ffcd1887a7db52980ac90c18373f6e59af31217ff2e013a676a6"
+        },
+        "logs": {
+          "exitCode": 0,
+          "bytes": 902,
+          "sha256": "bc1e343c8cb0c72ca404d515476352ae3f1731c23990e73be59acea6bbf889c3"
+        }
+      }
+    },
+    {
+      "carrier": "raw",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "supported": true,
+      "spans": 4,
+      "logs": 2,
+      "exactSdkObservations": true,
+      "sourceFormat": "otlp-protobuf",
+      "commands": {
+        "summary": {
+          "exitCode": 0,
+          "bytes": 2514,
+          "sha256": "3e3bbadfbbb4b7295069e8d03ab9f4dfffc8ef79832e1a8e9fa161d495f7dfbd"
+        },
+        "tree": {
+          "exitCode": 0,
+          "bytes": 340,
+          "sha256": "23bce15d0131351df8b5ef919988e59557fb7df670232dfb5c0c9b58089249d6"
+        },
+        "timing": {
+          "exitCode": 0,
+          "bytes": 1924,
+          "sha256": "9c17d8167f1b90764476430da299d2740011cfec998573445c5b86d6b522a2cf"
+        },
+        "cost": {
+          "exitCode": 0,
+          "bytes": 9745,
+          "sha256": "d93ddbe54186d98627ce3a9596cc1172e1df09ebc6cfd24181a32a51039881a4"
+        },
+        "links": {
+          "exitCode": 0,
+          "bytes": 1549,
+          "sha256": "139a2cb6e6625af9a881e2d550abcf1eddf16d85d271915510934710c1e7b5a6"
+        },
+        "logs": {
+          "exitCode": 0,
+          "bytes": 21731,
+          "sha256": "0b45cc96cfc5f782600b7b61b1698b0bfe136f1ddbb9a496511f4cb2cfb8390b"
+        }
+      }
+    },
+    {
+      "carrier": "raw",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "supported": true,
+      "spans": 2,
+      "logs": 0,
+      "exactSdkObservations": true,
+      "sourceFormat": "otlp-protobuf",
+      "commands": {
+        "summary": {
+          "exitCode": 0,
+          "bytes": 1934,
+          "sha256": "b7b1c1a9d62ebd07223ae827d431db322fdb69883735167e439da1f4f1968d1c"
+        },
+        "tree": {
+          "exitCode": 0,
+          "bytes": 266,
+          "sha256": "fd816e16107bfaba014e7cb9343712528e5bfb55ad1368e3cc4c508b4ddc785f"
+        },
+        "timing": {
+          "exitCode": 0,
+          "bytes": 1089,
+          "sha256": "c5a63a854f461f940d8ff48c35a5591973f3707371b4abee682addf9d4459d24"
+        },
+        "cost": {
+          "exitCode": 0,
+          "bytes": 8721,
+          "sha256": "a5452c79363309ea6de3fbfddd14daa28291849ee2e06cbe36ae4f581f8200b9"
+        },
+        "links": {
+          "exitCode": 0,
+          "bytes": 2138,
+          "sha256": "034112836bed5bffa57efcb9d366c41dcb0a97f7b828c6bd8c50b99156692b53"
+        },
+        "logs": {
+          "exitCode": 0,
+          "bytes": 1540,
+          "sha256": "7522e37bdff0e0bc5fedc62bb226650bab383058553ef1c26fa5cae562538ebd"
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "carrier": "collector",
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "exitCode": 0,
+      "spans": 4,
+      "allAvailableDeltasZero": true,
+      "reportSha256": "c99ba0be178559897666e12f933cf8f20de30217e3b97efd3fb635101e6c0f33"
+    },
+    {
+      "carrier": "collector",
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "exitCode": 0,
+      "spans": 2,
+      "allAvailableDeltasZero": true,
+      "reportSha256": "ce3d9569c9c9cc49c2f552fd4be2803571b52ff72c7b326f19dd44fb222d695c"
+    },
+    {
+      "carrier": "raw",
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "exitCode": 0,
+      "spans": 4,
+      "allAvailableDeltasZero": true,
+      "reportSha256": "21a49b86c47249f2c1cbf8cb2d28e62834bdc31fba0c7a465a2b51f63f5f99e8"
+    },
+    {
+      "carrier": "raw",
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "exitCode": 0,
+      "spans": 2,
+      "allAvailableDeltasZero": true,
+      "reportSha256": "c0a527380062c455ac343aeb08235cbffa8e3bc523f3f4bc8fa0f23be831854e"
+    }
+  ],
+  "discrepancies": []
+}
