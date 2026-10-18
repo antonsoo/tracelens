@@ -74,3 +74,10 @@ two atomic wrong-width replacement/recovery checks. A rejected trace file or
 log in a multi-file group leaves the existing comparison byte-identical; a
 valid retry clears the error. Both Chromium and Firefox exercise the real
 worker with the network disconnected after page load.
+
+The clean archive `fd4704d` passes a fresh install, lint, types, all 614 unit
+checks, the production build and all 32 CLI integrations on Node 24.21.0.
+All [39 compiled files](results/package.json) match a separate non-editable
+local package installation. Its real CLI repeats all sixteen width controls
+without disagreement on [Node 20.0.0](results/installed-node20.json) and
+[Node 24.21.0](results/installed-node24.json). No npm registry release is made.

@@ -1,0 +1,327 @@
+{
+  "scope": "Explicit byte-field alterations of retained SDK requests, generic Google wire acceptance and actual Collector responses. Correctness compares signal-specific identity widths, not generic Protobuf validity, opaque legacy JSON labels or an upstream advisory.",
+  "node": "v20.0.0",
+  "decoderSha256": "f9c8187fbd150804c9f9c7d4cc4aa38f2f5af3079fd1d3408ac267ca17fb5366",
+  "collectorVersion": "otelcol version 0.163.1",
+  "oracleSha256": "2a2188da5e95a911ac675807f4ea752c5a84e4a16662c31dc8f22d1a03b8ee6a",
+  "cases": 16,
+  "failures": 0,
+  "rows": [
+    {
+      "file": "native-control.traces.pb",
+      "signal": "traces",
+      "origin": "unaltered retained SDK request",
+      "alteredField": null,
+      "width": null,
+      "sha256": "0be5ff5adc9df8785098cbb2fff82549fc749027d9e2d0d4ff73b44b94c62168",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA=",
+      "importerAccepted": true,
+      "correct": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid-1 0.0 ms\nvalid-2 0.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "trace-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 15,
+      "sha256": "926c37d258bbb113ab878445f88482660e72c76d82941b0e8a92c19384ecde30",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA==",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Span trace_id has 15 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"trace-short.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Span trace_id has 15 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "trace-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 17,
+      "sha256": "c880fc9f72f8a5827b9ddc1a7d7c976bdeaf262500f087f48918c1f915ce6473",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA==",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Span trace_id has 17 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"trace-long.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Span trace_id has 17 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "span-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 7,
+      "sha256": "29be9ebd5fc0755cdbd33f6cdecb55678e06f5068054bd05c3f8bf3a74d60624",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Span span_id has 7 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"span-short.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Span span_id has 7 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "span-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 9,
+      "sha256": "901ce818ecfd8b0d1fdf8d5e20d49f633d174522f62ac9c101d400244e18cc74",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Span span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"span-long.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Span span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "parent-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "parent_span_id",
+      "width": 7,
+      "sha256": "7735fec83f22b00d62bc3a23638d538624e6a225a75a1423e8518be90f5fbea9",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Span parent_span_id has 7 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"parent-short.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Span parent_span_id has 7 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "parent-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "parent_span_id",
+      "width": 9,
+      "sha256": "54737d7e9fb8b458c05a34ef23b19c3e172b6042cded25a0f520d3bb043e0418",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Span parent_span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"parent-long.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Span parent_span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "link-trace-short.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "link.trace_id",
+      "width": 15,
+      "sha256": "707ca06bd5bdc7c2e60fc77df356deadd36793b2feb96d436a07b7e866ab1df4",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA==",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Link trace_id has 15 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"link-trace-short.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Link trace_id has 15 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "link-span-long.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "link.span_id",
+      "width": 9,
+      "sha256": "a20c1dcf3c96d5f274a8493f4d0f6fe2761baad6565793fc7030c2a77472f835",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP traces protobuf batch 1 could not be decoded: Link span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"link-span-long.traces.pb\": OTLP traces protobuf batch 1 could not be decoded: Link span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "empty-parent-control.traces.pb",
+      "signal": "traces",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "parent_span_id",
+      "width": 0,
+      "sha256": "0be5ff5adc9df8785098cbb2fff82549fc749027d9e2d0d4ff73b44b94c62168",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA=",
+      "importerAccepted": true,
+      "correct": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid-1 0.0 ms\nvalid-2 0.0 ms\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "native-control.logs.pb",
+      "signal": "logs",
+      "origin": "unaltered retained SDK request",
+      "alteredField": null,
+      "width": null,
+      "sha256": "d31310c5fcff801cd96969ba64c65860ca76a1e5610ae0928058b350e2b4eba8",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA=",
+      "importerAccepted": true,
+      "correct": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid-1 0.0 ms\nvalid-2 0.0 ms\nWarning: 1 log record(s) could not be matched to exactly one imported span by traceId and spanId. They remain available as unmatched log evidence; no calls, durations or errors were inferred from them.\n",
+        "stderr": ""
+      }
+    },
+    {
+      "file": "trace-short.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 15,
+      "sha256": "2d0c1dc4a93a129c119a298cbfdbaea6efaa813caf449a8d53a6d1c3663932af",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA==",
+      "importerAccepted": false,
+      "error": "OTLP logs protobuf batch 1 could not be decoded: LogRecord trace_id has 15 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"trace-short.logs.pb\": OTLP logs protobuf batch 1 could not be decoded: LogRecord trace_id has 15 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "trace-long.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "trace_id",
+      "width": 17,
+      "sha256": "63afd85142b46bd36dbf985e632fcfa7d03fbfc5a3522fef003c0baaefe60c5c",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIXVubWFyc2hhbDogaW52YWxpZCBUcmFjZUlEIGxlbmd0aA==",
+      "importerAccepted": false,
+      "error": "OTLP logs protobuf batch 1 could not be decoded: LogRecord trace_id has 17 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"trace-long.logs.pb\": OTLP logs protobuf batch 1 could not be decoded: LogRecord trace_id has 17 bytes; OTLP requires 16 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "span-short.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 7,
+      "sha256": "39ba0b215bdd8479a94dc4f17e6a7f686155f5ffdd782c828aaf79d086af3b10",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP logs protobuf batch 1 could not be decoded: LogRecord span_id has 7 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"span-short.logs.pb\": OTLP logs protobuf batch 1 could not be decoded: LogRecord span_id has 7 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "span-long.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "span_id",
+      "width": 9,
+      "sha256": "627e85017de770e4accea4f90ea2332bff435c63d7806cce13157cc54e306ee2",
+      "googleWireAccepted": true,
+      "collectorStatus": 400,
+      "collectorAccepted": false,
+      "collectorResponseBase64": "CAMSIHVubWFyc2hhbDogaW52YWxpZCBTcGFuSUQgbGVuZ3Ro",
+      "importerAccepted": false,
+      "error": "OTLP logs protobuf batch 1 could not be decoded: LogRecord span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.",
+      "correct": true,
+      "cli": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"span-long.logs.pb\": OTLP logs protobuf batch 1 could not be decoded: LogRecord span_id has 9 bytes; OTLP requires 8 bytes for a nonempty identity. No batches were imported.\n"
+      }
+    },
+    {
+      "file": "absent-context-control.logs.pb",
+      "signal": "logs",
+      "origin": "constructed byte-field alteration",
+      "alteredField": "both",
+      "width": 0,
+      "sha256": "131214a5aa29214459725fae52e524dcc255d1bd4dab870c5434f27fd74a201d",
+      "googleWireAccepted": true,
+      "collectorStatus": 200,
+      "collectorAccepted": true,
+      "collectorResponseBase64": "CgA=",
+      "importerAccepted": true,
+      "correct": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "valid-1 0.0 ms\nvalid-2 0.0 ms\nWarning: 1 log record(s) could not be matched to exactly one imported span by traceId and spanId. They remain available as unmatched log evidence; no calls, durations or errors were inferred from them.\n",
+        "stderr": ""
+      }
+    }
+  ]
+}
