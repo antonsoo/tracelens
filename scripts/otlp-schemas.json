@@ -1,0 +1,67 @@
+{
+  "source": "Official opentelemetry-proto Python package, compiled FileDescriptorProto values",
+  "packages": {
+    "opentelemetry-proto": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "generator": "2.16.0",
+  "parameters": "target=ts,import_extension=js",
+  "descriptors": [
+    {
+      "file": "opentelemetry/proto/common/v1/common.proto",
+      "sha256": "fc2a455aeb05cbbc5352f553cb95d73c98d733fa09afda2a5e87321801a2e623"
+    },
+    {
+      "file": "opentelemetry/proto/resource/v1/resource.proto",
+      "sha256": "aacdcb4d6fae2eb2d05886981a00ef3bec9c43a4b5db8e496897d2e49340007b"
+    },
+    {
+      "file": "opentelemetry/proto/trace/v1/trace.proto",
+      "sha256": "b59298a639f27de08d31a884b9a9d811ebbb3d2dca1387ffc5b3785e3628d921"
+    },
+    {
+      "file": "opentelemetry/proto/collector/trace/v1/trace_service.proto",
+      "sha256": "890de05b956a0b93739c2ddf16bd29c4361b1e6c4e4fa01a983708ea2b040137"
+    },
+    {
+      "file": "opentelemetry/proto/logs/v1/logs.proto",
+      "sha256": "3fefd48152c5cffd351933599ee91fd12f2e5533376dcac9964dd64dafb972e2"
+    },
+    {
+      "file": "opentelemetry/proto/collector/logs/v1/logs_service.proto",
+      "sha256": "5345d4b73e5cda51974358f9bf1ed6a8978eab02a22100d5c5eddc2c2d7af53c"
+    }
+  ],
+  "generated": [
+    {
+      "file": "opentelemetry/proto/common/v1/common_pb.ts",
+      "bytes": 7534,
+      "sha256": "a58e4c36d405890cec48f4f427e38bf160bf0a3671d78fae6e6fccf5ac291900"
+    },
+    {
+      "file": "opentelemetry/proto/resource/v1/resource_pb.ts",
+      "bytes": 2352,
+      "sha256": "c2ffa199b2f76d3a0b3c994cf82e46ebc03cac447219cbe036b3e1b42b576cd8"
+    },
+    {
+      "file": "opentelemetry/proto/trace/v1/trace_pb.ts",
+      "bytes": 13127,
+      "sha256": "e8371ffe7fb6663b7114d646986464fc7030f4438f453cf82e6f2303255c94a4"
+    },
+    {
+      "file": "opentelemetry/proto/collector/trace/v1/trace_service_pb.ts",
+      "bytes": 4785,
+      "sha256": "e8d39d0570466908f5974da44e69fbca0fc750d43cdba1f5f4d21802b781f60e"
+    },
+    {
+      "file": "opentelemetry/proto/logs/v1/logs_pb.ts",
+      "bytes": 10567,
+      "sha256": "40b5293ef266313a67a1e37b14c2700015159bd6c9eaa52162279ee9f93a324f"
+    },
+    {
+      "file": "opentelemetry/proto/collector/logs/v1/logs_service_pb.ts",
+      "bytes": 4708,
+      "sha256": "1b8f37e10302b0302822c1443d0da1f764962ac9d5594e75c61bd72c9b21c674"
+    }
+  ]
+}

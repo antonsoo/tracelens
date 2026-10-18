@@ -1,0 +1,75 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "e96060a4-48e5-4df2-b7ec-ec270210015c"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "local-otlp-binary-control"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.local-workflow",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "9OiWpkl8sZrSv8Gj/B+uZw==",
+              "spanId": "VQIj2rMOVCw=",
+              "name": "consume the digest",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792314107872838391",
+              "endTimeUnixNano": "1792314107876492152",
+              "links": [
+                {
+                  "traceId": "9zKEHdMbxyQ4yVQ/9oy8kw==",
+                  "spanId": "XYfjHebLFkc=",
+                  "attributes": [
+                    {
+                      "key": "relation",
+                      "value": {
+                        "stringValue": "follows"
+                      }
+                    }
+                  ],
+                  "flags": 256
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { decodeText } from '../core/decode.js';
+import { decodeTraceFile } from '../core/trace-file.js';
 import { MAX_TRACE_INPUTS, parseTraceInputs } from '../core/otlp-parser.js';
 import type { TraceInput } from '../core/types.js';
 import { flattenTrace } from './trace-transfer.js';
@@ -7,13 +7,13 @@ import type { ParseRequest, ParseResponse, TraceSource } from './trace-protocol.
 
 const tooLarge = (): Error => new Error('Trace files must be 25 MB or smaller. Export a single run and try again.');
 
-async function readSource(source: Exclude<TraceSource, { kind: 'files' | 'inputs' }>): Promise<string> {
-  if (source.kind === 'text') return source.text;
+async function readSource(source: Exclude<TraceSource, { kind: 'files' | 'inputs' }>): Promise<TraceInput> {
+  if (source.kind === 'text') return { name: 'Trace', text: source.text };
   if (source.kind === 'file') {
     if (source.file.size > MAX_TRACE_BYTES) throw tooLarge();
     const bytes = await source.file.arrayBuffer();
     if (bytes.byteLength > MAX_TRACE_BYTES) throw tooLarge();
-    return decodeText(new Uint8Array(bytes));
+    return decodeTraceFile(new Uint8Array(bytes), source.file.name);
   }
   if (new URL(source.url).origin !== self.location.origin) throw new Error('Samples must load from this site.');
   const response = await fetch(source.url, { redirect: 'error' });
@@ -41,20 +41,20 @@ async function readSource(source: Exclude<TraceSource, { kind: 'files' | 'inputs
   const bytes = new Uint8Array(size);
   let offset = 0;
   for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
-  return decodeText(bytes);
+  return decodeTraceFile(bytes, new URL(source.url).pathname.split('/').at(-1) ?? 'Trace');
 }
 
 async function readInputs(source: TraceSource): Promise<TraceInput[]> {
   if (source.kind === 'inputs') return source.inputs;
-  if (source.kind !== 'files') return [{ name: source.kind === 'file' ? source.file.name : 'Trace', text: await readSource(source) }];
+  if (source.kind !== 'files') return [await readSource(source)];
   if (!source.files.length || source.files.length > MAX_TRACE_INPUTS) throw new Error(`Choose between 1 and ${MAX_TRACE_INPUTS} trace files.`);
-  if (source.files.length === 1) return [{ name: source.files[0]!.name, text: await readSource({ kind: 'file', file: source.files[0]! }) }];
+  if (source.files.length === 1) return [await readSource({ kind: 'file', file: source.files[0]! })];
   if (source.files.reduce((total, file) => total + file.size, 0) > MAX_TRACE_BYTES) {
     throw new Error('Selected trace files exceed 25 MB in total. Choose a smaller group.');
   }
   const inputs: TraceInput[] = [];
   for (const [index, file] of source.files.entries()) {
-    try { inputs.push({ name: file.name, text: await readSource({ kind: 'file', file }) }); }
+    try { inputs.push(await readSource({ kind: 'file', file })); }
     catch (error) { throw new Error(`File ${index + 1} (${file.name}): ${error instanceof Error ? error.message : String(error)}`); }
   }
   return inputs;
@@ -65,7 +65,8 @@ self.onmessage = (event: MessageEvent<ParseRequest>): void => {
     try {
       const inputs = await readInputs(event.data.source);
       const trace = parseTraceInputs(inputs, { traceId: event.data.traceId });
-      const source = trace.traces.length > 1 ? (inputs.length === 1 ? inputs[0]!.text : inputs) : null;
+      const source = trace.traces.length > 1
+        ? (inputs.length === 1 && !inputs[0]!.sourceFormat && !inputs[0]!.warnings?.length ? inputs[0]!.text : inputs) : null;
       self.postMessage({ ok: true, trace: flattenTrace(trace), source } satisfies ParseResponse);
     } catch (error) {
       self.postMessage({ ok: false, error: error instanceof Error ? error.message : String(error) } satisfies ParseResponse);

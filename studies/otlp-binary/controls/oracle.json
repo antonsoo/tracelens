@@ -1,0 +1,117 @@
+{
+  "scope": "Construct labelled protocol controls, checked by Google's Protobuf runtime.\n\nThese are altered inputs derived from the retained native capture, not additional\nSDK/Collector observations. No TraceLens code is imported.",
+  "sourceSha256": "9fc48f444f3b784f53b0be693c74b19b0215880cbcfb0b9b1804178ce7142b08",
+  "driverSha256": "63c632cacf25019ecb8d1f5f21c31f1c8612819bdb2bbe318997a04d124b543e",
+  "cases": [
+    {
+      "name": "unicode-name",
+      "file": "unicode-name.traces.pb",
+      "description": "Controlled UTF-8 name",
+      "bytes": 560,
+      "sha256": "9ba77768612e02ce774e0e9be640f765a9789bc93cb359f5f881dcebfd9a41a1",
+      "googleAccepted": true,
+      "googleError": null,
+      "jsonControl": "unicode-name.json"
+    },
+    {
+      "name": "unknown-status",
+      "file": "unknown-status.traces.pb",
+      "description": "Unknown open-enum value stays 99",
+      "bytes": 565,
+      "sha256": "4703842a65eb3140bb56b16b4c97f9eaf0213f999535baa4926a41753ae6c7b1",
+      "googleAccepted": true,
+      "googleError": null,
+      "jsonControl": "unknown-status.json"
+    },
+    {
+      "name": "opaque-bytes",
+      "file": "opaque-bytes.traces.pb",
+      "description": "Binary AnyValue is not decoded as UTF-8",
+      "bytes": 594,
+      "sha256": "60b428f0ce3466d4315ff1ca9d7a834b2fc62c665b4cf9af039b7f0eb7249032",
+      "googleAccepted": true,
+      "googleError": null,
+      "jsonControl": "opaque-bytes.json"
+    },
+    {
+      "name": "unknown-field",
+      "file": "unknown-field.traces.pb",
+      "description": "Unknown root wire field, recognized fields unchanged",
+      "bytes": 566,
+      "sha256": "c91f759ad819c7c1dc8edacf368869b1a2d40dbd0f348c8b1d34db7a105f82e6",
+      "googleAccepted": true,
+      "googleError": null,
+      "jsonControl": "unknown-field.json"
+    },
+    {
+      "name": "nested-length-overrun",
+      "file": "nested-length-overrun.traces.pb",
+      "description": "Complete ResourceSpans payload with a declared length one byte too short",
+      "bytes": 563,
+      "sha256": "39f2bc682b82be97329af471ef1012737eccbc0fd52369e2452dd7616f854b50",
+      "googleAccepted": false,
+      "googleError": "DecodeError: Error parsing message with type 'opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest': Wire format was corrupt",
+      "jsonControl": null
+    },
+    {
+      "name": "length-overflow",
+      "file": "length-overflow.traces.pb",
+      "description": "Unknown length-delimited field whose length exceeds uint32",
+      "bytes": 570,
+      "sha256": "eaa6a9d81353570625e6bf289c22553cfb609a765bfca26fba2b17bb1f2d7368",
+      "googleAccepted": false,
+      "googleError": "DecodeError: Error parsing message with type 'opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest': Wire format was corrupt",
+      "jsonControl": null
+    },
+    {
+      "name": "truncated-raw",
+      "file": "truncated-raw.traces.pb",
+      "description": "Last byte removed inside the declared message",
+      "bytes": 562,
+      "sha256": "077117d59df2c47ffc306f08be826ecb347cd109d14688a1dd1d611aaa7d7b7d",
+      "googleAccepted": false,
+      "googleError": "DecodeError: Error parsing message with type 'opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest': Wire format was corrupt",
+      "jsonControl": null
+    },
+    {
+      "name": "illegal-tag",
+      "file": "illegal-tag.traces.pb",
+      "description": "Field number zero is illegal",
+      "bytes": 564,
+      "sha256": "6075d9c3b16858f2c873754e7dc064e477cbc3857d857d318d1816a5a69d9ffa",
+      "googleAccepted": false,
+      "googleError": "DecodeError: Error parsing message with type 'opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest': Wire format was corrupt",
+      "jsonControl": null
+    },
+    {
+      "name": "invalid-utf8",
+      "file": "invalid-utf8.traces.pb",
+      "description": "Invalid first UTF-8 byte in the recorded name",
+      "bytes": 563,
+      "sha256": "9f02c1b1510bd165724c4dff8549fb61211211c4eaa7e1b87d0957204b1dafd9",
+      "googleAccepted": false,
+      "googleError": "DecodeError: Error parsing message with type 'opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest': String field had bad UTF-8",
+      "jsonControl": null
+    },
+    {
+      "name": "raw-merge",
+      "file": "raw-merge.traces.pb",
+      "description": "Protobuf repeated fields merge when serialized messages are concatenated",
+      "bytes": 1142,
+      "sha256": "8ca2ecad18e4c8c2efb3a0e48ecc4707b5149bb4962e06ab60ad1e8c81b65110",
+      "googleAccepted": true,
+      "googleError": null,
+      "jsonControl": "raw-merge.json"
+    },
+    {
+      "name": "oneof-last-wins",
+      "file": "oneof-last-wins.traces.pb",
+      "description": "Two AnyValue oneof members on the wire; native Protobuf semantics select the last",
+      "bytes": 559,
+      "sha256": "afa23d1803d84f2dea8f1fb723b2b9ddd1a86ffdea170cf95378e0cb9b7571c7",
+      "googleAccepted": true,
+      "googleError": null,
+      "jsonControl": "oneof-last-wins.json"
+    }
+  ]
+}

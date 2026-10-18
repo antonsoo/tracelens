@@ -192,9 +192,9 @@ export interface ParsedTrace {
   warnings: ParseWarning[];
   /** Logs lacking exactly one matching span, retained separately from measurements. */
   unmatchedLogs?: TraceLogRecord[];
-  /** The file's format: Jaeger JSON is converted to OTLP/JSON before parsing. */
-  sourceFormat: 'otlp-json' | 'jaeger-json' | 'mixed-json';
-  inputFiles?: { name: string; spanCount: number; logCount?: number; sourceFormat: 'otlp-json' | 'jaeger-json' }[];
+  /** Original input format; binary and Jaeger inputs use a decoded JSON inspection model. */
+  sourceFormat: TraceSourceFormat | 'mixed-json' | 'mixed';
+  inputFiles?: { name: string; spanCount: number; logCount?: number; sourceFormat: TraceSourceFormat }[];
   /**
    * Every trace in the file, in order of start time. A collector's export
    * holds whatever passed through it; `spans` and `roots` are one of them
@@ -203,8 +203,16 @@ export interface ParsedTrace {
   traces: TraceListing[];
 }
 
-/** Decoded file text, retained locally when selecting another trace in a group. */
-export interface TraceInput { name: string; text: string }
+export type TraceSourceFormat = 'otlp-json' | 'jaeger-json' | 'otlp-protobuf' | 'otlp-protobuf-framed';
+
+/** Decoded inspection text, retained locally when selecting another trace. */
+export interface TraceInput {
+  name: string;
+  text: string;
+  /** Set by the binary decoder; not inferred from the JSON contents. */
+  sourceFormat?: 'otlp-protobuf' | 'otlp-protobuf-framed';
+  warnings?: ParseWarning[];
+}
 
 export function spanDurationMs(span: ParsedSpan): number {
   return Number(span.durationNs) / 1_000_000;

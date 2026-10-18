@@ -1,0 +1,68 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.1"
+            }
+          },
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "e96060a4-48e5-4df2-b7ec-ec270210015c"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "local-otlp-binary-control"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tracelens.local-workflow",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "9zKEHdMbxyQ4yVQ/9oy8kw==",
+              "spanId": "XYfjHebLFkc=",
+              "name": "inspect a document digest",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792314107842832583",
+              "endTimeUnixNano": "1792314107867152430",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                }
+              ],
+              "status": {},
+              "flags": 256
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

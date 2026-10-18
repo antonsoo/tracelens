@@ -1,0 +1,409 @@
+{
+  "scope": "Scripted conversation and actual local SHA-256 computation, native Python SDK HTTP protobuf requests forwarded only to a local Collector; no model, credentials or external service used. IDs and actual timestamps change on recapture.",
+  "versions": {
+    "opentelemetry-util-genai": "1.2b0",
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-proto": "1.45.1",
+    "opentelemetry-exporter-otlp-proto-http": "1.45.1",
+    "protobuf": "7.36.2"
+  },
+  "collectorVersion": "otelcol version 0.163.1",
+  "collectorBinarySha256": "f02a7a36cdd1d31d37bf7769aaa2dd76cfcc875c391ada6a486396682aeb377f",
+  "driverSha256": "a05258f16c82d23c40f82e2aa42e9c4951a18d6a0b3f9b103020cf1969e024b6",
+  "requests": [
+    {
+      "file": "http-01.logs.pb",
+      "signal": "logs",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 1031,
+      "sha256": "d31310c5fcff801cd96969ba64c65860ca76a1e5610ae0928058b350e2b4eba8"
+    },
+    {
+      "file": "http-01.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 563,
+      "sha256": "9fc48f444f3b784f53b0be693c74b19b0215880cbcfb0b9b1804178ce7142b08"
+    },
+    {
+      "file": "http-02.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 579,
+      "sha256": "48c293f4e4e6de44cb58a20ea0ab431061b3a4262d3c34a44a8fff464c4126c1"
+    },
+    {
+      "file": "http-02.logs.pb",
+      "signal": "logs",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 998,
+      "sha256": "d4db128239cbdb19999cbe81e72e88135b568d28b3b73d98adff79bf46908ae6"
+    },
+    {
+      "file": "http-03.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 557,
+      "sha256": "963451e7bc66225aa0ad0a6785000f384b54c3fc484fe8ba0fe7b1278cef5646"
+    },
+    {
+      "file": "http-04.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 384,
+      "sha256": "3167bdcc0eb222e7e4760932817bfa5ba58d3d8a9a4870a6ed663a8cc42682f0"
+    },
+    {
+      "file": "http-05.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 342,
+      "sha256": "95dba7089a47ce33a7fe0ac45ab8fa77c349b8fafb2afec60ca8ba82d6efb3db"
+    },
+    {
+      "file": "http-06.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 395,
+      "sha256": "c3910f04a0ad75c49b7b33954be229b74704dc311596192aebb6fc4491c4ddd9"
+    }
+  ],
+  "files": [
+    {
+      "file": "collector-logs.jsonl",
+      "bytes": 4350,
+      "sha256": "6739a6698a4f47fa57b10529d0e43ca03ac5131444246a08276e6c1e89fdc389"
+    },
+    {
+      "file": "collector-traces.jsonl",
+      "bytes": 6038,
+      "sha256": "028e83f50cc3275c72ca1122fe6b99020a6ce7b3c34392c2ddd201d122dec65d"
+    },
+    {
+      "file": "collector.logs.otlp",
+      "bytes": 2037,
+      "sha256": "291001d7e5e26c5710aa2767997118c08aaa85f1124321751e9e1b8177ff5198"
+    },
+    {
+      "file": "collector.traces.otlp",
+      "bytes": 2848,
+      "sha256": "908458f8e0325d4d4fd1273fe45c39eb2cfddcbf2679644550d6ca43621b934a"
+    },
+    {
+      "file": "http-01.logs.json",
+      "bytes": 9177,
+      "sha256": "250ac199b3deba99f0077fb33be9e2110de4c95669d43a7f34728695ad28716a"
+    },
+    {
+      "file": "http-01.logs.pb",
+      "bytes": 1031,
+      "sha256": "d31310c5fcff801cd96969ba64c65860ca76a1e5610ae0928058b350e2b4eba8"
+    },
+    {
+      "file": "http-01.traces.json",
+      "bytes": 2517,
+      "sha256": "16f5404c2e6f6e744d5df81fd8cb3e2bc5db8bde43f2835cecc14c7ac2c11fe7"
+    },
+    {
+      "file": "http-01.traces.pb",
+      "bytes": 563,
+      "sha256": "9fc48f444f3b784f53b0be693c74b19b0215880cbcfb0b9b1804178ce7142b08"
+    },
+    {
+      "file": "http-02.logs.json",
+      "bytes": 7953,
+      "sha256": "5746097ce753df5a843183961be3e41fe38adfa1ebe7c05c7884ff181ff90cd2"
+    },
+    {
+      "file": "http-02.logs.pb",
+      "bytes": 998,
+      "sha256": "d4db128239cbdb19999cbe81e72e88135b568d28b3b73d98adff79bf46908ae6"
+    },
+    {
+      "file": "http-02.traces.json",
+      "bytes": 3280,
+      "sha256": "7ebb54be61faa0cc3d09465b9733164643f3e62bd0958950decabe42760652ba"
+    },
+    {
+      "file": "http-02.traces.pb",
+      "bytes": 579,
+      "sha256": "48c293f4e4e6de44cb58a20ea0ab431061b3a4262d3c34a44a8fff464c4126c1"
+    },
+    {
+      "file": "http-03.traces.json",
+      "bytes": 2511,
+      "sha256": "9b5de4d9abf0e1fa46b0e853c0acd0614f5c12454e055dcacdef274126b4bc0b"
+    },
+    {
+      "file": "http-03.traces.pb",
+      "bytes": 557,
+      "sha256": "963451e7bc66225aa0ad0a6785000f384b54c3fc484fe8ba0fe7b1278cef5646"
+    },
+    {
+      "file": "http-04.traces.json",
+      "bytes": 1675,
+      "sha256": "db33c7aaa0cc8cf4ced324ffb4aa33dd9e54d4b26c76af88d96674273224ff1e"
+    },
+    {
+      "file": "http-04.traces.pb",
+      "bytes": 384,
+      "sha256": "3167bdcc0eb222e7e4760932817bfa5ba58d3d8a9a4870a6ed663a8cc42682f0"
+    },
+    {
+      "file": "http-05.traces.json",
+      "bytes": 1533,
+      "sha256": "74d1b56f9aeef2d66f273a87d9946478df8a6ce1234803127eafe2dd1c2be2b5"
+    },
+    {
+      "file": "http-05.traces.pb",
+      "bytes": 342,
+      "sha256": "95dba7089a47ce33a7fe0ac45ab8fa77c349b8fafb2afec60ca8ba82d6efb3db"
+    },
+    {
+      "file": "http-06.traces.json",
+      "bytes": 1892,
+      "sha256": "9ad2757560d024a1b91bca8e35686d0e577032c844ac07de111c14a496daf51c"
+    },
+    {
+      "file": "http-06.traces.pb",
+      "bytes": 395,
+      "sha256": "c3910f04a0ad75c49b7b33954be229b74704dc311596192aebb6fc4491c4ddd9"
+    }
+  ],
+  "digest": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6",
+  "attributeEncoding": "Unsafe source SDK integers are decimal strings; attributeTypes retain original Python types.",
+  "spans": [
+    {
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spanId": "5f2b86a56caa7b66",
+      "name": "chat scripted-response",
+      "start": "1792314107842902262",
+      "end": "1792314107851532547",
+      "parentSpanId": "5d87e31de6cb1647",
+      "status": "UNSET",
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "scripted-response",
+        "gen_ai.provider.name": "local-control",
+        "gen_ai.response.finish_reasons": [
+          "tool_calls"
+        ]
+      },
+      "attributeTypes": {
+        "gen_ai.operation.name": "str",
+        "gen_ai.request.model": "str",
+        "gen_ai.provider.name": "str",
+        "gen_ai.response.finish_reasons": "tuple"
+      },
+      "links": []
+    },
+    {
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spanId": "52a443dd7588c9d3",
+      "name": "sha256",
+      "start": "1792314107855830085",
+      "end": "1792314107855846538",
+      "parentSpanId": "5d87e31de6cb1647",
+      "status": "UNSET",
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "sha256",
+        "fixture.enabled": false,
+        "fixture.zero": 0,
+        "fixture.max_int64": "9223372036854775807",
+        "fixture.min_int64": "-9223372036854775808",
+        "fixture.ratio": 0.25,
+        "fixture.samples": [
+          0,
+          1,
+          2
+        ]
+      },
+      "attributeTypes": {
+        "gen_ai.operation.name": "str",
+        "gen_ai.tool.name": "str",
+        "fixture.enabled": "bool",
+        "fixture.zero": "int",
+        "fixture.max_int64": "int",
+        "fixture.min_int64": "int",
+        "fixture.ratio": "float",
+        "fixture.samples": "tuple"
+      },
+      "links": []
+    },
+    {
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spanId": "c51b21e71ab5e01d",
+      "name": "chat scripted-response",
+      "start": "1792314107859687989",
+      "end": "1792314107863759790",
+      "parentSpanId": "5d87e31de6cb1647",
+      "status": "UNSET",
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "scripted-response",
+        "gen_ai.provider.name": "local-control",
+        "gen_ai.response.finish_reasons": [
+          "stop"
+        ]
+      },
+      "attributeTypes": {
+        "gen_ai.operation.name": "str",
+        "gen_ai.request.model": "str",
+        "gen_ai.provider.name": "str",
+        "gen_ai.response.finish_reasons": "tuple"
+      },
+      "links": []
+    },
+    {
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spanId": "5d87e31de6cb1647",
+      "name": "inspect a document digest",
+      "start": "1792314107842832583",
+      "end": "1792314107867152430",
+      "parentSpanId": null,
+      "status": "UNSET",
+      "attributes": {
+        "gen_ai.operation.name": "invoke_agent"
+      },
+      "attributeTypes": {
+        "gen_ai.operation.name": "str"
+      },
+      "links": []
+    },
+    {
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "spanId": "41ce1a812c9404b5",
+      "name": "verify sha256",
+      "start": "1792314107872858341",
+      "end": "1792314107872876688",
+      "parentSpanId": "550223dab30e542c",
+      "status": "OK",
+      "attributes": {},
+      "attributeTypes": {},
+      "links": []
+    },
+    {
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "spanId": "550223dab30e542c",
+      "name": "consume the digest",
+      "start": "1792314107872838391",
+      "end": "1792314107876492152",
+      "parentSpanId": null,
+      "status": "UNSET",
+      "attributes": {},
+      "attributeTypes": {},
+      "links": [
+        {
+          "traceId": "f732841dd31bc72438c9543ff68cbc93",
+          "spanId": "5d87e31de6cb1647"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spanId": "5f2b86a56caa7b66",
+      "timestamp": null,
+      "observedTimestamp": "1792314107843072733",
+      "eventName": "gen_ai.client.inference.operation.details",
+      "body": null,
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "scripted-response",
+        "gen_ai.provider.name": "local-control",
+        "gen_ai.response.finish_reasons": [
+          "tool_calls"
+        ],
+        "gen_ai.input.messages": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "content": "Compute the SHA-256 of receipt-17.",
+                "type": "text"
+              }
+            ],
+            "name": null
+          }
+        ],
+        "gen_ai.output.messages": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "arguments": {
+                  "text": "receipt-17"
+                },
+                "name": "sha256",
+                "id": "digest-1",
+                "type": "tool_call"
+              }
+            ],
+            "finish_reason": "tool_calls",
+            "name": null
+          }
+        ],
+        "gen_ai.system_instructions": [
+          {
+            "content": "Use the digest tool; do not invent its result.",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spanId": "c51b21e71ab5e01d",
+      "timestamp": null,
+      "observedTimestamp": "1792314107859784271",
+      "eventName": "gen_ai.client.inference.operation.details",
+      "body": null,
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "scripted-response",
+        "gen_ai.provider.name": "local-control",
+        "gen_ai.response.finish_reasons": [
+          "stop"
+        ],
+        "gen_ai.input.messages": [
+          {
+            "role": "tool",
+            "parts": [
+              {
+                "response": {
+                  "sha256": "3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6"
+                },
+                "id": "digest-1",
+                "type": "tool_call_response"
+              }
+            ],
+            "name": null
+          }
+        ],
+        "gen_ai.output.messages": [
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "content": "SHA-256: 3d9b849244959f3c63eab896d824a077a145676a6205fb17b3d23df3a3f560b6",
+                "type": "text"
+              }
+            ],
+            "finish_reason": "stop",
+            "name": null
+          }
+        ]
+      }
+    }
+  ]
+}

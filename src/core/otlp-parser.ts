@@ -512,7 +512,13 @@ function fromFile(warning: ParseWarning, sourceFile: ParsedSpan['sourceFile']): 
  */
 export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOptions = {}): ParsedTrace {
   if (!inputs.length || inputs.length > MAX_TRACE_INPUTS) throw new TraceParseError(`Choose between 1 and ${MAX_TRACE_INPUTS} trace files.`);
-  if (inputs.length === 1) return parseTraceText(inputs[0]!.text, options);
+  if (inputs.length === 1) {
+    const input = inputs[0]!;
+    const trace = parseTraceText(input.text, options);
+    if (!input.sourceFormat && !input.warnings?.length) return trace;
+    return { ...trace, sourceFormat: input.sourceFormat ?? trace.sourceFormat,
+      warnings: [...(input.warnings ?? []), ...trace.warnings] };
+  }
   const all: ParsedSpan[] = [];
   const warnings: ParseWarning[] = [];
   const inputFiles: NonNullable<ParsedTrace['inputFiles']> = [];
@@ -532,7 +538,8 @@ export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOp
     } catch (error) {
       throw new TraceParseError(`File ${sourceFile.index} (${input.name}): ${error instanceof Error ? error.message : String(error)}`);
     }
-    inputFiles.push({ name: input.name, spanCount: collected.all.length, ...(logCount ? { logCount } : {}), sourceFormat: collected.sourceFormat });
+    inputFiles.push({ name: input.name, spanCount: collected.all.length, ...(logCount ? { logCount } : {}), sourceFormat: input.sourceFormat ?? collected.sourceFormat });
+    for (const warning of input.warnings ?? []) warnings.push(fromFile(warning, sourceFile));
     for (const warning of collected.warnings) warnings.push(fromFile(warning, sourceFile));
     for (const span of collected.all) {
       span.sourceFile = sourceFile;
@@ -547,7 +554,8 @@ export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOp
     }
   }
   const formats = new Set(inputFiles.map(file => file.sourceFormat));
-  const sourceFormat = formats.size === 1 ? inputFiles[0]!.sourceFormat : 'mixed-json';
+  const sourceFormat = formats.size === 1 ? inputFiles[0]!.sourceFormat
+    : [...formats].some(format => format === 'otlp-protobuf' || format === 'otlp-protobuf-framed') ? 'mixed' : 'mixed-json';
   if (!all.length) throw new TraceParseError('No valid spans were found. Select the trace export alongside its log files.');
   const unmatchedLogs = correlateLogs(all, logs, warnings);
   return { ...assembleTrace(all, warnings, sourceFormat, options), inputFiles, ...(unmatchedLogs.length ? { unmatchedLogs } : {}) };

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "node": "v26.7.0",
+  "scope": "Retained native SDK requests and actual Collector files, with SDK object observations checked before each CLI workflow. No source inference, model call or registry release is established.",
+  "oracleSha256": "12c175e7860f1dbdc63bda1b554f3d11f3079c5b0782352ca01eefcc9b151aae",
+  "supported": false,
+  "cases": [
+    {
+      "carrier": "collector",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "supported": false,
+      "result": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"collector.traces.otlp\": not a text file (a trace is JSON: OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)\n"
+      }
+    },
+    {
+      "carrier": "raw",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "supported": false,
+      "result": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Can't read \"http-01.logs.pb\": not a text file (a trace is JSON: OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)\n"
+      }
+    }
+  ],
+  "comparisons": [],
+  "discrepancies": [
+    {
+      "carrier": "collector",
+      "issue": "No native binary importer in this revision"
+    },
+    {
+      "carrier": "raw",
+      "issue": "No native binary importer in this revision"
+    }
+  ]
+}

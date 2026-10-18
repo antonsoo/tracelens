@@ -9,6 +9,20 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Native OTLP protobuf imports
+
+- Decode raw SDK OTLP/HTTP request bodies and Collector length-prefixed trace/log
+  files in the CLI and browser. Require explicit signal/framing conventions;
+  retain source format through file groups, comparisons and offline trace switches.
+- Use pinned official OTLP descriptors with the Protobuf-ES runtime. Check nested
+  wire boundaries, length widths and resource limits before semantic decoding;
+  two constructed malformed inputs accepted by the direct runtime are refused.
+- Keep exact nanosecond clocks, signed 64-bit attributes and complete byte
+  identities. Preserve missing event timestamps separately from observed times.
+  Unknown wire fields warn; the inspection JSON does not claim to be a wire archive.
+- [Actual SDK requests, Collector files, native JSON controls and browser evidence](studies/otlp-binary/README.md).
+  Source-only at capture time; no npm release accompanies this addition.
+
 ### Conflicting token counters
 
 - Reconcile all recognized usage aliases and conventions on a span. Keep a

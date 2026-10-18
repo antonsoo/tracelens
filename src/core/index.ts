@@ -13,3 +13,5 @@ export * from './compare.js';
 export * from './jaeger.js';
 export * from './links.js';
 export { buildLogsReport } from './logs.js';
+
+export * from './trace-file.js';

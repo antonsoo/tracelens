@@ -1,0 +1,35 @@
+{
+  "runtime": "@bufbuild/protobuf 2.16.0",
+  "node": "v26.7.0",
+  "scope": "Direct semantic-runtime calls versus the import guard on explicitly constructed malformed controls. Google refusals are independently retained in controls/oracle.json.",
+  "cases": [
+    {
+      "name": "nested-length-overrun",
+      "file": "nested-length-overrun.traces.pb",
+      "sha256": "39f2bc682b82be97329af471ef1012737eccbc0fd52369e2452dd7616f854b50",
+      "googleAccepted": false,
+      "unguarded": {
+        "accepted": true,
+        "resourceCount": 1
+      },
+      "guarded": {
+        "accepted": false,
+        "error": "Error: OTLP traces protobuf batch 1 could not be decoded: field extends beyond its enclosing message. No batches were imported."
+      }
+    },
+    {
+      "name": "length-overflow",
+      "file": "length-overflow.traces.pb",
+      "sha256": "eaa6a9d81353570625e6bf289c22553cfb609a765bfca26fba2b17bb1f2d7368",
+      "googleAccepted": false,
+      "unguarded": {
+        "accepted": true,
+        "resourceCount": 1
+      },
+      "guarded": {
+        "accepted": false,
+        "error": "Error: OTLP traces protobuf batch 1 could not be decoded: length prefix exceeds uint32. No batches were imported."
+      }
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export function decodeText(bytes: Uint8Array): string {
   // A NUL byte near the start means an image, an archive or a program. Parsed as JSON it gave
   // "Not valid JSON: Unexpected token ...", quoting the file's raw bytes.
   if (!utf16 && bytes.subarray(0, 64 * 1024).includes(0)) {
-    throw new Error("not a text file (a trace is JSON: OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)");
+    throw new Error("not a text file (expected UTF-8 or BOM-marked UTF-16)");
   }
   const encoding = utf16 ?? 'utf-8';
   try {

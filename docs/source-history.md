@@ -14,6 +14,7 @@ for retry, token-coverage, large-message and phone-layout corrections.
 
 | Area | Reproduced behavior and correction | Evidence |
 |---|---|---|
+| Native protobuf | SDK HTTP bodies and Collector protobuf files were rejected as non-text. Decode declared trace/log carriers directly, preserving typed values and rejecting malformed wire extents before measurements. | [Native capture and independent decoder controls](../studies/otlp-binary/README.md). |
 | Model rates | A recorded nano stream matched `gpt-5` and its token charge was overstated 25x. Match whole model names and providers, retaining component rates and source fields. | [Cost-accounting walkthrough and independent decimal check](cost-accounting.md). |
 | Contradictory counters | Input aliases 0 and 1,000,000 produced a complete $0 estimate. Keep disputed usage unknown across aliases/conventions, preserve source values and require unambiguous billing operands. | [Native SDK cases, retained inputs and offline receipts](../studies/usage-conflicts/README.md). |
 | Queued work | Jaeger references could attach to an unrelated local span with a reused span ID. Resolve links by complete trace/span identity, retaining missing targets and omissions. | [SDK queue workflow](span-links.md). |

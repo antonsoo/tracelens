@@ -1,0 +1,252 @@
+{
+  "stats": {
+    "startTime": "2026-10-18T09:23:16.837Z",
+    "duration": 49493.676,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "format": "collector",
+      "width": 375,
+      "browser": "chromium",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "spanDownloadSha256": "3602b0f7f062b7362200e225de722a140f8b2226c8ea06c0ae6a64f5b2ae848e",
+      "modelDownloadSha256": "a688f3285fc1673ca369f205233306d5ae0e926928d493feb50406f07d3173db",
+      "linksDownloadSha256": "978c8400e01f026beb17a0878c4002629ebf8637863a3f587e8d1fe485564e18",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "collector",
+      "width": 375,
+      "browser": "firefox",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "spanDownloadSha256": "3602b0f7f062b7362200e225de722a140f8b2226c8ea06c0ae6a64f5b2ae848e",
+      "modelDownloadSha256": "a688f3285fc1673ca369f205233306d5ae0e926928d493feb50406f07d3173db",
+      "linksDownloadSha256": "978c8400e01f026beb17a0878c4002629ebf8637863a3f587e8d1fe485564e18",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "collector",
+      "width": 1440,
+      "browser": "chromium",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "spanDownloadSha256": "3602b0f7f062b7362200e225de722a140f8b2226c8ea06c0ae6a64f5b2ae848e",
+      "modelDownloadSha256": "a688f3285fc1673ca369f205233306d5ae0e926928d493feb50406f07d3173db",
+      "linksDownloadSha256": "978c8400e01f026beb17a0878c4002629ebf8637863a3f587e8d1fe485564e18",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "collector",
+      "width": 1440,
+      "browser": "firefox",
+      "files": [
+        "collector.traces.otlp",
+        "collector.logs.otlp"
+      ],
+      "spanDownloadSha256": "3602b0f7f062b7362200e225de722a140f8b2226c8ea06c0ae6a64f5b2ae848e",
+      "modelDownloadSha256": "a688f3285fc1673ca369f205233306d5ae0e926928d493feb50406f07d3173db",
+      "linksDownloadSha256": "978c8400e01f026beb17a0878c4002629ebf8637863a3f587e8d1fe485564e18",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "raw",
+      "width": 1440,
+      "browser": "chromium",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "spanDownloadSha256": "e2d1116d2294dd6ff06bde0f7641378d30d8a2e6b448e048170cdc608acb88e4",
+      "modelDownloadSha256": "866758e32a69db49a109f1b3f1866ab1c4e13350e6e065889f40238d54ec4057",
+      "linksDownloadSha256": "c5fc1e0e252a16a055bc2ce82d6c1b7f5f5d277566de21f3a16e0d1b91c9bfcf",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "raw",
+      "width": 1440,
+      "browser": "firefox",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "spanDownloadSha256": "e2d1116d2294dd6ff06bde0f7641378d30d8a2e6b448e048170cdc608acb88e4",
+      "modelDownloadSha256": "866758e32a69db49a109f1b3f1866ab1c4e13350e6e065889f40238d54ec4057",
+      "linksDownloadSha256": "c5fc1e0e252a16a055bc2ce82d6c1b7f5f5d277566de21f3a16e0d1b91c9bfcf",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "raw",
+      "width": 375,
+      "browser": "chromium",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "spanDownloadSha256": "e2d1116d2294dd6ff06bde0f7641378d30d8a2e6b448e048170cdc608acb88e4",
+      "modelDownloadSha256": "866758e32a69db49a109f1b3f1866ab1c4e13350e6e065889f40238d54ec4057",
+      "linksDownloadSha256": "c5fc1e0e252a16a055bc2ce82d6c1b7f5f5d277566de21f3a16e0d1b91c9bfcf",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "format": "raw",
+      "width": 375,
+      "browser": "firefox",
+      "files": [
+        "http-01.logs.pb",
+        "http-01.traces.pb",
+        "http-02.traces.pb",
+        "http-02.logs.pb",
+        "http-03.traces.pb",
+        "http-04.traces.pb",
+        "http-05.traces.pb",
+        "http-06.traces.pb"
+      ],
+      "spanDownloadSha256": "e2d1116d2294dd6ff06bde0f7641378d30d8a2e6b448e048170cdc608acb88e4",
+      "modelDownloadSha256": "866758e32a69db49a109f1b3f1866ab1c4e13350e6e065889f40238d54ec4057",
+      "linksDownloadSha256": "c5fc1e0e252a16a055bc2ce82d6c1b7f5f5d277566de21f3a16e0d1b91c9bfcf",
+      "nativeTraceIds": [
+        "f732841dd31bc72438c9543ff68cbc93",
+        "f4e896a6497cb19ad2bfc1a3fc1fae67"
+      ],
+      "spans": 6,
+      "logs": 2,
+      "firstImportOffline": true,
+      "observedTimePreserved": true,
+      "missingEventTimePreserved": true,
+      "crossTraceRoundTrip": true,
+      "errors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "accessibilityViolations": [],
+      "horizontalOverflow": false
+    }
+  ]
+}

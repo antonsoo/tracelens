@@ -17,7 +17,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
   const fileInput = h('input', {
     type: 'file',
     multiple: true,
-    accept: '.json,.jsonl,.ndjson,application/json',
+    accept: '.json,.jsonl,.ndjson,.pb,.otlp,application/json,application/x-protobuf',
     className: 'visually-hidden',
     id: 'tl-file-input',
     tabindex: '-1',
@@ -33,7 +33,7 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     { className: 'tl-dropzone-card' },
     buildSignalSvg(),
     h('h1', {}, 'Drop trace files to inspect them together'),
-    h('p', {}, 'OTLP/JSON from the OpenTelemetry SDK or a collector\'s file exporter (one batch per line), or traces downloaded from Jaeger as JSON. Nothing leaves this browser tab.'),
+    h('p', {}, 'OTLP/JSON, native OTLP protobuf (.traces.pb / .logs.pb), Collector protobuf files (.traces.otlp / .logs.otlp), or Jaeger JSON. Nothing leaves this browser tab.'),
     h(
       'button',
       { className: 'tl-btn primary', 'data-focus-key': 'choose-file', onClick: () => fileInput.click() },

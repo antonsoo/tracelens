@@ -7,6 +7,7 @@
 // installs it).
 import { readFile } from 'node:fs/promises';
 import { decodeText } from '../core/decode.js';
+import { decodeTraceFile } from '../core/trace-file.js';
 import { parseTraceInputs, MAX_TRACE_INPUTS, buildSummary, buildCostReport, buildTiming, compareTraces, DEFAULT_PRICE_TABLE, isPriceEntry, spanDurationMs, TraceParseError } from '../core/index.js';
 import type { ParsedTrace, PriceEntry, TraceListing } from '../core/index.js';
 import { bold, cyan, dim, fmtInt, fmtMs, fmtUsd, green, heading, magenta, red, safe, table, yellow } from './format.js';
@@ -19,7 +20,7 @@ import { formatLinks } from './links-report.js';
 import { buildLogsReport } from '../core/logs.js';
 import { formatLogs } from './logs-report.js';
 
-const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, a collector's JSON Lines, or Jaeger JSON)
+const HELP = `${bold('tracelens')} — a terminal summary for agent traces (OTLP/JSON, declared OTLP protobuf, or Jaeger JSON)
 
 ${bold('Usage:')}
   tracelens summary <trace.json> [more-files...] [--trace <id>] [--prices <prices.json>]
@@ -46,6 +47,9 @@ A file that holds several traces is read one trace at a time: the one with
 the most spans, or the one whose ID (or the start of it) follows --trace.
 Related files are combined before choosing a trace. Select at most 32 files
 per group, with no repeated span identities; every selected file must parse.
+Native protobuf: .traces.pb / .logs.pb are raw OTLP requests;
+.traces.otlp / .logs.otlp are Collector length-prefixed files.
+Signal and framing are explicit; binary input is not guessed from failed JSON.
 
 ${bold('Run it without installing:')}
   npx @antonsoloviev/tracelens summary trace.json
@@ -69,7 +73,7 @@ async function loadTrace(path: string | string[], traceId?: string): Promise<Par
   if (!paths.length || paths.length > MAX_TRACE_INPUTS) throw new Error(`Choose between 1 and ${MAX_TRACE_INPUTS} trace files per group.`);
   const inputs = [];
   for (const filename of paths) {
-    try { inputs.push({ name: filename, text: decodeText(await readFile(filename)) }); }
+    try { inputs.push(decodeTraceFile(await readFile(filename), filename)); }
     catch (err) { throw new Error(`Can't read "${safe(filename)}": ${safe(err instanceof Error ? err.message : String(err))}`); }
   }
   try {

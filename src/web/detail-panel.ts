@@ -199,7 +199,7 @@ export function renderDetailPanel(
         scopeName: log.scopeName, scopeVersion: log.scopeVersion,
         resourceAttributes: log.resourceAttributes, droppedAttributesCount: log.droppedAttributesCount,
       })),
-      h('p', { className: 'dim' }, 'Download span JSON includes the complete decoded record and original export fields.'),
+      h('p', { className: 'dim' }, 'Download span JSON includes the complete decoded record and retained export fields.'),
     ))), 20));
   } else if (tab === 'events') {
     panel.appendChild(pagedEvidence(span, 'Events', span.events, (page) => h('div', {}, ...page.map((ev) => {

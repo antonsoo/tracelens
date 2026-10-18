@@ -213,7 +213,7 @@ export function renderComparison(
   const input = h('input', {
     type: 'file',
     multiple: true,
-    accept: '.json,.jsonl,.ndjson,application/json',
+    accept: '.json,.jsonl,.ndjson,.pb,.otlp,application/json,application/x-protobuf',
     className: 'visually-hidden',
     tabindex: '-1',
     'aria-label': 'Replace candidate trace',

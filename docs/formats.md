@@ -11,6 +11,46 @@ The original convention audit below checked the cited files directly on
 "development" upstream and change between checks — re-verify before relying
 on this for a new integration.
 
+## Native OTLP protobuf (source checkout)
+
+`decodeTraceFile(bytes, name)` decodes a declared native input into the same
+inspection model. It does not retry malformed JSON as binary. Protobuf carries
+no signal discriminator, so filenames explicitly select both message kind and
+framing:
+
+| Filename ending | Signal | Framing |
+| --- | --- | --- |
+| `.traces.pb` | Traces | One raw OTLP/HTTP protobuf request |
+| `.logs.pb` | Logs | One raw OTLP/HTTP protobuf request |
+| `.traces.otlp` | Traces | Collector batches, four-byte big-endian length prefix |
+| `.logs.otlp` | Logs | Collector batches, four-byte big-endian length prefix |
+
+Bare `traces.pb` and `logs.otlp` also work. Library callers can pass
+`{ signal: 'traces', framing: 'raw' }` as the third argument when the filename
+does not declare it. The CLI, file picker, comparison inputs and offline trace
+selection share this decoder. Select logs alongside their trace exports.
+
+The pinned OpenTelemetry schemas and generated Protobuf runtime interpret the
+values. A separate check enforces each nested message's byte extent and rejects
+length overflows before decoding. Invalid UTF-8 and incomplete frames refuse
+the whole file; the browser retains its previous report on failure. Limits are
+25 MiB of binary data, 100,000 batches, 64 nested message/group levels, one
+million wire records and 26,214,400 decoded UTF-16 units. Deep span ancestry is
+represented by IDs, not nested messages, and is not this nesting limit.
+
+`sourceFormat` distinguishes `otlp-protobuf`, `otlp-protobuf-framed` and a mixed
+JSON/binary group. Uint64 clocks and int64 attributes retain exact decimal
+representations; byte IDs normalize through the existing decoder. The JSON
+inspection view contains recognized decoded fields, not the original binary
+bytes. Unknown wire fields produce a warning and remain available only in the
+original file. Resource batches join without inventing physical source lines.
+
+Compression, gRPC framing, metrics, profiles and custom encoding extensions are
+not supported by these filename conventions. A complete file ending exactly
+between batches cannot reveal that later batches were omitted.
+[Native SDK/Collector capture, Google decoder checks and current verification](../studies/otlp-binary/README.md)
+record the tested surface. This source addition is not an npm release.
+
 ## 1. Wire format: OTLP/JSON
 
 **Field spelling conflicts (source checkout).** CamelCase and snake_case
