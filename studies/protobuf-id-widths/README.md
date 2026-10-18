@@ -81,3 +81,17 @@ All [39 compiled files](results/package.json) match a separate non-editable
 local package installation. Its real CLI repeats all sixteen width controls
 without disagreement on [Node 20.0.0](results/installed-node20.json) and
 [Node 24.21.0](results/installed-node24.json). No npm registry release is made.
+
+## Public delivery
+
+Source `fd4704d` and verification `f306bec` were pushed to main. Deployment
+`cffc0db` includes both the zero-identity and exact-byte-width corrections,
+while retaining prior hashed assets. All 36 files in the clean production build
+match their [canonical public bytes](results/hosted-bytes.json). The
+[public browser receipt](results/hosted-browser.json) repeats all 26 workflows
+against `https://antonsoo.github.io/tracelens/`, including offline import,
+actual evidence downloads, invalid-context comparison refusal, atomic
+wrong-width rejection and successful retry in both engines.
+
+These checks establish the captured source/local-package/public-demo states
+separately. Package metadata remains 0.3.3; no npm registry release is included.

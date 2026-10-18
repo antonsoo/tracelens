@@ -76,3 +76,9 @@ all 18 native identity/CLI cases without a disagreement on
 [39 compiled files](results/package.json) match the clean build. The four local
 browser screenshots were opened and inspected; they retain unknown full totals
 and the known retained subtotal rather than displaying the invalid calls.
+
+Deployment `cffc0db` also includes this correction. The subsequent
+[canonical byte and public browser checks](../protobuf-id-widths/README.md#public-delivery)
+repeat all fourteen zero-identity cases on the actual public demo, alongside
+the original native imports and exact-width rejection checks. This establishes
+public behavior independently of the source and installed-package results.
