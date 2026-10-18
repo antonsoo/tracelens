@@ -86,4 +86,3 @@ export const LogsService: GenService<{
   },
 }> = /*@__PURE__*/
   serviceDesc(file_opentelemetry_proto_collector_logs_v1_logs_service, 0);
-

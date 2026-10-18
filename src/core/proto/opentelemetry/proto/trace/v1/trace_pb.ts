@@ -374,4 +374,3 @@ export enum SpanFlags {
  */
 export const SpanFlagsSchema: GenEnum<SpanFlags> = /*@__PURE__*/
   enumDesc(file_opentelemetry_proto_trace_v1_trace, 0);
-

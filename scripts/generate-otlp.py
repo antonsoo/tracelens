@@ -64,7 +64,8 @@ def main():
         content = (
             "// OTLP schema: Copyright The OpenTelemetry Authors. Apache-2.0.\n"
             "// See LICENSE-OTEL and scripts/otlp-schemas.json. Regenerate with scripts/generate-otlp.py.\n"
-            + file.content
+            + file.content.rstrip()
+            + "\n"
         )
         destination.write_text(content)
         files.append(

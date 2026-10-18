@@ -35,33 +35,33 @@
   "generated": [
     {
       "file": "opentelemetry/proto/common/v1/common_pb.ts",
-      "bytes": 7534,
-      "sha256": "a58e4c36d405890cec48f4f427e38bf160bf0a3671d78fae6e6fccf5ac291900"
+      "bytes": 7533,
+      "sha256": "a6bf54d0c6522041d160b69e2a6bfd33813f64e0e49e2213e681a33c8bf4b011"
     },
     {
       "file": "opentelemetry/proto/resource/v1/resource_pb.ts",
-      "bytes": 2352,
-      "sha256": "c2ffa199b2f76d3a0b3c994cf82e46ebc03cac447219cbe036b3e1b42b576cd8"
+      "bytes": 2351,
+      "sha256": "35064737a50b000fea36781a95c5f67789d10cb1357863ec6dfd4311843fb912"
     },
     {
       "file": "opentelemetry/proto/trace/v1/trace_pb.ts",
-      "bytes": 13127,
-      "sha256": "e8371ffe7fb6663b7114d646986464fc7030f4438f453cf82e6f2303255c94a4"
+      "bytes": 13126,
+      "sha256": "4bf6b72c527f91a1de88c11c1746c11691feeac29e2cd11714efd31db0c60e52"
     },
     {
       "file": "opentelemetry/proto/collector/trace/v1/trace_service_pb.ts",
-      "bytes": 4785,
-      "sha256": "e8d39d0570466908f5974da44e69fbca0fc750d43cdba1f5f4d21802b781f60e"
+      "bytes": 4784,
+      "sha256": "7b181edd38c1836fc2cad97bb418535f16aca73349ca28e4dc84bf8c9d9c4862"
     },
     {
       "file": "opentelemetry/proto/logs/v1/logs_pb.ts",
-      "bytes": 10567,
-      "sha256": "40b5293ef266313a67a1e37b14c2700015159bd6c9eaa52162279ee9f93a324f"
+      "bytes": 10566,
+      "sha256": "3ba6ce5f1f564e5e7993f5b1faeddf7b16e4e15a634f3aeea067e9524b378cde"
     },
     {
       "file": "opentelemetry/proto/collector/logs/v1/logs_service_pb.ts",
-      "bytes": 4708,
-      "sha256": "1b8f37e10302b0302822c1443d0da1f764962ac9d5594e75c61bd72c9b21c674"
+      "bytes": 4707,
+      "sha256": "64d8ad0ee32ffc5fec7f76726aad13776c03ad730864f5c0e0c899404d7ea432"
     }
   ]
 }

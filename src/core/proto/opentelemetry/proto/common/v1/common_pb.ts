@@ -203,4 +203,3 @@ export type EntityRef = Message<"opentelemetry.proto.common.v1.EntityRef"> & {
  */
 export const EntityRefSchema: GenMessage<EntityRef> = /*@__PURE__*/
   messageDesc(file_opentelemetry_proto_common_v1_common, 5);
-

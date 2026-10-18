@@ -312,4 +312,3 @@ export enum LogRecordFlags {
  */
 export const LogRecordFlagsSchema: GenEnum<LogRecordFlags> = /*@__PURE__*/
   enumDesc(file_opentelemetry_proto_logs_v1_logs, 1);
-

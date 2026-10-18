@@ -42,4 +42,3 @@ export type Resource = Message<"opentelemetry.proto.resource.v1.Resource"> & {
  */
 export const ResourceSchema: GenMessage<Resource> = /*@__PURE__*/
   messageDesc(file_opentelemetry_proto_resource_v1_resource, 0);
-
