@@ -1,0 +1,208 @@
+{
+  "scope": "Non-editable installation of a locally packed artifact; not an npm registry release. Built from clean archive 3dff071 on Node 24.21.0.",
+  "package": {
+    "name": "@antonsoloviev/tracelens",
+    "version": "0.3.3",
+    "filename": "antonsoloviev-tracelens-0.3.3.tgz",
+    "sha256": "0077dffede4a6f19e6a2f436d84f2fe346e29d7132ab54b9c75700650f7fea98"
+  },
+  "compiledFilesMatch": 39,
+  "licensesMatch": true,
+  "files": [
+    {
+      "file": "dist-cli/cli/compare-report.js",
+      "bytes": 3138,
+      "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a"
+    },
+    {
+      "file": "dist-cli/cli/cost-report.js",
+      "bytes": 2362,
+      "sha256": "43fde9bddf1fb56c99761915dfa4c3c4af0744c845dccc603348926d33e37b5e"
+    },
+    {
+      "file": "dist-cli/cli/format.js",
+      "bytes": 1815,
+      "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea"
+    },
+    {
+      "file": "dist-cli/cli/index.js",
+      "bytes": 17150,
+      "sha256": "3a30cba91749af028e09b738e70d8017a62bf1dd3a73f4ef81cdd5ed8f76dabf"
+    },
+    {
+      "file": "dist-cli/cli/links-report.js",
+      "bytes": 1278,
+      "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+    },
+    {
+      "file": "dist-cli/cli/logs-report.js",
+      "bytes": 1133,
+      "sha256": "50d452f6b19d143ff8fbff89c8f33bb7cab27df226b958ef9b05e534f74cd92f"
+    },
+    {
+      "file": "dist-cli/cli/timing-report.js",
+      "bytes": 1708,
+      "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9"
+    },
+    {
+      "file": "dist-cli/cli/version.js",
+      "bytes": 115,
+      "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+    },
+    {
+      "file": "dist-cli/core/attributes.js",
+      "bytes": 6575,
+      "sha256": "367921d52cb5d6c338120edf5a7142884af35aab1e02948af37fcc2f7d12397b"
+    },
+    {
+      "file": "dist-cli/core/compare.js",
+      "bytes": 8930,
+      "sha256": "30b519a06adeeaf230bd51aac16d52cb91623482420998046507fd9268dbba71"
+    },
+    {
+      "file": "dist-cli/core/cost-format.js",
+      "bytes": 364,
+      "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f"
+    },
+    {
+      "file": "dist-cli/core/cost-report.js",
+      "bytes": 3941,
+      "sha256": "c9ca49313c6658511666b460b4b224a9dfa08f8df3a7882a4a49fc5987cec887"
+    },
+    {
+      "file": "dist-cli/core/cost.js",
+      "bytes": 10333,
+      "sha256": "f1da1334d97f67dd28197c679bf4332bdb0a136c49b76283cd3fb39a750b861e"
+    },
+    {
+      "file": "dist-cli/core/critical-path.js",
+      "bytes": 1313,
+      "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96"
+    },
+    {
+      "file": "dist-cli/core/decode.js",
+      "bytes": 1351,
+      "sha256": "610d527f9f2a7583baa37b6149b5b4b2618246d1b966de4f9357c43571399a32"
+    },
+    {
+      "file": "dist-cli/core/field-alias.js",
+      "bytes": 601,
+      "sha256": "439e670cfe9292fbe1082bf77fe4d7d446233ab5b081475a4452a39d14216626"
+    },
+    {
+      "file": "dist-cli/core/identity.js",
+      "bytes": 1573,
+      "sha256": "2302db98279d1a895a3a9310786607914bc9723ac8b6dcf2a5125ab52d6f853f"
+    },
+    {
+      "file": "dist-cli/core/index.js",
+      "bytes": 503,
+      "sha256": "fac1f74730eedb2d43d219803b29601088f208de655a1bc478bf757e0459b83b"
+    },
+    {
+      "file": "dist-cli/core/jaeger.js",
+      "bytes": 12280,
+      "sha256": "80203522d62c0a88a5ec76f2168213bcb85c273cccfd44d620f063f8d0f07199"
+    },
+    {
+      "file": "dist-cli/core/layout.js",
+      "bytes": 1628,
+      "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e"
+    },
+    {
+      "file": "dist-cli/core/links.js",
+      "bytes": 2244,
+      "sha256": "ead1f314baa8eb9c6430e7e38218673379683be5d771d2e76496a5478d1c13ab"
+    },
+    {
+      "file": "dist-cli/core/logs.js",
+      "bytes": 10251,
+      "sha256": "bcd3fd46496848d0fefb6c238a7bc3b3931c47bb1a9deadf7d91d17d6a1e0215"
+    },
+    {
+      "file": "dist-cli/core/normalize.js",
+      "bytes": 36468,
+      "sha256": "7814bbee7cc3e049e76e0c4a6459167ddbd91c62f71dc1d31bd55f58ffae5d34"
+    },
+    {
+      "file": "dist-cli/core/otlp-parser.js",
+      "bytes": 29614,
+      "sha256": "0b50c82771f57a2b8e9de61c913331b32028ea2fe14f0c0d804128d754771fd8"
+    },
+    {
+      "file": "dist-cli/core/payload-depth.js",
+      "bytes": 855,
+      "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d"
+    },
+    {
+      "file": "dist-cli/core/pricing.js",
+      "bytes": 6360,
+      "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4"
+    },
+    {
+      "file": "dist-cli/core/proto/opentelemetry/proto/collector/logs/v1/logs_service_pb.js",
+      "bytes": 2868,
+      "sha256": "2c491fd99d42968e68c4c76a3e332186cd11e6287ff421bf2bc558b5711d6a8c"
+    },
+    {
+      "file": "dist-cli/core/proto/opentelemetry/proto/collector/trace/v1/trace_service_pb.js",
+      "bytes": 2923,
+      "sha256": "0489c4def9e8e91d3813478f62efdcf1f2bda2c13ed448cb757d104fa4c0ec1b"
+    },
+    {
+      "file": "dist-cli/core/proto/opentelemetry/proto/common/v1/common_pb.js",
+      "bytes": 3405,
+      "sha256": "ef967e922a80dec727e129ca0293d34d6c5a78d1eca61fe0993f062d55240cb8"
+    },
+    {
+      "file": "dist-cli/core/proto/opentelemetry/proto/logs/v1/logs_pb.js",
+      "bytes": 8743,
+      "sha256": "b4caedc79a64e173146bd1a60a7ef46927b4008bc05ac2ddd27be428af745f2e"
+    },
+    {
+      "file": "dist-cli/core/proto/opentelemetry/proto/resource/v1/resource_pb.js",
+      "bytes": 1530,
+      "sha256": "366803a9d5951de8bcebec6d88f69d3f76f56e55570038cb13b50e68ba027591"
+    },
+    {
+      "file": "dist-cli/core/proto/opentelemetry/proto/trace/v1/trace_pb.js",
+      "bytes": 8115,
+      "sha256": "fc68bc98ce3be2a97a124da0dba0ffc213784905f0923f4f9a55558bf4c57f8b"
+    },
+    {
+      "file": "dist-cli/core/protobuf-wire.js",
+      "bytes": 4800,
+      "sha256": "290fcc936eda59b8f472482fa4fba8c3a80e94b1de35a8e583c39cc72d8c7253"
+    },
+    {
+      "file": "dist-cli/core/read-json.js",
+      "bytes": 2212,
+      "sha256": "a316b57abc90e5ee27b4104166ad76d793bcb81eab4f11138fc78cddb9bf3bbb"
+    },
+    {
+      "file": "dist-cli/core/status.js",
+      "bytes": 2099,
+      "sha256": "4ef1135476695abfa6019600bcae2c00ec111d7dda28259a9323c6ab9aa95b5b"
+    },
+    {
+      "file": "dist-cli/core/summary.js",
+      "bytes": 6176,
+      "sha256": "1ba16be223c06b683fcaf825faeac24e8d5b5370e5767d190e7276f0912dc49f"
+    },
+    {
+      "file": "dist-cli/core/timing.js",
+      "bytes": 5050,
+      "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607"
+    },
+    {
+      "file": "dist-cli/core/trace-file.js",
+      "bytes": 6184,
+      "sha256": "7e59b985bec75b333f7a121d2041fee994e10108b2fe6c523e2f8bf3af418679"
+    },
+    {
+      "file": "dist-cli/core/types.js",
+      "bytes": 327,
+      "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974"
+    }
+  ]
+}

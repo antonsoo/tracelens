@@ -12,8 +12,8 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
-from pathlib import Path
 import subprocess
+from pathlib import Path
 
 from google.protobuf.compiler import plugin_pb2
 from google.protobuf.descriptor_pb2 import FileDescriptorProto
