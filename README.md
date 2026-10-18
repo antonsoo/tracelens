@@ -106,14 +106,14 @@ on npm; the command it installs is `tracelens`).
 
 ## Features
 
-- **Native OTLP protobuf (source checkout)** — import SDK HTTP request bodies
+- **Native OTLP protobuf** — import SDK HTTP request bodies
   and Collector length-prefixed trace/log files directly, with explicit signal
   and framing. Preserve exact IDs, nanosecond clocks and typed attributes through
   the existing inspection and comparison workflows. Eleven independent wire
   controls include two malformed inputs accepted by the unguarded runtime;
   import checks reject them before producing measurements.
   [Native capture, filenames, browser downloads and limits](studies/otlp-binary/README.md).
-  The npm package and public demo have not yet been updated for this addition.
+  Available in the public demo and source CLI; no npm registry release yet.
 - **OTLP/JSON parser** — resourceSpans → scopeSpans → spans, typed
   `AnyValue` attribute decoding, tree building with graceful handling of
   malformed spans, missing parents and clock skew (see `docs/formats.md`).

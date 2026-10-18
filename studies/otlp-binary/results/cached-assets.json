@@ -1,0 +1,169 @@
+{
+  "scope": "Exact prior hashed assets remain available after deployment; this checks URL bytes, not execution of prior UI analysis.",
+  "priorDeployment": "570e576",
+  "deployment": "c5437af",
+  "checkedAtUtc": "2026-10-18T09:56:10.643Z",
+  "files": [
+    {
+      "path": "assets/ibm-plex-mono-400-cyrillic-BSMlKf0J.woff2",
+      "status": 200,
+      "bytes": 8356,
+      "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-cyrillic-ext-xuaO2J-f.woff2",
+      "status": 200,
+      "bytes": 6912,
+      "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+      "status": 200,
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-latin-ext-BmRBH3aV.woff2",
+      "status": 200,
+      "bytes": 13348,
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-vietnamese-BulugwFq.woff2",
+      "status": 200,
+      "bytes": 5868,
+      "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-cyrillic-Bq9vWWag.woff2",
+      "status": 200,
+      "bytes": 8460,
+      "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-cyrillic-ext-BqneJy0T.woff2",
+      "status": 200,
+      "bytes": 6972,
+      "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+      "status": 200,
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-latin-ext-CAhNIIs5.woff2",
+      "status": 200,
+      "bytes": 13432,
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-vietnamese-DZ4AoWbu.woff2",
+      "status": 200,
+      "bytes": 6040,
+      "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-cyrillic-CTOM6hUh.woff2",
+      "status": 200,
+      "bytes": 9352,
+      "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-cyrillic-ext-V-xxqcpd.woff2",
+      "status": 200,
+      "bytes": 7692,
+      "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2",
+      "status": 200,
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-latin-ext-D38SheWl.woff2",
+      "status": 200,
+      "bytes": 14328,
+      "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-vietnamese-D2EvbN8M.woff2",
+      "status": 200,
+      "bytes": 6932,
+      "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-sans-cyrillic-BAAhND-U.woff2",
+      "status": 200,
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-sans-cyrillic-ext-d45eAU9y.woff2",
+      "status": 200,
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-sans-greek-CmyJS8uq.woff2",
+      "status": 200,
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+      "status": 200,
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-sans-latin-ext-CIII54If.woff2",
+      "status": 200,
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81",
+      "matches": true
+    },
+    {
+      "path": "assets/ibm-plex-sans-vietnamese-Dg1JeJN0.woff2",
+      "status": 200,
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2",
+      "matches": true
+    },
+    {
+      "path": "assets/index-BMzOz67d.js",
+      "status": 200,
+      "bytes": 137691,
+      "sha256": "47ba5c229f9737b76263512d81308ff2c565f72ffb6ad2532977ad8232177804",
+      "matches": true
+    },
+    {
+      "path": "assets/index-Dgc6-VJk.css",
+      "status": 200,
+      "bytes": 36138,
+      "sha256": "33800311762e4fa368fffe7337261057d49598d745d6abfddf76c360f254650f",
+      "matches": true
+    }
+  ]
+}

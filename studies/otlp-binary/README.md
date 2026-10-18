@@ -139,7 +139,7 @@ workflows, with eight native import/navigation contexts at 1440px and 375px.
 Each validates actual downloads, complete identities, exact clocks and attributes,
 missing event times, offline cross-trace navigation, accessibility and overflow.
 Two further cases retain a comparison after a corrupt binary replacement and
-successfully retry. These are local production-build checks, not hosted evidence.
+successfully retry. These are local production-build checks; the separate hosted checks below use the canonical public URL.
 
 ## Limits
 
@@ -154,5 +154,38 @@ successfully retry. These are local production-build checks, not hosted evidence
   batches. No missing spans, duration, event times or outcomes are reconstructed.
 - Existing per-file identity, correlation, status and usage rules still apply.
   Duplicate identities across related files refuse the whole group.
-- Source and local browser builds contain the addition. No public deployment or
-  npm registry release has been made for it at this stage.
+- Source, a locally packed CLI and the public demo contain the addition. Package
+  metadata remains 0.3.3; no npm registry release accompanies it.
+
+## Clean builds and publication
+
+The clean archive at `3dff071` was installed and built on Node 24.21.0. Lint,
+types, all 585 unit checks and all 32 CLI integrations pass. An initial full
+browser run passed 149 cases and failed seven: six exceeded the existing
+30-second accessibility budget, and one selected a span while the current
+trace was being reloaded. All seven pass in an isolated ten-case rerun, using
+one worker and a 120-second overall budget with the original assertions.
+The unit parsing deadline also initially failed under host contention; isolated
+baseline and corrected checks, and the subsequent complete unit run, pass.
+No product deadline or assertion was weakened.
+
+A non-editable local package repeats the original SDK observations, 24 CLI
+operations and four binary-versus-native-JSON comparisons on both
+[Node 20.0.0](results/installed-node20.json) and
+[Node 24.21.0](results/installed-node24.json). All available comparison deltas
+are zero. The [package receipt](results/package.json) verifies all 39 compiled
+files and the third-party license copies against the clean build. This is a
+packed-artifact check, not an npm release.
+
+Source commits `8234ad7`, `3dff071` and `c999afc` were pushed to main. Static
+deployment `c5437af` adds the native importer while retaining all previous
+hashed assets. The [canonical byte check](results/hosted-bytes.json) compares
+every file in the clean production build with its normal public URL; it does
+not establish other hosted files or registry contents.
+
+The [public browser receipt](results/hosted-browser.json) records all ten native
+workflows passing on `https://antonsoo.github.io/tracelens/` in Chromium and
+Firefox, at desktop and phone widths. It repeats first import while offline,
+exact evidence downloads, cross-trace navigation and recovery after a corrupt
+comparison replacement. All 36 canonical build files match their captured
+production hashes. No npm registry release is established by these checks.
