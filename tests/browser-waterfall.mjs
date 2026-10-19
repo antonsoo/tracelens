@@ -134,7 +134,10 @@ export async function auditWaterfall(browser, target, root) {
     assert.match(await page.locator('.tl-summary').innerText(), /31\.80 s/);
     const options = await picker.locator('option').allInnerTexts();
     assert.equal(options.length, 3);
-    assert.match(options.find((text) => text.includes('16 spans')), /invoke_agent incident-analyst · 16 spans · 31\.80 s/);
+    const largest = options.find((text) => text.includes('16 spans'));
+    assert.match(largest, /invoke_agent incident-analyst/);
+    assert.match(largest, /2026-09-24 17:03:12 UTC/);
+    assert.match(largest, /16 spans · 31\.80 s$/);
     const sixSpans = await picker.locator('option').evaluateAll((all) => all.filter((o) => o.textContent.includes('· 6 spans')).map((o) => o.value));
     assert.equal(sixSpans.length, 2);
     await picker.selectOption(sixSpans[0]);
@@ -144,8 +147,8 @@ export async function auditWaterfall(browser, target, root) {
     await page.getByLabel('Candidate trace file').setInputFiles(file('collector.jsonl', collector));
     await page.getByRole('heading', { name: 'Compare runs', exact: true }).waitFor();
     const names = await page.locator('.tl-comparison-shell').innerText();
-    assert.match(names, new RegExp(`collector\\.jsonl · trace ${sixSpans[0].slice(0, 8)} of 3`));
-    assert.match(names, /collector\.jsonl · trace [0-9a-f]{8} of 3/);
+    assert.match(names, new RegExp(`collector\\.jsonl · trace ${sixSpans[0].slice(0, 8)}…? of 3`));
+    assert.match(names, /collector\.jsonl · trace [0-9a-f]{8}…? of 3/);
 
     // A cut-off last line is skipped with a warning; a file that is not a trace says so.
     await page.getByRole('button', { name: 'Close comparison' }).click();

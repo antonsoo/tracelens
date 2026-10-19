@@ -130,7 +130,7 @@ test('large cost ledgers retain every record in exports while allowing the last 
   const group = input.resourceSpans[0].scopeSpans[0];
   const template = group.spans.find((span) => span.name === 'ai.streamText.doStream');
   group.spans = Array.from({ length: 1001 }, (_, i) => ({
-    ...template, name: `call-${i}`, spanId: i.toString(16).padStart(16, '0'), parentSpanId: undefined,
+    ...template, name: `call-${i}`, spanId: (i + 1).toString(16).padStart(16, '0'), parentSpanId: undefined,
     attributes: template.attributes.filter((a) => !a.key.startsWith('ai.prompt') && !a.key.startsWith('ai.response')),
   }));
   await page.goto('./');
