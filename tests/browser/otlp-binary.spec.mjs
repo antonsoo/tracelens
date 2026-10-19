@@ -102,6 +102,7 @@ test('a malformed binary replacement preserves the complete comparison and a ret
   await expect(page.getByRole('alert')).toContainText('enclosing message');
   expect((await download(page, 'Export JSON')).value).toEqual(before);
   await page.getByLabel('Replace candidate trace', { exact: true }).setInputFiles(paths);
+  await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
   await expect(page.getByRole('alert')).toHaveCount(0);
-  await expect.poll(async () => (await download(page, 'Export JSON')).value.inputFiles.candidate[0].sourceFormat).toBe('otlp-protobuf-framed');
+  expect((await download(page, 'Export JSON')).value.inputFiles.candidate[0].sourceFormat).toBe('otlp-protobuf-framed');
 });
