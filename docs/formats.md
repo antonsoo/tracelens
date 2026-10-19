@@ -50,11 +50,44 @@ inspection view contains recognized decoded fields, not the original binary
 bytes. Unknown wire fields produce a warning and remain available only in the
 original file. Resource batches join without inventing physical source lines.
 
-Compression, gRPC framing, metrics, profiles and custom encoding extensions are
-not supported by these filename conventions. A complete file ending exactly
+Append `.zst` for the compressed carriers described below. gRPC framing,
+metrics, profiles and custom encoding extensions are not supported by these
+filename conventions. A complete file ending exactly
 between batches cannot reveal that later batches were omitted.
 [Native SDK/Collector capture, Google decoder checks and current verification](../studies/otlp-binary/README.md)
 record the tested surface. This source addition is not an npm release.
+
+## Zstandard compression
+
+The source decoder accepts `.json.zst`, `.jsonl.zst` (including `.ndjson.zst`),
+`.traces.otlp.zst` / `.logs.otlp.zst`, and native compressed raw requests named
+`.traces.pb.zst` / `.logs.pb.zst`. Protobuf declarations keep the same signal and
+framing meanings above. Library callers can still supply the explicit protobuf
+format as a third argument for another name ending in `.zst`.
+
+Collector defaults compress each length-prefixed message separately. Its
+`exporter.file.nativeCompression` feature gate instead writes a standard
+Zstandard stream: JSON lines for ordinary JSON, or length-prefixed protobuf.
+Frame/skippable magic distinguishes that stream from a valid bounded message
+length. Failed codecs or framing are not retried under another interpretation.
+
+Compression metadata records `format`, `carrier`, `frames` and `expandedBytes`
+on `TraceInput`, on a parsed single input, and per file in a parsed group.
+Frame counts include skippable/empty frames and are not telemetry batch counts.
+Routine decompression creates no parse warning. Decoded JSON and its line
+numbers describe expanded content, not byte positions in the compressed file.
+
+The wrapper bounds frame extents, content-size declarations and decoding
+windows before the pinned libzstd 1.5.7 decoder validates compressed bitstreams
+and optional XXH64 checksums. The embedded WebAssembly module has no host imports
+and a 128 MiB linear-memory maximum; it requires no runtime download. Limits:
+25 MiB encoded and expanded, 25 MiB decoding window, 100,000 frames/batches and
+one million blocks. Browser groups also cap decoded text at 26,214,400 UTF-16
+units before parsing. Existing protobuf budgets, worker cancellation and the
+30-second worker deadline remain. External dictionaries and other compression
+formats are unsupported. No process-memory or authenticity guarantee is implied.
+[Actual Collector files, independent decoders, mutation controls and installed verification](../studies/zstd-collector/README.md)
+retain the tested source surface; registry releases remain separate.
 
 ## 1. Wire format: OTLP/JSON
 

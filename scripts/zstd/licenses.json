@@ -1,0 +1,56 @@
+[
+  {
+    "title": "WASI libc licensing",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/LICENSE",
+    "sha256": "2711a8b5a5cdfef0e639f96c1aca12ae23d7d64a02d0507f1bdf14d2b27bbc3a"
+  },
+  {
+    "title": "WASI libc MIT",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+  },
+  {
+    "title": "WASI libc Apache/LLVM",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/LICENSE-APACHE-LLVM",
+    "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5"
+  },
+  {
+    "title": "WASI libc Apache",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/LICENSE-APACHE",
+    "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+  },
+  {
+    "title": "musl copyright",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/libc-top-half/musl/COPYRIGHT",
+    "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af"
+  },
+  {
+    "title": "LLVM runtime",
+    "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/compiler-rt/LICENSE.TXT",
+    "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+  },
+  {
+    "title": "dlmalloc CC0 notice",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/dlmalloc/src/malloc.c",
+    "sha256": "9e7ce51d813331ae87ef235f6ca2d5ce2167692e30bb51a173513e3754a67f8f",
+    "sourceHeaderNoticeOnly": true
+  },
+  {
+    "title": "cloudlibc BSD notice",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/libc-bottom-half/cloudlibc/LICENSE",
+    "sha256": "c8b789cf5a746611e6300a0cc7750dbf92b61912a709d04e639245f7290656d0",
+    "sourceHeaderNoticeOnly": false
+  },
+  {
+    "title": "fts BSD notice",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/fts/musl-fts/COPYING",
+    "sha256": "55af87e4017668f54467a3380e7ebbac5e672d8c763bfe95e6fc882a6fdc4046",
+    "sourceHeaderNoticeOnly": false
+  },
+  {
+    "title": "emmalloc MIT notice",
+    "url": "https://raw.githubusercontent.com/WebAssembly/wasi-libc/3f7eb4c7d6ede4dde3c4bffa6ed14e8d656fe93f/emmalloc/emmalloc.c",
+    "sha256": "c5b52c424c9101ba9b2d1338997e1758c9fdf369ab0450d9b72e9544fe482166",
+    "sourceHeaderNoticeOnly": true
+  }
+]

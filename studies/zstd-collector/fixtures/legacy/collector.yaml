@@ -1,0 +1,55 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 127.0.0.1:47063
+exporters:
+  file/traces_json_plain:
+    path: traces.jsonl
+    format: json
+    flush_interval: 50ms
+  file/traces_json_zstd:
+    path: traces.jsonl.zst
+    format: json
+    flush_interval: 50ms
+    compression: zstd
+  file/traces_proto_plain:
+    path: traces.traces.otlp
+    format: proto
+    flush_interval: 50ms
+  file/traces_proto_zstd:
+    path: traces.traces.otlp.zst
+    format: proto
+    flush_interval: 50ms
+    compression: zstd
+  file/logs_json_plain:
+    path: logs.jsonl
+    format: json
+    flush_interval: 50ms
+  file/logs_json_zstd:
+    path: logs.jsonl.zst
+    format: json
+    flush_interval: 50ms
+    compression: zstd
+  file/logs_proto_plain:
+    path: logs.logs.otlp
+    format: proto
+    flush_interval: 50ms
+  file/logs_proto_zstd:
+    path: logs.logs.otlp.zst
+    format: proto
+    flush_interval: 50ms
+    compression: zstd
+service:
+  telemetry:
+    logs:
+      level: error
+    metrics:
+      level: none
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [file/traces_json_plain, file/traces_json_zstd, file/traces_proto_plain, file/traces_proto_zstd]
+    logs:
+      receivers: [otlp]
+      exporters: [file/logs_json_plain, file/logs_json_zstd, file/logs_proto_plain, file/logs_proto_zstd]

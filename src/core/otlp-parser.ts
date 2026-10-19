@@ -515,8 +515,9 @@ export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOp
   if (inputs.length === 1) {
     const input = inputs[0]!;
     const trace = parseTraceText(input.text, options);
-    if (!input.sourceFormat && !input.warnings?.length) return trace;
+    if (!input.sourceFormat && !input.compression && !input.warnings?.length) return trace;
     return { ...trace, sourceFormat: input.sourceFormat ?? trace.sourceFormat,
+      ...(input.compression ? { compression: input.compression } : {}),
       warnings: [...(input.warnings ?? []), ...trace.warnings] };
   }
   const all: ParsedSpan[] = [];
@@ -538,7 +539,7 @@ export function parseTraceInputs(inputs: readonly TraceInput[], options: ParseOp
     } catch (error) {
       throw new TraceParseError(`File ${sourceFile.index} (${input.name}): ${error instanceof Error ? error.message : String(error)}`);
     }
-    inputFiles.push({ name: input.name, spanCount: collected.all.length, ...(logCount ? { logCount } : {}), sourceFormat: input.sourceFormat ?? collected.sourceFormat });
+    inputFiles.push({ name: input.name, spanCount: collected.all.length, ...(logCount ? { logCount } : {}), sourceFormat: input.sourceFormat ?? collected.sourceFormat, ...(input.compression ? { compression: input.compression } : {}) });
     for (const warning of input.warnings ?? []) warnings.push(fromFile(warning, sourceFile));
     for (const warning of collected.warnings) warnings.push(fromFile(warning, sourceFile));
     for (const span of collected.all) {

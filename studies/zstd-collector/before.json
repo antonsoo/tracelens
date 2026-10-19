@@ -1,0 +1,33 @@
+{
+  "baseline": "4039a33c15c163ea1e8606b7a54a1407d732b78f",
+  "workflows": [
+    {
+      "mode": "legacy",
+      "format": "json",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Can't read \"studies/zstd-collector/fixtures/legacy/traces.jsonl.zst\": not a text file (expected UTF-8 or BOM-marked UTF-16)\n"
+    },
+    {
+      "mode": "legacy",
+      "format": "proto",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Can't read \"studies/zstd-collector/fixtures/legacy/traces.traces.otlp.zst\": not a text file (expected UTF-8 or BOM-marked UTF-16)\n"
+    },
+    {
+      "mode": "native",
+      "format": "json",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Can't read \"studies/zstd-collector/fixtures/native/traces.jsonl.zst\": not a text file (expected UTF-8 or BOM-marked UTF-16)\n"
+    },
+    {
+      "mode": "native",
+      "format": "proto",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Can't read \"studies/zstd-collector/fixtures/native/traces.traces.otlp.zst\": not a text file (expected UTF-8 or BOM-marked UTF-16)\n"
+    }
+  ]
+}

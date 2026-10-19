@@ -1,0 +1,69 @@
+{
+  "version": "libzstd 1.5.7",
+  "bytes": 72826,
+  "sha256": "be026e8a9d0e89d7ad3045603636e81c7706a49e4d17674261c7b59fb2f43c97",
+  "wasmMaximumBytes": 134217728,
+  "archives": [
+    {
+      "url": "https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz",
+      "sha256": "eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3"
+    },
+    {
+      "url": "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-27/wasi-sdk-27.0-x86_64-linux.tar.gz",
+      "sha256": "b7d4d944c88503e4f21d84af07ac293e3440b1b6210bfd7fe78e0afd92c23bc2"
+    }
+  ],
+  "compilerFlags": [
+    "-O3",
+    "-DNDEBUG",
+    "-mexec-model=reactor",
+    "-Wl,--export=ZSTD_decompress",
+    "-Wl,--export=ZSTD_isError",
+    "-Wl,--export=ZSTD_getErrorCode",
+    "-Wl,--export=ZSTD_versionNumber",
+    "-Wl,--export=malloc",
+    "-Wl,--export=free",
+    "-Wl,--strip-all",
+    "-Wl,--initial-memory=2097152",
+    "-Wl,--max-memory=134217728",
+    "-Wl,-z,stack-size=1048576"
+  ],
+  "abi": {
+    "imports": [],
+    "exports": [
+      {
+        "name": "memory",
+        "kind": "memory"
+      },
+      {
+        "name": "_initialize",
+        "kind": "function"
+      },
+      {
+        "name": "ZSTD_versionNumber",
+        "kind": "function"
+      },
+      {
+        "name": "ZSTD_isError",
+        "kind": "function"
+      },
+      {
+        "name": "ZSTD_getErrorCode",
+        "kind": "function"
+      },
+      {
+        "name": "malloc",
+        "kind": "function"
+      },
+      {
+        "name": "free",
+        "kind": "function"
+      },
+      {
+        "name": "ZSTD_decompress",
+        "kind": "function"
+      }
+    ],
+    "version": 10507
+  }
+}

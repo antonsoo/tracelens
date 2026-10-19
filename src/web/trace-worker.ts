@@ -53,8 +53,14 @@ async function readInputs(source: TraceSource): Promise<TraceInput[]> {
     throw new Error('Selected trace files exceed 25 MB in total. Choose a smaller group.');
   }
   const inputs: TraceInput[] = [];
+  let decodedUnits = 0;
   for (const [index, file] of source.files.entries()) {
-    try { inputs.push(await readSource({ kind: 'file', file })); }
+    try {
+      const input = await readSource({ kind: 'file', file });
+      decodedUnits += input.text.length;
+      if (decodedUnits > MAX_TRACE_BYTES) throw new Error('Selected files expand beyond the text limit. Choose a smaller group.');
+      inputs.push(input);
+    }
     catch (error) { throw new Error(`File ${index + 1} (${file.name}): ${error instanceof Error ? error.message : String(error)}`); }
   }
   return inputs;
@@ -66,7 +72,7 @@ self.onmessage = (event: MessageEvent<ParseRequest>): void => {
       const inputs = await readInputs(event.data.source);
       const trace = parseTraceInputs(inputs, { traceId: event.data.traceId });
       const source = trace.traces.length > 1
-        ? (inputs.length === 1 && !inputs[0]!.sourceFormat && !inputs[0]!.warnings?.length ? inputs[0]!.text : inputs) : null;
+        ? (inputs.length === 1 && !inputs[0]!.sourceFormat && !inputs[0]!.compression && !inputs[0]!.warnings?.length ? inputs[0]!.text : inputs) : null;
       self.postMessage({ ok: true, trace: flattenTrace(trace), source } satisfies ParseResponse);
     } catch (error) {
       self.postMessage({ ok: false, error: error instanceof Error ? error.message : String(error) } satisfies ParseResponse);

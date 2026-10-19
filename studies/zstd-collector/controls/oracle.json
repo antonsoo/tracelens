@@ -1,0 +1,150 @@
+{
+  "constructedControls": true,
+  "groupLimit": {
+    "files": [
+      {
+        "file": "group-1.jsonl.zst",
+        "bytes": 606,
+        "sha256": "ef2b3a5325c38e3da6033779f73cd93bfb089f71267427f07d5ccdbc0e7602d0",
+        "decodedUnits": 13631770
+      },
+      {
+        "file": "group-2.jsonl.zst",
+        "bytes": 606,
+        "sha256": "155148dceecb70a2e42762480d066461e0c713e35a240e4f75bafac24de6429d",
+        "decodedUnits": 13631770
+      }
+    ],
+    "expected": "combined decoded text refused before parsing",
+    "synthetic": true
+  },
+  "zstandardVersion": "0.25.0",
+  "cases": [
+    {
+      "file": "legacy-checksum.traces.otlp.zst",
+      "bytes": 2414,
+      "sha256": "4c8792aa786925bb1075fc36e639d49519db91a9b1aa91d938041051a0de7563",
+      "expected": "checksum",
+      "alteration": "Flip one bit in the first frame's content checksum; retain later complete frames"
+    },
+    {
+      "file": "legacy-truncated.traces.otlp.zst",
+      "bytes": 2413,
+      "sha256": "264a2e2e858637fb5c195010d857226ef81a0faca2cd2107b46be5fe26bfabb7",
+      "expected": "incomplete",
+      "alteration": "Remove the final encoded byte; keep the complete earlier batches"
+    },
+    {
+      "file": "legacy-trailing.traces.otlp.zst",
+      "bytes": 2422,
+      "sha256": "029acecc701756d09d9b7662d20618663f43a2386c02a30cd06406993f24f323",
+      "expected": "trailing",
+      "alteration": "Append bytes outside the final frame/batch"
+    },
+    {
+      "file": "native-checksum.traces.otlp.zst",
+      "bytes": 2490,
+      "sha256": "e3cb926c747afca9096d90671cfb411c237dea6e81305db4d89f2afd2dbf5d57",
+      "expected": "checksum",
+      "alteration": "Flip one bit in the first frame's content checksum; retain later complete frames"
+    },
+    {
+      "file": "native-truncated.traces.otlp.zst",
+      "bytes": 2489,
+      "sha256": "e87d7c3dfd13987e9c3588775edc0b551898e947ef4d4473ba7b68662d92d9c8",
+      "expected": "incomplete",
+      "alteration": "Remove the final encoded byte; keep the complete earlier batches"
+    },
+    {
+      "file": "native-trailing.traces.otlp.zst",
+      "bytes": 2498,
+      "sha256": "d493735ff478de4d91e5e1faade3a2859642b2775303c24923f350bd22c137e5",
+      "expected": "trailing",
+      "alteration": "Append bytes outside the final frame/batch"
+    },
+    {
+      "file": "raw.traces.pb.zst",
+      "bytes": 442,
+      "sha256": "9e4df2a9b2aa8fe18a2f14ab74b044f1b976cf64548e7e108cf6d760121c4533",
+      "expected": "accept",
+      "alteration": "Compress an unchanged retained native SDK request with Python zstandard"
+    },
+    {
+      "file": "expansion.jsonl.zst",
+      "bytes": 823,
+      "sha256": "9a1d07c410a8e10e5b28dbc938dce33f100dc3046caff20df0c37085a7f32856",
+      "expected": "expanded",
+      "alteration": "Synthetic 25 MiB + 1 space bytes, unknown frame content size"
+    },
+    {
+      "file": "window.jsonl.zst",
+      "bytes": 6,
+      "sha256": "89a1b38e453ad649d45b55ca6d7eb468a963c8f4738cd198557e5cdb8181966d",
+      "expected": "window",
+      "alteration": "Constructed 256 MiB decoding-window header"
+    },
+    {
+      "file": "dictionary.jsonl.zst",
+      "bytes": 10,
+      "sha256": "697ed79e36ef09971f83ab768bac476d281beea5263844332ca2ab57eebc154b",
+      "expected": "dictionary",
+      "alteration": "Constructed frame requests external dictionary 1"
+    },
+    {
+      "file": "bitstream-393-5.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "7c0c37d57adc275515e6b5d638c4feab09850da55b8fc93d02ea202cd0122fca",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-393-6.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "f325319336052c105073d507f95b4c613ed272f54d0c0ebd8c681b18adb2d905",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-393-7.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "15b6fbabd6dadae95a53d305a20112712cffa84ac6137558092a4eb18f40eee1",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-394-0.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "5ae9bfd457b4e96bc09e9c51501939fc8b1d713c5e813775b6a6464af8873fb0",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-409-4.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "e1b105a43abbdc8c45cb4b5945a90dd2cbd07d47e8ae22e482012dcdbf0d6dad",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-412-1.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "6390d71d4477208080aa74479042cc0a5d20abe3b7a085b50043baf018feaebe",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-412-3.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "c8450b17ce503606548fcb04bc85099b9313a9667359149b8fc80e6f5ba3f00e",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    },
+    {
+      "file": "bitstream-431-6.traces.pb.zst",
+      "bytes": 435,
+      "sha256": "58853707bd6e53a649d7e642affdb12f567d074bf452688a54d491bcecd5d37f",
+      "expected": "bitstream",
+      "alteration": "Constructed single-bit alteration of a checksum-free native frame; reference decoder refuses it"
+    }
+  ]
+}

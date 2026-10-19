@@ -1,0 +1,300 @@
+{
+  "node": "v26.7.0",
+  "files": [
+    {
+      "mode": "legacy",
+      "signal": "traces",
+      "format": "json",
+      "file": "legacy/traces.jsonl.zst",
+      "bytes": 2878,
+      "sha256": "d63f14c1e89d248062e4ccf652220d1da6f0876e50351c4dfaed40a938c03d4b",
+      "decodedBytes": 6038,
+      "decodedSha256": "028e83f50cc3275c72ca1122fe6b99020a6ce7b3c34392c2ddd201d122dec65d",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "collector-messages",
+      "frames": 6,
+      "decodeMs": 4.034072999999992,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "legacy",
+      "signal": "traces",
+      "format": "proto",
+      "file": "legacy/traces.traces.otlp.zst",
+      "bytes": 2414,
+      "sha256": "d6dbe4d88fff52a02f203284fd70a54d4a8fa64ec30add583cb906b22aa41a26",
+      "decodedBytes": 2848,
+      "decodedSha256": "908458f8e0325d4d4fd1273fe45c39eb2cfddcbf2679644550d6ca43621b934a",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "collector-messages",
+      "frames": 6,
+      "decodeMs": 0.15210499999999172,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "legacy",
+      "signal": "logs",
+      "format": "json",
+      "file": "legacy/logs.jsonl.zst",
+      "bytes": 1461,
+      "sha256": "d654861e835a1452bf98e27f6ac261e216ebce75882b3d180f780983e681a37c",
+      "decodedBytes": 4350,
+      "decodedSha256": "6739a6698a4f47fa57b10529d0e43ca03ac5131444246a08276e6c1e89fdc389",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "collector-messages",
+      "frames": 2,
+      "decodeMs": 0.10347099999999898,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "legacy",
+      "signal": "logs",
+      "format": "proto",
+      "file": "legacy/logs.logs.otlp.zst",
+      "bytes": 1383,
+      "sha256": "17f8f883eac7e6c46465e922772768f1e8be03e48ebafb670f337e2439f6da41",
+      "decodedBytes": 2037,
+      "decodedSha256": "291001d7e5e26c5710aa2767997118c08aaa85f1124321751e9e1b8177ff5198",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "collector-messages",
+      "frames": 2,
+      "decodeMs": 0.05037699999999745,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "native",
+      "signal": "traces",
+      "format": "json",
+      "file": "native/traces.jsonl.zst",
+      "bytes": 2921,
+      "sha256": "326a333b6f05419e4ba0d3f347290dc3cd874521955535b7686e33eee4974a26",
+      "decodedBytes": 6038,
+      "decodedSha256": "028e83f50cc3275c72ca1122fe6b99020a6ce7b3c34392c2ddd201d122dec65d",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "native-file",
+      "frames": 7,
+      "decodeMs": 0.07311199999999474,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "native",
+      "signal": "traces",
+      "format": "proto",
+      "file": "native/traces.traces.otlp.zst",
+      "bytes": 2490,
+      "sha256": "6d00e6ac50d6e60f8750732f62f059f796763abcad522243b04fd98120da2020",
+      "decodedBytes": 2848,
+      "decodedSha256": "908458f8e0325d4d4fd1273fe45c39eb2cfddcbf2679644550d6ca43621b934a",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "native-file",
+      "frames": 7,
+      "decodeMs": 0.05851399999998819,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "native",
+      "signal": "logs",
+      "format": "json",
+      "file": "native/logs.jsonl.zst",
+      "bytes": 1475,
+      "sha256": "81705d9c236db760dabcd9a762da7c6f8e42c687f112fdd1a78de419ba7a0734",
+      "decodedBytes": 4350,
+      "decodedSha256": "6739a6698a4f47fa57b10529d0e43ca03ac5131444246a08276e6c1e89fdc389",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "native-file",
+      "frames": 3,
+      "decodeMs": 0.052663000000009674,
+      "decodedMatchesIndependentPython": true
+    },
+    {
+      "mode": "native",
+      "signal": "logs",
+      "format": "proto",
+      "file": "native/logs.logs.otlp.zst",
+      "bytes": 1424,
+      "sha256": "98c922de9c4868319cda767e9ac6e6e52e00c6dd38c605d36d700e7ee06b2170",
+      "decodedBytes": 2037,
+      "decodedSha256": "291001d7e5e26c5710aa2767997118c08aaa85f1124321751e9e1b8177ff5198",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true,
+      "carrier": "native-file",
+      "frames": 3,
+      "decodeMs": 0.05227100000000462,
+      "decodedMatchesIndependentPython": true
+    }
+  ],
+  "workflows": [
+    {
+      "mode": "legacy",
+      "format": "json",
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spans": 4,
+      "logs": 2,
+      "normalizedEvidenceSha256": "be02a43917e5ae02bbe19974136a9051942ddc8ef3eb088542cc92aeb232b10f",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "legacy",
+      "format": "json",
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "spans": 2,
+      "logs": 0,
+      "normalizedEvidenceSha256": "5e72689a444c6880c476234f076c0db4efec2b959442bec6a7cd6b7fccd80c16",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "legacy",
+      "format": "proto",
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spans": 4,
+      "logs": 2,
+      "normalizedEvidenceSha256": "2c48c7a80a2a46478ab1f94dad65c92c6ff3767e675a53df46f5e8f4acbce304",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "legacy",
+      "format": "proto",
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "spans": 2,
+      "logs": 0,
+      "normalizedEvidenceSha256": "5e72689a444c6880c476234f076c0db4efec2b959442bec6a7cd6b7fccd80c16",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "native",
+      "format": "json",
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spans": 4,
+      "logs": 2,
+      "normalizedEvidenceSha256": "be02a43917e5ae02bbe19974136a9051942ddc8ef3eb088542cc92aeb232b10f",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "native",
+      "format": "json",
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "spans": 2,
+      "logs": 0,
+      "normalizedEvidenceSha256": "5e72689a444c6880c476234f076c0db4efec2b959442bec6a7cd6b7fccd80c16",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "native",
+      "format": "proto",
+      "traceId": "f732841dd31bc72438c9543ff68cbc93",
+      "spans": 4,
+      "logs": 2,
+      "normalizedEvidenceSha256": "2c48c7a80a2a46478ab1f94dad65c92c6ff3767e675a53df46f5e8f4acbce304",
+      "matchesUncompressed": true
+    },
+    {
+      "mode": "native",
+      "format": "proto",
+      "traceId": "f4e896a6497cb19ad2bfc1a3fc1fae67",
+      "spans": 2,
+      "logs": 0,
+      "normalizedEvidenceSha256": "5e72689a444c6880c476234f076c0db4efec2b959442bec6a7cd6b7fccd80c16",
+      "matchesUncompressed": true
+    }
+  ],
+  "controls": [
+    {
+      "file": "legacy-checksum.traces.otlp.zst",
+      "expected": "checksum",
+      "error": "Zstandard: frame could not be decoded: content checksum mismatch. No compressed batches were imported."
+    },
+    {
+      "file": "legacy-truncated.traces.otlp.zst",
+      "expected": "incomplete",
+      "error": "Zstandard: Collector compressed batch exceeds available bytes. No compressed batches were imported."
+    },
+    {
+      "file": "legacy-trailing.traces.otlp.zst",
+      "expected": "trailing",
+      "error": "Zstandard: Collector compressed batch exceeds available bytes. No compressed batches were imported."
+    },
+    {
+      "file": "native-checksum.traces.otlp.zst",
+      "expected": "checksum",
+      "error": "Zstandard: frame could not be decoded: content checksum mismatch. No compressed batches were imported."
+    },
+    {
+      "file": "native-truncated.traces.otlp.zst",
+      "expected": "incomplete",
+      "error": "Zstandard: incomplete frame or block. No compressed batches were imported."
+    },
+    {
+      "file": "native-trailing.traces.otlp.zst",
+      "expected": "trailing",
+      "error": "Zstandard: invalid frame magic or trailing bytes. No compressed batches were imported."
+    },
+    {
+      "file": "raw.traces.pb.zst",
+      "expected": "accept",
+      "error": null
+    },
+    {
+      "file": "expansion.jsonl.zst",
+      "expected": "expanded",
+      "error": "Zstandard: frame could not be decoded: frame exceeds its declared size or expanded-input limit. No compressed batches were imported."
+    },
+    {
+      "file": "window.jsonl.zst",
+      "expected": "window",
+      "error": "Zstandard: requested decoding window exceeds 25 MiB; export with a smaller window. No compressed batches were imported."
+    },
+    {
+      "file": "dictionary.jsonl.zst",
+      "expected": "dictionary",
+      "error": "Zstandard: external dictionaries are not supported. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-393-5.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-393-6.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-393-7.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-394-0.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-409-4.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-412-1.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-412-3.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    },
+    {
+      "file": "bitstream-431-6.traces.pb.zst",
+      "expected": "bitstream",
+      "error": "Zstandard: frame could not be decoded: invalid compressed frame. No compressed batches were imported."
+    }
+  ],
+  "scope": "Native Collector outputs of retained scripted SDK requests; independent Python decoded-byte hashes; complete normalized observations, timing and unpriced cost evidence agree. Constructed corruption and resource controls are separate."
+}

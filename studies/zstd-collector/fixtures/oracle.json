@@ -1,0 +1,170 @@
+{
+  "collectorVersion": "otelcol version 0.163.1",
+  "collectorBinarySha256": "f02a7a36cdd1d31d37bf7769aaa2dd76cfcc875c391ada6a486396682aeb377f",
+  "scriptedConversation": true,
+  "sourceRequests": [
+    {
+      "file": "http-01.logs.pb",
+      "signal": "logs",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 1031,
+      "sha256": "d31310c5fcff801cd96969ba64c65860ca76a1e5610ae0928058b350e2b4eba8"
+    },
+    {
+      "file": "http-01.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 563,
+      "sha256": "9fc48f444f3b784f53b0be693c74b19b0215880cbcfb0b9b1804178ce7142b08"
+    },
+    {
+      "file": "http-02.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 579,
+      "sha256": "48c293f4e4e6de44cb58a20ea0ab431061b3a4262d3c34a44a8fff464c4126c1"
+    },
+    {
+      "file": "http-02.logs.pb",
+      "signal": "logs",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 998,
+      "sha256": "d4db128239cbdb19999cbe81e72e88135b568d28b3b73d98adff79bf46908ae6"
+    },
+    {
+      "file": "http-03.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 557,
+      "sha256": "963451e7bc66225aa0ad0a6785000f384b54c3fc484fe8ba0fe7b1278cef5646"
+    },
+    {
+      "file": "http-04.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 384,
+      "sha256": "3167bdcc0eb222e7e4760932817bfa5ba58d3d8a9a4870a6ed663a8cc42682f0"
+    },
+    {
+      "file": "http-05.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 342,
+      "sha256": "95dba7089a47ce33a7fe0ac45ab8fa77c349b8fafb2afec60ca8ba82d6efb3db"
+    },
+    {
+      "file": "http-06.traces.pb",
+      "signal": "traces",
+      "contentType": "application/x-protobuf",
+      "contentEncoding": null,
+      "bytes": 395,
+      "sha256": "c3910f04a0ad75c49b7b33954be229b74704dc311596192aebb6fc4491c4ddd9"
+    }
+  ],
+  "independentDecoder": "Python zstandard 0.25.0 and Google Protobuf",
+  "observations": [
+    {
+      "mode": "legacy",
+      "signal": "traces",
+      "format": "json",
+      "file": "legacy/traces.jsonl.zst",
+      "bytes": 2878,
+      "sha256": "d63f14c1e89d248062e4ccf652220d1da6f0876e50351c4dfaed40a938c03d4b",
+      "decodedBytes": 6038,
+      "decodedSha256": "028e83f50cc3275c72ca1122fe6b99020a6ce7b3c34392c2ddd201d122dec65d",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "legacy",
+      "signal": "traces",
+      "format": "proto",
+      "file": "legacy/traces.traces.otlp.zst",
+      "bytes": 2414,
+      "sha256": "d6dbe4d88fff52a02f203284fd70a54d4a8fa64ec30add583cb906b22aa41a26",
+      "decodedBytes": 2848,
+      "decodedSha256": "908458f8e0325d4d4fd1273fe45c39eb2cfddcbf2679644550d6ca43621b934a",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "legacy",
+      "signal": "logs",
+      "format": "json",
+      "file": "legacy/logs.jsonl.zst",
+      "bytes": 1461,
+      "sha256": "d654861e835a1452bf98e27f6ac261e216ebce75882b3d180f780983e681a37c",
+      "decodedBytes": 4350,
+      "decodedSha256": "6739a6698a4f47fa57b10529d0e43ca03ac5131444246a08276e6c1e89fdc389",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "legacy",
+      "signal": "logs",
+      "format": "proto",
+      "file": "legacy/logs.logs.otlp.zst",
+      "bytes": 1383,
+      "sha256": "17f8f883eac7e6c46465e922772768f1e8be03e48ebafb670f337e2439f6da41",
+      "decodedBytes": 2037,
+      "decodedSha256": "291001d7e5e26c5710aa2767997118c08aaa85f1124321751e9e1b8177ff5198",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "native",
+      "signal": "traces",
+      "format": "json",
+      "file": "native/traces.jsonl.zst",
+      "bytes": 2921,
+      "sha256": "326a333b6f05419e4ba0d3f347290dc3cd874521955535b7686e33eee4974a26",
+      "decodedBytes": 6038,
+      "decodedSha256": "028e83f50cc3275c72ca1122fe6b99020a6ce7b3c34392c2ddd201d122dec65d",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "native",
+      "signal": "traces",
+      "format": "proto",
+      "file": "native/traces.traces.otlp.zst",
+      "bytes": 2490,
+      "sha256": "6d00e6ac50d6e60f8750732f62f059f796763abcad522243b04fd98120da2020",
+      "decodedBytes": 2848,
+      "decodedSha256": "908458f8e0325d4d4fd1273fe45c39eb2cfddcbf2679644550d6ca43621b934a",
+      "batches": 6,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "native",
+      "signal": "logs",
+      "format": "json",
+      "file": "native/logs.jsonl.zst",
+      "bytes": 1475,
+      "sha256": "81705d9c236db760dabcd9a762da7c6f8e42c687f112fdd1a78de419ba7a0734",
+      "decodedBytes": 4350,
+      "decodedSha256": "6739a6698a4f47fa57b10529d0e43ca03ac5131444246a08276e6c1e89fdc389",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true
+    },
+    {
+      "mode": "native",
+      "signal": "logs",
+      "format": "proto",
+      "file": "native/logs.logs.otlp.zst",
+      "bytes": 1424,
+      "sha256": "98c922de9c4868319cda767e9ac6e6e52e00c6dd38c605d36d700e7ee06b2170",
+      "decodedBytes": 2037,
+      "decodedSha256": "291001d7e5e26c5710aa2767997118c08aaa85f1124321751e9e1b8177ff5198",
+      "batches": 2,
+      "sameAsUncompressedCollectorOutput": true
+    }
+  ]
+}

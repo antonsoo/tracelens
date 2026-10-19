@@ -3,7 +3,7 @@ import { contentSecurityPolicy } from './vite.csp';
 
 export default defineConfig({
   base: '/tracelens/',
-  plugins: [contentSecurityPolicy({ 'worker-src': ['blob:'] })],
+  plugins: [contentSecurityPolicy({ 'worker-src': ['blob:'], 'script-src': ["'wasm-unsafe-eval'"] })],
   build: {
     target: 'es2022',
   },

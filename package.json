@@ -35,7 +35,9 @@
     "LICENSE",
     "LICENSE-OTEL",
     "THIRD_PARTY_NOTICES.md",
-    "LICENSE-PROTOBUF-ES"
+    "LICENSE-PROTOBUF-ES",
+    "LICENSE-ZSTD",
+    "LICENSE-WASI"
   ],
   "scripts": {
     "predev": "node scripts/sync-examples.mjs",

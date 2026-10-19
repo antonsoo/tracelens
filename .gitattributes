@@ -1,2 +1,3 @@
 # Preserve the padding in unedited terminal evidence.
 docs/cost-evidence/cli.txt whitespace=-blank-at-eol
+src/core/vendor/zstd-wasm.ts linguist-generated=true

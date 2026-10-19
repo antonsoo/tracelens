@@ -1,5 +1,10 @@
 # Source history and evidence
 
+The [compressed Collector workflow](../studies/zstd-collector/README.md) opens
+both native file compression and default message compression directly. Actual
+Collector outputs, independent byte/checksum checks, a 5,001-span SDK workload
+and offline comparison recovery retain its source and artifact boundaries.
+
 The [README](../README.md) introduces the inspection workflows. This index keeps
 their repair history and retained reproductions available without making a new
 reader work through the maintenance log first.

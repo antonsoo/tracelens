@@ -3,6 +3,7 @@ import type { JsonValue } from '@bufbuild/protobuf';
 import { ExportTraceServiceRequestSchema } from './proto/opentelemetry/proto/collector/trace/v1/trace_service_pb.js';
 import { ExportLogsServiceRequestSchema } from './proto/opentelemetry/proto/collector/logs/v1/logs_service_pb.js';
 import { decodeText } from './decode.js';
+import { decodeZstdCarrier } from './zstd.js';
 import { assertProtobufWire, MAX_PROTOBUF_DEPTH } from './protobuf-wire.js';
 import { TraceParseError } from './payload-depth.js';
 import type { ParseWarning, TraceInput } from './types.js';
@@ -70,7 +71,18 @@ function unknownFields(root: unknown): number {
  * view is not a byte-for-byte copy of the binary file: uint64 values remain
  * decimal strings, IDs remain bytes encoded as base64, and resource batches
  * are joined without inventing physical source-line locations. */
-export function decodeTraceFile(bytes: Uint8Array, name: string, format = protobufFormat(name)): TraceInput {
+export function decodeTraceFile(bytes: Uint8Array, name: string, format = protobufFormat(name.replace(/\.zst$/i, ''))): TraceInput {
+  if (/\.zst$/i.test(name)) {
+    const inner = name.slice(0, -4);
+    if (!format && !/\.(?:jsonl?|ndjson)$/i.test(inner)) throw new TraceParseError('Declare the compressed payload: use .json.zst / .jsonl.zst, .traces.pb.zst / .logs.pb.zst, or .traces.otlp.zst / .logs.otlp.zst.');
+    const expanded = decodeZstdCarrier(bytes, format?.framing ?? 'text');
+    const decoded = decodeTracePayload(expanded.bytes, name, format);
+    return { ...decoded, compression: { format: 'zstd', carrier: expanded.carrier, frames: expanded.frames, expandedBytes: expanded.bytes.length } };
+  }
+  return decodeTracePayload(bytes, name, format);
+}
+
+function decodeTracePayload(bytes: Uint8Array, name: string, format: ProtobufInputFormat | undefined): TraceInput {
   if (!format) {
     if (/\.(?:pb|otlp)$/i.test(name)) {
       throw new TraceParseError('Declare the protobuf signal and framing: use .traces.pb / .logs.pb for one raw OTLP request, or .traces.otlp / .logs.otlp for a Collector length-prefixed file.');

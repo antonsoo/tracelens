@@ -9,6 +9,19 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Compressed Collector files
+
+- Open Zstandard-compressed JSON and declared OTLP protobuf in the CLI and
+  offline browser. Support native file frames and default length-prefixed
+  compressed messages without guessing the protobuf signal or retrying a
+  failed carrier interpretation.
+- Bound encoded/expanded input, decoding windows, frame/block counts and
+  combined browser text. Verify frame boundaries, declared sizes and optional
+  content checksums; keep the previous report on failure or cancellation.
+- Retain compression as source metadata. Keep exact clocks, typed attributes,
+  correlated logs, trace links, comparison exports and missing measurements.
+- [Native Collector captures, 5,001-span SDK workload and independent codec checks](studies/zstd-collector/README.md).
+
 ### Distinct Jaeger identity labels
 
 - Show complete significant 64-bit trace IDs before other picker metadata and

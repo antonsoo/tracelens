@@ -49,6 +49,8 @@ Related files are combined before choosing a trace. Select at most 32 files
 per group, with no repeated span identities; every selected file must parse.
 Native protobuf: .traces.pb / .logs.pb are raw OTLP requests;
 .traces.otlp / .logs.otlp are Collector length-prefixed files.
+Append .zst for Zstandard-compressed JSON or declared protobuf files.
+Both Collector message-level and native file-level compression are supported.
 Signal and framing are explicit; binary input is not guessed from failed JSON.
 
 ${bold('Run it without installing:')}

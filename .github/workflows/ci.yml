@@ -72,3 +72,5 @@ jobs:
           node dist-cli/cli/index.js summary examples/genai-semconv-trace.json
           node dist-cli/cli/index.js tree examples/jaeger-genai-trace.json
           node dist-cli/cli/index.js links examples/queue-links.json --json
+          node dist-cli/cli/index.js summary studies/zstd-collector/load/traces.jsonl.zst --json
+          node dist-cli/cli/index.js logs studies/zstd-collector/fixtures/native/traces.traces.otlp.zst studies/zstd-collector/fixtures/native/logs.logs.otlp.zst --json

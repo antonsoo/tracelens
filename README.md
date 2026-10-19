@@ -32,6 +32,16 @@ Use the source checkout below for current parsing and accounting behavior.
 The [source history](docs/source-history.md) keeps reproduced defects,
 before/after evidence and publication boundaries together.
 
+## Open compressed Collector exports
+
+The source checkout reads Zstandard-compressed JSON and declared OTLP protobuf
+files directly, including both Collector compression modes. Native captures
+retain the same clocks, links, log messages and typed values as their uncompressed
+controls; damaged or oversized replacements keep the previous report. A retained
+5,001-span SDK workload is available to try. [Native files, offline workflows,
+checksum checks and limits](studies/zstd-collector/README.md). This addition is
+separate from the npm 0.3.3 release.
+
 ## On real instrumentation output
 
 The example traces here follow the GenAI conventions by hand. The libraries

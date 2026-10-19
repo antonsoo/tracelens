@@ -233,7 +233,7 @@ function applyTheme(theme: 'light' | 'dark'): void {
 }
 
 function buildHeader(state: AppState): HTMLElement {
-  const compareInput = h('input', { type: 'file', multiple: true, accept: '.json,.jsonl,.ndjson,.pb,.otlp,application/json,application/x-protobuf', className: 'visually-hidden', tabindex: '-1', 'aria-label': 'Candidate trace file', onChange: (e: Event) => {
+  const compareInput = h('input', { type: 'file', multiple: true, accept: '.json,.jsonl,.ndjson,.pb,.otlp,.zst,application/json,application/x-protobuf', className: 'visually-hidden', tabindex: '-1', 'aria-label': 'Candidate trace file', onChange: (e: Event) => {
     const files = Array.from((e.target as HTMLInputElement).files ?? []);
     if (files.length) void loadCandidate(files);
   } }) as HTMLInputElement;

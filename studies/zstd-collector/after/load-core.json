@@ -1,0 +1,280 @@
+{
+  "scope": "Controlled SDK digest workload on 14-vCPU WSL2 Linux, 48 GB RAM. File I/O, module import and SDK-observation checks excluded from core wall time. RSS includes verification. Background host activity was not isolated. These are descriptive observations, not production/browser latency guarantees.",
+  "decoder": {
+    "version": "libzstd 1.5.7",
+    "bytes": 72826,
+    "sha256": "be026e8a9d0e89d7ad3045603636e81c7706a49e4d17674261c7b59fb2f43c97"
+  },
+  "statistics": [
+    {
+      "file": "traces.jsonl",
+      "freshProcesses": 3,
+      "medianCoreMs": 179.59469,
+      "coreMsRange": [
+        178.47036500000002,
+        191.075456
+      ],
+      "maxRssKiBRange": [
+        129004,
+        138220
+      ]
+    },
+    {
+      "file": "traces.jsonl.zst",
+      "freshProcesses": 3,
+      "medianCoreMs": 181.473498,
+      "coreMsRange": [
+        157.66292099999998,
+        210.74563
+      ],
+      "maxRssKiBRange": [
+        133148,
+        140708
+      ]
+    },
+    {
+      "file": "traces.traces.otlp",
+      "freshProcesses": 3,
+      "medianCoreMs": 309.279228,
+      "coreMsRange": [
+        308.260349,
+        316.045212
+      ],
+      "maxRssKiBRange": [
+        177156,
+        188364
+      ]
+    },
+    {
+      "file": "traces.traces.otlp.zst",
+      "freshProcesses": 3,
+      "medianCoreMs": 322.525725,
+      "coreMsRange": [
+        302.831742,
+        368.296383
+      ],
+      "maxRssKiBRange": [
+        184036,
+        190172
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "round": 1,
+      "node": "v26.7.0",
+      "file": "traces.jsonl",
+      "encodedBytes": 3029650,
+      "encodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 1.9735719999999901,
+      "parseMs": 165.118229,
+      "timingMs": 11.378564000000011,
+      "totalCoreMs": 178.47036500000002,
+      "maxRssKiB": 129004,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 1,
+      "node": "v26.7.0",
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "encodedSha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 16.962720000000004,
+      "parseMs": 186.34997200000004,
+      "timingMs": 7.432937999999979,
+      "totalCoreMs": 210.74563,
+      "maxRssKiB": 138196,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 1,
+      "node": "v26.7.0",
+      "file": "traces.traces.otlp",
+      "encodedBytes": 1387760,
+      "encodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 157.739803,
+      "parseMs": 146.07256999999998,
+      "timingMs": 12.232839000000013,
+      "totalCoreMs": 316.045212,
+      "maxRssKiB": 178080,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 1,
+      "node": "v26.7.0",
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "encodedSha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 179.86331099999998,
+      "parseMs": 179.722761,
+      "timingMs": 8.710311000000047,
+      "totalCoreMs": 368.296383,
+      "maxRssKiB": 184036,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v26.7.0",
+      "file": "traces.jsonl",
+      "encodedBytes": 3029650,
+      "encodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 2.0178480000000008,
+      "parseMs": 169.53752199999997,
+      "timingMs": 8.039320000000032,
+      "totalCoreMs": 179.59469,
+      "maxRssKiB": 129732,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v26.7.0",
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "encodedSha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 10.147693000000004,
+      "parseMs": 137.29582299999998,
+      "timingMs": 10.219404999999995,
+      "totalCoreMs": 157.66292099999998,
+      "maxRssKiB": 133148,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v26.7.0",
+      "file": "traces.traces.otlp",
+      "encodedBytes": 1387760,
+      "encodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 144.671467,
+      "parseMs": 154.88986999999997,
+      "timingMs": 8.699012000000039,
+      "totalCoreMs": 308.260349,
+      "maxRssKiB": 177156,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v26.7.0",
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "encodedSha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 139.164198,
+      "parseMs": 153.98760499999997,
+      "timingMs": 9.679939000000047,
+      "totalCoreMs": 302.831742,
+      "maxRssKiB": 184176,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v26.7.0",
+      "file": "traces.jsonl",
+      "encodedBytes": 3029650,
+      "encodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 4.033570000000012,
+      "parseMs": 179.35801999999995,
+      "timingMs": 7.683866000000023,
+      "totalCoreMs": 191.075456,
+      "maxRssKiB": 138220,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v26.7.0",
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "encodedSha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 11.796346,
+      "parseMs": 160.98606800000005,
+      "timingMs": 8.69108399999999,
+      "totalCoreMs": 181.473498,
+      "maxRssKiB": 140708,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v26.7.0",
+      "file": "traces.traces.otlp",
+      "encodedBytes": 1387760,
+      "encodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 134.44057199999997,
+      "parseMs": 162.24433100000002,
+      "timingMs": 12.59432499999997,
+      "totalCoreMs": 309.279228,
+      "maxRssKiB": 188364,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v26.7.0",
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "encodedSha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 154.473556,
+      "parseMs": 160.23683400000002,
+      "timingMs": 7.815335000000005,
+      "totalCoreMs": 322.525725,
+      "maxRssKiB": 190172,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+    }
+  ]
+}

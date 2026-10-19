@@ -1,0 +1,30 @@
+{
+  "controlledWorkload": true,
+  "actualComputations": 5000,
+  "spanCount": 5001,
+  "sdkClockAndAttributeValuesVerified": true,
+  "sdkSpansSha256": "719276e9156a547c401a55a21a64fbbaa22f43d8c852f0658aa62bc5601b5f87",
+  "versions": {
+    "opentelemetry-sdk": "1.45.1",
+    "opentelemetry-proto": "1.45.1",
+    "protobuf": "7.36.2",
+    "zstandard": "0.25.0"
+  },
+  "collectorBinarySha256": "f02a7a36cdd1d31d37bf7769aaa2dd76cfcc875c391ada6a486396682aeb377f",
+  "files": [
+    {
+      "file": "traces.jsonl.zst",
+      "bytes": 298764,
+      "sha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedBytes": 3029650,
+      "decodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4"
+    },
+    {
+      "file": "traces.traces.otlp.zst",
+      "bytes": 303658,
+      "sha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedBytes": 1387760,
+      "decodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3"
+    }
+  ]
+}

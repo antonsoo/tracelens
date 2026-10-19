@@ -183,6 +183,14 @@ export interface TraceListing {
   durationNs: bigint;
 }
 
+/** Transport facts from the decoded original input, not trace measurements. */
+export interface TraceCompression {
+  format: 'zstd';
+  carrier: 'native-file' | 'collector-messages';
+  frames: number;
+  expandedBytes: number;
+}
+
 export interface ParsedTrace {
   traceId: string;
   spans: ParsedSpan[]; // flat, includes all spans
@@ -194,7 +202,8 @@ export interface ParsedTrace {
   unmatchedLogs?: TraceLogRecord[];
   /** Original input format; binary and Jaeger inputs use a decoded JSON inspection model. */
   sourceFormat: TraceSourceFormat | 'mixed-json' | 'mixed';
-  inputFiles?: { name: string; spanCount: number; logCount?: number; sourceFormat: TraceSourceFormat }[];
+  compression?: TraceCompression;
+  inputFiles?: { name: string; spanCount: number; logCount?: number; sourceFormat: TraceSourceFormat; compression?: TraceCompression }[];
   /**
    * Every trace in the file, in order of start time. A collector's export
    * holds whatever passed through it; `spans` and `roots` are one of them
@@ -211,6 +220,7 @@ export interface TraceInput {
   text: string;
   /** Set by the binary decoder; not inferred from the JSON contents. */
   sourceFormat?: 'otlp-protobuf' | 'otlp-protobuf-framed';
+  compression?: TraceCompression;
   warnings?: ParseWarning[];
 }
 
