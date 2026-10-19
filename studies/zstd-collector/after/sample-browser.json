@@ -1,0 +1,61 @@
+{
+  "scope": "Actual native-compressed Collector sample, from its visible button and direct query link. Search and original SDK span download run after disconnecting. No responses are mocked.",
+  "workflows": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "entry": "button",
+      "width": 1440,
+      "spans": 5001,
+      "sampleRequests": 1,
+      "sdkClockAndAttributesMatch": true,
+      "searchAndDownloadOffline": true,
+      "errors": [],
+      "csp": [],
+      "late": [],
+      "overflow": false
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "entry": "link",
+      "width": 1440,
+      "spans": 5001,
+      "sampleRequests": 1,
+      "sdkClockAndAttributesMatch": true,
+      "searchAndDownloadOffline": true,
+      "errors": [],
+      "csp": [],
+      "late": [],
+      "overflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "entry": "button",
+      "width": 375,
+      "spans": 5001,
+      "sampleRequests": 1,
+      "sdkClockAndAttributesMatch": true,
+      "searchAndDownloadOffline": true,
+      "errors": [],
+      "csp": [],
+      "late": [],
+      "overflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "entry": "link",
+      "width": 375,
+      "spans": 5001,
+      "sampleRequests": 1,
+      "sdkClockAndAttributesMatch": true,
+      "searchAndDownloadOffline": true,
+      "errors": [],
+      "csp": [],
+      "late": [],
+      "overflow": false
+    }
+  ]
+}

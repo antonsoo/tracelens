@@ -43,7 +43,11 @@ This is a protocol capture, not a production agent incident.
 
 In the browser, select both compressed files together. Alternatively, use the
 `legacy/` JSON pair, or drop the [5,001-span JSON capture](load/traces.jsonl.zst)
-or [protobuf capture](load/traces.traces.otlp.zst). The larger trace records
+or [protobuf capture](load/traces.traces.otlp.zst). The [direct demo](https://antonsoo.github.io/tracelens/?example=collector-zstd)
+and home-page sample button fetch the exact retained compressed protobuf file.
+[Four browser workflows](after/sample-browser.json) open those two entry points,
+then disconnect before finding and downloading the last SDK tool span.
+The larger trace records
 5,000 actual local digest computations over generated inputs, under one
 workflow span. It contains no LLM calls. [SDK observations](load/sdk-spans.json.gz)
 and [native-file hashes](load/oracle.json) accompany it.

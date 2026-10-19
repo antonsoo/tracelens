@@ -13,3 +13,10 @@ for (const [mode, format, width] of [
     await exercise(page, context, { url: baseURL, mode, format, width, engine: info.project.name });
   });
 }
+
+const { exerciseSample } = await import('../../studies/zstd-collector/sample-browser.mjs');
+for (const entry of ['button', 'link']) {
+  test(`native Collector sample from ${entry} preserves the SDK span after disconnecting`, async ({ page, context, baseURL }, info) => {
+    await exerciseSample(page, context, { url: baseURL, entry, width: info.project.name === 'firefox' ? 375 : 1440 });
+  });
+}

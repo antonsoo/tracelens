@@ -510,6 +510,9 @@ if (new URLSearchParams(window.location.search).get('example') === 'cost') {
 if (new URLSearchParams(window.location.search).get('example') === 'logs') {
   void loadExample('examples/genai-log-events.jsonl');
 }
+if (new URLSearchParams(window.location.search).get('example') === 'collector-zstd') {
+  void loadExample('examples/collector-digest.traces.otlp.zst');
+}
 
 let resizeTimer: ReturnType<typeof setTimeout> | undefined;
 window.addEventListener('resize', () => {

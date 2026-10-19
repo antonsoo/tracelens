@@ -10,3 +10,7 @@ for (const f of files) {
   copyFileSync(new URL(`../examples/${f}`, import.meta.url), new URL(`../public/examples/${f}`, import.meta.url));
 }
 console.log(`synced ${files.length} example traces into public/examples/`);
+// Preserve the Collector's original native-compressed bytes, with the SDK
+// observations and independent decoder oracle retained alongside the study.
+copyFileSync(new URL('../studies/zstd-collector/load/traces.traces.otlp.zst', import.meta.url),
+  new URL('../public/examples/collector-digest.traces.otlp.zst', import.meta.url));

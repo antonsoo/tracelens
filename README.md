@@ -38,7 +38,8 @@ The source checkout reads Zstandard-compressed JSON and declared OTLP protobuf
 files directly, including both Collector compression modes. Native captures
 retain the same clocks, links, log messages and typed values as their uncompressed
 controls; damaged or oversized replacements keep the previous report. A retained
-5,001-span SDK workload is available to try. [Native files, offline workflows,
+[5,001-span native SDK capture](https://antonsoo.github.io/tracelens/?example=collector-zstd)
+opens directly in the demo; search and span downloads work after disconnecting. [Native files, offline workflows,
 checksum checks and limits](studies/zstd-collector/README.md). This addition is
 separate from the npm 0.3.3 release.
 
