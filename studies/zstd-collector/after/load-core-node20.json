@@ -1,0 +1,308 @@
+{
+  "scope": "Controlled SDK digest workload on 14-vCPU WSL2 Linux, 48 GB RAM. File I/O, module import and SDK-observation checks excluded from core wall time. Memory readings include verification: raw rusage and current-image Linux VmHWM are separate. Background host activity was not isolated. These are descriptive observations, not process-memory ceilings or production/browser latency guarantees.",
+  "decoder": {
+    "version": "libzstd 1.5.7",
+    "bytes": 72826,
+    "sha256": "be026e8a9d0e89d7ad3045603636e81c7706a49e4d17674261c7b59fb2f43c97"
+  },
+  "statistics": [
+    {
+      "file": "traces.jsonl",
+      "freshProcesses": 3,
+      "medianCoreMs": 425.6635509952903,
+      "coreMsRange": [
+        418.13107799738646,
+        475.8452790006995
+      ],
+      "maxRssKiBRange": [
+        116552,
+        117424
+      ],
+      "linuxVmHwmKiBRange": [
+        116552,
+        117424
+      ]
+    },
+    {
+      "file": "traces.jsonl.zst",
+      "freshProcesses": 3,
+      "medianCoreMs": 546.1316929981112,
+      "coreMsRange": [
+        461.4445069953799,
+        573.8208149969578
+      ],
+      "maxRssKiBRange": [
+        121920,
+        123424
+      ],
+      "linuxVmHwmKiBRange": [
+        121920,
+        123424
+      ]
+    },
+    {
+      "file": "traces.traces.otlp",
+      "freshProcesses": 3,
+      "medianCoreMs": 887.2845980003476,
+      "coreMsRange": [
+        869.1873539984226,
+        927.7181850001216
+      ],
+      "maxRssKiBRange": [
+        122320,
+        129892
+      ],
+      "linuxVmHwmKiBRange": [
+        122320,
+        129892
+      ]
+    },
+    {
+      "file": "traces.traces.otlp.zst",
+      "freshProcesses": 3,
+      "medianCoreMs": 840.1397649943829,
+      "coreMsRange": [
+        811.4621310010552,
+        1207.1663979962468
+      ],
+      "maxRssKiBRange": [
+        120976,
+        126488
+      ],
+      "linuxVmHwmKiBRange": [
+        120976,
+        126488
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "round": 1,
+      "node": "v20.0.0",
+      "file": "traces.jsonl",
+      "encodedBytes": 3029650,
+      "encodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 12.163598001003265,
+      "parseMs": 424.4105710014701,
+      "timingMs": 39.271109998226166,
+      "totalCoreMs": 475.8452790006995,
+      "maxRssKiB": 116552,
+      "linuxVmHwmKiB": 116552,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 1,
+      "node": "v20.0.0",
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "encodedSha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 40.14911099523306,
+      "parseMs": 383.78215200453997,
+      "timingMs": 37.5132439956069,
+      "totalCoreMs": 461.4445069953799,
+      "maxRssKiB": 121920,
+      "linuxVmHwmKiB": 121920,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 1,
+      "node": "v20.0.0",
+      "file": "traces.traces.otlp",
+      "encodedBytes": 1387760,
+      "encodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 436.1785039976239,
+      "parseMs": 412.3106309995055,
+      "timingMs": 38.795463003218174,
+      "totalCoreMs": 887.2845980003476,
+      "maxRssKiB": 129892,
+      "linuxVmHwmKiB": 129892,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 1,
+      "node": "v20.0.0",
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "encodedSha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 463.5179139971733,
+      "parseMs": 675.7296319976449,
+      "timingMs": 67.9188520014286,
+      "totalCoreMs": 1207.1663979962468,
+      "maxRssKiB": 122676,
+      "linuxVmHwmKiB": 123156,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v20.0.0",
+      "file": "traces.jsonl",
+      "encodedBytes": 3029650,
+      "encodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 3.309061996638775,
+      "parseMs": 370.4057010039687,
+      "timingMs": 44.416314996778965,
+      "totalCoreMs": 418.13107799738646,
+      "maxRssKiB": 117424,
+      "linuxVmHwmKiB": 117424,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v20.0.0",
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "encodedSha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 27.865047998726368,
+      "parseMs": 462.152618996799,
+      "timingMs": 56.11402600258589,
+      "totalCoreMs": 546.1316929981112,
+      "maxRssKiB": 123424,
+      "linuxVmHwmKiB": 123424,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v20.0.0",
+      "file": "traces.traces.otlp",
+      "encodedBytes": 1387760,
+      "encodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 404.8300089985132,
+      "parseMs": 400.3460659980774,
+      "timingMs": 64.01127900183201,
+      "totalCoreMs": 869.1873539984226,
+      "maxRssKiB": 126344,
+      "linuxVmHwmKiB": 126344,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 2,
+      "node": "v20.0.0",
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "encodedSha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 355.33722499758005,
+      "parseMs": 405.7791440039873,
+      "timingMs": 50.34576199948788,
+      "totalCoreMs": 811.4621310010552,
+      "maxRssKiB": 120976,
+      "linuxVmHwmKiB": 120976,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v20.0.0",
+      "file": "traces.jsonl",
+      "encodedBytes": 3029650,
+      "encodedSha256": "818bc39e08c9792003194e74dc51bda77da366c6add45ea3828b66315945d3c4",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 3.741705998778343,
+      "parseMs": 379.2390969991684,
+      "timingMs": 42.68274799734354,
+      "totalCoreMs": 425.6635509952903,
+      "maxRssKiB": 117084,
+      "linuxVmHwmKiB": 117084,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v20.0.0",
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "encodedSha256": "8bae6158c6c36ab896a56683c37f40cd519bbf473395d1b3608d666d07e0759a",
+      "decodedUnits": 3029650,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 39.47606299817562,
+      "parseMs": 468.8635950013995,
+      "timingMs": 65.48115699738264,
+      "totalCoreMs": 573.8208149969578,
+      "maxRssKiB": 123024,
+      "linuxVmHwmKiB": 123024,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v20.0.0",
+      "file": "traces.traces.otlp",
+      "encodedBytes": 1387760,
+      "encodedSha256": "d5b2f2461e0ece1190da5411a528e057e03219ae7248ba0c2c4d06931d96f1d3",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 409.4591960012913,
+      "parseMs": 461.26193399727345,
+      "timingMs": 56.99705500155687,
+      "totalCoreMs": 927.7181850001216,
+      "maxRssKiB": 122320,
+      "linuxVmHwmKiB": 122320,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    },
+    {
+      "round": 3,
+      "node": "v20.0.0",
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "encodedSha256": "d8b9da24fa9a63431c9a24807c4c0fe0af0033068575d9cfac27559b8e6161e4",
+      "decodedUnits": 2949457,
+      "spans": 5001,
+      "originalSdkObservationsMatch": true,
+      "decodeMs": 385.77284299582243,
+      "parseMs": 405.0931320041418,
+      "timingMs": 49.27378999441862,
+      "totalCoreMs": 840.1397649943829,
+      "maxRssKiB": 126488,
+      "linuxVmHwmKiB": 126488,
+      "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
+      "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
+    }
+  ]
+}

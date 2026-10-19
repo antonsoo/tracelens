@@ -1,5 +1,5 @@
 {
-  "scope": "Controlled SDK digest workload on 14-vCPU WSL2 Linux, 48 GB RAM. File I/O, module import and SDK-observation checks excluded from core wall time. RSS includes verification. Background host activity was not isolated. These are descriptive observations, not production/browser latency guarantees.",
+  "scope": "Controlled SDK digest workload on 14-vCPU WSL2 Linux, 48 GB RAM. File I/O, module import and SDK-observation checks excluded from core wall time. Memory readings include verification: raw rusage and current-image Linux VmHWM are separate. Background host activity was not isolated. These are descriptive observations, not process-memory ceilings or production/browser latency guarantees.",
   "decoder": {
     "version": "libzstd 1.5.7",
     "bytes": 72826,
@@ -9,53 +9,69 @@
     {
       "file": "traces.jsonl",
       "freshProcesses": 3,
-      "medianCoreMs": 179.59469,
+      "medianCoreMs": 422.52869899999996,
       "coreMsRange": [
-        178.47036500000002,
-        191.075456
+        412.430957,
+        433.74426100000005
       ],
       "maxRssKiBRange": [
-        129004,
-        138220
+        129792,
+        136600
+      ],
+      "linuxVmHwmKiBRange": [
+        130144,
+        136600
       ]
     },
     {
       "file": "traces.jsonl.zst",
       "freshProcesses": 3,
-      "medianCoreMs": 181.473498,
+      "medianCoreMs": 384.158903,
       "coreMsRange": [
-        157.66292099999998,
-        210.74563
+        347.57468100000006,
+        578.8254320000001
       ],
       "maxRssKiBRange": [
-        133148,
-        140708
+        127236,
+        134520
+      ],
+      "linuxVmHwmKiBRange": [
+        127456,
+        134520
       ]
     },
     {
       "file": "traces.traces.otlp",
       "freshProcesses": 3,
-      "medianCoreMs": 309.279228,
+      "medianCoreMs": 824.970417,
       "coreMsRange": [
-        308.260349,
-        316.045212
+        716.322203,
+        937.245956
       ],
       "maxRssKiBRange": [
-        177156,
-        188364
+        174272,
+        178532
+      ],
+      "linuxVmHwmKiBRange": [
+        174272,
+        178532
       ]
     },
     {
       "file": "traces.traces.otlp.zst",
       "freshProcesses": 3,
-      "medianCoreMs": 322.525725,
+      "medianCoreMs": 803.1825220000001,
       "coreMsRange": [
-        302.831742,
-        368.296383
+        670.0995790000001,
+        805.143974
       ],
       "maxRssKiBRange": [
-        184036,
-        190172
+        175964,
+        186176
+      ],
+      "linuxVmHwmKiBRange": [
+        175964,
+        186176
       ]
     }
   ],
@@ -69,14 +85,15 @@
       "decodedUnits": 3029650,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 1.9735719999999901,
-      "parseMs": 165.118229,
-      "timingMs": 11.378564000000011,
-      "totalCoreMs": 178.47036500000002,
-      "maxRssKiB": 129004,
+      "decodeMs": 2.3443419999999833,
+      "parseMs": 387.379349,
+      "timingMs": 22.707266000000004,
+      "totalCoreMs": 412.430957,
+      "maxRssKiB": 131856,
+      "linuxVmHwmKiB": 132316,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 1,
@@ -87,14 +104,15 @@
       "decodedUnits": 3029650,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 16.962720000000004,
-      "parseMs": 186.34997200000004,
-      "timingMs": 7.432937999999979,
-      "totalCoreMs": 210.74563,
-      "maxRssKiB": 138196,
+      "decodeMs": 32.28166299999998,
+      "parseMs": 529.829322,
+      "timingMs": 16.714447000000064,
+      "totalCoreMs": 578.8254320000001,
+      "maxRssKiB": 132412,
+      "linuxVmHwmKiB": 132412,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 1,
@@ -105,14 +123,15 @@
       "decodedUnits": 2949457,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 157.739803,
-      "parseMs": 146.07256999999998,
-      "timingMs": 12.232839000000013,
-      "totalCoreMs": 316.045212,
-      "maxRssKiB": 178080,
+      "decodeMs": 430.619867,
+      "parseMs": 484.3654640000001,
+      "timingMs": 22.26062499999989,
+      "totalCoreMs": 937.245956,
+      "maxRssKiB": 174272,
+      "linuxVmHwmKiB": 174272,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 1,
@@ -123,14 +142,15 @@
       "decodedUnits": 2949457,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 179.86331099999998,
-      "parseMs": 179.722761,
-      "timingMs": 8.710311000000047,
-      "totalCoreMs": 368.296383,
-      "maxRssKiB": 184036,
+      "decodeMs": 393.714291,
+      "parseMs": 371.580641,
+      "timingMs": 39.84904199999994,
+      "totalCoreMs": 805.143974,
+      "maxRssKiB": 186176,
+      "linuxVmHwmKiB": 186176,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 2,
@@ -141,14 +161,15 @@
       "decodedUnits": 3029650,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 2.0178480000000008,
-      "parseMs": 169.53752199999997,
-      "timingMs": 8.039320000000032,
-      "totalCoreMs": 179.59469,
-      "maxRssKiB": 129732,
+      "decodeMs": 3.1201189999999883,
+      "parseMs": 367.58997400000004,
+      "timingMs": 51.81860599999993,
+      "totalCoreMs": 422.52869899999996,
+      "maxRssKiB": 129792,
+      "linuxVmHwmKiB": 130144,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 2,
@@ -159,14 +180,15 @@
       "decodedUnits": 3029650,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 10.147693000000004,
-      "parseMs": 137.29582299999998,
-      "timingMs": 10.219404999999995,
-      "totalCoreMs": 157.66292099999998,
-      "maxRssKiB": 133148,
+      "decodeMs": 36.95362,
+      "parseMs": 315.906379,
+      "timingMs": 31.298903999999993,
+      "totalCoreMs": 384.158903,
+      "maxRssKiB": 134520,
+      "linuxVmHwmKiB": 134520,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 2,
@@ -177,14 +199,15 @@
       "decodedUnits": 2949457,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 144.671467,
-      "parseMs": 154.88986999999997,
-      "timingMs": 8.699012000000039,
-      "totalCoreMs": 308.260349,
-      "maxRssKiB": 177156,
+      "decodeMs": 348.386211,
+      "parseMs": 455.29881000000006,
+      "timingMs": 21.28539599999999,
+      "totalCoreMs": 824.970417,
+      "maxRssKiB": 178532,
+      "linuxVmHwmKiB": 178532,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 2,
@@ -195,14 +218,15 @@
       "decodedUnits": 2949457,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 139.164198,
-      "parseMs": 153.98760499999997,
-      "timingMs": 9.679939000000047,
-      "totalCoreMs": 302.831742,
-      "maxRssKiB": 184176,
+      "decodeMs": 444.082582,
+      "parseMs": 344.206852,
+      "timingMs": 14.893088000000034,
+      "totalCoreMs": 803.1825220000001,
+      "maxRssKiB": 177196,
+      "linuxVmHwmKiB": 177196,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 3,
@@ -213,14 +237,15 @@
       "decodedUnits": 3029650,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 4.033570000000012,
-      "parseMs": 179.35801999999995,
-      "timingMs": 7.683866000000023,
-      "totalCoreMs": 191.075456,
-      "maxRssKiB": 138220,
+      "decodeMs": 3.528117000000009,
+      "parseMs": 407.41671699999995,
+      "timingMs": 22.799427000000037,
+      "totalCoreMs": 433.74426100000005,
+      "maxRssKiB": 136600,
+      "linuxVmHwmKiB": 136600,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 3,
@@ -231,14 +256,15 @@
       "decodedUnits": 3029650,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 11.796346,
-      "parseMs": 160.98606800000005,
-      "timingMs": 8.69108399999999,
-      "totalCoreMs": 181.473498,
-      "maxRssKiB": 140708,
+      "decodeMs": 26.596341000000024,
+      "parseMs": 297.93389099999996,
+      "timingMs": 23.044449000000043,
+      "totalCoreMs": 347.57468100000006,
+      "maxRssKiB": 127236,
+      "linuxVmHwmKiB": 127456,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 3,
@@ -249,14 +275,15 @@
       "decodedUnits": 2949457,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 134.44057199999997,
-      "parseMs": 162.24433100000002,
-      "timingMs": 12.59432499999997,
-      "totalCoreMs": 309.279228,
-      "maxRssKiB": 188364,
+      "decodeMs": 310.049365,
+      "parseMs": 382.772149,
+      "timingMs": 23.500688999999966,
+      "totalCoreMs": 716.322203,
+      "maxRssKiB": 174408,
+      "linuxVmHwmKiB": 174408,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     },
     {
       "round": 3,
@@ -267,14 +294,15 @@
       "decodedUnits": 2949457,
       "spans": 5001,
       "originalSdkObservationsMatch": true,
-      "decodeMs": 154.473556,
-      "parseMs": 160.23683400000002,
-      "timingMs": 7.815335000000005,
-      "totalCoreMs": 322.525725,
-      "maxRssKiB": 190172,
+      "decodeMs": 309.71109,
+      "parseMs": 330.448272,
+      "timingMs": 29.940217000000075,
+      "totalCoreMs": 670.0995790000001,
+      "maxRssKiB": 175964,
+      "linuxVmHwmKiB": 175964,
       "normalizedSpansSha256": "430b8131f3b27c6fcab958699d587cb891b5adf90fe65fe8a53bc301a9cc1bda",
       "timingSha256": "f2de8b6349690957c01e42fbb35e74936d012498e3bfd4c0356116ec2cd61a81",
-      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim."
+      "scope": "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim."
     }
   ]
 }

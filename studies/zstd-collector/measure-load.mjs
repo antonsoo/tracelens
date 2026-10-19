@@ -40,6 +40,12 @@ assert.equal(trace.roots[0].children.length, 5000);
 const serialize = (value) =>
   JSON.stringify(value, (_, v) => (typeof v === "bigint" ? v.toString() : v));
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+// Linux rusage survives exec and can include an earlier program image. Keep
+// that raw value, alongside the current image's kernel-reported high water.
+const linuxVmHwmKiB = process.platform === 'linux'
+  ? Number(/^VmHWM:\s+(\d+)/m.exec(await readFile('/proc/self/status', 'utf8'))?.[1])
+  : null;
+assert(linuxVmHwmKiB === null || Number.isFinite(linuxVmHwmKiB));
 const result = {
   node: process.version,
   file: filename,
@@ -53,6 +59,7 @@ const result = {
   timingMs: finished - parsed,
   totalCoreMs: finished - started,
   maxRssKiB: process.resourceUsage().maxRSS,
+  linuxVmHwmKiB,
   normalizedSpansSha256: sha(
     serialize(
       trace.spans.map((span) => ({
@@ -68,7 +75,7 @@ const result = {
   ),
   timingSha256: sha(serialize({ ...timing, warnings: [] })),
   scope:
-    "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Peak RSS is the whole process, including verification. Controlled local SDK workload; no production latency or CPU-utilization claim.",
+    "Fresh process; file I/O and SDK-observation comparisons excluded from core wall time. Memory readings include SDK comparisons; maxRssKiB is raw rusage (may survive an earlier exec), linuxVmHwmKiB is the current image's kernel-reported resident high water. Controlled local SDK workload; no process-memory ceiling, production latency or CPU-utilization claim.",
 };
 await writeFile(outArg, JSON.stringify(result, null, 2) + "\n");
 console.log(

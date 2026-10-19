@@ -98,7 +98,7 @@ The bundled WebAssembly module is 72,826 bytes, has **no host imports**, and a
 128 MiB linear-memory maximum. Its source archives, compiler flags, binary hash
 and ABI are [pinned](../../scripts/zstd/decoder.json). Ordinary npm builds use
 the committed bytes; the explicit Linux x86-64 maintenance command
-`python scripts/build-zstd.py` rebuilds them with hash-verified WASI SDK 27.0.
+`python scripts/build-zstd.py` (Python 3.12+) rebuilds them with hash-verified WASI SDK 27.0.
 [BSD and linked runtime notices](../../THIRD_PARTY_NOTICES.md) ship in both the
 package and static site. No external decompression service or decoder download
 is used. Browser CSP permits `wasm-unsafe-eval` for this static module while
@@ -128,15 +128,33 @@ The application keeps its existing layout and typography.
 
 ## Measured cost of opening the larger capture
 
-Twelve fresh Node 26.7.0 processes read the same 5,001-span native workload.
-File I/O, module import and SDK-observation checks are excluded from core wall
-time; peak RSS includes verification. All normalized span and timing hashes
-agree. The [raw runs](after/load-core.json) retain ranges and definitions.
-On this 14-vCPU WSL2 Linux machine with 48 GB RAM, observed median core time
-was 180 ms for JSON, 181 ms for compressed JSON, 309 ms for protobuf and 323 ms
-for compressed protobuf. Compression saves input bytes; the measured time ranges
-overlap, and no speedup is inferred. Background host activity was not isolated. These are
-controlled observations, not production or browser latency guarantees.
+Twelve fresh Node 26.7.0 processes and twelve fresh installed-package Node
+20.0.0 processes read the same 5,001-span native workload. File I/O, module import
+and SDK-observation checks are excluded from core wall time. Every normalized
+span and timing hash agrees across carriers and runtimes. The raw
+[Node 26](after/load-core.json) and [Node 20](after/load-core-node20.json) records
+retain ranges and definitions.
+
+| Carrier | Encoded bytes | Node 26 median core ms | Node 20 median core ms |
+| --- | ---: | ---: | ---: |
+| JSON | 3,029,650 | 423 | 426 |
+| JSON + Zstandard | 298,764 | 384 | 546 |
+| Protobuf | 1,387,760 | 825 | 887 |
+| Protobuf + Zstandard | 303,658 | 803 | 840 |
+
+These observations used a 14-vCPU WSL2 Linux machine with 48 GB RAM. Browser
+verification was active during the series; background activity was not
+isolated. Compression saves input bytes; the measured time ranges overlap,
+and no speedup is inferred. These are descriptive observations, not production
+or browser latency guarantees.
+
+Memory records distinguish raw `rusage` from the current program image's
+kernel-reported Linux `VmHWM`, both read after SDK comparisons. Linux preserves
+[resource usage across exec](https://man7.org/linux/man-pages/man2/getrusage.2.html).
+A [controlled preceding allocation](rss-image-control.py) followed by Node
+[retains about 268 MiB in rusage while the current image reports about 43 MiB](after/rss-image-control.json).
+The study keeps both measurements rather than attributing the former image's
+high water to the decoder. Neither reading is a whole-process memory ceiling.
 
 ## Reproduce the independent checks
 
@@ -161,3 +179,6 @@ hash. `browser.mjs URL OUTPUT_DIR after` and `load-browser.mjs URL OUTPUT_DIR`
 run the independent offline UI workflows against any served build. Run the
 former with `before` against a separately built archive of `4039a33` to reproduce
 the rejected native inputs. This source addition is separate from npm 0.3.3.
+
+[Clean checkout, installed package and minimum-runtime verification](../../docs/verification-zstd-collector-2026-10-19.md)
+keep source, local artifact and registry claims separate.

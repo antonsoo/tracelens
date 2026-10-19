@@ -1,0 +1,212 @@
+{
+  "sourceRevision": "ffcd74b519f7adce5cb58fb702b64cc0b755a499",
+  "scope": "Locally packed source, installed without lifecycle scripts into a new consumer. Not a registry release. All installed package files match the tar archive.",
+  "tarball": {
+    "filename": "antonsoloviev-tracelens-0.3.3.tgz",
+    "bytes": 137502,
+    "sha256": "5a3e243343d246424195372b601fc11bc87044f2e31746fee01a26e7cd0b3285"
+  },
+  "files": {
+    "LICENSE": {
+      "bytes": 1071,
+      "sha256": "e26144be8673d69c175126ad8dcd9ed78431464f0b97120b799dc75ec7edb647"
+    },
+    "LICENSE-OTEL": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "LICENSE-PROTOBUF-ES": {
+      "bytes": 13183,
+      "sha256": "e0ad30b30cf84c652d9f6dc5a19f8b812e8c43ecc160bf1ab4c9548bd5716a88"
+    },
+    "LICENSE-WASI": {
+      "bytes": 81896,
+      "sha256": "e0ecbd38d3fa3c4935cc89584f39c17f0c8297ef5bcd5b7def19bcee53bccc9f"
+    },
+    "LICENSE-ZSTD": {
+      "bytes": 1549,
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+    },
+    "dist-cli/core/attributes.js": {
+      "bytes": 6575,
+      "sha256": "367921d52cb5d6c338120edf5a7142884af35aab1e02948af37fcc2f7d12397b"
+    },
+    "dist-cli/core/proto/opentelemetry/proto/common/v1/common_pb.js": {
+      "bytes": 3405,
+      "sha256": "ef967e922a80dec727e129ca0293d34d6c5a78d1eca61fe0993f062d55240cb8"
+    },
+    "dist-cli/cli/compare-report.js": {
+      "bytes": 3138,
+      "sha256": "3ce9d4e65e8c3af066abbe2df98127f7b46f7ce7404d8666fec272fc298db99a"
+    },
+    "dist-cli/core/compare.js": {
+      "bytes": 8930,
+      "sha256": "30b519a06adeeaf230bd51aac16d52cb91623482420998046507fd9268dbba71"
+    },
+    "dist-cli/core/cost-format.js": {
+      "bytes": 364,
+      "sha256": "39ddce6aaa28af971061daa2ba32038c5201cd09b5fda847a673a370f7ad2b0f"
+    },
+    "dist-cli/cli/cost-report.js": {
+      "bytes": 2362,
+      "sha256": "43fde9bddf1fb56c99761915dfa4c3c4af0744c845dccc603348926d33e37b5e"
+    },
+    "dist-cli/core/cost-report.js": {
+      "bytes": 3941,
+      "sha256": "c9ca49313c6658511666b460b4b224a9dfa08f8df3a7882a4a49fc5987cec887"
+    },
+    "dist-cli/core/cost.js": {
+      "bytes": 10333,
+      "sha256": "f1da1334d97f67dd28197c679bf4332bdb0a136c49b76283cd3fb39a750b861e"
+    },
+    "dist-cli/core/critical-path.js": {
+      "bytes": 1313,
+      "sha256": "151993d8f47bdc516c1e7ba2833403a944272702f7eb13544274c8818a80af96"
+    },
+    "dist-cli/core/decode.js": {
+      "bytes": 1351,
+      "sha256": "610d527f9f2a7583baa37b6149b5b4b2618246d1b966de4f9357c43571399a32"
+    },
+    "dist-cli/core/field-alias.js": {
+      "bytes": 601,
+      "sha256": "439e670cfe9292fbe1082bf77fe4d7d446233ab5b081475a4452a39d14216626"
+    },
+    "dist-cli/cli/format.js": {
+      "bytes": 1815,
+      "sha256": "20401793cd985fd9e31aed227a1d10fe07b2e49aa8e0f451ce01cb744e055bea"
+    },
+    "dist-cli/core/identity.js": {
+      "bytes": 2002,
+      "sha256": "43a33d7c9e982a5121baa72e7a32c753d1d0865ea37acf1fb7243172f1461f20"
+    },
+    "dist-cli/cli/index.js": {
+      "bytes": 17298,
+      "sha256": "67c9ba8daca9a817930d2621f82a2163e9b385e974265f78a3039b07533119f4"
+    },
+    "dist-cli/core/index.js": {
+      "bytes": 503,
+      "sha256": "fac1f74730eedb2d43d219803b29601088f208de655a1bc478bf757e0459b83b"
+    },
+    "dist-cli/core/jaeger.js": {
+      "bytes": 12280,
+      "sha256": "80203522d62c0a88a5ec76f2168213bcb85c273cccfd44d620f063f8d0f07199"
+    },
+    "dist-cli/core/layout.js": {
+      "bytes": 1628,
+      "sha256": "c07b03b321ba7553ea24fe8a0edc98f5fc08254d6c55815b6f8814398a38322e"
+    },
+    "dist-cli/cli/links-report.js": {
+      "bytes": 1278,
+      "sha256": "42fa53d806fa84725d2137fd988d71b748238dcf17b603c1242540a8a38d6b73"
+    },
+    "dist-cli/core/links.js": {
+      "bytes": 2244,
+      "sha256": "ead1f314baa8eb9c6430e7e38218673379683be5d771d2e76496a5478d1c13ab"
+    },
+    "dist-cli/core/proto/opentelemetry/proto/logs/v1/logs_pb.js": {
+      "bytes": 8743,
+      "sha256": "b4caedc79a64e173146bd1a60a7ef46927b4008bc05ac2ddd27be428af745f2e"
+    },
+    "dist-cli/core/proto/opentelemetry/proto/collector/logs/v1/logs_service_pb.js": {
+      "bytes": 2868,
+      "sha256": "2c491fd99d42968e68c4c76a3e332186cd11e6287ff421bf2bc558b5711d6a8c"
+    },
+    "dist-cli/cli/logs-report.js": {
+      "bytes": 1133,
+      "sha256": "50d452f6b19d143ff8fbff89c8f33bb7cab27df226b958ef9b05e534f74cd92f"
+    },
+    "dist-cli/core/logs.js": {
+      "bytes": 10251,
+      "sha256": "bcd3fd46496848d0fefb6c238a7bc3b3931c47bb1a9deadf7d91d17d6a1e0215"
+    },
+    "dist-cli/core/normalize.js": {
+      "bytes": 36468,
+      "sha256": "7814bbee7cc3e049e76e0c4a6459167ddbd91c62f71dc1d31bd55f58ffae5d34"
+    },
+    "dist-cli/core/otlp-parser.js": {
+      "bytes": 29868,
+      "sha256": "bb96c6dd8c27c3405b6d6a3f62ead464baea96dc7d0151fd7c51f25f6a39df57"
+    },
+    "dist-cli/core/payload-depth.js": {
+      "bytes": 855,
+      "sha256": "3131be48ef6b56744426dd4b8dfdcbe3440ce442c772a068b2adc17afa3a7b3d"
+    },
+    "dist-cli/core/pricing.js": {
+      "bytes": 6360,
+      "sha256": "7cb2347bc2036f78abd2378149b85ddf2a558b63b9e044c030def5538ed252d4"
+    },
+    "dist-cli/core/protobuf-wire.js": {
+      "bytes": 4800,
+      "sha256": "290fcc936eda59b8f472482fa4fba8c3a80e94b1de35a8e583c39cc72d8c7253"
+    },
+    "dist-cli/core/read-json.js": {
+      "bytes": 2212,
+      "sha256": "a316b57abc90e5ee27b4104166ad76d793bcb81eab4f11138fc78cddb9bf3bbb"
+    },
+    "dist-cli/core/proto/opentelemetry/proto/resource/v1/resource_pb.js": {
+      "bytes": 1530,
+      "sha256": "366803a9d5951de8bcebec6d88f69d3f76f56e55570038cb13b50e68ba027591"
+    },
+    "dist-cli/core/status.js": {
+      "bytes": 2099,
+      "sha256": "4ef1135476695abfa6019600bcae2c00ec111d7dda28259a9323c6ab9aa95b5b"
+    },
+    "dist-cli/core/summary.js": {
+      "bytes": 6176,
+      "sha256": "1ba16be223c06b683fcaf825faeac24e8d5b5370e5767d190e7276f0912dc49f"
+    },
+    "dist-cli/cli/timing-report.js": {
+      "bytes": 1708,
+      "sha256": "9db88493522d3f2712d385fb436a91144ffcba503b913b2574202b1be240b3c9"
+    },
+    "dist-cli/core/timing.js": {
+      "bytes": 5050,
+      "sha256": "5350f040033ea4f3605ba5a1ed630e888ab1986d8e081efb8f3b1f48775d3607"
+    },
+    "dist-cli/core/proto/opentelemetry/proto/trace/v1/trace_pb.js": {
+      "bytes": 8115,
+      "sha256": "fc68bc98ce3be2a97a124da0dba0ffc213784905f0923f4f9a55558bf4c57f8b"
+    },
+    "dist-cli/core/proto/opentelemetry/proto/collector/trace/v1/trace_service_pb.js": {
+      "bytes": 2923,
+      "sha256": "0489c4def9e8e91d3813478f62efdcf1f2bda2c13ed448cb757d104fa4c0ec1b"
+    },
+    "dist-cli/core/trace-file.js": {
+      "bytes": 8487,
+      "sha256": "4f6c22ae2f22b9a173c25c25f359c09b1f369fbc3cb641f41907b5430e0fed0d"
+    },
+    "dist-cli/core/types.js": {
+      "bytes": 327,
+      "sha256": "503b9fd698481c73e0deb5e964aa5905583e9917619b4444bd2b22667511f974"
+    },
+    "dist-cli/cli/version.js": {
+      "bytes": 115,
+      "sha256": "8fc6890ed48fbb23e06c285757e62982f89a129a76b6ac383856348232e6a2a9"
+    },
+    "dist-cli/core/zstd-kernel.js": {
+      "bytes": 2239,
+      "sha256": "86ec9c680f115f2a2262d970f2950828153bdfeb305316da68741e9077e60774"
+    },
+    "dist-cli/core/vendor/zstd-wasm.js": {
+      "bytes": 97269,
+      "sha256": "df56912e9e1b40e9e6f69f58c2989063231365ec875997eed23268f263e45500"
+    },
+    "dist-cli/core/zstd.js": {
+      "bytes": 7070,
+      "sha256": "7dc0cf0edb22723cfaaba43325d5508fe607c4231e8f3e96d9ea779aadfbfeb8"
+    },
+    "package.json": {
+      "bytes": 2254,
+      "sha256": "770f50829d85e6e2d8fc78fba095393bf03f832529216f44a50f37a552dbbf55"
+    },
+    "README.md": {
+      "bytes": 31582,
+      "sha256": "751e535c14e380ab0a56a3fea60b67f86aef124856ecab938a5ae47eb7dfb66d"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "bytes": 1738,
+      "sha256": "f6995e995c6128657fd72991a7d6e879ab51474551e4fc0a03f6dfb0fddb48fe"
+    }
+  },
+  "installedFilesMatchTar": true
+}

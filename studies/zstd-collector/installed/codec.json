@@ -1,0 +1,14 @@
+{
+  "node": "v20.0.0",
+  "oracleSha256": "9c00d4acc758c205f49f9fe6b886c4c4406708167b72e51ba3c1d1c34052856b",
+  "referenceZstandard": "0.25.0",
+  "syntheticCodecCases": 399,
+  "singleBitMutations": 6992,
+  "withinLimitsReferenceAccepted": 2014,
+  "expectedReferenceRejected": 4970,
+  "outsideSupportedLimits": 8,
+  "failures": [],
+  "positiveCasesMatched": 399,
+  "mutationsMatched": 6992,
+  "scope": "Constructed byte-codec controls, not telemetry populations. Python zstandard validates original bytes and single-bit mutations of one retained native Collector frame. Resource/dictionary exclusions remain explicit; accepted decoded bytes must match exactly."
+}

@@ -1,0 +1,117 @@
+{
+  "node": "v20.0.0",
+  "scope": "Actual installed CLI executable. Complete paired log reports agree, excluding only documented transport names/compression. Source paths and line evidence otherwise retained. Malformed input exits without partial stdout.",
+  "pairs": [
+    {
+      "mode": "legacy",
+      "format": "json",
+      "completeLogReportMatchesPlain": true,
+      "normalizedReportSha256": "f9bdbd5c68307875c559b39143c0fc4a87ac8408dadfa5fa65c7d95955fcdb44"
+    },
+    {
+      "mode": "legacy",
+      "format": "proto",
+      "completeLogReportMatchesPlain": true,
+      "normalizedReportSha256": "39ccdb373435f425a90a7a044b20f0b693a1ad082a6350d8c3f9e7f47c37cfe4"
+    },
+    {
+      "mode": "native",
+      "format": "json",
+      "completeLogReportMatchesPlain": true,
+      "normalizedReportSha256": "f9bdbd5c68307875c559b39143c0fc4a87ac8408dadfa5fa65c7d95955fcdb44"
+    },
+    {
+      "mode": "native",
+      "format": "proto",
+      "completeLogReportMatchesPlain": true,
+      "normalizedReportSha256": "39ccdb373435f425a90a7a044b20f0b693a1ad082a6350d8c3f9e7f47c37cfe4"
+    }
+  ],
+  "refusals": [
+    {
+      "file": "legacy-checksum.traces.otlp.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "legacy-truncated.traces.otlp.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "legacy-trailing.traces.otlp.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "native-checksum.traces.otlp.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "native-truncated.traces.otlp.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "native-trailing.traces.otlp.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "expansion.jsonl.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "window.jsonl.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "dictionary.jsonl.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-393-5.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-393-6.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-393-7.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-394-0.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-409-4.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-412-1.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-412-3.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    },
+    {
+      "file": "bitstream-431-6.traces.pb.zst",
+      "exitCode": 1,
+      "stdoutBytes": 0
+    }
+  ]
+}

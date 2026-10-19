@@ -30,12 +30,14 @@ const statistics = files.map(file => {
   const group = runs.filter(row => row.file === file);
   const ms = group.map(row => row.totalCoreMs).sort((a, b) => a - b);
   const rss = group.map(row => row.maxRssKiB);
+  const vmHwm = group.map(row => row.linuxVmHwmKiB);
   return { file, freshProcesses: group.length, medianCoreMs: ms[1],
-    coreMsRange: [ms[0], ms.at(-1)], maxRssKiBRange: [Math.min(...rss), Math.max(...rss)] };
+    coreMsRange: [ms[0], ms.at(-1)], maxRssKiBRange: [Math.min(...rss), Math.max(...rss)],
+    linuxVmHwmKiBRange: vmHwm.every(Number.isFinite) ? [Math.min(...vmHwm), Math.max(...vmHwm)] : null };
 });
 const decoder = JSON.parse(await readFile(new URL('../../scripts/zstd/decoder.json', import.meta.url)));
 await writeFile(output, JSON.stringify({
-  scope: 'Controlled SDK digest workload on 14-vCPU WSL2 Linux, 48 GB RAM. File I/O, module import and SDK-observation checks excluded from core wall time. RSS includes verification. Background host activity was not isolated. These are descriptive observations, not production/browser latency guarantees.',
+  scope: 'Controlled SDK digest workload on 14-vCPU WSL2 Linux, 48 GB RAM. File I/O, module import and SDK-observation checks excluded from core wall time. Memory readings include verification: raw rusage and current-image Linux VmHWM are separate. Background host activity was not isolated. These are descriptive observations, not process-memory ceilings or production/browser latency guarantees.',
   decoder: { version: decoder.version, bytes: decoder.bytes, sha256: decoder.sha256 },
   statistics, runs,
 }, null, 2) + '\n');
