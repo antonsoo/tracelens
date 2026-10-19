@@ -1,0 +1,44 @@
+[
+  {
+    "file": "chromium-load.png",
+    "bytes": 82137,
+    "sha256": "dbdbe9e506c1a0c68344ee0ca1c7191ebd6be3601e1fdcaef260baabfc18497d",
+    "identicalToInspectedLocal": true
+  },
+  {
+    "file": "firefox-load.png",
+    "bytes": 102473,
+    "sha256": "e1546ab134090ff1b33aa34b2fe7fa9b618ac4d03d0214a6db859af3ddc9e3bb",
+    "identicalToInspectedLocal": true
+  },
+  {
+    "file": "mobile.png",
+    "bytes": 115634,
+    "sha256": "a5642a3b1a8d17b6064c4a91c1f9f1f69488cd9c4d12439d80e23796caf0039c",
+    "identicalToInspectedLocal": true
+  },
+  {
+    "file": "native-proto.png",
+    "bytes": 94201,
+    "sha256": "f3414cca4ce183359ed3bf34087095ac7f6b8f56cfbad0f0b51775fc9e1fef70",
+    "identicalToInspectedLocal": true
+  },
+  {
+    "file": "sample-1440.png",
+    "bytes": 82869,
+    "sha256": "11c709d1b0b31dfe0bcf22dea124b9a6306e0b53badd16b5b5e62f1f415ca75a",
+    "identicalToInspectedLocal": true
+  },
+  {
+    "file": "sample-375.png",
+    "bytes": 103704,
+    "sha256": "809f0a436f5ffab9c361384909a87664596c54e6361e7ba5929624ff8a5ac592",
+    "identicalToInspectedLocal": true
+  },
+  {
+    "file": "sample-home-phone.png",
+    "bytes": 82786,
+    "sha256": "b8cfa3aa0387bc02344f7a61ed4752910aeaf76455429323c1a30656991b85b1",
+    "identicalToInspectedLocal": true
+  }
+]

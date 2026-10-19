@@ -1,0 +1,69 @@
+{
+  "scope": "Actual controlled local SDK workload; observed file-input-to-visible-count wall time includes browser automation, I/O, worker and UI. Four observations, not a performance guarantee.",
+  "workflows": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "spans": 5001,
+      "firstImportOffline": true,
+      "loadThroughVisibleUiMs": 249.50861299999997,
+      "lastToolDownloadSha256": "4cab7f7a87bd2fbc7ea5154f0004f64b70c849881913c77c8000ebd9a6b3ff34",
+      "originalSdkClockAndAttributesMatch": true,
+      "renderedRowsBounded": true,
+      "errors": [],
+      "late": [],
+      "accessibilityViolations": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "spans": 5001,
+      "firstImportOffline": true,
+      "loadThroughVisibleUiMs": 811.5325269999998,
+      "lastToolDownloadSha256": "4cab7f7a87bd2fbc7ea5154f0004f64b70c849881913c77c8000ebd9a6b3ff34",
+      "originalSdkClockAndAttributesMatch": true,
+      "renderedRowsBounded": true,
+      "errors": [],
+      "late": [],
+      "accessibilityViolations": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "file": "traces.jsonl.zst",
+      "encodedBytes": 298764,
+      "spans": 5001,
+      "firstImportOffline": true,
+      "loadThroughVisibleUiMs": 490.2541519999995,
+      "lastToolDownloadSha256": "4cab7f7a87bd2fbc7ea5154f0004f64b70c849881913c77c8000ebd9a6b3ff34",
+      "originalSdkClockAndAttributesMatch": true,
+      "renderedRowsBounded": true,
+      "errors": [],
+      "late": [],
+      "accessibilityViolations": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "file": "traces.traces.otlp.zst",
+      "encodedBytes": 303658,
+      "spans": 5001,
+      "firstImportOffline": true,
+      "loadThroughVisibleUiMs": 839.0957790000002,
+      "lastToolDownloadSha256": "4cab7f7a87bd2fbc7ea5154f0004f64b70c849881913c77c8000ebd9a6b3ff34",
+      "originalSdkClockAndAttributesMatch": true,
+      "renderedRowsBounded": true,
+      "errors": [],
+      "late": [],
+      "accessibilityViolations": []
+    }
+  ]
+}

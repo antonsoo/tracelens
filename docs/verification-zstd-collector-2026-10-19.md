@@ -81,3 +81,25 @@ package and static site. Frame extents/output/window budgets precede decoding;
 the reference codec validates bitstreams and optional checksums. Complete
 omitted trailing frames cannot be inferred. Existing JSONL partial-line
 warnings and protobuf wire limits retain their own meanings.
+
+## Public source and canonical site
+
+Source `d1bceb6` is pushed. Pages `daec025` appends to `dc964f8` and publishes
+the clean `dist/` tree. All [39 canonical files and both entry checks](../studies/zstd-collector/hosted-bytes.json)
+match by SHA-256. All [26 previous deployed assets](../studies/zstd-collector/preserved-assets-hosted.json)
+remain byte-identical on the public origin; no orphan history or force push
+was used.
+
+Actual public-browser replays pass [sixteen trace/log workflows](../studies/zstd-collector/hosted/browser.json),
+[four larger native imports](../studies/zstd-collector/hosted/load-browser.json),
+and [four sample entry workflows](../studies/zstd-collector/hosted/sample-browser.json).
+The first twenty disconnect before their first file import. Sample entry
+workflows fetch the original compressed capture, then disconnect before
+searching and downloading the last SDK tool span. All retain original clocks
+and attributes, without page/CSP errors, late requests or document overflow.
+All [seven public screenshots](../studies/zstd-collector/hosted-screenshots.json)
+were opened and inspected and match the reviewed local PNGs byte for byte.
+
+The [publication receipt](../studies/zstd-collector/publication.json) binds these
+reports to the canonical URL and deployed/source revisions. npm 0.3.3 remains
+the separately observed registry artifact. No package or tag was released.

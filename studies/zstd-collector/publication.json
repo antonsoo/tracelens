@@ -1,0 +1,23 @@
+{
+  "checkedAtUtc": "2026-10-19T09:16:22.399713+00:00",
+  "sourceRevision": "d1bceb60524afe07f4d21b2b7f1270ab865f7801",
+  "compiledRevision": "ffcd74b519f7adce5cb58fb702b64cc0b755a499",
+  "pagesCommit": "daec025d4311fe2efec979664812a504b70c5d7b",
+  "pagesParent": "dc964f8f2892f9966a570e5eb67e33aeacdfba57",
+  "siteUrl": "https://antonsoo.github.io/tracelens/",
+  "sampleUrl": "https://antonsoo.github.io/tracelens/?example=collector-zstd",
+  "canonicalStaticFilesVerified": 39,
+  "previousAssetsCanonicallyVerified": 26,
+  "publicBrowser": {
+    "nativeTraceLogWorkflows": 16,
+    "largerCaptureFirstImportOffline": 4,
+    "sampleEntriesThenOfflineSearchDownload": 4,
+    "screenshotsIdenticalToInspectedLocal": 7,
+    "reports": {
+      "browser.json": "0edabe735f686c0efa766af915cd496b4b51ff3912b816ffa07da475c8e0c021",
+      "load-browser.json": "0c10cdcecb1829b12489fc25772d4f1c08c4a5d2cb7730d57b470e4b04a5593f",
+      "sample-browser.json": "bbb28931ec4fd5bb343786b23bcbd9b4f8c67e13be77aa1535b3ec6629a92108"
+    }
+  },
+  "scope": "Compiled source, clean installed artifact, canonical hosted bytes and actual public browser behavior are separately checked. Previous assets remain byte-identical on the public origin. No registry/tag release or successful CI run is claimed."
+}
