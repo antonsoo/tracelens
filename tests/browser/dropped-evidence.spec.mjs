@@ -22,6 +22,9 @@ for (const format of ['otlp', 'proto', 'proto-snake']) {
     await context.setOffline(true);
     for (const record of oracle.spans) {
       await page.locator('#tl-trace-picker').selectOption(record.traceId);
+      // Choosing the trace already shown still starts a reload, and its row
+      // has the expected name before that reload lands and clears a selection.
+      await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
       await expect(page.locator('.tl-wf-row').first()).toContainText(record.name);
       await page.locator('.tl-wf-row').first().click();
       await expect(page.locator('.tl-detail-title')).toHaveText(record.name);
