@@ -364,7 +364,7 @@ export function renderComparison(
         'footer',
         { className: 'tl-compare-footer' },
         'Built by ',
-        h('a', { href: 'https://github.com/antonsoo' }, 'Anton Soloviev'),
+        h('a', { href: 'https://github.com/antonsoo' }, 'Anthony Mercer'),
         '. ',
         h('a', { href: 'https://antonsoo.github.io/officina/' }, 'More tools from Officina'),
         '.',
