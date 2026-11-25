@@ -9,6 +9,15 @@ Entries describe source changes at capture time. The
 later build and publication checks; older source-only notes describe their
 original capture rather than the current hosted feature inventory.
 
+### Landing screen
+
+- Keep the whole landing card reachable on phones and short windows. It was
+  centred in a fixed-height area, so a card taller than the window lost its
+  top (the heading, on a 375 × 700 screen) above the scrollable region.
+- List the samples in two groups, one trace per supported convention and the
+  worked investigations, with each sample's origin beside its name. Button
+  names are unchanged.
+
 ### Compressed Collector files
 
 - Open Zstandard-compressed JSON and declared OTLP protobuf in the CLI and

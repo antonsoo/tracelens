@@ -44,16 +44,20 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
     h(
       'div',
       { className: 'tl-dropzone-examples' },
-      h('span', { className: 'faint', style: 'align-self:center' }, 'or load a sample:'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-genai', onClick: () => cb.onLoadExample('examples/genai-semconv-trace.json') }, 'GenAI semconv example'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-openinference', onClick: () => cb.onLoadExample('examples/openinference-trace.json') }, 'OpenInference example'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-jaeger', onClick: () => cb.onLoadExample('examples/jaeger-genai-trace.json') }, 'Jaeger JSON example'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-compare', onClick: cb.onCompareExample }, 'Compare two runs (synthetic)'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-timing', onClick: cb.onTimingExample }, 'Parallel vs sequential (local capture)'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-cost', onClick: () => cb.onLoadExample('examples/cost-nano-stream.json') }, 'Inspect token cost (recorded SDK replay)'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-links', onClick: () => cb.onLoadExample('examples/queue-links.json') }, 'Follow queued jobs (local SDK capture)'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-logs', onClick: () => cb.onLoadExample('examples/genai-log-events.jsonl') }, 'Inspect messages from logs (local SDK capture)'),
-      h('button', { className: 'tl-btn', 'data-focus-key': 'example-zstd', onClick: () => cb.onLoadExample('examples/collector-digest.traces.otlp.zst') }, 'Collector Zstandard (5,001-span local SDK capture)'),
+      h('p', { className: 'tl-samples-lead' }, 'Or open a sample'),
+      sampleGroup('One trace in each supported convention', [
+        sample('example-genai', 'GenAI semconv example', '', () => cb.onLoadExample('examples/genai-semconv-trace.json')),
+        sample('example-openinference', 'OpenInference example', '', () => cb.onLoadExample('examples/openinference-trace.json')),
+        sample('example-jaeger', 'Jaeger JSON example', '', () => cb.onLoadExample('examples/jaeger-genai-trace.json')),
+      ]),
+      sampleGroup('Investigations to follow', [
+        sample('example-compare', 'Compare two runs', 'synthetic', cb.onCompareExample),
+        sample('example-timing', 'Parallel vs sequential', 'local capture', cb.onTimingExample),
+        sample('example-cost', 'Inspect token cost', 'recorded SDK replay', () => cb.onLoadExample('examples/cost-nano-stream.json')),
+        sample('example-links', 'Follow queued jobs', 'local SDK capture', () => cb.onLoadExample('examples/queue-links.json')),
+        sample('example-logs', 'Inspect messages from logs', 'local SDK capture', () => cb.onLoadExample('examples/genai-log-events.jsonl')),
+        sample('example-zstd', 'Collector Zstandard', '5,001-span local SDK capture', () => cb.onLoadExample('examples/collector-digest.traces.otlp.zst')),
+      ]),
     ),
   );
 
@@ -70,6 +74,27 @@ export function renderDropzone(container: HTMLElement, cb: DropzoneCallbacks): v
   });
 
   mount(container, h('div', { className: 'tl-dropzone' }, card));
+}
+
+// The provenance stays inside the button so its accessible name reads
+// "Inspect token cost (recorded SDK replay)": where a sample came from is part
+// of what the reader is choosing.
+function sample(focusKey: string, name: string, provenance: string, onClick: () => void): HTMLElement {
+  return h(
+    'li',
+    {},
+    h(
+      'button',
+      { className: 'tl-sample', 'data-focus-key': focusKey, onClick },
+      h('span', { className: 'tl-sample-name' }, name),
+      provenance ? ' ' : null,
+      provenance ? h('span', { className: 'tl-sample-provenance' }, `(${provenance})`) : null,
+    ),
+  );
+}
+
+function sampleGroup(title: string, items: HTMLElement[]): HTMLElement {
+  return h('section', { className: 'tl-sample-group' }, h('h2', {}, title), h('ul', {}, ...items));
 }
 
 // SIGNAL_SVG is a static constant, never interpolated with trace data, so
