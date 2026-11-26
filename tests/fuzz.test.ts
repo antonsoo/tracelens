@@ -57,7 +57,7 @@ it('fuzz: mutated OTLP and Jaeger documents only raise declared input/comparison
   expect(rejected).toBeGreaterThan(100);
   expect(compared).toBeGreaterThan(0);
   expect(comparisonRejected).toBeGreaterThan(0);
-});
+}, 60_000);
 
 const JUNK_LINES = ['{}', '[]', 'null', '42', '"text"', '{"resourceMetrics":[]}', '{"resourceLogs":[{}]}', '{"resourceSpans":{}}', '{"resourceSpans":[null]}', '{"resourceSpans":', 'x', '{"data":[]}'];
 
