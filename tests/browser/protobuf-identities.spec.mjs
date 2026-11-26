@@ -26,6 +26,8 @@ for (const format of ['proto', 'proto-snake', 'otlp']) {
     await expect(page.locator('#tl-trace-picker option')).toHaveCount(2);
     await expect(page.locator('#tl-trace-picker')).toHaveValue(first);
     await page.locator('#tl-trace-picker').selectOption(second);
+    // Wait for the reload that the picker starts before opening the links panel.
+    await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
     await page.locator('.tl-links summary').click();
     expect(await download(page, page.getByRole('button', { name: 'Download links JSON' }))).toEqual(reference);
     await page.locator('.tl-links').getByRole('button', { name: 'second workflow', exact: true }).click();

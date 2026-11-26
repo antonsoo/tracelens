@@ -62,6 +62,8 @@ for (const [format, files] of Object.entries(formats)) for (const width of [1440
     const violations = (await new AxeBuilder({ page }).analyze()).violations;
     expect(violations).toEqual([]);
     await page.locator('#tl-trace-picker').selectOption(consumer.traceId);
+    // Wait for the reload that the picker starts before opening the links panel.
+    await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
     await expect(page.locator('.tl-wf-row')).toHaveCount(2);
     await page.locator('.tl-links summary').click();
     const links = await download(page, 'Download links JSON');

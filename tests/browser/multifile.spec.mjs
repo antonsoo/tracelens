@@ -16,6 +16,8 @@ test('native group selection restores parents and follows cross-file links offli
   await expect(page.locator('.tl-trace-picker')).toContainText('These 3 files hold 2 traces');
   await context.setOffline(true);
   await page.locator('#tl-trace-picker').selectOption(oracle.audit.traceId);
+  // Wait for the reload that the picker starts before opening the links panel.
+  await page.waitForFunction(() => !document.querySelector('.tl-load-notice'));
   await page.locator('.tl-links summary').click();
   await page.locator('.tl-links').getByRole('button', { name: 'commit audit batch' }).click();
   await page.getByRole('button', { name: 'Inspect POST /digest', exact: true }).first().click();
