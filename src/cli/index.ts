@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // tracelens CLI. This file is only ever invoked as the package's `bin`
-// entry (via `npx @antonsoloviev/tracelens` or a local install), never
+// entry (via `npx @anthonymercer/tracelens` or a local install), never
 // imported as a library, so it runs `main()` unconditionally rather than
 // guarding on `import.meta.url === argv[1]` (that comparison breaks once
 // npm resolves the bin through a symlink, which is exactly how `npm i -g`
@@ -54,7 +54,7 @@ Both Collector message-level and native file-level compression are supported.
 Signal and framing are explicit; binary input is not guessed from failed JSON.
 
 ${bold('Run it without installing:')}
-  npx @antonsoloviev/tracelens summary trace.json
+  npx @anthonymercer/tracelens summary trace.json
 `;
 
 function kindColor(kind: string, s: string): string {

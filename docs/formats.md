@@ -55,7 +55,7 @@ metrics, profiles and custom encoding extensions are not supported by these
 filename conventions. A complete file ending exactly
 between batches cannot reveal that later batches were omitted.
 [Native SDK/Collector capture, Google decoder checks and current verification](../studies/otlp-binary/README.md)
-record the tested surface. This source addition is not an npm release.
+record the tested surface.
 
 ## Zstandard compression
 
@@ -91,7 +91,7 @@ retain the tested source surface; registry releases remain separate.
 
 ## 1. Wire format: OTLP/JSON
 
-**Field spelling conflicts (source checkout).** CamelCase and snake_case
+**Field spelling conflicts.** CamelCase and snake_case
 exports remain usable individually, but competing non-null declarations of
 the same trace field are refused rather than choosing one. This includes
 resource/scope collections, span identities/times/omission counts, and event
@@ -101,7 +101,7 @@ and leave the normalized value unavailable; log identity conflicts already
 remain unattributed. This is an evidence-preserving viewer policy, not a
 claim of full ProtoJSON conformance. [Reproduction](../studies/field-aliases/README.md).
 
-**Related log exports (source checkout).** Select OTLP traces and logs together,
+**Related log exports.** Select OTLP traces and logs together,
 or open a JSON/JSONL export containing both signals. Log collections use
 `resourceLogs[].scopeLogs[].logRecords[]` (snake_case is also accepted).
 Both trace ID and span ID must resolve to exactly one imported span; names,
@@ -137,7 +137,7 @@ Source: [`opentelemetry-proto`](https://github.com/open-telemetry/opentelemetry-
 `file`/`otlphttp` JSON exporters, or by `google.protobuf.json_format.MessageToJson`
 on an `ExportTraceServiceRequest`.
 
-**Protobuf JSON IDs (source checkout, checked 2026-10-10).** The structures
+**Protobuf JSON IDs (checked 2026-10-10).** The structures
 are shared, but the encodings differ: [OTLP JSON](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding)
 uses hexadecimal trace/span IDs, while ordinary [Protobuf JSON](https://protobuf.dev/programming-guides/json/)
 serializes bytes as base64. Tracelens converts canonical 16-byte trace IDs and
@@ -146,7 +146,7 @@ Standard and URL-safe base64, with or without padding, are supported; padding
 bits must be canonical. Unknown identifier forms retain their spelling and
 case. This is a viewer's input decoder, not complete OTLP schema validation.
 
-**64-bit trace IDs (source checkout).** A complete 16-character hexadecimal
+**64-bit trace IDs.** A complete 16-character hexadecimal
 trace ID is left-padded with sixteen zeros, matching its 128-bit OTLP identity.
 Jaeger's query/UI exporter uses this shorter spelling when the high word is
 zero. Normalization applies before trace selection, parent/link resolution and
@@ -487,8 +487,8 @@ so the exported table does not attribute custom prices to a vendor.
 
 ## 5. Installing the CLI from git
 
-The CLI is on npm as `@antonsoloviev/tracelens`, which is the simple route
-(`npx @antonsoloviev/tracelens summary trace.json`). Installing straight from
+The CLI is on npm as `@anthonymercer/tracelens`, which is the simple route
+(`npx @anthonymercer/tracelens summary trace.json`). Installing straight from
 the repository still works, and this is how:
 
 `npm install`/`npx` on a `github:`/`git+...` spec runs the package's
@@ -499,7 +499,7 @@ scripts by default; passing `--allow-scripts` on the command line is
 explicitly rejected in that nested, project-scoped context
 (`EALLOWSCRIPTS`) — the error message says so and points at
 `package.json#allowScripts` instead. `package.json` here declares
-`"allowScripts": {"@antonsoloviev/tracelens": true}`, which is read during exactly that
+`"allowScripts": {"@anthonymercer/tracelens": true}`, which is read during exactly that
 step, so `npx --allow-git=root github:antonsoo/tracelens ...` builds and
 runs without the caller needing `--allow-scripts` at all. Verified
 end-to-end against a `git+file://` remote: `npm install -g --allow-git=root --prefix <dir> git+file:///path/to/repo.git`

@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+## [0.4.0] - 2026-11-26
+
+### Distribution
+
+- Published as `@anthonymercer/tracelens`. The earlier
+  `@antonsoloviev/tracelens` package is deprecated and points here; its
+  versions stay installable.
+- Package metadata names Anthony Mercer as the author.
+
 Entries describe source changes at capture time. The
 [consolidated verification](docs/verification-inspection-2026-10-14.md) records
 later build and publication checks; older source-only notes describe their

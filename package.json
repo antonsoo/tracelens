@@ -1,6 +1,6 @@
 {
-  "name": "@antonsoloviev/tracelens",
-  "version": "0.3.3",
+  "name": "@anthonymercer/tracelens",
+  "version": "0.4.0",
   "description": "A zero-install viewer for LLM agent traces: drop an OpenTelemetry export, see every model call, tool call, token and dollar on a timeline.",
   "type": "module",
   "author": "Anthony Mercer",
@@ -27,7 +27,7 @@
     "tracelens": "./dist-cli/cli/index.js"
   },
   "allowScripts": {
-    "@antonsoloviev/tracelens": true
+    "@anthonymercer/tracelens": true
   },
   "files": [
     "dist-cli",

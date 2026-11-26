@@ -3,7 +3,7 @@
 **A zero-install viewer for LLM agent traces.** Drop an OpenTelemetry export,
 inspect model calls, tool calls, token usage and estimated cost on a timeline.
 
-[![npm](https://img.shields.io/npm/v/@antonsoloviev/tracelens)](https://www.npmjs.com/package/@antonsoloviev/tracelens)
+[![npm](https://img.shields.io/npm/v/@anthonymercer/tracelens)](https://www.npmjs.com/package/@anthonymercer/tracelens)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Ftracelens-6fd6c4)](https://antonsoo.github.io/tracelens/)
 
@@ -28,20 +28,18 @@ summary — nothing leaves the browser tab.
 | Why do two token counters disagree? | [Inspect retained aliases and an explicitly unknown charge](studies/usage-conflicts/README.md). |
 | Where did queued work or separate messages go? | [Follow span links](docs/span-links.md) and [join related OTLP trace/log exports](studies/log-events/README.md). |
 
-Use the source checkout below for current parsing and accounting behavior.
 The [source history](docs/source-history.md) keeps reproduced defects,
 before/after evidence and publication boundaries together.
 
 ## Open compressed Collector exports
 
-The source checkout reads Zstandard-compressed JSON and declared OTLP protobuf
+tracelens reads Zstandard-compressed JSON and declared OTLP protobuf
 files directly, including both Collector compression modes. Native captures
 retain the same clocks, links, log messages and typed values as their uncompressed
 controls; damaged or oversized replacements keep the previous report. A retained
 [5,001-span native SDK capture](https://antonsoo.github.io/tracelens/?example=collector-zstd)
 opens directly in the demo; search and span downloads work after disconnecting. [Native files, offline workflows,
-checksum checks and limits](studies/zstd-collector/README.md). This addition is
-separate from the npm 0.3.3 release.
+checksum checks and limits](studies/zstd-collector/README.md).
 
 ## On real instrumentation output
 
@@ -87,18 +85,20 @@ Or run the CLI without cloning (point it at any OTLP/JSON or Jaeger JSON
 trace of your own; `trace.json` below is a placeholder):
 
 ```bash
-npx @antonsoloviev/tracelens summary trace.json
+npx @anthonymercer/tracelens summary trace.json
 ```
 
 That runs the published package
-([`@antonsoloviev/tracelens`](https://www.npmjs.com/package/@antonsoloviev/tracelens)
+([`@anthonymercer/tracelens`](https://www.npmjs.com/package/@anthonymercer/tracelens)
 on npm; the command it installs is `tracelens`).
 
 | Distribution | Scope |
 |---|---|
-| Source checkout | Current parser, browser and CLI, including `timing`, `cost`, `links` and `logs`. |
-| npm 0.3.3 | Published inspection commands; predates those four commands and the current correctness repairs. |
-| Live demo | [Verified inspection build](docs/verification-inspection-2026-10-14.md#public-browser-deployment), updated separately from npm. |
+| npm 0.4.0 and the live demo | Current parser, browser and CLI, including `timing`, `cost`, `links` and `logs`. |
+| npm 0.3.3 and earlier (`@antonsoloviev/tracelens`) | Inspection commands only; no `timing`, `cost`, `links` or `logs`, and none of the later correctness repairs. |
+
+The [verification of the earlier public build](docs/verification-inspection-2026-10-14.md#public-browser-deployment)
+is retained.
 
 ## Screenshots
 
@@ -135,7 +135,7 @@ on npm; the command it installs is `tracelens`).
 - **OTLP/JSON parser** — resourceSpans → scopeSpans → spans, typed
   `AnyValue` attribute decoding, tree building with graceful handling of
   malformed spans, missing parents and clock skew (see `docs/formats.md`).
-  The source checkout also reads Protobuf `MessageToJson` exports directly,
+  tracelens also reads Protobuf `MessageToJson` exports directly,
   preserving base64 byte identities and original snake_case attribute names.
   [Actual SDK exports, before/after results and browser downloads](studies/protobuf-identities/README.md)
   check that distinct traces stay distinct and linked spans remain reachable.
@@ -144,17 +144,17 @@ on npm; the command it installs is `tracelens`).
   that passed through it. The lines are read as one export, and a file with
   several traces gets a picker (`--trace <id>` in the CLI), opening on the
   trace with the most spans.
-- **Related exports together (source build)** — choose or drop up to 32 files
+- **Related exports together** — choose or drop up to 32 files
   (25 MB combined in the browser). Resolve cross-service parents and links before
   selecting a trace; retain source filenames and reject overlapping identities.
   The CLI accepts file groups for inspection and comparison.
   [Captured workflow, commands and limits](studies/multifile/README.md).
-  The source build also joins [Jaeger's 64-bit trace ID spelling](studies/jaeger64/README.md)
+  It also joins [Jaeger's 64-bit trace ID spelling](studies/jaeger64/README.md)
   to its zero-padded OTLP identity, including parent links and duplicate checks.
 - **Jaeger JSON too** — a trace downloaded from the Jaeger UI is converted to
   OTLP (microsecond times, typed tags, span kind and status from their tags,
   logs as events) and gets the same checks.
-- **Status evidence (source build)** — quoted integer error codes retain the
+- **Status evidence** — quoted integer error codes retain the
   recorded failure. Unreadable or unfamiliar status codes retain their raw
   fields and make error/retry counts unknown; comparisons no longer claim a
   100% error reduction from damaged status data.
@@ -163,7 +163,7 @@ on npm; the command it installs is `tracelens`).
   semconv (`gen_ai.*`, including the legacy per-message-event fallback
   older instrumentation still emits) and OpenInference (`openinference.*`,
   `llm.*`, including its flattened `llm.input_messages.<i>.*` encoding).
-  In the source checkout it also reads the dialects real libraries write
+  It also reads the dialects real libraries write
   beyond them (the Vercel AI SDK's `ai.*` spans, OpenLLMetry's indexed
   `gen_ai.prompt.N` messages and `llm.request.type`, Strands' event
   content): [what, and how it was measured](studies/instrumentation-census/README.md).
@@ -223,7 +223,7 @@ on npm; the command it installs is `tracelens`).
   operations, per-side span inspection, and JSON export with pricing inputs.
   Missing measurements remain unknown; an unpriced call cannot become a
   claim of cost savings.
-- **Phone inspection (source build)** keeps the timeline in a bounded scrolling
+- **Phone inspection** keeps the timeline in a bounded scrolling
   panel, with room for its timing track beside the labels. Selected details stay
   near the timeline even for thousands of spans; keyboard navigation and full
   downloads remain available. [Before/after geometry and browser checks](studies/mobile-waterfall/README.md).
@@ -294,7 +294,7 @@ only, never `innerHTML` with interpolated data — see the comment in
 
 ## Usage
 
-### Inspect a token charge (source checkout)
+### Inspect a token charge
 
 ```bash
 npm ci
@@ -400,7 +400,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 ```
 
 **Open it.** Drag the file onto the [live demo](https://antonsoo.github.io/tracelens/),
-or `npx @antonsoloviev/tracelens summary trace.json` for a terminal summary.
+or `npx @anthonymercer/tracelens summary trace.json` for a terminal summary.
 
 ## Supported conventions
 
@@ -410,7 +410,7 @@ list. Summary:
 | Convention | Status |
 |---|---|
 | OTLP/JSON wire format | Supported: one document, or JSON Lines with an export per line (the Collector's file exporter) |
-| Protobuf JSON serialization | Source checkout: canonical base64 trace/span IDs and original field names, normalized to the same parsed trace as the hexadecimal OTLP form |
+| Protobuf JSON serialization | Supported: canonical base64 trace/span IDs and original field names, normalized to the same parsed trace as the hexadecimal OTLP form |
 | OpenTelemetry GenAI semconv (`gen_ai.*`) | Supported, including the legacy `gen_ai.system` attribute and per-message-event fallback. Checked on spans written by OpenLLMetry 0.62.4 |
 | OpenInference (`openinference.*`, `llm.*`) | Supported: multi-part contents, tool calls and tool results as the instrumentation libraries write them. Checked on spans written by `openinference-instrumentation-anthropic` 3.0.1 and `-openai` 0.1.63 |
 | Jaeger native JSON export | Supported: converted to OTLP/JSON, then parsed the same way; a search result with several traces is read one trace at a time |

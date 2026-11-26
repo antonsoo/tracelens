@@ -40,5 +40,5 @@ old matching rule; the later cost study independently checked the corrected
 rates and arithmetic.
 
 Earlier publication snapshots remain available for [timing, cost and links](verification-publish-2026-10-09.md).
-The npm 0.3.3 package predates those commands and the later `logs` command;
-build the source to use the current CLI.
+0.4.0 is the first npm release with those commands and the later `logs`
+command.

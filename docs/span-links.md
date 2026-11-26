@@ -25,7 +25,7 @@ node dist-cli/cli/index.js links examples/queue-links.json --json > links.json
 the default is the trace with the most spans. The report covers links **from
 that selected trace**, resolving targets across all valid spans in the file.
 The CLI prints other trace choices to stderr; JSON stdout is only the report.
-The published 0.3.3 package does not contain this command yet.
+The command is in the CLI since 0.4.0.
 
 ## What is retained
 

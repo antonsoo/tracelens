@@ -1,7 +1,7 @@
 # Where did the elapsed time go?
 
 Available in the [live demo](https://antonsoo.github.io/tracelens/?example=timing)
-and source checkout; not in the published npm 0.3.3 package.
+and the CLI since 0.4.0.
 [Publication verification](verification-publish-2026-10-09.md).
 The [verification record](verification-timing-2026-10-07.md) includes captured
 results, screenshots and the larger-input check.
